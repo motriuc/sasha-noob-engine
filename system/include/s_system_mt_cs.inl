@@ -1,0 +1,29 @@
+/////////////////////////////////////////////////////////////////////
+//  File Name               : s_system_mt_cs.inl
+//  Created                 : 30 11 2007   9:46
+//  File path               : SLibF\system\include
+//  Author                  : Alexandru Motriuc
+//  Platform Independentsy  : 0%
+//  Library                 : 
+//
+/////////////////////////////////////////////////////////////////////
+//	Purpose:
+//      
+//
+/////////////////////////////////////////////////////////////////////
+//
+//  Modification History:
+//      
+/////////////////////////////////////////////////////////////////////
+
+inline sAutoCs::sAutoCs( const sCs& cs ) :
+	 _cs( cs )
+{
+	_cs.Enter();
+}
+
+inline sAutoCs::~sAutoCs()
+{
+	_cs.Leave();
+}
+

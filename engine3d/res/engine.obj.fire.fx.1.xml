@@ -1,0 +1,5 @@
+<effect>
+	<default vs="%engine%/engine.obj.fire.vs.1.vsh" ps="%engine%/engine.obj.fire.ps.1.fsh">
+		<blending src="GL_SRC_ALPHA" dst="GL_ONE_MINUS_SRC_ALPHA"/>
+	</default>
+</effect>

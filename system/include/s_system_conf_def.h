@@ -1,0 +1,46 @@
+/////////////////////////////////////////////////////////////////////
+//  File Name               : s_system_conf_def.h
+//	Created                 : 14 6 2007   0:05
+//	File path               : SLibF\system\include
+//	Author                  : Alexandru Motriuc
+//  Platform Independent    : 0%
+//	Library                 : 
+//
+/////////////////////////////////////////////////////////////////////
+//	Purpose:
+//      
+//
+/////////////////////////////////////////////////////////////////////
+//
+//  Modification History:
+//      
+/////////////////////////////////////////////////////////////////////
+#ifndef _S_SYSTEM_CONF_DEF_INC_
+#define _S_SYSTEM_CONF_DEF_INC_
+
+////////////////////////////////////
+// Library Platform definition:
+// 
+// _SPL_WIN32
+// _SPL_WIN64
+// _SPL_PALMOS
+// _SPL_LINUX
+// _SPL_MAC
+
+////////////////////////////////////
+// Wide and simple char
+//
+// _SLIB_WCHAR
+// 
+
+////////////////////////////////////
+// Multithreading
+//
+// _SLIB_MT
+
+////////////////////////////////////
+// define this to disable debug allocation for _SPL_DEBUG
+//
+// #define _SLIB_CONF__NO_DEBUG_ALLOCATION 
+
+#endif // _S_SYSTEM_CONF_DEF_INC_

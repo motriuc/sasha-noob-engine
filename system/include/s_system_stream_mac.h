@@ -1,0 +1,26 @@
+/////////////////////////////////////////////////////////////////////
+//  File Name               : s_system_stream_mac.h
+//  Created                 : 17 1 2012   13:01
+//  File path               : SLibF\system\Include
+//  Author                  : Alexandru Motriuc
+//  Platform Independentsy  : 0%
+//  Library                 : 
+//
+/////////////////////////////////////////////////////////////////////
+//	Purpose:
+//      
+//
+/////////////////////////////////////////////////////////////////////
+//
+//  Modification History:
+//      
+/////////////////////////////////////////////////////////////////////
+
+#ifdef _SPL_MAC
+
+/**
+ * 
+ */
+_PLATFORM CGDataProviderRef IInputStream_To_CGDataProviderRef( const IInputStream* stream );
+
+#endif

@@ -1,0 +1,5 @@
+<effect name="system.font.fx.1" >
+	<default vs="%engine%/system.font.vs.1.vsh" ps="%engine%/system.font.ps.1.fsh">
+		<blending src="GL_SRC_ALPHA" dst="GL_ONE_MINUS_SRC_ALPHA"/>
+	</default>
+</effect>

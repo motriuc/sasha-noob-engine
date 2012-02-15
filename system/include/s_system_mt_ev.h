@@ -1,0 +1,71 @@
+/////////////////////////////////////////////////////////////////////
+//  File Name               : s_system_mt_ev.h
+//  Created                 : 9 7 2007   15:53
+//  File path               : C:\Sasha\C++\SLibF\system\Include
+//  Author                  : Alexandru Motriuc
+//  Platform Independentsy  : 0%
+//  Library                 : 
+//
+/////////////////////////////////////////////////////////////////////
+//	Purpose:
+//      
+//
+/////////////////////////////////////////////////////////////////////
+//
+//  Modification History:
+//      
+/////////////////////////////////////////////////////////////////////
+
+#ifdef _SLIB_MT
+
+/**
+ *	Event
+ */
+class sEvent
+{
+public:
+	/**
+	 *	
+	 */
+	sEvent( sBool bInitState = sFalse, sBool bManual = sFalse );
+
+	/**
+	 *	
+	 */
+	~sEvent();
+
+	/**
+	 *	Set the event
+	 */
+	void Set() const;
+
+	/**
+	 *	unset the event
+	 */
+	void UnSet() const;
+
+	/**
+	 *	Wait for event, -1 means infinite,
+	 *	Event is unset after wait if bManual is false
+	 */
+	sBool Wait( sInt time = -1 ) const;
+
+private:
+	sEvent( const sEvent& );
+	void operator = ( const sEvent& );
+
+// WIN32 platform
+#ifdef _SPL_WIN32
+private:
+	_PLATFORM HANDLE	_hEvent;
+public:
+	_PLATFORM HANDLE GetHandle() const;
+#endif // _SPL_WIN32
+};
+
+
+#ifdef _SPL_WIN32
+	#include "s_system_mt_ev_win32.inl"
+#endif
+
+#endif

@@ -1,0 +1,56 @@
+/////////////////////////////////////////////////////////////////////
+//  File Name               : s_system_d3math.h
+//  Created                 : 1 12 2007   13:39
+//  File path               : SLibF\system\include
+//  Author                  : Alexandru Motriuc
+//  Platform Independentsy  : 0%
+//  Library                 : 
+//
+/////////////////////////////////////////////////////////////////////
+//	Purpose:
+//      
+//
+/////////////////////////////////////////////////////////////////////
+//
+//  Modification History:
+//      
+/////////////////////////////////////////////////////////////////////
+
+namespace d3Math
+{	
+	using namespace System::Types;
+	using namespace System::Cnt;
+
+	
+	/**
+	 * Forward declarations
+	 */
+	class d3Matrix;
+	class d3Vector;
+	class d3Plane;
+	class d3AABBox;
+	class d3Sphere;
+
+	typedef d3Vector d3Point;
+
+	#include "s_system_d3math_vector.h"
+	#include "s_system_d3math_matrix.h"
+	#include "s_system_d3math_aabb.h"
+	#include "s_system_d3math_sphere.h"
+	#include "s_system_d3math_triangle.h"
+	#include "s_system_d3math_plane.h"
+	#include "s_system_d3math_frustum.h"
+	#include "s_system_d3math_camera.h"
+
+	#include "s_system_d3math_int.h"
+
+	#include "s_system_d3math_matrix.inl"
+	#include "s_system_d3math_vector.inl"
+	#include "s_system_d3math_aabb.inl"
+	#include "s_system_d3math_sphere.inl"
+	#include "s_system_d3math_triangle.inl"
+	#include "s_system_d3math_plane.inl"
+	#include "s_system_d3math_frustum.inl"
+
+	#include "s_system_d3math_camera.inl"
+}

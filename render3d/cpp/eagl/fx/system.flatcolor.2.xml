@@ -1,0 +1,4 @@
+<effect name="system.flatcolor.2" >
+	<default vs="%engine%/system.default.vs.2.vsh" ps="%engine%/system.flatcolor.ps.2.fsh">
+	</default>
+</effect>
