@@ -1,0 +1,108 @@
+<world>
+	<!-- load resources -->
+	<resources>
+		<texture name="game.red.ch" path="%gameres%/red_checker.png" />
+		<texture name="game.red.ch.2" path="%gameres%/red_checkern.png" />
+		
+		<texture name="game.buble.tile" path="%gameres%/default_tile_set.png" />
+		
+		<texture name="engine.obj.fire.noise.2" type="alpha" path="%gameres%/engine.obj.fire.noise.2.128.png" />
+		
+		<texture name="engine.obj.fire.flame" path="%gameres%/engine.obj.fire.flame.1.png" >
+			<texture.params address.u="clamp" address.v="clamp" />
+		</texture>
+		
+		<effect name="engine.obj.fire" path="%gameres%/engine.obj.fire.fx.1.xml" />
+		<effect name="game.buble.main.fx" path="%gameres%/buble.main.fx.xml" />
+		<effect name="game.buble.fx" path="%gameres%/buble.buble.fx.xml" />
+		
+		<!-- tiger -->
+		<vbuffer name="tiger" path="%gameres%/tiger.vb" />
+		<texture name="tiger" path="%gameres%/tiger.png" />
+		<ibuffer name="tiger" path="%gameres%/tiger.ib" />
+		
+		<mesh name="test.mesh" path="%gameres%/mesh_test.xml"/>
+		<mesh name="test.mesh.1" path="%gameres%/mesh_test2.xml"/>
+		<mesh name="tiger" path="%gameres%/mesh_test3.xml" />
+			
+	</resources>
+<!--	
+	<prerender>
+		<texture name="prerender.world" class="tex1"/>
+	</prerender>
+-->
+	<!-- camera -->
+	
+	<camera>
+		<set2D/>
+	</camera>
+	
+	<!-- lights -->
+	<!--
+	<lights.static>
+		<light.point>
+			<color r="1.0" g="1.0" b="1.0" a="1.0" />
+			<position x="0.0" y="0.0" z="-15.0" />
+		</light.point>
+	</lights.static>
+	-->
+	
+	<children>
+		<engine.object.gesturecamera />
+		<game.buble.field 
+				tileset="game.buble.tile" 
+				tileset.width="32" tileset.height="32"
+				tileset.width.count="5" tileset.height.count="8"
+				field="%gameres%/testlvl_field.txt" 
+				effect="game.buble.main.fx">
+			
+		</game.buble.field>
+		
+		<engine.object.fire>
+			<transformation type="cmd">
+			<move z="0.00001"/>
+			</transformation>
+		</engine.object.fire>
+		
+		<!-- engine -->
+<!--		<engine.object.fire>
+			<lights.static.use />
+		
+		</engine.object.fire>
+
+		<engine.object.mesh mesh="test.mesh">
+			<lights.static.use />			
+		</engine.object.mesh>
+	
+		<engine.object.texture width="1.2" height="1.2" texture="game.buble.tile" >
+			<lights.static.use />			
+		</engine.object.texture>
+
+		<engine.object.mesh mesh="test.mesh.1" class="tex1">
+			<transformation type="cmd">
+				<move x="-0.5" y="-0.5" z="1.0" />
+				<rotate ax="-70" ay="10"/>
+			</transformation>
+			<lights.static.use />			
+		</engine.object.mesh>
+		
+
+		<engine.object.mesh mesh="tiger" class="default">
+			<transformation type="cmd">
+				<rotate ax="90" ay="90"/>
+				<move x="0.5" y="0.5" z="0.2" />
+			</transformation>
+			<lights.static.use />			
+		</engine.object.mesh>
+
+
+		<engine.object.mesh mesh="test.mesh.1" class="default">
+			<transformation type="cmd">
+				<move x="-1.5" y="1.5" z="3.0" />
+				<rotate ax="-10" ay="40"/>
+			</transformation>
+			<lights.static.use />			
+		</engine.object.mesh>
+-->
+	</children>
+</world>

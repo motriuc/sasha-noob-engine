@@ -1,0 +1,9 @@
+<mesh>
+	<vbuffer name="tiger" />
+	<ibuffer name="tiger" />
+	 
+	<material type="texture" >
+		<texture name="tiger" />
+	</material>
+	
+</mesh>

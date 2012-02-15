@@ -1,0 +1,4 @@
+<effect>
+	<default vs="%gameres%/buble.main.vs.vsh" ps="%gameres%/buble.main.ps.fsh">
+	</default>
+</effect>

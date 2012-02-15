@@ -1,0 +1,16 @@
+<mesh>
+<!--
+	<torus radius="0.6" tube.radius="0.2" segments="40" tube.segments="20"  />
+	
+	<sphere radius="0.5" longitudinal.segments="20" latitudinal.segments="20" />
+	<arrow radius="0.2" height="1.2" head.height="0.6" head.radius="0.5" segments="20" tube.segments="20"  />
+
+	<torus radius="0.6" tube.radius="0.2" segments="40" tube.segments="20"  />
+	<cone height="2.2" top.radius="0.0" bottom.radius="0.6" openended="false" segments="30" tube.segments="20" />
+	-->
+	<torus radius="0.5" tube.radius="0.2" segments="30" tube.segments="20"  />
+	<material type="texture" >
+		<texture name="game.red.ch" />
+	</material>
+	
+</mesh>
