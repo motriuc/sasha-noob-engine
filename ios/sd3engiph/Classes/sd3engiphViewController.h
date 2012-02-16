@@ -8,21 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
-#import <OpenGLES/EAGL.h>
 
-#import <OpenGLES/ES1/gl.h>
-#import <OpenGLES/ES1/glext.h>
-#import <OpenGLES/ES2/gl.h>
-#import <OpenGLES/ES2/glext.h>
+#define _OBJC_INC_
+
+#include "platform_eagl_context.h"
+
+// forward declarations
+class EngineApplication;
+
 
 @interface sd3engiphViewController : UIViewController
 {
-    EAGLContext *context;
-    GLuint program;
-    
-    BOOL animating;
-    NSInteger animationFrameInterval;
-    CADisplayLink *displayLink;
+@private	
+	EngineApplication*	render;
+	MACOSView*			renderView;
+    BOOL				animating;
+    CADisplayLink*		displayLink;
+    NSInteger			animationFrameInterval;
 }
 
 @property (readonly, nonatomic, getter=isAnimating) BOOL animating;
