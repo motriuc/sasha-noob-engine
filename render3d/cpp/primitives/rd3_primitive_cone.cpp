@@ -25,6 +25,10 @@ using namespace System::d2Math;
 
 namespace Rd3
 {
+//------------------------------------------------------------------	
+	
+AUTO_REGISTER_PRIMITIVE_FACTORY( _S("cone"), PrimitiveCone )
+	
 //------------------------------------------------------------------
 PrimitiveCone::PrimitiveCone( d3Float height, d3Float topRadius, d3Float bottomRadius, sBool openEnded, sInt ns, sInt nt ) :
 	_height( height ),
@@ -37,7 +41,22 @@ PrimitiveCone::PrimitiveCone( d3Float height, d3Float topRadius, d3Float bottomR
 }
 
 //------------------------------------------------------------------
-void PrimitiveCone::GetMesh( VertexPList& p, IndexList& i, VertexNList& n, VertexTxCoord& tx ) const
+void PrimitiveCone::LoadFromXml( const Xml::BaseDomNode& node, const Def& def, const Streams::StreamArchive& archive ) throws_error
+{
+	_height =		node.GetAttributes()[_S("height")].ToFloat();
+	_topRadius =	node.GetAttributes()[_S("top.radius")].ToFloat();
+	_bottomRadius = node.GetAttributes()[_S("bottom.radius")].ToFloat();
+	
+	_openEnded = sFalse;
+	if( node.GetAttributes()[_S("openended")] == _S("true") )
+		_openEnded = sTrue;
+	
+	_ns = node.GetAttributes()[_S("segments")].ToInt();
+	_nt = node.GetAttributes()[_S("tube.segments")].ToInt();
+}	
+	
+//------------------------------------------------------------------
+void PrimitiveCone::GetMesh( VertexPList& p, IndexList& i, VertexNList& n, VertexTxCoord& tx ) const throws_error
 {
 	d3Float totalHeight;
 	
@@ -151,7 +170,14 @@ void PrimitiveCone::GetMesh( VertexPList& p, IndexList& i, VertexNList& n, Verte
 //------------------------------------------------------------------	
 sInt PrimitiveCone::EstimateVertexCount() const
 {
-	return 0;
+	sInt c = ( _nt + 1 ) * ( _ns + 1 );
+	
+	if( !_openEnded )
+	{
+		c += 2 * ( _ns + 1 );
+	}
+	
+	return c;
 }
 	
 //------------------------------------------------------------------	

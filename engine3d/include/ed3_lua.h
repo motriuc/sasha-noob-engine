@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////////////
-//	File Name				: ed3_lua.h
-//	Created					: 18 2 2012   20:02
-//	File path				: SLibF\engine3d\include
+//	File Name               : ed3_lua.h
+//	Created                 : 18 2 2012   20:02
+//	File path               : SLibF\engine3d\include
 //	Author                  : Alexandru Motriuc
 //	Platform Independentsy  : 0%
 //	Library                 : 
@@ -37,6 +37,11 @@ public:
 	 *	Get float value
 	 */
 	sFloat GetValue( sInt i, d3Float def ) const;
+	
+	/**
+	 * Get int value
+	 */
+	sInt GetValue( sInt i, sInt def ) const;
 
 	/**
 	 *	Return float value
@@ -56,7 +61,7 @@ typedef sInt (*LuaFunction) ( const LuaFunctionState *L );
 /**
  *	LuaObject
  */
-class LuaObject
+class LuaObject : private class_nocopy 
 {
 public:
 	LuaObject( void* pUserPtr );
@@ -74,6 +79,8 @@ public:
 	 */
 	void Register( const SBCHAR* funName, LuaFunction fn );
 	void Register( const SBCHAR* table, const SBCHAR* funName, LuaFunction fn );
+	
+	void RegisterMathLib();
 	
 	/**
 	 *

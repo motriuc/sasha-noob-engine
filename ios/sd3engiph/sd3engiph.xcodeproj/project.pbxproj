@@ -149,6 +149,7 @@
 		D93D5BA614ECD15A003FC949 /* mesh_torus.xml in Resources */ = {isa = PBXBuildFile; fileRef = D93D5BA414ECD15A003FC949 /* mesh_torus.xml */; };
 		D93D5BA714ECD15A003FC949 /* red_checker.png in Resources */ = {isa = PBXBuildFile; fileRef = D93D5BA514ECD15A003FC949 /* red_checker.png */; };
 		D97DE81D14EF7CF300E062CF /* ed3_object_lua.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D97DE81C14EF7CF300E062CF /* ed3_object_lua.cpp */; };
+		D9803A9014EFCE32002E3CE7 /* ed3_primitive_lua.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9803A8F14EFCE32002E3CE7 /* ed3_primitive_lua.cpp */; };
 		D99922F714EF3AFB003FC6A7 /* lapi.c in Sources */ = {isa = PBXBuildFile; fileRef = D99922BE14EF3AFB003FC6A7 /* lapi.c */; };
 		D99922F814EF3AFB003FC6A7 /* lauxlib.c in Sources */ = {isa = PBXBuildFile; fileRef = D99922C014EF3AFB003FC6A7 /* lauxlib.c */; };
 		D99922F914EF3AFB003FC6A7 /* lbaselib.c in Sources */ = {isa = PBXBuildFile; fileRef = D99922C214EF3AFB003FC6A7 /* lbaselib.c */; };
@@ -487,6 +488,8 @@
 		D93D5BA414ECD15A003FC949 /* mesh_torus.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = mesh_torus.xml; path = world/mesh_torus.xml; sourceTree = "<group>"; };
 		D93D5BA514ECD15A003FC949 /* red_checker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = red_checker.png; path = world/red_checker.png; sourceTree = "<group>"; };
 		D97DE81C14EF7CF300E062CF /* ed3_object_lua.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_object_lua.cpp; path = ../../engine3d/cpp/ed3_object_lua.cpp; sourceTree = SOURCE_ROOT; };
+		D9803A8F14EFCE32002E3CE7 /* ed3_primitive_lua.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_primitive_lua.cpp; path = ../../engine3d/cpp/ed3_primitive_lua.cpp; sourceTree = SOURCE_ROOT; };
+		D9803A9114EFCE4F002E3CE7 /* ed3_primitive_lua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ed3_primitive_lua.h; path = ../../engine3d/include/ed3_primitive_lua.h; sourceTree = SOURCE_ROOT; };
 		D99922B914EF3ABB003FC6A7 /* lua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lua.h; path = ../../external/lua/lua.h; sourceTree = SOURCE_ROOT; };
 		D99922BA14EF3ABB003FC6A7 /* lua.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = lua.hpp; path = ../../external/lua/lua.hpp; sourceTree = SOURCE_ROOT; };
 		D99922BE14EF3AFB003FC6A7 /* lapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lapi.c; path = ../../external/lua/lapi.c; sourceTree = SOURCE_ROOT; };
@@ -1031,8 +1034,8 @@
 		D91D01CA14ECC18600CEFA96 /* mesh */ = {
 			isa = PBXGroup;
 			children = (
-				D91D013914ECC02F00CEFA96 /* rd3_mesh.cpp */,
 				D91D017314ECC05D00CEFA96 /* rd3_mesh.h */,
+				D91D013914ECC02F00CEFA96 /* rd3_mesh.cpp */,
 			);
 			name = mesh;
 			sourceTree = "<group>";
@@ -1076,16 +1079,16 @@
 		D91D01F614ECC37100CEFA96 /* primitives */ = {
 			isa = PBXGroup;
 			children = (
-				D91D01F714ECC39E00CEFA96 /* rd3_primitive_arrow.h */,
-				D91D01F814ECC39E00CEFA96 /* rd3_primitive_cone.h */,
-				D91D01F914ECC39E00CEFA96 /* rd3_primitive_sphere.h */,
-				D91D01FA14ECC39E00CEFA96 /* rd3_primitive_torus.h */,
 				D91D01FB14ECC39E00CEFA96 /* rd3_primitive.h */,
-				D91D01FC14ECC3B400CEFA96 /* rd3_primitive_arrow.cpp */,
-				D91D01FD14ECC3B400CEFA96 /* rd3_primitive_cone.cpp */,
-				D91D01FE14ECC3B400CEFA96 /* rd3_primitive_sphere.cpp */,
-				D91D01FF14ECC3B400CEFA96 /* rd3_primitive_torus.cpp */,
 				D91D020014ECC3B400CEFA96 /* rd3_primitive.cpp */,
+				D91D01F714ECC39E00CEFA96 /* rd3_primitive_arrow.h */,
+				D91D01FC14ECC3B400CEFA96 /* rd3_primitive_arrow.cpp */,
+				D91D01F814ECC39E00CEFA96 /* rd3_primitive_cone.h */,
+				D91D01FD14ECC3B400CEFA96 /* rd3_primitive_cone.cpp */,
+				D91D01F914ECC39E00CEFA96 /* rd3_primitive_sphere.h */,
+				D91D01FE14ECC3B400CEFA96 /* rd3_primitive_sphere.cpp */,
+				D91D01FA14ECC39E00CEFA96 /* rd3_primitive_torus.h */,
+				D91D01FF14ECC3B400CEFA96 /* rd3_primitive_torus.cpp */,
 			);
 			name = primitives;
 			sourceTree = "<group>";
@@ -1093,8 +1096,9 @@
 		D91D020B14ECC42E00CEFA96 /* engine3d */ = {
 			isa = PBXGroup;
 			children = (
-				D91D024014ECC4B600CEFA96 /* objects */,
 				D91D020F14ECC47400CEFA96 /* base */,
+				D91D024014ECC4B600CEFA96 /* objects */,
+				D9803A8E14EFCDEB002E3CE7 /* rd3ext */,
 				D91D020C14ECC44200CEFA96 /* app */,
 			);
 			name = engine3d;
@@ -1283,6 +1287,15 @@
 				D91D01DA14ECC33000CEFA96 /* eagl_rstate.h */,
 			);
 			name = base;
+			sourceTree = "<group>";
+		};
+		D9803A8E14EFCDEB002E3CE7 /* rd3ext */ = {
+			isa = PBXGroup;
+			children = (
+				D9803A9114EFCE4F002E3CE7 /* ed3_primitive_lua.h */,
+				D9803A8F14EFCE32002E3CE7 /* ed3_primitive_lua.cpp */,
+			);
+			name = rd3ext;
 			sourceTree = "<group>";
 		};
 		D999224414EF38C5003FC6A7 /* lua */ = {
@@ -1616,6 +1629,7 @@
 				D999231814EF3AFB003FC6A7 /* lzio.c in Sources */,
 				D999232014EF3C56003FC6A7 /* ed3_lua.cpp in Sources */,
 				D97DE81D14EF7CF300E062CF /* ed3_object_lua.cpp in Sources */,
+				D9803A9014EFCE32002E3CE7 /* ed3_primitive_lua.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

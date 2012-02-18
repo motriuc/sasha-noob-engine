@@ -128,8 +128,7 @@ sBool TypedResourcePool::Remove( const sString& name )
 	_objArray[pResource->_objIndex] = NULL;
 	pResource->_objIndex = -1;
 
-	// may be canged later not sure if it has to be this way
-	delete pResource;
+	pResource->UnuseResource();
 
 	return sTrue;
 }

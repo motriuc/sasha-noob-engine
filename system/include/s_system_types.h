@@ -1,9 +1,9 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : s_system_types.h
 //	Created                 : 23 6 2007   22:40
-//	File path               : C:\Sasha\C++\SLibF\system\Include
+//	File path               : SLibF\system\Include
 //	Author                  : Alexandru Motriuc
-//  Platform Independentsy  : 0%
+//  System Independent      : 0%
 //	Library                 : 
 //
 /////////////////////////////////////////////////////////////////////

@@ -26,6 +26,10 @@ using namespace System::d2Math;
 namespace Rd3
 {
 //------------------------------------------------------------------
+
+AUTO_REGISTER_PRIMITIVE_FACTORY( _S("torus"), PrimitiveTorus )
+	
+//------------------------------------------------------------------
 PrimitiveTorus::PrimitiveTorus( d3Float radius, d3Float tubeRadius, sInt ns, sInt nt ) :
 	_radius( radius ),
 	_tubeRadius( tubeRadius ),
@@ -35,7 +39,17 @@ PrimitiveTorus::PrimitiveTorus( d3Float radius, d3Float tubeRadius, sInt ns, sIn
 }
 
 //------------------------------------------------------------------
-void PrimitiveTorus::GetMesh( VertexPList& p, IndexList& i, VertexNList& n, VertexTxCoord& tx ) const
+void PrimitiveTorus::LoadFromXml( const Xml::BaseDomNode& node, const Def& def, const Streams::StreamArchive& archive ) throws_error
+{
+	_radius =		node.GetAttributes()[_S("radius")].ToFloat();
+	_tubeRadius =	node.GetAttributes()[_S("tube.radius")].ToFloat();
+	
+	_ns =			node.GetAttributes()[_S("segments")].ToInt();
+	_nt =			node.GetAttributes()[_S("tube.segments")].ToInt();
+}
+
+//------------------------------------------------------------------
+void PrimitiveTorus::GetMesh( VertexPList& p, IndexList& i, VertexNList& n, VertexTxCoord& tx ) const throws_error
 {
 	for( sInt s = 0; s <= _ns; s++)
 	{
@@ -51,7 +65,7 @@ void PrimitiveTorus::GetMesh( VertexPList& p, IndexList& i, VertexNList& n, Vert
 			sFloat cosPhi =		FMath::Cos( phi );
 			
 			sFloat x = sinTheta * ( _radius + _tubeRadius * sinPhi );
-			sFloat y =						- _tubeRadius * cosPhi;
+			sFloat y = - _tubeRadius * cosPhi;
 			sFloat z = cosTheta * ( _radius + _tubeRadius * sinPhi );
 			
 			sFloat nx = sinTheta * sinPhi;

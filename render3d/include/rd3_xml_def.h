@@ -50,6 +50,7 @@
 #define ELEMENT_VBUFFER			_S("vbuffer")
 #define ELEMENT_IBUFFER			_S("ibuffer")
 #define ELEMENT_PRERENDER		_S("prerender")
+#define ELEMENT_PRIMITIVE		_S("primitive")
 
 #define ELEMENT_COLOR			_S("color")
 #define ELEMENT_COLOR_DIFFUSE	_S("color.diffuse")

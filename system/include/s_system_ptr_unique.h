@@ -26,14 +26,19 @@ public:
 	inline ptr_unique( _Type* p ) :
 		_p( p )
 	{
-		__S_ASSERT( _p != NULL );
 	}
 	
 	inline _Type& operator()()
 	{
+		__S_ASSERT( _p != NULL );
 		return *_p;
 	}
-		
+	
+	inline System::Types::sBool IsNull() const 
+	{
+		return _p == NULL;
+	}
+	
 	inline ~ptr_unique()
 	{
 		delete _p;

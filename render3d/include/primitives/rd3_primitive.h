@@ -26,16 +26,27 @@
 namespace Rd3
 {
 
+using namespace System;
+
+class Primitive3D;
+	
+/**
+ * IPrimitiveFactory
+ */
+typedef System::T::IClassFactory<Primitive3D> IPrimitive3DFactory;
+	
 /**
  * Primitive3D
  */
 class Primitive3D
 {
+protected:
+	Primitive3D() {}
 public:
 	/**
 	 *
 	 */
-	virtual void GetMesh( VertexPList& p, IndexList& i, VertexNList& n, VertexTxCoord& t ) const = 0;
+	virtual void GetMesh( VertexPList& p, IndexList& i, VertexNList& n, VertexTxCoord& t ) const throws_error = 0;
 	
 	/**
 	 *
@@ -46,8 +57,42 @@ public:
 	 *
 	 */
 	virtual sInt EstimateIndexCount() const = 0;
+
+	/**
+	 *
+	 */
+	virtual void LoadFromXml( const Xml::BaseDomNode& node, const Def& def, const Streams::StreamArchive& archive ) throws_error = 0;
+	
+public:	
+	/**
+	 *
+	 */
+	static void Register( const sString& idname, IPrimitive3DFactory* pFactory );
+	
+	/**
+	 *
+	 */
+	static Primitive3D* Create( const sString& idname );
+	
 };
+
 	
 }
+
+#define AUTO_REGISTER_PRIMITIVE_FACTORY( _name, _class ) \
+	class Factory_Register_primitive_##_class \
+	{ \
+	public: \
+		Factory_Register_primitive_##_class( ) \
+		{ \
+			static System::T::ClassFactory<_class, Rd3::Primitive3D> obj; \
+			Rd3::Primitive3D::Register( _name, &obj ); \
+		} \
+	}; \
+	Factory_Register_primitive_##_class register_primitive_##_class;
+
+
+
+
 
 #endif // _RD3_PRIMITIVE_INC_

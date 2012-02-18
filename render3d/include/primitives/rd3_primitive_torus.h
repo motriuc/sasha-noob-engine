@@ -35,6 +35,12 @@ namespace Rd3
 class PrimitiveTorus : public Primitive3D
 {
 public:
+	
+	/**
+	 *
+	 */
+	PrimitiveTorus() {}
+	
 	/**
 	 *
 	 */
@@ -43,12 +49,13 @@ public:
 	/**
 	 *
 	 */
-	virtual void GetMesh( VertexPList& p, IndexList& i, VertexNList& n, VertexTxCoord& t ) const;
+	virtual void GetMesh( VertexPList& p, IndexList& i, VertexNList& n, VertexTxCoord& t ) const throws_error;
 	
 	virtual sInt EstimateVertexCount() const;
 	
 	virtual sInt EstimateIndexCount() const;
 	
+	virtual void LoadFromXml( const Xml::BaseDomNode& node, const Def& def, const Streams::StreamArchive& archive ) throws_error;	
 private:
 	sFloat	_radius;
 	sFloat	_tubeRadius;

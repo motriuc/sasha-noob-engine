@@ -112,6 +112,7 @@ static int d3Object_RotateZ( const LuaFunctionState* s )
 //--------------------------------------------------------------------------------------------------------
 void d3Object::InitLuaFunctions()
 {	
+	_luaObject.RegisterMathLib();
 	_luaObject.Register( _S("self"), _S("RotateX"), d3Object_RotateX );
 	_luaObject.Register( _S("self"), _S("RotateY"), d3Object_RotateY );
 	_luaObject.Register( _S("self"), _S("RotateZ"), d3Object_RotateZ );

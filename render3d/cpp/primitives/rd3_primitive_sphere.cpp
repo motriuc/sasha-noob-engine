@@ -25,6 +25,9 @@ using namespace System::d2Math;
 
 namespace Rd3
 {
+	
+AUTO_REGISTER_PRIMITIVE_FACTORY( _S("sphere"), PrimitiveSphere )
+	
 //------------------------------------------------------------------
 PrimitiveSphere::PrimitiveSphere( d3Float radius, sInt nLongSeg, sInt nLatSeg ) :
 	_radius( radius ),
@@ -32,9 +35,16 @@ PrimitiveSphere::PrimitiveSphere( d3Float radius, sInt nLongSeg, sInt nLatSeg ) 
 	_nLatSeg( nLatSeg )
 {
 }
-
 //------------------------------------------------------------------
-void PrimitiveSphere::GetMesh( VertexPList& p, IndexList& i, VertexNList& n, VertexTxCoord& t ) const
+void PrimitiveSphere::LoadFromXml( const Xml::BaseDomNode& node, const Def& def, const Streams::StreamArchive& archive ) throws_error
+{
+	_radius =		node.GetAttributes()[_S("radius")].ToFloat();
+	_nLongSeg =		node.GetAttributes()[_S("longitudinal.segments")].ToInt();
+	_nLatSeg =		node.GetAttributes()[_S("latitudinal.segments")].ToInt();
+}
+	
+//------------------------------------------------------------------
+void PrimitiveSphere::GetMesh( VertexPList& p, IndexList& i, VertexNList& n, VertexTxCoord& t ) const throws_error
 {
 	for( sInt lat = 0; lat <= _nLatSeg; ++lat )
 	{

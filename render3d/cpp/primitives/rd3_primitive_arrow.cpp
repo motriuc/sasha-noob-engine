@@ -26,6 +26,10 @@ using namespace System::d2Math;
 namespace Rd3
 {
 //------------------------------------------------------------------
+
+AUTO_REGISTER_PRIMITIVE_FACTORY( _S("arrow"), PrimitiveArrow )
+	
+//------------------------------------------------------------------
 PrimitiveArrow::PrimitiveArrow( d3Float radius, d3Float height, d3Float headHeight, d3Float headRadius, sInt ns, sInt nt ) :
 	_radius( radius ),
 	_height( height ),
@@ -37,7 +41,18 @@ PrimitiveArrow::PrimitiveArrow( d3Float radius, d3Float height, d3Float headHeig
 }
 
 //------------------------------------------------------------------
-void PrimitiveArrow::GetMesh( VertexPList& p, IndexList& i, VertexNList& n, VertexTxCoord& tx ) const
+void PrimitiveArrow::LoadFromXml( const Xml::BaseDomNode& node, const Def& def, const Streams::StreamArchive& archive ) throws_error
+{
+	_radius =		node.GetAttributes()[_S("radius")].ToFloat();
+	_height =		node.GetAttributes()[_S("height")].ToFloat();
+	_headHeight =	node.GetAttributes()[_S("head.height")].ToFloat();
+	_headRadius =	node.GetAttributes()[_S("head.radius")].ToFloat();
+	_ns =			node.GetAttributes()[_S("segments")].ToInt();
+	_nt =			node.GetAttributes()[_S("tube.segments")].ToInt();
+}
+	
+//------------------------------------------------------------------
+void PrimitiveArrow::GetMesh( VertexPList& p, IndexList& i, VertexNList& n, VertexTxCoord& tx ) const throws_error
 {
 	d3Float totalHeight = _radius + _height + ( _headRadius - _radius );
 	
@@ -130,7 +145,7 @@ void PrimitiveArrow::GetMesh( VertexPList& p, IndexList& i, VertexNList& n, Vert
 //------------------------------------------------------------------	
 sInt PrimitiveArrow::EstimateVertexCount() const
 {
-	return ( _nt + 3 )* _ns;
+	return ( _nt + 4 ) * ( _ns + 1 );
 }
 	
 //------------------------------------------------------------------	

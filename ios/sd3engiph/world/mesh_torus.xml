@@ -1,5 +1,5 @@
 <mesh>
-	<torus radius="0.5" tube.radius="0.2" segments="30" tube.segments="20"  />
+	<primitive type="torus" radius="0.5" tube.radius="0.2" segments="30" tube.segments="20"  />
 	
 	<material type="texture" >
 		<texture name="main.red.ch" />

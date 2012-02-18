@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////////////
-//	File Name				: ed3_lua.cpp
-//	Created					: 18 2 2012   20:02
-//	File path				: SLibF\engine3d\cpp
+//	File Name               : ed3_lua.cpp
+//	Created                 : 18 2 2012   20:02
+//	File path               : SLibF\engine3d\cpp
 //	Author                  : Alexandru Motriuc
 //	Platform Independentsy  : 0%
 //	Library                 : 
@@ -54,6 +54,22 @@ d3Float LuaFunctionState::GetValue( sInt i, d3Float def ) const
 	return (d3Float)lua_tonumber( p, i );
 }
 
+//------------------------------------------------------------------
+sInt LuaFunctionState::GetValue( sInt i, sInt def ) const
+{
+	lua_State* p = (lua_State*)this;
+	
+	if( i < 0 || i >= lua_gettop( p ) )
+		return def;
+	
+	i++;
+	
+	if( !lua_isnumber( p, i ) )
+		return def;
+	
+	return lua_tointeger( p, i );
+}		
+	
 /*******************************************************************/
 /* LuaObject                                                       */
 /*******************************************************************/
@@ -124,6 +140,17 @@ void LuaObject::LoadFromFile( const sString& path, const Streams::StreamArchive&
 		error_throw_chain_arg( Errors::StringError )
 			_S("Can't load Lua: ") + path
 		);
+	}
+}
+//------------------------------------------------------------------
+void LuaObject::RegisterMathLib()
+{
+	lua_State* state = reinterpret_cast<lua_State*>( _pLuaHandle );
+	
+	if( state != NULL )
+	{
+		luaL_requiref( state, LUA_MATHLIBNAME, luaopen_math, 1 );
+		lua_pop( state, 1 );
 	}
 }
 	

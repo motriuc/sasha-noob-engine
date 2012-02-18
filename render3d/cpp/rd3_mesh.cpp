@@ -20,10 +20,6 @@
 #include "rd3_render.h"
 #include "rd3_xml_def.h"
 #include "rd3_primitive.h"
-#include "rd3_primitive_sphere.h"
-#include "rd3_primitive_torus.h"
-#include "rd3_primitive_arrow.h"
-#include "rd3_primitive_cone.h"
 
 namespace Rd3
 {
@@ -45,6 +41,7 @@ void Mesh::SetPrimitiveMesh( const Primitive3D& primitive )
 	IndexList index;
 	VertexNList normals;
 	VertexTxCoord tx;
+	
 	primitive.GetMesh( points, index, normals, tx );
 		
 	_vertexBuffer = GetOwner()->CreateVertexBuffer( _S(""), points, normals, tx );
@@ -82,53 +79,18 @@ void Mesh::LoadFromXml( const Xml::BaseDomNode& node, const Def& def, const Stre
 		if( !XmlCheckDef( child, def ) )
 			continue;
 		
-		if( child.GetName() == _S("sphere") )
+		if( child.GetName() == ELEMENT_PRIMITIVE )
 		{
-			d3Float radius = child.GetAttributes()[_S("radius")].ToFloat();
-			sInt longSeg = child.GetAttributes()[_S("longitudinal.segments")].ToInt();
-			sInt latSeg = child.GetAttributes()[_S("latitudinal.segments")].ToInt();
+			sString type = child.GetAttributes()[ATTR_TYPE];
+			ptr_unique<Primitive3D> primitive( Primitive3D::Create( type ) );
 			
-			PrimitiveSphere prim( radius, longSeg, latSeg );
-			SetPrimitiveMesh( prim );
-		}
-		else if( child.GetName() == _S("torus") )
-		{
-			d3Float radius = child.GetAttributes()[_S("radius")].ToFloat();
-			d3Float tubeRadius = child.GetAttributes()[_S("tube.radius")].ToFloat();
+			if( primitive.IsNull() )
+				error_throw_arg( Errors::StringError )
+					_S("Unknown primitive type: ") + type 
+				);
 			
-			sInt ns = child.GetAttributes()[_S("segments")].ToInt();
-			sInt nt = child.GetAttributes()[_S("tube.segments")].ToInt();
-						
-			PrimitiveTorus prim( radius, tubeRadius, ns, nt );
-			SetPrimitiveMesh( prim );
-		}
-		else if( child.GetName() == _S("arrow") )
-		{
-			d3Float radius = child.GetAttributes()[_S("radius")].ToFloat();
-			d3Float height = child.GetAttributes()[_S("height")].ToFloat();
-			d3Float headHeight = child.GetAttributes()[_S("head.height")].ToFloat();
-			d3Float headRadius = child.GetAttributes()[_S("head.radius")].ToFloat();
-			sInt ns = child.GetAttributes()[_S("segments")].ToInt();
-			sInt nt = child.GetAttributes()[_S("tube.segments")].ToInt();
-			
-			PrimitiveArrow prim( radius, height, headHeight, headRadius, ns, nt );
-			SetPrimitiveMesh( prim );
-		}
-		else if( child.GetName() == _S("cone") )
-		{
-			d3Float height = child.GetAttributes()[_S("height")].ToFloat();
-			d3Float topRadius = child.GetAttributes()[_S("top.radius")].ToFloat();
-			d3Float bottomRadius = child.GetAttributes()[_S("bottom.radius")].ToFloat();
-			
-			sBool openEnded = sFalse;
-			if( child.GetAttributes()[_S("openended")] == _S("true") )
-				openEnded = sTrue;
-			
-			sInt ns = child.GetAttributes()[_S("segments")].ToInt();
-			sInt nt = child.GetAttributes()[_S("tube.segments")].ToInt();
-		
-			PrimitiveCone prim( height, topRadius, bottomRadius, openEnded, ns, nt );
-			SetPrimitiveMesh( prim );
+			primitive().LoadFromXml( child, def, archive );
+			SetPrimitiveMesh( primitive() );
 		}
 		else if( child.GetName() == ELEMENT_MATERIAL )
 		{
