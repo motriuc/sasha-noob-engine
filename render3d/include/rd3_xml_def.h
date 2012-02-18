@@ -102,6 +102,7 @@
 #define ATTR_HEIGHT		  _S("height")
 #define ATTR_TEXTURE	  _S("texture")
 #define ATTR_CLASS		  _S("class")
+#define ATTR_LUA		  _S("lua")
 
 namespace Rd3 
 {

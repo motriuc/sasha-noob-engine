@@ -27,6 +27,7 @@ COUNTER_USE( rd3_render_vertex_count )
 COUNTER_USE( rd3_render_primitive_count )
 COUNTER_USE( rd3_render_time_frame )
 COUNTER_USE( rd3_render_time_draw )
+COUNTER_USE( rd3_render_time_lua )
 
 namespace Rd3
 {
@@ -300,6 +301,8 @@ void WorldRenderState::debug_RenderStats()
 	sDouble renderProp = 
 		100.0 * COUNTER_DOUBLE_VALUE( rd3_render_time_draw ) / COUNTER_DOUBLE_VALUE( rd3_render_time_frame );
 	
+	sDouble luaProp = 
+		100.0 * COUNTER_DOUBLE_VALUE( rd3_render_time_lua ) / COUNTER_DOUBLE_VALUE( rd3_render_time_frame );
 	
 #endif
 	
@@ -313,12 +316,17 @@ void WorldRenderState::debug_RenderStats()
 	sString fsp = _S("Fps: ") + sString::IntToString( _engineData->GetFPS() );
 	_debugTextRender->RenderText( *this , fsp, pos, RGBColor::White );
 
+#ifdef _D3_DEBUG_RENDER_ENABLE_COUNTERS
 	pos.y += _debugTextRender->RenderHeight();
 	
 	sString rnd = _S("Render %: ") + sString::DoubleToString( renderProp );
 	_debugTextRender->RenderText( *this , rnd, pos, RGBColor::White );
+
+	pos.y += _debugTextRender->RenderHeight();
+
+	sString lnd = _S("Lua %: ") + sString::DoubleToString( luaProp );
+	_debugTextRender->RenderText( *this , lnd, pos, RGBColor::White );
 	
-#ifdef _D3_DEBUG_RENDER_ENABLE_COUNTERS
 	sString vbPrimCount = _S("Render Primitive count: ") + sString::IntToString( ivPrimCount );
 	pos.y += _debugTextRender->RenderHeight();
 	

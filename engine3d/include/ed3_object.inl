@@ -62,6 +62,10 @@ inline void d3Object::DoAI( d3EngineData& edata )
 	
 	AI( edata );
 
+#ifdef ED3_ENGINE_USE_LUA	
+	LuaCallAI( edata );
+#endif
+
 	__S_ASSERT( _objectActionState == OBAS_AI );
 	SetActionState( OBAS_IDLE );
 }
@@ -71,7 +75,11 @@ inline void d3Object::DoInitialize( Rd3::Render& render ) throws_error
 	__S_ASSERT( _objectActionState == OBAS_IDLE );
 	SetActionState( OBAS_INIT );
 	
-	Initialize( render);
+	Initialize( render );
+	
+#ifdef ED3_ENGINE_USE_LUA	
+	LuaCallInit( render );
+#endif
 	
 	__S_ASSERT( _objectActionState == OBAS_INIT );
 	SetActionState( OBAS_IDLE );

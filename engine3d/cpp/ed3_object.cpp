@@ -34,6 +34,14 @@ d3Object::d3Object( ObjectType::ObjectType type, const sString& name ) :
 	_boundingBox( d3AABBox::GetEmpty() ),
 	_name( name ),
 	_type( type )
+	
+#ifdef ED3_ENGINE_USE_LUA
+	,
+	_luaObject( this ),
+	_luaHasAI( sFalse ),
+	_luaHasInit( sFalse )
+#endif
+	
 {
 }
 
@@ -64,12 +72,12 @@ void d3Object::DoLoadFromXMLFile( const sString& path, LoadDataParams& loadParam
 	
 	DoLoadFromXML( pDoc().GetRoot(), loadParams );
 }
-
+	
 //--------------------------------------------------------------------------------------------------------
 void d3Object::LoadFromXML( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error
 {
 	_name = element.GetAttributes()[ATTR_NAME];
-	
+		
 	if( loadParams.pClassNames != NULL )
 	{
 		sString cls = element.GetAttributes()[ATTR_CLASS];
@@ -88,6 +96,10 @@ void d3Object::LoadFromXML( const Xml::BaseDomNode& element, LoadDataParams& loa
 		
 		LoadFromXMLSubnode( childElement, loadParams );
 	}
+	
+#ifdef ED3_ENGINE_USE_LUA	
+	LoadLua( element.GetAttributes()[ATTR_LUA], loadParams );
+#endif	
 }
 
 //--------------------------------------------------------------------------------------------------------

@@ -27,6 +27,10 @@
 #include "ed3_types.h"
 #include "ed3_obj_class.h"
 
+#ifdef ED3_ENGINE_USE_LUA
+	#include "ed3_lua.h"
+#endif
+
 namespace Ed3 
 {
 
@@ -198,14 +202,11 @@ protected:
 	virtual void LoadFromXML( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error;
 	virtual sBool LoadFromXMLSubnode( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error;
 
-private:
-	d3AABBox                        _boundingBox;
-	sString                         _name;
-	d3ObjectContiner*               _parent;
-	d3Matrix                        _transformationMatrix;
-	sUInt                           _objectState;
-	ObjectType::ObjectType			_type;
+#ifdef ED3_ENGINE_USE_LUA
+	virtual void InitLuaFunctions();
+#endif
 	
+private:
 	enum ObjectActionState
 	{
 		OBAS_INIT       = 0,
@@ -217,12 +218,34 @@ private:
 		OBAS_FREE		= 6
 	};
 	
-	ObjectActionState    _objectActionState;
+	ObjectActionState				_objectActionState;	
+	d3AABBox                        _boundingBox;
+	sString                         _name;
+	d3ObjectContiner*               _parent;
+	d3Matrix                        _transformationMatrix;
+	sUInt                           _objectState;
+	ObjectType::ObjectType			_type;
+	
 protected:	
-	d3ObjectClass		 _objectClass;
+	d3ObjectClass					_objectClass;
+	
+#ifdef ED3_ENGINE_USE_LUA	
+	LuaObject						_luaObject;
+	sBool							_luaHasAI;
+	sBool							_luaHasInit;
+#endif // ED3_ENGINE_USE_LUA
+	
 private:
 	void ApplyLights( const d3RenderData& renderData );
-	void ApplyLights( const d3RenderData& renderData, const Rd3::LightSelection& lights ); 
+	void ApplyLights( const d3RenderData& renderData, const Rd3::LightSelection& lights );
+	
+#ifdef ED3_ENGINE_USE_LUA	
+	void LoadLua( const sString& path, LoadDataParams& loadParams ) throws_error;
+	
+	void LuaCallInit( Rd3::Render& render );
+	void LuaCallAI( d3EngineData& edata );
+	
+#endif // ED3_ENGINE_USE_LUA
 	
 	void SetActionState( ObjectActionState s );
 	

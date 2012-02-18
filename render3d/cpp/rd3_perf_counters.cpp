@@ -119,14 +119,21 @@ COUNTER_DECLARE(
 				rd3_render_time_frame,
 				_S("rd3.render.time.frame"),
 				_S(""),
-				_S("time to render of the frame")
+				_S("total frame time")
 				)
 
 COUNTER_DECLARE( 
 				rd3_render_time_draw,
 				_S("rd3.render.time.draw"),
 				_S(""),
-				_S("time spent in rendering")
+				_S("total rendering time")
 				)
+COUNTER_DECLARE( 
+				rd3_render_time_lua,
+				_S("rd3.render.time.lua"),
+				_S(""),
+				_S("lua code execution time")
+				)
+				
 
 //-----------------------------------------------------------------------

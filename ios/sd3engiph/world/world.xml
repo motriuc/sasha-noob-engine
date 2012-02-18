@@ -14,11 +14,10 @@
 		</light.point>
 	</lights.static>
 	
-	<children>
-		<engine.object.gesturecamera />
-				
-		<engine.object.mesh mesh="main.mesh">
-			<lights.static.use />			
+	<children>				
+		<engine.object.mesh mesh="main.mesh" lua="%gameres%/torus.lua">
+			<!-- use static lights for this object -->
+			<lights.static.use />		
 		</engine.object.mesh>	
 	</children>
 </world>

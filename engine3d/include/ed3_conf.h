@@ -20,6 +20,9 @@
 #ifndef _ED3_CONF_H_
 #define _ED3_CONF_H_
 
+// define for engine LUA support
+#define ED3_ENGINE_USE_LUA
+
 namespace  Ed3 
 {
 

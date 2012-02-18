@@ -98,14 +98,6 @@ void d3TextureObject::Render( const Ed3::d3RenderData& renderData )
 //-------------------------------------------------------------------
 void d3TextureObject::AI( d3EngineData& edata )
 {
-/*	d3Matrix rot;
-	
-	rot.SetRotateX( 0.2f * edata.GetDeltaTime() );
-	
-	ApplyTranformation( rot );
-	rot.SetRotateY( 0.1f * edata.GetDeltaTime() );
-	ApplyTranformation( rot );
-*/	
 }
 	
 	
