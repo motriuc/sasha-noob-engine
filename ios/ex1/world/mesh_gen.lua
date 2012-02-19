@@ -1,13 +1,17 @@
+ucount = 50
+vcount = 50
+
+
 -- create mesh
 function Primitive_CreateMesh()
-	local ucount = 50
-	local vcount = 50
 	local k = 1.2
 	local k1 = 1.2
 	local a = 1.6
+	local scale = 1/200
+	local zoffset = 0.5
 	
 	local ubegin = 0.0
-	local uend = 8 * math.pi
+	local uend = 8.1 * math.pi
 	local ustep = ( uend - ubegin ) / ucount
 	
 	local vbegin = 0.0
@@ -31,7 +35,7 @@ function Primitive_CreateMesh()
 			local y = pk * ( 1 + vcos ) * usin;
 			local z = pk * vsin - a * pk1
 			
-			self.AddPoint( x / 200, y / 200, z/ 200 + 0.5 )
+			self.AddPoint( x * scale, y * scale, z * scale + zoffset )
 			
 			local logk = math.log(  k )
 			local logk1 = math.log( k1 )
@@ -70,18 +74,16 @@ function Primitive_CreateMesh()
 			
 			self.AddIndex( i1, i3, i2 )
 			self.AddIndex( i2, i3, i4 )
-
-
 		end
 	end
 end
 
 -- estimate vertex count
 function Primitive_EstimateVertexCount()
-	return 0;
+	return ( ucount + 1 ) * ( vcount + 1 );
 end
 
 -- estimate index count
 function Primitive_EstimateIndexCount()
-	return 0;
+	return ucount * vcount * 6;
 end
