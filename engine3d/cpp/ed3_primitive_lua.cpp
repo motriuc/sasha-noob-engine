@@ -67,6 +67,7 @@ void PrimitiveLua::LoadFromXml( const Xml::BaseDomNode& node, const Def& def, co
 			sString( _S("Need function : ") ) + LUA_ESTIMATE_IC + _S(" in : ") + luaPath
 		);
 	
+	_luaObject.RegisterMathLib();
 	_luaObject.Register( _S("self"), _S("AddPoint") , AddPoint );
 	_luaObject.Register( _S("self"), _S("AddNormal") , AddNormal );
 	_luaObject.Register( _S("self"), _S("AddTexCoord") , AddTxCoord );
@@ -111,8 +112,7 @@ sInt PrimitiveLua::AddPoint( const LuaFunctionState* state )
 	d3Float x = state->GetValue( 0, 0.0f );
 	d3Float y = state->GetValue( 1, 0.0f );
 	d3Float z = state->GetValue( 2, 0.0f );
-	
-	
+		
 	me->_p->Add( d3Vector( x, y, z ) );
 	
 	return 0;

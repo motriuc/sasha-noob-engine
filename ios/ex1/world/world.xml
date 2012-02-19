@@ -1,0 +1,23 @@
+<world>
+	<!-- load resources -->
+	<resources>
+		<texture name="main.red.ch" path="%gameres%/red_checker.png" />
+		<mesh name="main.mesh" path="%gameres%/mesh_ex1.xml"/>
+			
+	</resources>
+	
+	<!-- lights -->
+	<lights.static>
+		<light.point>
+			<color r="1.0" g="1.0" b="1.0" a="1.0" />
+			<position x="0.0" y="0.0" z="-15.0" />
+		</light.point>
+	</lights.static>
+	
+	<children>				
+		<engine.object.mesh mesh="main.mesh" lua="%gameres%/ex1.lua">
+			<!-- use static lights for this object -->
+			<lights.static.use />
+		</engine.object.mesh>	
+	</children>
+</world>

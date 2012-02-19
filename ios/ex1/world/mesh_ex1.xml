@@ -1,0 +1,7 @@
+<mesh>
+	<primitive type="lua" path="%gameres%/mesh_gen.lua"  />
+	
+	<material type="texture" >
+		<texture name="main.red.ch" />
+	</material>
+</mesh>
