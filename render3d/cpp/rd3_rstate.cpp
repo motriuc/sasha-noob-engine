@@ -42,6 +42,8 @@ RenderState::RenderState( Render* owner ) :
 	_transformation( &_defaultTransform ),
 
 	_effect( NULL ),
+	_pAfterEffect( NULL ),
+	_pRenderTarget( NULL ),
 	_defaultTransform( 1.0f ),
 
 	_changed_camera( sTrue ),

@@ -1,0 +1,4 @@
+<effect name="system.after.effect.blur" >
+	<default vs="%engine%/system.after.effect.vs.vsh" ps="%engine%/system.after.effect.blur.ps.fsh">
+	</default>
+</effect>

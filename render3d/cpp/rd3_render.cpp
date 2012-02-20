@@ -70,8 +70,7 @@ Render::Render( const RenderType::RenderType type ) :
 	_indexBufferPool( ResourceType::E_INDEX_BUFFER ),
 	_fontResPool( ResourceType::E_FONT ),
 	_messageQResPool( ResourceType::E_MESSAGEQ ),
-	_meshResPool( ResourceType::E_MESH ),
-	_pRenderTexture( NULL )
+	_meshResPool( ResourceType::E_MESH )
 {
 }
 

@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : rd3_render.h
-//	Created                 : 20 1 2011   0:05
-//	File path               : SLibF\render3d\include
-//	Author                  : Alexandru Motriuc
+//  Created                 : 20 1 2011   0:05
+//  File path               : SLibF\render3d\include
+//  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
-//	Library                 : 
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -30,20 +30,6 @@
 
 namespace Rd3
 {
-	
-/**
- * forward delcarations
- */
-class Def;
-class RenderCreateParams;
-class VertexBuffer;
-class Effect;
-class WorldRenderState;
-class IndexBuffer;
-class Texture;
-class Font;
-class MessageQueue;
-class Mesh;
 
 using namespace System::Streams;
 using namespace System::d2Math;
@@ -85,17 +71,7 @@ public:
 	 * Returns current render state
 	 */
 	WorldRenderState* RenderState()								{ return _pRenderState; }
-	
-	/**
-	 * Set new render target, if NULL it is set to default render target
-	 */
-	void SetTexture_RenderTarget( Texture* pTexture )			{ _pRenderTexture = pTexture; }
-	
-	/**
-	 * returns current texture render targer
-	 */
-	Texture* GetTexture_RenderTarget()							{ return _pRenderTexture; }
-	
+		
 	/**
 	 *
 	 */
@@ -258,7 +234,8 @@ public:
 	virtual Texture* CreateTexture(
 		const sString& objectName,
 		sInt width, sInt height,
-		TextureType::TextureType type = TextureType::E_IMAGE
+		TextureType::TextureType type = TextureType::E_IMAGE,
+		const TextureParams& params = TextureParams()
 	) throws_error = 0;
 
 	/**
@@ -364,7 +341,6 @@ protected:
 	Render( const RenderType::RenderType type );
 
 	WorldRenderState*		_pRenderState;
-	Texture*				_pRenderTexture;
 
 	/**
 	 * Resource Pools

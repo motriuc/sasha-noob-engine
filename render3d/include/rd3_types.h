@@ -31,7 +31,31 @@ namespace Rd3
 
 using namespace System::Types;
 
-
+/**
+ * forward declarations
+ */
+	
+class Render;
+class Def;
+class RenderState;
+class ResourceObject;
+class Texture;
+class VertexBuffer;
+class IndexBuffer;
+class Effect;
+class Mesh;
+class Material;
+class LightSelection;
+class EngineDataForRender;
+class WorldRenderState;
+class AfterEffect;
+class AfterEffectElement;
+class RenderCreateParams;
+class MessageQueue;
+class Font;
+class LightPoint;
+class Light;
+		
 /**
  * Vertex data list types
  */

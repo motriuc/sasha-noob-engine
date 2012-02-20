@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : rd3_rstate.h
-//	Created                 : 23 01 2011   1:40
-//	File path               : SLibF\render3d\include
-//	Author                  : Alexandru Motriuc
+//  Created                 : 23 01 2011   1:40
+//  File path               : SLibF\render3d\include
+//  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
-//	Library                 : 
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -25,14 +25,6 @@ namespace Rd3
 
 using namespace System::d3Math;
 using namespace System::d2Math;
-
-class VertexBuffer;
-class IndexBuffer;
-class Texture;
-class Effect;
-class LightPoint;
-class Light;
-class Mesh;
 
 /**
  * RenderState
@@ -128,9 +120,13 @@ public:
 protected:
 	Render* GetOwner();
 	const Effect* GetEffect();
+	const AfterEffect* GetAfterEffect();
+	
+	void SetAfterEffect( const AfterEffect* effect );
 
 	void SetCamera( const d3Camera& camera );
 	void SetRenderTarget( Texture* pTexture );
+	Texture* GetRenderTarget();
 
 	const EngineDataForRender*	_engineData;
 
@@ -151,7 +147,10 @@ private:
 	const d3Matrix*	_transformation;
 
 	// data
-	const Effect*	_effect;
+	const Effect*			_effect;
+	const AfterEffect*		_pAfterEffect;
+	Texture*				_pRenderTarget;
+
 
 	// params
 	d3Matrix		_matrix_params[MatrixParameter::COUNT];
@@ -202,6 +201,7 @@ public:
 
 	using RenderState::SetCamera;
 	using RenderState::SetRenderTarget;
+	using RenderState::SetAfterEffect;
 
 	/**
 	 * EngineDataForRender must exist during BeginWorldRender and EndWorldRender calls

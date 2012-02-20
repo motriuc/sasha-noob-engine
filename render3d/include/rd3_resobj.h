@@ -222,7 +222,8 @@ public:
 	{
 		__S_ASSERT( _res != NULL );
 		return *_res;
-	}	
+	}
+	
 private:	
 	_ResType*	_res;
 	

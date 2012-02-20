@@ -139,7 +139,8 @@ public:
 	virtual Rd3::Texture* CreateTexture(
 		const sString& objectName,
 		sInt width, sInt height,
-		Rd3::TextureType::TextureType type
+		Rd3::TextureType::TextureType type,
+		const Rd3::TextureParams& params
 	) throws_error;
 
 	/**
@@ -226,7 +227,7 @@ private:
  */
 inline void EAGLRender::SetAsCurrentContext()
 {
-	EAGLRenderContext_SetCurrent( _renderContext ); 
+	//EAGLRenderContext_SetCurrent( _renderContext ); 
 
 	glBindFramebuffer( GL_FRAMEBUFFER, _defaultFramebuffer );
 	glViewport( 0, 0, _framebufferWidth, _framebufferHeight );

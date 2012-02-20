@@ -1,10 +1,10 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : eagl_rstate.h
-//	Created                 : 18 1 2012   0:05
-//	File path               : SLibF\render3d\include\eagl
-//	Author                  : Alexandru Motriuc
+//  Created                 : 18 1 2012   0:05
+//  File path               : SLibF\render3d\include\eagl
+//  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
-//	Library                 : 
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
 //	Purpose:
@@ -34,6 +34,7 @@ private:
 	typedef Rd3::WorldRenderState _BaseClass;
 public:
 	EAGLRenderState( Rd3::Render* owner );
+	~EAGLRenderState();
 
 	/**
 	 *
@@ -54,6 +55,14 @@ public:
 	virtual void Clear( System::Types::sRGBColor color );
 
 private:
+	Rd3::Texture*		_afterEffectTextures[2];
+	Rd3::VertexBuffer*	_afterEffectVb;
+	Rd3::Effect*		_effect;
+	
+	void InitAfterEffectData();
+	void BeginAfterEffect();
+	void EndAfterEffect();
+	void BeginNoAfterEffect();
 };
 
 

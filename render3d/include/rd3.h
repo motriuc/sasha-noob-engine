@@ -64,21 +64,5 @@
 #include "rd3_conf.h"
 #include "rd3_types.h"
 
-namespace Rd3
-{
-	class Render;
-	class Def;
-	class RenderState;
-	class ResourceObject;
-	class Texture;
-	class VertexBuffer;
-	class IndexBuffer;
-	class Effect;
-	class Mesh;
-	class Material;
-	class LightSelection;
-	class EngineDataForRender;
-	class WorldRenderState;
-}
 
 #endif // !defined(_RD3_H_)

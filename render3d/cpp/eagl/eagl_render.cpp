@@ -66,6 +66,9 @@ void EAGLRender::InitSystemResources( Rd3::Def& def, const Streams::StreamArchiv
 	CreateEffectFromFile( _S("system.flatcolor.fx.2"), def, _S("%engine%/system.flatcolor.2.xml"), archive );
 	CreateEffectFromFile( _S("system.texture.fx.1"), def, _S("%engine%/system.texture.ps.1.xml"), archive );
 	
+	// affter effects
+	CreateEffectFromFile( _S("system.after.effect.none"), def, _S( "%engine%/system.after.effect.none.fx.xml"), archive );
+	CreateEffectFromFile( _S("system.after.effect.blur"), def, _S( "%engine%/system.after.effect.blur.fx.xml"), archive );
 	// system font default
 	CreateFontSystem( _S("system.font.default"), _S("Baskerville"), 26 );
 }
@@ -506,7 +509,8 @@ Rd3::VertexBuffer* EAGLRender::CreateVertexBuffer(
 Rd3::Texture* EAGLRender::CreateTexture(
 									const sString& objectName,
 									sInt width, sInt height,
-									Rd3::TextureType::TextureType type
+									Rd3::TextureType::TextureType type,
+									const Rd3::TextureParams& params
 									) throws_error
 {
 	if( objectName.Length() > 0 && _textureResPool[objectName] != NULL )
@@ -517,7 +521,7 @@ Rd3::Texture* EAGLRender::CreateTexture(
 	EAGLTexture* pTexture = NULL;
 	try
 	{
-		pTexture = new EAGLTexture( this, objectName, type, width, height, Rd3::TextureParams() );
+		pTexture = new EAGLTexture( this, objectName, type, width, height, params );
 		
 		if( objectName.Length() > 0 )
 			_textureResPool.Add( pTexture );

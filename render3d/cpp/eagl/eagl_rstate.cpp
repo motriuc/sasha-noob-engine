@@ -1,3 +1,21 @@
+/////////////////////////////////////////////////////////////////////
+//  File Name               : eagl_rstate.cpp
+//  Created                 : 18 1 2012   0:05
+//  File path               : SLibF\render3d\cpp\eagl
+//  Author                  : Alexandru Motriuc
+//  Platform Independent    : 0%
+//  Library                 : 
+//
+/////////////////////////////////////////////////////////////////////
+//	Purpose:
+//      
+//
+/////////////////////////////////////////////////////////////////////
+//
+//  Modification History:
+//      
+/////////////////////////////////////////////////////////////////////
+
 #include "rd3afx.h"
 
 #include "eagl_conf.h"
@@ -7,19 +25,20 @@
 #include "eagl_effect.h"
 #include "eagl_indexbuffer.h"
 #include "eagl_texture.h"
+#include "rd3_after_effect.h"
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
 
+#include "rd3_aef_blur.h"
+
+using namespace System::d3Math;
+using namespace System::d2Math;
+
+//-----------------------------------------------------------------------
 COUNTER_USE( rd3_render_vertex_count )
 COUNTER_USE( rd3_render_primitive_count )
 COUNTER_USE( rd3_render_time_draw )
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
+//-----------------------------------------------------------------------
 namespace PrimitiveType
 {
 	inline GLenum GetEAGLType( Rd3::PrimitiveType::PrimitiveType p )
@@ -41,10 +60,7 @@ namespace PrimitiveType
 	}
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
+//-----------------------------------------------------------------------
 #ifdef _DEBUG
 
 void ValidateProgram( const EAGLEffect* pEffect )
@@ -75,18 +91,84 @@ void ValidateProgram( const EAGLEffect* pEffect )
 
 #endif // _DEBUG
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
+//-----------------------------------------------------------------------
 EAGLRenderState::EAGLRenderState( Rd3::Render* owner ) :
-	_BaseClass( owner )
+	_BaseClass( owner ),
+	_afterEffectVb( NULL )
 {
+	_afterEffectTextures[0] = NULL;
+	_afterEffectTextures[1] = NULL;	
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
+//-----------------------------------------------------------------------
+EAGLRenderState::~EAGLRenderState()
+{
+	if( _afterEffectTextures[0] != NULL )
+		_afterEffectTextures[0]->UnuseResource();
+	if( _afterEffectTextures[1] != NULL )
+		_afterEffectTextures[1]->UnuseResource();
+	
+	if( _afterEffectVb != NULL )
+		_afterEffectVb->UnuseResource();
+}
+
+//-----------------------------------------------------------------------
+void EAGLRenderState::InitAfterEffectData()
+{
+	if( _afterEffectTextures[0] != NULL )
+		return;
+	
+	
+	Rd3::Render* render = GetOwner();
+
+	const_cast<Rd3::AfterEffect*>(GetAfterEffect())->Add( new Rd3::AefBlur(  *render ) );
+	
+	
+	__S_ASSERT( render != NULL );
+	
+	d2Vector size = render->GetScreen_SizeInPixels();
+	
+	sInt width = (sInt)size.x;
+	sInt height = (sInt)size.y;
+
+	
+	Rd3::TextureParams params;
+	params.SetMinFilter( Rd3::TextureFilteringType::E_NEAREST );
+	params.SetMaxFilter( Rd3::TextureFilteringType::E_NEAREST );
+	params.SetAddressU( Rd3::TextureAddressingType::E_CLAMP );
+	params.SetAddressV( Rd3::TextureAddressingType::E_CLAMP );
+	
+	_afterEffectTextures[0] = render->CreateTexture( _S(""), width, height, Rd3::TextureType::E_IMAGE, params );
+	_afterEffectTextures[1] = render->CreateTexture( _S(""), width, height, Rd3::TextureType::E_IMAGE, params );
+	
+	
+	Rd3::VertexPList	points;
+	Rd3::VertexTxCoord	txCoord;
+	
+	points.Add( d3Vector( -1.0f,  1.0f, 0.0f ) );
+	points.Add( d3Vector(  1.0f, -1.0f, 0.0f ) );
+	points.Add( d3Vector( -1.0f, -1.0f, 0.0f ) );
+
+	points.Add( d3Vector( -1.0f,  1.0f, 0.0f ) );
+	points.Add( d3Vector(  1.0f,  1.0f, 0.0f ) );
+	points.Add( d3Vector(  1.0f, -1.0f, 0.0f ) );
+	
+	txCoord.Add( d2Vector( 0.0f, 1.0f ) );
+	txCoord.Add( d2Vector( 1.0f, 0.0f ) );
+	txCoord.Add( d2Vector( 0.0f, 0.0f ) );
+
+	txCoord.Add( d2Vector( 0.0f, 1.0f ) );
+	txCoord.Add( d2Vector( 1.0f, 1.0f ) );
+	txCoord.Add( d2Vector( 1.0f, 0.0f ) );
+	
+	
+	_afterEffectVb = render->CreateVertexBuffer( _S(""), points, txCoord );
+	
+	
+	_effect = render->UseEffect( _S("system.after.effect.none") );
+}
+
+//-----------------------------------------------------------------------
 void EAGLRenderState::Clear( System::Types::sRGBColor color )
 {
 	COUNTER_TIME_START( rd3_render_time_draw );
@@ -102,26 +184,76 @@ void EAGLRenderState::Clear( System::Types::sRGBColor color )
 	COUNTER_TIME_STOP( rd3_render_time_draw );	
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
-void EAGLRenderState::BeginWorldRender( const Rd3::EngineDataForRender& edata )
-{
-	_BaseClass::BeginWorldRender( edata );
-	
-	COUNTER_TIME_START( rd3_render_time_draw );
-	
+//-----------------------------------------------------------------------
+void EAGLRenderState::BeginAfterEffect()
+{	
 	EAGLRender* pRender = reinterpret_cast<EAGLRender*> ( GetOwner() );
-	pRender->SetAsCurrentContext();			
+	__S_ASSERT( pRender != NULL );
 	
-	{
-		Rd3::Texture* pRenderTarget = GetOwner()->GetTexture_RenderTarget();
-		
-		if( pRenderTarget != NULL )
-			pRender->EaglSetRenderTarget( (EAGLTexture*)pRenderTarget );
-	}
+	// support affter effects only for screen target
+	__S_ASSERT( GetRenderTarget() == NULL );
+	
+	InitAfterEffectData();
+	pRender->EaglSetRenderTarget( reinterpret_cast<EAGLTexture*>( _afterEffectTextures[0] ) );
+}
 
+//-----------------------------------------------------------------------
+void EAGLRenderState::EndAfterEffect()
+{
+	__S_ASSERT( GetAfterEffect() != NULL );
+	__S_ASSERT( GetOwner() != NULL );
+
+	EAGLRender& render = *reinterpret_cast<EAGLRender*>(GetOwner());	
+	const Rd3::AfterEffect& aeffect = *GetAfterEffect();
+	
+	
+	sInt srcTexture = 0;
+	sInt dstTexture = 1;
+	
+	for( sInt i = 0; i < aeffect.ElementCount(); ++i )
+	{
+		glDisable( GL_DEPTH_TEST );
+		glDisable( GL_CULL_FACE );
+		
+		if( i == aeffect.ElementCount() - 1 )
+		{
+			render.EaglSetRenderTarget( NULL );
+			render.SetAsCurrentContext();
+		}
+		else
+			render.EaglSetRenderTarget( (EAGLTexture*)_afterEffectTextures[dstTexture] );
+
+		SetTexture( Rd3::TextureParameter::E_TEX1, _afterEffectTextures[srcTexture] );
+		aeffect.GetElement( i ).Apply( *this );
+		RenderPrimitive( _afterEffectVb, Rd3::PrimitiveType::E_TRIANGLE_LIST );
+	}
+}
+
+//-----------------------------------------------------------------------
+void EAGLRenderState::BeginNoAfterEffect()
+{
+	EAGLRender* pRender = reinterpret_cast<EAGLRender*> ( GetOwner() );
+	
+	__S_ASSERT( pRender != NULL );
+	
+	
+	if( GetRenderTarget() != NULL )
+		pRender->EaglSetRenderTarget( (EAGLTexture*)GetRenderTarget() );
+	else 
+		pRender->SetAsCurrentContext();
+}
+
+//-----------------------------------------------------------------------
+void EAGLRenderState::BeginWorldRender( const Rd3::EngineDataForRender& edata )
+{	
+	_BaseClass::BeginWorldRender( edata );
+
+	COUNTER_TIME_START( rd3_render_time_draw );
+
+	if( GetAfterEffect() != NULL )
+		BeginAfterEffect();
+	else
+		BeginNoAfterEffect();	
 	
 	glClearColor( 0.8f, 0.8f, 0.0f, 1.0f );
 	glClearDepthf( 1.0f );
@@ -143,36 +275,36 @@ void EAGLRenderState::BeginWorldRender( const Rd3::EngineDataForRender& edata )
 	
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
+//-----------------------------------------------------------------------
 void EAGLRenderState::EndWorldRender()
 {	
 	EAGLRender* pRender = reinterpret_cast<EAGLRender*> ( GetOwner() );
-	Rd3::Texture* pRenderTarget = pRender->GetTexture_RenderTarget();
 	
-	if( pRenderTarget == NULL )
+	if( GetAfterEffect() != NULL )
+		EndAfterEffect();
+	
+	glDisable( GL_DEPTH_TEST );
+	glDisable( GL_CULL_FACE );
+	
+	if( GetRenderTarget() == NULL )
 		PostRender();
 	
 	
 	COUNTER_TIME_START( rd3_render_time_draw );	
 	{
-		if( pRenderTarget != NULL )
+		if( GetRenderTarget() != NULL )
 			pRender->EaglSetRenderTarget( NULL );
 		else 
 			pRender->SetPresent();
 	}
 	
-	COUNTER_TIME_STOP( rd3_render_time_draw );
+	COUNTER_TIME_STOP( rd3_render_time_draw );		
+	
 	
 	_BaseClass::EndWorldRender();	
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
+//-----------------------------------------------------------------------
 void EAGLRenderState::RenderPrimitive( const Rd3::VertexBuffer* vb, Rd3::PrimitiveType::PrimitiveType type )
 {
 	__S_ASSERT( vb!= NULL );
@@ -207,10 +339,7 @@ void EAGLRenderState::RenderPrimitive( const Rd3::VertexBuffer* vb, Rd3::Primiti
 	);
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
+//-----------------------------------------------------------------------
 void EAGLRenderState::RenderPrimitive( const Rd3::VertexBuffer* vb, const Rd3::IndexBuffer* ib, Rd3::PrimitiveType::PrimitiveType type )
 {
 	__S_ASSERT( vb!= NULL );

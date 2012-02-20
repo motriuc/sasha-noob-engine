@@ -148,6 +148,13 @@
 		D93D5BA314ECD0E2003FC949 /* world.xml in Resources */ = {isa = PBXBuildFile; fileRef = D93D5BA214ECD0E2003FC949 /* world.xml */; };
 		D93D5BA614ECD15A003FC949 /* mesh_torus.xml in Resources */ = {isa = PBXBuildFile; fileRef = D93D5BA414ECD15A003FC949 /* mesh_torus.xml */; };
 		D93D5BA714ECD15A003FC949 /* red_checker.png in Resources */ = {isa = PBXBuildFile; fileRef = D93D5BA514ECD15A003FC949 /* red_checker.png */; };
+		D94B56E514F1F9CF00EDAB8B /* rd3_after_effect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D94B56E414F1F9CF00EDAB8B /* rd3_after_effect.cpp */; };
+		D94B57AD14F221B600EDAB8B /* system.after.effect.none.fx.xml in Resources */ = {isa = PBXBuildFile; fileRef = D94B57AA14F221B600EDAB8B /* system.after.effect.none.fx.xml */; };
+		D94B57AE14F221B600EDAB8B /* system.after.effect.ps.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D94B57AB14F221B600EDAB8B /* system.after.effect.ps.fsh */; };
+		D94B57AF14F221B600EDAB8B /* system.after.effect.vs.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D94B57AC14F221B600EDAB8B /* system.after.effect.vs.vsh */; };
+		D94B588814F22F2E00EDAB8B /* rd3_aef_blur.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D94B588714F22F2E00EDAB8B /* rd3_aef_blur.cpp */; };
+		D94B58D114F2357400EDAB8B /* system.after.effect.blur.fx.xml in Resources */ = {isa = PBXBuildFile; fileRef = D94B58CF14F2357400EDAB8B /* system.after.effect.blur.fx.xml */; };
+		D94B58D214F2357400EDAB8B /* system.after.effect.blur.ps.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D94B58D014F2357400EDAB8B /* system.after.effect.blur.ps.fsh */; };
 		D97DE81D14EF7CF300E062CF /* ed3_object_lua.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D97DE81C14EF7CF300E062CF /* ed3_object_lua.cpp */; };
 		D9803A9014EFCE32002E3CE7 /* ed3_primitive_lua.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9803A8F14EFCE32002E3CE7 /* ed3_primitive_lua.cpp */; };
 		D99922F714EF3AFB003FC6A7 /* lapi.c in Sources */ = {isa = PBXBuildFile; fileRef = D99922BE14EF3AFB003FC6A7 /* lapi.c */; };
@@ -487,6 +494,15 @@
 		D93D5BA214ECD0E2003FC949 /* world.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = world.xml; path = world/world.xml; sourceTree = "<group>"; };
 		D93D5BA414ECD15A003FC949 /* mesh_torus.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = mesh_torus.xml; path = world/mesh_torus.xml; sourceTree = "<group>"; };
 		D93D5BA514ECD15A003FC949 /* red_checker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = red_checker.png; path = world/red_checker.png; sourceTree = "<group>"; };
+		D94B56E414F1F9CF00EDAB8B /* rd3_after_effect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rd3_after_effect.cpp; path = ../../render3d/cpp/rd3_after_effect.cpp; sourceTree = SOURCE_ROOT; };
+		D94B56E614F1F9F000EDAB8B /* rd3_after_effect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rd3_after_effect.h; path = ../../render3d/include/rd3_after_effect.h; sourceTree = SOURCE_ROOT; };
+		D94B57AA14F221B600EDAB8B /* system.after.effect.none.fx.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = system.after.effect.none.fx.xml; path = ../../render3d/cpp/eagl/fx/system.after.effect.none.fx.xml; sourceTree = SOURCE_ROOT; };
+		D94B57AB14F221B600EDAB8B /* system.after.effect.ps.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.after.effect.ps.fsh; path = ../../render3d/cpp/eagl/fx/system.after.effect.ps.fsh; sourceTree = SOURCE_ROOT; };
+		D94B57AC14F221B600EDAB8B /* system.after.effect.vs.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.after.effect.vs.vsh; path = ../../render3d/cpp/eagl/fx/system.after.effect.vs.vsh; sourceTree = SOURCE_ROOT; };
+		D94B588614F22F1700EDAB8B /* rd3_aef_blur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rd3_aef_blur.h; path = ../../render3d/include/aftereffects/rd3_aef_blur.h; sourceTree = SOURCE_ROOT; };
+		D94B588714F22F2E00EDAB8B /* rd3_aef_blur.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rd3_aef_blur.cpp; path = ../../render3d/cpp/aftereffects/rd3_aef_blur.cpp; sourceTree = SOURCE_ROOT; };
+		D94B58CF14F2357400EDAB8B /* system.after.effect.blur.fx.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = system.after.effect.blur.fx.xml; path = ../../render3d/cpp/eagl/fx/system.after.effect.blur.fx.xml; sourceTree = SOURCE_ROOT; };
+		D94B58D014F2357400EDAB8B /* system.after.effect.blur.ps.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.after.effect.blur.ps.fsh; path = ../../render3d/cpp/eagl/fx/system.after.effect.blur.ps.fsh; sourceTree = SOURCE_ROOT; };
 		D97DE81C14EF7CF300E062CF /* ed3_object_lua.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_object_lua.cpp; path = ../../engine3d/cpp/ed3_object_lua.cpp; sourceTree = SOURCE_ROOT; };
 		D9803A8F14EFCE32002E3CE7 /* ed3_primitive_lua.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_primitive_lua.cpp; path = ../../engine3d/cpp/ed3_primitive_lua.cpp; sourceTree = SOURCE_ROOT; };
 		D9803A9114EFCE4F002E3CE7 /* ed3_primitive_lua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ed3_primitive_lua.h; path = ../../engine3d/include/ed3_primitive_lua.h; sourceTree = SOURCE_ROOT; };
@@ -911,8 +927,10 @@
 		D91D019314ECC06500CEFA96 /* rd3 */ = {
 			isa = PBXGroup;
 			children = (
+				D94B56F514F2011600EDAB8B /* render */,
 				D91D019414ECC07000CEFA96 /* base */,
 				D91D019514ECC08300CEFA96 /* resources */,
+				D94B56D514F1F8E400EDAB8B /* aftereffects */,
 				D91D01F614ECC37100CEFA96 /* primitives */,
 				D91D019914ECC10300CEFA96 /* ligts */,
 			);
@@ -922,12 +940,12 @@
 		D91D019414ECC07000CEFA96 /* base */ = {
 			isa = PBXGroup;
 			children = (
-				D91D013F14ECC02F00CEFA96 /* rd3_rstate.cpp */,
+				D91D018114ECC05D00CEFA96 /* rd3_types.h */,
+				D91D016014ECC05D00CEFA96 /* rd3_conf.h */,
 				D91D014114ECC02F00CEFA96 /* rd3_types.cpp */,
 				D91D014214ECC02F00CEFA96 /* rd3_utils.cpp */,
 				D91D014414ECC02F00CEFA96 /* rd3_xml_def.cpp */,
 				D91D013B14ECC02F00CEFA96 /* rd3_perf_counters.cpp */,
-				D91D013D14ECC02F00CEFA96 /* rd3_render.cpp */,
 				D91D012C14ECC02F00CEFA96 /* rd3_create_rparam.cpp */,
 				D91D012D14ECC02F00CEFA96 /* rd3_def.cpp */,
 				D91D012E14ECC02F00CEFA96 /* rd3_edata.cpp */,
@@ -936,10 +954,6 @@
 				D91D018714ECC05D00CEFA96 /* rd3afx.h */,
 				D91D017714ECC05D00CEFA96 /* rd3_perf_counters.h */,
 				D91D017814ECC05D00CEFA96 /* rd3_perf_counters.inl */,
-				D91D017A14ECC05D00CEFA96 /* rd3_render.h */,
-				D91D017D14ECC05D00CEFA96 /* rd3_rstate.h */,
-				D91D017E14ECC05D00CEFA96 /* rd3_rstate.inl */,
-				D91D018114ECC05D00CEFA96 /* rd3_types.h */,
 				D91D018214ECC05D00CEFA96 /* rd3_types.inl */,
 				D91D018314ECC05D00CEFA96 /* rd3_utils.h */,
 				D91D015E14ECC05D00CEFA96 /* rd3_cdata.h */,
@@ -948,7 +962,6 @@
 				D91D016214ECC05D00CEFA96 /* rd3_def.h */,
 				D91D016314ECC05D00CEFA96 /* rd3_edata.h */,
 				D91D016414ECC05D00CEFA96 /* rd3_edata.inl */,
-				D91D016014ECC05D00CEFA96 /* rd3_conf.h */,
 			);
 			name = base;
 			sourceTree = "<group>";
@@ -1176,6 +1189,7 @@
 		D93D5B5F14ECCDAE003FC949 /* fx */ = {
 			isa = PBXGroup;
 			children = (
+				D94B57A914F2219B00EDAB8B /* after effects */,
 				D93D5B6C14ECCE99003FC949 /* system.default.vs.1.vsh */,
 				D93D5B6D14ECCE99003FC949 /* system.default.vs.2.vsh */,
 				D93D5B6E14ECCE99003FC949 /* system.default.vs.3.vsh */,
@@ -1287,6 +1301,41 @@
 				D91D01DA14ECC33000CEFA96 /* eagl_rstate.h */,
 			);
 			name = base;
+			sourceTree = "<group>";
+		};
+		D94B56D514F1F8E400EDAB8B /* aftereffects */ = {
+			isa = PBXGroup;
+			children = (
+				D94B588714F22F2E00EDAB8B /* rd3_aef_blur.cpp */,
+				D94B588614F22F1700EDAB8B /* rd3_aef_blur.h */,
+				D94B56E614F1F9F000EDAB8B /* rd3_after_effect.h */,
+				D94B56E414F1F9CF00EDAB8B /* rd3_after_effect.cpp */,
+			);
+			name = aftereffects;
+			sourceTree = "<group>";
+		};
+		D94B56F514F2011600EDAB8B /* render */ = {
+			isa = PBXGroup;
+			children = (
+				D91D017A14ECC05D00CEFA96 /* rd3_render.h */,
+				D91D017D14ECC05D00CEFA96 /* rd3_rstate.h */,
+				D91D017E14ECC05D00CEFA96 /* rd3_rstate.inl */,
+				D91D013F14ECC02F00CEFA96 /* rd3_rstate.cpp */,
+				D91D013D14ECC02F00CEFA96 /* rd3_render.cpp */,
+			);
+			name = render;
+			sourceTree = "<group>";
+		};
+		D94B57A914F2219B00EDAB8B /* after effects */ = {
+			isa = PBXGroup;
+			children = (
+				D94B58CF14F2357400EDAB8B /* system.after.effect.blur.fx.xml */,
+				D94B58D014F2357400EDAB8B /* system.after.effect.blur.ps.fsh */,
+				D94B57AA14F221B600EDAB8B /* system.after.effect.none.fx.xml */,
+				D94B57AB14F221B600EDAB8B /* system.after.effect.ps.fsh */,
+				D94B57AC14F221B600EDAB8B /* system.after.effect.vs.vsh */,
+			);
+			name = "after effects";
 			sourceTree = "<group>";
 		};
 		D9803A8E14EFCDEB002E3CE7 /* rd3ext */ = {
@@ -1448,6 +1497,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D94B58D214F2357400EDAB8B /* system.after.effect.blur.ps.fsh in Resources */,
+				D94B57AE14F221B600EDAB8B /* system.after.effect.ps.fsh in Resources */,
+				D94B57AF14F221B600EDAB8B /* system.after.effect.vs.vsh in Resources */,
 				D93D5B7514ECCE99003FC949 /* system.default.vs.1.vsh in Resources */,
 				D93D5B7614ECCE99003FC949 /* system.default.vs.2.vsh in Resources */,
 				D93D5B7714ECCE99003FC949 /* system.default.vs.3.vsh in Resources */,
@@ -1504,6 +1556,8 @@
 				D93D5BA614ECD15A003FC949 /* mesh_torus.xml in Resources */,
 				D93D5BA714ECD15A003FC949 /* red_checker.png in Resources */,
 				D99923BB14EF58C9003FC6A7 /* torus.lua in Resources */,
+				D94B57AD14F221B600EDAB8B /* system.after.effect.none.fx.xml in Resources */,
+				D94B58D114F2357400EDAB8B /* system.after.effect.blur.fx.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1630,6 +1684,8 @@
 				D999232014EF3C56003FC6A7 /* ed3_lua.cpp in Sources */,
 				D97DE81D14EF7CF300E062CF /* ed3_object_lua.cpp in Sources */,
 				D9803A9014EFCE32002E3CE7 /* ed3_primitive_lua.cpp in Sources */,
+				D94B56E514F1F9CF00EDAB8B /* rd3_after_effect.cpp in Sources */,
+				D94B588814F22F2E00EDAB8B /* rd3_aef_blur.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

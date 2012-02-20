@@ -67,6 +67,16 @@ inline const Effect* RenderState::GetEffect()
 	return _effect;
 }
 
+inline void RenderState::SetAfterEffect( const AfterEffect* effect )
+{
+	_pAfterEffect = effect;
+}
+
+inline const AfterEffect* RenderState::GetAfterEffect()
+{
+	return _pAfterEffect;
+}
+
 inline void RenderState::SetCamera( const d3Camera& camera )
 {
 	__S_ASSERT( _bIsRenderingObject == sFalse );
@@ -122,7 +132,12 @@ inline sInt RenderState::MaxLightCount() const
 
 inline void RenderState::SetRenderTarget( Texture* pTexture )
 {
-	GetOwner()->SetTexture_RenderTarget( pTexture );
+	_pRenderTarget = pTexture;
+}
+
+inline Texture* RenderState::GetRenderTarget()
+{
+	return _pRenderTarget;
 }
 
 
