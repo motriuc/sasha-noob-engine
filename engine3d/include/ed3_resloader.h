@@ -58,6 +58,7 @@ private:
 	void LoadMesh( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error;
 	void LoadVBuffer( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error;
 	void LoadIBuffer( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error;
+	void LoadAfterEffect( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error;
 };
 
 }

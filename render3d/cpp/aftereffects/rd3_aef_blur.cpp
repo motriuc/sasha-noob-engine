@@ -25,6 +25,9 @@ using namespace System::d2Math;
 
 namespace Rd3
 {
+	
+AUTO_REGISTER_AFTER_EFFECT_FACTORY( _S("blur"), AefBlur )	
+	
 //-------------------------------------------------------------------	
 AefBlur::AefBlur( Render& render )
 {
@@ -34,6 +37,11 @@ AefBlur::AefBlur( Render& render )
 	_effect = render.UseEffect("system.after.effect.blur");
 }
 
+//-------------------------------------------------------------------	
+void AefBlur::LoadFromXml( const Xml::BaseDomNode& node, const Def& def, const Streams::StreamArchive& archive ) throws_error
+{
+}
+	
 //-------------------------------------------------------------------	
 void AefBlur::Apply( RenderState& rstate ) const
 {

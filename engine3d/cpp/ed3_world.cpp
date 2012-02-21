@@ -80,16 +80,29 @@ sBool d3World::LoadFromXMLSubnode( const Xml::BaseDomNode& element, LoadDataPara
 		return sTrue;
 	}
 	
+	if( element.GetName() == ELEMENT_AFTER_EFFECT )
+	{
+		SetAfterEffect( loadParams.render.UseAfterEffect( element.GetAttributes()[ATTR_NAME] ) );
+		return sTrue;
+	}
+	
 	return sFalse;
 }
 
+//-----------------------------------------------------------------------
+void d3World::SetAfterEffect( Rd3::AfterEffect* p )
+{
+	_afterEffect = p;
+}
+		
 //-----------------------------------------------------------------------
 void d3World::RenderWorld( Rd3::WorldRenderState& rstate, Rd3::EngineDataForRender& edata )
 {
 	_preRenders.Render( rstate, edata, *this );
 	
+	rstate.SetAfterEffect( _afterEffect );
 	rstate.SetCamera( GetCamera() );
-	
+
 	rstate.BeginWorldRender( edata );
 	
 	d3RenderData renderData( &rstate, _defaultRenderClass );
@@ -98,4 +111,40 @@ void d3World::RenderWorld( Rd3::WorldRenderState& rstate, Rd3::EngineDataForRend
 	rstate.EndWorldRender();
 }	
 
+#ifdef ED3_ENGINE_USE_LUA
+
+static int d3World_SetAfterEffectParam( const LuaFunctionState* s )
+{	
+	d3World* me = reinterpret_cast<d3World*> ( s->Me() );
+	
+	if( me != NULL )
+	{
+		Rd3::AfterEffect* effect = me->GetAfterEffect();
+		
+		if( effect != NULL )
+		{
+			sInt i = s->GetValue( 0, -1 );
+			sString name = s->GetValue( 1, _S("") );
+			d3Float v = s->GetValue( 2, 0.0f );
+		
+			if( i >= 0 && i < effect->ElementCount() )
+			{
+				effect->GetElement( i ).SetParam( name, v );
+			}
+		}
+	}
+	
+	return 0;
+}
+	
+//-----------------------------------------------------------------------
+void d3World::InitLuaFunctions()
+{
+	_BaseClass::InitLuaFunctions();
+	
+	_luaObject.Register( _S("self"), _S("SetAfterEffectParam"), d3World_SetAfterEffectParam );			
+}
+	
+#endif // ED3_ENGINE_USE_LUA
+	
 }

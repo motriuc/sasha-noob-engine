@@ -119,10 +119,7 @@ void EAGLRenderState::InitAfterEffectData()
 		return;
 	
 	
-	Rd3::Render* render = GetOwner();
-
-	const_cast<Rd3::AfterEffect*>(GetAfterEffect())->Add( new Rd3::AefBlur(  *render ) );
-	
+	Rd3::Render* render = GetOwner();	
 	
 	__S_ASSERT( render != NULL );
 	
@@ -214,6 +211,7 @@ void EAGLRenderState::EndAfterEffect()
 	{
 		glDisable( GL_DEPTH_TEST );
 		glDisable( GL_CULL_FACE );
+		glDisable( GL_BLEND );
 		
 		if( i == aeffect.ElementCount() - 1 )
 		{
@@ -226,6 +224,9 @@ void EAGLRenderState::EndAfterEffect()
 		SetTexture( Rd3::TextureParameter::E_TEX1, _afterEffectTextures[srcTexture] );
 		aeffect.GetElement( i ).Apply( *this );
 		RenderPrimitive( _afterEffectVb, Rd3::PrimitiveType::E_TRIANGLE_LIST );
+		
+		srcTexture = ( srcTexture + 1 ) % 2;
+		dstTexture = ( dstTexture + 1 ) % 2;
 	}
 }
 
@@ -250,7 +251,7 @@ void EAGLRenderState::BeginWorldRender( const Rd3::EngineDataForRender& edata )
 
 	COUNTER_TIME_START( rd3_render_time_draw );
 
-	if( GetAfterEffect() != NULL )
+	if( GetAfterEffect() != NULL && GetAfterEffect()->ElementCount() > 0 )
 		BeginAfterEffect();
 	else
 		BeginNoAfterEffect();	
@@ -280,7 +281,7 @@ void EAGLRenderState::EndWorldRender()
 {	
 	EAGLRender* pRender = reinterpret_cast<EAGLRender*> ( GetOwner() );
 	
-	if( GetAfterEffect() != NULL )
+	if( GetAfterEffect() != NULL && GetAfterEffect()->ElementCount() > 0 )
 		EndAfterEffect();
 	
 	glDisable( GL_DEPTH_TEST );

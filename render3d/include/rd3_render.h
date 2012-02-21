@@ -122,6 +122,11 @@ public:
 	IndexBuffer* GetIb( const sString& ibName )				{ return reinterpret_cast<IndexBuffer*>( _indexBufferPool[ibName] ); }
 	IndexBuffer* UseIb( const sString& ibName ) throws_error;
 	
+	/**
+	 * Ef
+	 */
+	AfterEffect* GetAfterEffect( const sString& eName )		{ return reinterpret_cast<AfterEffect*>( _aftereffectResPool[eName] ); }
+	AfterEffect* UseAfterEffect( const sString& eName ) throws_error;
 	
 	/////////////////////////////////////////////////////////////
 	// Create Vb
@@ -296,7 +301,17 @@ public:
 		const Def& def,
 		const StreamArchive& archive
 	);
-							 
+	
+	///////////////////////////////////////////////////////////
+	// Create affter effect
+public:	
+	AfterEffect* CreateAfterEffectFromFile( 
+		const sString& objectName,
+		const sString& fileName,
+		const Def& def,
+		const StreamArchive& archive
+	);
+	
 	///////////////////////////////////////////////////////////
 	// Message Q
 public:
@@ -354,6 +369,7 @@ protected:
 	
 	TypedResourcePool		_fontResPool;
 	TypedResourcePool		_messageQResPool;
+	TypedResourcePool		_aftereffectResPool;
 	
 	d2Vector				_renderTargetSizeInPixels;
 private:

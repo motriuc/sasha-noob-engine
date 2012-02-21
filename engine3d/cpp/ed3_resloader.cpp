@@ -22,6 +22,7 @@
 #include "rd3_mesh.h"
 #include "rd3_texture.h"
 #include "rd3_effect.h"
+#include "rd3_after_effect.h"
 
 namespace Ed3 
 {
@@ -61,9 +62,27 @@ void d3ResourceLoader::LoadFromXML( const Xml::BaseDomNode& element, LoadDataPar
 			LoadVBuffer( childElement, loadParams );
 		else if( childElement.GetName() == ELEMENT_IBUFFER )
 			LoadIBuffer( childElement, loadParams );
+		else if( childElement.GetName() == ELEMENT_AFTER_EFFECT )
+			LoadAfterEffect( childElement, loadParams ); 
 	}
 }	
 
+//-----------------------------------------------------------------------
+void d3ResourceLoader::LoadAfterEffect( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error
+{
+	sString efName = element.GetAttributes()[ATTR_NAME];
+	sString path = element.GetAttributes()[ATTR_PATH];
+	
+	Rd3::AfterEffect* pAff = loadParams.render.CreateAfterEffectFromFile(
+		efName,
+		path,
+		loadParams.def,
+		loadParams.archive
+	);
+	
+	_loadedResources.Add( pAff );	
+}
+	
 //-----------------------------------------------------------------------
 void d3ResourceLoader::LoadVBuffer( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error
 {

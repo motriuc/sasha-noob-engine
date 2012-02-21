@@ -19,6 +19,7 @@
 #include "rd3_render.h"
 #include "rd3_msg.h"
 #include "rd3_mesh.h"
+#include "rd3_after_effect.h"
 
 using namespace System::Types;
 
@@ -70,7 +71,8 @@ Render::Render( const RenderType::RenderType type ) :
 	_indexBufferPool( ResourceType::E_INDEX_BUFFER ),
 	_fontResPool( ResourceType::E_FONT ),
 	_messageQResPool( ResourceType::E_MESSAGEQ ),
-	_meshResPool( ResourceType::E_MESH )
+	_meshResPool( ResourceType::E_MESH ),
+	_aftereffectResPool( ResourceType::E_AFTEREFFECT )
 {
 }
 
@@ -180,6 +182,23 @@ IndexBuffer* Render::UseIb( const sString& ibName ) throws_error
 	}
 	return pIb;
 }
+
+/************************************************************************/
+/*                                                                      */
+/************************************************************************/
+AfterEffect* Render::UseAfterEffect( const sString& eName ) throws_error
+{
+	AfterEffect* pEf = GetAfterEffect( eName );
+	
+	if( pEf == NULL )
+	{
+		error_throw_arg( Errors::StringError )
+			_S("After Effect : ") + eName + _S(" not found.")
+		);
+		
+	}
+	return pEf;
+}
 	
 /************************************************************************/
 /*                                                                      */
@@ -213,6 +232,10 @@ void Render::NotifyFreeResource( ResourceObject* pRes )
 			
 	case ResourceType::E_MESH:
 		_meshResPool.Remove( pRes->GetObjectName() );
+		break;
+	
+	case ResourceType::E_AFTEREFFECT:
+		_aftereffectResPool.Remove( pRes->GetObjectName() );
 		break;
 			
 	case ResourceType::E_MATERIAL:
@@ -392,7 +415,7 @@ Mesh* Render::CreateMeshFromFile(
 		);
 	
 	
-	Rd3::Mesh* pMesh = NULL;
+	Mesh* pMesh = NULL;
 	try
 	{
 		pMesh = new Mesh( this, objectName );
@@ -409,6 +432,41 @@ Mesh* Render::CreateMeshFromFile(
 	}
 	
 	return pMesh;
+}	
+	
+/************************************************************************/
+/*                                                                      */
+/************************************************************************/
+AfterEffect* Render::CreateAfterEffectFromFile( 
+										   const sString& objectName,
+										   const sString& fileName,
+										   const Def& def,
+										   const StreamArchive& archive
+										   )
+{
+	if( objectName.Length() > 0 && _aftereffectResPool[objectName] != NULL )
+		error_throw_arg( System::Errors::StringError ) 
+			_S("Duplicate object resource name :") + objectName 
+		);
+	
+	AfterEffect* pAfterEffect = NULL;
+	try
+	{
+		pAfterEffect = new AfterEffect( this, objectName );
+		pAfterEffect->LoadFromFile( fileName, def, archive );
+		
+		if( objectName.Length() > 0 )
+			_aftereffectResPool.Add( pAfterEffect );
+	}
+	catch (...)
+	{
+		if( pAfterEffect )
+			pAfterEffect->UnuseResource();
+		throw;
+	}
+	
+	return pAfterEffect;
+	
 }	
 	
 }

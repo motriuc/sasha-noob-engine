@@ -99,6 +99,7 @@ namespace ResourceType
 		E_FONT,
 		E_MESSAGEQ,
 		E_MESH,
+		E_AFTEREFFECT,
 	  
 		COUNT,
 		UNKNOWN

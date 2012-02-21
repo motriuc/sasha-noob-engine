@@ -55,6 +55,22 @@ d3Float LuaFunctionState::GetValue( sInt i, d3Float def ) const
 }
 
 //------------------------------------------------------------------
+sString LuaFunctionState::GetValue( sInt i, const sString& def ) const
+{
+	lua_State* p = (lua_State*)this;
+	
+	if( i < 0 || i >= lua_gettop( p ) )
+		return def;
+	
+	i++;
+	
+	if( !lua_isstring( p, i ) )
+		return def;
+	
+	return lua_tostring( p, i );	
+}
+	
+//------------------------------------------------------------------
 sInt LuaFunctionState::GetValue( sInt i, sInt def ) const
 {
 	lua_State* p = (lua_State*)this;

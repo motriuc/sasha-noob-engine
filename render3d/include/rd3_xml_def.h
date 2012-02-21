@@ -51,6 +51,8 @@
 #define ELEMENT_IBUFFER			_S("ibuffer")
 #define ELEMENT_PRERENDER		_S("prerender")
 #define ELEMENT_PRIMITIVE		_S("primitive")
+#define ELEMENT_FILTER			_S("filter")
+#define ELEMENT_AFTER_EFFECT	_S("aftereffect")
 
 #define ELEMENT_COLOR			_S("color")
 #define ELEMENT_COLOR_DIFFUSE	_S("color.diffuse")

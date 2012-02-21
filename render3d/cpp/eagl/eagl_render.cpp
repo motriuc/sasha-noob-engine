@@ -69,6 +69,8 @@ void EAGLRender::InitSystemResources( Rd3::Def& def, const Streams::StreamArchiv
 	// affter effects
 	CreateEffectFromFile( _S("system.after.effect.none"), def, _S( "%engine%/system.after.effect.none.fx.xml"), archive );
 	CreateEffectFromFile( _S("system.after.effect.blur"), def, _S( "%engine%/system.after.effect.blur.fx.xml"), archive );
+	CreateEffectFromFile( _S("system.after.effect.color"), def, _S( "%engine%/system.after.effect.color.fx.xml"), archive ); 
+	
 	// system font default
 	CreateFontSystem( _S("system.font.default"), _S("Baskerville"), 26 );
 }

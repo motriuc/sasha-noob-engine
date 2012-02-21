@@ -116,6 +116,24 @@ inline const AttributeList& BaseDomNode::GetAttributes() const
 	return _attributes;
 }
 
+inline sFloat BaseDomNode::GetAttributeValue( const sString& name, sFloat defValue ) const
+{
+	sString v = _attributes[name];
+	if( v.Length() > 0 )
+		return v.ToFloat();
+		
+	return defValue;
+} 
+
+inline sInt BaseDomNode::GetAttributeValue( const sString& name, sInt defValue ) const
+{
+	sString v = _attributes[name];
+	if( v.Length() > 0 )
+		return v.ToInt();
+		
+	return defValue;	
+}
+
 /************************************************************************/
 /*                                                                      */
 /************************************************************************/

@@ -22,6 +22,7 @@
 #include "ed3_resloader.h"
 #include "rd3_light.h"
 #include "ed3_prerender.h"
+#include "rd3_after_effect.h"
 
 namespace Ed3 
 {
@@ -69,6 +70,10 @@ public:
 	 *
 	 */
 	const d3ObjectClassNames& ObjectClassNames() const	{ return _objectClassNames; }
+	
+	
+	void SetAfterEffect( Rd3::AfterEffect* p );
+	Rd3::AfterEffect* GetAfterEffect()				{ return _afterEffect; }
 protected:
 	
 	/**
@@ -86,6 +91,10 @@ protected:
 	 */
 	virtual sBool LoadFromXMLSubnode( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error;
 
+#ifdef ED3_ENGINE_USE_LUA
+	virtual void InitLuaFunctions();	
+#endif // ED3_ENGINE_USE_LUA
+	
 private:
 	d3ResourceLoader	_resources;
 	d3Camera			_camera;
@@ -93,6 +102,8 @@ private:
 	d3PreRenderList		_preRenders;
 	d3ObjectClassNames	_objectClassNames;
 	d3ObjectClass		_defaultRenderClass;
+	
+	Rd3::use_resource<Rd3::AfterEffect> _afterEffect;
 	
 };
 

@@ -158,8 +158,10 @@
 		D94B59F314F2820500EDAB8B /* rd3_aef_acolor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D94B59F214F2820500EDAB8B /* rd3_aef_acolor.cpp */; };
 		D97DE81D14EF7CF300E062CF /* ed3_object_lua.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D97DE81C14EF7CF300E062CF /* ed3_object_lua.cpp */; };
 		D9803A9014EFCE32002E3CE7 /* ed3_primitive_lua.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9803A8F14EFCE32002E3CE7 /* ed3_primitive_lua.cpp */; };
-		D98536A514F36A7E00E3AADD /* system.after.effect.color.fx.xml in Resources */ = {isa = PBXBuildFile; fileRef = D98536A314F36A7E00E3AADD /* system.after.effect.color.fx.xml */; };
-		D98536A614F36A7E00E3AADD /* system.after.effect.color.ps.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D98536A414F36A7E00E3AADD /* system.after.effect.color.ps.fsh */; };
+		D985346E14F341CA00E3AADD /* after_effect.xml in Resources */ = {isa = PBXBuildFile; fileRef = D985346D14F341CA00E3AADD /* after_effect.xml */; };
+		D98534DE14F3512600E3AADD /* system.after.effect.color.fx.xml in Resources */ = {isa = PBXBuildFile; fileRef = D98534DC14F3512600E3AADD /* system.after.effect.color.fx.xml */; };
+		D98534DF14F3512600E3AADD /* system.after.effect.color.ps.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D98534DD14F3512600E3AADD /* system.after.effect.color.ps.fsh */; };
+		D985375814F374ED00E3AADD /* world.lua in Resources */ = {isa = PBXBuildFile; fileRef = D985375714F374ED00E3AADD /* world.lua */; };
 		D99922F714EF3AFB003FC6A7 /* lapi.c in Sources */ = {isa = PBXBuildFile; fileRef = D99922BE14EF3AFB003FC6A7 /* lapi.c */; };
 		D99922F814EF3AFB003FC6A7 /* lauxlib.c in Sources */ = {isa = PBXBuildFile; fileRef = D99922C014EF3AFB003FC6A7 /* lauxlib.c */; };
 		D99922F914EF3AFB003FC6A7 /* lbaselib.c in Sources */ = {isa = PBXBuildFile; fileRef = D99922C214EF3AFB003FC6A7 /* lbaselib.c */; };
@@ -199,7 +201,7 @@
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* sd3engiphAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sd3engiphAppDelegate.h; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* sd3engiph.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sd3engiph.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* ex2_after_effect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ex2_after_effect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		28EC4C5611D54ECE0027AA9F /* sd3engiphViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sd3engiphViewController.h; sourceTree = "<group>"; };
@@ -209,8 +211,8 @@
 		28FD14FF0DC6FC520079059D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		28FD15070DC6FC5B0079059D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		32CA4F630368D1EE00C91783 /* sd3engiph_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sd3engiph_Prefix.pch; sourceTree = "<group>"; };
-		8D1107310486CEB800E47090 /* sd3engiph-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "sd3engiph-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* ex2_after_effect_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ex2_after_effect_Prefix.pch; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* ex2_after_effect-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ex2_after_effect-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		D91D000014ECB8FA00CEFA96 /* s_system_d3math_aabb.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = s_system_d3math_aabb.cpp; path = ../../system/cpp/s_system_d3math_aabb.cpp; sourceTree = SOURCE_ROOT; };
 		D91D000114ECB8FA00CEFA96 /* s_system_d3math_camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = s_system_d3math_camera.cpp; path = ../../system/cpp/s_system_d3math_camera.cpp; sourceTree = SOURCE_ROOT; };
 		D91D000214ECB8FA00CEFA96 /* s_system_d3math_frustum.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = s_system_d3math_frustum.cpp; path = ../../system/cpp/s_system_d3math_frustum.cpp; sourceTree = SOURCE_ROOT; };
@@ -511,8 +513,10 @@
 		D97DE81C14EF7CF300E062CF /* ed3_object_lua.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_object_lua.cpp; path = ../../engine3d/cpp/ed3_object_lua.cpp; sourceTree = SOURCE_ROOT; };
 		D9803A8F14EFCE32002E3CE7 /* ed3_primitive_lua.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_primitive_lua.cpp; path = ../../engine3d/cpp/ed3_primitive_lua.cpp; sourceTree = SOURCE_ROOT; };
 		D9803A9114EFCE4F002E3CE7 /* ed3_primitive_lua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ed3_primitive_lua.h; path = ../../engine3d/include/ed3_primitive_lua.h; sourceTree = SOURCE_ROOT; };
-		D98536A314F36A7E00E3AADD /* system.after.effect.color.fx.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = system.after.effect.color.fx.xml; path = ../../render3d/cpp/eagl/fx/system.after.effect.color.fx.xml; sourceTree = SOURCE_ROOT; };
-		D98536A414F36A7E00E3AADD /* system.after.effect.color.ps.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.after.effect.color.ps.fsh; path = ../../render3d/cpp/eagl/fx/system.after.effect.color.ps.fsh; sourceTree = SOURCE_ROOT; };
+		D985346D14F341CA00E3AADD /* after_effect.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = after_effect.xml; path = world/after_effect.xml; sourceTree = "<group>"; };
+		D98534DC14F3512600E3AADD /* system.after.effect.color.fx.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = system.after.effect.color.fx.xml; path = ../../render3d/cpp/eagl/fx/system.after.effect.color.fx.xml; sourceTree = SOURCE_ROOT; };
+		D98534DD14F3512600E3AADD /* system.after.effect.color.ps.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.after.effect.color.ps.fsh; path = ../../render3d/cpp/eagl/fx/system.after.effect.color.ps.fsh; sourceTree = SOURCE_ROOT; };
+		D985375714F374ED00E3AADD /* world.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = world.lua; path = world/world.lua; sourceTree = "<group>"; };
 		D99922B914EF3ABB003FC6A7 /* lua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lua.h; path = ../../external/lua/lua.h; sourceTree = SOURCE_ROOT; };
 		D99922BA14EF3ABB003FC6A7 /* lua.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = lua.hpp; path = ../../external/lua/lua.hpp; sourceTree = SOURCE_ROOT; };
 		D99922BE14EF3AFB003FC6A7 /* lapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lapi.c; path = ../../external/lua/lapi.c; sourceTree = SOURCE_ROOT; };
@@ -607,7 +611,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* sd3engiph.app */,
+				1D6058910D05DD3D006BFB54 /* ex2_after_effect.app */,
 			);
 			name = Products;
 			path = ..;
@@ -625,7 +629,7 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				32CA4F630368D1EE00C91783 /* sd3engiph_Prefix.pch */,
+				32CA4F630368D1EE00C91783 /* ex2_after_effect_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = "Other Sources";
@@ -637,7 +641,7 @@
 			children = (
 				28EC4C5811D54ECE0027AA9F /* sd3engiphViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
-				8D1107310486CEB800E47090 /* sd3engiph-Info.plist */,
+				8D1107310486CEB800E47090 /* ex2_after_effect-Info.plist */,
 			);
 			name = Resources;
 			path = ..;
@@ -1241,6 +1245,8 @@
 		D93D5B9F14ECD025003FC949 /* world */ = {
 			isa = PBXGroup;
 			children = (
+				D985375714F374ED00E3AADD /* world.lua */,
+				D985346D14F341CA00E3AADD /* after_effect.xml */,
 				D99923BA14EF58C9003FC6A7 /* torus.lua */,
 				D93D5BA214ECD0E2003FC949 /* world.xml */,
 				D93D5BA114ECD06E003FC949 /* textures */,
@@ -1315,8 +1321,8 @@
 			children = (
 				D94B59F414F2821E00EDAB8B /* rd3_aef_acolor.h */,
 				D94B59F214F2820500EDAB8B /* rd3_aef_acolor.cpp */,
-				D94B588714F22F2E00EDAB8B /* rd3_aef_blur.cpp */,
 				D94B588614F22F1700EDAB8B /* rd3_aef_blur.h */,
+				D94B588714F22F2E00EDAB8B /* rd3_aef_blur.cpp */,
 				D94B56E614F1F9F000EDAB8B /* rd3_after_effect.h */,
 				D94B56E414F1F9CF00EDAB8B /* rd3_after_effect.cpp */,
 			);
@@ -1338,8 +1344,8 @@
 		D94B57A914F2219B00EDAB8B /* after effects */ = {
 			isa = PBXGroup;
 			children = (
-				D98536A314F36A7E00E3AADD /* system.after.effect.color.fx.xml */,
-				D98536A414F36A7E00E3AADD /* system.after.effect.color.ps.fsh */,
+				D98534DC14F3512600E3AADD /* system.after.effect.color.fx.xml */,
+				D98534DD14F3512600E3AADD /* system.after.effect.color.ps.fsh */,
 				D94B58CF14F2357400EDAB8B /* system.after.effect.blur.fx.xml */,
 				D94B58D014F2357400EDAB8B /* system.after.effect.blur.ps.fsh */,
 				D94B57AA14F221B600EDAB8B /* system.after.effect.none.fx.xml */,
@@ -1462,9 +1468,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1D6058900D05DD3D006BFB54 /* sd3engiph */ = {
+		1D6058900D05DD3D006BFB54 /* ex2_after_effect */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "sd3engiph" */;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "ex2_after_effect" */;
 			buildPhases = (
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
@@ -1474,9 +1480,9 @@
 			);
 			dependencies = (
 			);
-			name = sd3engiph;
+			name = ex2_after_effect;
 			productName = sd3engiph;
-			productReference = 1D6058910D05DD3D006BFB54 /* sd3engiph.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* ex2_after_effect.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1484,7 +1490,7 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "sd3engiph" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "ex2_after_effect" */;
 			compatibilityVersion = "Xcode 3.1";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
@@ -1498,7 +1504,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1D6058900D05DD3D006BFB54 /* sd3engiph */,
+				1D6058900D05DD3D006BFB54 /* ex2_after_effect */,
 			);
 		};
 /* End PBXProject section */
@@ -1508,7 +1514,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D98536A614F36A7E00E3AADD /* system.after.effect.color.ps.fsh in Resources */,
+				D98534DF14F3512600E3AADD /* system.after.effect.color.ps.fsh in Resources */,
 				D94B58D214F2357400EDAB8B /* system.after.effect.blur.ps.fsh in Resources */,
 				D94B57AE14F221B600EDAB8B /* system.after.effect.ps.fsh in Resources */,
 				D94B57AF14F221B600EDAB8B /* system.after.effect.vs.vsh in Resources */,
@@ -1570,7 +1576,9 @@
 				D99923BB14EF58C9003FC6A7 /* torus.lua in Resources */,
 				D94B57AD14F221B600EDAB8B /* system.after.effect.none.fx.xml in Resources */,
 				D94B58D114F2357400EDAB8B /* system.after.effect.blur.fx.xml in Resources */,
-				D98536A514F36A7E00E3AADD /* system.after.effect.color.fx.xml in Resources */,
+				D985346E14F341CA00E3AADD /* after_effect.xml in Resources */,
+				D98534DE14F3512600E3AADD /* system.after.effect.color.fx.xml in Resources */,
+				D985375814F374ED00E3AADD /* world.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1714,10 +1722,10 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = sd3engiph_Prefix.pch;
+				GCC_PREFIX_HEADER = ex2_after_effect_Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
-				INFOPLIST_FILE = "sd3engiph-Info.plist";
-				PRODUCT_NAME = sd3engiph;
+				INFOPLIST_FILE = "ex2_after_effect-Info.plist";
+				PRODUCT_NAME = ex2_after_effect;
 			};
 			name = Debug;
 		};
@@ -1727,10 +1735,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = sd3engiph_Prefix.pch;
+				GCC_PREFIX_HEADER = ex2_after_effect_Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
-				INFOPLIST_FILE = "sd3engiph-Info.plist";
-				PRODUCT_NAME = sd3engiph;
+				INFOPLIST_FILE = "ex2_after_effect-Info.plist";
+				PRODUCT_NAME = ex2_after_effect;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1770,7 +1778,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "sd3engiph" */ = {
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "ex2_after_effect" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
@@ -1779,7 +1787,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "sd3engiph" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "ex2_after_effect" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,

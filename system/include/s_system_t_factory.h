@@ -7,7 +7,7 @@
 //  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -25,6 +25,16 @@ class IClassFactory
 {
 public:
 	virtual _Type* Create() = 0;
+};
+
+/**
+ * IClassFactory1
+ */
+template< typename _Type, typename _P1 >
+class IClassFactory1
+{
+public:
+	virtual _Type* Create( _P1 p1 ) = 0;
 };
 
 /**
@@ -47,6 +57,20 @@ public:
 	virtual _Type* Create() { return new _Class(); }	
 };
 
+
+/**
+ * ClassFactory1
+ */
+template< typename _Class, typename _Type, typename _P1 >
+class ClassFactory1 : public IClassFactory1< _Type, _P1 >
+{
+public:
+	virtual _Type* Create( _P1 p1 ) { return new _Class( p1 ); } 
+};
+
+/**
+ * ClassFactory2
+ */
 template< typename _Class, typename _Type, typename _P1, typename _P2 >
 class ClassFactory2 : public IClassFactory2< _Type, _P1, _P2 >
 {
@@ -82,6 +106,33 @@ private:
 	_Continer _factoryMap;
 };
 
+/**
+ * ClassFactoryById1
+ */
+template< typename _Type, typename _IdType, typename _Continer, typename _P1 >
+class ClassFactoryById1
+{
+public:
+	void Register( const _IdType& name, IClassFactory1<_Type,_P1>* pFactory )
+	{
+		__S_ASSERT( pFactory != NULL );
+		__S_VERIFY( _factoryMap.Add( name, pFactory ) );
+	}
+	
+	_Type* Create( const _IdType& name, _P1 p1 )
+	{
+		IClassFactory1<_Type,_P1>* pFactory = NULL;
+		
+		_factoryMap.Lookup( name, pFactory );
+		
+		if( pFactory != NULL )
+			return pFactory->Create( p1 );
+		
+		return NULL;
+	}
+private:
+	_Continer _factoryMap;
+};
 
 /**
  * ClassFactoryById2

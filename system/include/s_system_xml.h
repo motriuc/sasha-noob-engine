@@ -146,6 +146,12 @@ public:
 	 */
 	AttributeList& GetAttributes();
 	const AttributeList& GetAttributes() const;
+	
+	/**
+	 * 
+	 */
+	sFloat GetAttributeValue( const sString& name, sFloat defValue = 0.0f ) const; 
+	sInt GetAttributeValue( const sString& name, sInt defValue = 0 ) const; 
 
 	/**
 	 * Returnns the node parent

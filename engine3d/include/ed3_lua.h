@@ -42,6 +42,11 @@ public:
 	 * Get int value
 	 */
 	sInt GetValue( sInt i, sInt def ) const;
+	
+	/**
+	 *
+	 */
+	sString GetValue( sInt i, const sString& def ) const;
 
 	/**
 	 *	Return float value
