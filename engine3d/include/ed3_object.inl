@@ -49,6 +49,11 @@ inline d3ObjectContiner* d3Object::GetParent()
 	return _parent;
 }
 
+inline const d3ObjectContiner* d3Object::GetParent() const
+{
+	return _parent;
+}
+
 inline void d3Object::SetActionState( ObjectActionState s )
 {
 	__S_ASSERT( s != _objectActionState );

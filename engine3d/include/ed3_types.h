@@ -25,6 +25,7 @@ namespace Ed3
 {
 
 class d3ObjectClassNames;
+class d3PhysicsWorld;
 	
 /**
  * LoadParams
@@ -43,7 +44,8 @@ public:
 		def( idef ),
 		archive( iarchive ),
 		render( irender ),
-		pClassNames( NULL )
+		pClassNames( NULL ),
+		pPhysicsWorld( NULL )
 	{
 	}
 			   
@@ -51,6 +53,7 @@ public:
 	const System::Streams::StreamArchive& archive;
 	Rd3::Render& render;
 	d3ObjectClassNames* pClassNames;
+	d3PhysicsWorld*	pPhysicsWorld;
 };
 	
 }

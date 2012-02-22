@@ -5,7 +5,7 @@
 		<mesh name="main.mesh" path="%gameres%/mesh_torus.xml"/>
 			
 	</resources>
-	
+		
 	<!-- lights -->
 	<lights.static>
 		<light.point>

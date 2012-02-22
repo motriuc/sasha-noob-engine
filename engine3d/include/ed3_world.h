@@ -26,6 +26,8 @@
 
 namespace Ed3 
 {
+
+class d3PhysicsWorld;
 	
 ///////////////////////////////////////////////////////////
 // <world name=""> : d3ObjectContiner
@@ -49,6 +51,7 @@ public:
 	 *
 	 */
 	d3World();
+	~d3World();
 	
 	/**
 	 *
@@ -74,12 +77,19 @@ public:
 	
 	void SetAfterEffect( Rd3::AfterEffect* p );
 	Rd3::AfterEffect* GetAfterEffect()				{ return _afterEffect; }
+	
+	/**
+	 *
+	 */
+	d3PhysicsWorld* GetPhysics()					{ return _physicsWorld; }
 protected:
 	
 	/**
 	 *
 	 */
 	virtual void Initialize( Rd3::Render& render ) throws_error;
+	
+	virtual void AI( d3EngineData& edata );
 	
 	/**
 	 *
@@ -105,6 +115,11 @@ private:
 	
 	Rd3::use_resource<Rd3::AfterEffect> _afterEffect;
 	
+#ifdef ED3_ENGINE_USE_PHYSICS
+	d3PhysicsWorld*		_physicsWorld;
+	
+	void LoadPhysicsFromXml( const Xml::BaseDomNode& element, LoadDataParams& loadParams );
+#endif	
 };
 
 }

@@ -1,0 +1,118 @@
+<world>
+	<!-- load resources -->
+	<resources>
+		<texture name="main.red.ch" path="%gameres%/red_checker.png" />
+		<mesh name="main.mesh" path="%gameres%/mesh_sphere.xml"/>
+			
+	</resources>
+	
+	<!-- world physics configutaion -->
+	<physics.world>
+		<gravity x="0.0" y="-10.0" z="0.0" />
+	</physics.world>
+
+	<!-- physics shapes -->
+	<physics.shapes>
+		<shape type="static.plane" normal.x="0.0" normal.y="1.0" normal.z="0.0" const="-1.0" />
+		<shape type="static.plane" normal.x="1.0" normal.y="0.0" normal.z="0.0" const="-1.0" />
+		<shape type="static.plane" normal.x="-1.0" normal.y="0.0" normal.z="0.0" const="-1.0" />
+		<shape type="static.plane" normal.x="0.0" normal.y="0.0" normal.z="-1.0" const="-1.5" />
+		<shape type="static.plane" normal.x="0.0" normal.y="0.0" normal.z="1.0" const="-1.0" />
+	</physics.shapes>
+		
+	<!-- lights -->
+	<lights.static>
+		<light.point>
+			<color r="1.0" g="1.0" b="1.0" a="1.0" />
+			<position x="0.0" y="0.0" z="-15.0" />
+		</light.point>
+	</lights.static>
+	
+	<children>				
+		<engine.object.gesturecamera/>
+		<engine.object.mesh mesh="main.mesh">
+			<!-- use static lights for this object -->
+			<lights.static.use />
+			<transformation type="cmd">
+				<move y="1.0" x="0.01"/>
+			</transformation>		
+			
+			<!-- physics shapes -->
+			<physics.shapes>
+				<shape type="sphere" mass="1.0" radius="0.1" parent.attach="true" />
+			</physics.shapes>
+			
+		</engine.object.mesh>	
+
+		<engine.object.mesh mesh="main.mesh">
+			<!-- use static lights for this object -->
+			<lights.static.use />
+			<transformation type="cmd">
+				<move y="0.5" x="0.1" />
+			</transformation>		
+			
+			<!-- physics shapes -->
+			<physics.shapes>
+				<shape type="sphere" mass="1.0" radius="0.1" parent.attach="true" />
+			</physics.shapes>
+			
+		</engine.object.mesh>	
+
+		<engine.object.mesh mesh="main.mesh">
+			<!-- use static lights for this object -->
+			<lights.static.use />
+			<transformation type="cmd">
+				<move y="0.7" x="0.12" />
+			</transformation>		
+			
+			<!-- physics shapes -->
+			<physics.shapes>
+				<shape type="sphere" mass="1.0" radius="0.1" parent.attach="true" />
+			</physics.shapes>
+			
+		</engine.object.mesh>	
+
+		<engine.object.mesh mesh="main.mesh">
+			<!-- use static lights for this object -->
+			<lights.static.use />
+			<transformation type="cmd">
+				<move y="1.2" x="0.2" />
+			</transformation>		
+			
+			<!-- physics shapes -->
+			<physics.shapes>
+				<shape type="sphere" mass="1.0" radius="0.1" parent.attach="true" />
+			</physics.shapes>
+			
+		</engine.object.mesh>	
+
+		<engine.object.mesh mesh="main.mesh">
+			<!-- use static lights for this object -->
+			<lights.static.use />
+			<transformation type="cmd">
+				<move y="0.3" />
+			</transformation>		
+			
+			<!-- physics shapes -->
+			<physics.shapes>
+				<shape type="sphere" mass="1.0" radius="0.1" parent.attach="true" />
+			</physics.shapes>
+			
+		</engine.object.mesh>	
+
+		<engine.object.mesh mesh="main.mesh">
+			<!-- use static lights for this object -->
+			<lights.static.use />
+			<transformation type="cmd">
+				<move y="0.6" z="0.1" />
+			</transformation>		
+			
+			<!-- physics shapes -->
+			<physics.shapes>
+				<shape type="sphere" mass="1.0" radius="0.1" parent.attach="true" />
+			</physics.shapes>
+			
+		</engine.object.mesh>	
+
+	</children>
+</world>

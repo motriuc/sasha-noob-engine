@@ -134,6 +134,13 @@ COUNTER_DECLARE(
 				_S(""),
 				_S("lua code execution time")
 				)
-				
+
+COUNTER_DECLARE( 
+				rd3_render_time_physics,
+				_S("rd3.render.time.physics"),
+				_S(""),
+				_S("physics code execution time")
+				)
+
 
 //-----------------------------------------------------------------------

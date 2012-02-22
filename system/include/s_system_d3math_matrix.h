@@ -30,7 +30,7 @@ public:
 	/**
 	 *
 	 */
-	d3Matrix( d3Float v );
+	explicit d3Matrix( d3Float v );
 
 	/**
 	 * 

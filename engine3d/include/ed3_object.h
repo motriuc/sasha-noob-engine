@@ -38,6 +38,7 @@ class d3EngineData;
 class d3RenderData;
 class d3ObjectContiner;
 class d3World;
+class phShape;
 	
 namespace ObjectType
 {
@@ -121,6 +122,11 @@ public:
 	 * Get transformaton matrix
 	 */
 	const d3Matrix& GetTransformationMatrix() const;
+	
+	/**
+	 *
+	 */
+	void GetAbsoluteTransformationMatrix( d3Matrix& m ) const;
 
 	/**
 	 *
@@ -146,6 +152,7 @@ public:
 	 *
 	 */
 	d3ObjectContiner* GetParent();
+	const d3ObjectContiner* GetParent() const;
 	d3World* GetWorld();
 
 	/**
@@ -226,6 +233,10 @@ private:
 	sUInt                           _objectState;
 	ObjectType::ObjectType			_type;
 	
+#ifdef ED3_ENGINE_USE_PHYSICS
+	phShape*						_phAutoShape;
+#endif // ED3_ENGINE_USE_PHYSICS
+	
 protected:	
 	d3ObjectClass					_objectClass;
 	
@@ -234,7 +245,7 @@ protected:
 	sBool							_luaHasAI;
 	sBool							_luaHasInit;
 #endif // ED3_ENGINE_USE_LUA
-	
+		
 private:
 	void ApplyLights( const d3RenderData& renderData );
 	void ApplyLights( const d3RenderData& renderData, const Rd3::LightSelection& lights );
@@ -246,6 +257,10 @@ private:
 	void LuaCallAI( d3EngineData& edata );
 	
 #endif // ED3_ENGINE_USE_LUA
+	
+#ifdef ED3_ENGINE_USE_PHYSICS	
+	void LoadFromXML_PhysicsShapes( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error;
+#endif // ED3_ENGINE_USE_PHYSICS
 	
 	void SetActionState( ObjectActionState s );
 	

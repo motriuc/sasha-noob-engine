@@ -21,12 +21,25 @@
 #include "ed3_cont_object.h"
 #include "ed3_world.h"
 #include "rd3_light_sel.h"
+#include "ed3_physics_shape.h"
+#include "ed3_physics_world.h"
 
 namespace Ed3 
 {
 
 //--------------------------------------------------------------------------------------------------------
 d3Object::d3Object( ObjectType::ObjectType type, const sString& name ) :
+
+#ifdef ED3_ENGINE_USE_PHYSICS	
+	_phAutoShape( NULL ),
+#endif	
+
+#ifdef ED3_ENGINE_USE_LUA
+	_luaObject( this ),
+	_luaHasAI( sFalse ),
+	_luaHasInit( sFalse ),
+#endif
+	
 	_objectState( OBS_VISIBLE ),
 	_objectActionState( OBAS_IDLE ),
 	_transformationMatrix( 1.0f ),
@@ -34,14 +47,6 @@ d3Object::d3Object( ObjectType::ObjectType type, const sString& name ) :
 	_boundingBox( d3AABBox::GetEmpty() ),
 	_name( name ),
 	_type( type )
-	
-#ifdef ED3_ENGINE_USE_LUA
-	,
-	_luaObject( this ),
-	_luaHasAI( sFalse ),
-	_luaHasInit( sFalse )
-#endif
-	
 {
 }
 
@@ -118,7 +123,7 @@ sBool d3Object::LoadFromXMLSubnode( const Xml::BaseDomNode& element, LoadDataPar
 		return sTrue;
 	}
 	
-	else if( element.GetName() == ELEMENT_BBOX )
+	if( element.GetName() == ELEMENT_BBOX )
 	{
 		if( element.GetAttributes()[ATTR_TYPE] == "auto" )
 			AddState( OBS_COMPUTE_AUTO_BBOX );
@@ -126,8 +131,63 @@ sBool d3Object::LoadFromXMLSubnode( const Xml::BaseDomNode& element, LoadDataPar
 		return sTrue;
 	}
 	
+#ifdef ED3_ENGINE_USE_PHYSICS
+	if( element.GetName() == ELEMENT_PHYSICS_SHAPES )
+	{
+		LoadFromXML_PhysicsShapes( element, loadParams );
+		return sTrue;
+	}
+#endif // ED3_ENGINE_USE_PHYSICS
+	
 	return sFalse;
 }
+	
+#ifdef ED3_ENGINE_USE_PHYSICS
+//--------------------------------------------------------------------------------------------------------
+void d3Object::LoadFromXML_PhysicsShapes( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error
+{
+	if( loadParams.pPhysicsWorld == NULL )
+		error_throw_arg( Errors::StringError )
+			_S("Physics world is NULL :")
+		);
+	
+	for( sInt i = 0; i < element.GetChildCount(); ++i )
+	{
+		const Xml::BaseDomNode& childElement = element[i];
+		
+		if( !Rd3::XmlCheckDef( childElement, loadParams.def ) )
+			continue;
+		
+		if( childElement.GetName() == ELEMENT_SHAPE )
+		{
+			sString type = childElement.GetAttributes()[ATTR_TYPE];
+			
+			phShape* pShape = phShape::Create( type, this );
+			
+			if( pShape == NULL )
+				error_throw_arg( Errors::StringError )
+					_S("Invalid physics shape type :") + type
+				);
+			
+			try 
+			{
+				pShape->LoadFromXml( childElement, loadParams );
+			}
+			catch (...) {
+				delete pShape;
+				throw;
+			}
+			
+			loadParams.pPhysicsWorld->AddShape( pShape );
+			
+			if( childElement.GetAttributes()[ATTR_PARENT_ATTACH] == _S("true") )
+			{
+				_phAutoShape = pShape;
+			}
+		}
+	}
+}
+#endif // ED3_ENGINE_USE_PHYSICS
 	
 //--------------------------------------------------------------------------------------------------------
 void d3Object::ApplyLights( const d3RenderData& renderData )
@@ -163,6 +223,30 @@ void d3Object::ApplyLights( const d3RenderData& renderData, const Rd3::LightSele
 		renderData.rstate().SetLight( i, lights[i] );
 	}
 }
+
+//--------------------------------------------------------------------------------------------------------
+void d3Object::GetAbsoluteTransformationMatrix( d3Matrix& m ) const
+{
+	if( !HasTransformationMatrix( ) )
+	{
+		if( GetParent() != NULL )
+			GetParent()->GetAbsoluteTransformationMatrix( m );
+		
+		m = d3Matrix( 1.0f );
+	}
+	else
+	{
+		m = GetTransformationMatrix();
+		
+		if( GetParent() != NULL )
+		{
+			d3Matrix mp;
+			GetParent()->GetAbsoluteTransformationMatrix( mp );
+			m *= mp;
+		}
+	}
+	
+}
 	
 //--------------------------------------------------------------------------------------------------------
 void d3Object::DoRender( const d3RenderData& renderData )
@@ -175,17 +259,29 @@ void d3Object::DoRender( const d3RenderData& renderData )
 	SetActionState( OBAS_RENDER );
 	
 	d3Matrix renderMatrix;
-	const d3Matrix* swapMatrix;
+	const d3Matrix* swapMatrix = NULL;
 	
 	Rd3::RenderState& render = renderData.rstate();
 
-	// apply transformation matrix
-	if( HasTransformationMatrix() )
+#ifdef ED3_ENGINE_USE_PHYSICS
+	if( _phAutoShape != NULL ) 
 	{
-		renderMatrix = GetTransformationMatrix();
+		_phAutoShape->GetTransformation( renderMatrix );
+		swapMatrix = render.SetTransformation( &renderMatrix );
+	}
+	else
+	{
+#else
+	{
+#endif
+		// apply transformation matrix
+		if( HasTransformationMatrix() )
+		{
+			renderMatrix = GetTransformationMatrix();
 		
-		// Set new render matrix
-		swapMatrix = render.AddTransformation( &renderMatrix );
+			// Set new render matrix
+			swapMatrix = render.AddTransformation( &renderMatrix );
+		}
 	}
 	
 	sBool bRender = sTrue;
@@ -206,7 +302,7 @@ void d3Object::DoRender( const d3RenderData& renderData )
 		Render( renderData );		
 	}
 	
-	if( HasTransformationMatrix() )
+	if( swapMatrix != NULL )
 	{
 		// restore old render matrix
 		render.SetTransformation( swapMatrix );

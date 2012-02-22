@@ -53,6 +53,11 @@
 #define ELEMENT_PRIMITIVE		_S("primitive")
 #define ELEMENT_FILTER			_S("filter")
 #define ELEMENT_AFTER_EFFECT	_S("aftereffect")
+#define ELEMENT_PHYSICS			_S("physics")
+#define ELEMENT_GRAVITY			_S("gravity")
+#define ELEMENT_PHYSICS_WORLD	_S("physics.world")
+#define ELEMENT_PHYSICS_SHAPES	_S("physics.shapes")
+#define ELEMENT_SHAPE			_S("shape")
 
 #define ELEMENT_COLOR			_S("color")
 #define ELEMENT_COLOR_DIFFUSE	_S("color.diffuse")
@@ -106,6 +111,7 @@
 #define ATTR_TEXTURE	  _S("texture")
 #define ATTR_CLASS		  _S("class")
 #define ATTR_LUA		  _S("lua")
+#define ATTR_PARENT_ATTACH _S("parent.attach")
 
 namespace Rd3 
 {
@@ -144,7 +150,11 @@ void XmlLoad_ColorF( sRGBColor& color, const Xml::BaseDomNode& node, const Def& 
 // The pVector size must at least 3 elements
 void XmlLoad_VectorF( d3Float* pVector, const Xml::BaseDomNode& node, const Def& def );
 
-
+inline void XmlLoad_Vector( d3Vector& v, const Xml::BaseDomNode& node, const Def& def )
+{
+	XmlLoad_VectorF( v.v, node, def );
+}
+	
 //////////////////////////////////////////////////////
 // Transformation schema
 //////////////////////////////////////////////////////
