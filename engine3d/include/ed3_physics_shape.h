@@ -1,12 +1,12 @@
 ////////////////////////////////////////////////////////////////////////
-//	File Name          : ed3_physics_shape.h
-//	Created            : 20 1 2012   19:09
+//  File Name          : ed3_physics_shape.h
+//  Created            : 20 1 2012   19:09
 //  Author             : Alexandru Motriuc  
-//	File Path          : SLibF\engine3d\include
+//  File Path          : SLibF\engine3d\include
 //  System independent : 0%
 //  Library            : 
 //
-//	Purpose:	
+//  Purpose:	
 //    
 //
 /////////////////////////////////////////////////////////////////////////
@@ -65,7 +65,7 @@ public:
 	
 	virtual void LoadFromXml( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error = 0;
 	virtual void GetTransformation( d3Matrix& transformation ) = 0;
-	
+	virtual void SetLocalScaling( const d3Vector& scaling ) = 0;
 public:	
 	/**
 	 *

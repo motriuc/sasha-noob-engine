@@ -1,12 +1,12 @@
 ////////////////////////////////////////////////////////////////////////
-//	File Name          : ed3_physics_shapes.h
-//	Created            : 20 1 2012   19:09
+//  File Name          : ed3_physics_shapes.h
+//  Created            : 20 1 2012   19:09
 //  Author             : Alexandru Motriuc  
-//	File Path          : SLibF\engine3d\include
+//  File Path          : SLibF\engine3d\include
 //  System independent : 0%
 //  Library            : 
 //
-//	Purpose:	
+//  Purpose:	
 //    
 //
 /////////////////////////////////////////////////////////////////////////
@@ -41,21 +41,15 @@ class phStaticPlahe : public phShape
 private:
 	typedef phShape _BaseClass;
 public:
-	phStaticPlahe( d3Object* owner ) :
-		_BaseClass( owner ),
-		_shape( NULL ),
-		_rigidBody( NULL )
-	{
-	}
-
-	~phStaticPlahe()
-	{
-		delete _shape;
-		delete _rigidBody;
-	}
+	phStaticPlahe( d3Object* owner );
+	phStaticPlahe( d3Object* owner, const d3Plane& plane );
+	
+	~phStaticPlahe();
 	
 	virtual void LoadFromXml( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error;
 	virtual void GetTransformation( d3Matrix& transformation );
+	virtual void SetLocalScaling( const d3Vector& scaling );
+	
 protected:
 	virtual btRigidBody* GetRigidBody( const btTransform& transform ) const;
 	
@@ -72,22 +66,14 @@ class phSphere : public phShape
 private:
 	typedef phShape _BaseClass;
 public:
-	phSphere( d3Object* owner ):
-		_BaseClass( owner ),
-		_shape( NULL ),
-		_rigidBody( NULL )
-	{
-	}
-
-	~phSphere()
-	{
-		delete _rigidBody;
-		delete _shape;
-	}
+	phSphere( d3Object* owner );
+	phSphere( d3Object* owner, d3Float radius, d3Float mass );
+	
+	~phSphere();
 	
 	virtual void LoadFromXml( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error;
 	virtual void GetTransformation( d3Matrix& transformation );
-	
+	virtual void SetLocalScaling( const d3Vector& scaling );
 protected:
 	virtual btRigidBody* GetRigidBody( const btTransform& transform ) const;
 private:

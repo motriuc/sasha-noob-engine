@@ -181,6 +181,11 @@ public:
 	 * Get translation vector
 	 */
 	void GetTranslation( d3Vector& v ) const;
+	
+	/**
+	 *
+	 */
+	void GetScale( d3Vector& v ) const;
 
 	/**
 	 * 

@@ -20,7 +20,7 @@ uniform mat4 rd_worldnormal;
 
 void main()
 {
-	v_normals = (rd_worldnormal*normals).xyz;
+	v_normals = normalize((rd_worldnormal*normals).xyz);
 	v_position = (rd_world*position).xyz;
 	
     gl_Position =   rd_worldviewprojection* position;

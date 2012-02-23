@@ -97,14 +97,25 @@ void XmlLoad_TransformationCmd( d3Matrix& m, const Xml::BaseDomNode& node, const
 		}
 		else if( childNode.GetName() == ELEMENT_SCALE )
 		{
-			d3Vector v(
-				childNode.GetAttributes()[ATTR_AX].ToFloat(),
-				childNode.GetAttributes()[ATTR_AY].ToFloat(),
-				childNode.GetAttributes()[ATTR_AZ].ToFloat()
-			);
-				
 			d3Matrix mt;
-			mt.SetScale( v.x, v.y, v.z );
+			
+			sString scale = childNode.GetAttributes()[ATTR_A];
+			
+			if( scale.Length() > 0 )
+			{
+				d3Float fScale = scale.ToFloat();
+				mt.SetScale( fScale, fScale, fScale );
+			}
+			else
+			{
+				d3Vector v(
+					childNode.GetAttributes()[ATTR_AX].ToFloat(),
+					childNode.GetAttributes()[ATTR_AY].ToFloat(),
+					childNode.GetAttributes()[ATTR_AZ].ToFloat()
+				);
+				
+				mt.SetScale( v.x, v.y, v.z );
+			}
 			m *= mt;
 		}
 		else {

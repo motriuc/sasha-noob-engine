@@ -52,6 +52,8 @@ public:
 	 *	Return float value
 	 */
 	void Return( d3Float def ) const;
+	
+	void Return( sInt value ) const;
 
 private:
 	LuaFunctionState();

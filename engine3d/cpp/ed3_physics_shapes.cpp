@@ -32,6 +32,42 @@ inline void getTransformation( btRigidBody* pRigidBody, d3Matrix& m )
 	const btTransform& tran = pRigidBody->getCenterOfMassTransform();
 	tran.getOpenGLMatrix( m.v );
 }
+
+/***********************************************************************/
+/* phStaticPlahe                                                       */
+/***********************************************************************/
+
+//----------------------------------------------------------------------	
+phStaticPlahe::phStaticPlahe( d3Object* owner ) :
+	_BaseClass( owner ),
+	_shape( NULL ),
+	_rigidBody( NULL )
+{
+}
+
+//----------------------------------------------------------------------	
+phStaticPlahe::phStaticPlahe( d3Object* owner, const d3Plane& plane ) :
+	_BaseClass( owner ),
+	_shape( NULL ),
+	_rigidBody( NULL )
+{
+	const d3Vector& normal = plane.Normal();
+	
+	_shape = new btStaticPlaneShape(
+			btVector3( normal.x,normal.y,normal.z ),
+			btScalar( plane.GetD() )
+	);	
+}
+	
+//----------------------------------------------------------------------	
+phStaticPlahe::~phStaticPlahe()
+{
+	if( _rigidBody )
+		delete _rigidBody->getMotionState();
+		
+	delete _shape;
+	delete _rigidBody;
+}
 	
 //----------------------------------------------------------------------	
 void phStaticPlahe::GetTransformation( d3Matrix& transformation )
@@ -67,10 +103,56 @@ void phStaticPlahe::LoadFromXml( const Xml::BaseDomNode& element, LoadDataParams
 }
 
 //----------------------------------------------------------------------	
+void phStaticPlahe::SetLocalScaling( const d3Vector& scaling )
+{	
+}
+	
+/***********************************************************************/
+/* phSphere                                                            */
+/***********************************************************************/
+	
+phSphere::phSphere( d3Object* owner ):
+	_BaseClass( owner ),
+	_shape( NULL ),
+	_rigidBody( NULL )
+{
+}
+
+/***********************************************************************/
+/* phSphere                                                            */
+/***********************************************************************/
+phSphere::phSphere( d3Object* owner, d3Float radius, d3Float mass ) :
+	_BaseClass( owner ),
+	_shape( NULL ),
+	_rigidBody( NULL )
+{
+	_shape = new btSphereShape( btScalar( radius ) );
+	_mass = mass;
+}
+	
+//----------------------------------------------------------------------	
+phSphere::~phSphere()
+{
+	if( _rigidBody )
+		delete _rigidBody->getMotionState();
+	
+	delete _rigidBody;
+	delete _shape;
+}
+	
+//----------------------------------------------------------------------	
 void phSphere::GetTransformation( d3Matrix& transformation )
 {
 	__S_ASSERT( _rigidBody != NULL );
-	getTransformation( _rigidBody, transformation );
+	__S_ASSERT( _shape != NULL );
+	
+	d3Matrix m;
+	getTransformation( _rigidBody, m );
+	
+	const btVector3& v = _shape->getLocalScaling();
+	
+	transformation.SetScale( v.getX(), v.getY(), v.getZ() );
+	transformation *= m;
 }
 	
 //----------------------------------------------------------------------	
@@ -101,6 +183,14 @@ void phSphere::LoadFromXml( const Xml::BaseDomNode& element, LoadDataParams& loa
 	
 	_shape = new btSphereShape( btScalar( r ) );
 }
+
+//----------------------------------------------------------------------	
+void phSphere::SetLocalScaling( const d3Vector& scaling )
+{	
+	__S_ASSERT( _shape != NULL );
+	_shape->setLocalScaling( btVector3( scaling.x, scaling.y, scaling.z )); 
+}
+	
 	
 }
 

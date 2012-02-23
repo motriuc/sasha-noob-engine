@@ -34,6 +34,7 @@
 			<!-- use static lights for this object -->
 			<lights.static.use />
 			<transformation type="cmd">
+				<scale a="2.0" />
 				<move y="1.0" x="0.01"/>
 			</transformation>		
 			
@@ -62,6 +63,7 @@
 			<!-- use static lights for this object -->
 			<lights.static.use />
 			<transformation type="cmd">
+				<scale a="1.5" />
 				<move y="0.7" x="0.12" />
 			</transformation>		
 			

@@ -1,5 +1,6 @@
 
 
+
 -- this function is called each frame for the associated object
 function d3Object_AI( dt )
 	self.RotateX( dt )

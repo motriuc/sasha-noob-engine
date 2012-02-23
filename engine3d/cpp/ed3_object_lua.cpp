@@ -25,6 +25,9 @@
 #define LUA_FUNCTION_INIT			_S("d3Object_Init")
 #define LUA_OBJ						_S("self")
 
+#define LUA_STATIC					_S("hobj")
+
+
 //--------------------------------------------------------------------------------------------------------
 COUNTER_USE( rd3_render_time_lua )
 //--------------------------------------------------------------------------------------------------------
@@ -113,10 +116,10 @@ static int d3Object_RotateZ( const LuaFunctionState* s )
 void d3Object::InitLuaFunctions()
 {	
 	_luaObject.RegisterMathLib();
-	_luaObject.Register( _S("self"), _S("RotateX"), d3Object_RotateX );
-	_luaObject.Register( _S("self"), _S("RotateY"), d3Object_RotateY );
-	_luaObject.Register( _S("self"), _S("RotateZ"), d3Object_RotateZ );
-	_luaObject.Register( _S("self"), _S("Move"), d3Object_Move );
+	_luaObject.Register( LUA_OBJ, _S("RotateX"), d3Object_RotateX );
+	_luaObject.Register( LUA_OBJ, _S("RotateY"), d3Object_RotateY );
+	_luaObject.Register( LUA_OBJ, _S("RotateZ"), d3Object_RotateZ );
+	_luaObject.Register( LUA_OBJ, _S("Move"), d3Object_Move );
 }
 	
 //--------------------------------------------------------------------------------------------------------

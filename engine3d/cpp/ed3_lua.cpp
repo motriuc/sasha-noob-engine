@@ -39,6 +39,12 @@ void LuaFunctionState::Return( d3Float def ) const
 }
 
 //------------------------------------------------------------------
+void LuaFunctionState::Return( sInt value ) const
+{
+	lua_pushinteger( ((lua_State*)this), value );
+}
+	
+//------------------------------------------------------------------
 d3Float LuaFunctionState::GetValue( sInt i, d3Float def ) const
 {
 	lua_State* p = (lua_State*)this;

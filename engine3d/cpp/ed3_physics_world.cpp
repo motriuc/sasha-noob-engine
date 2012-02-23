@@ -67,6 +67,7 @@ void d3PhysicsWorld::Initialize( ) throws_error
 {
 	d3Object* tranObj = NULL;
 	btTransform transform;
+	d3Vector scale;
 	
 	for( sInt i = 0; i < _shapes.Size(); ++i )
 	{
@@ -77,6 +78,7 @@ void d3PhysicsWorld::Initialize( ) throws_error
 			tranObj = shape.GetOwner();
 			
 			d3Matrix matrix;
+			
 			shape.GetOwner()->GetAbsoluteTransformationMatrix( matrix );
 			// support only translation for now
 			d3Vector translation;
@@ -84,7 +86,11 @@ void d3PhysicsWorld::Initialize( ) throws_error
 			
 			transform.setIdentity();
 			transform.setOrigin( btVector3( translation.x, translation.y, translation.z ) );
+			
+			matrix.GetScale( scale );
 		}
+		
+		shape.SetLocalScaling( scale );
 		
 		btRigidBody* prBody = shape.GetRigidBody( transform );
 		

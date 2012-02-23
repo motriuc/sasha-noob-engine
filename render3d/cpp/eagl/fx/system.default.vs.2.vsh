@@ -32,7 +32,7 @@ uniform float material_coef_ambient;
 void main()
 {
 	vec3 v_position = (rd_world*position).xyz;
-	vec3 v_normals = (rd_worldnormal*normals).xyz;
+	vec3 v_normals = normalize( (rd_worldnormal*normals).xyz );
 
 	vec3 vLightToPoint = normalize( v_position - rd_light1_pos.xyz );
 	float fDifColor = dot( v_normals, -vLightToPoint ) * material_coef_diffuse;

@@ -551,6 +551,13 @@ inline void d3Matrix::GetTranslation( d3Vector& v ) const
 	v.z = _43;
 }
 
+inline void d3Matrix::GetScale( d3Vector& v ) const
+{
+	v.x = _11;
+	v.y = _22;
+	v.z = _33;
+}
+
 inline void d3Matrix::GetNoTranslation( d3Matrix& m ) const
 {
 	m = *this;
