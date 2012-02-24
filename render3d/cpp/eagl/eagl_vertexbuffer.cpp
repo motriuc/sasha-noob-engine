@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : eagl_vertexbuffer.cpp
-//	Created                 : 18 1 2012   0:05
-//	File path               : SLibF\render3d\cpp
-//	Author                  : Alexandru Motriuc
+//  Created                 : 18 1 2012   0:05
+//  File path               : SLibF\render3d\cpp
+//  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
-//	Library                 : 
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -108,11 +108,7 @@ void EAGLVertexBuffer::SetAttributes( const sInt* attributesId ) const
 			glVertexAttribPointer( p, 2, GL_FLOAT, 0, 0, _listTx2 );
 			glEnableVertexAttribArray( p );			
 		}
-	}
-	
-#ifdef _DEBUG
-	// TO DO verufy 
-#endif	
+	}	
 }
 
 //--------------------------------------------------------------------------------------------
@@ -238,6 +234,32 @@ EAGLVertexBuffer::EAGLVertexBuffer(
 	_listTx1 = AddTx( tx );
 	
 	PostInit();
+}
+
+//--------------------------------------------------------------------------------------------
+EAGLVertexBuffer::EAGLVertexBuffer( 
+				 Rd3::Render* owner,  
+				 const sString& objectName, 
+				 const Rd3::VertexPList& p,
+				 const Rd3::VertexNList& n
+) throws_error :
+	_BaseClass( owner, objectName ),
+	_listPoints( NULL ),
+	_listDiffuseColor( NULL ),
+	_listNormals( NULL ),
+	_listTx1( NULL ),
+	_listTx2( NULL )
+{
+	__S_ASSERT( p.Size() == n.Size() );
+	
+	_vertexCount = p.Size();
+	_vertexSize = sizeof( GLfloat ) * 3 + sizeof( GLfloat ) * 3;
+	_vertexBufferSize = _vertexSize * _vertexCount;	
+	
+	_listPoints = AddVectors( p );
+	_listNormals = AddVectors( n );
+	
+	PostInit();	
 }
 
 //--------------------------------------------------------------------------------------------

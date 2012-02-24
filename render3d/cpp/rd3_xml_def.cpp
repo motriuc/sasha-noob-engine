@@ -25,10 +25,10 @@ namespace Rd3
 //-------------------------------------------------------------------------------------
 void XmlLoad_ColorF( d3Float* pColor, const Xml::BaseDomNode& node, const Def& def )
 {
-	pColor[0] = node.GetAttributes()[ATTR_R].ToFloat();
-	pColor[1] = node.GetAttributes()[ATTR_G].ToFloat();
-	pColor[2] = node.GetAttributes()[ATTR_B].ToFloat();
-	pColor[3] = node.GetAttributes()[ATTR_A].ToFloat();
+	pColor[0] = node.GetAttributeValue(ATTR_R, 0.0f );
+	pColor[1] = node.GetAttributeValue(ATTR_G, 0.0f );
+	pColor[2] = node.GetAttributeValue(ATTR_B, 0.0f );
+	pColor[3] = node.GetAttributeValue(ATTR_A, 1.0f );
 }
 
 //-------------------------------------------------------------------------------------
@@ -54,9 +54,25 @@ void XmlLoad_ColorF( sRGBColor& color, const Xml::BaseDomNode& node, const Def& 
 //-------------------------------------------------------------------------------------
 void XmlLoad_TransformationMatrix( d3Matrix& m, const Xml::BaseDomNode& node, const Def& def )
 {
-	error_throw_arg( StringError )
-		_S("[XmlLoad_TransformationMatrix] not implemented.") 
-	);
+	m._11 = node.GetAttributeValue( _S("_11"), 0.1f );
+	m._12 = node.GetAttributeValue( _S("_12"), 0.0f );
+	m._13 = node.GetAttributeValue( _S("_13"), 0.0f );
+	m._14 = node.GetAttributeValue( _S("_14"), 0.0f );
+	
+	m._22 = node.GetAttributeValue( _S("_22"), 0.1f );
+	m._22 = node.GetAttributeValue( _S("_22"), 0.0f );
+	m._23 = node.GetAttributeValue( _S("_23"), 0.0f );
+	m._24 = node.GetAttributeValue( _S("_24"), 0.0f );
+	
+	m._33 = node.GetAttributeValue( _S("_33"), 0.1f );
+	m._32 = node.GetAttributeValue( _S("_32"), 0.0f );
+	m._33 = node.GetAttributeValue( _S("_33"), 0.0f );
+	m._34 = node.GetAttributeValue( _S("_34"), 0.0f );
+	
+	m._44 = node.GetAttributeValue( _S("_44"), 0.1f );
+	m._42 = node.GetAttributeValue( _S("_42"), 0.0f );
+	m._43 = node.GetAttributeValue( _S("_43"), 0.0f );
+	m._44 = node.GetAttributeValue( _S("_44"), 0.0f );	
 }
 
 //-------------------------------------------------------------------------------------

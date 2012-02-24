@@ -367,6 +367,9 @@ namespace VectorParameter
 		   
 		E_COLOR1,
 		E_COLOR2,
+		E_COLOR_DIFFUSE,
+		E_COLOR_SPECULAR,
+		E_COLOR_AMBIENT,
 		
 		COUNT,
 		UNKNOWN
@@ -407,8 +410,11 @@ namespace VectorParameter
 			_S("rd_light4_ambient"),
 			
 			_S("rd_color1"),
-			_S("rd_color2")
+			_S("rd_color2"),
 			
+			_S("rd_color_diffuse"),
+			_S("rd_color_specular"),
+			_S("rd_color_ambient")
 		};
 		
 		return pNames[p];

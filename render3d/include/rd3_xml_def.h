@@ -112,6 +112,8 @@
 #define ATTR_CLASS		  _S("class")
 #define ATTR_LUA		  _S("lua")
 #define ATTR_PARENT_ATTACH _S("parent.attach")
+#define ATTR_INTENSITY	  _S("intensity")
+#define ATTR_HARDNESS	  _S("hardness")
 
 namespace Rd3 
 {

@@ -101,11 +101,50 @@ inline void RenderState::SetParam_Color1( sRGBColor color )
 {
 	d3Vector vc;
 	RGBColorToVector( color, vc );
-	
-	if( vc != _vector_params[VectorParameter::E_COLOR1] )
+
+	SetParam_Color1( vc );
+}
+
+inline void RenderState::SetParam_Color1( const d3Vector& color )
+{	
+	if( color != _vector_params[VectorParameter::E_COLOR1] )
 	{
-		_vector_params[VectorParameter::E_COLOR1] = vc;
+		_vector_params[VectorParameter::E_COLOR1] = color;
 		_changed_vector_params[VectorParameter::E_COLOR1] = sTrue;
+	}
+}
+
+inline void RenderState::SetParam_ColorDiffuse( const sRGBColor color )
+{
+	d3Vector vc;
+	RGBColorToVector( color, vc );
+
+	SetParam_ColorDiffuse( vc );
+}
+
+inline void RenderState::SetParam_ColorDiffuse( const d3Vector& color )
+{
+	if( color != _vector_params[VectorParameter::E_COLOR_DIFFUSE] )
+	{
+		_vector_params[VectorParameter::E_COLOR_DIFFUSE] = color;
+		_changed_vector_params[VectorParameter::E_COLOR_DIFFUSE] = sTrue;
+	}
+}
+
+inline void RenderState::SetParam_ColorSpecular( const sRGBColor color )
+{
+	d3Vector vc;
+	RGBColorToVector( color, vc );
+
+	SetParam_ColorSpecular( vc );
+}
+
+inline void RenderState::SetParam_ColorSpecular( const d3Vector& color )
+{
+	if( color != _vector_params[VectorParameter::E_COLOR_SPECULAR] )
+	{
+		_vector_params[VectorParameter::E_COLOR_SPECULAR] = color;
+		_changed_vector_params[VectorParameter::E_COLOR_SPECULAR] = sTrue;
 	}
 }
 

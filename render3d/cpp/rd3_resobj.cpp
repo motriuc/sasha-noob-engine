@@ -56,7 +56,6 @@ void ResourceObject::UnuseResource() const
 
 ResourceObject::~ResourceObject()
 {
-	__S_ASSERT( _useCount == 0 );
 }
 
 /************************************************************************/

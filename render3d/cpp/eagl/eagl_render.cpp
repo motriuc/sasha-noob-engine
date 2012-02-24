@@ -71,6 +71,9 @@ void EAGLRender::InitSystemResources( Rd3::Def& def, const Streams::StreamArchiv
 	CreateEffectFromFile( _S("system.after.effect.blur"), def, _S( "%engine%/system.after.effect.blur.fx.xml"), archive );
 	CreateEffectFromFile( _S("system.after.effect.color"), def, _S( "%engine%/system.after.effect.color.fx.xml"), archive ); 
 	
+	// std effect
+	CreateEffectFromFile( _S("system.solid.fx.1"), def, _S("%engine%/system.solid.fx.1.xml"), archive );
+	
 	// system font default
 	CreateFontSystem( _S("system.font.default"), _S("Baskerville"), 26 );
 }
@@ -332,6 +335,36 @@ Rd3::VertexBuffer* EAGLRender::CreateVertexBuffer(
 	try
 	{
 		vb = new EAGLVertexBuffer( this, objectName, points, txCoord );
+		
+		if( objectName.Length() > 0 )
+			_vertexBufferPool.Add( vb );
+	}
+	catch(...)
+	{
+		if (vb)
+			vb->UnuseResource();
+		throw;
+	}
+	
+	return vb;		
+}
+
+//-------------------------------------------------------------------------------------
+Rd3::VertexBuffer* EAGLRender::CreateVertexBuffer(
+											  const sString& objectName,
+											  const Rd3::VertexPList& points,
+											  const Rd3::VertexNList& normals
+											  ) throws_error
+{
+	if( objectName.Length() > 0 && _vertexBufferPool[objectName] != NULL )
+		error_throw_arg( System::Errors::StringError ) 
+			_S("Duplicate object resource name :") + objectName 
+		);
+	
+	EAGLVertexBuffer* vb = NULL;
+	try
+	{
+		vb = new EAGLVertexBuffer( this, objectName, points, normals );
 		
 		if( objectName.Length() > 0 )
 			_vertexBufferPool.Add( vb );

@@ -73,7 +73,20 @@ public:
 	/**
 	 *
 	 */
+	void SetParam_Color1( const d3Vector& color );
 	void SetParam_Color1( sRGBColor color );
+	
+	/**
+	 *
+	 */
+	void SetParam_ColorDiffuse( const d3Vector& color );
+	void SetParam_ColorDiffuse( const sRGBColor color );
+
+	/**
+	 *
+	 */
+	void SetParam_ColorSpecular( const d3Vector& color );
+	void SetParam_ColorSpecular( const sRGBColor color );
 	
 	/**
 	 *

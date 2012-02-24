@@ -57,6 +57,9 @@ public:
 	virtual void Apply( RenderState& renderState ) const;
 private:
 	use_resource<Effect>	_effect;
+	d3Vector				_difColor;
+	d3Vector				_specularColor;
+	
 	Rd3::Effect::Float		_co_diffuse;
 	Rd3::Effect::Float		_co_phong_exp;
 	Rd3::Effect::Float		_co_phong;

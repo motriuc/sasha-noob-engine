@@ -345,12 +345,21 @@ VertexBuffer* Render::CreateVertexBufferFromVBFile(
 		
 		pVertexBuffer = CreateVertexBuffer( objectName, points, normals, tx1 );
 	}
-	else 
+	else if( streamSet == ( VertexBufferStream::E_XYZ | VertexBufferStream::E_NORMAL ) )
 	{
-		if( streamSet == VertexBufferStream::UNKNOWN )
+		if( points.Size() != normals.Size() )
+		{
 			error_throw_arg( System::Errors::StringError ) 
-				_S("Invalid vertex buffer stream :") + streamType + _S(" file: ") + path
+				_S("Invalid file format :") + path 
 			);
+		}
+		pVertexBuffer = CreateVertexBuffer( objectName, points, normals );		
+	}
+	else		
+	{
+		error_throw_arg( System::Errors::StringError ) 
+			_S("Invalid vertex buffer stream :") + streamType + _S(" file: ") + path
+		);
 		
 	}
 	

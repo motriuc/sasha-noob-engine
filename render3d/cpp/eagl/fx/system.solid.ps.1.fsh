@@ -7,17 +7,13 @@
 //
 
 varying lowp vec4 v_color;
-varying lowp vec2 v_texCoord;
+//varying lowp vec2 v_texCoord;
 
-uniform sampler2D rd_tx1;
-uniform mediump vec4 rd_light1_specular;
+uniform mediump vec4 rd_color_diffuse;
+uniform mediump vec4 rd_color_specular;
 
 void main()
-{	
-	lowp vec4 txColor = texture2D( rd_tx1, v_texCoord );
-	
-	lowp float fColor = v_color.x + v_color.y;
-	lowp float fSpecular = v_color.z;
-	
-	gl_FragColor = clamp( txColor * fColor + fSpecular * rd_light1_specular, 0.0, 1.0 );
+{
+	gl_FragColor = clamp( rd_color_specular* v_color.z + rd_color_diffuse * v_color.y, 0.0, 1.0 );
+	//gl_FragColor = vec4( v_color.z, v_color.z,v_color.z,1.0 );
 }

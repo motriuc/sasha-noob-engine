@@ -164,6 +164,15 @@ public:
 	virtual VertexBuffer* CreateVertexBuffer(
 		const sString& objectName,
 		const VertexPList& points,
+		const VertexNList& normals
+	) throws_error = 0;
+	
+	/**
+	 *
+	 */
+	virtual VertexBuffer* CreateVertexBuffer(
+		const sString& objectName,
+		const VertexPList& points,
 		const VertexNList& normals,
 		const VertexTxCoord& txCoord
 	) throws_error = 0;

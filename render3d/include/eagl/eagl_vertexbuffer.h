@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : eagl_vertexbuffer.h
-//	Created                 : 18 1 2012   0:05
-//	File path               : SLibF\render3d\include\eagl
-//	Author                  : Alexandru Motriuc
+//  Created                 : 18 1 2012   0:05
+//  File path               : SLibF\render3d\include\eagl
+//  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
-//	Library                 : 
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+// Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -28,13 +28,13 @@
 /**
  * EAGLVertexBuffer
  */
-class EAGLVertexBuffer : public Rd3::VertexBuffer
+_PLATFORM class EAGLVertexBuffer : public Rd3::VertexBuffer
 {
 private:
 	typedef Rd3::VertexBuffer _BaseClass;
 public:
 	/**
-	 *
+	 * points
 	 */
 	EAGLVertexBuffer( 
 		Rd3::Render* owner,  
@@ -43,7 +43,7 @@ public:
 	) throws_error;
 		
 	/**
-	 *
+	 * points, difColor
 	 */
 	EAGLVertexBuffer( 
 		Rd3::Render* owner,  
@@ -53,7 +53,17 @@ public:
 	) throws_error;
 
 	/**
-	 *
+	 * points, normals
+	 */
+	EAGLVertexBuffer( 
+		Rd3::Render* owner,  
+		const sString& objectName, 
+		const Rd3::VertexPList& p,
+		const Rd3::VertexNList& n
+	) throws_error;
+	
+	/**
+	 * points, normals, tx
 	 */
 	EAGLVertexBuffer( 
 		Rd3::Render* owner,  
@@ -64,7 +74,7 @@ public:
 	) throws_error;
 	
 	/**
-	 *
+	 * points, tx
 	 */
 	EAGLVertexBuffer( 
 		Rd3::Render* owner,  
@@ -73,11 +83,8 @@ public:
 		const Rd3::VertexTxCoord& tx
 	) throws_error;
 	
-	
-	// not implemented
-
 	/**
-	 *
+	 * points, tx1, tx2
 	 */
 	EAGLVertexBuffer( 
 		Rd3::Render* owner,  
@@ -88,7 +95,7 @@ public:
 	) throws_error;
 
 	/**
-	 *
+	 * points, difColor, tx1, tx2
 	 */
 	EAGLVertexBuffer( 
 		Rd3::Render* owner,  
@@ -99,9 +106,8 @@ public:
 		const Rd3::VertexTxCoord& tx2
 	) throws_error;
 
-
 	/**
-	 *
+	 * points, normals, difColor
 	 */
 	EAGLVertexBuffer( 
 		Rd3::Render* owner,  
@@ -111,13 +117,11 @@ public:
 		const Rd3::VertexCList& diffuseColor
 	) throws_error;
 
-
 	/**
-	 *
+	 * Sets vb to the attributes of the OpenGL pipeline
 	 */
-	_PLATFORM void SetAttributes( const sInt* attributesId ) const;
+	 void SetAttributes( const sInt* attributesId ) const;
 	
-
 public:
 	// from Rd3::VertexBuffer
 

@@ -66,7 +66,7 @@ public:
 	
 public:	
 	/**
-	 *
+	 * points
 	 */
 	virtual Rd3::VertexBuffer* CreateVertexBuffer(
 		const sString& objectName,
@@ -74,7 +74,7 @@ public:
 	) throws_error;
 
 	/**
-	 *
+	 * points, tx1
 	 */
 	virtual Rd3::VertexBuffer* CreateVertexBuffer(
 		const sString& objectName,
@@ -82,6 +82,15 @@ public:
 		const Rd3::VertexTxCoord& txCoord
 	) throws_error;
 
+	/**
+	 * points, normals
+	 */
+	virtual Rd3::VertexBuffer* CreateVertexBuffer(
+		const sString& objectName,
+		const Rd3::VertexPList& points,
+		const Rd3::VertexNList& normals
+	) throws_error;
+	
 	/**
 	 *
 	 */
