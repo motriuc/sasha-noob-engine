@@ -140,6 +140,26 @@ inline void d3Camera::SetFarPlane( d3Float v )
 	_bChanged = sTrue;
 }
 
+inline d3Float d3Camera::GetNearPlane() const
+{
+	return _fNearPlane;
+}
+
+inline d3Float d3Camera::GetFarPlane() const
+{
+	return _fFarPlane;
+}
+
+inline d3Float d3Camera::GetAspect() const
+{
+	return _fAspect;
+}
+
+inline d3Float d3Camera::GetFov() const
+{
+	return _fFov;
+}
+
 inline d3Camera::d3Camera( const d3Camera& src ) :
 	_pPosition( src._pPosition ),
 	_vLookAt( src._vLookAt ),

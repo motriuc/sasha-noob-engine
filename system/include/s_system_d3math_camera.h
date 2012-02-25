@@ -77,6 +77,13 @@ public:
 	void SetNearPlane( d3Float v );
 	void SetFarPlane( d3Float v );
 	
+	/**
+	 * Get Projection data
+	 */
+	d3Float GetNearPlane() const;
+	d3Float GetFarPlane() const;
+	d3Float GetAspect() const;
+	d3Float GetFov() const;
 
 	/**
 	 *

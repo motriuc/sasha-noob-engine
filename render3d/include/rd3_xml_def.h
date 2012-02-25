@@ -58,6 +58,10 @@
 #define ELEMENT_PHYSICS_WORLD	_S("physics.world")
 #define ELEMENT_PHYSICS_SHAPES	_S("physics.shapes")
 #define ELEMENT_SHAPE			_S("shape")
+#define ELEMENT_LOOK_AT			_S("lookat")
+#define ELEMENT_UP				_S("up")
+#define ELEMENT_CLIP			_S("clip")
+#define ELEMENT_PROJECTION		_S("projection")
 
 #define ELEMENT_COLOR			_S("color")
 #define ELEMENT_COLOR_DIFFUSE	_S("color.diffuse")
@@ -67,6 +71,7 @@
 #define ELEMENT_MAXDISTANCE		_S("maxdistance")
 #define ELEMENT_LIGHT_POINT		_S("light.point")
 #define ELEMENT_LIGHTS_STATIC	_S("lights.static")
+
 #define ELEMENT_LIGHTS_STATIC_USE	_S("lights.static.use")
 
 

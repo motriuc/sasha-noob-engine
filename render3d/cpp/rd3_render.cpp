@@ -309,7 +309,7 @@ VertexBuffer* Render::CreateVertexBufferFromVBFile(
 			
 			if( !reader.Read( x ) || !reader.Read( y ) || !reader.Read( z ) )
 				break;
-		
+
 			points.Add( d3Vector( x, y, z ) );
 		}
 		

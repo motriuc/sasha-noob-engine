@@ -72,8 +72,8 @@ void XmlLoad_TransformationMatrix( d3Matrix& m, const Xml::BaseDomNode& node, co
 	m._44 = node.GetAttributeValue( _S("_44"), 0.1f );
 	m._42 = node.GetAttributeValue( _S("_42"), 0.0f );
 	m._43 = node.GetAttributeValue( _S("_43"), 0.0f );
-	m._44 = node.GetAttributeValue( _S("_44"), 0.0f );	
-}
+	m._44 = node.GetAttributeValue( _S("_44"), 0.0f );
+ }
 
 //-------------------------------------------------------------------------------------
 void XmlLoad_TransformationCmd( d3Matrix& m, const Xml::BaseDomNode& node, const Def& def )
@@ -183,7 +183,40 @@ void XmlLoad_Camera( d3Camera& c, const Xml::BaseDomNode& node, const Def& def )
 		{
 			c.SetCamera2D();
 		}
-	
+		else if( childNode.GetName() == ELEMENT_POSITION )
+		{
+			d3Vector pos;
+			XmlLoad_Vector( pos, childNode, def );
+			c.SetPosition( pos );
+		}
+		else if( childNode.GetName() == ELEMENT_LOOK_AT )
+		{
+			d3Vector lookAt;
+			XmlLoad_Vector( lookAt, childNode, def );
+			c.SetLookAt( lookAt );
+		}
+		else if( childNode.GetName() == ELEMENT_UP )
+		{
+			d3Vector up;
+			XmlLoad_Vector( up, childNode, def );
+			c.SetUp( up );		
+		}
+		else if( childNode.GetName() == ELEMENT_CLIP )
+		{
+			d3Float pnear = childNode.GetAttributeValue( _S("plane.near"), c.GetNearPlane() );
+			d3Float pfar = childNode.GetAttributeValue( _S("plane.far"), c.GetFarPlane() );
+			
+			c.SetNearPlane( pnear );
+			c.SetFarPlane( pfar );
+		}
+		else if( childNode.GetName() == ELEMENT_PROJECTION )
+		{
+			d3Float fov = childNode.GetAttributeValue( _S("fov"), c.GetFov() );
+			d3Float aspect = childNode.GetAttributeValue( _S("aspect"), c.GetAspect() );
+			
+			c.SetFov( fov );
+			c.SetAspect( aspect );
+		}
 	}
 }
 
