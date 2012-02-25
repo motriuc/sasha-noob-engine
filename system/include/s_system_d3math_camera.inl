@@ -18,12 +18,12 @@
 
 inline void d3Camera::GetProjection( d3Matrix& prj ) const
 {
-	prj.SetPerspectiveFovLH( _fFov, _fAspect, _fNearPlane, _fFarPlane );
+	prj.SetPerspectiveFovRH( _fFov, _fAspect, _fNearPlane, _fFarPlane );
 }
 
 inline void d3Camera::GetView( d3Matrix& view ) const
 {
-	view.SetLookAtLH( _pPosition, _vLookAt, _vWorldUp );
+	view.SetLookAtRH( _pPosition, _vLookAt, _vWorldUp );
 }
 
 inline void d3Camera::Move( const d3Vector& v )

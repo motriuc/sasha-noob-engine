@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : s_system_d3math_matrix.h
 //  Created                 : 1 12 2007   14:03
-//  File path               : E:\Sasha\C++\SLibF\system\Include
+//  File path               : SLibF\system\Include
 //  Author                  : Alexandru Motriuc
 //  Platform Independentsy  : 0%
 //  Library                 : 
@@ -166,12 +166,22 @@ public:
 	 * 
 	 */
 	void SetLookAtLH( const d3Point& pEye, const d3Vector& vLookAt, const d3Vector& vUp );
-
+	
+	/**
+	 *
+	 */
+	void SetLookAtRH( const d3Point& pEye, const d3Vector& vLookAt, const d3Vector& vUp );
+	
 	/**
 	 * 
 	 */
 	void SetPerspectiveFovLH( d3Float fFov, d3Float fAspect, d3Float fNearPlane, d3Float fFarPlane );
 
+	/**
+	 *
+	 */
+	void SetPerspectiveFovRH( d3Float fFov, d3Float fAspect, d3Float fNearPlane, d3Float fFarPlane );
+	
 	/**
 	 * get translation matrix component
 	 */

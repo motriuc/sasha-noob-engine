@@ -337,7 +337,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>D99F8DDC14F3844C00DEB549</string>
+										<string>D993538214F92EDB00E0FC29</string>
 										<key>history</key>
 										<array>
 											<string>D91D00A914ECBA9C00CEFA96</string>
@@ -541,7 +541,7 @@
 											<string>D98537BE14F378AF00E3AADD</string>
 											<string>D99F8DD914F3844C00DEB549</string>
 											<string>D99F8DDA14F3844C00DEB549</string>
-											<string>D99F8DDB14F3844C00DEB549</string>
+											<string>D993538114F92EDB00E0FC29</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -599,9 +599,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>D99F8DC414F37C2F00DEB549</string>
+				<string>D993538314F92EDB00E0FC29</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>D99F8DC514F37C2F00DEB549</string>
+				<string>D993538414F92EDB00E0FC29</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -739,11 +739,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>D99F8DDD14F3844C00DEB549</string>
-		<string>D99F8DCF14F37C2F00DEB549</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>D91DFFF014ECB32300CEFA96</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/sasha/Documents/REP1/ios/ex2_after_effect/ex2_after_effect.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -824,7 +820,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>D91DFFF014ECB32300CEFA96</string>
-				<string>D99F8DC614F37C2F00DEB549</string>
+				<string>D993538514F92EDB00E0FC29</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

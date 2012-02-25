@@ -59,20 +59,20 @@ void XmlLoad_TransformationMatrix( d3Matrix& m, const Xml::BaseDomNode& node, co
 	m._13 = node.GetAttributeValue( _S("_13"), 0.0f );
 	m._14 = node.GetAttributeValue( _S("_14"), 0.0f );
 	
-	m._22 = node.GetAttributeValue( _S("_22"), 0.1f );
-	m._22 = node.GetAttributeValue( _S("_22"), 0.0f );
+	m._21 = node.GetAttributeValue( _S("_21"), 0.0f );
+	m._22 = node.GetAttributeValue( _S("_22"), 1.0f );
 	m._23 = node.GetAttributeValue( _S("_23"), 0.0f );
 	m._24 = node.GetAttributeValue( _S("_24"), 0.0f );
 	
-	m._33 = node.GetAttributeValue( _S("_33"), 0.1f );
+	m._31 = node.GetAttributeValue( _S("_31"), 0.0f );
 	m._32 = node.GetAttributeValue( _S("_32"), 0.0f );
-	m._33 = node.GetAttributeValue( _S("_33"), 0.0f );
+	m._33 = node.GetAttributeValue( _S("_33"), 1.0f );
 	m._34 = node.GetAttributeValue( _S("_34"), 0.0f );
 	
-	m._44 = node.GetAttributeValue( _S("_44"), 0.1f );
+	m._41 = node.GetAttributeValue( _S("_41"), 0.0f );
 	m._42 = node.GetAttributeValue( _S("_42"), 0.0f );
 	m._43 = node.GetAttributeValue( _S("_43"), 0.0f );
-	m._44 = node.GetAttributeValue( _S("_44"), 0.0f );
+	m._44 = node.GetAttributeValue( _S("_44"), 1.0f );
  }
 
 //-------------------------------------------------------------------------------------

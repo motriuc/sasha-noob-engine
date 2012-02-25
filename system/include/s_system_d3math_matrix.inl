@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : s_system_d3math_matrix.inl
 //  Created                 : 1 12 2007   14:14
-//  File path               : E:\Sasha\C++\SLibF\system\Include
+//  File path               : SLibF\system\Include
 //  Author                  : Alexandru Motriuc
-//  Platform Independentsy  : 0%
+//  Platform Independent    : 0%
 //  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -272,7 +272,6 @@ inline sBool d3Matrix::InvertRT( d3Matrix& r, const d3Matrix& a )
 	return sTrue;
 }
 
-
 inline void d3Matrix::Transpose( d3Matrix& r )
 {
 	d3Float temp;
@@ -497,12 +496,34 @@ inline void d3Matrix::SetPerspectiveProjection( d3Float d )
 	_34 = 1.0f / d;
 }
 
+inline void d3Matrix::SetLookAtRH( const d3Point& pEye, const d3Vector& vLookAt, const d3Vector& vUp )
+{
+	d3Vector zaxis = -vLookAt.UnitVector();
+	d3Vector xaxis = ( vUp ^ zaxis ).UnitVector();
+	d3Vector yaxis( zaxis ^ xaxis );
+
+	_11 = xaxis.x;         _12 = yaxis.x;         _13 = zaxis.x;          _14 = 0.0f;
+	_21 = xaxis.y;         _22 = yaxis.y;         _23 = zaxis.y;          _24 = 0.0f;
+	_31 = xaxis.z;         _32 = yaxis.z;         _33 = zaxis.z;          _34 = 0.0f;
+	_41 = - xaxis * pEye;  _42 = - yaxis * pEye;  _43 = - zaxis * pEye;   _44 = 1.0f;
+}
+
+inline void d3Matrix::SetPerspectiveFovRH( d3Float fFov, d3Float fAspect, d3Float fNearPlane, d3Float fFarPlane )
+{
+	d3Float yScale = FMath::CoTan( fFov / 2.0f );
+	d3Float xScale = fAspect * yScale;
+	d3Float z = fFarPlane / ( fNearPlane - fFarPlane );
+
+	_11 = xScale;       _12 = 0.0f;         _13 = 0.0f;               _14 = 0.0f;
+	_21 = 0.0f;         _22 = yScale;       _23 = 0.0f;               _24 = 0.0f;
+	_31 = 0.0f;         _32 = 0.0f;         _33 = z;                  _34 = -1.0f;
+	_41 = 0.0f;         _42 = 0.0f;         _43 = z * fNearPlane;     _44 = 0.0f;
+}
+
 inline void d3Matrix::SetLookAtLH( const d3Point& pEye, const d3Vector& vLookAt, const d3Vector& vUp )
 {
 	d3Vector zaxis = vLookAt.UnitVector();
-  
 	d3Vector xaxis = ( vUp ^ zaxis ).UnitVector();
-  
 	d3Vector yaxis( zaxis ^ xaxis );
 
 	_11 = xaxis.x;         _12 = yaxis.x;         _13 = zaxis.x;          _14 = 0.0f;
