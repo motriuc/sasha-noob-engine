@@ -18,7 +18,7 @@
 bl_info = {
     "name": "sasha-noob-engine (.xml)",
     "author": "Alexandru Motriuc",
-    "version": (2, 1, 2),
+    "version": (1, 0, 0),
     "blender": (2, 5, 8),
     "location": "File > Export > sasha-noob-engine (.xml)",
     "description": "Export sasha-noob-engine Model Format (.xml)",
@@ -39,7 +39,6 @@ class SNEExporterSettings:
                  context,
                  FilePath,
                  CoordinateSystem=1,
-                 RotateX=True,
                  FlipNormals=False,
                  ApplyModifiers=False,
                  IncludeFrameRate=False,
@@ -51,7 +50,6 @@ class SNEExporterSettings:
         self.context = context
         self.FilePath = FilePath
         self.CoordinateSystem = int(CoordinateSystem)
-        self.RotateX = RotateX
         self.FlipNormals = FlipNormals
         self.ApplyModifiers = ApplyModifiers
         self.IncludeFrameRate = IncludeFrameRate
@@ -80,7 +78,7 @@ ExportModes = (
     ("1", "All Objects", ""),
     ("2", "Selected Objects", ""),
     )
-
+ExportObjectFilter = {'ARMATURE', 'EMPTY', 'MESH', 'LAMP'}
 
 from bpy.props import StringProperty, EnumProperty, BoolProperty
 
@@ -91,7 +89,7 @@ from bpy.props import StringProperty, EnumProperty, BoolProperty
 #returns object children			
 def GetObjectChildren(Parent):
     return [Object for Object in Parent.children
-                if Object.type in {'ARMATURE', 'EMPTY', 'MESH'}]
+                if Object.type in ExportObjectFilter]
 
 #Returns the vertex count of Mesh, counting each vertex for every face.
 def GetMeshVertexCount(Mesh):
@@ -109,7 +107,7 @@ def GetMaterialTexture(Material):
         if ImageFiles:
             return ImageFiles[0]
     return None		
-		
+
 ##------------------------------------------------------------------------------------------
 ## SashaNoobEngineExporter
 ##------------------------------------------------------------------------------------------
@@ -118,6 +116,8 @@ class SashaNoobEngineExporter:
                  self.settings = settings
                  self.tablevel = 0
                  self.resources = list()
+                 self.staticLights = list()
+                 self.defaultCamera = None
 				 
     def log(self, text):
         finaltext="{}{}".format("   " * self.tablevel, text )
@@ -128,6 +128,9 @@ class SashaNoobEngineExporter:
 	
     def AddWorldResource(self,res):
          self.resources.append( res )
+		 
+    def AddStaticLight(self,light):
+        self.staticLights.append( light )
 	
     def Export(self):
         self.log( "---------------- sasha-noob-engine Export to : {}".format(self.settings.FilePath) )
@@ -152,6 +155,8 @@ class SashaNoobEngineExporter:
         self.file.write( "\n{}<world>".format( "\t" * tl ) )
         tl+=1
         self.GenerateResources( tl )
+        self.GenerateDefCamera( tl )		
+        self.GenerateStaticLights( tl )
 
         self.file.write("\n{}<children>".format( "\t" * tl ) )
         tl+=1
@@ -161,6 +166,42 @@ class SashaNoobEngineExporter:
 		
         tl-=1
         self.file.write( "\n{}</world>".format( "\t" * tl ) )
+		
+    def GenerateDefCamera(self,tl):
+        if self.defaultCamera == None :
+            return
+		
+        self.file.write( "\n{}<!-- world default camera -->".format( "\t" * tl ) )
+        self.file.write( "\n{}<camera>".format( "\t" * tl ) )
+        tl +=1
+		
+        renderSettings = self.settings.context.scene.render
+		
+        position = self.defaultCamera.matrix_world.to_translation()
+		
+        cameraUp = Vector(( 0.0, 1.0, 0.0 ))
+        cameraLookAt = Vector(( 0.0, 0.0, -1.0 ))
+		
+        rotationMatrix = self.defaultCamera.matrix_world.to_3x3();
+		
+        cameraUp = rotationMatrix * cameraUp
+        cameraLookAt = rotationMatrix * cameraLookAt
+		
+        clip_start = self.defaultCamera.data.clip_start
+        clip_end = self.defaultCamera.data.clip_end
+        fov = self.defaultCamera.data.angle
+        aspect = renderSettings.resolution_y / renderSettings.resolution_x  
+		
+        self.file.write( "\n{}<position x=\"{:9f}\" y=\"{:9f}\" z=\"{:9f}\"/>".format( "\t" * tl, position[0], position[1], position[2] ) )
+        self.file.write( "\n{}<lookat x=\"{:9f}\" y=\"{:9f}\" z=\"{:9f}\"/>".format( "\t" * tl, cameraLookAt[0], cameraLookAt[1], cameraLookAt[2] ) )
+        self.file.write( "\n{}<up x=\"{:9f}\" y=\"{:9f}\" z=\"{:9f}\"/>".format( "\t" * tl, cameraUp[0], cameraUp[1], cameraUp[2] ) )
+
+        self.file.write( "\n{}<clip plane.near=\"{:9f}\" plane.far=\"{:9f}\"/>".format( "\t" * tl, clip_start, clip_end ) )
+        self.file.write( "\n{}<projection fov=\"{:9f}\" aspect=\"{:9f}\"/>".format( "\t" * tl, fov, aspect ) )
+		
+        tl -=1
+        self.file.write( "\n{}</camera>".format( "\t" * tl ) )
+       		
 		
     def GenerateResources(self, tl):
         self.file.write( "\n{}<!-- load resources -->".format( "\t" * tl ) )
@@ -172,6 +213,18 @@ class SashaNoobEngineExporter:
 			
         tl-=1
         self.file.write( "\n{}</resources>".format( "\t" * tl ) )
+		
+    def GenerateStaticLights(self, tl):
+        self.file.write( "\n{}<!-- global static lights -->".format( "\t" * tl ) )
+        self.file.write( "\n{}<lights.static>".format( "\t" * tl ) )
+        tl+=1
+		
+        for light in self.staticLights:
+            self.file.write("\n{}{}".format( "\t" * tl, light ) )
+			
+        tl-=1
+        self.file.write( "\n{}</lights.static>".format( "\t" * tl ) )
+		
 		
     def GenerateObjects(self, tl, objectList):
         for object in objectList:
@@ -185,6 +238,7 @@ class SashaNoobEngineExporter:
         rname = "{}.{}".format(self.settings.Prefix, object.name)	
         self.file.write( "\n{}<engine.object.mesh name=\"{}\" mesh=\"{}\">".format( "\t" * tl, rname, rname ) )
         tl +=1
+        self.file.write( "\n{}<lights.static.use/>".format( "\t" * tl ) )
         self.GenerateMatrix(tl, object.matrix_local)
         tl -=1
         self.file.write( "\n{}</engine.object.mesh>".format( "\t" * tl ) )
@@ -192,7 +246,7 @@ class SashaNoobEngineExporter:
     def GenerateFileHeader(self):
         self.log("Write file header")
 		
-        self.file.write( "<--\nFile exported from Blender using sasha-noob-engine script " ) 
+        self.file.write( "<!--\nFile exported from Blender using sasha-noob-engine script " ) 
         self.file.write( "\n-->")
 		
     def GenerateMatrix(self, tl, matrix):
@@ -227,28 +281,88 @@ _41=\"{:9f}\" _42=\"{:9f}\" _43=\"{:9f}\" _44=\"{:9f}\" \
         #all objects
         if self.settings.ExportMode == 1:
             self.exportList = [Object for Object in self.settings.context.scene.objects
-                               if Object.type in {'ARMATURE', 'EMPTY', 'MESH'}
+                               if Object.type in ExportObjectFilter
                                and Object.parent is None]
         else:
             ExportList = [Object for Object in self.settings.context.selected_objects
-                          if Object.type in {'ARMATURE', 'EMPTY', 'MESH'}]
+                          if Object.type in ExportObjectFilter]
             self.exportList = [Object for Object in ExportList
                                if Object.parent not in ExportList]
-        self.log("Selected objects: {}".format(self.exportList))							  
+							   
+        self.log("Selected objects: {}".format(self.exportList))
+		
+        camObjects = [Object for Object in self.settings.context.scene.objects
+                               if Object.type in {"CAMERA"}
+                               and Object.parent is None]
+							   
+        if len( camObjects ) > 0:
+            self.log("Found cameras: {}".format(camObjects))
+		
+            selectedCameras = [Object for Object in camObjects
+                               if Object.name=="Camera"]
+
+            self.log("Seleceted cameras: {}".format(selectedCameras))
+		
+            if len( selectedCameras ) == 0:
+                selectedCameras = camObjects
+				
+            self.defaultCamera = selectedCameras[0]
+            self.log("Selected default camera : {}".format( self.defaultCamera ) )
+
 		
     def ExportObjects(self,objectList):
         self.log("Start exporting objects...")
         self.logtab( 1 )
 		
         for object in objectList:
-            self.log("Export Object: {}...".format(object.name))
+            self.log("Export Object: {} type {} ...".format(object.name, object.type) )
+			
             self.logtab( 1 )
             if object.type == "MESH":
                 self.ExportMesh(object)
+            elif object.type == "LAMP":
+                self.ExportLight(object)
             self.logtab( -1 )
 				
         self.logtab( -1 )
+
+    def ExportLight(self, light):
+        data = light.data
+        if data.type == "POINT":
+            self.ExportLightPoint( light )
+        else:
+            self.log( "Light ignored : {} {}".format( light.name, data.type ) )
 		
+    def ExportLightPoint(self,light):
+        lightOut = ""
+        tl = 0
+        self.AddStaticLight( "{}<light.point>".format( "\t" * tl ) )
+        tl+=1
+		
+        position = light.matrix_world.to_translation()
+		
+        if light.data.use_diffuse:
+            colorDiffuse = light.data.color
+        else:
+            colorDiffuse = (0.0,0.0,0.0)
+		
+        if light.data.use_specular:
+            colorSpecular = light.data.color
+        else:
+            colorSpecular = (0.0,0.0,0.0)
+			
+        colorAmbient = light.data.color
+        maxdistance = light.data.distance
+        attenuation = 0.0
+		
+        self.AddStaticLight("{}<position x=\"{:9f}\" y=\"{:9f}\" z=\"{:9f}\" />".format( "\t" * tl, position[0], position[1], position[2] ) )
+        self.AddStaticLight("{}<color.diffuse r=\"{:4f}\" g=\"{:4f}\" b=\"{:4f}\" />".format( "\t" * tl, colorDiffuse[0], colorDiffuse[1], colorDiffuse[2] ) )
+        self.AddStaticLight("{}<color.specular r=\"{:4f}\" g=\"{:4f}\" b=\"{:4f}\" />".format( "\t" * tl, colorSpecular[0], colorSpecular[1], colorSpecular[2] ) )
+        self.AddStaticLight("{}<color.ambient r=\"{:4f}\" g=\"{:4f}\" b=\"{:4f}\" />".format( "\t" * tl, colorAmbient[0], colorAmbient[1], colorAmbient[2] ) )
+        self.AddStaticLight("{}<maxdistance value= \"{:9f}\" />".format( "\t" * tl, maxdistance ) )
+        self.AddStaticLight("{}<attenuation value= \"{:9f}\" />".format( "\t" * tl, attenuation ) )
+        tl-=1
+        self.AddStaticLight("{}</light.point>".format( "\t" * tl ) )
 		
     def ExportMesh(self, object):
         self.log("Generating Mesh...")
@@ -300,7 +414,7 @@ _41=\"{:9f}\" _42=\"{:9f}\" _43=\"{:9f}\" _44=\"{:9f}\" \
         fmesh.close()	
         self.logtab( -1 )
         self.log("Done")
-        self.AddWorldResource( "<mesh name=\"{}\" path=\"%gameres%/{}.xml\"/>".format( rname, fname ) )
+        self.AddWorldResource( "<mesh name=\"{}\" path=\"%gameres%/{}\"/>".format( rname, fname ) )
 		
 		
 		
@@ -316,13 +430,15 @@ _41=\"{:9f}\" _42=\"{:9f}\" _43=\"{:9f}\" _44=\"{:9f}\" \
 
         Index = 0
         for Face in mesh.faces:
-            for Vertex in Face.vertices:
-                cvb.write("{}".format(Index))
-                Index += 1
-                if (Index % 3) == 0:
-                    cvb.write("\n")
-                else:
-                    cvb.write(" ")
+            vcount = len( Face.vertices )
+            if vcount == 3 :
+                cvb.write( "{} {} {}\n".format(Index, Index + 1, Index + 2 ) )
+            elif vcount == 4 :
+                cvb.write( "{} {} {} {} {} {}\n".format(Index, Index + 1, Index + 2, Index, Index + 2, Index + 3 ) )
+            else:
+                self.log("Warning !!! unknown face type {}".format( Face.vertices ) )
+				
+            Index += vcount
   
         cvb.close()
         self.logtab( -1 )
@@ -483,13 +599,9 @@ class SNEExport(bpy.types.Operator):
         name="System",
         description="Select a coordinate system to export to",
         items=CoordinateSystems,
-        default="1")
+        default="2")
 
     #General Options
-    RotateX = BoolProperty(
-        name="Rotate X 90 Degrees",
-        description="Rotate the entire scene 90 degrees around the X axis so Y is up",
-        default=True)
     FlipNormals = BoolProperty(
         name="Flip Normals",
         description="",
@@ -539,7 +651,6 @@ class SNEExport(bpy.types.Operator):
         config = SNEExporterSettings(context,
                                          FilePath,
                                          CoordinateSystem=self.CoordinateSystem,
-                                         RotateX=self.RotateX,
                                          FlipNormals=self.FlipNormals,
                                          ApplyModifiers=self.ApplyModifiers,
                                          IncludeFrameRate=self.IncludeFrameRate,
