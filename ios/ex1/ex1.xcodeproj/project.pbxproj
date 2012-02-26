@@ -161,6 +161,12 @@
 		D98536D414F36BA200E3AADD /* system.after.effect.none.fx.xml in Resources */ = {isa = PBXBuildFile; fileRef = D98536CD14F36BA200E3AADD /* system.after.effect.none.fx.xml */; };
 		D98536D514F36BA200E3AADD /* system.after.effect.ps.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D98536CE14F36BA200E3AADD /* system.after.effect.ps.fsh */; };
 		D98536D614F36BA200E3AADD /* system.after.effect.vs.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D98536CF14F36BA200E3AADD /* system.after.effect.vs.vsh */; };
+		D98DC1B614FA23D5007F9146 /* system.solid.fx.1.xml in Resources */ = {isa = PBXBuildFile; fileRef = D98DC1B014FA23D5007F9146 /* system.solid.fx.1.xml */; };
+		D98DC1B714FA23D5007F9146 /* system.solid.fx.2.xml in Resources */ = {isa = PBXBuildFile; fileRef = D98DC1B114FA23D5007F9146 /* system.solid.fx.2.xml */; };
+		D98DC1B814FA23D5007F9146 /* system.solid.ps.1.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D98DC1B214FA23D5007F9146 /* system.solid.ps.1.fsh */; };
+		D98DC1B914FA23D5007F9146 /* system.solid.ps.2.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D98DC1B314FA23D5007F9146 /* system.solid.ps.2.fsh */; };
+		D98DC1BA14FA23D5007F9146 /* system.solid.vs.1.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D98DC1B414FA23D5007F9146 /* system.solid.vs.1.vsh */; };
+		D98DC1BB14FA23D5007F9146 /* system.solid.vs.2.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D98DC1B514FA23D5007F9146 /* system.solid.vs.2.vsh */; };
 		D99922F714EF3AFB003FC6A7 /* lapi.c in Sources */ = {isa = PBXBuildFile; fileRef = D99922BE14EF3AFB003FC6A7 /* lapi.c */; };
 		D99922F814EF3AFB003FC6A7 /* lauxlib.c in Sources */ = {isa = PBXBuildFile; fileRef = D99922C014EF3AFB003FC6A7 /* lauxlib.c */; };
 		D99922F914EF3AFB003FC6A7 /* lbaselib.c in Sources */ = {isa = PBXBuildFile; fileRef = D99922C214EF3AFB003FC6A7 /* lbaselib.c */; };
@@ -515,6 +521,12 @@
 		D98536CD14F36BA200E3AADD /* system.after.effect.none.fx.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = system.after.effect.none.fx.xml; path = ../../render3d/cpp/eagl/fx/system.after.effect.none.fx.xml; sourceTree = SOURCE_ROOT; };
 		D98536CE14F36BA200E3AADD /* system.after.effect.ps.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.after.effect.ps.fsh; path = ../../render3d/cpp/eagl/fx/system.after.effect.ps.fsh; sourceTree = SOURCE_ROOT; };
 		D98536CF14F36BA200E3AADD /* system.after.effect.vs.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.after.effect.vs.vsh; path = ../../render3d/cpp/eagl/fx/system.after.effect.vs.vsh; sourceTree = SOURCE_ROOT; };
+		D98DC1B014FA23D5007F9146 /* system.solid.fx.1.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = system.solid.fx.1.xml; path = ../../render3d/cpp/eagl/fx/system.solid.fx.1.xml; sourceTree = SOURCE_ROOT; };
+		D98DC1B114FA23D5007F9146 /* system.solid.fx.2.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = system.solid.fx.2.xml; path = ../../render3d/cpp/eagl/fx/system.solid.fx.2.xml; sourceTree = SOURCE_ROOT; };
+		D98DC1B214FA23D5007F9146 /* system.solid.ps.1.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.solid.ps.1.fsh; path = ../../render3d/cpp/eagl/fx/system.solid.ps.1.fsh; sourceTree = SOURCE_ROOT; };
+		D98DC1B314FA23D5007F9146 /* system.solid.ps.2.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.solid.ps.2.fsh; path = ../../render3d/cpp/eagl/fx/system.solid.ps.2.fsh; sourceTree = SOURCE_ROOT; };
+		D98DC1B414FA23D5007F9146 /* system.solid.vs.1.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.solid.vs.1.vsh; path = ../../render3d/cpp/eagl/fx/system.solid.vs.1.vsh; sourceTree = SOURCE_ROOT; };
+		D98DC1B514FA23D5007F9146 /* system.solid.vs.2.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.solid.vs.2.vsh; path = ../../render3d/cpp/eagl/fx/system.solid.vs.2.vsh; sourceTree = SOURCE_ROOT; };
 		D99922B914EF3ABB003FC6A7 /* lua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lua.h; path = ../../external/lua/lua.h; sourceTree = SOURCE_ROOT; };
 		D99922BA14EF3ABB003FC6A7 /* lua.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = lua.hpp; path = ../../external/lua/lua.hpp; sourceTree = SOURCE_ROOT; };
 		D99922BE14EF3AFB003FC6A7 /* lapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lapi.c; path = ../../external/lua/lapi.c; sourceTree = SOURCE_ROOT; };
@@ -1202,6 +1214,7 @@
 		D93D5B5F14ECCDAE003FC949 /* fx */ = {
 			isa = PBXGroup;
 			children = (
+				D98DC1AE14FA2398007F9146 /* stdrender */,
 				D98536C814F36B8100E3AADD /* aftereffects */,
 				D93D5B6C14ECCE99003FC949 /* system.default.vs.1.vsh */,
 				D93D5B6D14ECCE99003FC949 /* system.default.vs.2.vsh */,
@@ -1351,6 +1364,27 @@
 				D98536CF14F36BA200E3AADD /* system.after.effect.vs.vsh */,
 			);
 			name = aftereffects;
+			sourceTree = "<group>";
+		};
+		D98DC1AE14FA2398007F9146 /* stdrender */ = {
+			isa = PBXGroup;
+			children = (
+				D98DC1AF14FA23A2007F9146 /* solid */,
+			);
+			name = stdrender;
+			sourceTree = "<group>";
+		};
+		D98DC1AF14FA23A2007F9146 /* solid */ = {
+			isa = PBXGroup;
+			children = (
+				D98DC1B014FA23D5007F9146 /* system.solid.fx.1.xml */,
+				D98DC1B114FA23D5007F9146 /* system.solid.fx.2.xml */,
+				D98DC1B214FA23D5007F9146 /* system.solid.ps.1.fsh */,
+				D98DC1B314FA23D5007F9146 /* system.solid.ps.2.fsh */,
+				D98DC1B414FA23D5007F9146 /* system.solid.vs.1.vsh */,
+				D98DC1B514FA23D5007F9146 /* system.solid.vs.2.vsh */,
+			);
+			name = solid;
 			sourceTree = "<group>";
 		};
 		D999224414EF38C5003FC6A7 /* lua */ = {
@@ -1503,6 +1537,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D98DC1B814FA23D5007F9146 /* system.solid.ps.1.fsh in Resources */,
+				D98DC1B914FA23D5007F9146 /* system.solid.ps.2.fsh in Resources */,
+				D98DC1BA14FA23D5007F9146 /* system.solid.vs.1.vsh in Resources */,
+				D98DC1BB14FA23D5007F9146 /* system.solid.vs.2.vsh in Resources */,
 				D98536D114F36BA200E3AADD /* system.after.effect.blur.ps.fsh in Resources */,
 				D98536D314F36BA200E3AADD /* system.after.effect.color.ps.fsh in Resources */,
 				D98536D514F36BA200E3AADD /* system.after.effect.ps.fsh in Resources */,
@@ -1567,6 +1605,8 @@
 				D98536D014F36BA200E3AADD /* system.after.effect.blur.fx.xml in Resources */,
 				D98536D214F36BA200E3AADD /* system.after.effect.color.fx.xml in Resources */,
 				D98536D414F36BA200E3AADD /* system.after.effect.none.fx.xml in Resources */,
+				D98DC1B614FA23D5007F9146 /* system.solid.fx.1.xml in Resources */,
+				D98DC1B714FA23D5007F9146 /* system.solid.fx.2.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

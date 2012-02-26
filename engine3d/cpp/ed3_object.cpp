@@ -21,8 +21,11 @@
 #include "ed3_cont_object.h"
 #include "ed3_world.h"
 #include "rd3_light_sel.h"
-#include "ed3_physics_shape.h"
-#include "ed3_physics_world.h"
+
+#ifdef ED3_ENGINE_USE_PHYSICS
+	#include "ed3_physics_shape.h"
+	#include "ed3_physics_world.h"
+#endif
 
 namespace Ed3 
 {

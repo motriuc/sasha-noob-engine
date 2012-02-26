@@ -73,6 +73,7 @@ void EAGLRender::InitSystemResources( Rd3::Def& def, const Streams::StreamArchiv
 	
 	// std effect
 	CreateEffectFromFile( _S("system.solid.fx.1"), def, _S("%engine%/system.solid.fx.1.xml"), archive );
+	CreateEffectFromFile( _S("system.solid.fx.2"), def, _S("%engine%/system.solid.fx.2.xml"), archive );
 	
 	// system font default
 	CreateFontSystem( _S("system.font.default"), _S("Baskerville"), 26 );

@@ -112,6 +112,21 @@ void Mesh::LoadFromXml( const Xml::BaseDomNode& node, const Def& def, const Stre
 			SetIb( child.GetAttributes()[ATTR_NAME] );			
 		}
 	}
+	
+	if( _material == NULL )
+		error_throw_arg( Errors::StringError )
+			_S("Missing material in mesh: ") + GetObjectName() 
+		);
+	
+	if( _vertexBuffer == NULL )
+		error_throw_arg( Errors::StringError )
+			_S("Missing vb in mesh: ") + GetObjectName() 
+		);
+
+	if( _indexBuffer == NULL )
+		error_throw_arg( Errors::StringError )
+			_S("Missing ib in mesh: ") + GetObjectName() 
+		);	
 }
 	
 }

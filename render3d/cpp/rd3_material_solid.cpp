@@ -54,6 +54,7 @@ void SolidMaterial::Apply( RenderState& renderState ) const
 	
 	renderState.SetParam_ColorDiffuse( _difColor );
 	renderState.SetParam_ColorSpecular( _specularColor );
+	renderState.SetParam_ColorAmbient( _ambientColor );
 	renderState.SetEffect( _effect );
 }
 
@@ -79,6 +80,13 @@ void SolidMaterial::LoadFromXml( const Xml::BaseDomNode& node, const Def& def ) 
 			_co_phong_exp = child.GetAttributeValue( ATTR_HARDNESS, 5.0f );
 			
 			XmlLoad_ColorF( _specularColor.v, child, def );			
+		}
+		else if( child.GetName() == ELEMENT_COLOR_AMBIENT )
+		{
+			d3Float intensity = child.GetAttributeValue( ATTR_INTENSITY, 0.3f );
+
+			XmlLoad_ColorF( _ambientColor.v, child, def );
+			_ambientColor *= intensity;
 		}
 	}
 }	

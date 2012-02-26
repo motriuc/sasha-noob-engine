@@ -59,6 +59,7 @@ private:
 	use_resource<Effect>	_effect;
 	d3Vector				_difColor;
 	d3Vector				_specularColor;
+	d3Vector				_ambientColor;
 	
 	Rd3::Effect::Float		_co_diffuse;
 	Rd3::Effect::Float		_co_phong_exp;

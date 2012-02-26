@@ -106,12 +106,12 @@ public:
 	 * 
 	 */
 	void SetRotateX( d3Float a );
-
+	
 	/**
 	 * 
 	 */
 	void SetRotateY( d3Float a );
-
+	
 	/**
 	 * 
 	 */
@@ -206,11 +206,6 @@ public:
 	 *
 	 */
 	void GetNormalMatrix( d3Matrix& m ) const;
-
-	/**
-	 *
-	 */
-	void GetNormalMatrixRT( d3Matrix& m ) const;
 	
 	/**
 	 * Remove translation components
@@ -231,7 +226,7 @@ public:
 	 * 
 	 */
 	static void Mul( d3Matrix& r, const d3Matrix& a, const d3Matrix& b );
-
+	
 	/**
 	 *
 	 */

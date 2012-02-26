@@ -148,6 +148,23 @@ inline void RenderState::SetParam_ColorSpecular( const d3Vector& color )
 	}
 }
 
+inline void RenderState::SetParam_ColorAmbient( const sRGBColor color )
+{
+	d3Vector vc;
+	RGBColorToVector( color, vc );
+
+	SetParam_ColorAmbient( vc );
+}
+
+inline void RenderState::SetParam_ColorAmbient( const d3Vector& color )
+{
+	if( color != _vector_params[VectorParameter::E_COLOR_AMBIENT] )
+	{
+		_vector_params[VectorParameter::E_COLOR_AMBIENT] = color;
+		_changed_vector_params[VectorParameter::E_COLOR_AMBIENT] = sTrue;
+	}
+}
+
 inline void RenderState::UpdateTime()
 {
 	__S_ASSERT( _engineData != NULL );

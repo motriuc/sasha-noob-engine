@@ -133,6 +133,9 @@
 		D91D023F14ECC4A700CEFA96 /* ed3_world.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91D023114ECC4A700CEFA96 /* ed3_world.cpp */; };
 		D91D027D14ECC96D00CEFA96 /* sd3engiphAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = D91D027B14ECC96D00CEFA96 /* sd3engiphAppDelegate.mm */; };
 		D91D027E14ECC96D00CEFA96 /* sd3engiphViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D91D027C14ECC96D00CEFA96 /* sd3engiphViewController.mm */; };
+		D9372FEA14F938B60075D0CA /* system.solid.vs.1.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D9372FE714F938B60075D0CA /* system.solid.vs.1.vsh */; };
+		D9372FEB14F938B60075D0CA /* system.solid.ps.1.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D9372FE814F938B60075D0CA /* system.solid.ps.1.fsh */; };
+		D9372FEC14F938B60075D0CA /* system.solid.fx.1.xml in Resources */ = {isa = PBXBuildFile; fileRef = D9372FE914F938B60075D0CA /* system.solid.fx.1.xml */; };
 		D93D5B5C14ECCDA6003FC949 /* system.font.fx.1.xml in Resources */ = {isa = PBXBuildFile; fileRef = D93D5B5914ECCDA6003FC949 /* system.font.fx.1.xml */; };
 		D93D5B5D14ECCDA6003FC949 /* system.font.ps.1.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D93D5B5A14ECCDA6003FC949 /* system.font.ps.1.fsh */; };
 		D93D5B5E14ECCDA6003FC949 /* system.font.vs.1.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D93D5B5B14ECCDA6003FC949 /* system.font.vs.1.vsh */; };
@@ -160,6 +163,9 @@
 		D9803A9014EFCE32002E3CE7 /* ed3_primitive_lua.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9803A8F14EFCE32002E3CE7 /* ed3_primitive_lua.cpp */; };
 		D98536A514F36A7E00E3AADD /* system.after.effect.color.fx.xml in Resources */ = {isa = PBXBuildFile; fileRef = D98536A314F36A7E00E3AADD /* system.after.effect.color.fx.xml */; };
 		D98536A614F36A7E00E3AADD /* system.after.effect.color.ps.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D98536A414F36A7E00E3AADD /* system.after.effect.color.ps.fsh */; };
+		D98DC17214FA21D1007F9146 /* system.solid.fx.2.xml in Resources */ = {isa = PBXBuildFile; fileRef = D98DC16F14FA21D1007F9146 /* system.solid.fx.2.xml */; };
+		D98DC17314FA21D1007F9146 /* system.solid.ps.2.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D98DC17014FA21D1007F9146 /* system.solid.ps.2.fsh */; };
+		D98DC17414FA21D1007F9146 /* system.solid.vs.2.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D98DC17114FA21D1007F9146 /* system.solid.vs.2.vsh */; };
 		D99922F714EF3AFB003FC6A7 /* lapi.c in Sources */ = {isa = PBXBuildFile; fileRef = D99922BE14EF3AFB003FC6A7 /* lapi.c */; };
 		D99922F814EF3AFB003FC6A7 /* lauxlib.c in Sources */ = {isa = PBXBuildFile; fileRef = D99922C014EF3AFB003FC6A7 /* lauxlib.c */; };
 		D99922F914EF3AFB003FC6A7 /* lbaselib.c in Sources */ = {isa = PBXBuildFile; fileRef = D99922C214EF3AFB003FC6A7 /* lbaselib.c */; };
@@ -584,6 +590,9 @@
 		D91D027C14ECC96D00CEFA96 /* sd3engiphViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = sd3engiphViewController.mm; sourceTree = "<group>"; };
 		D91DFFFE14ECB8FA00CEFA96 /* s_system_chars_b.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = s_system_chars_b.cpp; path = ../../system/cpp/s_system_chars_b.cpp; sourceTree = SOURCE_ROOT; };
 		D91DFFFF14ECB8FA00CEFA96 /* s_system_chars_w.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = s_system_chars_w.cpp; path = ../../system/cpp/s_system_chars_w.cpp; sourceTree = SOURCE_ROOT; };
+		D9372FE714F938B60075D0CA /* system.solid.vs.1.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.solid.vs.1.vsh; path = ../../render3d/cpp/eagl/fx/system.solid.vs.1.vsh; sourceTree = SOURCE_ROOT; };
+		D9372FE814F938B60075D0CA /* system.solid.ps.1.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.solid.ps.1.fsh; path = ../../render3d/cpp/eagl/fx/system.solid.ps.1.fsh; sourceTree = SOURCE_ROOT; };
+		D9372FE914F938B60075D0CA /* system.solid.fx.1.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = system.solid.fx.1.xml; path = ../../render3d/cpp/eagl/fx/system.solid.fx.1.xml; sourceTree = SOURCE_ROOT; };
 		D93D5B5914ECCDA6003FC949 /* system.font.fx.1.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = system.font.fx.1.xml; path = ../../render3d/cpp/eagl/fx/system.font.fx.1.xml; sourceTree = SOURCE_ROOT; };
 		D93D5B5A14ECCDA6003FC949 /* system.font.ps.1.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.font.ps.1.fsh; path = ../../render3d/cpp/eagl/fx/system.font.ps.1.fsh; sourceTree = SOURCE_ROOT; };
 		D93D5B5B14ECCDA6003FC949 /* system.font.vs.1.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.font.vs.1.vsh; path = ../../render3d/cpp/eagl/fx/system.font.vs.1.vsh; sourceTree = SOURCE_ROOT; };
@@ -615,6 +624,9 @@
 		D9803A9114EFCE4F002E3CE7 /* ed3_primitive_lua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ed3_primitive_lua.h; path = ../../engine3d/include/ed3_primitive_lua.h; sourceTree = SOURCE_ROOT; };
 		D98536A314F36A7E00E3AADD /* system.after.effect.color.fx.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = system.after.effect.color.fx.xml; path = ../../render3d/cpp/eagl/fx/system.after.effect.color.fx.xml; sourceTree = SOURCE_ROOT; };
 		D98536A414F36A7E00E3AADD /* system.after.effect.color.ps.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.after.effect.color.ps.fsh; path = ../../render3d/cpp/eagl/fx/system.after.effect.color.ps.fsh; sourceTree = SOURCE_ROOT; };
+		D98DC16F14FA21D1007F9146 /* system.solid.fx.2.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = system.solid.fx.2.xml; path = ../../render3d/cpp/eagl/fx/system.solid.fx.2.xml; sourceTree = SOURCE_ROOT; };
+		D98DC17014FA21D1007F9146 /* system.solid.ps.2.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.solid.ps.2.fsh; path = ../../render3d/cpp/eagl/fx/system.solid.ps.2.fsh; sourceTree = SOURCE_ROOT; };
+		D98DC17114FA21D1007F9146 /* system.solid.vs.2.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.solid.vs.2.vsh; path = ../../render3d/cpp/eagl/fx/system.solid.vs.2.vsh; sourceTree = SOURCE_ROOT; };
 		D99922B914EF3ABB003FC6A7 /* lua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lua.h; path = ../../external/lua/lua.h; sourceTree = SOURCE_ROOT; };
 		D99922BA14EF3ABB003FC6A7 /* lua.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = lua.hpp; path = ../../external/lua/lua.hpp; sourceTree = SOURCE_ROOT; };
 		D99922BE14EF3AFB003FC6A7 /* lapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lapi.c; path = ../../external/lua/lapi.c; sourceTree = SOURCE_ROOT; };
@@ -1402,9 +1414,18 @@
 			name = system;
 			sourceTree = "<group>";
 		};
+		D9372FE614F938890075D0CA /* stdrender */ = {
+			isa = PBXGroup;
+			children = (
+				D98DC16E14FA2172007F9146 /* solid */,
+			);
+			name = stdrender;
+			sourceTree = "<group>";
+		};
 		D93D5B5F14ECCDAE003FC949 /* fx */ = {
 			isa = PBXGroup;
 			children = (
+				D9372FE614F938890075D0CA /* stdrender */,
 				D94B57A914F2219B00EDAB8B /* after effects */,
 				D93D5B6C14ECCE99003FC949 /* system.default.vs.1.vsh */,
 				D93D5B6D14ECCE99003FC949 /* system.default.vs.2.vsh */,
@@ -1565,6 +1586,19 @@
 				D9803A8F14EFCE32002E3CE7 /* ed3_primitive_lua.cpp */,
 			);
 			name = rd3ext;
+			sourceTree = "<group>";
+		};
+		D98DC16E14FA2172007F9146 /* solid */ = {
+			isa = PBXGroup;
+			children = (
+				D98DC16F14FA21D1007F9146 /* system.solid.fx.2.xml */,
+				D98DC17014FA21D1007F9146 /* system.solid.ps.2.fsh */,
+				D98DC17114FA21D1007F9146 /* system.solid.vs.2.vsh */,
+				D9372FE714F938B60075D0CA /* system.solid.vs.1.vsh */,
+				D9372FE814F938B60075D0CA /* system.solid.ps.1.fsh */,
+				D9372FE914F938B60075D0CA /* system.solid.fx.1.xml */,
+			);
+			name = solid;
 			sourceTree = "<group>";
 		};
 		D999224414EF38C5003FC6A7 /* lua */ = {
@@ -1908,6 +1942,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D98DC17314FA21D1007F9146 /* system.solid.ps.2.fsh in Resources */,
+				D98DC17414FA21D1007F9146 /* system.solid.vs.2.vsh in Resources */,
+				D9372FEA14F938B60075D0CA /* system.solid.vs.1.vsh in Resources */,
+				D9372FEB14F938B60075D0CA /* system.solid.ps.1.fsh in Resources */,
 				D98536A614F36A7E00E3AADD /* system.after.effect.color.ps.fsh in Resources */,
 				D94B58D214F2357400EDAB8B /* system.after.effect.blur.ps.fsh in Resources */,
 				D94B57AE14F221B600EDAB8B /* system.after.effect.ps.fsh in Resources */,
@@ -1971,6 +2009,8 @@
 				D94B57AD14F221B600EDAB8B /* system.after.effect.none.fx.xml in Resources */,
 				D94B58D114F2357400EDAB8B /* system.after.effect.blur.fx.xml in Resources */,
 				D98536A514F36A7E00E3AADD /* system.after.effect.color.fx.xml in Resources */,
+				D9372FEC14F938B60075D0CA /* system.solid.fx.1.xml in Resources */,
+				D98DC17214FA21D1007F9146 /* system.solid.fx.2.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2245,6 +2285,7 @@
 				EXTERN_PATH = ../../external;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = (
+					ED3_ENGINE_USE_PHYSICS,
 					MACOS_CLASSIC,
 					DEBUG,
 				);
@@ -2263,7 +2304,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EXTERN_PATH = ../../external;
 				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_PREPROCESSOR_DEFINITIONS = MACOS_CLASSIC;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					ED3_ENGINE_USE_PHYSICS,
+					MACOS_CLASSIC,
+				);
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";

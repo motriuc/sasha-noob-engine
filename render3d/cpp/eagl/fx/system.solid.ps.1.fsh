@@ -7,13 +7,20 @@
 //
 
 varying lowp vec4 v_color;
-//varying lowp vec2 v_texCoord;
 
-uniform mediump vec4 rd_color_diffuse;
-uniform mediump vec4 rd_color_specular;
+uniform lowp vec4 rd_color_diffuse;
+uniform lowp vec4 rd_color_specular;
+uniform lowp vec4 rd_color_ambient;
+
+uniform lowp vec4 rd_light1_diffuse;
+uniform lowp vec4 rd_light1_specular;
+uniform lowp vec4 rd_light1_ambient;
 
 void main()
 {
-	gl_FragColor = clamp( rd_color_specular* v_color.z + rd_color_diffuse * v_color.y, 0.0, 1.0 );
-	//gl_FragColor = vec4( v_color.z, v_color.z,v_color.z,1.0 );
+	lowp vec4 dif1 = rd_light1_diffuse * rd_color_diffuse;
+	lowp vec4 spec1 = rd_color_specular * rd_light1_specular;
+	lowp vec4 amb1 = rd_color_ambient * rd_light1_ambient; 
+	
+	gl_FragColor = clamp( amb1 + spec1* v_color.z + dif1 * v_color.y, 0.0, 1.0 );
 }

@@ -1,0 +1,4 @@
+<effect name="system.solid.fx.2" >
+	<default vs="%engine%/system.solid.vs.2.vsh" ps="%engine%/system.solid.ps.2.fsh" >
+	</default>
+</effect>

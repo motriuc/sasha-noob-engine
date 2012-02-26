@@ -78,10 +78,12 @@ public:
 	void SetAfterEffect( Rd3::AfterEffect* p );
 	Rd3::AfterEffect* GetAfterEffect()				{ return _afterEffect; }
 	
+#ifdef ED3_ENGINE_USE_PHYSICS	
 	/**
 	 *
 	 */
 	d3PhysicsWorld* GetPhysics()					{ return _physicsWorld; }
+#endif // ED3_ENGINE_USE_PHYSICS
 protected:
 	
 	/**

@@ -23,7 +23,8 @@
 // define for engine LUA support
 #define ED3_ENGINE_USE_LUA
 
-#define ED3_ENGINE_USE_PHYSICS
+//
+//#define ED3_ENGINE_USE_PHYSICS
 
 namespace  Ed3 
 {

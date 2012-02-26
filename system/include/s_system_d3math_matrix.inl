@@ -545,14 +545,9 @@ inline void d3Matrix::SetPerspectiveFovLH( d3Float fFov, d3Float fAspect, d3Floa
 }
 
 inline void d3Matrix::GetNormalMatrix( d3Matrix& m ) const
-{
-	Invert( m, *this );
-	m.Transpose();
-}
-
-inline void d3Matrix::GetNormalMatrixRT( d3Matrix& m ) const
-{
-	InvertRT( m, *this );
+{	
+	m = *this;
+	m.Invert();
 	m.Transpose();
 }
 

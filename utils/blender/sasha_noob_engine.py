@@ -545,7 +545,7 @@ _41=\"{:9f}\" _42=\"{:9f}\" _43=\"{:9f}\" _44=\"{:9f}\" \
 					
             self.log( "Material indexes : {}".format( MaterialIndexes ) )
         else:
-            self.log("No materials found")
+            self.log("Warning !!! No materials found")
 			
         self.logtab( -1 )
         self.log( "Done" )
@@ -567,7 +567,7 @@ _41=\"{:9f}\" _42=\"{:9f}\" _43=\"{:9f}\" _44=\"{:9f}\" \
                 Diffuse.append( material.alpha )
                 Ambient = list( Vector(Diffuse) * material.ambient )
                 Specular = list( material.specular_color )
-                hardness = 1000 * (material.specular_hardness - 1.0) / (511.0 - 1.0) #Map Blender's range of 1 - 511 to 0 - 1000
+                hardness = material.specular_hardness / 8.0
 			
                 fmesh.write( "\n{}<material type=\"solid\" name=\"{}\">".format( "\t" * tl, name ) )
                 tl+=1
@@ -581,7 +581,7 @@ _41=\"{:9f}\" _42=\"{:9f}\" _43=\"{:9f}\" _44=\"{:9f}\" \
 			
         else:
             self.log("Set default material")
-            fmesh.write( "\n{}<material name=\"{}\"/> type=\"flatcolor\"".format( "\t" * tl, name ) )
+            fmesh.write( "\n{}<material name=\"{}\"/> type=\"solid\"".format( "\t" * tl, name ) )
 
 ##------------------------------------------------------------------------------------------
 ## SNEExport

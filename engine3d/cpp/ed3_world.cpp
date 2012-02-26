@@ -21,16 +21,22 @@
 #include "rd3_xml_def.h"
 #include "rd3_edata.h"
 #include "rd3_rstate.h"
-#include "ed3_physics_world.h"
 #include "ed3_edata.h"
+
+#ifdef ED3_ENGINE_USE_PHYSICS
+	#include "ed3_physics_world.h"
+#endif
 
 namespace Ed3 
 {
 
 //-----------------------------------------------------------------------
 d3World::d3World() :
-	_BaseClass( ObjectType::E_WORLD ),
+	_BaseClass( ObjectType::E_WORLD )
+#ifdef ED3_ENGINE_USE_PHYSICS
+	,
 	_physicsWorld( NULL )
+#endif // ED3_ENGINE_USE_PHYSICS	
 {
 	_defaultRenderClass = _objectClassNames.GetClass( _S("default") );
 }
@@ -38,7 +44,9 @@ d3World::d3World() :
 //-----------------------------------------------------------------------
 d3World::~d3World()
 {
+#ifdef ED3_ENGINE_USE_PHYSICS	
 	delete _physicsWorld;
+#endif // ED3_ENGINE_USE_PHYSICS	
 }
 	
 //-----------------------------------------------------------------------

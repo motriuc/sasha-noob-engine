@@ -91,6 +91,12 @@ public:
 	/**
 	 *
 	 */
+	void SetParam_ColorAmbient( const d3Vector& color );
+	void SetParam_ColorAmbient( const sRGBColor color );
+	
+	/**
+	 *
+	 */
 	void SetLight( sInt v, const LightPoint& light );
 	
 	/**
