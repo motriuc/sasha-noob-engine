@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////
-//	File Name          : rd3_perf_counters.cpp
-//	Created            : 20 1 2012   23:04
+//  File Name          : rd3_perf_counters.cpp
+//  Created            : 20 1 2012   23:04
 //  Author             : Alexandru Motriuc  
-//	File Path          : SLibF\render3d\include
+//  File Path          : SLibF\render3d\include
 //  System independent : 0%
 //  Library            : 
 //
@@ -65,6 +65,9 @@ sInt PerformanceCounter::Register( const PerformanceCounter& perfc )
 }
 
 //-----------------------------------------------------------------------
+// Standard render counder definitions
+//-----------------------------------------------------------------------
+
 COUNTER_DECLARE(
 				rd3_video_memory, 
 				_S("rd3.video.memory"),
@@ -142,5 +145,18 @@ COUNTER_DECLARE(
 				_S("physics code execution time")
 				)
 
+COUNTER_DECLARE( 
+				rd3_render_object_total,
+				_S("rd3.render.object.total"),
+				_S(""),
+				_S("total number of objects participating in the rendering")
+				)
+
+COUNTER_DECLARE( 
+				rd3_render_object_visible,
+				_S("rd3.render.object.visible"),
+				_S(""),
+				_S("number of objects redered")
+				)
 
 //-----------------------------------------------------------------------

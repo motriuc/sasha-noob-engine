@@ -102,10 +102,6 @@ protected:
 	 *
 	 */
 	virtual sBool LoadFromXMLSubnode( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error;
-
-#ifdef ED3_ENGINE_USE_LUA
-	virtual void InitLuaFunctions();	
-#endif // ED3_ENGINE_USE_LUA
 	
 private:
 	d3ResourceLoader	_resources;

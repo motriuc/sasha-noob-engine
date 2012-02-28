@@ -158,42 +158,6 @@
 		D98536A514F36A7E00E3AADD /* system.after.effect.color.fx.xml in Resources */ = {isa = PBXBuildFile; fileRef = D98536A314F36A7E00E3AADD /* system.after.effect.color.fx.xml */; };
 		D98536A614F36A7E00E3AADD /* system.after.effect.color.ps.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D98536A414F36A7E00E3AADD /* system.after.effect.color.ps.fsh */; };
 		D98DBE9714F9F3D8007F9146 /* world.xml in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE7214F9F3D8007F9146 /* world.xml */; };
-		D98DBE9814F9F3D8007F9146 /* world_mesh_Plane.xml in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE7314F9F3D8007F9146 /* world_mesh_Plane.xml */; };
-		D98DBE9914F9F3D8007F9146 /* world_mesh_Plane.vb in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE7414F9F3D8007F9146 /* world_mesh_Plane.vb */; };
-		D98DBE9A14F9F3D8007F9146 /* world_mesh_Plane.ib in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE7514F9F3D8007F9146 /* world_mesh_Plane.ib */; };
-		D98DBE9B14F9F3D8007F9146 /* world_mesh_Plane.004.xml in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE7614F9F3D8007F9146 /* world_mesh_Plane.004.xml */; };
-		D98DBE9C14F9F3D8007F9146 /* world_mesh_Plane.004.vb in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE7714F9F3D8007F9146 /* world_mesh_Plane.004.vb */; };
-		D98DBE9D14F9F3D8007F9146 /* world_mesh_Plane.004.ib in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE7814F9F3D8007F9146 /* world_mesh_Plane.004.ib */; };
-		D98DBE9E14F9F3D8007F9146 /* world_mesh_Plane.003.xml in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE7914F9F3D8007F9146 /* world_mesh_Plane.003.xml */; };
-		D98DBE9F14F9F3D8007F9146 /* world_mesh_Plane.003.vb in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE7A14F9F3D8007F9146 /* world_mesh_Plane.003.vb */; };
-		D98DBEA014F9F3D8007F9146 /* world_mesh_Plane.003.ib in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE7B14F9F3D8007F9146 /* world_mesh_Plane.003.ib */; };
-		D98DBEA114F9F3D8007F9146 /* world_mesh_Plane.002.xml in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE7C14F9F3D8007F9146 /* world_mesh_Plane.002.xml */; };
-		D98DBEA214F9F3D8007F9146 /* world_mesh_Plane.002.vb in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE7D14F9F3D8007F9146 /* world_mesh_Plane.002.vb */; };
-		D98DBEA314F9F3D8007F9146 /* world_mesh_Plane.002.ib in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE7E14F9F3D8007F9146 /* world_mesh_Plane.002.ib */; };
-		D98DBEA414F9F3D8007F9146 /* world_mesh_Plane.001.xml in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE7F14F9F3D8007F9146 /* world_mesh_Plane.001.xml */; };
-		D98DBEA514F9F3D8007F9146 /* world_mesh_Plane.001.vb in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE8014F9F3D8007F9146 /* world_mesh_Plane.001.vb */; };
-		D98DBEA614F9F3D8007F9146 /* world_mesh_Plane.001.ib in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE8114F9F3D8007F9146 /* world_mesh_Plane.001.ib */; };
-		D98DBEA714F9F3D8007F9146 /* world_mesh_Monkey.xml in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE8214F9F3D8007F9146 /* world_mesh_Monkey.xml */; };
-		D98DBEA814F9F3D8007F9146 /* world_mesh_Monkey.vb in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE8314F9F3D8007F9146 /* world_mesh_Monkey.vb */; };
-		D98DBEA914F9F3D8007F9146 /* world_mesh_Monkey.ib in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE8414F9F3D8007F9146 /* world_mesh_Monkey.ib */; };
-		D98DBEAA14F9F3D8007F9146 /* world_mesh_Cube.xml in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE8514F9F3D8007F9146 /* world_mesh_Cube.xml */; };
-		D98DBEAB14F9F3D8007F9146 /* world_mesh_Cube.vb in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE8614F9F3D8007F9146 /* world_mesh_Cube.vb */; };
-		D98DBEAC14F9F3D8007F9146 /* world_mesh_Cube.ib in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE8714F9F3D8007F9146 /* world_mesh_Cube.ib */; };
-		D98DBEAD14F9F3D8007F9146 /* world_mesh_Cube.004.xml in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE8814F9F3D8007F9146 /* world_mesh_Cube.004.xml */; };
-		D98DBEAE14F9F3D8007F9146 /* world_mesh_Cube.004.vb in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE8914F9F3D8007F9146 /* world_mesh_Cube.004.vb */; };
-		D98DBEAF14F9F3D8007F9146 /* world_mesh_Cube.004.ib in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE8A14F9F3D8007F9146 /* world_mesh_Cube.004.ib */; };
-		D98DBEB014F9F3D8007F9146 /* world_mesh_Cube.003.xml in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE8B14F9F3D8007F9146 /* world_mesh_Cube.003.xml */; };
-		D98DBEB114F9F3D8007F9146 /* world_mesh_Cube.003.vb in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE8C14F9F3D8007F9146 /* world_mesh_Cube.003.vb */; };
-		D98DBEB214F9F3D8007F9146 /* world_mesh_Cube.003.ib in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE8D14F9F3D8007F9146 /* world_mesh_Cube.003.ib */; };
-		D98DBEB314F9F3D8007F9146 /* world_mesh_Cube.002.xml in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE8E14F9F3D8007F9146 /* world_mesh_Cube.002.xml */; };
-		D98DBEB414F9F3D8007F9146 /* world_mesh_Cube.002.vb in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE8F14F9F3D8007F9146 /* world_mesh_Cube.002.vb */; };
-		D98DBEB514F9F3D8007F9146 /* world_mesh_Cube.002.ib in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE9014F9F3D8007F9146 /* world_mesh_Cube.002.ib */; };
-		D98DBEB614F9F3D8007F9146 /* world_mesh_Cube.001.xml in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE9114F9F3D8007F9146 /* world_mesh_Cube.001.xml */; };
-		D98DBEB714F9F3D8007F9146 /* world_mesh_Cube.001.vb in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE9214F9F3D8007F9146 /* world_mesh_Cube.001.vb */; };
-		D98DBEB814F9F3D8007F9146 /* world_mesh_Cube.001.ib in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE9314F9F3D8007F9146 /* world_mesh_Cube.001.ib */; };
-		D98DBEB914F9F3D8007F9146 /* world_mesh_Cone.xml in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE9414F9F3D8007F9146 /* world_mesh_Cone.xml */; };
-		D98DBEBA14F9F3D8007F9146 /* world_mesh_Cone.vb in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE9514F9F3D8007F9146 /* world_mesh_Cone.vb */; };
-		D98DBEBB14F9F3D8007F9146 /* world_mesh_Cone.ib in Resources */ = {isa = PBXBuildFile; fileRef = D98DBE9614F9F3D8007F9146 /* world_mesh_Cone.ib */; };
 		D98DC06014FA1136007F9146 /* system.solid.vs.2.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D98DC05D14FA1136007F9146 /* system.solid.vs.2.vsh */; };
 		D98DC06114FA1136007F9146 /* system.solid.ps.2.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D98DC05E14FA1136007F9146 /* system.solid.ps.2.fsh */; };
 		D98DC06214FA1136007F9146 /* system.solid.fx.2.xml in Resources */ = {isa = PBXBuildFile; fileRef = D98DC05F14FA1136007F9146 /* system.solid.fx.2.xml */; };
@@ -332,6 +296,19 @@
 		D99F8F2B14F3987100DEB549 /* btGjkEpa2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D99F8F2A14F3987100DEB549 /* btGjkEpa2.cpp */; };
 		D99F8FC314F4641A00DEB549 /* ed3_physics_shape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D99F8FC214F4641A00DEB549 /* ed3_physics_shape.cpp */; };
 		D99F8FD214F4DCE800DEB549 /* ed3_physics_shapes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D99F8FD114F4DCE800DEB549 /* ed3_physics_shapes.cpp */; };
+		D9BCA34C14FCB764002ACED7 /* world_bricks2.png in Resources */ = {isa = PBXBuildFile; fileRef = D9BCA34014FCB764002ACED7 /* world_bricks2.png */; };
+		D9BCA34D14FCB764002ACED7 /* world_mesh_mesh.celling.ib in Resources */ = {isa = PBXBuildFile; fileRef = D9BCA34114FCB764002ACED7 /* world_mesh_mesh.celling.ib */; };
+		D9BCA34E14FCB764002ACED7 /* world_mesh_mesh.celling.vb in Resources */ = {isa = PBXBuildFile; fileRef = D9BCA34214FCB764002ACED7 /* world_mesh_mesh.celling.vb */; };
+		D9BCA34F14FCB764002ACED7 /* world_mesh_mesh.celling.xml in Resources */ = {isa = PBXBuildFile; fileRef = D9BCA34314FCB764002ACED7 /* world_mesh_mesh.celling.xml */; };
+		D9BCA35014FCB764002ACED7 /* world_mesh_mesh.ground.ib in Resources */ = {isa = PBXBuildFile; fileRef = D9BCA34414FCB764002ACED7 /* world_mesh_mesh.ground.ib */; };
+		D9BCA35114FCB764002ACED7 /* world_mesh_mesh.ground.vb in Resources */ = {isa = PBXBuildFile; fileRef = D9BCA34514FCB764002ACED7 /* world_mesh_mesh.ground.vb */; };
+		D9BCA35214FCB764002ACED7 /* world_mesh_mesh.ground.xml in Resources */ = {isa = PBXBuildFile; fileRef = D9BCA34614FCB764002ACED7 /* world_mesh_mesh.ground.xml */; };
+		D9BCA35314FCB764002ACED7 /* world_mesh_mesh.wall.ib in Resources */ = {isa = PBXBuildFile; fileRef = D9BCA34714FCB764002ACED7 /* world_mesh_mesh.wall.ib */; };
+		D9BCA35414FCB764002ACED7 /* world_mesh_mesh.wall.vb in Resources */ = {isa = PBXBuildFile; fileRef = D9BCA34814FCB764002ACED7 /* world_mesh_mesh.wall.vb */; };
+		D9BCA35514FCB764002ACED7 /* world_mesh_mesh.wall.xml in Resources */ = {isa = PBXBuildFile; fileRef = D9BCA34914FCB764002ACED7 /* world_mesh_mesh.wall.xml */; };
+		D9BCA35614FCB764002ACED7 /* world_planks.png in Resources */ = {isa = PBXBuildFile; fileRef = D9BCA34A14FCB764002ACED7 /* world_planks.png */; };
+		D9BCA35714FCB764002ACED7 /* world_sand1.png in Resources */ = {isa = PBXBuildFile; fileRef = D9BCA34B14FCB764002ACED7 /* world_sand1.png */; };
+		D9BCA41814FCE222002ACED7 /* world.lua in Resources */ = {isa = PBXBuildFile; fileRef = D9BCA41714FCE222002ACED7 /* world.lua */; };
 		D9D9B08414F7A89C00087F6B /* rd3_material_solid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9D9B08314F7A89C00087F6B /* rd3_material_solid.cpp */; };
 		D9D9B09214F7AC4D00087F6B /* system.solid.vs.1.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D9D9B08F14F7AC4D00087F6B /* system.solid.vs.1.vsh */; };
 		D9D9B09314F7AC4D00087F6B /* system.solid.ps.1.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D9D9B09014F7AC4D00087F6B /* system.solid.ps.1.fsh */; };
@@ -653,42 +630,6 @@
 		D98536A314F36A7E00E3AADD /* system.after.effect.color.fx.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = system.after.effect.color.fx.xml; path = ../../render3d/cpp/eagl/fx/system.after.effect.color.fx.xml; sourceTree = SOURCE_ROOT; };
 		D98536A414F36A7E00E3AADD /* system.after.effect.color.ps.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.after.effect.color.ps.fsh; path = ../../render3d/cpp/eagl/fx/system.after.effect.color.ps.fsh; sourceTree = SOURCE_ROOT; };
 		D98DBE7214F9F3D8007F9146 /* world.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = world.xml; path = world/world.xml; sourceTree = "<group>"; };
-		D98DBE7314F9F3D8007F9146 /* world_mesh_Plane.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = world_mesh_Plane.xml; path = world/world_mesh_Plane.xml; sourceTree = "<group>"; };
-		D98DBE7414F9F3D8007F9146 /* world_mesh_Plane.vb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = world_mesh_Plane.vb; path = world/world_mesh_Plane.vb; sourceTree = "<group>"; };
-		D98DBE7514F9F3D8007F9146 /* world_mesh_Plane.ib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = world_mesh_Plane.ib; path = world/world_mesh_Plane.ib; sourceTree = "<group>"; };
-		D98DBE7614F9F3D8007F9146 /* world_mesh_Plane.004.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = world_mesh_Plane.004.xml; path = world/world_mesh_Plane.004.xml; sourceTree = "<group>"; };
-		D98DBE7714F9F3D8007F9146 /* world_mesh_Plane.004.vb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = world_mesh_Plane.004.vb; path = world/world_mesh_Plane.004.vb; sourceTree = "<group>"; };
-		D98DBE7814F9F3D8007F9146 /* world_mesh_Plane.004.ib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = world_mesh_Plane.004.ib; path = world/world_mesh_Plane.004.ib; sourceTree = "<group>"; };
-		D98DBE7914F9F3D8007F9146 /* world_mesh_Plane.003.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = world_mesh_Plane.003.xml; path = world/world_mesh_Plane.003.xml; sourceTree = "<group>"; };
-		D98DBE7A14F9F3D8007F9146 /* world_mesh_Plane.003.vb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = world_mesh_Plane.003.vb; path = world/world_mesh_Plane.003.vb; sourceTree = "<group>"; };
-		D98DBE7B14F9F3D8007F9146 /* world_mesh_Plane.003.ib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = world_mesh_Plane.003.ib; path = world/world_mesh_Plane.003.ib; sourceTree = "<group>"; };
-		D98DBE7C14F9F3D8007F9146 /* world_mesh_Plane.002.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = world_mesh_Plane.002.xml; path = world/world_mesh_Plane.002.xml; sourceTree = "<group>"; };
-		D98DBE7D14F9F3D8007F9146 /* world_mesh_Plane.002.vb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = world_mesh_Plane.002.vb; path = world/world_mesh_Plane.002.vb; sourceTree = "<group>"; };
-		D98DBE7E14F9F3D8007F9146 /* world_mesh_Plane.002.ib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = world_mesh_Plane.002.ib; path = world/world_mesh_Plane.002.ib; sourceTree = "<group>"; };
-		D98DBE7F14F9F3D8007F9146 /* world_mesh_Plane.001.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = world_mesh_Plane.001.xml; path = world/world_mesh_Plane.001.xml; sourceTree = "<group>"; };
-		D98DBE8014F9F3D8007F9146 /* world_mesh_Plane.001.vb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = world_mesh_Plane.001.vb; path = world/world_mesh_Plane.001.vb; sourceTree = "<group>"; };
-		D98DBE8114F9F3D8007F9146 /* world_mesh_Plane.001.ib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = world_mesh_Plane.001.ib; path = world/world_mesh_Plane.001.ib; sourceTree = "<group>"; };
-		D98DBE8214F9F3D8007F9146 /* world_mesh_Monkey.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = world_mesh_Monkey.xml; path = world/world_mesh_Monkey.xml; sourceTree = "<group>"; };
-		D98DBE8314F9F3D8007F9146 /* world_mesh_Monkey.vb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = world_mesh_Monkey.vb; path = world/world_mesh_Monkey.vb; sourceTree = "<group>"; };
-		D98DBE8414F9F3D8007F9146 /* world_mesh_Monkey.ib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = world_mesh_Monkey.ib; path = world/world_mesh_Monkey.ib; sourceTree = "<group>"; };
-		D98DBE8514F9F3D8007F9146 /* world_mesh_Cube.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = world_mesh_Cube.xml; path = world/world_mesh_Cube.xml; sourceTree = "<group>"; };
-		D98DBE8614F9F3D8007F9146 /* world_mesh_Cube.vb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = world_mesh_Cube.vb; path = world/world_mesh_Cube.vb; sourceTree = "<group>"; };
-		D98DBE8714F9F3D8007F9146 /* world_mesh_Cube.ib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = world_mesh_Cube.ib; path = world/world_mesh_Cube.ib; sourceTree = "<group>"; };
-		D98DBE8814F9F3D8007F9146 /* world_mesh_Cube.004.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = world_mesh_Cube.004.xml; path = world/world_mesh_Cube.004.xml; sourceTree = "<group>"; };
-		D98DBE8914F9F3D8007F9146 /* world_mesh_Cube.004.vb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = world_mesh_Cube.004.vb; path = world/world_mesh_Cube.004.vb; sourceTree = "<group>"; };
-		D98DBE8A14F9F3D8007F9146 /* world_mesh_Cube.004.ib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = world_mesh_Cube.004.ib; path = world/world_mesh_Cube.004.ib; sourceTree = "<group>"; };
-		D98DBE8B14F9F3D8007F9146 /* world_mesh_Cube.003.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = world_mesh_Cube.003.xml; path = world/world_mesh_Cube.003.xml; sourceTree = "<group>"; };
-		D98DBE8C14F9F3D8007F9146 /* world_mesh_Cube.003.vb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = world_mesh_Cube.003.vb; path = world/world_mesh_Cube.003.vb; sourceTree = "<group>"; };
-		D98DBE8D14F9F3D8007F9146 /* world_mesh_Cube.003.ib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = world_mesh_Cube.003.ib; path = world/world_mesh_Cube.003.ib; sourceTree = "<group>"; };
-		D98DBE8E14F9F3D8007F9146 /* world_mesh_Cube.002.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = world_mesh_Cube.002.xml; path = world/world_mesh_Cube.002.xml; sourceTree = "<group>"; };
-		D98DBE8F14F9F3D8007F9146 /* world_mesh_Cube.002.vb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = world_mesh_Cube.002.vb; path = world/world_mesh_Cube.002.vb; sourceTree = "<group>"; };
-		D98DBE9014F9F3D8007F9146 /* world_mesh_Cube.002.ib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = world_mesh_Cube.002.ib; path = world/world_mesh_Cube.002.ib; sourceTree = "<group>"; };
-		D98DBE9114F9F3D8007F9146 /* world_mesh_Cube.001.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = world_mesh_Cube.001.xml; path = world/world_mesh_Cube.001.xml; sourceTree = "<group>"; };
-		D98DBE9214F9F3D8007F9146 /* world_mesh_Cube.001.vb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = world_mesh_Cube.001.vb; path = world/world_mesh_Cube.001.vb; sourceTree = "<group>"; };
-		D98DBE9314F9F3D8007F9146 /* world_mesh_Cube.001.ib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = world_mesh_Cube.001.ib; path = world/world_mesh_Cube.001.ib; sourceTree = "<group>"; };
-		D98DBE9414F9F3D8007F9146 /* world_mesh_Cone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = world_mesh_Cone.xml; path = world/world_mesh_Cone.xml; sourceTree = "<group>"; };
-		D98DBE9514F9F3D8007F9146 /* world_mesh_Cone.vb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = world_mesh_Cone.vb; path = world/world_mesh_Cone.vb; sourceTree = "<group>"; };
-		D98DBE9614F9F3D8007F9146 /* world_mesh_Cone.ib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = world_mesh_Cone.ib; path = world/world_mesh_Cone.ib; sourceTree = "<group>"; };
 		D98DC05D14FA1136007F9146 /* system.solid.vs.2.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.solid.vs.2.vsh; path = ../../render3d/cpp/eagl/fx/system.solid.vs.2.vsh; sourceTree = SOURCE_ROOT; };
 		D98DC05E14FA1136007F9146 /* system.solid.ps.2.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.solid.ps.2.fsh; path = ../../render3d/cpp/eagl/fx/system.solid.ps.2.fsh; sourceTree = SOURCE_ROOT; };
 		D98DC05F14FA1136007F9146 /* system.solid.fx.2.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = system.solid.fx.2.xml; path = ../../render3d/cpp/eagl/fx/system.solid.fx.2.xml; sourceTree = SOURCE_ROOT; };
@@ -856,6 +797,19 @@
 		D99F8FC214F4641A00DEB549 /* ed3_physics_shape.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_physics_shape.cpp; path = ../../engine3d/cpp/ed3_physics_shape.cpp; sourceTree = SOURCE_ROOT; };
 		D99F8FD014F4DC6C00DEB549 /* ed3_physics_shapes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ed3_physics_shapes.h; path = ../../engine3d/include/ed3_physics_shapes.h; sourceTree = SOURCE_ROOT; };
 		D99F8FD114F4DCE800DEB549 /* ed3_physics_shapes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_physics_shapes.cpp; path = ../../engine3d/cpp/ed3_physics_shapes.cpp; sourceTree = SOURCE_ROOT; };
+		D9BCA34014FCB764002ACED7 /* world_bricks2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = world_bricks2.png; path = world/world_bricks2.png; sourceTree = "<group>"; };
+		D9BCA34114FCB764002ACED7 /* world_mesh_mesh.celling.ib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = world_mesh_mesh.celling.ib; path = world/world_mesh_mesh.celling.ib; sourceTree = "<group>"; };
+		D9BCA34214FCB764002ACED7 /* world_mesh_mesh.celling.vb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = world_mesh_mesh.celling.vb; path = world/world_mesh_mesh.celling.vb; sourceTree = "<group>"; };
+		D9BCA34314FCB764002ACED7 /* world_mesh_mesh.celling.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = world_mesh_mesh.celling.xml; path = world/world_mesh_mesh.celling.xml; sourceTree = "<group>"; };
+		D9BCA34414FCB764002ACED7 /* world_mesh_mesh.ground.ib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = world_mesh_mesh.ground.ib; path = world/world_mesh_mesh.ground.ib; sourceTree = "<group>"; };
+		D9BCA34514FCB764002ACED7 /* world_mesh_mesh.ground.vb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = world_mesh_mesh.ground.vb; path = world/world_mesh_mesh.ground.vb; sourceTree = "<group>"; };
+		D9BCA34614FCB764002ACED7 /* world_mesh_mesh.ground.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = world_mesh_mesh.ground.xml; path = world/world_mesh_mesh.ground.xml; sourceTree = "<group>"; };
+		D9BCA34714FCB764002ACED7 /* world_mesh_mesh.wall.ib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = world_mesh_mesh.wall.ib; path = world/world_mesh_mesh.wall.ib; sourceTree = "<group>"; };
+		D9BCA34814FCB764002ACED7 /* world_mesh_mesh.wall.vb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = world_mesh_mesh.wall.vb; path = world/world_mesh_mesh.wall.vb; sourceTree = "<group>"; };
+		D9BCA34914FCB764002ACED7 /* world_mesh_mesh.wall.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = world_mesh_mesh.wall.xml; path = world/world_mesh_mesh.wall.xml; sourceTree = "<group>"; };
+		D9BCA34A14FCB764002ACED7 /* world_planks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = world_planks.png; path = world/world_planks.png; sourceTree = "<group>"; };
+		D9BCA34B14FCB764002ACED7 /* world_sand1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = world_sand1.png; path = world/world_sand1.png; sourceTree = "<group>"; };
+		D9BCA41714FCE222002ACED7 /* world.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = world.lua; path = world/scripts/world.lua; sourceTree = "<group>"; };
 		D9D9B08314F7A89C00087F6B /* rd3_material_solid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rd3_material_solid.cpp; path = ../../render3d/cpp/rd3_material_solid.cpp; sourceTree = SOURCE_ROOT; };
 		D9D9B08514F7A8B400087F6B /* rd3_material_solid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rd3_material_solid.h; path = ../../render3d/include/rd3_material_solid.h; sourceTree = SOURCE_ROOT; };
 		D9D9B08F14F7AC4D00087F6B /* system.solid.vs.1.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.solid.vs.1.vsh; path = ../../render3d/cpp/eagl/fx/system.solid.vs.1.vsh; sourceTree = SOURCE_ROOT; };
@@ -1534,43 +1488,20 @@
 		D93D5B9F14ECD025003FC949 /* world */ = {
 			isa = PBXGroup;
 			children = (
+				D9BCA41714FCE222002ACED7 /* world.lua */,
+				D9BCA34014FCB764002ACED7 /* world_bricks2.png */,
+				D9BCA34114FCB764002ACED7 /* world_mesh_mesh.celling.ib */,
+				D9BCA34214FCB764002ACED7 /* world_mesh_mesh.celling.vb */,
+				D9BCA34314FCB764002ACED7 /* world_mesh_mesh.celling.xml */,
+				D9BCA34414FCB764002ACED7 /* world_mesh_mesh.ground.ib */,
+				D9BCA34514FCB764002ACED7 /* world_mesh_mesh.ground.vb */,
+				D9BCA34614FCB764002ACED7 /* world_mesh_mesh.ground.xml */,
+				D9BCA34714FCB764002ACED7 /* world_mesh_mesh.wall.ib */,
+				D9BCA34814FCB764002ACED7 /* world_mesh_mesh.wall.vb */,
+				D9BCA34914FCB764002ACED7 /* world_mesh_mesh.wall.xml */,
+				D9BCA34A14FCB764002ACED7 /* world_planks.png */,
+				D9BCA34B14FCB764002ACED7 /* world_sand1.png */,
 				D98DBE7214F9F3D8007F9146 /* world.xml */,
-				D98DBE7314F9F3D8007F9146 /* world_mesh_Plane.xml */,
-				D98DBE7414F9F3D8007F9146 /* world_mesh_Plane.vb */,
-				D98DBE7514F9F3D8007F9146 /* world_mesh_Plane.ib */,
-				D98DBE7614F9F3D8007F9146 /* world_mesh_Plane.004.xml */,
-				D98DBE7714F9F3D8007F9146 /* world_mesh_Plane.004.vb */,
-				D98DBE7814F9F3D8007F9146 /* world_mesh_Plane.004.ib */,
-				D98DBE7914F9F3D8007F9146 /* world_mesh_Plane.003.xml */,
-				D98DBE7A14F9F3D8007F9146 /* world_mesh_Plane.003.vb */,
-				D98DBE7B14F9F3D8007F9146 /* world_mesh_Plane.003.ib */,
-				D98DBE7C14F9F3D8007F9146 /* world_mesh_Plane.002.xml */,
-				D98DBE7D14F9F3D8007F9146 /* world_mesh_Plane.002.vb */,
-				D98DBE7E14F9F3D8007F9146 /* world_mesh_Plane.002.ib */,
-				D98DBE7F14F9F3D8007F9146 /* world_mesh_Plane.001.xml */,
-				D98DBE8014F9F3D8007F9146 /* world_mesh_Plane.001.vb */,
-				D98DBE8114F9F3D8007F9146 /* world_mesh_Plane.001.ib */,
-				D98DBE8214F9F3D8007F9146 /* world_mesh_Monkey.xml */,
-				D98DBE8314F9F3D8007F9146 /* world_mesh_Monkey.vb */,
-				D98DBE8414F9F3D8007F9146 /* world_mesh_Monkey.ib */,
-				D98DBE8514F9F3D8007F9146 /* world_mesh_Cube.xml */,
-				D98DBE8614F9F3D8007F9146 /* world_mesh_Cube.vb */,
-				D98DBE8714F9F3D8007F9146 /* world_mesh_Cube.ib */,
-				D98DBE8814F9F3D8007F9146 /* world_mesh_Cube.004.xml */,
-				D98DBE8914F9F3D8007F9146 /* world_mesh_Cube.004.vb */,
-				D98DBE8A14F9F3D8007F9146 /* world_mesh_Cube.004.ib */,
-				D98DBE8B14F9F3D8007F9146 /* world_mesh_Cube.003.xml */,
-				D98DBE8C14F9F3D8007F9146 /* world_mesh_Cube.003.vb */,
-				D98DBE8D14F9F3D8007F9146 /* world_mesh_Cube.003.ib */,
-				D98DBE8E14F9F3D8007F9146 /* world_mesh_Cube.002.xml */,
-				D98DBE8F14F9F3D8007F9146 /* world_mesh_Cube.002.vb */,
-				D98DBE9014F9F3D8007F9146 /* world_mesh_Cube.002.ib */,
-				D98DBE9114F9F3D8007F9146 /* world_mesh_Cube.001.xml */,
-				D98DBE9214F9F3D8007F9146 /* world_mesh_Cube.001.vb */,
-				D98DBE9314F9F3D8007F9146 /* world_mesh_Cube.001.ib */,
-				D98DBE9414F9F3D8007F9146 /* world_mesh_Cone.xml */,
-				D98DBE9514F9F3D8007F9146 /* world_mesh_Cone.vb */,
-				D98DBE9614F9F3D8007F9146 /* world_mesh_Cone.ib */,
 			);
 			name = world;
 			sourceTree = "<group>";
@@ -1598,9 +1529,9 @@
 			isa = PBXGroup;
 			children = (
 				D91D01DD14ECC33000CEFA96 /* eagl_vertexbuffer.h */,
+				D91D01D814ECC33000CEFA96 /* eagl_indexbuffer.h */,
 				D91D01E314ECC34C00CEFA96 /* eagl_indexbuffer.cpp */,
 				D91D01E714ECC34C00CEFA96 /* eagl_vertexbuffer.cpp */,
-				D91D01D814ECC33000CEFA96 /* eagl_indexbuffer.h */,
 			);
 			name = buffers;
 			sourceTree = "<group>";
@@ -1770,14 +1701,14 @@
 		D99923BE14EF5997003FC6A7 /* base */ = {
 			isa = PBXGroup;
 			children = (
+				D91D022014ECC48C00CEFA96 /* ed3_world.h */,
 				D91D021A14ECC48C00CEFA96 /* ed3_object.h */,
-				D97DE81C14EF7CF300E062CF /* ed3_object_lua.cpp */,
+				D91D021B14ECC48C00CEFA96 /* ed3_object.inl */,
 				D91D021114ECC48C00CEFA96 /* ed3_cont_object.h */,
+				D97DE81C14EF7CF300E062CF /* ed3_object_lua.cpp */,
 				D91D022D14ECC4A700CEFA96 /* ed3_object.cpp */,
 				D91D022414ECC4A700CEFA96 /* ed3_cont_object.cpp */,
-				D91D022014ECC48C00CEFA96 /* ed3_world.h */,
 				D91D023114ECC4A700CEFA96 /* ed3_world.cpp */,
-				D91D021B14ECC48C00CEFA96 /* ed3_object.inl */,
 			);
 			name = base;
 			sourceTree = "<group>";
@@ -2095,43 +2026,20 @@
 				D98536A514F36A7E00E3AADD /* system.after.effect.color.fx.xml in Resources */,
 				D9D9B09414F7AC4D00087F6B /* system.solid.fx.1.xml in Resources */,
 				D98DBE9714F9F3D8007F9146 /* world.xml in Resources */,
-				D98DBE9814F9F3D8007F9146 /* world_mesh_Plane.xml in Resources */,
-				D98DBE9914F9F3D8007F9146 /* world_mesh_Plane.vb in Resources */,
-				D98DBE9A14F9F3D8007F9146 /* world_mesh_Plane.ib in Resources */,
-				D98DBE9B14F9F3D8007F9146 /* world_mesh_Plane.004.xml in Resources */,
-				D98DBE9C14F9F3D8007F9146 /* world_mesh_Plane.004.vb in Resources */,
-				D98DBE9D14F9F3D8007F9146 /* world_mesh_Plane.004.ib in Resources */,
-				D98DBE9E14F9F3D8007F9146 /* world_mesh_Plane.003.xml in Resources */,
-				D98DBE9F14F9F3D8007F9146 /* world_mesh_Plane.003.vb in Resources */,
-				D98DBEA014F9F3D8007F9146 /* world_mesh_Plane.003.ib in Resources */,
-				D98DBEA114F9F3D8007F9146 /* world_mesh_Plane.002.xml in Resources */,
-				D98DBEA214F9F3D8007F9146 /* world_mesh_Plane.002.vb in Resources */,
-				D98DBEA314F9F3D8007F9146 /* world_mesh_Plane.002.ib in Resources */,
-				D98DBEA414F9F3D8007F9146 /* world_mesh_Plane.001.xml in Resources */,
-				D98DBEA514F9F3D8007F9146 /* world_mesh_Plane.001.vb in Resources */,
-				D98DBEA614F9F3D8007F9146 /* world_mesh_Plane.001.ib in Resources */,
-				D98DBEA714F9F3D8007F9146 /* world_mesh_Monkey.xml in Resources */,
-				D98DBEA814F9F3D8007F9146 /* world_mesh_Monkey.vb in Resources */,
-				D98DBEA914F9F3D8007F9146 /* world_mesh_Monkey.ib in Resources */,
-				D98DBEAA14F9F3D8007F9146 /* world_mesh_Cube.xml in Resources */,
-				D98DBEAB14F9F3D8007F9146 /* world_mesh_Cube.vb in Resources */,
-				D98DBEAC14F9F3D8007F9146 /* world_mesh_Cube.ib in Resources */,
-				D98DBEAD14F9F3D8007F9146 /* world_mesh_Cube.004.xml in Resources */,
-				D98DBEAE14F9F3D8007F9146 /* world_mesh_Cube.004.vb in Resources */,
-				D98DBEAF14F9F3D8007F9146 /* world_mesh_Cube.004.ib in Resources */,
-				D98DBEB014F9F3D8007F9146 /* world_mesh_Cube.003.xml in Resources */,
-				D98DBEB114F9F3D8007F9146 /* world_mesh_Cube.003.vb in Resources */,
-				D98DBEB214F9F3D8007F9146 /* world_mesh_Cube.003.ib in Resources */,
-				D98DBEB314F9F3D8007F9146 /* world_mesh_Cube.002.xml in Resources */,
-				D98DBEB414F9F3D8007F9146 /* world_mesh_Cube.002.vb in Resources */,
-				D98DBEB514F9F3D8007F9146 /* world_mesh_Cube.002.ib in Resources */,
-				D98DBEB614F9F3D8007F9146 /* world_mesh_Cube.001.xml in Resources */,
-				D98DBEB714F9F3D8007F9146 /* world_mesh_Cube.001.vb in Resources */,
-				D98DBEB814F9F3D8007F9146 /* world_mesh_Cube.001.ib in Resources */,
-				D98DBEB914F9F3D8007F9146 /* world_mesh_Cone.xml in Resources */,
-				D98DBEBA14F9F3D8007F9146 /* world_mesh_Cone.vb in Resources */,
-				D98DBEBB14F9F3D8007F9146 /* world_mesh_Cone.ib in Resources */,
 				D98DC06214FA1136007F9146 /* system.solid.fx.2.xml in Resources */,
+				D9BCA34C14FCB764002ACED7 /* world_bricks2.png in Resources */,
+				D9BCA34D14FCB764002ACED7 /* world_mesh_mesh.celling.ib in Resources */,
+				D9BCA34E14FCB764002ACED7 /* world_mesh_mesh.celling.vb in Resources */,
+				D9BCA34F14FCB764002ACED7 /* world_mesh_mesh.celling.xml in Resources */,
+				D9BCA35014FCB764002ACED7 /* world_mesh_mesh.ground.ib in Resources */,
+				D9BCA35114FCB764002ACED7 /* world_mesh_mesh.ground.vb in Resources */,
+				D9BCA35214FCB764002ACED7 /* world_mesh_mesh.ground.xml in Resources */,
+				D9BCA35314FCB764002ACED7 /* world_mesh_mesh.wall.ib in Resources */,
+				D9BCA35414FCB764002ACED7 /* world_mesh_mesh.wall.vb in Resources */,
+				D9BCA35514FCB764002ACED7 /* world_mesh_mesh.wall.xml in Resources */,
+				D9BCA35614FCB764002ACED7 /* world_planks.png in Resources */,
+				D9BCA35714FCB764002ACED7 /* world_sand1.png in Resources */,
+				D9BCA41814FCE222002ACED7 /* world.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

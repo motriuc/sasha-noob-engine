@@ -54,6 +54,11 @@ protected:
 	/**
 	 *
 	 */
+	virtual void ComputeBoundingBox( d3AABBox& b );
+	
+	/**
+	 *
+	 */
 	virtual void LoadFromXML( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error;	
 private:
 	Rd3::use_resource<Rd3::Mesh>	_mesh;

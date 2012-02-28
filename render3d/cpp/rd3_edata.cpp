@@ -24,18 +24,21 @@ COUNTER_USE( rd3_render_time_frame )
 COUNTER_USE( rd3_render_time_draw )
 COUNTER_USE( rd3_render_time_lua )
 COUNTER_USE( rd3_render_time_physics )
+COUNTER_USE( rd3_render_object_total )
+COUNTER_USE( rd3_render_object_visible )
 
 //----------------------------------------------------------------------
 static void ResetFrameCounters()
 {
 	COUNTER_INT_SET( rd3_render_vertex_count, 0 )
 	COUNTER_INT_SET( rd3_render_primitive_count, 0 );
+	COUNTER_INT_SET( rd3_render_object_total, 0 );
+	COUNTER_INT_SET( rd3_render_object_visible, 0 );
 	
 	COUNTER_TIME_RESET( rd3_render_time_frame );
 	COUNTER_TIME_RESET( rd3_render_time_draw );
 	COUNTER_TIME_RESET( rd3_render_time_lua );
 	COUNTER_TIME_RESET( rd3_render_time_physics );
-	
 	COUNTER_TIME_START( rd3_render_time_frame );
 }
 //----------------------------------------------------------------------

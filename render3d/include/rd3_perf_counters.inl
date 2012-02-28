@@ -1,12 +1,12 @@
 ////////////////////////////////////////////////////////////////////////
-//	File Name          : rd3_perf_counters.inl
-//	Created            : 20 1 2012   23:04
+//  File Name          : rd3_perf_counters.inl
+//  Created            : 20 1 2012   23:04
 //  Author             : Alexandru Motriuc  
-//	File Path          : SLibF\render3d\include
+//  File Path          : SLibF\render3d\include
 //  System independent : 0%
 //  Library            : 
 //
-//	Purpose:	
+//  Purpose:	
 //    
 //
 /////////////////////////////////////////////////////////////////////////

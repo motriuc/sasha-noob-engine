@@ -52,6 +52,41 @@ void EAGLVertexBuffer::GetDiffuseColor( Rd3::VertexCList& colors ) const
 }
 
 //--------------------------------------------------------------------------------------------
+void EAGLVertexBuffer::ComputeBoundingBox( d3AABBox& bbox ) const
+{
+	bbox = d3AABBox::GetEmpty();
+	
+	if( _listPoints != NULL )
+	{	
+		GLfloat* v = _listPoints;
+		for( sInt i = 0; i < _vertexCount; ++i )
+		{
+			bbox.Add( d3Vector( v[0], v[1], v[2] ) );
+			v += 3;
+		}
+	}
+}
+
+//--------------------------------------------------------------------------------------------
+void EAGLVertexBuffer::ComputeBoundingBox( d3AABBox& bbox, const d3Matrix& tran ) const
+{
+	bbox = d3AABBox::GetEmpty();
+	
+	if( _listPoints != NULL )
+	{	
+		GLfloat* v = _listPoints;
+		for( sInt i = 0; i < _vertexCount; ++i )
+		{
+			d3Vector pos = d3Vector( v[0], v[1], v[2] );
+			d3Vector::Mul( pos, pos, tran );
+			
+			bbox.Add( pos );
+			v += 3;
+		}
+	}	
+}
+
+//--------------------------------------------------------------------------------------------
 void EAGLVertexBuffer::SetAttributes( const sInt* attributesId ) const
 {
 	if( _listPoints != NULL )

@@ -29,6 +29,9 @@
 
 namespace Rd3
 {
+
+using namespace System::d3Math;
+	
 /**
  *
  */
@@ -67,6 +70,15 @@ public:
 	 */
 	virtual void GetDiffuseColor( VertexCList& colors ) const = 0;
 	
+	/**
+	 * 
+	 */
+	virtual void ComputeBoundingBox( d3AABBox& bbox ) const = 0;
+	
+	/**
+	 *
+	 */
+	virtual void ComputeBoundingBox( d3AABBox& bbox, const d3Matrix& tran ) const = 0;
 	
 	~VertexBuffer();
 

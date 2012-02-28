@@ -20,13 +20,10 @@
 #include "ed3_object.h"
 #include "ed3_edata.h"
 #include "rd3_perf_counters.h"
+#include "ed3_world.h"
 
 #define LUA_FUNCTION_AI				_S("d3Object_AI")
 #define LUA_FUNCTION_INIT			_S("d3Object_Init")
-#define LUA_OBJ						_S("self")
-
-#define LUA_STATIC					_S("hobj")
-
 
 //--------------------------------------------------------------------------------------------------------
 COUNTER_USE( rd3_render_time_lua )
@@ -94,6 +91,7 @@ static int d3Object_RotateY( const LuaFunctionState* s )
 	return 0;
 }
 
+
 //--------------------------------------------------------------------------------------------------------
 static int d3Object_RotateZ( const LuaFunctionState* s )
 {
@@ -113,13 +111,110 @@ static int d3Object_RotateZ( const LuaFunctionState* s )
 }
 	
 //--------------------------------------------------------------------------------------------------------
+static int d3World_CameraMove( const LuaFunctionState* s )
+{
+	d3Object* me = reinterpret_cast<d3Object*> ( s->Me() );
+	
+	if( me != NULL )
+	{
+		d3World* world = me->GetWorld();
+		if( world != NULL )
+		{
+			d3Float dx = s->GetValue( 0, 0.0f );
+			d3Float dy = s->GetValue( 1, 0.0f );
+			d3Float dz = s->GetValue( 2, 0.0f );
+			
+			world->GetCamera().Move( d3Vector( dx, dy, dz ) );
+		}
+	}
+	
+	return 0;
+}
+//--------------------------------------------------------------------------------------------------------
+static int d3World_CameraMoveForward( const LuaFunctionState* s )
+{
+	d3Object* me = reinterpret_cast<d3Object*> ( s->Me() );
+		
+	if( me != NULL )
+	{
+		d3World* world = me->GetWorld();
+		if( world != NULL )
+		{
+			d3Float distance = s->GetValue( 0, 0.0f );
+				
+			world->GetCamera().MoveForward( distance );
+		}
+	}
+		
+	return 0;
+}
+
+//--------------------------------------------------------------------------------------------------------
+static int d3World_CameraMoveUp( const LuaFunctionState* s )
+{
+	d3Object* me = reinterpret_cast<d3Object*> ( s->Me() );
+		
+	if( me != NULL )
+	{
+		d3World* world = me->GetWorld();
+		if( world != NULL )
+		{
+			d3Float distance = s->GetValue( 0, 0.0f );
+				
+			world->GetCamera().MoveUp( distance );
+		}
+	}
+		
+	return 0;
+}
+	
+//--------------------------------------------------------------------------------------------------------
+static int d3World_AfterEffect_SetParam( const LuaFunctionState* s )
+{
+	d3Object* me = reinterpret_cast<d3Object*> ( s->Me() );
+	
+	if( me == NULL )
+		return 0;
+	
+	d3World* world = me->GetWorld();
+		
+	if( world != NULL )
+	{
+		Rd3::AfterEffect* effect = world->GetAfterEffect();
+			
+		if( effect != NULL )
+		{
+			sInt i = s->GetValue( 0, -1 );
+			sString name = s->GetValue( 1, _S("") );
+			d3Float v = s->GetValue( 2, 0.0f );
+				
+			if( i >= 0 && i < effect->ElementCount() )
+			{
+				effect->GetElement( i ).SetParam( name, v );
+			}
+		}
+	}
+		
+	return 0;
+}
+	
+//--------------------------------------------------------------------------------------------------------
 void d3Object::InitLuaFunctions()
 {	
 	_luaObject.RegisterMathLib();
-	_luaObject.Register( LUA_OBJ, _S("RotateX"), d3Object_RotateX );
-	_luaObject.Register( LUA_OBJ, _S("RotateY"), d3Object_RotateY );
-	_luaObject.Register( LUA_OBJ, _S("RotateZ"), d3Object_RotateZ );
-	_luaObject.Register( LUA_OBJ, _S("Move"), d3Object_Move );
+	_luaObject.Register( _S("self"), _S("RotateX"), d3Object_RotateX );
+	_luaObject.Register( _S("self"), _S("RotateY"), d3Object_RotateY );
+	_luaObject.Register( _S("self"), _S("RotateZ"), d3Object_RotateZ );
+	_luaObject.Register( _S("self"), _S("Move"),    d3Object_Move );
+	
+	// regirster world camera functions
+	_luaObject.Register( _S("world.camera"), _S("Move"),		d3World_CameraMove );
+	_luaObject.Register( _S("world.camera"), _S("MoveForward"),	d3World_CameraMoveForward );
+	_luaObject.Register( _S("world.camera"), _S("MoveUp"),		d3World_CameraMoveUp );
+	
+	//
+	_luaObject.Register( _S("render.afterEffect"), _S("SetParam"), d3World_AfterEffect_SetParam );			
+	
 }
 	
 //--------------------------------------------------------------------------------------------------------

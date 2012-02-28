@@ -86,6 +86,7 @@ public:
 	 */
 	void Register( const SBCHAR* funName, LuaFunction fn );
 	void Register( const SBCHAR* table, const SBCHAR* funName, LuaFunction fn );
+	void Register( const SBCHAR* module, const SBCHAR* table, const SBCHAR* funName, LuaFunction fn );
 	
 	void RegisterMathLib();
 	

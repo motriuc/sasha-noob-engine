@@ -4,8 +4,8 @@ function d3Object_AI( dt )
 	totalTime = totalTime + dt
 	local v = ( 1.0 + math.sin( totalTime ) ) / 2.0
 	
-	self.SetAfterEffectParam( 0, 'level.r', v )
-	self.SetAfterEffectParam( 0, 'level.g', v )
+	render.afterEffect.SetParam( 0, 'level.r', v )
+	render.afterEffect.SetParam( 0, 'level.g', v )
 end
 
 -- this functon is called when the object is initialized

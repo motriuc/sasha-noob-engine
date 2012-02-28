@@ -113,6 +113,9 @@ LuaObject::~LuaObject()
 //------------------------------------------------------------------
 void LuaObject::Register( const SBCHAR* funName, LuaFunction fn )
 {	
+	__S_ASSERT( funName != NULL );
+	__S_ASSERT( fn != NULL );
+	
 	lua_State* state = reinterpret_cast<lua_State*>( _pLuaHandle );
 	
 	if( state != NULL )
@@ -128,6 +131,10 @@ void LuaObject::Register( const SBCHAR* funName, LuaFunction fn )
 //------------------------------------------------------------------
 void LuaObject::Register( const SBCHAR* table, const SBCHAR* funName, LuaFunction fn )
 {
+	__S_ASSERT( table != NULL );
+	__S_ASSERT( funName != NULL );
+	__S_ASSERT( fn != NULL );
+	
 	lua_State* state = reinterpret_cast<lua_State*>( _pLuaHandle );
 
 	if( state != NULL )
@@ -140,6 +147,16 @@ void LuaObject::Register( const SBCHAR* table, const SBCHAR* funName, LuaFunctio
 		
 		luaL_register( state, table, functions );
 	}
+}
+
+//------------------------------------------------------------------
+void LuaObject::Register( const SBCHAR* module, const SBCHAR* table, const SBCHAR* funName, LuaFunction fn )
+{
+	__S_ASSERT( module != NULL );
+	__S_ASSERT( table != NULL );
+	__S_ASSERT( funName != NULL );
+	__S_ASSERT( fn != NULL );
+	
 }
 	
 //------------------------------------------------------------------

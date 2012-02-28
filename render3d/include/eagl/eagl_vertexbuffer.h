@@ -118,6 +118,15 @@ public:
 	) throws_error;
 
 	/**
+	 *
+	 */
+	virtual void ComputeBoundingBox( d3AABBox& bbox ) const;
+	/**
+	 *
+	 */
+	virtual void ComputeBoundingBox( d3AABBox& bbox, const d3Matrix& tran ) const;
+	
+	/**
 	 * Sets vb to the attributes of the OpenGL pipeline
 	 */
 	 void SetAttributes( const sInt* attributesId ) const;

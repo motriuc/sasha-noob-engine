@@ -29,6 +29,8 @@ COUNTER_USE( rd3_render_time_frame )
 COUNTER_USE( rd3_render_time_draw )
 COUNTER_USE( rd3_render_time_lua )
 COUNTER_USE( rd3_render_time_physics )
+COUNTER_USE( rd3_render_object_total )
+COUNTER_USE( rd3_render_object_visible )
 
 namespace Rd3
 {
@@ -338,6 +340,15 @@ void WorldRenderState::debug_RenderStats()
 	
 	sString phs = _S("Physics %: ") + sString::DoubleToString( phProp );
 	_debugTextRender->RenderText( *this , phs, pos, RGBColor::White );
+
+	pos.y += _debugTextRender->RenderHeight();
+	
+	sString objs = _S("Objects : ") + 
+		sString::IntToString( COUNTER_INT_VALUE( rd3_render_object_visible ) ) +
+		_S("/") +
+		sString::IntToString( COUNTER_INT_VALUE( rd3_render_object_total ) );
+	
+	_debugTextRender->RenderText( *this , objs, pos, RGBColor::White );
 	
 	sString vbPrimCount = _S("Render Primitive count: ") + sString::IntToString( ivPrimCount );
 	pos.y += _debugTextRender->RenderHeight();

@@ -21,11 +21,15 @@
 #include "ed3_cont_object.h"
 #include "ed3_world.h"
 #include "rd3_light_sel.h"
+#include "rd3_perf_counters.h"
 
 #ifdef ED3_ENGINE_USE_PHYSICS
 	#include "ed3_physics_shape.h"
 	#include "ed3_physics_world.h"
 #endif
+
+COUNTER_USE( rd3_render_object_total )
+COUNTER_USE( rd3_render_object_visible )
 
 namespace Ed3 
 {
@@ -254,12 +258,15 @@ void d3Object::GetAbsoluteTransformationMatrix( d3Matrix& m ) const
 //--------------------------------------------------------------------------------------------------------
 void d3Object::DoRender( const d3RenderData& renderData )
 {
+	COUNTER_INT_INC( rd3_render_object_total, 1 );
+	
 	__S_ASSERT( _objectActionState == OBAS_IDLE );
 	
 	if( !renderData.RenderObject( _objectClass ) )
 		return;
 	
 	SetActionState( OBAS_RENDER );
+	
 	
 	d3Matrix renderMatrix;
 	const d3Matrix* swapMatrix = NULL;
@@ -302,7 +309,9 @@ void d3Object::DoRender( const d3RenderData& renderData )
 	if( bRender )
 	{
 		ApplyLights( renderData );
-		Render( renderData );		
+		Render( renderData );
+		
+		COUNTER_INT_INC( rd3_render_object_visible, 1 );
 	}
 	
 	if( swapMatrix != NULL )
@@ -310,6 +319,7 @@ void d3Object::DoRender( const d3RenderData& renderData )
 		// restore old render matrix
 		render.SetTransformation( swapMatrix );
 	}
+	
 	__S_ASSERT( _objectActionState == OBAS_RENDER );
 	SetActionState( OBAS_IDLE );
 }
@@ -322,17 +332,14 @@ d3Object::~d3Object()
 //--------------------------------------------------------------------------------------------------------
 d3World* d3Object::GetWorld()
 {
-	d3ObjectContiner* pParent = GetParent();
+	d3Object* obj = this;
 	
-	while( pParent != NULL )
+	while( obj != NULL && obj->GetType() != ObjectType::E_WORLD )
 	{
-		if( pParent->GetType() == ObjectType::E_WORLD )
-			return reinterpret_cast<d3World*>( pParent );
-		
-		pParent = pParent->GetParent();
+		obj = obj->GetParent();
 	}
 	
-	return NULL;
+	return reinterpret_cast<d3World*>( obj );
 }
 	
 }

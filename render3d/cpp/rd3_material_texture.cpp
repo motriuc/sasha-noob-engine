@@ -75,6 +75,13 @@ void TextureMaterial::LoadFromXml( const Xml::BaseDomNode& node, const Def& def 
 			SetTexture( child.GetAttributes()[ATTR_NAME] );
 		}
 	}
+	
+	if( _texture == NULL )
+	{
+		error_throw_arg( Errors::StringError )
+			_S("Texture not set for material : " ) + GetObjectName()
+		);
+	}
 }	
 	
 }
