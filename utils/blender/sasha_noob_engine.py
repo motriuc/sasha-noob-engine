@@ -81,6 +81,7 @@ ExportModes = (
 ExportObjectFilter = {'ARMATURE', 'EMPTY', 'MESH', 'LAMP'}
 
 from bpy.props import StringProperty, EnumProperty, BoolProperty
+import shutil
 
 ##------------------------------------------------------------------------------------------
 ## Utils
@@ -103,7 +104,7 @@ def GetMaterialTexture(Material):
         #Create a list of Textures that have type "IMAGE"
         ImageTextures = [Material.texture_slots[TextureSlot].texture for TextureSlot in Material.texture_slots.keys() if Material.texture_slots[TextureSlot].texture.type == "IMAGE"]
         #Refine a new list with only image textures that have a file source
-        ImageFiles = [bpy.path.basename(Texture.image.filepath) for Texture in ImageTextures if getattr(Texture.image, "source", "") == "FILE"]
+        ImageFiles = [Texture for Texture in ImageTextures if getattr(Texture.image, "source", "") == "FILE"]
         if ImageFiles:
             return ImageFiles[0]
     return None		
@@ -118,6 +119,7 @@ class SashaNoobEngineExporter:
                  self.resources = list()
                  self.staticLights = list()
                  self.defaultCamera = None
+                 self.exportedMeshes = list()
 				 
     def log(self, text):
         finaltext="{}{}".format("   " * self.tablevel, text )
@@ -235,8 +237,9 @@ class SashaNoobEngineExporter:
             self.GenerateMeshObject(tl, object)
 	
     def GenerateMeshObject(self, tl, object):
-        rname = "{}.{}".format(self.settings.Prefix, object.name)	
-        self.file.write( "\n{}<engine.object.mesh name=\"{}\" mesh=\"{}\">".format( "\t" * tl, rname, rname ) )
+        oname = "{}.{}".format(self.settings.Prefix, object.name)	
+        mname = "{}.{}".format(self.settings.Prefix, object.data.name)	
+        self.file.write( "\n{}<engine.object.mesh name=\"{}\" mesh=\"{}\">".format( "\t" * tl, oname, mname ) )
         tl +=1
         self.file.write( "\n{}<lights.static.use/>".format( "\t" * tl ) )
         self.GenerateMatrix(tl, object.matrix_local)
@@ -366,6 +369,12 @@ _41=\"{:9f}\" _42=\"{:9f}\" _43=\"{:9f}\" _44=\"{:9f}\" \
 		
     def ExportMesh(self, object):
         self.log("Generating Mesh...")
+        if object.data.name in self.exportedMeshes:
+           self.log("link mesh to: {}".format( object.data.name ) )
+           return
+
+        self.exportedMeshes.append( object.data.name )
+		
         if self.settings.ApplyModifiers:
             if self.settings.ExportArmatures:
                 #Create a copy of the object and remove all armature modifiers so an unshaped
@@ -379,13 +388,13 @@ _41=\"{:9f}\" _42=\"{:9f}\" _43=\"{:9f}\" _44=\"{:9f}\" \
                 mesh = object.to_mesh(bpy.context.scene, True, "PREVIEW")
         else:
             mesh = object.to_mesh(bpy.context.scene, False, "PREVIEW")
-        self.log("Done")
 		
-        self.WriteMesh( mesh, object.name )
+        self.WriteMesh( mesh, object.data.name )
 		
         if self.settings.ApplyModifiers and self.settings.ExportArmatures:
             bpy.data.objects.remove(copyObject)
         bpy.data.meshes.remove(mesh)
+        self.log("Done")
 	
     def WriteMesh(self,mesh,name):
         self.AddWorldResource( "<!-- object {} -->".format( name ) )
@@ -560,8 +569,19 @@ _41=\"{:9f}\" _42=\"{:9f}\" _43=\"{:9f}\" _44=\"{:9f}\" \
                 Texture = GetMaterialTexture( material )
 		   
             if Texture:
-                self.log("TextureFilename {{\"{}\";}}\n".format(Texture))
-                fmesh.write( "\n{}<material type=\"texture\" name=\"{}\"/>".format( "\t" * tl, name ) )
+                self.log("TextureFilename {}".format(Texture))
+				
+                name = os.path.splitext( Texture.image.name )[0]
+                textureName = "{}.{}".format( self.settings.Prefix, name )
+                textureFileName = "{}_{}.png".format( self.settings.Prefix, name )
+                path = os.path.join( self.settings.Path, textureFileName )
+                
+                fmesh.write( "\n{}<material type=\"texture\" name=\"{}\"/>".format( "\t" * tl, textureName ) )
+				
+                self.log("Save texture '{}' to : {}".format( textureName, path ))
+                Texture.image.save_render( path )
+				
+                self.AddWorldResource( "<texture name=\"{}\" path=\"%gameres%/{}\"/>".format( textureName, textureFileName ) )
             else:
                 Diffuse = list(material.diffuse_color)
                 Diffuse.append( material.alpha )
