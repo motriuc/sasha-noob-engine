@@ -40,7 +40,11 @@ class btDiscreteDynamicsWorld;
 namespace Ed3
 {
 
-class phShape;	
+class phShape;
+	
+/**
+ * d3PhysicsWorld
+ */
 class d3PhysicsWorld
 {
 public:
@@ -48,11 +52,13 @@ public:
 	~d3PhysicsWorld();
 	
 	void SetGravityVector( const d3Vector& v );
-	void AddShape( phShape* pShape )		{ _shapes.Add( pShape ); }
+	sInt AddShape( phShape* pShape );
+	phShape* GetShape( sInt id );
 
 	void Initialize( ) throws_error;
 	
 	void Simulate( d3Float deltaTime );
+	
 private:
 	btDefaultCollisionConfiguration*		_btCollisionConfiguration;
 	btCollisionDispatcher*					_btCollisionDispatcher;
@@ -60,6 +66,7 @@ private:
 	btConstraintSolver*						_btSolver;
 	btDiscreteDynamicsWorld*				_btDynamicsWorld;
 	sVector<phShape*>						_shapes;
+	sBool									_init;
 	
 };
 	

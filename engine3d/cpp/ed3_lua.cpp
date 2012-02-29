@@ -148,16 +148,6 @@ void LuaObject::Register( const SBCHAR* table, const SBCHAR* funName, LuaFunctio
 		luaL_register( state, table, functions );
 	}
 }
-
-//------------------------------------------------------------------
-void LuaObject::Register( const SBCHAR* module, const SBCHAR* table, const SBCHAR* funName, LuaFunction fn )
-{
-	__S_ASSERT( module != NULL );
-	__S_ASSERT( table != NULL );
-	__S_ASSERT( funName != NULL );
-	__S_ASSERT( fn != NULL );
-	
-}
 	
 //------------------------------------------------------------------
 void LuaObject::LoadFromFile( const sString& path, const Streams::StreamArchive& archive ) throws_error

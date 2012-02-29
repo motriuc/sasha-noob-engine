@@ -47,25 +47,36 @@ typedef System::T::IClassFactory1<phShape, d3Object*> IphShapeFactory;
  */
 class phShape : private class_nocopy
 {
-public:
-	phShape( d3Object* owner ) :
-		_owner( owner )
-	{
-		__S_ASSERT( _owner != NULL );
-	}
+protected:
+	phShape( d3Object* owner );
 	
-	virtual ~phShape()
-	{
-	}
+public:	
+	virtual ~phShape();
 	
-	d3Object* GetOwner()
-	{
-		return _owner;
-	}
+	/**
+	 * returns shape owner
+	 */
+	d3Object* GetOwner();
 	
+	/**
+	 * loads the object from xml
+	 */
 	virtual void LoadFromXml( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error = 0;
+	
+	/**
+	 * returns current shape transformation
+	 */
 	virtual void GetTransformation( d3Matrix& transformation ) = 0;
-	virtual void SetLocalScaling( const d3Vector& scaling ) = 0;
+	
+	/**
+	 * Sets object scaling
+	 */
+	virtual void SetScaling( const d3Vector& scaling ) = 0;
+	
+	/**
+	 * Moves the object
+	 */
+	virtual void Move( const d3Vector& v ) = 0;
 public:	
 	/**
 	 *
@@ -78,13 +89,15 @@ public:
 	static phShape* Create( const sString& name, d3Object* obj );
 	
 protected:	
-	virtual btRigidBody* GetRigidBody( const btTransform& transform ) const = 0;	
+	virtual btRigidBody* GetRigidBody() const = 0;	
 
 private:
 	d3Object*	_owner;
 	
 	friend class d3PhysicsWorld;
 };
+	
+#include "ed3_physics_shape.inl"
 	
 }
 

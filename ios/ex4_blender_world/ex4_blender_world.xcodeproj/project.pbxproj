@@ -309,6 +309,7 @@
 		D9BCA35614FCB764002ACED7 /* world_planks.png in Resources */ = {isa = PBXBuildFile; fileRef = D9BCA34A14FCB764002ACED7 /* world_planks.png */; };
 		D9BCA35714FCB764002ACED7 /* world_sand1.png in Resources */ = {isa = PBXBuildFile; fileRef = D9BCA34B14FCB764002ACED7 /* world_sand1.png */; };
 		D9BCA41814FCE222002ACED7 /* world.lua in Resources */ = {isa = PBXBuildFile; fileRef = D9BCA41714FCE222002ACED7 /* world.lua */; };
+		D9BCA66114FDC99A002ACED7 /* ed3_physics_shape.inl in Resources */ = {isa = PBXBuildFile; fileRef = D9BCA66014FDC99A002ACED7 /* ed3_physics_shape.inl */; };
 		D9D9B08414F7A89C00087F6B /* rd3_material_solid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9D9B08314F7A89C00087F6B /* rd3_material_solid.cpp */; };
 		D9D9B09214F7AC4D00087F6B /* system.solid.vs.1.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D9D9B08F14F7AC4D00087F6B /* system.solid.vs.1.vsh */; };
 		D9D9B09314F7AC4D00087F6B /* system.solid.ps.1.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D9D9B09014F7AC4D00087F6B /* system.solid.ps.1.fsh */; };
@@ -810,6 +811,7 @@
 		D9BCA34A14FCB764002ACED7 /* world_planks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = world_planks.png; path = world/world_planks.png; sourceTree = "<group>"; };
 		D9BCA34B14FCB764002ACED7 /* world_sand1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = world_sand1.png; path = world/world_sand1.png; sourceTree = "<group>"; };
 		D9BCA41714FCE222002ACED7 /* world.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = world.lua; path = world/scripts/world.lua; sourceTree = "<group>"; };
+		D9BCA66014FDC99A002ACED7 /* ed3_physics_shape.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ed3_physics_shape.inl; path = ../../engine3d/include/ed3_physics_shape.inl; sourceTree = SOURCE_ROOT; };
 		D9D9B08314F7A89C00087F6B /* rd3_material_solid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rd3_material_solid.cpp; path = ../../render3d/cpp/rd3_material_solid.cpp; sourceTree = SOURCE_ROOT; };
 		D9D9B08514F7A8B400087F6B /* rd3_material_solid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rd3_material_solid.h; path = ../../render3d/include/rd3_material_solid.h; sourceTree = SOURCE_ROOT; };
 		D9D9B08F14F7AC4D00087F6B /* system.solid.vs.1.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.solid.vs.1.vsh; path = ../../render3d/cpp/eagl/fx/system.solid.vs.1.vsh; sourceTree = SOURCE_ROOT; };
@@ -1716,6 +1718,7 @@
 		D99F8DE614F38E2200DEB549 /* physics */ = {
 			isa = PBXGroup;
 			children = (
+				D9BCA66014FDC99A002ACED7 /* ed3_physics_shape.inl */,
 				D99F8FC114F4640300DEB549 /* ed3_physics_shape.h */,
 				D99F8FC214F4641A00DEB549 /* ed3_physics_shape.cpp */,
 				D99F8FD014F4DC6C00DEB549 /* ed3_physics_shapes.h */,
@@ -2040,6 +2043,7 @@
 				D9BCA35614FCB764002ACED7 /* world_planks.png in Resources */,
 				D9BCA35714FCB764002ACED7 /* world_sand1.png in Resources */,
 				D9BCA41814FCE222002ACED7 /* world.lua in Resources */,
+				D9BCA66114FDC99A002ACED7 /* ed3_physics_shape.inl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2315,6 +2319,7 @@
 				EXTERN_PATH = ../../external;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = (
+					ED3_ENGINE_USE_PHYSICS,
 					MACOS_CLASSIC,
 					DEBUG,
 				);
@@ -2333,7 +2338,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EXTERN_PATH = ../../external;
 				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_PREPROCESSOR_DEFINITIONS = MACOS_CLASSIC;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					ED3_ENGINE_USE_PHYSICS,
+					MACOS_CLASSIC,
+				);
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";

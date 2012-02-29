@@ -35,7 +35,8 @@ d3PhysicsWorld::d3PhysicsWorld() :
 	_btCollisionDispatcher( NULL ),
 	_btBroadphaseInterface( NULL ),
 	_btSolver( NULL ),
-	_btDynamicsWorld( NULL )
+	_btDynamicsWorld( NULL ),
+	_init( sFalse )
 {
 	_btCollisionConfiguration = new btDefaultCollisionConfiguration();
 	_btCollisionDispatcher = new btCollisionDispatcher( _btCollisionConfiguration );
@@ -66,8 +67,9 @@ void d3PhysicsWorld::Simulate( d3Float deltaTime )
 void d3PhysicsWorld::Initialize( ) throws_error
 {
 	d3Object* tranObj = NULL;
-	btTransform transform;
+	
 	d3Vector scale;
+	d3Vector translation;
 	
 	for( sInt i = 0; i < _shapes.Size(); ++i )
 	{
@@ -77,26 +79,62 @@ void d3PhysicsWorld::Initialize( ) throws_error
 		{
 			tranObj = shape.GetOwner();
 			
-			d3Matrix matrix;
+			d3Matrix matrix;			
+			tranObj->GetAbsoluteTransformationMatrix( matrix );
 			
-			shape.GetOwner()->GetAbsoluteTransformationMatrix( matrix );
-			// support only translation for now
-			d3Vector translation;
-			matrix.GetTranslation( translation );
-			
-			transform.setIdentity();
-			transform.setOrigin( btVector3( translation.x, translation.y, translation.z ) );
-			
+			matrix.GetTranslation( translation );			
 			matrix.GetScale( scale );
 		}
 		
-		shape.SetLocalScaling( scale );
+		shape.SetScaling( scale );
+		shape.Move( translation );
 		
-		btRigidBody* prBody = shape.GetRigidBody( transform );
+		btRigidBody* prBody = shape.GetRigidBody();
 		
 		if( prBody != NULL )
 			_btDynamicsWorld->addRigidBody( prBody );
 	}
+	
+	_init = sTrue;
+}
+
+//-----------------------------------------------------------------------
+phShape* d3PhysicsWorld::GetShape( sInt id )
+{
+	if( id < 0 || id >= _shapes.Size() )
+		return NULL;
+	
+	return _shapes[id];
+}
+	
+//-----------------------------------------------------------------------
+sInt d3PhysicsWorld::AddShape( phShape* pShape )
+{
+	__S_ASSERT( pShape != NULL );
+			   
+	sInt idobj = _shapes.Add( pShape );
+	
+	if( _init )
+	{
+		d3Vector scale;
+		d3Vector translation;
+		
+		d3Matrix matrix;			
+		pShape->GetOwner()->GetAbsoluteTransformationMatrix( matrix );
+		
+		matrix.GetTranslation( translation );			
+		matrix.GetScale( scale );
+
+		pShape->SetScaling( scale );
+		pShape->Move( translation );
+		
+		btRigidBody* prBody = pShape->GetRigidBody();
+		
+		if( prBody != NULL )
+			_btDynamicsWorld->addRigidBody( prBody );
+	}
+	
+	return idobj;
 }
 	
 //-----------------------------------------------------------------------

@@ -3,7 +3,6 @@
 	<resources>
 		<texture name="main.red.ch" path="%gameres%/red_checker.png" />
 		<mesh name="main.mesh" path="%gameres%/mesh_torus.xml"/>
-			
 	</resources>
 		
 	<!-- lights -->
@@ -16,6 +15,7 @@
 	
 	<children>				
 		<engine.object.mesh mesh="main.mesh" lua="%gameres%/torus.lua">
+			<bbox type="auto" />
 			<!-- use static lights for this object -->
 			<lights.static.use />		
 		</engine.object.mesh>	

@@ -152,14 +152,20 @@ void d3World::RenderWorld( Rd3::WorldRenderState& rstate, Rd3::EngineDataForRend
 }	
 
 #ifdef ED3_ENGINE_USE_PHYSICS
-	
+
 //-----------------------------------------------------------------------
-void d3World::LoadPhysicsFromXml( const Xml::BaseDomNode& element, LoadDataParams& loadParams )
+d3PhysicsWorld& d3World::Physics()
 {
 	if( _physicsWorld == NULL )
 		_physicsWorld = new d3PhysicsWorld();
 	
-	loadParams.pPhysicsWorld = _physicsWorld;
+	return *_physicsWorld;
+}
+	
+//-----------------------------------------------------------------------
+void d3World::LoadPhysicsFromXml( const Xml::BaseDomNode& element, LoadDataParams& loadParams )
+{	
+	loadParams.pPhysicsWorld = &Physics();
 	
 	d3Vector gravity( 0.0f, -10.0f, 0.0f );
 	
@@ -177,7 +183,7 @@ void d3World::LoadPhysicsFromXml( const Xml::BaseDomNode& element, LoadDataParam
 		// else if 
 	}
 	
-	_physicsWorld->SetGravityVector( gravity );
+	Physics().SetGravityVector( gravity );
 }
 	
 #endif // ED3_ENGINE_USE_PHYSICS

@@ -1,5 +1,5 @@
 <mesh>
-	<primitive type="sphere" radius="0.1" longitudinal.segments="20" latitudinal.segments="20" />
+	<primitive type="sphere" radius="0.1" longitudinal.segments="15" latitudinal.segments="15" />
 	
 	<material type="texture" >
 		<texture name="main.red.ch" />

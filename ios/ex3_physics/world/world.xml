@@ -31,6 +31,7 @@
 	<children>				
 		<engine.object.gesturecamera/>
 		<engine.object.mesh mesh="main.mesh">
+			<bbox type="auto"/>
 			<!-- use static lights for this object -->
 			<lights.static.use />
 			<transformation type="cmd">
@@ -46,6 +47,7 @@
 		</engine.object.mesh>	
 
 		<engine.object.mesh mesh="main.mesh">
+			<bbox type="auto"/>
 			<!-- use static lights for this object -->
 			<lights.static.use />
 			<transformation type="cmd">
@@ -60,6 +62,7 @@
 		</engine.object.mesh>	
 
 		<engine.object.mesh mesh="main.mesh">
+			<bbox type="auto"/>
 			<!-- use static lights for this object -->
 			<lights.static.use />
 			<transformation type="cmd">
@@ -75,6 +78,7 @@
 		</engine.object.mesh>	
 
 		<engine.object.mesh mesh="main.mesh">
+			<bbox type="auto"/>
 			<!-- use static lights for this object -->
 			<lights.static.use />
 			<transformation type="cmd">
@@ -89,6 +93,7 @@
 		</engine.object.mesh>	
 
 		<engine.object.mesh mesh="main.mesh">
+			<bbox type="auto"/>
 			<!-- use static lights for this object -->
 			<lights.static.use />
 			<transformation type="cmd">
@@ -103,6 +108,7 @@
 		</engine.object.mesh>	
 
 		<engine.object.mesh mesh="main.mesh">
+			<bbox type="auto"/>
 			<!-- use static lights for this object -->
 			<lights.static.use />
 			<transformation type="cmd">

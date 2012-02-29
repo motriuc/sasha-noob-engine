@@ -32,56 +32,71 @@
 
 namespace Ed3
 {
-	
+
 /**
- * phStaticPlahe
+ * base class for bullet shapes
  */
-class phStaticPlahe : public phShape
+class phRigidBodyShape : public phShape
 {
 private:
 	typedef phShape _BaseClass;
-public:
-	phStaticPlahe( d3Object* owner );
-	phStaticPlahe( d3Object* owner, const d3Plane& plane );
-	
-	~phStaticPlahe();
-	
-	virtual void LoadFromXml( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error;
-	virtual void GetTransformation( d3Matrix& transformation );
-	virtual void SetLocalScaling( const d3Vector& scaling );
 	
 protected:
-	virtual btRigidBody* GetRigidBody( const btTransform& transform ) const;
+	phRigidBodyShape( d3Object* owner );
 	
+public:	
+	virtual ~phRigidBodyShape();
+	
+	virtual void SetScaling( const d3Vector& scaling );
+	virtual void Move( const d3Vector& v );
+	
+	virtual void GetTransformation( d3Matrix& transformation );
+protected:
+	btRigidBody*		_rigidBody;
+	btCollisionShape*	_shape;
+	
+	void MakeRigidBody( d3Float mass );
+	virtual btRigidBody* GetRigidBody() const { return _rigidBody; }
+};
+	
+/**
+ * phStaticPlane
+ */
+class phStaticPlane : public phRigidBodyShape
+{
 private:
-	btStaticPlaneShape*		_shape;
-	mutable btRigidBody*	_rigidBody;
-}; 	
+	typedef phRigidBodyShape _BaseClass;
+public:
+	/**
+	 *
+	 */
+	phStaticPlane( d3Object* owner );
+	phStaticPlane( d3Object* owner, const d3Plane& plane );
+	
+	/**
+	 *
+	 */
+	virtual void LoadFromXml( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error;
+	
+};
 
 /**
  * phSphere
  */
-class phSphere : public phShape
+class phSphere : public phRigidBodyShape
 {
 private:
-	typedef phShape _BaseClass;
+	typedef phRigidBodyShape _BaseClass;
 public:
+	/**
+	 *
+	 */
 	phSphere( d3Object* owner );
 	phSphere( d3Object* owner, d3Float radius, d3Float mass );
-	
-	~phSphere();
-	
+		
 	virtual void LoadFromXml( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error;
-	virtual void GetTransformation( d3Matrix& transformation );
-	virtual void SetLocalScaling( const d3Vector& scaling );
-protected:
-	virtual btRigidBody* GetRigidBody( const btTransform& transform ) const;
-private:
-	btSphereShape*			_shape;
-	mutable btRigidBody*	_rigidBody;
-	d3Float					_mass;
 };
-	
+
 }
 
 #endif // ED3_ENGINE_USE_PHYSICS

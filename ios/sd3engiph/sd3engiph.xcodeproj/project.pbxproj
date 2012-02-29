@@ -1313,10 +1313,10 @@
 				D93D5BC914ECD57B003FC949 /* fonts */,
 				D93D5BCA14ECD5B1003FC949 /* buffers */,
 				D93D5BC814ECD56E003FC949 /* resources */,
+				D91D01DB14ECC33000CEFA96 /* eagl_texture.h */,
+				D91D01D514ECC33000CEFA96 /* eagl_effect.h */,
 				D91D01E014ECC34C00CEFA96 /* eagl_effect.cpp */,
 				D91D01E614ECC34C00CEFA96 /* eagl_texture.cpp */,
-				D91D01D514ECC33000CEFA96 /* eagl_effect.h */,
-				D91D01DB14ECC33000CEFA96 /* eagl_texture.h */,
 			);
 			name = eagl;
 			sourceTree = "<group>";
@@ -1341,6 +1341,7 @@
 		D91D020B14ECC42E00CEFA96 /* engine3d */ = {
 			isa = PBXGroup;
 			children = (
+				D9BCA5F614FD9CEC002ACED7 /* data */,
 				D99F8DE614F38E2200DEB549 /* physics */,
 				D91D020F14ECC47400CEFA96 /* base */,
 				D91D024014ECC4B600CEFA96 /* objects */,
@@ -1366,18 +1367,14 @@
 				D999231F14EF3C56003FC6A7 /* ed3_lua.cpp */,
 				D91D022814ECC4A700CEFA96 /* ed3_obj_class.cpp */,
 				D91D022914ECC4A700CEFA96 /* ed3_obj_factory.cpp */,
-				D91D022514ECC4A700CEFA96 /* ed3_edata.cpp */,
 				D91D022614ECC4A700CEFA96 /* ed3_engine.cpp */,
 				D91D022E14ECC4A700CEFA96 /* ed3_prerender.cpp */,
-				D91D022F14ECC4A700CEFA96 /* ed3_rdata.cpp */,
 				D91D023014ECC4A700CEFA96 /* ed3_resloader.cpp */,
 				D91D021014ECC48C00CEFA96 /* ed3_conf.h */,
-				D91D021214ECC48C00CEFA96 /* ed3_edata.h */,
 				D91D021314ECC48C00CEFA96 /* ed3_engine.h */,
 				D91D021514ECC48C00CEFA96 /* ed3_obj_class.h */,
 				D91D021614ECC48C00CEFA96 /* ed3_obj_factory.h */,
 				D91D021C14ECC48C00CEFA96 /* ed3_prerender.h */,
-				D91D021D14ECC48C00CEFA96 /* ed3_rdata.h */,
 				D91D021E14ECC48C00CEFA96 /* ed3_resloader.h */,
 				D91D021F14ECC48C00CEFA96 /* ed3_types.h */,
 				D91D022114ECC48C00CEFA96 /* ed3.h */,
@@ -1515,9 +1512,9 @@
 			isa = PBXGroup;
 			children = (
 				D91D01DD14ECC33000CEFA96 /* eagl_vertexbuffer.h */,
+				D91D01D814ECC33000CEFA96 /* eagl_indexbuffer.h */,
 				D91D01E314ECC34C00CEFA96 /* eagl_indexbuffer.cpp */,
 				D91D01E714ECC34C00CEFA96 /* eagl_vertexbuffer.cpp */,
-				D91D01D814ECC33000CEFA96 /* eagl_indexbuffer.h */,
 			);
 			name = buffers;
 			sourceTree = "<group>";
@@ -1527,12 +1524,12 @@
 			children = (
 				D91D01DE14ECC33000CEFA96 /* platform_eagl_context.h */,
 				D91D01D414ECC33000CEFA96 /* eagl_conf.h */,
+				D91D01DA14ECC33000CEFA96 /* eagl_rstate.h */,
+				D91D01D914ECC33000CEFA96 /* eagl_render.h */,
 				D91D01DC14ECC33000CEFA96 /* eagl_types.h */,
 				D91D01DF14ECC34C00CEFA96 /* eagl_context.m */,
 				D91D01E414ECC34C00CEFA96 /* eagl_render.cpp */,
 				D91D01E514ECC34C00CEFA96 /* eagl_rstate.cpp */,
-				D91D01D914ECC33000CEFA96 /* eagl_render.h */,
-				D91D01DA14ECC33000CEFA96 /* eagl_rstate.h */,
 			);
 			name = base;
 			sourceTree = "<group>";
@@ -1888,6 +1885,17 @@
 				D99F8F1C14F397F500DEB549 /* btAxisSweep3.cpp */,
 			);
 			name = BroadphaseCollision;
+			sourceTree = "<group>";
+		};
+		D9BCA5F614FD9CEC002ACED7 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				D91D021214ECC48C00CEFA96 /* ed3_edata.h */,
+				D91D021D14ECC48C00CEFA96 /* ed3_rdata.h */,
+				D91D022514ECC4A700CEFA96 /* ed3_edata.cpp */,
+				D91D022F14ECC4A700CEFA96 /* ed3_rdata.cpp */,
+			);
+			name = data;
 			sourceTree = "<group>";
 		};
 		D9D9B08E14F7AC2200087F6B /* stdrender */ = {

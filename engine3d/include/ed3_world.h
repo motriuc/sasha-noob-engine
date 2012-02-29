@@ -82,7 +82,7 @@ public:
 	/**
 	 *
 	 */
-	d3PhysicsWorld* GetPhysics()					{ return _physicsWorld; }
+	d3PhysicsWorld& Physics(); 
 #endif // ED3_ENGINE_USE_PHYSICS
 protected:
 	
