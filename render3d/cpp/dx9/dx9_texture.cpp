@@ -99,21 +99,6 @@ IDirect3DSurface9* Dx9Texture::GetDepthStencil()
 /*                                                                      */
 /************************************************************************/
 
-void Dx9Texture::SaveAsBmp( const sString& fileName ) throws_error
-{
-	__S_ASSERT( _pTexture != NULL );
-
-	HRESULT hr = D3DXSaveTextureToFile(
-		fileName,
-		D3DXIFF_BMP,
-		_pTexture,
-		NULL 
-	);
-
-	if( FAILED(hr) )
-		_DX9_ERROR( hr );
-}
-
 /************************************************************************/
 /*                                                                      */
 /************************************************************************/

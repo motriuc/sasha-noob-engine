@@ -27,3 +27,20 @@ public:
 	virtual const IInputStream* Open( const sString& path ) const throws_error;
 	virtual sBool IsAvailable( const sString& path ) const;
 };
+
+/**
+ * FolderArchiveProvider
+ */
+class FolderArchiveProvider : public IStreamArchiveProvider
+{
+public:
+	FolderArchiveProvider( const sString& prefix, const sString& path );
+
+	virtual sString GetProviderPrefix() const { return _prefix; }
+	virtual IInputStream* Open( const sString& path ) throws_error;
+	virtual const IInputStream* Open( const sString& path ) const throws_error;
+	virtual sBool IsAvailable( const sString& path ) const;
+private:
+	sString _prefix;
+	sString _path;
+};

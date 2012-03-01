@@ -52,7 +52,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;COMPILED_FROM_DSP;XML_STATIC;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\system\include;..\..\system\external\expat;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\system\include;..\..\system\external\expat;..\..\system\include\internal;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -68,7 +68,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;COMPILED_FROM_DSP;XML_STATIC;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\system\include;..\..\system\external\expat;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\system\include;..\..\system\external\expat;..\..\system\include\internal;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -108,6 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\system\cpp\s_system.cpp" />
+    <ClCompile Include="..\..\system\cpp\s_system_appenv.cpp" />
     <ClCompile Include="..\..\system\cpp\s_system_chars_b.cpp" />
     <ClCompile Include="..\..\system\cpp\s_system_chars_w.cpp" />
     <ClCompile Include="..\..\system\cpp\s_system_d3math_aabb.cpp" />
@@ -145,7 +146,10 @@
     <ClInclude Include="..\..\system\external\expat\xmlrole.h" />
     <ClInclude Include="..\..\system\external\expat\xmltok.h" />
     <ClInclude Include="..\..\system\external\expat\xmltok_impl.h" />
+    <ClInclude Include="..\..\system\include\internal\int_stream_mac.h" />
+    <ClInclude Include="..\..\system\include\internal\int_stream_win32.h" />
     <ClInclude Include="..\..\system\include\s_system.h" />
+    <ClInclude Include="..\..\system\include\s_system_appenv.h" />
     <ClInclude Include="..\..\system\include\s_system_chars.h" />
     <ClInclude Include="..\..\system\include\s_system_chars_b.h" />
     <ClInclude Include="..\..\system\include\s_system_chars_w.h" />

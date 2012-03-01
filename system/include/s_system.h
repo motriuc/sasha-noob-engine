@@ -85,6 +85,7 @@ namespace System
 
 	#include "s_system_global.h"
 	#include "s_system_ptr.h"
+	#include "s_system_appenv.h"
 	
 #ifdef _use_sEvent_
 	#include "s_system_evn.h"

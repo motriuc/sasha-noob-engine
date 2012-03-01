@@ -35,16 +35,18 @@ d3Engine::d3Engine( Rd3::Render* pRender ) :
 	// set name aliases
 	_archive.AddProvider( new Streams::ResourceArchiveProvider() );
 	_archive.SetNameAlias( _S("engine"), _S("//res:/") );
-	_archive.SetNameAlias( _S("gameres"), _S("//res:/") );
-	
+
 	_pRender->Initialize( _def, _archive );
 	
-	_currentWorld = new d3World();
+	/**
+	_archive.SetNameAlias( _S("gameres"), _S("//res:/") );
+	**/
+/*	_currentWorld = new d3World();
 	
 	LoadDataParams loadParams( _def, _archive, *_pRender );
 	
 	_currentWorld->DoLoadFromXMLFile( _S("%gameres%/world.xml"), loadParams );
-	_currentWorld->DoInitialize( *_pRender );
+	_currentWorld->DoInitialize( *_pRender );*/
 }
 
 //----------------------------------------------------------------------

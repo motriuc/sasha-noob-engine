@@ -28,6 +28,9 @@
     <Filter Include="external\expat">
       <UniqueIdentifier>{58aebddb-bd80-484b-8925-86c5765dfb77}</UniqueIdentifier>
     </Filter>
+    <Filter Include="system\Header Files\stream">
+      <UniqueIdentifier>{8da59e36-9791-4c87-ba0d-b42ef6ed2679}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -174,6 +177,9 @@
     <ClCompile Include="..\..\system\external\expat\xmltok_ns.c">
       <Filter>external\expat</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\system\cpp\s_system_appenv.cpp">
+      <Filter>system\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\system\include\s_system.h">
@@ -299,30 +305,6 @@
     <ClInclude Include="..\..\system\include\s_system_rgbcolor.h">
       <Filter>system\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_stream.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_stream_archive.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_stream_archive_provider_res.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_stream_file.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_stream_fmem.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_stream_int.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_stream_mac.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_stream_rstr.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_string.h">
       <Filter>system\Header Files</Filter>
     </ClInclude>
@@ -439,6 +421,39 @@
     </ClInclude>
     <ClInclude Include="..\..\system\external\expat\xmltok_impl.h">
       <Filter>external\expat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_appenv.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_stream.h">
+      <Filter>system\Header Files\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_stream_rstr.h">
+      <Filter>system\Header Files\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_stream_archive.h">
+      <Filter>system\Header Files\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_stream_archive_provider_res.h">
+      <Filter>system\Header Files\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_stream_file.h">
+      <Filter>system\Header Files\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_stream_fmem.h">
+      <Filter>system\Header Files\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_stream_int.h">
+      <Filter>system\Header Files\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_stream_mac.h">
+      <Filter>system\Header Files\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\internal\int_stream_mac.h">
+      <Filter>system\Header Files\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\internal\int_stream_win32.h">
+      <Filter>system\Header Files\stream</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

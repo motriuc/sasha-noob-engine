@@ -86,6 +86,7 @@ private:
 // Render
 ////////////////////////////////////////////////////////////////////
 
+//------------------------------------------------------------------
 Rd3::Render* Dx9Render::Create( const Rd3::DX9RenderCreateParams& param ) throws_error
 {
 	LPDIRECT3DDEVICE9 pD3DDevice = NULL;
@@ -129,11 +130,7 @@ Rd3::Render* Dx9Render::Create( const Rd3::DX9RenderCreateParams& param ) throws
 	return pRender;
 }
 
-
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-  
+//------------------------------------------------------------------ 
 Dx9Render::Dx9Render( LPDIRECT3DDEVICE9 pD3DDevice ) :
 	_BaseClass( Rd3::RenderType::E_DX9 ),
 	_pD3DDevice( pD3DDevice )
@@ -142,10 +139,7 @@ Dx9Render::Dx9Render( LPDIRECT3DDEVICE9 pD3DDevice ) :
 	_pRenderState = new Dx9RenderState( this );
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
+//------------------------------------------------------------------ 
 Dx9Render::~Dx9Render()
 {
 	delete _pRenderState;
@@ -154,9 +148,180 @@ Dx9Render::~Dx9Render()
 	_pD3DDevice->Release();
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
+//------------------------------------------------------------------ 
+Rd3::VertexBuffer* Dx9Render::CreateVertexBufferFromFile(
+		const sString& objectName,
+		const sString& path,
+		const Rd3::StreamArchive& archive
+	) throws_error
+{
+	__S_ASSERT( sFalse );
+	return NULL;
+}
+	
+//------------------------------------------------------------------ 
+Rd3::VertexBuffer* Dx9Render::CreateVertexBuffer(
+		const sString& objectName,
+		const Rd3::VertexPList& points 
+	) throws_error
+{
+	__S_ASSERT( sFalse );
+	return NULL;
+}
+
+//------------------------------------------------------------------ 
+Rd3::VertexBuffer* Dx9Render::CreateVertexBuffer(
+		const sString& objectName,
+		const Rd3::VertexPList& points,
+		const Rd3::VertexTxCoord& txCoord
+	) throws_error
+{
+	__S_ASSERT( sFalse );
+	return NULL;
+}
+
+//------------------------------------------------------------------ 
+Rd3::VertexBuffer* Dx9Render::CreateVertexBuffer(
+		const sString& objectName,
+		const Rd3::VertexPList& points,
+		const Rd3::VertexNList& normals
+	) throws_error
+{
+	__S_ASSERT( sFalse );
+	return NULL;
+}
+	
+//------------------------------------------------------------------ 
+Rd3::VertexBuffer* Dx9Render::CreateVertexBuffer(
+		const sString& objectName,
+		const Rd3::VertexPList& points,
+		const Rd3::VertexNList& normals,
+		const Rd3::VertexTxCoord& txCoord
+	) throws_error
+{
+	__S_ASSERT( sFalse );
+	return NULL;
+}
+	
+//------------------------------------------------------------------ 
+Rd3::VertexBuffer* Dx9Render::CreateVertexBuffer(
+		const sString& objectName,
+		const Rd3::VertexPList& points,
+		const Rd3::VertexTxCoord& txCoord1,
+		const Rd3::VertexTxCoord& txCoord2
+	) throws_error
+{
+	__S_ASSERT( sFalse );
+	return NULL;
+}
+
+//------------------------------------------------------------------ 
+Rd3::VertexBuffer* Dx9Render::CreateVertexBuffer(
+		const sString& objectName,
+		const Rd3::VertexPList& points,
+		const Rd3::VertexCList& diffuseColor,
+		const Rd3::VertexTxCoord& txCoord1,
+		const Rd3::VertexTxCoord& txCoord2
+	) throws_error
+{
+	__S_ASSERT( sFalse );
+	return NULL;
+}
+
+//------------------------------------------------------------------ 
+Rd3::VertexBuffer* Dx9Render::CreateVertexBuffer(
+		const sString& objectName,
+		const Rd3::VertexPList& points,
+		const Rd3::VertexCList& diffuseColor
+	) throws_error
+{
+	__S_ASSERT( sFalse );
+	return NULL;
+}
+
+//------------------------------------------------------------------ 
+Rd3::VertexBuffer* Dx9Render::CreateVertexBuffer(
+		const sString& objectName,
+		const Rd3::VertexPList& points,
+		const Rd3::VertexNList& normals,
+		const Rd3::VertexCList& diffuseColor
+	) throws_error
+{
+	__S_ASSERT( sFalse );
+	return NULL;
+}
+
+//------------------------------------------------------------------ 
+Rd3::IndexBuffer* Dx9Render::CreateIndexBuffer(
+		const sString& objectName,
+		const Rd3::IndexList& indexList
+	) throws_error
+{
+	__S_ASSERT( sFalse );
+	return NULL;
+}
+
+//------------------------------------------------------------------ 
+Rd3::Texture* Dx9Render::CreateTexture(
+		const sString& objectName,
+		sInt width, sInt height,
+		Rd3::TextureType::TextureType type,
+		const Rd3::TextureParams& params
+	) throws_error
+{
+	__S_ASSERT( sFalse );
+	return NULL;
+}
+
+//------------------------------------------------------------------ 
+Rd3::Texture* Dx9Render::CreateTextureFromFile(
+		const sString& objectName,
+		const sString& fileName,
+		const Rd3::StreamArchive& archive,
+		Rd3::TextureType::TextureType type,
+		const Rd3::TextureParams& params
+	) throws_error
+{
+	__S_ASSERT( sFalse );
+	return NULL;
+}
+
+//------------------------------------------------------------------ 
+Rd3::Effect* Dx9Render::CreateEffectFromString(
+		const sString& objectName,
+		const Rd3::Def& def,
+		const sString& effectCode,
+		const Rd3::StreamArchive& archive
+	) throws_error
+{
+	__S_ASSERT( sFalse );
+	return NULL;
+}
+
+//------------------------------------------------------------------ 
+Rd3::Effect* Dx9Render::CreateEffectFromFile(
+		const sString& objectName,
+		const Rd3::Def& def,
+		const sString& fileName,
+		const Rd3::StreamArchive& archive
+	) throws_error
+{
+	__S_ASSERT( sFalse );
+	return NULL;
+}
+
+//------------------------------------------------------------------ 
+Rd3::Font* Dx9Render::CreateFontSystem(
+		const sString& objectName,
+		const sString& systemFontName,
+		sInt fontSize
+	) throws_error
+{
+	__S_ASSERT( sFalse );
+	return NULL;
+}
+
+//------------------------------------------------------------------ 
 void Dx9Render::FillDeviceDef( Rd3::Def& def )
 {
 	D3DCAPS9 caps;
@@ -228,9 +393,7 @@ void Dx9Render::FillDeviceDef( Rd3::Def& def )
 	{
 	}
 }
-/************************************************************************/
-/* Embeded Shaders                                                      */
-/************************************************************************/
+
 namespace efx
 {
 

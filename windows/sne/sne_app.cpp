@@ -20,16 +20,24 @@
 #include "sne_app.h"
 #include "rd3_create_rparam.h"
 #include "rd3_render.h"
+#include "ed3_engine.h"
 
 //------------------------------------------------------------------
 static SNEApplication* _pWindowToCreate = NULL;
 //------------------------------------------------------------------
 SNEApplication::SNEApplication( HINSTANCE hInstance ) :
-	_hInstance( hInstance ),
 	_hWindow( 0 ),
 	_hBaseWinProc( &DefWindowProc ),
 	_pRender( NULL )
 {
+	AppEnviroment::Instance().SetAppInstance( hInstance );
+}
+
+//------------------------------------------------------------------
+SNEApplication::~SNEApplication()
+{
+	delete _pEngine;
+	delete _pRender;
 }
 
 //------------------------------------------------------------------
@@ -42,12 +50,19 @@ void SNEApplication::OnCreateWindow()
 	try
 	{
 		_pRender = Rd3::Render::CreateRender( createParams );
+		_pEngine = new Ed3::d3Engine( _pRender );
 	}
 	catch( Errors::Error* error )
 	{
 		Platform::ShowError( error->ToString() );
 		delete error;
 	}
+}
+
+//------------------------------------------------------------------
+void SNEApplication::RenderFrame()
+{
+
 }
 
 //------------------------------------------------------------------
@@ -87,13 +102,13 @@ HWND SNEApplication::win_CreateSWindow()
 
 	WNDCLASSEX	wcex;
 
-	if( !::GetClassInfoEx( _hInstance, className, &wcex ) )
+	if( !::GetClassInfoEx( AppEnviroment::Instance().GetAppInstance(), className, &wcex ) )
 	{
 		wcex.style			= CS_HREDRAW | CS_VREDRAW;
 		wcex.lpfnWndProc	= (WNDPROC) win_StartWinProc;
 		wcex.cbClsExtra		= 0;
 		wcex.cbWndExtra		= 0;
-		wcex.hInstance		= _hInstance;
+		wcex.hInstance		= AppEnviroment::Instance().GetAppInstance();
 		wcex.hIcon			= 0;
 		wcex.hCursor		= LoadCursor( NULL, IDC_ARROW );
 		wcex.hbrBackground	= NULL;
@@ -119,7 +134,7 @@ HWND SNEApplication::win_CreateSWindow()
 		CW_USEDEFAULT ,
 		NULL,
 		0,
-		_hInstance,
+		AppEnviroment::Instance().GetAppInstance(),
 		NULL
 	);
 

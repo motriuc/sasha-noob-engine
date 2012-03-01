@@ -17,14 +17,24 @@
 /////////////////////////////////////////////////////////////////////
 #pragma once
 
+namespace Ed3
+{
+	class d3Engine;
+}
+
+/**
+ * SNEApplication
+ */
 class SNEApplication
 {
 public:
 	SNEApplication( HINSTANCE hInstance );
+	~SNEApplication();
 
 	int Run();
 protected:
 	void OnCreateWindow();
+	void RenderFrame();
 private:
 	HWND win_CreateSWindow();
 
@@ -33,9 +43,9 @@ private:
 	static LRESULT CALLBACK win_StartWinProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam );
 	static LRESULT CALLBACK win_MainWinProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam );
 private:
-	HINSTANCE	_hInstance;
 	HWND		_hWindow;
 	WNDPROC		_hBaseWinProc;
 
 	Rd3::Render*	_pRender;
+	Ed3::d3Engine*	_pEngine;
 };

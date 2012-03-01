@@ -22,6 +22,12 @@
     <Filter Include="renderdx9">
       <UniqueIdentifier>{343cfbbc-c551-4813-93b0-52121e922ca7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="renderdx9\include">
+      <UniqueIdentifier>{ff713352-4f0f-43f3-bf4f-940ef28d9de6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="renderdx9\cpp">
+      <UniqueIdentifier>{29e4e8d8-862d-4ce1-9b6d-36c9274bdfb9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -117,9 +123,6 @@
     <ClCompile Include="..\..\render3d\cpp\rd3_perf_counters.cpp">
       <Filter>render\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\render3d\cpp\rd3_render.cpp">
-      <Filter>render\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\render3d\cpp\rd3_resobj.cpp">
       <Filter>render\Source Files</Filter>
     </ClCompile>
@@ -156,23 +159,26 @@
     <ClCompile Include="..\..\render3d\cpp\primitives\rd3_primitive_torus.cpp">
       <Filter>render\Source Files\primitives</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\rd3_render.cpp">
+      <Filter>render\Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\render3d\cpp\dx9\dx9_effect.cpp">
-      <Filter>renderdx9</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\render3d\cpp\dx9\dx9_indexbuffer.cpp">
-      <Filter>renderdx9</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\render3d\cpp\dx9\dx9_render.cpp">
-      <Filter>renderdx9</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\render3d\cpp\dx9\dx9_rstate.cpp">
-      <Filter>renderdx9</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\render3d\cpp\dx9\dx9_texture.cpp">
-      <Filter>renderdx9</Filter>
+      <Filter>renderdx9\cpp</Filter>
     </ClCompile>
     <ClCompile Include="..\..\render3d\cpp\dx9\dx9_vertexbuffer.cpp">
-      <Filter>renderdx9</Filter>
+      <Filter>renderdx9\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\dx9\dx9_indexbuffer.cpp">
+      <Filter>renderdx9\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\dx9\dx9_render.cpp">
+      <Filter>renderdx9\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\dx9\dx9_rstate.cpp">
+      <Filter>renderdx9\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\dx9\dx9_texture.cpp">
+      <Filter>renderdx9\cpp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -245,9 +251,6 @@
     <ClInclude Include="..\..\render3d\include\rd3_perf_counters.h">
       <Filter>render\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\render3d\include\rd3_render.h">
-      <Filter>render\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\render3d\include\rd3_resobj.h">
       <Filter>render\Header Files</Filter>
     </ClInclude>
@@ -272,32 +275,35 @@
     <ClInclude Include="..\..\render3d\include\rd3afx.h">
       <Filter>render\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_render.h">
+      <Filter>render\Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\render3d\include\dx9\dx9_conf.h">
-      <Filter>renderdx9</Filter>
+      <Filter>renderdx9\include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\render3d\include\dx9\dx9_defs.h">
-      <Filter>renderdx9</Filter>
+      <Filter>renderdx9\include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\render3d\include\dx9\dx9_effect.h">
-      <Filter>renderdx9</Filter>
+      <Filter>renderdx9\include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\render3d\include\dx9\dx9_indexbuffer.h">
-      <Filter>renderdx9</Filter>
+      <Filter>renderdx9\include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\render3d\include\dx9\dx9_render.h">
-      <Filter>renderdx9</Filter>
+      <Filter>renderdx9\include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\render3d\include\dx9\dx9_rstate.h">
-      <Filter>renderdx9</Filter>
+      <Filter>renderdx9\include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\render3d\include\dx9\dx9_texture.h">
-      <Filter>renderdx9</Filter>
+      <Filter>renderdx9\include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\render3d\include\dx9\dx9_types.h">
-      <Filter>renderdx9</Filter>
+      <Filter>renderdx9\include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\render3d\include\dx9\dx9_vertexbuffer.h">
-      <Filter>renderdx9</Filter>
+      <Filter>renderdx9\include</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

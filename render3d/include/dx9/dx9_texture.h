@@ -52,14 +52,6 @@ public:
 	 */
 	virtual ~Dx9Texture();
 
-// from Rd3::Texture
-public:
-	/**
-	 *
-	 */
-	virtual void SaveAsBmp( const sString& fileName ) throws_error;
-
-// 
 public:
 	/**
 	 *

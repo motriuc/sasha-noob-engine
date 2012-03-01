@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : rd3_resobj.cpp
-//	Created                 : 20 1 2011   0:05
-//	File path               : SLibF\render3d\cpp
-//	Author                  : Alexandru Motriuc
+//  Created                 : 20 1 2011   0:05
+//  File path               : SLibF\render3d\cpp
+//  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
-//	Library                 : 
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -83,7 +83,8 @@ TypedResourcePool::~TypedResourcePool()
 		objNames += _objArray[i]->GetObjectName() + _S(";");
 	}
 	
-	System::Platform::ShowWarning( _S("Resources not freed: ") + objNames );
+	if( _objArray.Size() > 0 )
+		System::Platform::ShowWarning( _S("Resources not freed: ") + objNames );
 #endif	
 }
 

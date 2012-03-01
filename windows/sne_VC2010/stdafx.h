@@ -10,12 +10,11 @@
 #define WIN32_LEAN_AND_MEAN             // Exclude rarely-used stuff from Windows headers
 // Windows Header Files:
 #include <windows.h>
-
 // C RunTime Header Files
 #include <tchar.h>
 
-#include "rd3.h"
-#include "s_system.h"
+// engine headers
+#include "ed3.h"
 
 using namespace System::Types;
 using namespace System;

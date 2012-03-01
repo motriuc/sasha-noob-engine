@@ -50,6 +50,10 @@ public:
 	 */
 	~d3Engine();
 	
+	/**
+	 * 
+	 */
+	Streams::StreamArchive& Archive()	{ return _archive; }
 private:
 	Rd3::Render*	_pRender;
 
