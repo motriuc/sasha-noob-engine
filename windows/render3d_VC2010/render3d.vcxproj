@@ -92,6 +92,12 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\render3d\cpp\dx9\dx9_effect.cpp" />
+    <ClCompile Include="..\..\render3d\cpp\dx9\dx9_indexbuffer.cpp" />
+    <ClCompile Include="..\..\render3d\cpp\dx9\dx9_render.cpp" />
+    <ClCompile Include="..\..\render3d\cpp\dx9\dx9_rstate.cpp" />
+    <ClCompile Include="..\..\render3d\cpp\dx9\dx9_texture.cpp" />
+    <ClCompile Include="..\..\render3d\cpp\dx9\dx9_vertexbuffer.cpp" />
     <ClCompile Include="..\..\render3d\cpp\primitives\rd3_primitive.cpp" />
     <ClCompile Include="..\..\render3d\cpp\primitives\rd3_primitive_arrow.cpp" />
     <ClCompile Include="..\..\render3d\cpp\primitives\rd3_primitive_cone.cpp" />
@@ -131,6 +137,15 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\render3d\include\dx9\dx9_conf.h" />
+    <ClInclude Include="..\..\render3d\include\dx9\dx9_defs.h" />
+    <ClInclude Include="..\..\render3d\include\dx9\dx9_effect.h" />
+    <ClInclude Include="..\..\render3d\include\dx9\dx9_indexbuffer.h" />
+    <ClInclude Include="..\..\render3d\include\dx9\dx9_render.h" />
+    <ClInclude Include="..\..\render3d\include\dx9\dx9_rstate.h" />
+    <ClInclude Include="..\..\render3d\include\dx9\dx9_texture.h" />
+    <ClInclude Include="..\..\render3d\include\dx9\dx9_types.h" />
+    <ClInclude Include="..\..\render3d\include\dx9\dx9_vertexbuffer.h" />
     <ClInclude Include="..\..\render3d\include\rd3.h" />
     <ClInclude Include="..\..\render3d\include\rd3afx.h" />
     <ClInclude Include="..\..\render3d\include\rd3_after_effect.h" />

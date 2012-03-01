@@ -43,7 +43,8 @@ public:
 	 */
 	Dx9Texture( 
 		Rd3::Render* owner, const sString& objectName, 
-		sInt width, sInt height, Rd3::TextureType::TextureType type
+		sInt width, sInt height, Rd3::TextureType::TextureType type,
+		const Rd3::TextureParams& params
 	);
 
 	/**

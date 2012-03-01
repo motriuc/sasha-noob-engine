@@ -39,9 +39,9 @@ D3DFORMAT GetTextureDx9Format( Rd3::TextureType::TextureType type )
 /************************************************************************/
 
 Dx9Texture::Dx9Texture( Rd3::Render* owner, const sString& objectName,
-		sInt width, sInt height, Rd3::TextureType::TextureType type 
+		sInt width, sInt height, Rd3::TextureType::TextureType type, const Rd3::TextureParams& params 
 	) :
-	_BaseClass( owner, objectName ),
+	_BaseClass( owner, objectName, params ),
 	_pTexture( NULL ),
 	_pDepthStencil( NULL )
 {

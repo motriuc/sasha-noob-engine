@@ -52,14 +52,28 @@ public:
 	/**
 	 * Initialize the render
 	 */
-	virtual void Initialize( Rd3::Def& def ) throws_error;
+	virtual void Initialize( Rd3::Def& def, const Rd3::StreamArchive& archive ) throws_error;
 
+
+	/////////////////////////////////////////////////////////////
+	// Create Vb
+public:
+	
+	/**
+	 *
+	 */
+	virtual Rd3::VertexBuffer* CreateVertexBufferFromFile(
+		const sString& objectName,
+		const sString& path,
+		const Rd3::StreamArchive& archive
+	) throws_error;
+	
 	/**
 	 *
 	 */
 	virtual Rd3::VertexBuffer* CreateVertexBuffer(
 		const sString& objectName,
-		const Rd3::VertexPList& points
+		const Rd3::VertexPList& points 
 	) throws_error;
 
 	/**
@@ -71,6 +85,25 @@ public:
 		const Rd3::VertexTxCoord& txCoord
 	) throws_error;
 
+	/**
+	 *
+	 */
+	virtual Rd3::VertexBuffer* CreateVertexBuffer(
+		const sString& objectName,
+		const Rd3::VertexPList& points,
+		const Rd3::VertexNList& normals
+	) throws_error;
+	
+	/**
+	 *
+	 */
+	virtual Rd3::VertexBuffer* CreateVertexBuffer(
+		const sString& objectName,
+		const Rd3::VertexPList& points,
+		const Rd3::VertexNList& normals,
+		const Rd3::VertexTxCoord& txCoord
+	) throws_error;
+	
 	/**
 	 *
 	 */
@@ -97,7 +130,7 @@ public:
 	 */
 	virtual Rd3::VertexBuffer* CreateVertexBuffer(
 		const sString& objectName,
-		const Rd3::VertexPList& points, 
+		const Rd3::VertexPList& points,
 		const Rd3::VertexCList& diffuseColor
 	) throws_error;
 
@@ -111,6 +144,10 @@ public:
 		const Rd3::VertexCList& diffuseColor
 	) throws_error;
 
+	/////////////////////////////////////////////////////////
+	// Create Index buffer
+public:
+	
 	/**
 	 *
 	 */
@@ -118,23 +155,44 @@ public:
 		const sString& objectName,
 		const Rd3::IndexList& indexList
 	) throws_error;
-
+	
+	//////////////////////////////////////////////////////////
+	// Create Texture
+public:
+	
 	/**
 	 *
 	 */
 	virtual Rd3::Texture* CreateTexture(
 		const sString& objectName,
 		sInt width, sInt height,
-		Rd3::TextureType::TextureType type
+		Rd3::TextureType::TextureType type,
+		const Rd3::TextureParams& params
 	) throws_error;
 
+	/**
+	 *
+	 */
+	virtual Rd3::Texture* CreateTextureFromFile(
+		const sString& objectName,
+		const sString& fileName,
+		const Rd3::StreamArchive& archive,
+		Rd3::TextureType::TextureType type,
+		const Rd3::TextureParams& params
+	) throws_error;
+	
+	///////////////////////////////////////////////////////////
+	// Create effect
+public:
+	
 	/**
 	 *
 	 */
 	virtual Rd3::Effect* CreateEffectFromString(
 		const sString& objectName,
 		const Rd3::Def& def,
-		const sString& effectCode
+		const sString& effectCode,
+		const Rd3::StreamArchive& archive
 	) throws_error;
 
 	/**
@@ -143,8 +201,22 @@ public:
 	virtual Rd3::Effect* CreateEffectFromFile(
 		const sString& objectName,
 		const Rd3::Def& def,
-		const sString& fileName
+		const sString& fileName,
+		const Rd3::StreamArchive& archive
 	) throws_error;
+
+	///////////////////////////////////////////////////////////
+	// Create font
+public:
+	/**
+	 *
+	 */
+	virtual Rd3::Font* CreateFontSystem(
+		const sString& objectName,
+		const sString& systemFontName,
+		sInt fontSize
+	) throws_error;
+
 
 	virtual ~Dx9Render();
 public:

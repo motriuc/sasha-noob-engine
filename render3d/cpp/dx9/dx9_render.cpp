@@ -241,11 +241,11 @@ namespace efx
 /************************************************************************/
 /*                                                                      */
 /************************************************************************/
-void Dx9Render::Initialize( Rd3::Def& def ) throws_error
+void Dx9Render::Initialize( Rd3::Def& def, const Rd3::StreamArchive& archive ) throws_error
 {
 	FillDeviceDef( def );
 #ifdef _D3_DEBUG_RENDER
-
+/**
 	CreateEffectFromString(
 		_S("System.Debug.Fx.SolidVertexDiffuzeColor"),
 		def,
@@ -257,7 +257,7 @@ void Dx9Render::Initialize( Rd3::Def& def ) throws_error
 		def,
 		efx::_debug_Render_Normals
 	);
-
+*/
 #endif
 
 }
@@ -265,7 +265,7 @@ void Dx9Render::Initialize( Rd3::Def& def ) throws_error
 /************************************************************************/
 /*                                                                      */
 /************************************************************************/
-
+/*
 Rd3::VertexBuffer* Dx9Render::CreateVertexBuffer(
 		const sString& objectName,
 		const Rd3::VertexPList& points,
@@ -274,11 +274,11 @@ Rd3::VertexBuffer* Dx9Render::CreateVertexBuffer(
 {
 	return new Dx9VertexBuffer( this, objectName, points, txCoord );
 }
-
+*/
 /************************************************************************/
 /*                                                                      */
 /************************************************************************/
-
+/*
 Rd3::VertexBuffer* Dx9Render::CreateVertexBuffer(
 		const sString& objectName,
 		const Rd3::VertexPList& points,
@@ -288,11 +288,11 @@ Rd3::VertexBuffer* Dx9Render::CreateVertexBuffer(
 {
 	return new Dx9VertexBuffer( this, objectName, points, txCoord1, txCoord2 );
 }
-
+*/
 /************************************************************************/
 /*                                                                      */
 /************************************************************************/
-
+/*
 Rd3::VertexBuffer* Dx9Render::CreateVertexBuffer(
 		const sString& objectName,
 		const Rd3::VertexPList& points,
@@ -303,11 +303,11 @@ Rd3::VertexBuffer* Dx9Render::CreateVertexBuffer(
 {
 	return new Dx9VertexBuffer( this, objectName, points, diffuseColor, txCoord1, txCoord2 );
 }
-
+*/
 /************************************************************************/
 /*                                                                      */
 /************************************************************************/
-
+/*
 Rd3::VertexBuffer* Dx9Render::CreateVertexBuffer(
 		const sString& objectName,
 		const Rd3::VertexPList& points 
@@ -315,11 +315,11 @@ Rd3::VertexBuffer* Dx9Render::CreateVertexBuffer(
 {
 	return new Dx9VertexBuffer( this, objectName, points );
 }
-
+*/
 /************************************************************************/
 /*                                                                      */
 /************************************************************************/
-
+/*
 Rd3::VertexBuffer* Dx9Render::CreateVertexBuffer(
 		const sString& objectName,
 		const Rd3::VertexPList& points, 
@@ -329,11 +329,11 @@ Rd3::VertexBuffer* Dx9Render::CreateVertexBuffer(
 
 	return new Dx9VertexBuffer( this, objectName, points, diffuseColor );
 }
-
+*/
 /************************************************************************/
 /*                                                                      */
 /************************************************************************/
-
+/*
 Rd3::VertexBuffer* Dx9Render::CreateVertexBuffer(
 		const sString& objectName,
 		const Rd3::VertexPList& points,
@@ -343,11 +343,11 @@ Rd3::VertexBuffer* Dx9Render::CreateVertexBuffer(
 {
 	return new Dx9VertexBuffer( this, objectName, points, normals, diffuseColor );
 }
-
+*/
 /************************************************************************/
 /*                                                                      */
 /************************************************************************/
-
+/*
 Rd3::Effect* Dx9Render::CreateEffectFromString(
 		const sString& objectName,
 		const Rd3::Def& def,
@@ -376,11 +376,11 @@ Rd3::Effect* Dx9Render::CreateEffectFromString(
 
 	return effect;
 }
-
+*/
 /************************************************************************/
 /*                                                                      */
 /************************************************************************/
-
+/*
 Rd3::Effect* Dx9Render::CreateEffectFromFile(
 		const sString& objectName,
 		const Rd3::Def& def,
@@ -409,11 +409,11 @@ Rd3::Effect* Dx9Render::CreateEffectFromFile(
 
 	return effect;
 }
-
+*/
 /************************************************************************/
 /*                                                                      */
 /************************************************************************/
-
+/*
 Rd3::IndexBuffer* Dx9Render::CreateIndexBuffer(
 	const sString& objectName,
 	const Rd3::IndexList& indexList
@@ -421,10 +421,11 @@ Rd3::IndexBuffer* Dx9Render::CreateIndexBuffer(
 {
 	return new Dx9IndexBuffer( this, objectName, indexList );
 }
-
+*/
 /************************************************************************/
 /*                                                                      */
 /************************************************************************/
+/*
 Rd3::Texture* Dx9Render::CreateTexture(
 		const sString& objectName,
 		sInt width, sInt height,
@@ -442,7 +443,7 @@ Rd3::Texture* Dx9Render::CreateTexture(
 
 	return pTexture;
 }
-
+*/
 /************************************************************************/
 /*                                                                      */
 /************************************************************************/

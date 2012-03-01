@@ -125,7 +125,7 @@ void Dx9RenderState::BeginWorldRender( const Rd3::EngineDataForRender& edata )
     __S_ASSERT( pDevice != NULL );
 
 	{
-		Rd3::Texture* pRenderTarget = GetOwner()->GetRenderTarget();
+		Rd3::Texture* pRenderTarget = GetRenderTarget();
 		
 		if( pRenderTarget != NULL )
 			SetRenderTarget( pRenderTarget );
@@ -167,7 +167,7 @@ void Dx9RenderState::EndWorldRender()
 	__S_ASSERT( SUCCEEDED(hr) );
 
 	{
-		Rd3::Texture* pRenderTarget = GetOwner()->GetRenderTarget();
+		Rd3::Texture* pRenderTarget = GetRenderTarget();
 
 		if( pRenderTarget != NULL )
 			UnsetRenderTarget();

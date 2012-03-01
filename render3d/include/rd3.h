@@ -57,6 +57,10 @@
 	#define _use_Cont_Utils_
 #endif 
 
+#ifndef _use_sEvent_
+	#define _use_sEvent_
+#endif 
+
 #include "s_system.h"
 
 //////////////////////////////////////////////
