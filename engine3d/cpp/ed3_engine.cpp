@@ -37,16 +37,43 @@ d3Engine::d3Engine( Rd3::Render* pRender ) :
 	_archive.SetNameAlias( _S("engine"), _S("//res:/") );
 
 	_pRender->Initialize( _def, _archive );
-	
-	/**
-	_archive.SetNameAlias( _S("gameres"), _S("//res:/") );
-	**/
-/*	_currentWorld = new d3World();
+}
+
+//----------------------------------------------------------------------
+void d3Engine::LoadWorld( const sString& path ) throws_error
+{
+	d3World* world = new d3World();
 	
 	LoadDataParams loadParams( _def, _archive, *_pRender );
 	
-	_currentWorld->DoLoadFromXMLFile( _S("%gameres%/world.xml"), loadParams );
-	_currentWorld->DoInitialize( *_pRender );*/
+	try 
+	{
+		world->DoLoadFromXMLFile( path, loadParams );
+		SetWorld( world );
+	}
+	catch (...) 
+	{
+		delete world;
+		throw;
+	}
+}
+
+//----------------------------------------------------------------------
+void d3Engine::SetWorld( d3World* pWorld ) throws_error
+{
+	if( _currentWorld != NULL )
+	{
+		_currentWorld->DoUninitalize( *_pRender ); 
+		delete _currentWorld;
+	}
+	
+	_currentWorld = NULL;
+	
+	if( pWorld != NULL )
+	{
+		pWorld->DoInitialize( *_pRender );
+		_currentWorld = pWorld;
+	}
 }
 
 //----------------------------------------------------------------------

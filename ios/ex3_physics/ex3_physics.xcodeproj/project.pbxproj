@@ -792,6 +792,8 @@
 		D99F8FC214F4641A00DEB549 /* ed3_physics_shape.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_physics_shape.cpp; path = ../../engine3d/cpp/ed3_physics_shape.cpp; sourceTree = SOURCE_ROOT; };
 		D99F8FD014F4DC6C00DEB549 /* ed3_physics_shapes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ed3_physics_shapes.h; path = ../../engine3d/include/ed3_physics_shapes.h; sourceTree = SOURCE_ROOT; };
 		D99F8FD114F4DCE800DEB549 /* ed3_physics_shapes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_physics_shapes.cpp; path = ../../engine3d/cpp/ed3_physics_shapes.cpp; sourceTree = SOURCE_ROOT; };
+		D9AD132D14FFC7A8009521AD /* int_stream_mac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = int_stream_mac.h; path = ../../system/include/internal/int_stream_mac.h; sourceTree = SOURCE_ROOT; };
+		D9AD132E14FFC7A8009521AD /* int_stream_win32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = int_stream_win32.h; path = ../../system/include/internal/int_stream_win32.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1081,6 +1083,8 @@
 		D91D012514ECBE7900CEFA96 /* streams */ = {
 			isa = PBXGroup;
 			children = (
+				D9AD132D14FFC7A8009521AD /* int_stream_mac.h */,
+				D9AD132E14FFC7A8009521AD /* int_stream_win32.h */,
 				D91D000A14ECB8FA00CEFA96 /* s_system_stream_archive_provider_res.cpp */,
 				D91D000B14ECB8FA00CEFA96 /* s_system_stream_archive_provider_res.m */,
 				D91D000C14ECB8FA00CEFA96 /* s_system_stream_archive.cpp */,

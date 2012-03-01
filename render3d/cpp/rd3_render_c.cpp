@@ -24,6 +24,10 @@ EngineApplication::EngineApplication( MACOSView* view ) throws_error:
 		_pRender->AddMessageQueue( _pGestureMsgQueue );
 		
 		_pEngine = new d3Engine( _pRender );
+		
+		// load world.xml as default for iOs
+		_pEngine->Archive().SetNameAlias( _S("gameres"), _S("//res:/") );
+		_pEngine->LoadWorld( _S("%gameres%/world.xml") );
 	}
 	catch(...)
 	{

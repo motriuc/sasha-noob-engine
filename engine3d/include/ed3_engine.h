@@ -54,6 +54,16 @@ public:
 	 * 
 	 */
 	Streams::StreamArchive& Archive()	{ return _archive; }
+	
+	/**
+	 *
+	 */
+	void LoadWorld( const sString& path ) throws_error;
+	
+	/**
+	 *
+	 */
+	void SetWorld( d3World* pWorld ) throws_error;
 private:
 	Rd3::Render*	_pRender;
 

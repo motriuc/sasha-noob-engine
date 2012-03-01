@@ -58,7 +58,10 @@ private:
 	Types::sString		_fileName;
 	Types::sString		_runPath;
 	Types::sInt			_iCmdCount;
+	
+#ifdef _SPL_WIN32
 	HINSTANCE			_hInstance;
+#endif 	
 private:
 	AppEnviroment();
 	AppEnviroment( const AppEnviroment& src );

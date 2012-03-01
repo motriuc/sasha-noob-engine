@@ -589,6 +589,8 @@
 		D999231F14EF3C56003FC6A7 /* ed3_lua.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_lua.cpp; path = ../../engine3d/cpp/ed3_lua.cpp; sourceTree = SOURCE_ROOT; };
 		D999232114EF3C6F003FC6A7 /* ed3_lua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ed3_lua.h; path = ../../engine3d/include/ed3_lua.h; sourceTree = SOURCE_ROOT; };
 		D99923BA14EF58C9003FC6A7 /* torus.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = torus.lua; path = world/torus.lua; sourceTree = "<group>"; };
+		D9AD131D14FFC74E009521AD /* int_stream_mac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = int_stream_mac.h; path = ../../system/include/internal/int_stream_mac.h; sourceTree = SOURCE_ROOT; };
+		D9AD131E14FFC74E009521AD /* int_stream_win32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = int_stream_win32.h; path = ../../system/include/internal/int_stream_win32.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -877,6 +879,8 @@
 		D91D012514ECBE7900CEFA96 /* streams */ = {
 			isa = PBXGroup;
 			children = (
+				D9AD131D14FFC74E009521AD /* int_stream_mac.h */,
+				D9AD131E14FFC74E009521AD /* int_stream_win32.h */,
 				D91D000A14ECB8FA00CEFA96 /* s_system_stream_archive_provider_res.cpp */,
 				D91D000B14ECB8FA00CEFA96 /* s_system_stream_archive_provider_res.m */,
 				D91D000C14ECB8FA00CEFA96 /* s_system_stream_archive.cpp */,
