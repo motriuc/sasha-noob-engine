@@ -24,6 +24,7 @@
 	#include <stdlib.h>
 	#include <math.h>
 	#include <ctype.h>
+	#include <new.h>
 #endif
 
 

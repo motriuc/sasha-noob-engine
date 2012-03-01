@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="engine">
+      <UniqueIdentifier>{7756e88f-b9c0-44d1-ac07-466fb2e8d5ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="engine\Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="engine\Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="external">
+      <UniqueIdentifier>{b9c99fdf-e67f-49fd-95b0-237bd8ff53d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\lua">
+      <UniqueIdentifier>{6067ae8e-5041-4a5d-8f2c-de8703969d21}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+    <None Include="..\..\engine3d\include\ed3_object.inl">
+      <Filter>engine\Header Files</Filter>
+    </None>
+    <None Include="..\..\engine3d\include\ed3_physics_shape.inl">
+      <Filter>engine\Header Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ed3_cont_object.cpp">
+      <Filter>engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ed3_edata.cpp">
+      <Filter>engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ed3_engine.cpp">
+      <Filter>engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ed3_lua.cpp">
+      <Filter>engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ed3_obj_cam_gest.cpp">
+      <Filter>engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ed3_obj_class.cpp">
+      <Filter>engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ed3_obj_factory.cpp">
+      <Filter>engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ed3_obj_fire.cpp">
+      <Filter>engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ed3_obj_mesh.cpp">
+      <Filter>engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ed3_obj_texture.cpp">
+      <Filter>engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ed3_object.cpp">
+      <Filter>engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ed3_object_lua.cpp">
+      <Filter>engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ed3_physics_shape.cpp">
+      <Filter>engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ed3_physics_shapes.cpp">
+      <Filter>engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ed3_physics_world.cpp">
+      <Filter>engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ed3_prerender.cpp">
+      <Filter>engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ed3_primitive_lua.cpp">
+      <Filter>engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ed3_rdata.cpp">
+      <Filter>engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ed3_resloader.cpp">
+      <Filter>engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ed3_world.cpp">
+      <Filter>engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\lua\lapi.c">
+      <Filter>external\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\lua\lauxlib.c">
+      <Filter>external\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\lua\lbaselib.c">
+      <Filter>external\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\lua\lbitlib.c">
+      <Filter>external\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\lua\lcode.c">
+      <Filter>external\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\lua\lcorolib.c">
+      <Filter>external\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\lua\lctype.c">
+      <Filter>external\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\lua\ldblib.c">
+      <Filter>external\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\lua\ldebug.c">
+      <Filter>external\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\lua\ldo.c">
+      <Filter>external\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\lua\ldump.c">
+      <Filter>external\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\lua\lfunc.c">
+      <Filter>external\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\lua\lgc.c">
+      <Filter>external\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\lua\linit.c">
+      <Filter>external\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\lua\liolib.c">
+      <Filter>external\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\lua\llex.c">
+      <Filter>external\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\lua\lmathlib.c">
+      <Filter>external\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\lua\lmem.c">
+      <Filter>external\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\lua\loadlib.c">
+      <Filter>external\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\lua\lobject.c">
+      <Filter>external\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\lua\lopcodes.c">
+      <Filter>external\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\lua\loslib.c">
+      <Filter>external\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\lua\lparser.c">
+      <Filter>external\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\lua\lstate.c">
+      <Filter>external\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\lua\lstring.c">
+      <Filter>external\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\lua\lstrlib.c">
+      <Filter>external\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\lua\ltable.c">
+      <Filter>external\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\lua\ltablib.c">
+      <Filter>external\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\lua\ltm.c">
+      <Filter>external\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\lua\lua.c">
+      <Filter>external\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\lua\lundump.c">
+      <Filter>external\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\lua\lvm.c">
+      <Filter>external\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\lua\lzio.c">
+      <Filter>external\lua</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\external\lua\lapi.h">
+      <Filter>external\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\lua\lauxlib.h">
+      <Filter>external\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\lua\lcode.h">
+      <Filter>external\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\lua\lctype.h">
+      <Filter>external\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\lua\ldebug.h">
+      <Filter>external\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\lua\ldo.h">
+      <Filter>external\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\lua\lfunc.h">
+      <Filter>external\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\lua\lgc.h">
+      <Filter>external\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\lua\llex.h">
+      <Filter>external\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\lua\llimits.h">
+      <Filter>external\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\lua\lmem.h">
+      <Filter>external\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\lua\lobject.h">
+      <Filter>external\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\lua\lopcodes.h">
+      <Filter>external\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\lua\lparser.h">
+      <Filter>external\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\lua\lstate.h">
+      <Filter>external\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\lua\lstring.h">
+      <Filter>external\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\lua\ltable.h">
+      <Filter>external\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\lua\ltm.h">
+      <Filter>external\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\lua\lua.h">
+      <Filter>external\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\lua\lua.hpp">
+      <Filter>external\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\lua\luaconf.h">
+      <Filter>external\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\lua\lualib.h">
+      <Filter>external\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\lua\lundump.h">
+      <Filter>external\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\lua\lvm.h">
+      <Filter>external\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\lua\lzio.h">
+      <Filter>external\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ed3.h">
+      <Filter>engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ed3_conf.h">
+      <Filter>engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ed3_cont_object.h">
+      <Filter>engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ed3_edata.h">
+      <Filter>engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ed3_engine.h">
+      <Filter>engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ed3_lua.h">
+      <Filter>engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ed3_obj_cam_gest.h">
+      <Filter>engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ed3_obj_class.h">
+      <Filter>engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ed3_obj_factory.h">
+      <Filter>engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ed3_obj_fire.h">
+      <Filter>engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ed3_obj_mesh.h">
+      <Filter>engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ed3_obj_texture.h">
+      <Filter>engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ed3_object.h">
+      <Filter>engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ed3_physics_shape.h">
+      <Filter>engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ed3_physics_shapes.h">
+      <Filter>engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ed3_physics_world.h">
+      <Filter>engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ed3_prerender.h">
+      <Filter>engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ed3_primitive_lua.h">
+      <Filter>engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ed3_rdata.h">
+      <Filter>engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ed3_resloader.h">
+      <Filter>engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ed3_types.h">
+      <Filter>engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ed3_world.h">
+      <Filter>engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ed3afx.h">
+      <Filter>engine\Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

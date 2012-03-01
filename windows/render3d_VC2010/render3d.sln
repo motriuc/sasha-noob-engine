@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "render3d", "render3d.vcxproj", "{BD2C98A0-1799-45FD-B631-22520F4B9FF6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{66ACF11D-0CD8-412D-8FDC-86A91AC2C074} = {66ACF11D-0CD8-412D-8FDC-86A91AC2C074}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "system", "..\system_VC2010\system.vcxproj", "{66ACF11D-0CD8-412D-8FDC-86A91AC2C074}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD2C98A0-1799-45FD-B631-22520F4B9FF6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BD2C98A0-1799-45FD-B631-22520F4B9FF6}.Debug|Win32.Build.0 = Debug|Win32
+		{BD2C98A0-1799-45FD-B631-22520F4B9FF6}.Release|Win32.ActiveCfg = Release|Win32
+		{BD2C98A0-1799-45FD-B631-22520F4B9FF6}.Release|Win32.Build.0 = Release|Win32
+		{66ACF11D-0CD8-412D-8FDC-86A91AC2C074}.Debug|Win32.ActiveCfg = Debug|Win32
+		{66ACF11D-0CD8-412D-8FDC-86A91AC2C074}.Debug|Win32.Build.0 = Debug|Win32
+		{66ACF11D-0CD8-412D-8FDC-86A91AC2C074}.Release|Win32.ActiveCfg = Release|Win32
+		{66ACF11D-0CD8-412D-8FDC-86A91AC2C074}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

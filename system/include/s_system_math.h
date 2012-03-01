@@ -29,7 +29,7 @@ using namespace Types;
  *	Pi values
  */
 const sFloat  fPi  = 3.141592654f;
-const sFloat  f2Pi = 2.0 * fPi;
+const sFloat  f2Pi = 2.0f * fPi;
 const sDouble dPi  = 3.1415926535897932384626433832795;
 const sDouble d2Pi  = 2.0 * d2Pi;
 

@@ -423,10 +423,10 @@ inline sInt sString::Find( sInt from, const sChar ch ) const
 
 inline sBool sString::Split( sChar ch, sInt& from, sString& v ) const
 {
-	if( from >= Length() )
+	if( from >= (sInt)Length() )
 		return sFalse;
 		
-	for( sInt i = from; i < Length(); ++i )
+	for( sInt i = from; i < (sInt)Length(); ++i )
 	{
 		if( GetChar( i ) == ch )
 		{

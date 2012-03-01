@@ -1,0 +1,444 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="external">
+      <UniqueIdentifier>{54a54388-1be6-4db0-9832-9ffcb4177eb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="system">
+      <UniqueIdentifier>{153c39ea-16ed-4e35-b691-a6c82398e0d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="system\Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="system\Header Files\math">
+      <UniqueIdentifier>{ed1e9005-bd4e-436a-a821-c077ff22a791}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="system\Header Files\chars">
+      <UniqueIdentifier>{6d699aee-0d4c-4264-9974-09cd146b833c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="system\Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="external\expat">
+      <UniqueIdentifier>{58aebddb-bd80-484b-8925-86c5765dfb77}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+    <None Include="..\..\system\include\s_system_global_mac.inl">
+      <Filter>system\Header Files</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_global_win32.inl">
+      <Filter>system\Header Files</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_math.inl">
+      <Filter>system\Header Files</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_mem.inl">
+      <Filter>system\Header Files</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_mt_at_mac.inl">
+      <Filter>system\Header Files</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_mt_at_win32.inl">
+      <Filter>system\Header Files</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_mt_cs.inl">
+      <Filter>system\Header Files</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_mt_cs_win32.inl">
+      <Filter>system\Header Files</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_mt_ev_win32.inl">
+      <Filter>system\Header Files</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_object.inl">
+      <Filter>system\Header Files</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_rgbcolor.inl">
+      <Filter>system\Header Files</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_string.inl">
+      <Filter>system\Header Files</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_xml.inl">
+      <Filter>system\Header Files</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_d2math_vector.inl">
+      <Filter>system\Header Files\math</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_d3math_aabb.inl">
+      <Filter>system\Header Files\math</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_d3math_camera.inl">
+      <Filter>system\Header Files\math</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_d3math_frustum.inl">
+      <Filter>system\Header Files\math</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_d3math_matrix.inl">
+      <Filter>system\Header Files\math</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_d3math_plane.inl">
+      <Filter>system\Header Files\math</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_d3math_sphere.inl">
+      <Filter>system\Header Files\math</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_d3math_triangle.inl">
+      <Filter>system\Header Files\math</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_d3math_vector.inl">
+      <Filter>system\Header Files\math</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_chars_w_win32.inl">
+      <Filter>system\Header Files\chars</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_chars_b_mac.inl">
+      <Filter>system\Header Files\chars</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_chars_b_win32.inl">
+      <Filter>system\Header Files\chars</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_chars_w_mac.inl">
+      <Filter>system\Header Files\chars</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\system\cpp\s_system.cpp">
+      <Filter>system\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\cpp\s_system_chars_b.cpp">
+      <Filter>system\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\cpp\s_system_chars_w.cpp">
+      <Filter>system\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\cpp\s_system_d3math_aabb.cpp">
+      <Filter>system\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\cpp\s_system_d3math_camera.cpp">
+      <Filter>system\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\cpp\s_system_d3math_frustum.cpp">
+      <Filter>system\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\cpp\s_system_d3math_plane.cpp">
+      <Filter>system\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\cpp\s_system_debug.cpp">
+      <Filter>system\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\cpp\s_system_error.cpp">
+      <Filter>system\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\cpp\s_system_error_error.cpp">
+      <Filter>system\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\cpp\s_system_files_lfile_win32.cpp">
+      <Filter>system\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\cpp\s_system_mem.cpp">
+      <Filter>system\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\cpp\s_system_stream_archive.cpp">
+      <Filter>system\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\cpp\s_system_stream_archive_provider_res.cpp">
+      <Filter>system\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\cpp\s_system_stream_rstr.cpp">
+      <Filter>system\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\cpp\s_system_xml.cpp">
+      <Filter>system\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\external\expat\xmlparse.c">
+      <Filter>external\expat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\external\expat\xmlrole.c">
+      <Filter>external\expat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\external\expat\xmltok.c">
+      <Filter>external\expat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\external\expat\xmltok_impl.c">
+      <Filter>external\expat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\external\expat\xmltok_ns.c">
+      <Filter>external\expat</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\system\include\s_system.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_cnt.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_cnt_find.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_cnt_map.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_cnt_sort.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_cnt_sorted.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_cnt_vector.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_conf_def.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_conf_detect.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_conf_inc.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_debug.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_dep.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_error.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_error_error.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_error_strerr.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_error_win32err.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_error_win32hresult.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_evn.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_evn_0.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_evn_1.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_evn_2.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_evn_3.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_evn_4.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_evn_5.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_evn_b.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_files.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_files_error.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_files_lfile.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_global.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_limit.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_macro.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_math.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_mem.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_mt.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_mt_at.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_mt_cs.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_mt_ev.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_object.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_ptr.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_ptr_unique.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_rgbcolor.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_stream.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_stream_archive.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_stream_archive_provider_res.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_stream_file.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_stream_fmem.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_stream_int.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_stream_mac.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_stream_rstr.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_string.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_t.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_t_factory.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_t_typetraits.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_types.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_types_base.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_types_d2math.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_types_d3math.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_xml.h">
+      <Filter>system\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_d2math.h">
+      <Filter>system\Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_d3math_vector.h">
+      <Filter>system\Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_d2math_vector.h">
+      <Filter>system\Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_d3math.h">
+      <Filter>system\Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_d3math_aabb.h">
+      <Filter>system\Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_d3math_camera.h">
+      <Filter>system\Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_d3math_frustum.h">
+      <Filter>system\Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_d3math_int.h">
+      <Filter>system\Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_d3math_matrix.h">
+      <Filter>system\Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_d3math_plane.h">
+      <Filter>system\Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_d3math_sphere.h">
+      <Filter>system\Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_d3math_triangle.h">
+      <Filter>system\Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_chars.h">
+      <Filter>system\Header Files\chars</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_chars_b.h">
+      <Filter>system\Header Files\chars</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_chars_w.h">
+      <Filter>system\Header Files\chars</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\external\expat\amigaconfig.h">
+      <Filter>external\expat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\external\expat\ascii.h">
+      <Filter>external\expat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\external\expat\asciitab.h">
+      <Filter>external\expat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\external\expat\expat.h">
+      <Filter>external\expat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\external\expat\expat_external.h">
+      <Filter>external\expat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\external\expat\iasciitab.h">
+      <Filter>external\expat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\external\expat\internal.h">
+      <Filter>external\expat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\external\expat\latin1tab.h">
+      <Filter>external\expat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\external\expat\macconfig.h">
+      <Filter>external\expat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\external\expat\nametab.h">
+      <Filter>external\expat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\external\expat\utf8tab.h">
+      <Filter>external\expat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\external\expat\winconfig.h">
+      <Filter>external\expat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\external\expat\xmlrole.h">
+      <Filter>external\expat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\external\expat\xmltok.h">
+      <Filter>external\expat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\external\expat\xmltok_impl.h">
+      <Filter>external\expat</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

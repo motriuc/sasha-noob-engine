@@ -40,17 +40,17 @@ VertexBuffer::VertexBuffer( Render* owner, const sString& objectName ) :
 //-------------------------------------------------------------------
 void VertexBuffer::PostInit()
 {
-	COUNTER_INT_INC( rd3_video_memory,		_vertexBufferSize );
-	COUNTER_INT_INC( rd3_video_memory_vb,	_vertexBufferSize );
-	COUNTER_INT_INC( rd3_vertex_count,		_vertexCount );
+	COUNTER_INT_INC( rd3_video_memory,		(sInt)_vertexBufferSize );
+	COUNTER_INT_INC( rd3_video_memory_vb,	(sInt)_vertexBufferSize );
+	COUNTER_INT_INC( rd3_vertex_count,		(sInt)_vertexCount );
 }
 
 //-------------------------------------------------------------------
 VertexBuffer::~VertexBuffer()
 {
-	COUNTER_INT_INC( rd3_video_memory_vb,	-_vertexBufferSize );	
-	COUNTER_INT_INC( rd3_video_memory,		-_vertexBufferSize );
-	COUNTER_INT_INC( rd3_vertex_count,		-_vertexCount );
+	COUNTER_INT_INC( rd3_video_memory_vb,	-(sInt)_vertexBufferSize );	
+	COUNTER_INT_INC( rd3_video_memory,		-(sInt)_vertexBufferSize );
+	COUNTER_INT_INC( rd3_vertex_count,		-(sInt)_vertexCount );
 }
 	
 }

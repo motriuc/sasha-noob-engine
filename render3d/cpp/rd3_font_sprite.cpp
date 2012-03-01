@@ -75,10 +75,10 @@ void SprireRenderString::RenderText( RenderState& rstate, const sString& text, c
 		
 		_fontRenderHeight = 0.0f;
 		
-		d3Float cx = fontSprite().GetTexture().GetWidth();
-		d3Float cy = fontSprite().GetTexture().GetHeight(); 
+		d3Float cx = static_cast<d3Float>( fontSprite().GetTexture().GetWidth() );
+		d3Float cy = static_cast<d3Float>( fontSprite().GetTexture().GetHeight() ); 
 	
-		for( sInt i = 0; i < text.Length(); ++i ) 
+		for( sInt i = 0; i < (sInt)text.Length(); ++i ) 
 		{
 			sChar ch = text[i];
 			SpriteChar sprite;

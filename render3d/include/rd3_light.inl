@@ -1,12 +1,12 @@
 ////////////////////////////////////////////////////////////////////////
-//	File Name          : rd3_light.inl
-//	Created            : 5 2 2012   17:25
+//  File Name          : rd3_light.inl
+//  Created            : 5 2 2012   17:25
 //  Author             : Alexandru Motriuc  
-//	File Path          : SLibF\render3d\include
+//  File Path          : SLibF\render3d\include
 //  System independent : 0%
 //  Library            : 
 //
-//	Purpose:	
+//  Purpose:	
 //    
 //
 /////////////////////////////////////////////////////////////////////////
@@ -98,7 +98,7 @@ inline void Light::Assign( const LightPoint& src )
 	__S_ASSERT( sizeof( LightPoint ) <= MAX_LIGHT_BUFFER );
 	__S_ASSERT( _type == LightType::E_NULL );
 
-	LightPoint* pLight = new ((LightPoint*)_lightBuffer) LightPoint();
+	LightPoint* pLight = new ( reinterpret_cast<LightPoint*>(_lightBuffer) ) LightPoint();
 	*pLight = src;
 	
 	_type = LightType::E_POINT;
@@ -108,7 +108,6 @@ inline LightType::LightType Light::GetType() const
 {
 	return _type;
 }
-
 
 inline sInt LightList::Size() const
 {

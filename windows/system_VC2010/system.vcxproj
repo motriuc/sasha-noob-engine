@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{66ACF11D-0CD8-412D-8FDC-86A91AC2C074}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>system</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>..\bin\$(Configuration)\</OutDir>
+    <IntDir>..\build\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>..\bin\$(Configuration)\</OutDir>
+    <IntDir>..\build\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;COMPILED_FROM_DSP;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\system\include;..\..\system\external\expat;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;COMPILED_FROM_DSP;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\system\include;..\..\system\external\expat;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="..\..\system\include\s_system_chars_b_mac.inl" />
+    <None Include="..\..\system\include\s_system_chars_b_win32.inl" />
+    <None Include="..\..\system\include\s_system_chars_w_mac.inl" />
+    <None Include="..\..\system\include\s_system_chars_w_win32.inl" />
+    <None Include="..\..\system\include\s_system_d2math_vector.inl" />
+    <None Include="..\..\system\include\s_system_d3math_aabb.inl" />
+    <None Include="..\..\system\include\s_system_d3math_camera.inl" />
+    <None Include="..\..\system\include\s_system_d3math_frustum.inl" />
+    <None Include="..\..\system\include\s_system_d3math_matrix.inl" />
+    <None Include="..\..\system\include\s_system_d3math_plane.inl" />
+    <None Include="..\..\system\include\s_system_d3math_sphere.inl" />
+    <None Include="..\..\system\include\s_system_d3math_triangle.inl" />
+    <None Include="..\..\system\include\s_system_d3math_vector.inl" />
+    <None Include="..\..\system\include\s_system_global_mac.inl" />
+    <None Include="..\..\system\include\s_system_global_win32.inl" />
+    <None Include="..\..\system\include\s_system_math.inl" />
+    <None Include="..\..\system\include\s_system_mem.inl" />
+    <None Include="..\..\system\include\s_system_mt_at_mac.inl" />
+    <None Include="..\..\system\include\s_system_mt_at_win32.inl" />
+    <None Include="..\..\system\include\s_system_mt_cs.inl" />
+    <None Include="..\..\system\include\s_system_mt_cs_win32.inl" />
+    <None Include="..\..\system\include\s_system_mt_ev_win32.inl" />
+    <None Include="..\..\system\include\s_system_object.inl" />
+    <None Include="..\..\system\include\s_system_rgbcolor.inl" />
+    <None Include="..\..\system\include\s_system_string.inl" />
+    <None Include="..\..\system\include\s_system_xml.inl" />
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\system\cpp\s_system.cpp" />
+    <ClCompile Include="..\..\system\cpp\s_system_chars_b.cpp" />
+    <ClCompile Include="..\..\system\cpp\s_system_chars_w.cpp" />
+    <ClCompile Include="..\..\system\cpp\s_system_d3math_aabb.cpp" />
+    <ClCompile Include="..\..\system\cpp\s_system_d3math_camera.cpp" />
+    <ClCompile Include="..\..\system\cpp\s_system_d3math_frustum.cpp" />
+    <ClCompile Include="..\..\system\cpp\s_system_d3math_plane.cpp" />
+    <ClCompile Include="..\..\system\cpp\s_system_debug.cpp" />
+    <ClCompile Include="..\..\system\cpp\s_system_error.cpp" />
+    <ClCompile Include="..\..\system\cpp\s_system_error_error.cpp" />
+    <ClCompile Include="..\..\system\cpp\s_system_files_lfile_win32.cpp" />
+    <ClCompile Include="..\..\system\cpp\s_system_mem.cpp" />
+    <ClCompile Include="..\..\system\cpp\s_system_stream_archive.cpp" />
+    <ClCompile Include="..\..\system\cpp\s_system_stream_archive_provider_res.cpp" />
+    <ClCompile Include="..\..\system\cpp\s_system_stream_rstr.cpp" />
+    <ClCompile Include="..\..\system\cpp\s_system_xml.cpp" />
+    <ClCompile Include="..\..\system\external\expat\xmlparse.c" />
+    <ClCompile Include="..\..\system\external\expat\xmlrole.c" />
+    <ClCompile Include="..\..\system\external\expat\xmltok.c" />
+    <ClCompile Include="..\..\system\external\expat\xmltok_impl.c" />
+    <ClCompile Include="..\..\system\external\expat\xmltok_ns.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\system\external\expat\amigaconfig.h" />
+    <ClInclude Include="..\..\system\external\expat\ascii.h" />
+    <ClInclude Include="..\..\system\external\expat\asciitab.h" />
+    <ClInclude Include="..\..\system\external\expat\expat.h" />
+    <ClInclude Include="..\..\system\external\expat\expat_external.h" />
+    <ClInclude Include="..\..\system\external\expat\iasciitab.h" />
+    <ClInclude Include="..\..\system\external\expat\internal.h" />
+    <ClInclude Include="..\..\system\external\expat\latin1tab.h" />
+    <ClInclude Include="..\..\system\external\expat\macconfig.h" />
+    <ClInclude Include="..\..\system\external\expat\nametab.h" />
+    <ClInclude Include="..\..\system\external\expat\utf8tab.h" />
+    <ClInclude Include="..\..\system\external\expat\winconfig.h" />
+    <ClInclude Include="..\..\system\external\expat\xmlrole.h" />
+    <ClInclude Include="..\..\system\external\expat\xmltok.h" />
+    <ClInclude Include="..\..\system\external\expat\xmltok_impl.h" />
+    <ClInclude Include="..\..\system\include\s_system.h" />
+    <ClInclude Include="..\..\system\include\s_system_chars.h" />
+    <ClInclude Include="..\..\system\include\s_system_chars_b.h" />
+    <ClInclude Include="..\..\system\include\s_system_chars_w.h" />
+    <ClInclude Include="..\..\system\include\s_system_cnt.h" />
+    <ClInclude Include="..\..\system\include\s_system_cnt_find.h" />
+    <ClInclude Include="..\..\system\include\s_system_cnt_map.h" />
+    <ClInclude Include="..\..\system\include\s_system_cnt_sort.h" />
+    <ClInclude Include="..\..\system\include\s_system_cnt_sorted.h" />
+    <ClInclude Include="..\..\system\include\s_system_cnt_vector.h" />
+    <ClInclude Include="..\..\system\include\s_system_conf_def.h" />
+    <ClInclude Include="..\..\system\include\s_system_conf_detect.h" />
+    <ClInclude Include="..\..\system\include\s_system_conf_inc.h" />
+    <ClInclude Include="..\..\system\include\s_system_d2math.h" />
+    <ClInclude Include="..\..\system\include\s_system_d2math_vector.h" />
+    <ClInclude Include="..\..\system\include\s_system_d3math.h" />
+    <ClInclude Include="..\..\system\include\s_system_d3math_aabb.h" />
+    <ClInclude Include="..\..\system\include\s_system_d3math_camera.h" />
+    <ClInclude Include="..\..\system\include\s_system_d3math_frustum.h" />
+    <ClInclude Include="..\..\system\include\s_system_d3math_int.h" />
+    <ClInclude Include="..\..\system\include\s_system_d3math_matrix.h" />
+    <ClInclude Include="..\..\system\include\s_system_d3math_plane.h" />
+    <ClInclude Include="..\..\system\include\s_system_d3math_sphere.h" />
+    <ClInclude Include="..\..\system\include\s_system_d3math_triangle.h" />
+    <ClInclude Include="..\..\system\include\s_system_d3math_vector.h" />
+    <ClInclude Include="..\..\system\include\s_system_debug.h" />
+    <ClInclude Include="..\..\system\include\s_system_dep.h" />
+    <ClInclude Include="..\..\system\include\s_system_error.h" />
+    <ClInclude Include="..\..\system\include\s_system_error_error.h" />
+    <ClInclude Include="..\..\system\include\s_system_error_strerr.h" />
+    <ClInclude Include="..\..\system\include\s_system_error_win32err.h" />
+    <ClInclude Include="..\..\system\include\s_system_error_win32hresult.h" />
+    <ClInclude Include="..\..\system\include\s_system_evn.h" />
+    <ClInclude Include="..\..\system\include\s_system_evn_0.h" />
+    <ClInclude Include="..\..\system\include\s_system_evn_1.h" />
+    <ClInclude Include="..\..\system\include\s_system_evn_2.h" />
+    <ClInclude Include="..\..\system\include\s_system_evn_3.h" />
+    <ClInclude Include="..\..\system\include\s_system_evn_4.h" />
+    <ClInclude Include="..\..\system\include\s_system_evn_5.h" />
+    <ClInclude Include="..\..\system\include\s_system_evn_b.h" />
+    <ClInclude Include="..\..\system\include\s_system_files.h" />
+    <ClInclude Include="..\..\system\include\s_system_files_error.h" />
+    <ClInclude Include="..\..\system\include\s_system_files_lfile.h" />
+    <ClInclude Include="..\..\system\include\s_system_global.h" />
+    <ClInclude Include="..\..\system\include\s_system_limit.h" />
+    <ClInclude Include="..\..\system\include\s_system_macro.h" />
+    <ClInclude Include="..\..\system\include\s_system_math.h" />
+    <ClInclude Include="..\..\system\include\s_system_mem.h" />
+    <ClInclude Include="..\..\system\include\s_system_mt.h" />
+    <ClInclude Include="..\..\system\include\s_system_mt_at.h" />
+    <ClInclude Include="..\..\system\include\s_system_mt_cs.h" />
+    <ClInclude Include="..\..\system\include\s_system_mt_ev.h" />
+    <ClInclude Include="..\..\system\include\s_system_object.h" />
+    <ClInclude Include="..\..\system\include\s_system_ptr.h" />
+    <ClInclude Include="..\..\system\include\s_system_ptr_unique.h" />
+    <ClInclude Include="..\..\system\include\s_system_rgbcolor.h" />
+    <ClInclude Include="..\..\system\include\s_system_stream.h" />
+    <ClInclude Include="..\..\system\include\s_system_stream_archive.h" />
+    <ClInclude Include="..\..\system\include\s_system_stream_archive_provider_res.h" />
+    <ClInclude Include="..\..\system\include\s_system_stream_file.h" />
+    <ClInclude Include="..\..\system\include\s_system_stream_fmem.h" />
+    <ClInclude Include="..\..\system\include\s_system_stream_int.h" />
+    <ClInclude Include="..\..\system\include\s_system_stream_mac.h" />
+    <ClInclude Include="..\..\system\include\s_system_stream_rstr.h" />
+    <ClInclude Include="..\..\system\include\s_system_string.h" />
+    <ClInclude Include="..\..\system\include\s_system_t.h" />
+    <ClInclude Include="..\..\system\include\s_system_types.h" />
+    <ClInclude Include="..\..\system\include\s_system_types_base.h" />
+    <ClInclude Include="..\..\system\include\s_system_types_d2math.h" />
+    <ClInclude Include="..\..\system\include\s_system_types_d3math.h" />
+    <ClInclude Include="..\..\system\include\s_system_t_factory.h" />
+    <ClInclude Include="..\..\system\include\s_system_t_typetraits.h" />
+    <ClInclude Include="..\..\system\include\s_system_xml.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

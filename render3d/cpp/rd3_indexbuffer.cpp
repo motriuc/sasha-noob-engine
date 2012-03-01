@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : rd3_indexbuffer.cpp
-//	Created                 : 28 1 2011   20:05
-//	File path               : SLibF\render3d\cpp
-//	Author                  : Alexandru Motriuc
+//  Created                 : 28 1 2011   20:05
+//  File path               : SLibF\render3d\cpp
+//  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
-//	Library                 : 
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -39,17 +39,17 @@ IndexBuffer::IndexBuffer( Render* owner, const sString& objectName ) :
 //-------------------------------------------------------------------
 void IndexBuffer::PostInit()
 {
-	COUNTER_INT_INC( rd3_video_memory,		_indexBufferSize );
-	COUNTER_INT_INC( rd3_video_memory_ib,	_indexBufferSize );
-	COUNTER_INT_INC( rd3_index_count,		_indexCount );	
+	COUNTER_INT_INC( rd3_video_memory,		(sInt)_indexBufferSize );
+	COUNTER_INT_INC( rd3_video_memory_ib,	(sInt)_indexBufferSize );
+	COUNTER_INT_INC( rd3_index_count,		(sInt)_indexCount );	
 }
 	
 //-------------------------------------------------------------------
 IndexBuffer::~IndexBuffer()
 {
-	COUNTER_INT_INC( rd3_video_memory,		-_indexBufferSize );
-	COUNTER_INT_INC( rd3_video_memory_ib,	-_indexBufferSize );
-	COUNTER_INT_INC( rd3_index_count,		-_indexCount );	
+	COUNTER_INT_INC( rd3_video_memory,		-(sInt)_indexBufferSize );
+	COUNTER_INT_INC( rd3_video_memory_ib,	-(sInt)_indexBufferSize );
+	COUNTER_INT_INC( rd3_index_count,		-(sInt)_indexCount );	
 }
 	
 	

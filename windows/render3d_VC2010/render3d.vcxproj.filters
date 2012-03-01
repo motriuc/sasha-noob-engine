@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\primitives">
+      <UniqueIdentifier>{5d3dbafe-78cf-46c7-8dd4-90504e6a849a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+    <None Include="..\..\render3d\include\rd3_cdata.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\render3d\include\rd3_edata.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\render3d\include\rd3_effect.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\render3d\include\rd3_light.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\render3d\include\rd3_lightpoint.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\render3d\include\rd3_material.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\render3d\include\rd3_perf_counters.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\render3d\include\rd3_resobj.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\render3d\include\rd3_rstate.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\render3d\include\rd3_texture.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\render3d\include\rd3_types.inl">
+      <Filter>Header Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\rd3_after_effect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\rd3_create_rparam.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\rd3_def.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\rd3_edata.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\rd3_effect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\rd3_font.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\rd3_font_sprite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\rd3_indexbuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\rd3_light.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\rd3_light_sel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\rd3_lightpoint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\rd3_material.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\rd3_material_flatcolor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\rd3_material_solid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\rd3_material_texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\rd3_mesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\rd3_msg_gesture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\rd3_perf_counters.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\rd3_render.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\rd3_resobj.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\rd3_rstate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\rd3_texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\rd3_types.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\rd3_utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\rd3_vertexbuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\rd3_xml_def.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\primitives\rd3_primitive.cpp">
+      <Filter>Source Files\primitives</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\primitives\rd3_primitive_arrow.cpp">
+      <Filter>Source Files\primitives</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\primitives\rd3_primitive_cone.cpp">
+      <Filter>Source Files\primitives</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\primitives\rd3_primitive_sphere.cpp">
+      <Filter>Source Files\primitives</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\primitives\rd3_primitive_torus.cpp">
+      <Filter>Source Files\primitives</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\render3d\include\rd3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_after_effect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_cdata.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_conf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_create_rparam.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_def.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_edata.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_effect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_font.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_font_sprite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_indexbuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_light.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_light_sel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_lightpoint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_material.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_material_flatcolor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_material_solid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_material_texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_msg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_msg_gesture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_msg_gestureq.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_perf_counters.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_render.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_resobj.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_rstate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_utils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_vertexbuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_xml_def.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3afx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -65,7 +65,10 @@
 
 	// disable Security Enhancements warnings
 	#pragma warning(disable : 4996)
-	
+
+    // warning C4355: 'this' : used in base member initializer list
+	#pragma warning(disable : 4355)
+
 	// set win32 platform
 	#define _SPL_WIN32
 

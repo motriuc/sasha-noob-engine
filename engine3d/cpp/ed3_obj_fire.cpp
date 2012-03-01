@@ -35,7 +35,7 @@ d3FireObject::d3FireObject() :
 	sideFade( 50.0f ),
 	xScale( 0.4f),
 	yScale( 0.6f ),
-	yFade( 0.7 ),
+	yFade( 0.7f ),
 	burnSpeed( 0.9f ),
 	wobbleScale( 0.03f ),
 	sideFadeSharpness( 0.03f )

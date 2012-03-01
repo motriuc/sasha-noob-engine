@@ -109,7 +109,7 @@ void PrimitiveCone::GetMesh( VertexPList& p, IndexList& i, VertexNList& n, Verte
 			
 			p.Add( d3Vector( 
 				radius * sinTheta,
-				-(_height / 2.0) + (t * _height / _nt),
+				-(_height / 2.0f) + (t * _height / _nt),
 				radius * cosTheta
 			));
 			

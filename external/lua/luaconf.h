@@ -86,6 +86,10 @@
 ** non-conventional directories.
 */
 #if defined(_WIN32)	/* { */
+
+// disable Security Enhancements warnings
+#pragma warning(disable : 4996)
+
 /*
 ** In Windows, any exclamation mark ('!') in the path is replaced by the
 ** path of the directory of the executable file of the current process.
