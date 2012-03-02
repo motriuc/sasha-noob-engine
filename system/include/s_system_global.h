@@ -26,6 +26,11 @@ namespace Platform
 	using namespace Types;
 	
 	/**
+	 * logs debug level warning
+	 */
+	static void DebugWarning( const sChar* pMessage );
+
+	/**
 	 * Shows a Warning message
 	 */
 	static void ShowWarning( const sChar* pMessage );

@@ -203,7 +203,7 @@ inline void Effect::Float::Apply( const Effect* pEffect, const sChar* name ) con
 		if( _paramId < 0 )
 		{
 			_paramId = -2;
-			System::Platform::ShowWarning( _S("Effect : ") + pEffect->GetObjectName() + _S(" parmeter '") + name + _S("' not found") ); 
+			System::Platform::DebugWarning( _S("Effect : ") + pEffect->GetObjectName() + _S(" parmeter '") + name + _S("' not found") ); 
 			return;
 		}
 	}

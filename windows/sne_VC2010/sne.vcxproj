@@ -102,6 +102,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ResourceCompile Include="..\..\render3d\cpp\dx9\fx\system_fx.rc" />
     <ResourceCompile Include="sne.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : dx9_effect.h
-//	Created                 : 23 1 2011   22:43
-//	File path               : SLibF\render3d\include\dx9
-//	Author                  : Alexandru Motriuc
+//  Created                 : 23 1 2011   22:43
+//  File path               : SLibF\render3d\include\dx9
+//  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
-//	Library                 : 
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -26,17 +26,7 @@
 #include "rd3_effect.h"
 
 /**
- * forward declarations
- */
-namespace Rd3
-{
-	class Render;
-	class Def;
-	class Texture;
-}
-
-/**
- *
+ * Dx9Effect
  */
 class Dx9Effect : public Rd3::Effect
 {
@@ -55,12 +45,8 @@ public:
 	 *
 	 */
 	void LoadFromString( const sString& effect, const Rd3::Def& def ) throws_error;
-
-	/**
-	 *
-	 */
-	void LoadFromFile( const sString& filePath, const Rd3::Def& def ) throws_error;
-
+	void LoadFromChars( const SBCHAR* effect, sInt size, const Rd3::Def& def ) throws_error;
+	void LoadFromFile( const sString& filePath, const Rd3::Def& def, const Streams::StreamArchive& archive ) throws_error;
 	/**
 	 *
 	 */
@@ -69,11 +55,11 @@ public:
 	/**
 	 *
 	 */
-	virtual void Set( sUInt i, const d3Matrix& m );
-	virtual void Set( sUInt i, const d3Vector& v );
-	virtual void Set( sUInt i, const d3Float f );
-	virtual void Set( sUInt i, const sBool b );
-	virtual void Set( sUInt i, const Rd3::Texture* t );
+	virtual void Set( sUInt h, const d3Matrix& m ) const;
+	virtual void Set( sUInt h, const d3Vector& v ) const;
+	virtual void Set( sUInt h, const d3Float f ) const;
+	virtual void Set( sUInt h, const sBool b ) const;
+	virtual void Set( sUInt i, sUInt h, const Rd3::Texture* t ) const;
 
 	LPD3DXEFFECT GetHandle() const		{ return _pEffect; }
 private:

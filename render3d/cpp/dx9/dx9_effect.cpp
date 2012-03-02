@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : dx9_effect.cpp
-//	Created                 : 23 1 2011   22:43
-//	File path               : SLibF\render3d\dx9\cpp
-//	Author                  : Alexandru Motriuc
+//  Created                 : 23 1 2011   22:43
+//  File path               : SLibF\render3d\dx9\cpp
+//  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
-//	Library                 : 
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -22,20 +22,18 @@
 #include "dx9/dx9_effect.h"
 #include "dx9/dx9_texture.h"
 #include "dx9/dx9_render.h"
-#include "rd3_def.h"
 
 using namespace Rd3;
 using namespace System::Cnt;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 // Utils
+/////////////////////////////////////////////////////////////////////////////////////////////
+
 typedef sVector<char> CharV;
 typedef sVector<CharV> CharVVector;
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
+//------------------------------------------------------------------------------------------
 void ToCharV( CharV& v, const sString& s )
 {
 	sInt count = s.Length();
@@ -49,11 +47,8 @@ void ToCharV( CharV& v, const sString& s )
 	v[count] = 0;
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
-void GetMacrosFromDef( CharVVector& values, sVector<D3DXMACRO>& macro, const Rd3::Def& def )
+//------------------------------------------------------------------------------------------
+void GetFxMacrosFromDef( CharVVector& values, sVector<D3DXMACRO>& macro, const Rd3::Def& def )
 {
 	sStrings defStrings;
 
@@ -84,6 +79,7 @@ void GetMacrosFromDef( CharVVector& values, sVector<D3DXMACRO>& macro, const Rd3
 // Dx9Effect::Dx9Effect
 /////////////////////////////////////////////////////////////////////////////////////////////
 
+//-------------------------------------------------------------------------------------------
 Dx9Effect::Dx9Effect(
 		Rd3::Render* owner,  
 		const sString& objectName
@@ -93,65 +89,21 @@ Dx9Effect::Dx9Effect(
 {
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
-void Dx9Effect::LoadFromFile( const sString& filePath, const Rd3::Def& def ) throws_error
+//-------------------------------------------------------------------------------------------
+void Dx9Effect::LoadFromFile( const sString& filePath, const Rd3::Def& def, const Streams::StreamArchive& archive ) throws_error
 {
-	__S_ASSERT( _pEffect == NULL );
-
-	CharVVector values;
-	sVector<D3DXMACRO> macro;
-
-	// convert data to char*
-	GetMacrosFromDef( values, macro, def );
-
-	SDWORD dwFlags = 0;
-#ifdef _DEBUG
-	dwFlags |= D3DXSHADER_DEBUG | D3DXSHADER_SKIPOPTIMIZATION; 
-#else
-
-#endif
-
-	LPD3DXBUFFER pBuffer;
-
-	HRESULT hr = D3DXCreateEffectFromFile( 
-		Dx9Render::GetDX9Device( GetOwner() ), 
-		filePath,
-		macro.GetBuffer(),
-		NULL,
-		dwFlags,
-		NULL,
-		&_pEffect,
-		&pBuffer
-	);
-
-	if( FAILED( hr ) )
-	{
-		if( pBuffer )
-		{
-			sString error( (const char*)pBuffer->GetBufferPointer(), pBuffer->GetBufferSize() );
-			pBuffer->Release();
-			
-			System::Platform::ShowWarning( error );
-
-			error_throw_arg( System::Errors::StringError ) 
-				error
-			);
-		}
-		else
-			_DX9_ERROR( hr );
-	}
-
-	InitParamsLinks();
+	ptr_unique<const Streams::IInputStream> pStream( archive.Open( filePath ) ); 
+	
+	sUInt length = pStream().GetSize();
+	
+	ptr_array_unique<char> charBuffer ( new char[length] );
+	pStream().Read( charBuffer, length );
+	
+	LoadFromString( sString( charBuffer, length ), def );
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
-void Dx9Effect::LoadFromString( const sString& effect, const Rd3::Def& def ) throws_error
+//-------------------------------------------------------------------------------------------
+void Dx9Effect::LoadFromChars( const SBCHAR* effect, sInt size, const Rd3::Def& def ) throws_error
 {
 	__S_ASSERT( _pEffect == NULL );
 
@@ -159,25 +111,20 @@ void Dx9Effect::LoadFromString( const sString& effect, const Rd3::Def& def ) thr
 	sVector<D3DXMACRO> macro;
 
 	// convert data to char*
-	GetMacrosFromDef( values, macro, def );
-
-	// convert data to char*
-	CharV effectCharV;
-	ToCharV( effectCharV, effect );
+	GetFxMacrosFromDef( values, macro, def );
 
 	SDWORD dwFlags = 0;
 #ifdef _DEBUG
 	dwFlags |= D3DXSHADER_DEBUG | D3DXSHADER_SKIPOPTIMIZATION; 
 #else
-
 #endif
 
 	LPD3DXBUFFER pBuffer;
 
 	HRESULT hr = D3DXCreateEffect( 
 		Dx9Render::GetDX9Device( GetOwner() ), 
-		effectCharV.GetBuffer(),
-		effectCharV.Size(),
+		effect,
+		size,
 		macro.GetBuffer(),
 		NULL,
 		dwFlags,
@@ -192,9 +139,6 @@ void Dx9Effect::LoadFromString( const sString& effect, const Rd3::Def& def ) thr
 		{
 			sString error( (const char*)pBuffer->GetBufferPointer(), pBuffer->GetBufferSize() );
 			pBuffer->Release();
-
-			System::Platform::ShowWarning( error );
-
 			error_throw_arg( System::Errors::StringError ) 
 				error
 			);
@@ -206,9 +150,16 @@ void Dx9Effect::LoadFromString( const sString& effect, const Rd3::Def& def ) thr
 	InitParamsLinks();
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
+//-------------------------------------------------------------------------------------------
+void Dx9Effect::LoadFromString( const sString& effect, const Rd3::Def& def ) throws_error
+{
+	// convert data to char*
+	CharV effectCharV;
+	ToCharV( effectCharV, effect );
+	LoadFromChars( effectCharV.GetBuffer(), effectCharV.Size(), def ); 
+}
+
+//-------------------------------------------------------------------------------------------
 void Dx9Effect::InitParamsLinks() throws_error
 {
 	__S_ASSERT( _pEffect != NULL );
@@ -290,7 +241,8 @@ void Dx9Effect::InitParamsLinks() throws_error
 					SetIndex( p, (sUInt)hParam );
 				}
 				else
-					unknownParams += paramName + _S(";");
+					_floatDynamicParams.Add( paramName, (sUInt)hParam );
+
 			}
 			else if( paramDesc.Type == D3DXPT_BOOL )
 			{
@@ -312,56 +264,53 @@ void Dx9Effect::InitParamsLinks() throws_error
 	}
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
+//-------------------------------------------------------------------------------------------
 Dx9Effect::~Dx9Effect()
 {
 	if( _pEffect != NULL )
 		_pEffect->Release();
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
-void Dx9Effect::Set( sUInt i, const d3Matrix& m )
+//-------------------------------------------------------------------------------------------
+void Dx9Effect::Set( sUInt h, const d3Matrix& m ) const
 {
 	__S_ASSERT( _pEffect != NULL );
-	HRESULT hr = _pEffect->SetMatrix( (D3DXHANDLE)i, (const D3DXMATRIX*)&m );
+	HRESULT hr = _pEffect->SetMatrix( (D3DXHANDLE)h, (const D3DXMATRIX*)&m );
 	__S_ASSERT( SUCCEEDED(hr) );
 }
 
-
-void Dx9Effect::Set( sUInt i, const d3Vector& v )
+//-------------------------------------------------------------------------------------------
+void Dx9Effect::Set( sUInt h, const d3Vector& v ) const
 {
 	__S_ASSERT( _pEffect != NULL );
-	HRESULT hr = _pEffect->SetVector( (D3DXHANDLE)i, (const D3DXVECTOR4*)&v ); 
+	HRESULT hr = _pEffect->SetVector( (D3DXHANDLE)h, (const D3DXVECTOR4*)&v ); 
 	__S_ASSERT( SUCCEEDED(hr) );
 }
 
-void Dx9Effect::Set( sUInt i, const d3Float f )
+//-------------------------------------------------------------------------------------------
+void Dx9Effect::Set( sUInt h, const d3Float f ) const
 {
 	__S_ASSERT( _pEffect != NULL );
-	HRESULT hr = _pEffect->SetFloat( (D3DXHANDLE)i, f );
+	HRESULT hr = _pEffect->SetFloat( (D3DXHANDLE)h, f );
 	__S_ASSERT( SUCCEEDED(hr) );
 }
 
-void Dx9Effect::Set( sUInt i, const sBool b )
+//-------------------------------------------------------------------------------------------
+void Dx9Effect::Set( sUInt h, const sBool b ) const
 {
 	__S_ASSERT( _pEffect != NULL );
-	HRESULT hr = _pEffect->SetBool( (D3DXHANDLE)i, b );
+	HRESULT hr = _pEffect->SetBool( (D3DXHANDLE)h, b );
 	__S_ASSERT( SUCCEEDED(hr) );
 }
 
-void Dx9Effect::Set( sUInt i, const Texture* t )
+//-------------------------------------------------------------------------------------------
+void Dx9Effect::Set( sUInt i, sUInt h, const Texture* t ) const
 {
 	__S_ASSERT( _pEffect != NULL );
 
 	if( t == NULL )
 		return;
 
-	HRESULT hr = _pEffect->SetTexture( (D3DXHANDLE)i, ((Dx9Texture*)t)->GetHandle() );
+	HRESULT hr = _pEffect->SetTexture( (D3DXHANDLE)h, ((Dx9Texture*)t)->GetHandle() );
 	__S_ASSERT( SUCCEEDED(hr) );
 }

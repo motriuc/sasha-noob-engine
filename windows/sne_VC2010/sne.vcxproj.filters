@@ -55,5 +55,8 @@
     <ResourceCompile Include="sne.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
+    <ResourceCompile Include="..\..\render3d\cpp\dx9\fx\system_fx.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

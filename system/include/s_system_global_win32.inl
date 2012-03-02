@@ -20,7 +20,12 @@ inline void ShowWarning( const sChar* pMessage )
 {
 	::MessageBox( NULL, pMessage, _S("Warning"), MB_OK | MB_ICONWARNING );
 }
-   
+
+inline void DebugWarning( const sChar* pMessage )
+{
+	::OutputDebugString( _S("SLIB-Warning : ") + sString( pMessage ) + _S("\n") );
+}
+
 inline void ShowError( const sChar* pMessage )
 {
 	::MessageBox( NULL, pMessage, _S("Error"), MB_OK | MB_ICONERROR );

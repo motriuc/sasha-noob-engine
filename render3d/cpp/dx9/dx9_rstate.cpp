@@ -1,3 +1,20 @@
+/////////////////////////////////////////////////////////////////////
+//  File Name               : dx9_rstate.cpp
+//  Created                 : 20 1 2011   0:05
+//  File path               : SLibF\render3d\cpp
+//  Author                  : Alexandru Motriuc
+//  Platform Independent    : 0%
+//  Library                 : 
+//
+/////////////////////////////////////////////////////////////////////
+//  Purpose:
+//      
+//
+/////////////////////////////////////////////////////////////////////
+//
+//  Modification History:
+//      
+/////////////////////////////////////////////////////////////////////
 #include "rd3afx.h"
 
 #include "dx9/dx9_conf.h"
@@ -8,25 +25,19 @@
 #include "dx9/dx9_indexbuffer.h"
 #include "dx9/dx9_texture.h"
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
+//--------------------------------------------------------------------
 namespace PrimitiveType
 {
 	inline D3DPRIMITIVETYPE GetDX9Type( Rd3::PrimitiveType::PrimitiveType p )
-{
-  __S_ASSERT( p >= 0 );
-  __S_ASSERT( p < Rd3::PrimitiveType::COUNT );
+	{
+		__S_ASSERT( p >= 0 );
+		__S_ASSERT( p < Rd3::PrimitiveType::COUNT );
 
-  return (D3DPRIMITIVETYPE)( p + 1 ); // same as Dx plus 1
+		return (D3DPRIMITIVETYPE)( p + 1 ); // same as Dx plus 1
+	}
 }
-}
 
-
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
+//--------------------------------------------------------------------
 Dx9RenderState::Dx9RenderState( Rd3::Render* owner ) :
 	_BaseClass( owner ),
 	_pTmpSurface( NULL ),
@@ -35,9 +46,7 @@ Dx9RenderState::Dx9RenderState( Rd3::Render* owner ) :
 {
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
+//--------------------------------------------------------------------
 void Dx9RenderState::SetRenderTarget( Rd3::Texture* pRenderTarget )
 {
 	__S_ASSERT( !pRenderTarget->ReadOnly() );
@@ -67,10 +76,7 @@ void Dx9RenderState::SetRenderTarget( Rd3::Texture* pRenderTarget )
     __S_ASSERT( SUCCEEDED(hr) );
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
+//--------------------------------------------------------------------
 void Dx9RenderState::UnsetRenderTarget()
 {
 	LPDIRECT3DDEVICE9 pDevice = Dx9Render::GetDX9Device( GetOwner() );
@@ -93,9 +99,7 @@ void Dx9RenderState::UnsetRenderTarget()
 	_pTmpSurface = NULL;
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
+//--------------------------------------------------------------------
 void Dx9RenderState::Clear( System::Types::sRGBColor color )
 {
 	LPDIRECT3DDEVICE9 pDevice = Dx9Render::GetDX9Device( GetOwner() );
@@ -112,10 +116,7 @@ void Dx9RenderState::Clear( System::Types::sRGBColor color )
     __S_ASSERT( SUCCEEDED(hr) );
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
+//--------------------------------------------------------------------
 void Dx9RenderState::BeginWorldRender( const Rd3::EngineDataForRender& edata )
 {
 	_BaseClass::BeginWorldRender( edata );
@@ -138,7 +139,7 @@ void Dx9RenderState::BeginWorldRender( const Rd3::EngineDataForRender& edata )
 		0,
 		NULL,
 		D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER | D3DCLEAR_STENCIL,
-		0,
+		RGB( 128, 128, 128 ),
 		1.0f,
 		0L
 	);
@@ -324,7 +325,7 @@ void Dx9RenderState::RenderPrimitive( const Rd3::VertexBuffer* vb, const Rd3::In
 			pDevice->SetRenderState( D3DRS_FILLMODE, D3DFILL_WIREFRAME );
 
 		if( GetCommonData().debug_RenderCulling() )
-			pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_CCW );
+			pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_CW );
 		else
 			pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_NONE );
 #endif

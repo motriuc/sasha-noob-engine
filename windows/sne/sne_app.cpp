@@ -29,7 +29,8 @@ static SNEApplication* _pWindowToCreate = NULL;
 SNEApplication::SNEApplication( HINSTANCE hInstance ) :
 	_hWindow( 0 ),
 	_hBaseWinProc( &DefWindowProc ),
-	_pRender( NULL )
+	_pRender( NULL ),
+	_pEngine( NULL )
 {
 	AppEnviroment::Instance().SetAppInstance( hInstance );
 }
@@ -85,7 +86,8 @@ void SNEApplication::LoadWorld() throws_error
 //------------------------------------------------------------------
 void SNEApplication::RenderFrame()
 {
-
+	if( _pEngine != NULL )
+		_pEngine->RenderFrame();
 }
 
 //------------------------------------------------------------------
@@ -109,7 +111,7 @@ int SNEApplication::Run()
 		}
 		else
 		{
-			// do idle
+			RenderFrame();
 		}
 	}
 

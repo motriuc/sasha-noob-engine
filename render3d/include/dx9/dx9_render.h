@@ -229,6 +229,8 @@ private:
 	Dx9Render( LPDIRECT3DDEVICE9    pD3DDevice );
 
 	void FillDeviceDef( Rd3::Def& def );
+	void InitSystemResources( Rd3::Def& def, const Streams::StreamArchive& archive ) throws_error;
+	void ReleaseSystemResources();
 };
 
 

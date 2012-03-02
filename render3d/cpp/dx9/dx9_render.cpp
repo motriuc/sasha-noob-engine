@@ -142,6 +142,8 @@ Dx9Render::Dx9Render( LPDIRECT3DDEVICE9 pD3DDevice ) :
 //------------------------------------------------------------------ 
 Dx9Render::~Dx9Render()
 {
+	ReleaseSystemResources();
+
 	delete _pRenderState;
 
 	__S_ASSERT( _pD3DDevice != NULL );
@@ -368,8 +370,28 @@ Rd3::Effect* Dx9Render::CreateEffectFromFile(
 		const Rd3::StreamArchive& archive
 	) throws_error
 {
-	__S_ASSERT( sFalse );
-	return NULL;
+	if( objectName.Length() > 0 && _effectResPool[objectName] != NULL )
+		error_throw_arg( System::Errors::StringError ) 
+			_S("Duplicate object resource name :") + objectName 
+		);
+	
+	Dx9Effect* effect = NULL;
+	try
+	{
+		effect = new Dx9Effect( this, objectName );
+		effect->LoadFromFile( fileName, def, archive );
+		
+		if( objectName.Length() > 0 )
+			_effectResPool.Add( effect );
+	}
+	catch(...)
+	{
+		if( effect )
+			effect->UnuseResource();
+		throw;
+	}
+	
+	return effect;
 }
 
 //------------------------------------------------------------------ 
@@ -456,219 +478,35 @@ void Dx9Render::FillDeviceDef( Rd3::Def& def )
 	}
 }
 
-namespace efx
-{
-
-#include "dx9/embeded_fx/debug_Solid_Color.inl"	// _debug_SolidColor
-#include "dx9/embeded_fx/debug_Normals_Render.inl" // _debug_Render_Normals
-
-}
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
+//------------------------------------------------------------------ 
 void Dx9Render::Initialize( Rd3::Def& def, const Rd3::StreamArchive& archive ) throws_error
 {
 	FillDeviceDef( def );
-#ifdef _D3_DEBUG_RENDER
-/**
-	CreateEffectFromString(
-		_S("System.Debug.Fx.SolidVertexDiffuzeColor"),
-		def,
-		efx::_debug_SolidColor
-	);
-
-	CreateEffectFromString(
-		_S("System.Debug.Fx.RenderNormals"),
-		def,
-		efx::_debug_Render_Normals
-	);
-*/
-#endif
-
+	InitSystemResources( def, archive );
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-/*
-Rd3::VertexBuffer* Dx9Render::CreateVertexBuffer(
-		const sString& objectName,
-		const Rd3::VertexPList& points,
-		const Rd3::VertexTxCoord& txCoord
-	) throws_error
+//-------------------------------------------------------------------------------------
+void Dx9Render::InitSystemResources( Rd3::Def& def, const Streams::StreamArchive& archive ) throws_error
 {
-	return new Dx9VertexBuffer( this, objectName, points, txCoord );
+	// std effects
+	CreateEffectFromFile( _S("system.texture.fx.1"), def, _S("%engine%/system.texture.1.fx"), archive );
 }
-*/
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-/*
-Rd3::VertexBuffer* Dx9Render::CreateVertexBuffer(
-		const sString& objectName,
-		const Rd3::VertexPList& points,
-		const Rd3::VertexTxCoord& txCoord1,
-		const Rd3::VertexTxCoord& txCoord2
-	) throws_error
-{
-	return new Dx9VertexBuffer( this, objectName, points, txCoord1, txCoord2 );
-}
-*/
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-/*
-Rd3::VertexBuffer* Dx9Render::CreateVertexBuffer(
-		const sString& objectName,
-		const Rd3::VertexPList& points,
-		const Rd3::VertexCList& diffuseColor,
-		const Rd3::VertexTxCoord& txCoord1,
-		const Rd3::VertexTxCoord& txCoord2
-	) throws_error
-{
-	return new Dx9VertexBuffer( this, objectName, points, diffuseColor, txCoord1, txCoord2 );
-}
-*/
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-/*
-Rd3::VertexBuffer* Dx9Render::CreateVertexBuffer(
-		const sString& objectName,
-		const Rd3::VertexPList& points 
-	) throws_error
-{
-	return new Dx9VertexBuffer( this, objectName, points );
-}
-*/
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-/*
-Rd3::VertexBuffer* Dx9Render::CreateVertexBuffer(
-		const sString& objectName,
-		const Rd3::VertexPList& points, 
-		const Rd3::VertexCList& diffuseColor
-	) throws_error
-{
 
-	return new Dx9VertexBuffer( this, objectName, points, diffuseColor );
-}
-*/
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-/*
-Rd3::VertexBuffer* Dx9Render::CreateVertexBuffer(
-		const sString& objectName,
-		const Rd3::VertexPList& points,
-		const Rd3::VertexNList& normals,
-		const Rd3::VertexCList& diffuseColor
-	) throws_error
+//-------------------------------------------------------------------------------------
+void Dx9Render::ReleaseSystemResources()
 {
-	return new Dx9VertexBuffer( this, objectName, points, normals, diffuseColor );
-}
-*/
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-/*
-Rd3::Effect* Dx9Render::CreateEffectFromString(
-		const sString& objectName,
-		const Rd3::Def& def,
-		const sString& effectCode
-	) throws_error
-{
-	if( _effectResPool[objectName] != NULL )
-		error_throw_arg( System::Errors::StringError ) 
-			_S("Duplicate object resource name :") + objectName 
-		);
-
-	Dx9Effect* effect = NULL;
-	try
+	// system effects to release
+	static const sChar* releaseEffects[] = 
 	{
-		effect = new Dx9Effect( this, objectName );
-		effect->LoadFromString( effectCode, def );
-		_effectResPool.Add( effect );
-	}
-	error_catch( System::Errors::Error )
+		_S("system.texture.fx.1"),
+		NULL
+	};
+
+
+	for( const sChar** name = releaseEffects; *name != NULL; ++name )
 	{
-		if( effect )
-			delete effect;
-
-		throw error;
+		Rd3::ResourceObject* res = GetEffect( _S("system.texture.fx.1") );
+		if( res )
+			res->UnuseResource();
 	}
-
-	return effect;
 }
-*/
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-/*
-Rd3::Effect* Dx9Render::CreateEffectFromFile(
-		const sString& objectName,
-		const Rd3::Def& def,
-		const sString& fileName
-	) throws_error
-{
-	if( _effectResPool[objectName] != NULL )
-		error_throw_arg( System::Errors::StringError ) 
-			_S("Duplicate object resource name :") + objectName 
-		);
-
-	Dx9Effect* effect = NULL;
-	try
-	{
-		effect = new Dx9Effect( this, objectName );
-		effect->LoadFromFile( fileName, def );
-		_effectResPool.Add( effect );
-	}
-	error_catch( System::Errors::Error )
-	{
-		if( effect )
-			delete effect;
-
-		throw error;
-	}
-
-	return effect;
-}
-*/
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-/*
-Rd3::IndexBuffer* Dx9Render::CreateIndexBuffer(
-	const sString& objectName,
-	const Rd3::IndexList& indexList
-) throws_error
-{
-	return new Dx9IndexBuffer( this, objectName, indexList );
-}
-*/
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-/*
-Rd3::Texture* Dx9Render::CreateTexture(
-		const sString& objectName,
-		sInt width, sInt height,
-		Rd3::TextureType::TextureType type
-	) throws_error
-{
-	if( _textureResPool[objectName] != NULL )
-		error_throw_arg( System::Errors::StringError ) 
-			_S("Duplicate object resource name :") + objectName 
-		);
-
-	Dx9Texture* pTexture = new Dx9Texture( this, objectName, width, height, type );
-
-	_textureResPool.Add( pTexture );
-
-	return pTexture;
-}
-*/
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
