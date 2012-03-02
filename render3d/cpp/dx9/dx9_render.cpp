@@ -490,6 +490,17 @@ void Dx9Render::InitSystemResources( Rd3::Def& def, const Streams::StreamArchive
 {
 	// std effects
 	CreateEffectFromFile( _S("system.texture.fx.1"), def, _S("%engine%/system.texture.1.fx"), archive );
+
+	// std fonts
+	CreateTextureFromFile(
+		_S("system.texture.font.10"), 
+		_S("%engine%/system.font.10.png"), 
+		archive,
+		Rd3::TextureType::E_ALPHA,
+		Rd3::TextureParams()
+	);
+
+	CreateFontFromFile( _S("system.font.default"), _S("%engine%/system.font.10.xml"), def, archive );
 }
 
 //-------------------------------------------------------------------------------------
@@ -502,10 +513,39 @@ void Dx9Render::ReleaseSystemResources()
 		NULL
 	};
 
+	// system effects to release
+	static const sChar* releaseTextures[] = 
+	{
+		_S("system.texture.font.10"),
+		NULL
+	};
+
+	// system fonts to release
+	static const sChar* releaseFonts[] = 
+	{
+		_S("system.font.default"),
+		NULL
+	};
+
+
+	//---------------------------------------------------------------
+	for( const sChar** name = releaseFonts; *name != NULL; ++name )
+	{
+		Rd3::ResourceObject* res = GetFont( *name );
+		if( res )
+			res->UnuseResource();
+	}
 
 	for( const sChar** name = releaseEffects; *name != NULL; ++name )
 	{
-		Rd3::ResourceObject* res = GetEffect( _S("system.texture.fx.1") );
+		Rd3::ResourceObject* res = GetEffect( *name );
+		if( res )
+			res->UnuseResource();
+	}
+
+	for( const sChar** name = releaseTextures; *name != NULL; ++name )
+	{
+		Rd3::ResourceObject* res = GetTexture( *name );
 		if( res )
 			res->UnuseResource();
 	}

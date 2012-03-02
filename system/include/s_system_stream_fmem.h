@@ -88,6 +88,8 @@ public:
 		sInt len = System::FMath::Min( _length - _pos, lLength );
 		System::Memory::Copy( pBuf, _pBuffer + _pos, len );
 		
+		_pos += len;
+
 		return len;
 	}
 		

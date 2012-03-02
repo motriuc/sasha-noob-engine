@@ -299,6 +299,15 @@ public:
 		sInt fontSize
 	) throws_error = 0;
 
+	/**
+	 *
+	 */
+	Font* CreateFontFromFile(
+		const sString& objectName,
+		const sString& fileName,
+		const Def& def,
+		const StreamArchive& archive
+	);
 	
 	///////////////////////////////////////////////////////////
 	// Create mesh

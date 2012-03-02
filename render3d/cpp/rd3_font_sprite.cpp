@@ -54,7 +54,31 @@ sBool FontSprite::GetSprite( sChar ch, SpriteChar& sprite ) const
 //-------------------------------------------------------------------	
 void FontSprite::LoadFromXml( const System::Xml::BaseDomNode& node, const Def& def ) throws_error
 {
+	for( sInt i = 0; i < node.GetChildCount(); ++i )
+	{
+		const System::Xml::BaseDomNode& child = node[i];
+		if( child.GetName() == _S("c") )
+		{
+			sString ch = child.GetAttributes()[_S("c")];
+			sString val = child.GetAttributes()[_S("r")];
+			if( ch.Length() == 1 )
+			{
+				sInt from = 0;
+				sInt v[4];
+				for( sInt i = 0; i < 4; i++ )
+				{
+					sString split;
+					if( val.Split( _S(','), from, split ) )
+						v[i] = split.ToInt();
+					else
+						v[i] = 0;
+				}
 
+				SpriteChar sprite( ch[0], v[0], v[1], v[2] - v[0], v[3] - v[1] );
+				AddSprite( sprite );
+			}
+		}
+	}
 }
 
 //-------------------------------------------------------------------	

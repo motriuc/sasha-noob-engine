@@ -21,6 +21,8 @@
 #include "rd3_msg.h"
 #include "rd3_mesh.h"
 #include "rd3_after_effect.h"
+#include "rd3_xml_def.h"
+#include "rd3_font.h"
 
 using namespace System::Types;
 
@@ -445,7 +447,52 @@ AfterEffect* Render::CreateAfterEffectFromFile(
 	}
 	
 	return pAfterEffect;
-	
 }	
+
+//--------------------------------------------------------------------
+Font* Render::CreateFontFromFile(
+		const sString& objectName,
+		const sString& fileName,
+		const Def& def,
+		const StreamArchive& archive
+	)
+{
+	if( objectName.Length() > 0 && _fontResPool[objectName] != NULL ) 
+		error_throw_arg( System::Errors::StringError ) 
+			_S("Duplicate object resource name :") + objectName 
+		);
 	
+	ptr_unique<const Streams::IInputStream> pStream( archive.Open( fileName ) );
+	ptr_unique<Xml::DomDocument> pDocument( Xml::DomDocument::Read( &pStream() ) );
+	
+	const System::Xml::BaseDomNode& node = pDocument().GetRoot();
+
+	sString type = node.GetAttributes()[ATTR_TYPE];
+
+	Font* pFont = Font::Create( type, this, objectName );
+
+	if( pFont == NULL )
+	{
+		error_throw_arg( System::Errors::StringError ) 
+			_S("Invalid font type :") + type 
+		);
+	}
+
+	try
+	{
+		pFont->LoadFromXml( node, def );
+		if( objectName.Length() > 0 )
+			_fontResPool.Add( pFont );
+	}
+	catch (...)
+	{
+		 if( pFont )
+			 pFont->UnuseResource();
+		throw;
+	}
+	
+	return pFont;
+
+}
+
 }

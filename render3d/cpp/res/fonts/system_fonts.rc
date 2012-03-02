@@ -1,0 +1,20 @@
+/////////////////////////////////////////////////////////////////////
+//  File Name               : system_fonts.rc
+//  Created                 : 20 1 2011   0:05
+//  File path               : SLibF\render3d\cpp\res\fonts
+//  Author                  : Alexandru Motriuc
+//  Platform Independent    : 0%
+//  Library                 : 
+//
+/////////////////////////////////////////////////////////////////////
+//  Purpose:
+//     Contains system fx resources
+/////////////////////////////////////////////////////////////////////
+//
+//  Modification History:
+//      
+/////////////////////////////////////////////////////////////////////
+
+// basic effects
+system.font.10	PNG		"system.font.10.png"
+system.font.10  XML		"system.font.10.xml"
