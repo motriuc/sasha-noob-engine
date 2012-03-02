@@ -33,8 +33,6 @@ using namespace Rd3;
 namespace Ed3
 {
 	
-AUTO_REGISTER_PRIMITIVE_FACTORY( _S("lua"), PrimitiveLua )
-
 //------------------------------------------------------------------
 PrimitiveLua::PrimitiveLua() :
 	_luaObject( this ),

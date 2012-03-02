@@ -35,6 +35,8 @@ public:
 protected:
 	void OnCreateWindow();
 	void RenderFrame();
+	void LoadWorld() throws_error;
+
 private:
 	HWND win_CreateSWindow();
 

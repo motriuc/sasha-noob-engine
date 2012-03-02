@@ -27,8 +27,6 @@
 
 namespace Ed3
 {
-
-AUTO_REGISTER_D3OBJECT_FACTORY( _S("engine.object.fire") , d3FireObject )	
 	
 //-----------------------------------------------------------------------	
 d3FireObject::d3FireObject() :

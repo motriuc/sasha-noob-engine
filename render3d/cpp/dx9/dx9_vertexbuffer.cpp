@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : dx9_vertexbuffer.cpp
-//	Created                 : 20 1 2011   0:05
-//	File path               : SLibF\render3d\cpp
-//	Author                  : Alexandru Motriuc
+//  Created                 : 20 1 2011   0:05
+//  File path               : SLibF\render3d\cpp
+//  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
-//	Library                 : 
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -21,10 +21,42 @@
 #include "dx9/dx9_vertexbuffer.h"
 #include "dx9/dx9_render.h"
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
+using namespace System::d3Math;
+using namespace System::d2Math;
 
+//-------------------------------------------------------------------
+inline void AddVector( void*& pBuffer, const d3Vector& v )
+{
+	float* pV = (float*)( pBuffer );
+
+	*pV = v.x;		++pV; 
+	*pV = v.y;		++pV; 
+	*pV = v.z;		++pV; 
+
+	pBuffer = pV;
+}
+
+//-------------------------------------------------------------------
+inline void AddVector( void*& pBuffer, const d2Vector& v )
+{
+	float* pV = (float*)( pBuffer );
+
+	*pV = v.x;		++pV; 
+	*pV = v.y;		++pV; 
+
+	pBuffer = pV;
+}
+//-------------------------------------------------------------------
+inline void AddColor( void*& pBuffer, sRGBColor c )
+{
+	DWORD* pDW = (DWORD*)(pBuffer);
+
+	*pDW = c;		++pDW;
+
+	pBuffer = pDW;
+}
+
+//-------------------------------------------------------------------
 Dx9VertexBuffer::Dx9VertexBuffer( 
 	Rd3::Render* owner,  
 	const sString& objectName, 
@@ -62,24 +94,68 @@ Dx9VertexBuffer::Dx9VertexBuffer(
 		_DX9_ERROR( hr );
 	}
 
-	// get dx buffer
-	float* pV = (float*)( pBuffer );
-
 	for( sInt i = 0; i < p.Size(); i++ )
 	{
-		const d3Math::d3Vector& v = p[i];
-		*pV = v.x;		++pV; 
-		*pV = v.y;		++pV; 
-		*pV = v.z;		++pV; 
+		AddVector( pBuffer,  p[i] );
 	}
 
 	_pVertexBuffer->Unlock();
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
+//-------------------------------------------------------------------
+Dx9VertexBuffer::Dx9VertexBuffer( 
+		Rd3::Render* owner,  
+		const sString& objectName,
+		const Rd3::VertexPList& points,
+		const Rd3::VertexNList& normals,
+		const Rd3::VertexTxCoord& txCoord
+	) throws_error :
+	_BaseClass( owner, objectName ),
+	_pVertexBuffer( NULL ),
+	_pointOffset( 0 ),
+	_normalOffset( -1 )
+{
+	__S_ASSERT( points.Size() == normals.Size() );
+	__S_ASSERT( normals.Size() == txCoord.Size() );
 
+	_vertexCount = points.Size();
+	_dwFVF = D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1;
+	_vertexSize = sizeof( float ) * 8;
+	_vertexBufferSize = _vertexSize * _vertexCount;
+
+	HRESULT hr = Dx9Render::GetDX9Device(GetOwner())->CreateVertexBuffer(
+		_vertexBufferSize,
+		0,
+		_dwFVF,
+		D3DPOOL_MANAGED,
+		&_pVertexBuffer,
+		NULL
+	);
+
+	if( FAILED(hr) )
+		_DX9_ERROR( hr );
+
+	void* pBuffer;
+
+	hr = _pVertexBuffer->Lock( 0, _vertexBufferSize, &pBuffer, 0 );
+
+	if( FAILED( hr ) )
+	{
+		_pVertexBuffer->Release();
+		_DX9_ERROR( hr );
+	}
+
+	for( sInt i = 0; i < points.Size(); i++ )
+	{
+		AddVector( pBuffer, points[i] );
+		AddVector( pBuffer, normals[i] );
+		AddVector( pBuffer, txCoord[i] );
+	}
+
+	_pVertexBuffer->Unlock();
+}
+
+//-------------------------------------------------------------------
 Dx9VertexBuffer::Dx9VertexBuffer( 
 	Rd3::Render* owner,  
 	const sString& objectName, 
@@ -118,34 +194,16 @@ Dx9VertexBuffer::Dx9VertexBuffer(
 		_DX9_ERROR( hr );
 	}
 
-	// get dx buffer
-	float* pV = (float*)( pBuffer );
-
 	for( sInt i = 0; i < p.Size(); i++ )
 	{
-		// point
-		{
-			const d3Math::d3Vector& v = p[i];
-			*pV = v.x;		++pV; 
-			*pV = v.y;		++pV; 
-			*pV = v.z;		++pV; 
-		}
-
-		// text
-		{
-			const d2Math::d2Vector& v = tx[i];
-			*pV = v.x;		++pV; 
-			*pV = v.y;		++pV; 
-		}
+		AddVector( pBuffer, p[i] );
+		AddVector( pBuffer, tx[i] );
 	}
 
 	_pVertexBuffer->Unlock();
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
+//-------------------------------------------------------------------
 Dx9VertexBuffer::Dx9VertexBuffer( 
 	Rd3::Render* owner,  
 	const sString& objectName, 
@@ -185,41 +243,17 @@ Dx9VertexBuffer::Dx9VertexBuffer(
 		_DX9_ERROR( hr );
 	}
 
-	// get dx buffer
-	float* pV = (float*)( pBuffer );
-
 	for( sInt i = 0; i < p.Size(); i++ )
 	{
-		// point
-		{
-			const d3Math::d3Vector& v = p[i];
-			*pV = v.x;		++pV; 
-			*pV = v.y;		++pV; 
-			*pV = v.z;		++pV; 
-		}
-
-		// tx1
-		{
-			const d2Math::d2Vector& v = tx1[i];
-			*pV = v.x;		++pV; 
-			*pV = v.y;		++pV; 
-		}
-
-		// tx2
-		{
-			const d2Math::d2Vector& v = tx2[i];
-			*pV = v.x;		++pV; 
-			*pV = v.y;		++pV; 
-		}
+		AddVector( pBuffer, p[i] );
+		AddVector( pBuffer, tx1[i] );
+		AddVector( pBuffer, tx2[i] );
 	}
 
 	_pVertexBuffer->Unlock();
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
+//-------------------------------------------------------------------
 Dx9VertexBuffer::Dx9VertexBuffer( 
 		Rd3::Render* owner,  
 		const sString& objectName, 
@@ -260,48 +294,18 @@ Dx9VertexBuffer::Dx9VertexBuffer(
 		_DX9_ERROR( hr );
 	}
 
-	// get dx buffer
-	float* pV = (float*)( pBuffer );
-
 	for( sInt i = 0; i < p.Size(); i++ )
 	{
-		// point
-		{
-			const d3Math::d3Vector& v = p[i];
-			*pV = v.x;		++pV; 
-			*pV = v.y;		++pV; 
-			*pV = v.z;		++pV; 
-		}
-
-		// Set diffuze color
-		{
-			DWORD* pDW = (DWORD*)(pV);
-			*pDW = diffuseColor[i]; ++pDW;
-			pV = (float*)(pDW);
-		}
-
-		// tx1
-		{
-			const d2Math::d2Vector& v = tx1[i];
-			*pV = v.x;		++pV; 
-			*pV = v.y;		++pV; 
-		}
-
-		// tx2
-		{
-			const d2Math::d2Vector& v = tx2[i];
-			*pV = v.x;		++pV; 
-			*pV = v.y;		++pV; 
-		}
+		AddVector( pBuffer, p[i] );
+		AddColor( pBuffer, diffuseColor[i] );
+		AddVector( pBuffer, tx1[i] );
+		AddVector( pBuffer, tx2[i] );
 	}
 
 	_pVertexBuffer->Unlock();
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
+//-------------------------------------------------------------------
 Dx9VertexBuffer::Dx9VertexBuffer( 
 		Rd3::Render* owner,  
 		const sString& objectName, 
@@ -344,32 +348,16 @@ Dx9VertexBuffer::Dx9VertexBuffer(
 		_DX9_ERROR( hr );
 	}
 
-	// get dx buffer
-	float* pV = (float*)( pBuffer );
-
 	for( sInt i = 0; i < p.Size(); i++ )
 	{
-		// Set point vector
-		const d3Math::d3Vector& v = p[i];
-		*pV = v.x;		++pV; 
-		*pV = v.y;		++pV; 
-		*pV = v.z;		++pV;
-
-		DWORD* pDW = (DWORD*)(pV);
-		
-		// Set color
-		*pDW = diffuseColor[i]; ++pDW;
-		
-		pV = (float*)(pDW);
+		AddVector( pBuffer, p[i] );
+		AddColor( pBuffer, diffuseColor[i] );
 	}
 
 	_pVertexBuffer->Unlock();
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
+//-------------------------------------------------------------------
 Dx9VertexBuffer::Dx9VertexBuffer( 
 		Rd3::Render* owner,  
 		const sString& objectName, 
@@ -414,33 +402,11 @@ Dx9VertexBuffer::Dx9VertexBuffer(
 		_DX9_ERROR( hr );
 	}
 
-	// get dx buffer
-	float* pV = (float*)( pBuffer );
-
 	for( sInt i = 0; i < p.Size(); i++ )
 	{
-		// Set point vector
-		{
-			const d3Math::d3Vector& v = p[i];
-			*pV = v.x;		++pV; 
-			*pV = v.y;		++pV; 
-			*pV = v.z;		++pV;
-		}
-
-		// Set Normal vctor
-		{
-			const d3Math::d3Vector& v = n[i];
-			*pV = v.x;		++pV; 
-			*pV = v.y;		++pV; 
-			*pV = v.z;		++pV;
-		}
-
-		// Set diffuze color
-		{
-			DWORD* pDW = (DWORD*)(pV);
-			*pDW = diffuseColor[i]; ++pDW;
-			pV = (float*)(pDW);
-		}
+		AddVector( pBuffer, p[i] );
+		AddVector( pBuffer, n[i] );
+		AddColor( pBuffer, diffuseColor[i] );
 	}
 
 	_pVertexBuffer->Unlock();
@@ -509,6 +475,16 @@ void Dx9VertexBuffer::GetNormals( Rd3::VertexNList& normals ) const
 /************************************************************************/
 
 void Dx9VertexBuffer::GetDiffuseColor( Rd3::VertexCList& colors ) const
+{
+	__S_ASSERT( sFalse );
+}
+
+void Dx9VertexBuffer::ComputeBoundingBox( d3AABBox& bbox ) const
+{
+	__S_ASSERT( sFalse );
+}
+	
+void Dx9VertexBuffer::ComputeBoundingBox( d3AABBox& bbox, const d3Matrix& tran ) const
 {
 	__S_ASSERT( sFalse );
 }

@@ -80,19 +80,15 @@ public:
 }
 
 #define AUTO_REGISTER_PRIMITIVE_FACTORY( _name, _class ) \
-	class Factory_Register_primitive_##_class \
+	static class Factory_Register_primitive_##_class : public System::T::ClassFactory<_class, Rd3::Primitive3D> \
 	{ \
 	public: \
 		Factory_Register_primitive_##_class( ) \
 		{ \
-			static System::T::ClassFactory<_class, Rd3::Primitive3D> obj; \
-			Rd3::Primitive3D::Register( _name, &obj ); \
+			Rd3::Primitive3D::Register( _name, this ); \
 		} \
-	}; \
-	Factory_Register_primitive_##_class register_primitive_##_class;
+	} register_primitive_##_class; \
 
 
-
-
-
+#define PRIMITIVE_FACTORY_INIT( _class ) register_primitive_##_class.Init()
 #endif // _RD3_PRIMITIVE_INC_

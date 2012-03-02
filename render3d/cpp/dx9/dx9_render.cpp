@@ -199,8 +199,28 @@ Rd3::VertexBuffer* Dx9Render::CreateVertexBuffer(
 		const Rd3::VertexTxCoord& txCoord
 	) throws_error
 {
-	__S_ASSERT( sFalse );
-	return NULL;
+	if( objectName.Length() > 0 && _vertexBufferPool[objectName] != NULL )
+		error_throw_arg( System::Errors::StringError ) 
+			_S("Duplicate object resource name :") + objectName 
+		);
+	
+	Dx9VertexBuffer* vb = NULL;
+	try
+	{
+		vb = new Dx9VertexBuffer( this, objectName, points, normals, txCoord );
+		
+		if( objectName.Length() > 0 )
+			_vertexBufferPool.Add( vb );
+	}
+	catch(...)
+	{
+		if (vb)
+			vb->UnuseResource();
+	
+		throw;
+	}
+	
+	return vb;
 }
 	
 //------------------------------------------------------------------ 
@@ -257,8 +277,28 @@ Rd3::IndexBuffer* Dx9Render::CreateIndexBuffer(
 		const Rd3::IndexList& indexList
 	) throws_error
 {
-	__S_ASSERT( sFalse );
-	return NULL;
+	if( objectName.Length() > 0 && _indexBufferPool[objectName] != NULL )
+		error_throw_arg( System::Errors::StringError ) 
+			_S("Duplicate object resource name :") + objectName 
+		);
+	
+	Dx9IndexBuffer* pIndexBuffer = NULL;
+	
+	try 
+	{
+		pIndexBuffer = new Dx9IndexBuffer( this, objectName, indexList );
+		
+		if( objectName.Length() > 0 )
+			_indexBufferPool.Add( pIndexBuffer );
+	}
+	catch (...)
+	{
+		if( pIndexBuffer )
+			pIndexBuffer->UnuseResource();
+		throw;
+	}
+	
+	return pIndexBuffer;
 }
 
 //------------------------------------------------------------------ 
@@ -282,8 +322,30 @@ Rd3::Texture* Dx9Render::CreateTextureFromFile(
 		const Rd3::TextureParams& params
 	) throws_error
 {
-	__S_ASSERT( sFalse );
-	return NULL;
+
+	if( objectName.Length() > 0 && _textureResPool[objectName] != NULL )
+		error_throw_arg( System::Errors::StringError ) 
+			_S("Duplicate object resource name :") + objectName 
+		);
+
+	
+	Dx9Texture* pTexture = NULL;
+	try
+	{
+		pTexture = new Dx9Texture( this, objectName, type, params );
+		pTexture->LoadFromFile( fileName, archive );
+
+		if( objectName.Length() > 0 )
+			_textureResPool.Add( pTexture );
+	}
+	catch (...)
+	{
+		if( pTexture )
+			pTexture->UnuseResource();
+		throw;
+	}
+	
+	return pTexture;
 }
 
 //------------------------------------------------------------------ 

@@ -19,7 +19,7 @@
 /**
  * App run enviroment
  */
-class AppEnviroment
+class AppEnviroment : private class_nocopy
 {
 public:
 	static AppEnviroment& Instance();
@@ -58,12 +58,10 @@ private:
 	Types::sString		_fileName;
 	Types::sString		_runPath;
 	Types::sInt			_iCmdCount;
-	
+	Types::sString*		_pCmdParams;	
 #ifdef _SPL_WIN32
 	HINSTANCE			_hInstance;
 #endif 	
 private:
 	AppEnviroment();
-	AppEnviroment( const AppEnviroment& src );
-	void operator = ( const AppEnviroment& src );
 };

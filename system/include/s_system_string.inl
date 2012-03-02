@@ -447,6 +447,23 @@ inline sInt sString::FindReverse( const sChar ch ) const
 	return Chars::FindReverse( c_str(), ch );
 }
 
+inline sInt sString::FindReverse( const sChar* chSet, sInt from ) const
+{
+	__S_ASSERT( chSet != NULL );
+	__S_ASSERT( _data != NULL );
+
+	return Chars::FindReverse( _data->data(), chSet, from );
+}
+
+inline sInt sString::FindReverse( const sChar* chSet ) const
+{
+	__S_ASSERT( chSet != NULL );
+	__S_ASSERT( _data != NULL );
+
+	return Chars::FindReverse( _data->data(), chSet, Length() - 1 );
+}
+
+
 #ifdef _SPL_MAC
 
 inline CFStringRef sString::ToCfString() const

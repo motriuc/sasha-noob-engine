@@ -22,8 +22,6 @@
 
 namespace Ed3
 {
-
-AUTO_REGISTER_D3OBJECT_FACTORY( _S("engine.object.gesturecamera") , d3CameraGestureObject )	
 	
 //-----------------------------------------------------------------------	
 d3CameraGestureObject::d3CameraGestureObject() :

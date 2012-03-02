@@ -50,6 +50,19 @@ public:
 	/**
 	 *
 	 */
+	Dx9Texture( Rd3::Render* owner, const sString& objectName,
+		Rd3::TextureType::TextureType type,
+		const Rd3::TextureParams& params
+	);
+
+	/**
+	 *
+	 */
+	void LoadFromFile( const sString& path, const Streams::StreamArchive& arch ) throws_error;
+
+	/**
+	 *
+	 */
 	virtual ~Dx9Texture();
 
 public:
@@ -65,6 +78,9 @@ public:
 private:
 	LPDIRECT3DTEXTURE9		_pTexture;
 	IDirect3DSurface9*		_pDepthStencil;
+
+private:
+	void LoadFromPngStream( const Streams::IInputStream& stream ) throws_error;
 };
 
 #endif // _DX9_TEXTURE_H_

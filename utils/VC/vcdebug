@@ -1,0 +1,4 @@
+;{FROM SLIB}
+System::Types::sString{
+	preview ([&$e._data->ch,s])
+}

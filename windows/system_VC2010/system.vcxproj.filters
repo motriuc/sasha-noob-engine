@@ -31,6 +31,9 @@
     <Filter Include="system\Header Files\stream">
       <UniqueIdentifier>{8da59e36-9791-4c87-ba0d-b42ef6ed2679}</UniqueIdentifier>
     </Filter>
+    <Filter Include="system\Header Files\flies">
+      <UniqueIdentifier>{b16cf14c-d9cb-48bf-a34c-8065812bf910}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -180,6 +183,9 @@
     <ClCompile Include="..\..\system\cpp\s_system_appenv.cpp">
       <Filter>system\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\system\cpp\s_system_files_name.cpp">
+      <Filter>system\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\system\include\s_system.h">
@@ -255,15 +261,6 @@
       <Filter>system\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_evn_b.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_files.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_files_error.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_files_lfile.h">
       <Filter>system\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_global.h">
@@ -454,6 +451,18 @@
     </ClInclude>
     <ClInclude Include="..\..\system\include\internal\int_stream_win32.h">
       <Filter>system\Header Files\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_files.h">
+      <Filter>system\Header Files\flies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_files_name.h">
+      <Filter>system\Header Files\flies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_files_error.h">
+      <Filter>system\Header Files\flies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_files_lfile.h">
+      <Filter>system\Header Files\flies</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

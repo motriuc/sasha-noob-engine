@@ -21,17 +21,8 @@
 #error ed3_conf.h must be included
 #endif
 
-/**
- *
- */
-#define REGISTER_D3OBJECT_FACTORY( _name, _class ) \
-	{ \
-		static System::T::ClassFactory<_class, Ed3::d3Object> obj; \
-		Ed3::d3ObjectFactory_Register( _name, &obj ); \
-	}
-
 #define AUTO_REGISTER_D3OBJECT_FACTORY( _name, _class ) \
-		class Factory_Register_##_class \
+		static class Factory_Register_##_class \
 		{ \
 		public: \
 			Factory_Register_##_class( ) \
@@ -39,8 +30,7 @@
 				static System::T::ClassFactory<_class, Ed3::d3Object> obj; \
 				Ed3::d3ObjectFactory_Register( _name, &obj ); \
 			} \
-		}; \
-		Factory_Register_##_class register_##_class;
+		} register_##_class;
 	
 
 namespace  Ed3 

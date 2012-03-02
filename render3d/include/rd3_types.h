@@ -731,7 +731,12 @@ private:
 };
 
 #include "rd3_types.inl"
-	
+
+/**
+ * Register render types 
+ */
+void RenderRegisterTypes();
+
 }
 
 #endif // _RD3_TYPE_H_

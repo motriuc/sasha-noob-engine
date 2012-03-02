@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : s_system_files.h
-//	Created                 : 28 6 2007   17:25
-//	File path               : C:\Sasha\C++\SLibF\system\Include
-//	Author                  : Alexandru Motriuc
-//  Platform Independentsy  : 0%
-//	Library                 : 
+//  Created                 : 28 6 2007   17:25
+//  File path               : SLibF\system\Include
+//  Author                  : Alexandru Motriuc
+//  Platform Independent    : 0%
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -27,6 +27,7 @@ namespace Files
 	
 	#include "s_system_files_lfile.h"
 	#include "s_system_files_error.h"
+	#include "s_system_files_name.h"
 }
 
 #endif // _SYSTEM_FILES_INC_

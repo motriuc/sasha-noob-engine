@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : dx9_texture.cpp
-//	Created                 : 31 1 2011   20:35
-//	File path               : SLibF\render3d\cpp
-//	Author                  : Alexandru Motriuc
+//  Created                 : 31 1 2011   20:35
+//  File path               : SLibF\render3d\cpp
+//  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
-//	Library                 : 
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -22,6 +22,7 @@
 #include "dx9/dx9_texture.h"
 #include "dx9/dx9_render.h"
 
+//-------------------------------------------------------------------
 D3DFORMAT GetTextureDx9Format( Rd3::TextureType::TextureType type )
 {
 	switch( type )
@@ -34,10 +35,7 @@ D3DFORMAT GetTextureDx9Format( Rd3::TextureType::TextureType type )
 	return D3DFMT_A8R8G8B8;
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
+//-------------------------------------------------------------------
 Dx9Texture::Dx9Texture( Rd3::Render* owner, const sString& objectName,
 		sInt width, sInt height, Rd3::TextureType::TextureType type, const Rd3::TextureParams& params 
 	) :
@@ -68,9 +66,73 @@ Dx9Texture::Dx9Texture( Rd3::Render* owner, const sString& objectName,
 		_DX9_ERROR( hr );
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
+//-------------------------------------------------------------------
+Dx9Texture::Dx9Texture( Rd3::Render* owner, const sString& objectName,
+		Rd3::TextureType::TextureType type,
+		const Rd3::TextureParams& params
+	):
+	_BaseClass( owner, objectName, params ),
+	_pTexture( NULL ),
+	_pDepthStencil( NULL )
+{
+	_textureType = type;
+}
+
+//-------------------------------------------------------------------
+void Dx9Texture::LoadFromPngStream( const Streams::IInputStream& stream ) throws_error
+{
+	sInt size = stream.GetSize();
+	ptr_array_unique<char> buffer( new char[size] );
+	
+	stream.Read( buffer, size );
+
+	HRESULT hr = D3DXCreateTextureFromFileInMemoryEx( 
+		Dx9Render::GetDX9Device( GetOwner() ),
+		buffer,
+		size,
+		0,   // width
+		0,   // height
+		0,   // mipLevel
+		0, 
+		D3DFMT_A8R8G8B8,
+		D3DPOOL_MANAGED,
+		D3DX_DEFAULT,
+		D3DX_DEFAULT,
+		0,
+		NULL,
+		NULL,
+		&_pTexture
+	);
+
+	if( FAILED( hr ) )
+		_DX9_ERROR( hr );
+
+	D3DSURFACE_DESC desc;
+	hr = _pTexture->GetLevelDesc( 0, &desc );
+
+	__S_ASSERT( SUCCEEDED( hr ) );
+
+	_width = desc.Width;
+	_height = desc.Height;
+}
+
+//-------------------------------------------------------------------
+void Dx9Texture::LoadFromFile( const sString& path, const Streams::StreamArchive& arch ) throws_error
+{	
+	if( path.EndsWith( _S(".png") ) )
+	{
+		ptr_unique<const Streams::IInputStream> pStream( arch.Open( path ) );
+		LoadFromPngStream( pStream() );
+	}
+	else 
+	{
+		error_throw_arg( Errors::StringError )
+			_S("Unknown texture type: " ) + path
+		);
+	}
+}
+
+//-------------------------------------------------------------------
 IDirect3DSurface9* Dx9Texture::GetDepthStencil()
 {
 	if( _pDepthStencil != NULL )
@@ -95,14 +157,7 @@ IDirect3DSurface9* Dx9Texture::GetDepthStencil()
 	return _pDepthStencil;
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
+//-------------------------------------------------------------------
 Dx9Texture::~Dx9Texture()
 {
 	if( _pTexture != NULL )
@@ -111,3 +166,5 @@ Dx9Texture::~Dx9Texture()
 	if( _pDepthStencil != NULL )
 		_pDepthStencil->Release();
 }
+
+//-------------------------------------------------------------------

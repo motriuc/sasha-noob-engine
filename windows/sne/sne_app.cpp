@@ -21,6 +21,7 @@
 #include "rd3_create_rparam.h"
 #include "rd3_render.h"
 #include "ed3_engine.h"
+#include "ed3_primitive_lua.h"
 
 //------------------------------------------------------------------
 static SNEApplication* _pWindowToCreate = NULL;
@@ -51,12 +52,34 @@ void SNEApplication::OnCreateWindow()
 	{
 		_pRender = Rd3::Render::CreateRender( createParams );
 		_pEngine = new Ed3::d3Engine( _pRender );
+
+		LoadWorld();
 	}
 	catch( Errors::Error* error )
 	{
 		Platform::ShowError( error->ToString() );
 		delete error;
 	}
+}
+
+//------------------------------------------------------------------
+void SNEApplication::LoadWorld() throws_error
+{
+	if( AppEnviroment::Instance().GetCommandLineArgumentCount() < 1 )
+	{
+		error_throw_arg( Errors::StringError )
+			_S("No world to load")
+		);
+	}
+	
+	sString fullPath = Files::Name::GetFullPath( AppEnviroment::Instance().GetCommandLineArgument( 0 ) );
+	sString worldPath = Files::Name::GetFilePath( fullPath );
+	sString name = Files::Name::GetFileName( fullPath );
+
+	_pEngine->Archive().AddProvider( new Streams::FolderArchiveProvider( _S("loaded://"),  worldPath ) );
+	_pEngine->Archive().SetNameAlias( _S("gameres"), _S("//loaded:/") );
+
+	_pEngine->LoadWorld( _S("%gameres%/") + name  );
 }
 
 //------------------------------------------------------------------

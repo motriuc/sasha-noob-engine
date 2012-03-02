@@ -177,6 +177,15 @@ public:
 	static sInt FindReverse( const SWCHAR* pChars, SWCHAR ch );
 
 	/**
+	 * Find first occurence of the any char from chSet in pChar
+	 * @param pChars [in] string
+	 * @param chSet [in] char set
+	 * @param from [in] from to find
+	 * @return position if not -1
+	 */
+	static sInt FindReverse( const SWCHAR* pChars, const SWCHAR* chSet, sUInt from );
+
+	/**
 	 * Find char in the string
 	 * @param pChars [in] string
 	 * @param ch [in] char set

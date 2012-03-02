@@ -119,6 +119,7 @@
     <ClCompile Include="..\..\system\cpp\s_system_error.cpp" />
     <ClCompile Include="..\..\system\cpp\s_system_error_error.cpp" />
     <ClCompile Include="..\..\system\cpp\s_system_files_lfile_win32.cpp" />
+    <ClCompile Include="..\..\system\cpp\s_system_files_name.cpp" />
     <ClCompile Include="..\..\system\cpp\s_system_mem.cpp" />
     <ClCompile Include="..\..\system\cpp\s_system_stream_archive.cpp" />
     <ClCompile Include="..\..\system\cpp\s_system_stream_archive_provider_res.cpp" />
@@ -192,6 +193,7 @@
     <ClInclude Include="..\..\system\include\s_system_files.h" />
     <ClInclude Include="..\..\system\include\s_system_files_error.h" />
     <ClInclude Include="..\..\system\include\s_system_files_lfile.h" />
+    <ClInclude Include="..\..\system\include\s_system_files_name.h" />
     <ClInclude Include="..\..\system\include\s_system_global.h" />
     <ClInclude Include="..\..\system\include\s_system_limit.h" />
     <ClInclude Include="..\..\system\include\s_system_macro.h" />

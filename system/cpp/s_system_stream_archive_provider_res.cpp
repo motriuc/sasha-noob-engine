@@ -86,21 +86,28 @@ private:
 };
 
 //---------------------------------------------------------------------------------------	
+FolderArchiveProvider::FolderArchiveProvider( const sString& prefix, const sString& path ) :
+	_prefix( prefix ),
+	_path( path )
+{
+}
+
+//---------------------------------------------------------------------------------------	
 IInputStream* FolderArchiveProvider::Open( const sString& path ) throws_error
 {
-	return new FileArchiveStream( _path + path ); 
+	return new FileArchiveStream( Files::Name::GetPath( _path, path ) ); 
 }
 
 //---------------------------------------------------------------------------------------	
 const IInputStream* FolderArchiveProvider::Open( const sString& path ) const throws_error
 {
-	return new FileArchiveStream( _path + path ); 
+	return new FileArchiveStream( Files::Name::GetPath( _path, path ) ); 
 }
 
 //---------------------------------------------------------------------------------------	
 sBool FolderArchiveProvider::IsAvailable( const sString& path ) const
 {
-	return FileArchiveStream::IsAvailable( _path + path );
+	return FileArchiveStream::IsAvailable( Files::Name::GetPath( _path, path ) );
 }
 
 }

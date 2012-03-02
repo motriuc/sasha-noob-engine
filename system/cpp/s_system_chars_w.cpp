@@ -27,6 +27,31 @@ using namespace Types;
 
 const SWCHAR* WChar::NewLine = L"\r\n";
 //------------------------------------------------------------------
+sInt WChar::FindReverse( const SWCHAR* pChars, const SWCHAR* chSet, sUInt from )
+{
+	__S_ASSERT( pChars != NULL );
+	__S_ASSERT( chSet != NULL );
+	__S_ASSERT( from > 0 );
+
+	const SWCHAR* c = pChars + from;
+
+	while( c >= pChars )
+	{
+		const SWCHAR* p = chSet;
+    
+		while( *p )
+		{
+			if( *p == *c )
+				return (sInt)(c - pChars);
+			p++;
+		}   
+		c--;
+	}
+
+	return -1;
+}
+
+//------------------------------------------------------------------
 const SBYTE* WChar::ConvertFrom_UTF8( SWCHAR* pChars, sInt charBufferCount, const SBYTE* pBuffer, sInt bufferLength, sInt& charAdded )
 {
 	sInt origCharBufferCount = charBufferCount;

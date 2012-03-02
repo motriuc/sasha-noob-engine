@@ -58,10 +58,4 @@ d3Object* d3ObjectFactory_Create( const sString& idname )
 	return g_d3ObjectFactory().Create( idname );
 }
 
-//--------------------------------------------------------------------------------------
-void d3ObjectFactory_Register_BaseClasses()
-{
-	REGISTER_D3OBJECT_FACTORY( _S("world"), d3World ) 
-}
-
 }

@@ -23,8 +23,6 @@
 
 namespace Ed3
 {
-
-AUTO_REGISTER_D3OBJECT_FACTORY( _S("engine.object.mesh") , d3MeshObject )	
 	
 //-----------------------------------------------------------------------	
 d3MeshObject::d3MeshObject()

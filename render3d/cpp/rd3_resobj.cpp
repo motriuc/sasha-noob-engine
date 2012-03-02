@@ -80,10 +80,11 @@ TypedResourcePool::~TypedResourcePool()
 	
 	for( sInt i = 0; i < _objArray.Size(); i++ )
 	{
-		objNames += _objArray[i]->GetObjectName() + _S(";");
+		if( _objArray[i] != NULL )
+			objNames += _objArray[i]->GetObjectName() + _S(";");
 	}
 	
-	if( _objArray.Size() > 0 )
+	if( objNames.Length() > 0 )
 		System::Platform::ShowWarning( _S("Resources not freed: ") + objNames );
 #endif	
 }

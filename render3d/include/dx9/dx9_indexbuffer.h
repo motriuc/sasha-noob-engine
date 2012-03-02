@@ -1,10 +1,10 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : dx9_indexbuffer.h
-//	Created                 : 28 1 2011   20:20
-//	File path               : SLibF\render3d\include\dx9
-//	Author                  : Alexandru Motriuc
+//  Created                 : 28 1 2011   20:20
+//  File path               : SLibF\render3d\include\dx9
+//  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
-//	Library                 : 
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
 //	Purpose:

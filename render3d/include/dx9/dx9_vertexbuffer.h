@@ -60,6 +60,17 @@ public:
 	 */
 	Dx9VertexBuffer( 
 		Rd3::Render* owner,  
+		const sString& objectName,
+		const Rd3::VertexPList& points,
+		const Rd3::VertexNList& normals,
+		const Rd3::VertexTxCoord& txCoord
+	) throws_error;
+
+	/**
+	 *
+	 */
+	Dx9VertexBuffer( 
+		Rd3::Render* owner,  
 		const sString& objectName, 
 		const Rd3::VertexPList& p,
 		const Rd3::VertexTxCoord& tx1,
@@ -132,6 +143,16 @@ public:
 	 *
 	 */
 	virtual void GetDiffuseColor( Rd3::VertexCList& colors ) const;
+
+	/**
+	 * 
+	 */
+	virtual void ComputeBoundingBox( d3AABBox& bbox ) const;
+	
+	/**
+	 *
+	 */
+	virtual void ComputeBoundingBox( d3AABBox& bbox, const d3Matrix& tran ) const;
 
 protected:
 

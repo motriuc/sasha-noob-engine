@@ -167,7 +167,7 @@ public:
 	 * @return -1 if not
 	 */
 	static sInt FindReverse( const SBCHAR* pChars, SBCHAR ch );
-	
+
 	/**
 	 * Scan strings for characters in specified character sets
 	 * @param pChars [in] string
@@ -175,7 +175,16 @@ public:
 	 * @return -1 if not
 	 */
 	static sInt Find( const SBCHAR* pChars, SBCHAR* pChset );
-	
+
+	/**
+	 * Find first occurence of the any char from chSet in pChar
+	 * @param pChars [in] string
+	 * @param chSet [in] char set
+	 * @param from [in] from to find
+	 * @return position if not -1
+	 */
+	static sInt FindReverse( const SBCHAR* pChars, const SBCHAR* chSet, sUInt from );
+
 	/**
 	 * Find char in the string
 	 * @param pChars [in] string

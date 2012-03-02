@@ -212,6 +212,16 @@ public:
 	 *
 	 */
 	sInt FindReverse( const sChar ch ) const;
+
+	/**
+	 *
+	 */
+	sInt FindReverse( const sChar* chSet, sInt from ) const;
+	
+	/**
+	 *
+	 */
+	sInt FindReverse( const sChar* chSet ) const;
 	
 	/**
 	 *

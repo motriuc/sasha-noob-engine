@@ -27,6 +27,31 @@ using namespace Types;
 const SBCHAR* BChar::NewLine = "\r\n";
 
 //------------------------------------------------------------------
+sInt BChar::FindReverse( const SBCHAR* pChars, const SBCHAR* chSet, sUInt from )
+{
+	__S_ASSERT( pChars != NULL );
+	__S_ASSERT( chSet != NULL );
+	__S_ASSERT( from > 0 );
+
+	const SBCHAR* c = pChars + from;
+
+	while( c >= pChars )
+	{
+		const SBCHAR* p = chSet;
+    
+		while( *p )
+		{
+			if( *p == *c )
+				return (sInt)(c - pChars);
+			p++;
+		}   
+		c--;
+	}
+
+	return -1;
+}
+
+//------------------------------------------------------------------
 const SBYTE* BChar::ConvertFrom_UTF8( SBCHAR* pChars, sInt charBufferCount, const SBYTE* pBuffer, sInt bufferLength, sInt& charAdded )
 {
 	sInt origCharBufferCount = charBufferCount;

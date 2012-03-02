@@ -25,8 +25,6 @@ using namespace Rd3;
 
 namespace Ed3
 {
-
-AUTO_REGISTER_D3OBJECT_FACTORY( _S("engine.object.texture") , d3TextureObject )	
 	
 //-----------------------------------------------------------------------	
 d3TextureObject::d3TextureObject():
