@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : rd3_primitive.h
-//	Created                 : 5 2 2012   0:05
-//	File path               : SLibF\render3d\include\primitives
-//	Author                  : Alexandru Motriuc
+//  Created                 : 5 2 2012   0:05
+//  File path               : SLibF\render3d\include\primitives
+//  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
-//	Library                 : 
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -73,11 +73,13 @@ public:
 	 *
 	 */
 	static Primitive3D* Create( const sString& idname );
-	
 };
 
 	
 }
+//////////////////////////////////////////////////////////////////////////
+// Primitive factory
+//////////////////////////////////////////////////////////////////////////
 
 #define AUTO_REGISTER_PRIMITIVE_FACTORY( _name, _class ) \
 	static class Factory_Register_primitive_##_class : public System::T::ClassFactory<_class, Rd3::Primitive3D> \
@@ -87,8 +89,6 @@ public:
 		{ \
 			Rd3::Primitive3D::Register( _name, this ); \
 		} \
-	} register_primitive_##_class; \
+	} register_primitive_##_class;
 
-
-#define PRIMITIVE_FACTORY_INIT( _class ) register_primitive_##_class.Init()
 #endif // _RD3_PRIMITIVE_INC_

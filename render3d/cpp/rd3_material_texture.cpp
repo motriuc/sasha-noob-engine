@@ -26,10 +26,7 @@ using namespace System;
 
 
 namespace Rd3
-{
-	
-AUTO_REGISTER_MATERIAL_FACTORY( _S("texture"), TextureMaterial )
-	
+{	
 //-------------------------------------------------------------------
 TextureMaterial::TextureMaterial( Render* owner, const sString& objectName ) :
 	_BaseClass( owner, objectName ),

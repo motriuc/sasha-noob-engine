@@ -30,6 +30,9 @@ using namespace System::d2Math;
 namespace Rd3
 {
 
+/////////////////////////////////////////////////////////////////////
+// FontSprite
+/////////////////////////////////////////////////////////////////////
 //-------------------------------------------------------------------	
 FontSprite::FontSprite( Render* owner, const sString& objectName ) :
 	_BaseClass( owner, objectName )
@@ -48,6 +51,21 @@ sBool FontSprite::GetSprite( sChar ch, SpriteChar& sprite ) const
 	return _charMap.Lookup( ch, sprite );
 }
 
+//-------------------------------------------------------------------	
+void FontSprite::LoadFromXml( const System::Xml::BaseDomNode& node, const Def& def ) throws_error
+{
+
+}
+
+//-------------------------------------------------------------------	
+RenderString* FontSprite::CreateRenderString()
+{
+	return new SprireRenderString( this );
+}
+
+/////////////////////////////////////////////////////////////////////
+// SprireRenderString
+/////////////////////////////////////////////////////////////////////
 //-------------------------------------------------------------------	
 SprireRenderString::SprireRenderString( Font* font ):
 	_BaseClass( font )
@@ -139,7 +157,6 @@ void SprireRenderString::RenderText( RenderState& rstate, const sString& text, c
 	rstate.RenderPrimitive( _vb, PrimitiveType::E_TRIANGLE_LIST );
 		
 	rstate.EndRenderObject();
-
 }
 
 //-------------------------------------------------------------------		

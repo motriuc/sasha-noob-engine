@@ -55,6 +55,8 @@ class MessageQueue;
 class Font;
 class LightPoint;
 class Light;
+class RenderString;
+
 		
 /**
  * Vertex data list types
@@ -731,11 +733,6 @@ private:
 };
 
 #include "rd3_types.inl"
-
-/**
- * Register render types 
- */
-void RenderRegisterTypes();
 
 }
 

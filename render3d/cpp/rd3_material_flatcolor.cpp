@@ -27,9 +27,7 @@ using namespace System;
 
 namespace Rd3
 {
-	
-AUTO_REGISTER_MATERIAL_FACTORY( _S("flatcolor"), FlatColorMaterial )
-	
+
 //-------------------------------------------------------------------
 FlatColorMaterial::FlatColorMaterial( Render* owner, const sString& objectName ) :
 	_BaseClass( owner, objectName ),

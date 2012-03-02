@@ -23,17 +23,14 @@
  * Check configuration file include
  */
 #ifndef _RD3_CONF_H_
-#error rd3_conf.h must be included
+	#error rd3_conf.h must be included
 #endif
 
 #include "rd3_font.h"
+#include "rd3_render_str.h"
 
 namespace Rd3
 {
-
-class VertexBuffer;
-class Texture;
-class Effect;
 	
 /**
  * SpriteChar
@@ -80,25 +77,36 @@ class FontSprite : public Font
 private:
 	typedef Font _BaseClass;
 public:
-	
+	/**
+	 *
+	 */
+	FontSprite( Render* owner, const sString& objectName );
+
+	/**
+	 *
+	 */
 	sBool GetSprite( sChar ch, SpriteChar& sprite ) const;
 	
 	/**
 	 *
 	 */
-	const Rd3::Texture& GetTexture() const { return _texture(); } 
-protected:	
-	/**
-	 *
-	 */
-	FontSprite( Render* owner, const sString& objectName );
-	
+	const Rd3::Texture& GetTexture() const { return _texture(); }
 
 	/**
 	 *
 	 */
+	virtual void LoadFromXml( const System::Xml::BaseDomNode& node, const Def& def ) throws_error;
+
+	/**
+	 *
+	 */
+	virtual RenderString* CreateRenderString();
+
+protected:	
+	/**
+	 *
+	 */
 	void AddSprite( const SpriteChar& sp );
-	
 private:
 	sMap<sChar, SpriteChar>	_charMap;
 protected:
@@ -127,6 +135,8 @@ private:
 	
 	use_resource<Rd3::VertexBuffer>	_vb;
 	use_resource<Rd3::Effect>		_effect;
+
+	friend class FontSprite;
 };
 	
 }

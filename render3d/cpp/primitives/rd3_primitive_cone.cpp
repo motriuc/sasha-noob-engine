@@ -24,11 +24,7 @@ using namespace System::d3Math;
 using namespace System::d2Math;
 
 namespace Rd3
-{
-//------------------------------------------------------------------	
-	
-AUTO_REGISTER_PRIMITIVE_FACTORY( _S("cone"), PrimitiveCone )
-	
+{	
 //------------------------------------------------------------------
 PrimitiveCone::PrimitiveCone( d3Float height, d3Float topRadius, d3Float bottomRadius, sBool openEnded, sInt ns, sInt nt ) :
 	_height( height ),

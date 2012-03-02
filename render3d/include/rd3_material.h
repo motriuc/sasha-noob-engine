@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : rd3_material.h
-//	Created                 : 31 1 2011   19:58
-//	File path               : SLibF\render3d\include
-//	Author                  : Alexandru Motriuc
+//  Created                 : 31 1 2011   19:58
+//  File path               : SLibF\render3d\include
+//  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
-//	Library                 : 
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -19,7 +19,6 @@
 #ifndef _RD3_MATERIAL_H_
 #define _RD3_MATERIAL_H_
 
-
 /**
  * Check configuration file include
  */
@@ -29,16 +28,8 @@
 
 #include "rd3_resobj.h"
 
-
 namespace Rd3
 {
-
-/**
- * forward declarations
- */
-class RenderState;
-class Material;
-class Def;
 
 /**
  * IMaterialFactory
@@ -57,7 +48,6 @@ protected:
 	 *
 	 */
 	Material( Render* owner, const sString& objectName );
-
 public:	
 	/**
 	 *
@@ -76,20 +66,22 @@ public:
 	virtual void Apply( RenderState& renderState ) const = 0;
 };
 
-
 }
 
+/////////////////////////////////////////////////////////////////////
+// Material factory register
+/////////////////////////////////////////////////////////////////////
+
 #define AUTO_REGISTER_MATERIAL_FACTORY( _name, _class ) \
-	class Factory_Material_Register_##_class \
+	static class Factory_Material_Register_##_class :\
+		public System::T::ClassFactory2<_class, Rd3::Material, Rd3::Render*, const sString& > \
 	{ \
 	public: \
 		Factory_Material_Register_##_class( ) \
 		{ \
-			static System::T::ClassFactory2<_class, Rd3::Material, Rd3::Render*, const sString& > obj; \
-			Rd3::Material::Register( _name, &obj ); \
+			Rd3::Material::Register( _name, this ); \
 		} \
-	}; \
-	Factory_Material_Register_##_class register_material_##_class;
+	} register_material_##_class;
 
 #endif // _RD3_MATERIAL_H_
 

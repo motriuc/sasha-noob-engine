@@ -28,6 +28,12 @@
     <Filter Include="renderdx9\cpp">
       <UniqueIdentifier>{29e4e8d8-862d-4ce1-9b6d-36c9274bdfb9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="render\Header Files\font">
+      <UniqueIdentifier>{0bec62aa-a0f7-405f-b83b-f4bbdd49684d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="render\Source Files\font">
+      <UniqueIdentifier>{d5713679-1fbc-4f10-a775-1c9052045977}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -64,6 +70,9 @@
     <None Include="..\..\render3d\include\rd3_types.inl">
       <Filter>render\Header Files</Filter>
     </None>
+    <None Include="..\..\render3d\include\rd3_render_str.inl">
+      <Filter>render\Header Files\font</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -82,12 +91,6 @@
       <Filter>render\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\render3d\cpp\rd3_effect.cpp">
-      <Filter>render\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\render3d\cpp\rd3_font.cpp">
-      <Filter>render\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\render3d\cpp\rd3_font_sprite.cpp">
       <Filter>render\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\render3d\cpp\rd3_indexbuffer.cpp">
@@ -180,6 +183,15 @@
     <ClCompile Include="..\..\render3d\cpp\dx9\dx9_texture.cpp">
       <Filter>renderdx9\cpp</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\rd3_font.cpp">
+      <Filter>render\Source Files\font</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\rd3_font_sprite.cpp">
+      <Filter>render\Source Files\font</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\rd3_register_types.cpp">
+      <Filter>render\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\render3d\include\rd3.h">
@@ -204,12 +216,6 @@
       <Filter>render\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\render3d\include\rd3_effect.h">
-      <Filter>render\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\render3d\include\rd3_font.h">
-      <Filter>render\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\render3d\include\rd3_font_sprite.h">
       <Filter>render\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\render3d\include\rd3_indexbuffer.h">
@@ -304,6 +310,15 @@
     </ClInclude>
     <ClInclude Include="..\..\render3d\include\dx9\dx9_vertexbuffer.h">
       <Filter>renderdx9\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_font.h">
+      <Filter>render\Header Files\font</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_font_sprite.h">
+      <Filter>render\Header Files\font</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_render_str.h">
+      <Filter>render\Header Files\font</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

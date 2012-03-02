@@ -24,11 +24,7 @@ using namespace System::d3Math;
 using namespace System::d2Math;
 
 namespace Rd3
-{
-//------------------------------------------------------------------
-
-AUTO_REGISTER_PRIMITIVE_FACTORY( _S("arrow"), PrimitiveArrow )
-	
+{	
 //------------------------------------------------------------------
 PrimitiveArrow::PrimitiveArrow( d3Float radius, d3Float height, d3Float headHeight, d3Float headRadius, sInt ns, sInt nt ) :
 	_radius( radius ),

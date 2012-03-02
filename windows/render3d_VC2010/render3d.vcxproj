@@ -85,6 +85,7 @@
     <None Include="..\..\render3d\include\rd3_lightpoint.inl" />
     <None Include="..\..\render3d\include\rd3_material.inl" />
     <None Include="..\..\render3d\include\rd3_perf_counters.inl" />
+    <None Include="..\..\render3d\include\rd3_render_str.inl" />
     <None Include="..\..\render3d\include\rd3_resobj.inl" />
     <None Include="..\..\render3d\include\rd3_rstate.inl" />
     <None Include="..\..\render3d\include\rd3_texture.inl" />
@@ -121,6 +122,7 @@
     <ClCompile Include="..\..\render3d\cpp\rd3_mesh.cpp" />
     <ClCompile Include="..\..\render3d\cpp\rd3_msg_gesture.cpp" />
     <ClCompile Include="..\..\render3d\cpp\rd3_perf_counters.cpp" />
+    <ClCompile Include="..\..\render3d\cpp\rd3_register_types.cpp" />
     <ClCompile Include="..\..\render3d\cpp\rd3_render.cpp" />
     <ClCompile Include="..\..\render3d\cpp\rd3_resobj.cpp" />
     <ClCompile Include="..\..\render3d\cpp\rd3_rstate.cpp" />
@@ -171,6 +173,7 @@
     <ClInclude Include="..\..\render3d\include\rd3_msg_gestureq.h" />
     <ClInclude Include="..\..\render3d\include\rd3_perf_counters.h" />
     <ClInclude Include="..\..\render3d\include\rd3_render.h" />
+    <ClInclude Include="..\..\render3d\include\rd3_render_str.h" />
     <ClInclude Include="..\..\render3d\include\rd3_resobj.h" />
     <ClInclude Include="..\..\render3d\include\rd3_rstate.h" />
     <ClInclude Include="..\..\render3d\include\rd3_texture.h" />

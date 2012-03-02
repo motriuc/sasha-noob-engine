@@ -21,6 +21,7 @@
 #include "rd3_light.h"
 #include "rd3_mesh.h"
 #include "rd3_material.h"
+#include "rd3_render_str.h"
 
 
 COUNTER_USE( rd3_render_vertex_count )

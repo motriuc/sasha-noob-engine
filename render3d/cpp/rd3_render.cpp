@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : rd3_render.cpp
-//	Created                 : 20 1 2011   0:05
-//	File path               : SLibF\render3d\cpp
-//	Author                  : Alexandru Motriuc
+//  Created                 : 20 1 2011   0:05
+//  File path               : SLibF\render3d\cpp
+//  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
-//	Library                 : 
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -15,6 +15,7 @@
 //  Modification History:
 //      
 /////////////////////////////////////////////////////////////////////
+
 #include "rd3afx.h"
 #include "rd3_render.h"
 #include "rd3_msg.h"
@@ -38,11 +39,14 @@ using namespace System::Types;
 namespace Rd3
 {
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
+//--------------------------------------------------------------------
+extern void RegisterTypes();
+
+//--------------------------------------------------------------------
 Render* Render::CreateRender( const RenderCreateParams& params ) throws_error
 {
+	RegisterTypes();
+
 	switch( params.GetRenderType() )
 	{
 #ifdef _SPL_WIN32			
@@ -59,9 +63,7 @@ Render* Render::CreateRender( const RenderCreateParams& params ) throws_error
 	return NULL;
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
+//--------------------------------------------------------------------
 Render::Render( const RenderType::RenderType type ) :
 	_renderType( type ),
 	_pRenderState( NULL ),
@@ -76,9 +78,7 @@ Render::Render( const RenderType::RenderType type ) :
 {
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
+//--------------------------------------------------------------------
 void Render::AddMessageQueue( MessageQueue* pMsgQ )
 {
 	__S_ASSERT( pMsgQ != NULL );
@@ -91,9 +91,7 @@ void Render::AddMessageQueue( MessageQueue* pMsgQ )
 	_messageQResPool.Add( pMsgQ );
 }
 	
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
+//--------------------------------------------------------------------
 Effect* Render::UseEffect( const sString& effectName ) throws_error
 {
 	Effect* pEffect = GetEffect( effectName );
@@ -106,9 +104,7 @@ Effect* Render::UseEffect( const sString& effectName ) throws_error
 	return pEffect;
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
+//--------------------------------------------------------------------
 Font* Render::UseFont( const sString& fontName ) throws_error
 {
 	Font* pFont = GetFont( fontName );
@@ -121,9 +117,7 @@ Font* Render::UseFont( const sString& fontName ) throws_error
 	return pFont;	
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
+//--------------------------------------------------------------------
 Texture* Render::UseTexture( const sString& textureName ) throws_error
 {
 	Texture* pTexture = GetTexture( textureName );
@@ -136,9 +130,7 @@ Texture* Render::UseTexture( const sString& textureName ) throws_error
 	return pTexture;	
 }
 	
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
+//--------------------------------------------------------------------
 Mesh* Render::UseMesh( const sString& meshName ) throws_error
 {
 	Mesh* pMesh = GetMesh( meshName );
@@ -151,9 +143,7 @@ Mesh* Render::UseMesh( const sString& meshName ) throws_error
 	return pMesh;
 }
 	
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
+//--------------------------------------------------------------------
 VertexBuffer* Render::UseVb( const sString& vbName ) throws_error
 {
 	VertexBuffer* pVb = GetVb( vbName );
@@ -167,9 +157,7 @@ VertexBuffer* Render::UseVb( const sString& vbName ) throws_error
 	return pVb;
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
+//--------------------------------------------------------------------
 IndexBuffer* Render::UseIb( const sString& ibName ) throws_error
 {
 	IndexBuffer* pIb = GetIb( ibName );
@@ -183,9 +171,7 @@ IndexBuffer* Render::UseIb( const sString& ibName ) throws_error
 	return pIb;
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
+//--------------------------------------------------------------------
 AfterEffect* Render::UseAfterEffect( const sString& eName ) throws_error
 {
 	AfterEffect* pEf = GetAfterEffect( eName );
@@ -200,9 +186,7 @@ AfterEffect* Render::UseAfterEffect( const sString& eName ) throws_error
 	return pEf;
 }
 	
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
+//--------------------------------------------------------------------
 void Render::NotifyFreeResource( ResourceObject* pRes )
 {
 	if( pRes->GetObjectName().Length() <= 0 )
@@ -244,16 +228,12 @@ void Render::NotifyFreeResource( ResourceObject* pRes )
 	}
 }
 	
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
+//--------------------------------------------------------------------
 Render::~Render()
 {
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
+//--------------------------------------------------------------------
 VertexBuffer* Render::CreateVertexBufferFromFile(
 												const sString& objectName,
 												const sString& path,
@@ -270,9 +250,7 @@ VertexBuffer* Render::CreateVertexBufferFromFile(
 	return NULL;
 }
 	
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
+//--------------------------------------------------------------------
 VertexBuffer* Render::CreateVertexBufferFromVBFile(
 												   const sString& objectName,
 												   const sString& path,
@@ -366,9 +344,7 @@ VertexBuffer* Render::CreateVertexBufferFromVBFile(
 	return pVertexBuffer;
 }
 	
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/		
+//--------------------------------------------------------------------
 IndexBuffer* Render::CreateIndexBufferFromFile(
 												   const sString& objectName,
 												   const sString& path,
@@ -385,9 +361,7 @@ IndexBuffer* Render::CreateIndexBufferFromFile(
 	return NULL;
 }
 	
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/	
+//--------------------------------------------------------------------
 IndexBuffer* Render::CreateIndexBufferFromVBFile( 
 											 const sString& objectName,
 											 const sString& path,
@@ -408,9 +382,7 @@ IndexBuffer* Render::CreateIndexBufferFromVBFile(
 	return CreateIndexBuffer( objectName, indexBuffer );
 }
 	
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
+//--------------------------------------------------------------------
 Mesh* Render::CreateMeshFromFile( 
 							 const sString& objectName,
 							 const sString& fileName,
@@ -443,9 +415,7 @@ Mesh* Render::CreateMeshFromFile(
 	return pMesh;
 }	
 	
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
+//--------------------------------------------------------------------
 AfterEffect* Render::CreateAfterEffectFromFile( 
 										   const sString& objectName,
 										   const sString& fileName,
@@ -479,4 +449,3 @@ AfterEffect* Render::CreateAfterEffectFromFile(
 }	
 	
 }
-

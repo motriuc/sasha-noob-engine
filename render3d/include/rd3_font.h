@@ -23,7 +23,7 @@
  * Check configuration file include
  */
 #ifndef _RD3_CONF_H_
-#error rd3_conf.h must be included
+	#error rd3_conf.h must be included
 #endif
 
 #include "rd3_resobj.h"
@@ -31,15 +31,11 @@
 namespace Rd3
 {
 	
-using namespace System::d2Math;
-	
 /**
- *
+ * IFontFactory
  */
-class RenderString;
-class RenderState;
-class Render;
-	
+typedef System::T::IClassFactory2< Font, Render*, const sString& > IFontFactory;
+
 /**
  * Font
  */
@@ -53,8 +49,20 @@ public:
 	 *
 	 */
 	virtual RenderString* CreateRenderString() = 0;
+
+	/**
+	 *
+	 */
+	virtual void LoadFromXml( const System::Xml::BaseDomNode& node, const Def& def ) throws_error = 0;
+
+public:	
+	/**
+	 * 
+	 */
+	static void Register( const sString& name, IFontFactory* pFactory );
+	static Font* Create( const sString& name, Render* owner, const sString& objectName );
+
 protected:
-	
 	/**
 	 *
 	 */
@@ -62,40 +70,22 @@ protected:
 private:	
 };
 
-/**
- * RenderString
- */
-class RenderString 
-{
-protected:
-	
-	/**
-	 *
-	 */
-	RenderString( Font* font ) :
-		_font( font ),
-		_fontRenderHeight( 0.0f )
-	{
-	}
-public:
-	/**
-	 *
-	 */
-	virtual void RenderText( RenderState& rstate, const sString& text, const d2Vector& pos, sRGBColor color ) = 0;
-	
-	/**
-	 * returns font render height
-	 */
-	d3Float RenderHeight() const { return _fontRenderHeight; }
-protected:	
-	Render& render()	{ return *(_font().GetOwner()); }
-	const Font& font()	{ return _font(); }
-private:
-	use_resource<Font>	_font;
-protected:	
-	d3Float				_fontRenderHeight;
-};
-	
 }
+
+////////////////////////////////////////////////////////////////////
+// Register font factory
+////////////////////////////////////////////////////////////////////
+
+#define AUTO_REGISTER_FONT_FACTORY( _name, _class ) \
+	static class Factory_Font_Register_##_class : \
+		public System::T::ClassFactory2<_class, Rd3::Font, Rd3::Render*, const sString& >\
+	{ \
+	public: \
+		Factory_Font_Register_##_class( ) \
+		{ \
+			Rd3::Font::Register( _name, this ); \
+		} \
+	} register_font_##_class;
+
 
 #endif // _RD3_CONF_H_

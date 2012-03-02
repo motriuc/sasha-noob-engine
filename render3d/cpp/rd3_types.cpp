@@ -235,9 +235,4 @@ namespace VertexBufferStream
 }
 
 //-------------------------------------------------------------------------------
-void RenderRegisterTypes()
-{
-
-}
-
 } // Rd3 

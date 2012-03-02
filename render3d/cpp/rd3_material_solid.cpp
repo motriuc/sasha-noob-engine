@@ -28,10 +28,6 @@ using namespace System;
 namespace Rd3
 {
 //-------------------------------------------------------------------
-	
-AUTO_REGISTER_MATERIAL_FACTORY( _S("solid"), SolidMaterial )
-	
-//-------------------------------------------------------------------
 SolidMaterial::SolidMaterial( Render* owner, const sString& objectName ) :
 	_BaseClass( owner, objectName ),
 	_co_diffuse( 0.5f ),

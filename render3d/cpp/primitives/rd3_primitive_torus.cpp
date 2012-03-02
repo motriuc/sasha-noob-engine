@@ -1,10 +1,10 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : rd3_primitive_sphere.h
-//	Created                 : 5 2 2012   0:05
-//	File path               : SLibF\render3d\include\primitives
-//	Author                  : Alexandru Motriuc
+//  Created                 : 5 2 2012   0:05
+//  File path               : SLibF\render3d\include\primitives
+//  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
-//	Library                 : 
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
 //	Purpose:
@@ -25,10 +25,7 @@ using namespace System::d2Math;
 
 namespace Rd3
 {
-//------------------------------------------------------------------
 
-AUTO_REGISTER_PRIMITIVE_FACTORY( _S("torus"), PrimitiveTorus )
-	
 //------------------------------------------------------------------
 PrimitiveTorus::PrimitiveTorus( d3Float radius, d3Float tubeRadius, sInt ns, sInt nt ) :
 	_radius( radius ),
