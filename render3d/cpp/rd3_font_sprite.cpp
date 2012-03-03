@@ -23,6 +23,8 @@
 #include "rd3_texture.h"
 #include "rd3_vertexbuffer.h"
 #include "rd3_effect.h"
+#include "rd3_xml_def.h"
+#include "rd3_utils.h"
 
 using namespace System::d3Math;
 using namespace System::d2Math;
@@ -52,8 +54,16 @@ sBool FontSprite::GetSprite( sChar ch, SpriteChar& sprite ) const
 }
 
 //-------------------------------------------------------------------	
+void FontSprite::SetTexture( const sString& name )
+{
+	SetTexture( GetOwner()->UseTexture( name ) );
+}
+
+//-------------------------------------------------------------------	
 void FontSprite::LoadFromXml( const System::Xml::BaseDomNode& node, const Def& def ) throws_error
 {
+	SetTexture( node.GetAttributes()[ATTR_TEXTURE] ); 
+
 	for( sInt i = 0; i < node.GetChildCount(); ++i )
 	{
 		const System::Xml::BaseDomNode& child = node[i];
@@ -74,7 +84,7 @@ void FontSprite::LoadFromXml( const System::Xml::BaseDomNode& node, const Def& d
 						v[i] = 0;
 				}
 
-				SpriteChar sprite( ch[0], v[0], v[1], v[2] - v[0], v[3] - v[1] );
+				SpriteChar sprite( ch[0], v[0], v[1], v[2], v[3] );
 				AddSprite( sprite );
 			}
 		}
@@ -97,29 +107,33 @@ SprireRenderString::SprireRenderString( Font* font ):
 	_effect = render().UseEffect( _S("system.font.fx.1") );
 }
 
+
 //-------------------------------------------------------------------	
 void SprireRenderString::RenderText( RenderState& rstate, const sString& text, const d2Vector& pos, sRGBColor color )
 {
-	if( text != _text || _pos != pos )
+	d2Vector targetSize = rstate.GetRenderTarger_SizeInPixels();
+	
+	d2Vector npos;
+
+	npos.x = Utils::RoundToPixelSize( pos.x, targetSize.x );
+	npos.y = Utils::RoundToPixelSize( pos.y, targetSize.y );
+
+	if( text != _text || _pos != npos )
 	{
 		_vb.ResourceFree();
-		
+				
 		_text = text;
-		_pos  = pos;
-	
-		d3Float x = -1.0f + 2.0f * _pos.x;
-		d3Float y = 1.0f - 2.0f *_pos.y;
-	
-		d2Vector rdSize = render().GetRenderTarger_SizeInPixels();
-	
+		_pos  = npos;
+
+		d3Float tx = static_cast<d3Float>( fontSprite().GetTexture().GetWidth() );
+		d3Float ty = static_cast<d3Float>( fontSprite().GetTexture().GetHeight() ); 
+
+		d3Float x1 = _pos.x;
+		d3Float y1 = _pos.y;
+
 		VertexPList vpoints;
 		VertexTxCoord txpoints;
-		
-		_fontRenderHeight = 0.0f;
-		
-		d3Float cx = static_cast<d3Float>( fontSprite().GetTexture().GetWidth() );
-		d3Float cy = static_cast<d3Float>( fontSprite().GetTexture().GetHeight() ); 
-	
+
 		for( sInt i = 0; i < (sInt)text.Length(); ++i ) 
 		{
 			sChar ch = text[i];
@@ -128,48 +142,47 @@ void SprireRenderString::RenderText( RenderState& rstate, const sString& text, c
 			if( !fontSprite().GetSprite( ch, sprite ) )
 				continue;
 
-			d3Float dx = sprite.GetW() / rdSize.x;
-			d3Float dy = sprite.GetH() / rdSize.y;
+			d3Float dx = sprite.Width() / targetSize.x;
+			d3Float dy = sprite.Height() / targetSize.y;
 			
 			_fontRenderHeight = FMath::Max( _fontRenderHeight, dy );
-		
+
+			d3Float x2 = x1 + dx;
+			d3Float y2 = y1 + dy;
+
 			vpoints.Add( 
-				d3Vector( x, y, 0.0f ),
-				d3Vector( x + dx, y, 0.0f ),
-				d3Vector( x, y - dy, 0.0f )
+				d3Vector( x1, y1, 0.0f ),
+				d3Vector( x2, y2, 0.0f ),
+				d3Vector( x1, y2, 0.0f )
 			);
 
 			vpoints.Add( 
-				d3Vector( x, y - dy, 0.0f ),
-				d3Vector( x + dx, y, 0.0f ),
-				d3Vector( x + dx, y - dy, 0.0f )
+				d3Vector( x1, y1, 0.0f ),
+				d3Vector( x2, y1, 0.0f ),
+				d3Vector( x2, y2, 0.0f )
 			);
-		
-			d3Float tx0 = sprite.GetX() / cx;
-			d3Float ty0 = sprite.GetY() / cy;
-			d3Float tx1 = tx0 + sprite.GetW() / cx;
-			d3Float ty1 = ty0 + sprite.GetH() / cy;
 
+			d3Float tx0 = sprite.X1() / tx;
+			d3Float ty0 = 1.0f - sprite.Y1() / ty;
+			d3Float tx1 = sprite.X2() / tx;
+			d3Float ty1 = 1.0f - sprite.Y2() / ty;
+			
 			txpoints.Add( 
 				d2Vector( tx0, ty0 ),
-				d2Vector( tx1, ty0 ),
+				d2Vector( tx1, ty1 ),
 				d2Vector( tx0, ty1 )
 			);
 
 			txpoints.Add( 
-				d2Vector( tx0, ty1 ),
+				d2Vector( tx0, ty0 ),
 				d2Vector( tx1, ty0 ),
 				d2Vector( tx1, ty1 )
 			);
-			
-			x += dx;
+
+			x1 += dx;
 		}
 		
-		_fontRenderHeight *= 0.5f;
-		
-		_vb.ResourceCreate( 
-			render().CreateVertexBuffer( _S(""), vpoints, txpoints )
-		);
+		_vb.ResourceCreate( render().CreateVertexBuffer( _S(""), vpoints, txpoints ) );
 	}
 
 	rstate.BeginRenderObject();

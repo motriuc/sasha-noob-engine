@@ -136,6 +136,10 @@ public:
 	 */
 	const d3Frustum& GetFrustum() const;
 	
+	/**
+	 *
+	 */
+	d2Vector GetRenderTarger_SizeInPixels() const				{ return _renderTargetSizeInPixels; }
 protected:
 	Render* GetOwner();
 	const Effect* GetEffect();
@@ -155,6 +159,7 @@ protected:
 	void UpdateTime();
 
 	void UpdateTransformation();
+	void Update2dTransformation();
 private:
 	RenderState( const RenderState& );
 	void operator = ( const RenderState& );
@@ -169,6 +174,7 @@ private:
 	const Effect*			_effect;
 	const AfterEffect*		_pAfterEffect;
 	Texture*				_pRenderTarget;
+	d2Vector				_renderTargetSizeInPixels;
 
 
 	// params

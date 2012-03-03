@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : rd3_rstate.cpp
-//	Created                 : 23 01 2011   1:40
-//	File path               : SLibF\render3d\include
-//	Author                  : Alexandru Motriuc
+//  Created                 : 23 01 2011   1:40
+//  File path               : SLibF\render3d\include
+//  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
-//	Library                 : 
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -22,6 +22,7 @@
 #include "rd3_mesh.h"
 #include "rd3_material.h"
 #include "rd3_render_str.h"
+#include "rd3_texture.h"
 
 
 COUNTER_USE( rd3_render_vertex_count )
@@ -36,9 +37,7 @@ COUNTER_USE( rd3_render_object_visible )
 namespace Rd3
 {
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
+//---------------------------------------------------------------------------
 RenderState::RenderState( Render* owner ) :
 	_pOwner( owner ),
 
@@ -92,12 +91,27 @@ RenderState::RenderState( Render* owner ) :
 	for( sInt i = 0; i < TextureParameter::COUNT; i++ )
 		_changed_texture_params[i] = sFalse;
 
+	// Set the 2d Transformation
+	Update2dTransformation();
 }
-	
+//---------------------------------------------------------------------------
+void RenderState::Update2dTransformation()
+{
+	d3Camera camera;
+	camera.SetCamera2D();
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
+	d3Matrix mv;
+	d3Matrix mp;
+
+	camera.GetView( mv );
+	camera.GetProjection( mp );
+
+	d3Matrix::Mul( _matrix_params[MatrixParameter::E_D2_VIEW], mv, mp );
+
+	_changed_matrix_params[MatrixParameter::E_D2_VIEW] = sTrue;
+}
+
+//---------------------------------------------------------------------------
 void RenderState::UpdateCamera()
 {
 	if( _changed_camera )
@@ -123,27 +137,20 @@ void RenderState::UpdateCamera()
 		_camera.GetFrustum( _frustum );
 	}
 }
-	
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
+//---------------------------------------------------------------------------
 void RenderState::SetEffect( const sString& effectName )
 {
 	SetEffect( _pOwner->GetEffect( effectName ) );
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
+//---------------------------------------------------------------------------
 void RenderState::SetTexture( TextureParameter::TextureParameter id, const sString& textureName )
 {
 	SetTexture( id, _pOwner->GetTexture( textureName ) );
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
+//---------------------------------------------------------------------------
 void RenderState::SetLight( sInt i, const LightPoint& light )
 {
 	__S_ASSERT( i >= 0 );
@@ -167,9 +174,7 @@ void RenderState::SetLight( sInt i, const LightPoint& light )
 	_changed_bool_params[BoolParameter::E_LIGHT1_ON +i] = sTrue;
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
+//---------------------------------------------------------------------------
 void RenderState::SetLight( sInt i, const Light& light )
 {
 	switch( light.GetType() )
@@ -184,9 +189,7 @@ void RenderState::SetLight( sInt i, const Light& light )
 	}
 }
 	
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
+//---------------------------------------------------------------------------
 void RenderState::BeginRenderObject()
 {
 	UpdateTransformation();
@@ -196,6 +199,7 @@ void RenderState::BeginRenderObject()
 #endif
 }
 
+//---------------------------------------------------------------------------
 void RenderState::UpdateTransformation()
 {
 	if( _changed_transformation )
@@ -232,9 +236,8 @@ void RenderState::UpdateTransformation()
 		_changed_matrix_params[MatrixParameter::E_WORLD_VIEW_PROJ] = sTrue;
 	}
 }
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/	
+
+//---------------------------------------------------------------------------
 void RenderState::RenderMesh( const Mesh* pMesh )
 {
 	__S_ASSERT( pMesh != NULL );
@@ -243,9 +246,8 @@ void RenderState::RenderMesh( const Mesh* pMesh )
 	
 	RenderPrimitive( &pMesh->GetVb(), &pMesh->GetIb(), pMesh->GetPrimitiveType() );	
 }	
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
+
+//---------------------------------------------------------------------------
 void RenderState::EndRenderObject()
 {
 #ifdef _DEBUG
@@ -270,6 +272,33 @@ WorldRenderState::WorldRenderState( Render* owner ) :
 WorldRenderState::~WorldRenderState()
 {
 	delete _debugTextRender;
+}
+
+//---------------------------------------------------------------------------
+void RenderState::SetRenderTarget( Texture* pTexture )
+{
+	_pRenderTarget = pTexture;
+
+	if( _pRenderTarget != NULL )
+	{
+		_renderTargetSizeInPixels = d2Vector( (d3Float)pTexture->GetWidth(), (d3Float)pTexture->GetHeight() );
+	}
+	else
+	{
+		_renderTargetSizeInPixels = _pOwner->GetScreen_SizeInPixels();
+	}
+
+	if( _float_params[FloatParameter::E_RENDER_WIDTH] != _renderTargetSizeInPixels.x )
+	{
+		_float_params[FloatParameter::E_RENDER_WIDTH] = _renderTargetSizeInPixels.x;
+		_bool_params[FloatParameter::E_RENDER_WIDTH] = sTrue;
+	}
+
+	if( _float_params[FloatParameter::E_RENDER_HEIGHT] != _renderTargetSizeInPixels.y )
+	{
+		_float_params[FloatParameter::E_RENDER_HEIGHT] = _renderTargetSizeInPixels.y;
+		_bool_params[FloatParameter::E_RENDER_HEIGHT] = sTrue;
+	}
 }
 
 //---------------------------------------------------------------------------

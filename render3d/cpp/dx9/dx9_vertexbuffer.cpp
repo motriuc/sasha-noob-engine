@@ -46,6 +46,18 @@ inline void AddVector( void*& pBuffer, const d2Vector& v )
 
 	pBuffer = pV;
 }
+
+//-------------------------------------------------------------------
+inline void AddTexCoord( void*& pBuffer, const d2Vector& v )
+{
+	float* pV = (float*)( pBuffer );
+
+	*pV = v.x;				++pV; 
+	*pV = 1.0f - v.y;		++pV; 
+
+	pBuffer = pV;
+}
+
 //-------------------------------------------------------------------
 inline void AddColor( void*& pBuffer, sRGBColor c )
 {
@@ -149,7 +161,7 @@ Dx9VertexBuffer::Dx9VertexBuffer(
 	{
 		AddVector( pBuffer, points[i] );
 		AddVector( pBuffer, normals[i] );
-		AddVector( pBuffer, txCoord[i] );
+		AddTexCoord( pBuffer, txCoord[i] );
 	}
 
 	_pVertexBuffer->Unlock();
@@ -197,7 +209,7 @@ Dx9VertexBuffer::Dx9VertexBuffer(
 	for( sInt i = 0; i < p.Size(); i++ )
 	{
 		AddVector( pBuffer, p[i] );
-		AddVector( pBuffer, tx[i] );
+		AddTexCoord( pBuffer, tx[i] );
 	}
 
 	_pVertexBuffer->Unlock();
@@ -246,8 +258,8 @@ Dx9VertexBuffer::Dx9VertexBuffer(
 	for( sInt i = 0; i < p.Size(); i++ )
 	{
 		AddVector( pBuffer, p[i] );
-		AddVector( pBuffer, tx1[i] );
-		AddVector( pBuffer, tx2[i] );
+		AddTexCoord( pBuffer, tx1[i] );
+		AddTexCoord( pBuffer, tx2[i] );
 	}
 
 	_pVertexBuffer->Unlock();
@@ -298,8 +310,8 @@ Dx9VertexBuffer::Dx9VertexBuffer(
 	{
 		AddVector( pBuffer, p[i] );
 		AddColor( pBuffer, diffuseColor[i] );
-		AddVector( pBuffer, tx1[i] );
-		AddVector( pBuffer, tx2[i] );
+		AddTexCoord( pBuffer, tx1[i] );
+		AddTexCoord( pBuffer, tx2[i] );
 	}
 
 	_pVertexBuffer->Unlock();
@@ -412,10 +424,7 @@ Dx9VertexBuffer::Dx9VertexBuffer(
 	_pVertexBuffer->Unlock();
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
+//-------------------------------------------------------------------
 void Dx9VertexBuffer::GetVectorList( sInt offset, System::d3Math::d3VectorList& v ) const
 {
 	v.RemoveAll( sFalse );
@@ -442,48 +451,38 @@ void Dx9VertexBuffer::GetVectorList( sInt offset, System::d3Math::d3VectorList& 
 	_pVertexBuffer->Unlock();
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
+//-------------------------------------------------------------------
 Dx9VertexBuffer::~Dx9VertexBuffer()
 {
 	if( _pVertexBuffer )
 		_pVertexBuffer->Release();
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
+//-------------------------------------------------------------------
 void Dx9VertexBuffer::GetPoints( Rd3::VertexPList& points ) const
 {
 	GetVectorList( _pointOffset, points );
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
+//-------------------------------------------------------------------
 void Dx9VertexBuffer::GetNormals( Rd3::VertexNList& normals ) const
 {
 	GetVectorList( _normalOffset, normals );
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
+//-------------------------------------------------------------------
 void Dx9VertexBuffer::GetDiffuseColor( Rd3::VertexCList& colors ) const
 {
 	__S_ASSERT( sFalse );
 }
 
+//-------------------------------------------------------------------
 void Dx9VertexBuffer::ComputeBoundingBox( d3AABBox& bbox ) const
 {
 	__S_ASSERT( sFalse );
 }
 	
+//-------------------------------------------------------------------
 void Dx9VertexBuffer::ComputeBoundingBox( d3AABBox& bbox, const d3Matrix& tran ) const
 {
 	__S_ASSERT( sFalse );

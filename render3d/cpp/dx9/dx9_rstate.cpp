@@ -26,6 +26,12 @@
 #include "dx9/dx9_texture.h"
 
 //--------------------------------------------------------------------
+
+COUNTER_USE( rd3_render_vertex_count )
+COUNTER_USE( rd3_render_primitive_count )
+COUNTER_USE( rd3_render_time_draw )
+
+//--------------------------------------------------------------------
 namespace PrimitiveType
 {
 	inline D3DPRIMITIVETYPE GetDX9Type( Rd3::PrimitiveType::PrimitiveType p )
@@ -49,6 +55,8 @@ Dx9RenderState::Dx9RenderState( Rd3::Render* owner ) :
 //--------------------------------------------------------------------
 void Dx9RenderState::SetRenderTarget( Rd3::Texture* pRenderTarget )
 {
+	COUNTER_TIME_START( rd3_render_time_draw );
+
 	__S_ASSERT( !pRenderTarget->ReadOnly() );
 	__S_ASSERT( pRenderTarget->GetOwner() == GetOwner() );
 	__S_ASSERT( _pTmpSurface == NULL );
@@ -74,11 +82,15 @@ void Dx9RenderState::SetRenderTarget( Rd3::Texture* pRenderTarget )
 	// set depth stencil
 	hr = pDevice->SetDepthStencilSurface( ((Dx9Texture*)pRenderTarget)->GetDepthStencil() );
     __S_ASSERT( SUCCEEDED(hr) );
+
+	COUNTER_TIME_STOP( rd3_render_time_draw );
 }
 
 //--------------------------------------------------------------------
 void Dx9RenderState::UnsetRenderTarget()
 {
+	COUNTER_TIME_START( rd3_render_time_draw );
+
 	LPDIRECT3DDEVICE9 pDevice = Dx9Render::GetDX9Device( GetOwner() );
     __S_ASSERT( pDevice != NULL );
 
@@ -97,11 +109,15 @@ void Dx9RenderState::UnsetRenderTarget()
 	__S_ASSERT( _pTmpSurface != NULL );
 	_pTmpSurface->Release();
 	_pTmpSurface = NULL;
+
+	COUNTER_TIME_STOP( rd3_render_time_draw );
 }
 
 //--------------------------------------------------------------------
 void Dx9RenderState::Clear( System::Types::sRGBColor color )
 {
+	COUNTER_TIME_START( rd3_render_time_draw );
+
 	LPDIRECT3DDEVICE9 pDevice = Dx9Render::GetDX9Device( GetOwner() );
 
     HRESULT hr = pDevice->Clear(
@@ -114,6 +130,8 @@ void Dx9RenderState::Clear( System::Types::sRGBColor color )
 	);
 
     __S_ASSERT( SUCCEEDED(hr) );
+
+	COUNTER_TIME_STOP( rd3_render_time_draw );
 }
 
 //--------------------------------------------------------------------
@@ -132,6 +150,8 @@ void Dx9RenderState::BeginWorldRender( const Rd3::EngineDataForRender& edata )
 			SetRenderTarget( pRenderTarget );
 	}
 
+	COUNTER_TIME_START( rd3_render_time_draw );
+
 	hr = pDevice->BeginScene();
 	__S_ASSERT( SUCCEEDED(hr) );
 
@@ -139,7 +159,7 @@ void Dx9RenderState::BeginWorldRender( const Rd3::EngineDataForRender& edata )
 		0,
 		NULL,
 		D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER | D3DCLEAR_STENCIL,
-		RGB( 128, 128, 128 ),
+		RGB( 0, 204, 204 ),
 		1.0f,
 		0L
 	);
@@ -150,22 +170,28 @@ void Dx9RenderState::BeginWorldRender( const Rd3::EngineDataForRender& edata )
 		pDevice->SetRenderState( D3DRS_FILLMODE, D3DFILL_SOLID );
 	else
 		pDevice->SetRenderState( D3DRS_FILLMODE, D3DFILL_WIREFRAME );
+
+	COUNTER_TIME_STOP( rd3_render_time_draw );
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
+//--------------------------------------------------------------------
 void Dx9RenderState::EndWorldRender()
 {
 	LPDIRECT3DDEVICE9 pDevice = Dx9Render::GetDX9Device( GetOwner() );
     __S_ASSERT( pDevice != NULL );
+
+	if( GetRenderTarget() == NULL )
+		PostRender();
+
+	COUNTER_TIME_START( rd3_render_time_draw );
 
 	HRESULT hr = pDevice->EndScene();
 	__S_ASSERT( SUCCEEDED(hr) );
 
 	hr = pDevice->Present( NULL, NULL, NULL, NULL );
 	__S_ASSERT( SUCCEEDED(hr) );
+
+	COUNTER_TIME_STOP( rd3_render_time_draw );
 
 	{
 		Rd3::Texture* pRenderTarget = GetRenderTarget();
@@ -177,10 +203,7 @@ void Dx9RenderState::EndWorldRender()
 	_BaseClass::EndWorldRender();
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
+//--------------------------------------------------------------------
 void Dx9RenderState::RenderPrimitive( const Rd3::VertexBuffer* vb, Rd3::PrimitiveType::PrimitiveType type )
 {
 	__S_ASSERT( vb!= NULL );
@@ -191,6 +214,8 @@ void Dx9RenderState::RenderPrimitive( const Rd3::VertexBuffer* vb, Rd3::Primitiv
 	LPDIRECT3DDEVICE9 pDevice = Dx9Render::GetDX9Device( GetOwner() );
 
 	__S_ASSERT( pDevice != NULL );
+
+	COUNTER_TIME_START( rd3_render_time_draw );
 
 	// Set effect params
 	GetEffect()->Apply( *this );
@@ -256,12 +281,13 @@ void Dx9RenderState::RenderPrimitive( const Rd3::VertexBuffer* vb, Rd3::Primitiv
 	
 	hr = pEffect->End();
 	__S_ASSERT( SUCCEEDED( hr ) );
+
+	COUNTER_INT_INC( rd3_render_primitive_count, primitiveCount );
+
+	COUNTER_TIME_STOP( rd3_render_time_draw );
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
+//--------------------------------------------------------------------
 void Dx9RenderState::RenderPrimitive( const Rd3::VertexBuffer* vb, const Rd3::IndexBuffer* ib, Rd3::PrimitiveType::PrimitiveType type )
 {
 	__S_ASSERT( vb!= NULL );
@@ -274,6 +300,8 @@ void Dx9RenderState::RenderPrimitive( const Rd3::VertexBuffer* vb, const Rd3::In
 	LPDIRECT3DDEVICE9 pDevice = Dx9Render::GetDX9Device( GetOwner() );
 
 	__S_ASSERT( pDevice != NULL );
+
+	COUNTER_TIME_START( rd3_render_time_draw );
 
 	// Set effect params
 	GetEffect()->Apply( *this );
@@ -346,4 +374,7 @@ void Dx9RenderState::RenderPrimitive( const Rd3::VertexBuffer* vb, const Rd3::In
 	
 	hr = pEffect->End();
 	__S_ASSERT( SUCCEEDED( hr ) );
+	
+	COUNTER_INT_INC( rd3_render_primitive_count, primitiveCount );
+	COUNTER_TIME_STOP( rd3_render_time_draw );
 }

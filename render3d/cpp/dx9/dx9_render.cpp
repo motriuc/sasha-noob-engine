@@ -125,7 +125,8 @@ Rd3::Render* Dx9Render::Create( const Rd3::DX9RenderCreateParams& param ) throws
 
 	Dx9Render* pRender = new Dx9Render( pD3DDevice );
 
-	pRender->_params    = param.GetParams();
+	pRender->_params			= param.GetParams();
+	pRender->_params._d3Options = d3Options;
 
 	return pRender;
 }
@@ -178,8 +179,28 @@ Rd3::VertexBuffer* Dx9Render::CreateVertexBuffer(
 		const Rd3::VertexTxCoord& txCoord
 	) throws_error
 {
-	__S_ASSERT( sFalse );
-	return NULL;
+	if( objectName.Length() > 0 && _vertexBufferPool[objectName] != NULL )
+		error_throw_arg( System::Errors::StringError ) 
+			_S("Duplicate object resource name :") + objectName 
+		);
+	
+	Dx9VertexBuffer* vb = NULL;
+	try
+	{
+		vb = new Dx9VertexBuffer( this, objectName, points, txCoord );
+		
+		if( objectName.Length() > 0 )
+			_vertexBufferPool.Add( vb );
+	}
+	catch(...)
+	{
+		if (vb)
+			vb->UnuseResource();
+	
+		throw;
+	}
+	
+	return vb;
 }
 
 //------------------------------------------------------------------ 
@@ -481,7 +502,15 @@ void Dx9Render::FillDeviceDef( Rd3::Def& def )
 //------------------------------------------------------------------ 
 void Dx9Render::Initialize( Rd3::Def& def, const Rd3::StreamArchive& archive ) throws_error
 {
+	_screenSizeInPixels = d2Math::d2Vector( 
+		(d3Float)_params._d3Options.BackBufferWidth,
+		(d3Float)_params._d3Options.BackBufferHeight
+	);
+
 	FillDeviceDef( def );
+
+	_BaseClass::Initialize( def, archive );
+
 	InitSystemResources( def, archive );
 }
 
@@ -490,11 +519,12 @@ void Dx9Render::InitSystemResources( Rd3::Def& def, const Streams::StreamArchive
 {
 	// std effects
 	CreateEffectFromFile( _S("system.texture.fx.1"), def, _S("%engine%/system.texture.1.fx"), archive );
+	CreateEffectFromFile( _S("system.font.fx.1"), def, _S("%engine%/system.font.1.fx"), archive );
 
 	// std fonts
 	CreateTextureFromFile(
 		_S("system.texture.font.10"), 
-		_S("%engine%/system.font.10.png"), 
+		_S("%engine%/system.texture.font.10.png"), 
 		archive,
 		Rd3::TextureType::E_ALPHA,
 		Rd3::TextureParams()
@@ -510,6 +540,7 @@ void Dx9Render::ReleaseSystemResources()
 	static const sChar* releaseEffects[] = 
 	{
 		_S("system.texture.fx.1"),
+		_S("system.font.fx.1"),
 		NULL
 	};
 

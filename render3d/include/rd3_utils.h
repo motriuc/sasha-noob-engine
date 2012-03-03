@@ -41,6 +41,14 @@ namespace Utils
 /**
  *
  */
+inline d3Float RoundToPixelSize( d3Float v, d3Float dpu )
+{
+	return System::FMath::Round( v * dpu ) / dpu;
+}
+
+/**
+ *
+ */
 namespace Debug
 {
 

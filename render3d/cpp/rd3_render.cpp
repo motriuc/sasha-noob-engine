@@ -23,6 +23,7 @@
 #include "rd3_after_effect.h"
 #include "rd3_xml_def.h"
 #include "rd3_font.h"
+#include "rd3_rstate.h"
 
 using namespace System::Types;
 
@@ -78,6 +79,13 @@ Render::Render( const RenderType::RenderType type ) :
 	_meshResPool( ResourceType::E_MESH ),
 	_aftereffectResPool( ResourceType::E_AFTEREFFECT )
 {
+}
+
+//--------------------------------------------------------------------
+void Render::Initialize( Def& def, const StreamArchive& archive ) throws_error
+{
+	if( _pRenderState != NULL )
+		_pRenderState->SetRenderTarget( NULL );
 }
 
 //--------------------------------------------------------------------

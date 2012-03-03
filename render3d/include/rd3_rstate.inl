@@ -186,11 +186,6 @@ inline sInt RenderState::MaxLightCount() const
 	return _D3_MAX_RENDER_LIGHTS;
 }
 
-inline void RenderState::SetRenderTarget( Texture* pTexture )
-{
-	_pRenderTarget = pTexture;
-}
-
 inline Texture* RenderState::GetRenderTarget()
 {
 	return _pRenderTarget;

@@ -307,6 +307,7 @@ namespace MatrixParameter
 		E_VIEW_PROJ,
 		E_WORLD_VIEW_PROJ,
 		E_WORLD_NORMAL,
+		E_D2_VIEW,
 
 		COUNT,
 		UNKNOWN
@@ -325,7 +326,8 @@ namespace MatrixParameter
 			_S("rd_worldview"),
 			_S("rd_viewprojection"),
 			_S("rd_worldviewprojection"),
-			_S("rd_worldnormal")
+			_S("rd_worldnormal"),
+			_S("rd_d2view")
 		};
 		return pNames[p];
 	}
@@ -443,6 +445,10 @@ namespace FloatParameter
 		E_LIGHT3_ATENUATION,
 		E_LIGHT4_ATENUATION,
 
+		// render target size
+		E_RENDER_WIDTH,
+		E_RENDER_HEIGHT,
+
 		COUNT,
 		UNKNOWN
 	};
@@ -460,7 +466,10 @@ namespace FloatParameter
 			_S("rd_light1_atenuation"),
 			_S("rd_light2_atenuation"),
 			_S("rd_light3_atenuation"),
-			_S("rd_light4_atenuation")
+			_S("rd_light4_atenuation"),
+
+			_S("rd_width"),
+			_S("rd_height")
 		};
 		return pNames[p];
 	}

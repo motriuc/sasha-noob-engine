@@ -161,8 +161,9 @@ inline sFloat ATan2( sFloat x, sFloat y )
 inline sFloat Round( sFloat n )
 {
 #ifdef _SPL_WIN32
-	__S_ASSERT( sFalse );
-	return 0;
+	if( n >= 0.0f )
+		return Integer( n + 0.5f );
+	return Integer( n - 0.5f );
 #else
 	return roundf( n );
 #endif

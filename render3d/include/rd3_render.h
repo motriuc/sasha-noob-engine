@@ -54,7 +54,7 @@ public:
 	 * Initialize the render
 	 * and fills the def with hardware specific defs
 	 */
-	virtual void Initialize( Def& def, const StreamArchive& archive ) throws_error = 0;
+	virtual void Initialize( Def& def, const StreamArchive& archive ) throws_error;
 	
 	///////////////////////////////////////////////////////////
 	// Get info 
@@ -71,16 +71,11 @@ public:
 	 * Returns current render state
 	 */
 	WorldRenderState* RenderState()								{ return _pRenderState; }
-		
-	/**
-	 *
-	 */
-	d2Vector GetRenderTarger_SizeInPixels() const				{ return _renderTargetSizeInPixels; }
-	
+			
 	/**
 	 * returns screen size in pixels
 	 */
-	d2Vector GetScreen_SizeInPixels() const						{ return _renderTargetSizeInPixels; }
+	d2Vector GetScreen_SizeInPixels() const						{ return _screenSizeInPixels; }
 	
 	////////////////////////////////////////////////////////////
 	// Resources
@@ -374,6 +369,7 @@ protected:
 	Render( const RenderType::RenderType type );
 
 	WorldRenderState*		_pRenderState;
+	d2Vector				_screenSizeInPixels;
 
 	/**
 	 * Resource Pools
@@ -388,8 +384,6 @@ protected:
 	TypedResourcePool		_fontResPool;
 	TypedResourcePool		_messageQResPool;
 	TypedResourcePool		_aftereffectResPool;
-	
-	d2Vector				_renderTargetSizeInPixels;
 private:
 	RenderType::RenderType  _renderType;
 	

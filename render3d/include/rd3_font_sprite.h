@@ -42,31 +42,30 @@ public:
 	{
 	}
 	
-	SpriteChar( sChar ch, sInt x, sInt y, sInt w, sInt h ) :
+	SpriteChar( sChar ch, sInt x1, sInt y1, sInt x2, sInt y2 ) :
 		_ch( ch ),
-		_x( x ),
-		_y( y ),
-		_w( w ),
-		_h( h )
+		_x1( x1 ),
+		_y1( y1 ),
+		_x2( x2 ),
+		_y2( y2 )
 	{
 	}
 	
-	/**
-	 *
-	 */
 	sChar GetChar() const { return _ch; }
 	
-	sInt GetW() const { return _w; }
-	sInt GetH() const { return _h; }
+	sInt Width() const { return System::FMath::Abs( _x1 - _x2 ); }
+	sInt Height() const { return System::FMath::Abs( _y1 - _y2 ); }
 	
-	sInt GetX() const { return _x; }
-	sInt GetY() const { return _y; }
+	sInt X1() const { return _x1; }
+	sInt Y1() const { return _y1; }
+	sInt X2() const { return _x2; }
+	sInt Y2() const { return _y2; }
 private:
 	sChar	_ch;
-	sInt	_x;
-	sInt	_y;
-	sInt	_w;
-	sInt	_h;
+	sInt	_x1;
+	sInt	_y1;
+	sInt	_x2;
+	sInt	_y2;
 };
 				   
 /**
@@ -90,7 +89,13 @@ public:
 	/**
 	 *
 	 */
-	const Rd3::Texture& GetTexture() const { return _texture(); }
+	const Texture& GetTexture() const { return _texture(); }
+
+	/**
+	 * 
+	 */
+	void SetTexture( Texture* pTexture ) { _texture = pTexture; }
+	void SetTexture( const sString& name );
 
 	/**
 	 *
