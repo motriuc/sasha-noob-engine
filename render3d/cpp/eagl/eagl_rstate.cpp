@@ -184,6 +184,8 @@ void EAGLRenderState::Clear( System::Types::sRGBColor color )
 //-----------------------------------------------------------------------
 void EAGLRenderState::BeginAfterEffect()
 {	
+	COUNTER_TIME_START( rd3_render_time_draw );
+
 	EAGLRender* pRender = reinterpret_cast<EAGLRender*> ( GetOwner() );
 	__S_ASSERT( pRender != NULL );
 	
@@ -192,6 +194,8 @@ void EAGLRenderState::BeginAfterEffect()
 	
 	InitAfterEffectData();
 	pRender->EaglSetRenderTarget( reinterpret_cast<EAGLTexture*>( _afterEffectTextures[0] ) );
+
+	COUNTER_TIME_STOP( rd3_render_time_draw );	
 }
 
 //-----------------------------------------------------------------------
@@ -209,6 +213,8 @@ void EAGLRenderState::EndAfterEffect()
 	
 	for( sInt i = 0; i < aeffect.ElementCount(); ++i )
 	{
+		COUNTER_TIME_START( rd3_render_time_draw );
+
 		glDisable( GL_DEPTH_TEST );
 		glDisable( GL_CULL_FACE );
 		glDisable( GL_BLEND );
@@ -221,6 +227,8 @@ void EAGLRenderState::EndAfterEffect()
 		else
 			render.EaglSetRenderTarget( (EAGLTexture*)_afterEffectTextures[dstTexture] );
 
+		COUNTER_TIME_STOP( rd3_render_time_draw );
+		
 		SetTexture( Rd3::TextureParameter::E_TEX1, _afterEffectTextures[srcTexture] );
 		aeffect.GetElement( i ).Apply( *this );
 		RenderPrimitive( _afterEffectVb, Rd3::PrimitiveType::E_TRIANGLE_LIST );
@@ -233,6 +241,8 @@ void EAGLRenderState::EndAfterEffect()
 //-----------------------------------------------------------------------
 void EAGLRenderState::BeginNoAfterEffect()
 {
+	COUNTER_TIME_START( rd3_render_time_draw );
+
 	EAGLRender* pRender = reinterpret_cast<EAGLRender*> ( GetOwner() );
 	
 	__S_ASSERT( pRender != NULL );
@@ -242,6 +252,8 @@ void EAGLRenderState::BeginNoAfterEffect()
 		pRender->EaglSetRenderTarget( (EAGLTexture*)GetRenderTarget() );
 	else 
 		pRender->SetAsCurrentContext();
+
+	COUNTER_TIME_STOP( rd3_render_time_draw );	
 }
 
 //-----------------------------------------------------------------------
@@ -249,12 +261,13 @@ void EAGLRenderState::BeginWorldRender( const Rd3::EngineDataForRender& edata )
 {	
 	_BaseClass::BeginWorldRender( edata );
 
-	COUNTER_TIME_START( rd3_render_time_draw );
 
 	if( GetAfterEffect() != NULL && GetAfterEffect()->ElementCount() > 0 )
 		BeginAfterEffect();
 	else
 		BeginNoAfterEffect();	
+	
+	COUNTER_TIME_START( rd3_render_time_draw );
 	
 	glClearColor( 0.8f, 0.8f, 0.0f, 1.0f );
 	glClearDepthf( 1.0f );

@@ -30,6 +30,8 @@
 
 #include "rd3_create_rparam.h"
 #include "rd3_def.h"
+#include "rd3_resloadparams.h"
+
 
 using namespace System::Streams;
 using namespace System;
@@ -58,10 +60,30 @@ Rd3::Render* EAGLRender::Create( const Rd3::EAGLRenderCreateParams& param ) thro
 }
 
 //-------------------------------------------------------------------------------------
-void EAGLRender::InitSystemResources( Rd3::Def& def, const Streams::StreamArchive& archive ) throws_error
+/*void EAGLRender::InitSystemResources( Rd3::Def& def, const Streams::StreamArchive& archive ) throws_error
 {
-	// default effect for the font rendering
+	
+	
+	// create system fonst
 	CreateEffectFromFile( _S("system.font.fx.1"),  def, _S("%engine%/system.font.fx.1.xml"), archive );
+
+
+	// system.font.default
+	CreateTextureFromFile(
+		_S("system.texture.font.10"), 
+		_S("%engine%/system.texture.font.10.png"), 
+		archive,
+		Rd3::TextureType::E_ALPHA,
+		Rd3::TextureParams( Rd3::TextureFilteringType::E_NEAREST )
+	);
+	
+	CreateFontFromFile( _S("system.font.default"), _S("%engine%/system.font.10.xml"), def, archive );
+
+	CreateEffectFromFile( _S("system.solid.fx.1"), def, _S("%engine%/system.solid.fx.1.xml"), archive );
+	CreateEffectFromFile( _S("system.solid.fx.2"), def, _S("%engine%/system.solid.fx.2.xml"), archive );
+
+	
+	// default effect for the font rendering
 	CreateEffectFromFile( _S("system.flatcolor.fx.1"), def, _S("%engine%/system.flatcolor.1.xml"), archive );
 	CreateEffectFromFile( _S("system.flatcolor.fx.2"), def, _S("%engine%/system.flatcolor.2.xml"), archive );
 	CreateEffectFromFile( _S("system.texture.fx.1"), def, _S("%engine%/system.texture.ps.1.xml"), archive );
@@ -70,20 +92,18 @@ void EAGLRender::InitSystemResources( Rd3::Def& def, const Streams::StreamArchiv
 	CreateEffectFromFile( _S("system.after.effect.none"), def, _S( "%engine%/system.after.effect.none.fx.xml"), archive );
 	CreateEffectFromFile( _S("system.after.effect.blur"), def, _S( "%engine%/system.after.effect.blur.fx.xml"), archive );
 	CreateEffectFromFile( _S("system.after.effect.color"), def, _S( "%engine%/system.after.effect.color.fx.xml"), archive ); 
-	
-	// std effect
-	CreateEffectFromFile( _S("system.solid.fx.1"), def, _S("%engine%/system.solid.fx.1.xml"), archive );
-	CreateEffectFromFile( _S("system.solid.fx.2"), def, _S("%engine%/system.solid.fx.2.xml"), archive );
-	
-	// system font default
-	CreateFontSystem( _S("system.font.default"), _S("Baskerville"), 26 );
-}
 
+}
+*/
 //-------------------------------------------------------------------------------------
 void EAGLRender::Initialize( Rd3::Def& def, const StreamArchive& archive ) throws_error
 {
 	InitCreateFrameBuffers( def );
-	InitSystemResources( def, archive );
+	
+	_BaseClass::Initialize( def, archive );
+
+	Rd3::ResLoadParams params( def, archive, *this );
+	_renderResources.LoadFromFile( _S("%engine%/render.res.xml"), params );
 }
 
 //-------------------------------------------------------------------------------------
@@ -123,8 +143,8 @@ void EAGLRender::InitCreateFrameBuffers( Rd3::Def& def )
 		Platform::ShowError( _S("Frame buffer invalid status") );
 	}
 
-	_renderTargetSizeInPixels.x = _framebufferWidth;
-	_renderTargetSizeInPixels.y = _framebufferHeight;
+	_screenSizeInPixels.x = _framebufferWidth;
+	_screenSizeInPixels.y = _framebufferHeight;
 }
 
 //-------------------------------------------------------------------------------------

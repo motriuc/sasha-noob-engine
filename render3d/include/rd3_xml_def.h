@@ -62,6 +62,7 @@
 #define ELEMENT_UP				_S("up")
 #define ELEMENT_CLIP			_S("clip")
 #define ELEMENT_PROJECTION		_S("projection")
+#define ELEMENT_FONT			_S("font")
 
 #define ELEMENT_COLOR			_S("color")
 #define ELEMENT_COLOR_DIFFUSE	_S("color.diffuse")

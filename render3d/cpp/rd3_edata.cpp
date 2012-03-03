@@ -26,6 +26,7 @@ COUNTER_USE( rd3_render_time_lua )
 COUNTER_USE( rd3_render_time_physics )
 COUNTER_USE( rd3_render_object_total )
 COUNTER_USE( rd3_render_object_visible )
+COUNTER_USE( rd3_render_time_rstate )
 
 //----------------------------------------------------------------------
 static void ResetFrameCounters()
@@ -39,6 +40,8 @@ static void ResetFrameCounters()
 	COUNTER_TIME_RESET( rd3_render_time_draw );
 	COUNTER_TIME_RESET( rd3_render_time_lua );
 	COUNTER_TIME_RESET( rd3_render_time_physics );
+	COUNTER_TIME_RESET( rd3_render_time_rstate );
+	
 	COUNTER_TIME_START( rd3_render_time_frame );
 }
 //----------------------------------------------------------------------

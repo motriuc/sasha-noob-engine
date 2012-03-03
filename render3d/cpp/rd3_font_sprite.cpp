@@ -163,9 +163,9 @@ void SprireRenderString::RenderText( RenderState& rstate, const sString& text, c
 			);
 
 			d3Float tx0 = sprite.X1() / tx;
-			d3Float ty0 = 1.0f - sprite.Y1() / ty;
+			d3Float ty0 = sprite.Y1() / ty;
 			d3Float tx1 = sprite.X2() / tx;
-			d3Float ty1 = 1.0f - sprite.Y2() / ty;
+			d3Float ty1 = sprite.Y2() / ty;
 			
 			txpoints.Add( 
 				d2Vector( tx0, ty0 ),

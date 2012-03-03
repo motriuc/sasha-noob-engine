@@ -27,6 +27,7 @@
 
 #include "rd3_resobj.h"
 #include "rd3_msg.h"
+#include "rd3_resloader.h"
 
 namespace Rd3
 {
@@ -384,6 +385,8 @@ protected:
 	TypedResourcePool		_fontResPool;
 	TypedResourcePool		_messageQResPool;
 	TypedResourcePool		_aftereffectResPool;
+	
+	ResourceLoader			_renderResources;
 private:
 	RenderType::RenderType  _renderType;
 	

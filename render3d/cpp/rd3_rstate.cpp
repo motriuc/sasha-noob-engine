@@ -33,6 +33,7 @@ COUNTER_USE( rd3_render_time_lua )
 COUNTER_USE( rd3_render_time_physics )
 COUNTER_USE( rd3_render_object_total )
 COUNTER_USE( rd3_render_object_visible )
+COUNTER_USE( rd3_render_time_rstate )
 
 namespace Rd3
 {
@@ -114,6 +115,8 @@ void RenderState::Update2dTransformation()
 //---------------------------------------------------------------------------
 void RenderState::UpdateCamera()
 {
+	COUNTER_TIME_START( rd3_render_time_rstate );
+	
 	if( _changed_camera )
 	{
 		_camera.GetView( _matrix_params[MatrixParameter::E_VIEW] );
@@ -136,6 +139,8 @@ void RenderState::UpdateCamera()
 		_frustum.ClearPlanes();
 		_camera.GetFrustum( _frustum );
 	}
+	
+	COUNTER_TIME_STOP( rd3_render_time_rstate );
 }
 
 //---------------------------------------------------------------------------
@@ -156,6 +161,8 @@ void RenderState::SetLight( sInt i, const LightPoint& light )
 	__S_ASSERT( i >= 0 );
 	__S_ASSERT( i < MaxLightCount() );
 			   
+	COUNTER_TIME_START( rd3_render_time_rstate );
+
 	_vector_params[VectorParameter::E_LIGHT1_POS + i ] = light.GetPosition();
 	_changed_vector_params[VectorParameter::E_LIGHT1_POS + i ] = sTrue;
 
@@ -172,6 +179,8 @@ void RenderState::SetLight( sInt i, const LightPoint& light )
 
 	_bool_params[BoolParameter::E_LIGHT1_ON + i] = sTrue;
 	_changed_bool_params[BoolParameter::E_LIGHT1_ON +i] = sTrue;
+	
+	COUNTER_TIME_STOP( rd3_render_time_rstate );	
 }
 
 //---------------------------------------------------------------------------
@@ -202,6 +211,8 @@ void RenderState::BeginRenderObject()
 //---------------------------------------------------------------------------
 void RenderState::UpdateTransformation()
 {
+	COUNTER_TIME_START( rd3_render_time_rstate );
+	
 	if( _changed_transformation )
 	{
 		_matrix_params[MatrixParameter::E_WORLD] = *_transformation;
@@ -235,6 +246,8 @@ void RenderState::UpdateTransformation()
 		);
 		_changed_matrix_params[MatrixParameter::E_WORLD_VIEW_PROJ] = sTrue;
 	}
+	
+	COUNTER_TIME_STOP( rd3_render_time_rstate );	
 }
 
 //---------------------------------------------------------------------------
@@ -342,6 +355,9 @@ void WorldRenderState::debug_RenderStats()
 	sDouble phProp = 
 		100.0 * COUNTER_DOUBLE_VALUE( rd3_render_time_physics ) / COUNTER_DOUBLE_VALUE( rd3_render_time_frame );
 	
+	sDouble renProp = 
+		100.0 * COUNTER_DOUBLE_VALUE( rd3_render_time_rstate ) / COUNTER_DOUBLE_VALUE( rd3_render_time_frame );
+	
 	
 #endif
 	
@@ -371,6 +387,11 @@ void WorldRenderState::debug_RenderStats()
 	sString phs = _S("Physics %: ") + sString::DoubleToString( phProp );
 	_debugTextRender->RenderText( *this , phs, pos, RGBColor::White );
 
+	pos.y += _debugTextRender->RenderHeight();
+	
+	sString rns = _S("Render State %: ") + sString::DoubleToString( renProp );
+	_debugTextRender->RenderText( *this , rns, pos, RGBColor::White );
+	
 	pos.y += _debugTextRender->RenderHeight();
 	
 	sString objs = _S("Objects : ") + 

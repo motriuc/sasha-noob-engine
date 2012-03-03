@@ -227,7 +227,6 @@ private:
 	void FillDeviceDef( Rd3::Def& def );
 	
 	void InitCreateFrameBuffers( Rd3::Def& def ) throws_error;
-	void InitSystemResources( Rd3::Def& def, const Streams::StreamArchive& archive ) throws_error;
 	void FreeFrameBuffers();
 };
 

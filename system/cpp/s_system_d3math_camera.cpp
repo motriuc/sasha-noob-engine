@@ -95,8 +95,8 @@ void d3Camera::GetFrustum( d3Frustum& f ) const
 //-------------------------------------------------------------------		
 void d3Camera::SetCamera2D()
 {
-	_pPosition = d3Point( 0.5f, 0.5f, 1.2f );
-	_vLookAt = d3Vector( 0.0f, 0.0f, -1.0f );
+	_pPosition = d3Point( 0.5f, 0.5f, -1.2f );
+	_vLookAt = d3Vector( 0.0f, 0.0f, 1.0f );
 	_vWorldUp = d3Vector( 0.0f, -1.0f, 0.0f );
 	
 	_fFov = FMath::fPi / 4;

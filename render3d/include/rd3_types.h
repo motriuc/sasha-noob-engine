@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : rd3_types.h
-//	Created                 : 20 1 2011   0:05
-//	File path               : SLibF\render3d\include
-//	Author                  : Alexandru Motriuc
+//  Created                 : 20 1 2011   0:05
+//  File path               : SLibF\render3d\include
+//  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
-//	Library                 : 
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -56,6 +56,7 @@ class Font;
 class LightPoint;
 class Light;
 class RenderString;
+class ResLoadParams;
 
 		
 /**
@@ -722,6 +723,11 @@ public:
 	 *
 	 */
 	TextureParams();
+	
+	/**
+	 *
+	 */
+	TextureParams( TextureFilteringType::TextureFilteringType v );
 	
 	void SetMinFilter( TextureFilteringType::TextureFilteringType v );
 	void SetMaxFilter( TextureFilteringType::TextureFilteringType v );

@@ -146,6 +146,13 @@ COUNTER_DECLARE(
 				)
 
 COUNTER_DECLARE( 
+				rd3_render_time_rstate,
+				_S("rd3.render.time.rstate"),
+				_S(""),
+				_S("time spent in maintainig render state")
+				)
+
+COUNTER_DECLARE( 
 				rd3_render_object_total,
 				_S("rd3.render.object.total"),
 				_S(""),
@@ -158,5 +165,6 @@ COUNTER_DECLARE(
 				_S(""),
 				_S("number of objects redered")
 				)
+
 
 //-----------------------------------------------------------------------

@@ -19,10 +19,10 @@
 #define _ED3_WORLD_H_
 
 #include "ed3_cont_object.h"
-#include "ed3_resloader.h"
 #include "rd3_light.h"
 #include "ed3_prerender.h"
 #include "rd3_after_effect.h"
+#include "rd3_resloader.h"
 
 namespace Ed3 
 {
@@ -104,7 +104,7 @@ protected:
 	virtual sBool LoadFromXMLSubnode( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error;
 	
 private:
-	d3ResourceLoader	_resources;
+	Rd3::ResourceLoader	_resources;
 	d3Camera			_camera;
 	Rd3::LightList		_staticLights;
 	d3PreRenderList		_preRenders;

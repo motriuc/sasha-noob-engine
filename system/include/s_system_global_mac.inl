@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : s_system_global_mac.inl
-//	Created                 : 11 01 2012   17:07
-//	File path               : SLibF\system\Include
-//	Author                  : Alexandru Motriuc
-//  Platform Independentsy  : 0%
-//	Library                 : 
+//  Created                 : 11 01 2012   17:07
+//  File path               : SLibF\system\Include
+//  Author                  : Alexandru Motriuc
+//  Platform Independent    : 0%
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -15,6 +15,15 @@
 //  Modification History:
 //      
 /////////////////////////////////////////////////////////////////////
+
+void DebugWarning( const sChar* pMessage )
+{
+#ifdef _SLIB_WCHAR
+	#error not implemented
+#else
+	printf( "\nDebug Warning: %s", pMessage );
+#endif	 
+}
 
 inline void ShowWarning( const sChar* pMessage )
 {

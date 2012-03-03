@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : rd3_types.inl
-//	Created                 : 4 2 2012   0:05
-//	File path               : SLibF\render3d\include
-//	Author                  : Alexandru Motriuc
+//  Created                 : 4 2 2012   0:05
+//  File path               : SLibF\render3d\include
+//  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
-//	Library                 : 
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -22,6 +22,14 @@ inline TextureParams::TextureParams():
 	_addressU( TextureAddressingType::E_REPEAT ),
 	_addressV( TextureAddressingType::E_REPEAT )
 {
+}
+
+inline TextureParams::TextureParams( TextureFilteringType::TextureFilteringType v ) :
+	_minFilter( v ),
+	_magFilter( v ),
+	_addressU( TextureAddressingType::E_REPEAT ),
+	_addressV( TextureAddressingType::E_REPEAT )
+{	
 }
 	
 inline TextureFilteringType::TextureFilteringType TextureParams::MinFilter() const

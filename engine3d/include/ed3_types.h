@@ -21,6 +21,8 @@
 	#error ed3_conf.h must be included
 #endif
 
+#include "rd3_resloadparams.h"
+
 namespace Ed3 
 {
 
@@ -28,10 +30,12 @@ class d3ObjectClassNames;
 class d3PhysicsWorld;
 	
 /**
- * LoadParams
+ * LoadDataParams
  */
-class LoadDataParams
+class LoadDataParams : public Rd3::ResLoadParams
 {
+private:
+	typedef Rd3::ResLoadParams _BaseClass;
 public:
 	/**
 	 *
@@ -41,19 +45,14 @@ public:
 			   const System::Streams::StreamArchive& iarchive,
 			   Rd3::Render& irender
 			   ) :
-		def( idef ),
-		archive( iarchive ),
-		render( irender ),
+		_BaseClass( idef, iarchive, irender ),
 		pClassNames( NULL ),
 		pPhysicsWorld( NULL )
 	{
 	}
 			   
-	const Rd3::Def& def;
-	const System::Streams::StreamArchive& archive;
-	Rd3::Render& render;
-	d3ObjectClassNames* pClassNames;
-	d3PhysicsWorld*	pPhysicsWorld;
+	d3ObjectClassNames*	pClassNames;
+	d3PhysicsWorld*		pPhysicsWorld;
 };
 	
 }

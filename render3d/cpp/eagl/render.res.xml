@@ -1,0 +1,30 @@
+<resources>
+	<!-- Render default resources -->
+
+    <!-- font effects -->
+    <effect name="system.font.fx.1" path="%engine%/system.font.fx.1.xml" />
+    
+    <!-- font textures -->]
+    <texture name="system.texture.font.10" type="alpha" path="%engine%/system.texture.font.10.png" >
+		<texture.params filter.min="nearest" filter.mag="nearest" />
+	</texture>
+	
+	
+    <!-- fonts -->
+    <font name="system.font.default" path="%engine%/system.font.10.xml" />
+	
+	<!-- solid effects -->
+	<effect name="system.solid.fx.1" path="%engine%/system.solid.fx.1.xml"/>
+	<effect name="system.solid.fx.2" path="%engine%/system.solid.fx.2.xml"/>
+   
+	<!-- flat color effects -->
+	<effect name="system.flatcolor.fx.1" path="%engine%/system.flatcolor.1.xml" />
+	<effect name="system.flatcolor.fx.2" path="%engine%/system.flatcolor.2.xml" />
+
+	<!-- texture effects -->
+	<effect name="system.texture.fx.1" path="%engine%/system.texture.ps.1.xml" />
+
+	<!-- after effect -->
+	<effect name="system.after.effect.blur" path="%engine%/system.after.effect.blur.fx.xml" />
+	<effect name="system.after.effect.color" path="%engine%/system.after.effect.color.fx.xml" />
+</resources>

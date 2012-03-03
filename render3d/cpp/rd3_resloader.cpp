@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////
-//	File Name          : ed3_resloader.cpp
+//	File Name          : rd3_resloader.cpp
 //	Created            : 30 1 2012   19:09
 //  Author             : Alexandru Motriuc  
 //	File Path          : SLibF\engine3d\cpp
@@ -14,8 +14,8 @@
 // 
 /////////////////////////////////////////////////////////////////////////
 
-#include "ed3afx.h"
-#include "ed3_resloader.h"
+#include "rd3afx.h"
+#include "rd3_resloader.h"
 #include "rd3_xml_def.h"
 #include "rd3_resobj.h"
 #include "rd3_render.h"
@@ -23,18 +23,20 @@
 #include "rd3_texture.h"
 #include "rd3_effect.h"
 #include "rd3_after_effect.h"
+#include "rd3_resloadparams.h"
+#include "rd3_font.h"
 
-namespace Ed3 
+namespace Rd3 
 {
 
 //-----------------------------------------------------------------------
-d3ResourceLoader::d3ResourceLoader()
+ResourceLoader::ResourceLoader()
 {
 	
 }
 
 //-----------------------------------------------------------------------
-d3ResourceLoader::~d3ResourceLoader()
+ResourceLoader::~ResourceLoader()
 {
 	for( sInt i = 0; i < _loadedResources.Size(); ++i )
 	{
@@ -43,7 +45,16 @@ d3ResourceLoader::~d3ResourceLoader()
 }
 
 //-----------------------------------------------------------------------
-void d3ResourceLoader::LoadFromXML( const Xml::BaseDomNode& element, LoadDataParams& loadParams )
+void ResourceLoader::LoadFromFile( const sString& path, ResLoadParams& loadParams ) throws_error
+{
+	ptr_unique<const Streams::IInputStream> pStream( loadParams.archive.Open( path ) ); 
+
+	ptr_unique<Xml::DomDocument> pDocument( Xml::DomDocument::Read( &pStream() ) );
+	LoadFromXML( pDocument().GetRoot(), loadParams );
+}
+
+//-----------------------------------------------------------------------
+void ResourceLoader::LoadFromXML( const Xml::BaseDomNode& element, ResLoadParams& loadParams )
 {
 	for( sInt i = 0; i < element.GetChildCount(); ++i )
 	{
@@ -63,17 +74,34 @@ void d3ResourceLoader::LoadFromXML( const Xml::BaseDomNode& element, LoadDataPar
 		else if( childElement.GetName() == ELEMENT_IBUFFER )
 			LoadIBuffer( childElement, loadParams );
 		else if( childElement.GetName() == ELEMENT_AFTER_EFFECT )
-			LoadAfterEffect( childElement, loadParams ); 
+			LoadAfterEffect( childElement, loadParams );
+		else if( childElement.GetName() == ELEMENT_FONT )
+			LoadFont( childElement, loadParams );
+			
 	}
 }	
 
 //-----------------------------------------------------------------------
-void d3ResourceLoader::LoadAfterEffect( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error
+void ResourceLoader::LoadFont( const Xml::BaseDomNode& element, ResLoadParams& loadParams ) throws_error
+{
+	sString fName = element.GetAttributes()[ATTR_NAME];
+	sString path = element.GetAttributes()[ATTR_PATH];
+	
+	Font* font = loadParams.render.CreateFontFromFile(
+		fName, path,
+		loadParams.def,
+		loadParams.archive
+	);
+	_loadedResources.Add( font );	
+}
+	
+//-----------------------------------------------------------------------
+void ResourceLoader::LoadAfterEffect( const Xml::BaseDomNode& element, ResLoadParams& loadParams ) throws_error
 {
 	sString efName = element.GetAttributes()[ATTR_NAME];
 	sString path = element.GetAttributes()[ATTR_PATH];
 	
-	Rd3::AfterEffect* pAff = loadParams.render.CreateAfterEffectFromFile(
+	AfterEffect* pAff = loadParams.render.CreateAfterEffectFromFile(
 		efName,
 		path,
 		loadParams.def,
@@ -84,12 +112,12 @@ void d3ResourceLoader::LoadAfterEffect( const Xml::BaseDomNode& element, LoadDat
 }
 	
 //-----------------------------------------------------------------------
-void d3ResourceLoader::LoadVBuffer( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error
+void ResourceLoader::LoadVBuffer( const Xml::BaseDomNode& element, ResLoadParams& loadParams ) throws_error
 {
 	sString vbName = element.GetAttributes()[ATTR_NAME];
 	sString path = element.GetAttributes()[ATTR_PATH];
 	
-	Rd3::VertexBuffer* pVertexBuffer = loadParams.render.CreateVertexBufferFromFile(
+	VertexBuffer* pVertexBuffer = loadParams.render.CreateVertexBufferFromFile(
 		vbName,
 		path,
 		loadParams.archive
@@ -99,12 +127,12 @@ void d3ResourceLoader::LoadVBuffer( const Xml::BaseDomNode& element, LoadDataPar
 }		
 
 //-----------------------------------------------------------------------
-void d3ResourceLoader::LoadIBuffer( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error
+void ResourceLoader::LoadIBuffer( const Xml::BaseDomNode& element, ResLoadParams& loadParams ) throws_error
 {
 	sString ibName = element.GetAttributes()[ATTR_NAME];
 	sString path = element.GetAttributes()[ATTR_PATH];
 		
-	Rd3::IndexBuffer* pVertexBuffer = loadParams.render.CreateIndexBufferFromFile(
+	IndexBuffer* pVertexBuffer = loadParams.render.CreateIndexBufferFromFile(
 		ibName,
 		path,
 		loadParams.archive
@@ -114,27 +142,27 @@ void d3ResourceLoader::LoadIBuffer( const Xml::BaseDomNode& element, LoadDataPar
 }		
 	
 //-----------------------------------------------------------------------
-void d3ResourceLoader::LoadMesh( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error
+void ResourceLoader::LoadMesh( const Xml::BaseDomNode& element, ResLoadParams& loadParams ) throws_error
 {
 	sString meshName = element.GetAttributes()[ATTR_NAME];
 	sString path = element.GetAttributes()[ATTR_PATH];
 	
-	Rd3::Mesh* pMesh = loadParams.render.CreateMeshFromFile( meshName, path, loadParams.def, loadParams.archive );
+	Mesh* pMesh = loadParams.render.CreateMeshFromFile( meshName, path, loadParams.def, loadParams.archive );
 	
 	_loadedResources.Add( pMesh );
 }					 
 //-----------------------------------------------------------------------
-void d3ResourceLoader::LoadTexture( const Xml::BaseDomNode& element, LoadDataParams& loadParams )
+void ResourceLoader::LoadTexture( const Xml::BaseDomNode& element, ResLoadParams& loadParams )
 {
 	sString textureName = element.GetAttributes()[ATTR_NAME];
 	sString path = element.GetAttributes()[ATTR_PATH];
 	
-	Rd3::TextureType::TextureType textureType = Rd3::TextureType::GetType( element.GetAttributes()[ATTR_TYPE] );
+	TextureType::TextureType textureType = TextureType::GetType( element.GetAttributes()[ATTR_TYPE] );
 	
 	if( textureType == Rd3::TextureType::UNKNOWN )
 		textureType = Rd3::TextureType::E_IMAGE;
 	
-	Rd3::TextureParams param;
+	TextureParams param;
 	
 	for( sInt i = 0; i < element.GetChildCount(); ++i )
 	{
@@ -153,12 +181,12 @@ void d3ResourceLoader::LoadTexture( const Xml::BaseDomNode& element, LoadDataPar
 }
 
 //-----------------------------------------------------------------------
-void d3ResourceLoader::LoadEffect( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error
+void ResourceLoader::LoadEffect( const Xml::BaseDomNode& element, ResLoadParams& loadParams ) throws_error
 {
 	sString textureName = element.GetAttributes()[ATTR_NAME];
 	sString path = element.GetAttributes()[ATTR_PATH];
 	
-	Rd3::Effect* pEffect = loadParams.render.CreateEffectFromFile( textureName, loadParams.def, path, loadParams.archive );
+	Effect* pEffect = loadParams.render.CreateEffectFromFile( textureName, loadParams.def, path, loadParams.archive );
 	_loadedResources.Add( pEffect );
 }
 	
