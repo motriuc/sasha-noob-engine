@@ -16,5 +16,8 @@
 /////////////////////////////////////////////////////////////////////
 
 // basic effects
-system.texture.font.10	PNG		"system.texture.font.10.png"
-system.font.10  	XML		"system.font.10.xml"
+system.texture.font.10			PNG		"system.texture.font.10.png"
+system.font.10  			XML		"system.font.10.xml"
+
+system.texture.font.console.10 		PNG		"system.texture.font.console.10.png"
+system.texture.font.console.10		XML		"system.texture.font.console.10.xml"

@@ -71,7 +71,6 @@ TypedResourcePool::TypedResourcePool( ResourceType::ResourceType type ):
 /************************************************************************/
 /*                                                                      */
 /************************************************************************/
-
 TypedResourcePool::~TypedResourcePool()
 {
 #ifdef _DEBUG

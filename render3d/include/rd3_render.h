@@ -216,6 +216,11 @@ public:
 	/////////////////////////////////////////////////////////
 	// Create Index buffer
 public:
+	virtual DynamicVertexBuffer* CreateDynamicVertexBuffer( VertexBufferStream::Set set ) throws_error = 0;
+
+	/////////////////////////////////////////////////////////
+	// Create Index buffer
+public:
 	
 	/**
 	 *
@@ -365,7 +370,9 @@ public:
 		pMsg->UnuseResource();
 		pMsg->Unregister( e );
 	}
-	
+
+public:
+	virtual void WindowResized( const d2Vector& size ) { }
 protected:
 	Render( const RenderType::RenderType type );
 
@@ -380,6 +387,7 @@ protected:
 
 	TypedResourcePool		_vertexBufferPool;
 	TypedResourcePool		_indexBufferPool;
+
 	TypedResourcePool		_meshResPool;
 	
 	TypedResourcePool		_fontResPool;
@@ -387,6 +395,9 @@ protected:
 	TypedResourcePool		_aftereffectResPool;
 	
 	ResourceLoader			_renderResources;
+
+	// dynamic vb map
+	sMap<VertexBufferStream::Set, DynamicVertexBuffer*>	 _dynamicVertexBufferMap;
 private:
 	RenderType::RenderType  _renderType;
 	

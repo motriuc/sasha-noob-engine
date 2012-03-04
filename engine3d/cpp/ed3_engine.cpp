@@ -88,6 +88,8 @@ void d3Engine::SetWorld( d3World* pWorld ) throws_error
 	{
 		pWorld->DoInitialize( *_pRender );
 		_currentWorld = pWorld;
+
+		UpdateCameraAspect();
 	}
 }
 
@@ -110,6 +112,16 @@ void d3Engine::RenderFrame()
 d3Engine::~d3Engine()
 {
 	delete _currentWorld;
+}
+
+//----------------------------------------------------------------------
+void d3Engine::UpdateCameraAspect()
+{
+	if( _pRender != NULL && _currentWorld != NULL )
+	{
+		d2Vector size = _pRender->GetScreen_SizeInPixels();
+		_currentWorld->GetCamera().SetAspect( size.y / size.x );
+	}
 }
 
 }

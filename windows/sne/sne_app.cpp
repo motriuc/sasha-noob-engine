@@ -174,7 +174,14 @@ sBool SNEApplication::MainProc( UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT
 	case WM_CREATE:
 		OnCreateWindow();
 		break;
-
+	case WM_SIZE:
+		if( _pRender != NULL )
+		{
+			RECT rc;
+			::GetClientRect( _hWindow, &rc );
+			_pRender->WindowResized( d2Math::d2Vector( (d2Float)( rc.right - rc.left ), (d2Float)( rc.bottom - rc.top ) ) );
+		}
+		break;
 	case WM_CLOSE:
 		::PostQuitMessage( 0 );
 		break;

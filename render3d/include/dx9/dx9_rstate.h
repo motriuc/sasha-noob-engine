@@ -44,6 +44,7 @@ public:
 	 */
 	virtual void RenderPrimitive( const Rd3::VertexBuffer* vb, Rd3::PrimitiveType::PrimitiveType type );
 	virtual void RenderPrimitive( const Rd3::VertexBuffer* vb, const Rd3::IndexBuffer* ib, Rd3::PrimitiveType::PrimitiveType type );
+	virtual void RenderPrimitive( const Rd3::DynamicVertexBuffer* vb, Rd3::PrimitiveType::PrimitiveType type );
 
 	virtual void Clear( System::Types::sRGBColor color );
 
@@ -55,6 +56,15 @@ private:
 
 	void SetRenderTarget( Rd3::Texture* pRenderTarget );
 	void UnsetRenderTarget();
+
+	void RenderPrimitive( 
+		LPDIRECT3DVERTEXBUFFER9 pVb,
+		UINT offset, 
+		UINT vertexSize, 
+		UINT vertexCount,
+		DWORD dwFVF,
+		Rd3::PrimitiveType::PrimitiveType type
+	);
 };
 
 

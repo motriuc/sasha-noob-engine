@@ -24,6 +24,7 @@
 #include "rd3_xml_def.h"
 #include "rd3_font.h"
 #include "rd3_rstate.h"
+#include "rd3_dvertexbuffer.h"
 
 using namespace System::Types;
 
@@ -241,6 +242,12 @@ void Render::NotifyFreeResource( ResourceObject* pRes )
 //--------------------------------------------------------------------
 Render::~Render()
 {
+	sMap<VertexBufferStream::Set, DynamicVertexBuffer*>::Iterator i = _dynamicVertexBufferMap.Begin();
+	while( i != _dynamicVertexBufferMap.End() )
+	{
+		delete i.Value();
+		++i;
+	}
 }
 
 //--------------------------------------------------------------------

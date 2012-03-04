@@ -1,0 +1,26 @@
+<resources>
+  <!-- Render default resources -->
+  
+  <!-- font effects -->
+  <effect name="system.font.fx.1" path="%engine%/system.font.1.fx" />
+          
+  <!-- font textures -->
+  <texture name="system.texture.font.10" type="alpha" path="%engine%/system.texture.font.10.png" >
+    <texture.params filter.min="nearest" filter.mag="nearest" />
+  </texture>
+
+  <texture name="system.texture.font.console.10" type="alpha" path="%engine%/system.texture.font.console.10.png" >
+    <texture.params filter.min="nearest" filter.mag="nearest" />
+  </texture>
+
+  <!-- fonts -->
+  <font name="system.font.default" path="%engine%/system.font.10.xml" />
+  <font name="system.font.console" path="%engine%/system.texture.font.console.10.xml" />
+
+  <!-- texture effects -->
+  <effect name="system.texture.fx.1" path="%engine%/system.texture.1.fx" />
+
+  <!-- debug effects -->
+  <effect name="system.debug.solid.color" path="%engine%/system.debug.solid.color.fx" />
+
+</resources>

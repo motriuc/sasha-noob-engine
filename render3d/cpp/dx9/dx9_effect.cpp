@@ -87,6 +87,7 @@ Dx9Effect::Dx9Effect(
 	_BaseClass(owner, objectName),
 	_pEffect( NULL )
 {
+	reinterpret_cast<Dx9Render*>( GetOwner() )->DeviceMonitor_AddResource( this );
 }
 
 //-------------------------------------------------------------------------------------------
@@ -265,8 +266,17 @@ void Dx9Effect::InitParamsLinks() throws_error
 }
 
 //-------------------------------------------------------------------------------------------
+void Dx9Effect::OnReset()
+{
+	if( _pEffect != NULL )
+		_pEffect->OnResetDevice();
+}
+
+//-------------------------------------------------------------------------------------------
 Dx9Effect::~Dx9Effect()
 {
+	reinterpret_cast<Dx9Render*>( GetOwner() )->DeviceMonitor_RemoveResource( this );
+
 	if( _pEffect != NULL )
 		_pEffect->Release();
 }

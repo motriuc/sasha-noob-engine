@@ -24,6 +24,7 @@
 #include "dx9/dx9_effect.h"
 #include "dx9/dx9_indexbuffer.h"
 #include "dx9/dx9_texture.h"
+#include "dx9/dx9_dvertexbuffer.h"
 
 //--------------------------------------------------------------------
 
@@ -204,10 +205,44 @@ void Dx9RenderState::EndWorldRender()
 }
 
 //--------------------------------------------------------------------
+void Dx9RenderState::RenderPrimitive( const Rd3::DynamicVertexBuffer* vb, Rd3::PrimitiveType::PrimitiveType type )
+{
+	LPDIRECT3DVERTEXBUFFER9 pVb = ((const Dx9DynamicVertexBuffer*)vb)->GetHandle();
+
+	DWORD dwFVF = ((const Dx9DynamicVertexBuffer*)vb)->GetFVF();
+	sUInt vertexSize = vb->GetVertexSize();
+	sUInt vertexCount = vb->GetCount();
+	sUInt offset = ((const Dx9DynamicVertexBuffer*)vb)->Offset() * vertexSize;
+
+	RenderPrimitive( pVb, offset, vertexSize, vertexCount, dwFVF, type ); 
+}
+
+//--------------------------------------------------------------------
 void Dx9RenderState::RenderPrimitive( const Rd3::VertexBuffer* vb, Rd3::PrimitiveType::PrimitiveType type )
 {
 	__S_ASSERT( vb!= NULL );
 	__S_ASSERT( GetOwner() == vb->GetOwner() );
+
+	LPDIRECT3DVERTEXBUFFER9 pVb = ((const Dx9VertexBuffer*)vb)->GetHandle();
+
+	DWORD dwFVF = ((const Dx9VertexBuffer*)vb)->GetFVF();
+	sUInt vertexSize = vb->GetVertexSize();
+	sUInt vertexCount = vb->GetCount();
+
+	RenderPrimitive( pVb, 0, vertexSize, vertexCount, dwFVF, type ); 
+}
+
+//--------------------------------------------------------------------
+void Dx9RenderState::RenderPrimitive( 
+	LPDIRECT3DVERTEXBUFFER9 pVb,
+	UINT offset, 
+	UINT vertexSize, 
+	UINT vertexCount,
+	DWORD dwFVF, Rd3::PrimitiveType::PrimitiveType type )
+{
+	__S_ASSERT( dwFVF != 0 );
+	__S_ASSERT( pVb != NULL );
+
 	__S_ASSERT( GetEffect() != NULL );
 	__S_ASSERT( GetOwner() ==  GetEffect()->GetOwner() );
 
@@ -220,12 +255,7 @@ void Dx9RenderState::RenderPrimitive( const Rd3::VertexBuffer* vb, Rd3::Primitiv
 	// Set effect params
 	GetEffect()->Apply( *this );
 
-	DWORD dwFVF = ((const Dx9VertexBuffer*)vb)->GetFVF();
-	LPDIRECT3DVERTEXBUFFER9 pVb = ((const Dx9VertexBuffer*)vb)->GetHandle();
 	LPD3DXEFFECT pEffect = ((const Dx9Effect*)GetEffect())->GetHandle();
-
-	__S_ASSERT( dwFVF != 0 );
-	__S_ASSERT( pVb != NULL );
 	__S_ASSERT( pEffect != NULL );
 
 	// Set Vertex stream format
@@ -233,56 +263,52 @@ void Dx9RenderState::RenderPrimitive( const Rd3::VertexBuffer* vb, Rd3::Primitiv
 	__S_ASSERT( SUCCEEDED( hr ) );
 
 	// Set vertex stream
-	hr = pDevice->SetStreamSource(
-		0,
-		pVb,
-		0,
-		vb->GetVertexSize()
-		);
+	hr = pDevice->SetStreamSource( 0, pVb, offset, vertexSize );
 	__S_ASSERT( SUCCEEDED( hr ) );
 
 	D3DPRIMITIVETYPE dxprimitiveType = PrimitiveType::GetDX9Type( type );
 
-	sUInt primitiveCount = Rd3::PrimitiveType::GetNumberOfPrimitives( 
-		vb->GetCount(),
+	UINT primitiveCount = Rd3::PrimitiveType::GetNumberOfPrimitives( 
+		vertexCount,
 		type
 	);
-	
+
 	UINT numPasses;
 
 	hr = pEffect->Begin( &numPasses , 0 );
-	__S_ASSERT( SUCCEEDED( hr ) );
-	
-	for( UINT i = 0; i < numPasses; i++ )
+	if( SUCCEEDED( hr ) )
 	{
-		hr = pEffect->BeginPass( i );
-		__S_ASSERT( SUCCEEDED( hr ) );
+		for( UINT i = 0; i < numPasses; i++ )
+		{
+			hr = pEffect->BeginPass( i );
+			__S_ASSERT( SUCCEEDED( hr ) );
 
 #ifdef _D3_DEBUG_RENDER
-		if( GetCommonData().RenderWireframe() )
-			pDevice->SetRenderState( D3DRS_FILLMODE, D3DFILL_WIREFRAME );
+			if( GetCommonData().RenderWireframe() )
+				pDevice->SetRenderState( D3DRS_FILLMODE, D3DFILL_WIREFRAME );
 
-		if( GetCommonData().debug_RenderCulling() )
-			pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_CCW );
-		else
-			pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_NONE );
+			if( GetCommonData().debug_RenderCulling() )
+				pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_CCW );
+			else
+				pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_NONE );
 #endif
 
-		hr = pDevice->DrawPrimitive(
-			dxprimitiveType,
-			0,
-			primitiveCount
-		);
-		__S_ASSERT( SUCCEEDED( hr ) );
+			hr = pDevice->DrawPrimitive(
+				dxprimitiveType,
+				0,
+				primitiveCount
+			);
+			__S_ASSERT( SUCCEEDED( hr ) );
 
-		hr = pEffect->EndPass();
+			hr = pEffect->EndPass();
+			__S_ASSERT( SUCCEEDED( hr ) );
+		}
+
+		hr = pEffect->End();
 		__S_ASSERT( SUCCEEDED( hr ) );
 	}
-	
-	hr = pEffect->End();
-	__S_ASSERT( SUCCEEDED( hr ) );
-
 	COUNTER_INT_INC( rd3_render_primitive_count, primitiveCount );
+	COUNTER_INT_INC( rd3_render_vertex_count, vertexCount );
 
 	COUNTER_TIME_STOP( rd3_render_time_draw );
 }
@@ -338,43 +364,47 @@ void Dx9RenderState::RenderPrimitive( const Rd3::VertexBuffer* vb, const Rd3::In
 		type
 	);
 	
-	UINT numPasses;
+	UINT numPasses = 0;
 
 	hr = pEffect->Begin( &numPasses , 0 );
-	__S_ASSERT( SUCCEEDED( hr ) );
-	
-	for( UINT i = 0; i < numPasses; i++ )
-	{
-		hr = pEffect->BeginPass( i );
-		__S_ASSERT( SUCCEEDED( hr ) );
+
+	if( SUCCEEDED( hr ) )
+	{	
+		for( UINT i = 0; i < numPasses; i++ )
+		{
+			hr = pEffect->BeginPass( i );
+			__S_ASSERT( SUCCEEDED( hr ) );
 
 #ifdef _D3_DEBUG_RENDER
-		if( GetCommonData().RenderWireframe() )
-			pDevice->SetRenderState( D3DRS_FILLMODE, D3DFILL_WIREFRAME );
+			if( GetCommonData().RenderWireframe() )
+				pDevice->SetRenderState( D3DRS_FILLMODE, D3DFILL_WIREFRAME );
 
-		if( GetCommonData().debug_RenderCulling() )
-			pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_CW );
-		else
-			pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_NONE );
+			if( GetCommonData().debug_RenderCulling() )
+				pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_CW );
+			else
+				pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_NONE );
 #endif
 
-		hr = pDevice->DrawIndexedPrimitive(
-			dxprimitiveType,
-			0,
-			0,
-			vb->GetCount(),
-			0,
-			primitiveCount
-		);
-		__S_ASSERT( SUCCEEDED( hr ) );
+			hr = pDevice->DrawIndexedPrimitive(
+				dxprimitiveType,
+				0,
+				0,
+				vb->GetCount(),
+				0,
+				primitiveCount
+			);
+			__S_ASSERT( SUCCEEDED( hr ) );
 
-		hr = pEffect->EndPass();
+			hr = pEffect->EndPass();
+			__S_ASSERT( SUCCEEDED( hr ) );
+		}
+	
+		hr = pEffect->End();
 		__S_ASSERT( SUCCEEDED( hr ) );
 	}
-	
-	hr = pEffect->End();
-	__S_ASSERT( SUCCEEDED( hr ) );
-	
+
 	COUNTER_INT_INC( rd3_render_primitive_count, primitiveCount );
+	COUNTER_INT_INC( rd3_render_vertex_count, ib->GetCount() );
+
 	COUNTER_TIME_STOP( rd3_render_time_draw );
 }

@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : dx9_types.h
-//	Created                 : 21 1 2011   13:05
-//	File path               : SLibF\render3d\include\dx9
-//	Author                  : Alexandru Motriuc
+//  Created                 : 21 1 2011   13:05
+//  File path               : SLibF\render3d\include\dx9
+//  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
-//	Library                 : 
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -21,6 +21,8 @@
 #ifndef _RD3_CONF_H_
   #error rd3_conf.h must be included
 #endif
+
+
 
 namespace Rd3
 {
@@ -67,6 +69,103 @@ struct Dx9RenderParams
 		_d3BehaviorFlags    = D3DCREATE_HARDWARE_VERTEXPROCESSING;
 	}
 };
+
+namespace VertexBufferStream
+{
+	/**
+	 * converts vertex stream set to directX FVF
+	 */
+	inline DWORD GetDirectX_FVF( Set set )
+	{
+		DWORD dwFVF = 0;
+
+		if( set & E_XYZ )
+			dwFVF |= D3DFVF_XYZ;
+		if( set & E_NORMAL )
+			dwFVF |= D3DFVF_NORMAL;
+		if( set & E_COLOR_DIF )
+			dwFVF |= D3DFVF_DIFFUSE;
+		if( set & E_TX1 )
+			dwFVF |= D3DFVF_TEX1;
+		if( set & E_TX2 )
+			dwFVF |= D3DFVF_TEX2;
+	
+		return dwFVF;
+	}
+
+	inline DWORD GetDirectX_VertexSize( Set set )
+	{
+		DWORD dwSize = 0;
+
+		if( set & E_XYZ )
+			dwSize += sizeof( float ) * 3;
+		if( set & E_NORMAL )
+			dwSize += sizeof( float ) * 3;
+		if( set & E_COLOR_DIF )
+			dwSize += sizeof( char ) * 4;
+		if( set & E_TX1 )
+			dwSize += sizeof( float ) * 2;
+		if( set & E_TX2 )
+			dwSize += sizeof( float ) * 3;
+	
+		return dwSize;
+	}
+
+	/**
+	 * Offsets
+	 */
+	class Offsets
+	{
+	public:
+		Offsets( Set set )
+		{
+			_offPoint = -1;
+			_offNormal = -1;
+			_offDiffuseColor = -1;
+			_offTx1 = -1;
+			_offTx2 = -1;
+
+			sInt offset = 0;
+
+			if( set & Rd3::VertexBufferStream::E_XYZ )
+			{
+				_offPoint = offset;
+				offset += sizeof(float) * 3;
+			}
+
+			if( set & Rd3::VertexBufferStream::E_NORMAL )
+			{
+				_offNormal = offset;
+				offset += sizeof(float) * 3;
+			}
+
+			if( set & Rd3::VertexBufferStream::E_COLOR_DIF )
+			{
+				_offDiffuseColor = offset;
+				offset += sizeof(char) * 4;
+			}
+
+			if( set & Rd3::VertexBufferStream::E_TX1 )
+			{
+				_offTx1 = offset;
+				offset += sizeof(float) * 2;
+			}
+
+			if( set & Rd3::VertexBufferStream::E_TX2 )
+			{
+				_offTx2 = offset;
+				offset += sizeof(float) * 2;
+			}
+		}
+
+	public:
+		sInt	_offPoint;
+		sInt	_offNormal;
+		sInt	_offDiffuseColor;
+		sInt	_offTx1;
+		sInt	_offTx2;
+	};
+}
 
 }
 

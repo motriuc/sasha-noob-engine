@@ -22,6 +22,7 @@
 
 #include "rd3_create_rparam.h"
 #include "rd3_def.h"
+#include "rd3_resloadparams.h"
 
 #include "dx9/dx9_defs.h"
 #include "dx9/dx9_types.h"
@@ -30,6 +31,7 @@
 #include "dx9/dx9_rstate.h"
 #include "dx9/dx9_indexbuffer.h"
 #include "dx9/dx9_texture.h"
+#include "dx9/dx9_dvertexbuffer.h"
 
 ////////////////////////////////////////////////////////////////////
 // Direct3D Initializer
@@ -141,14 +143,31 @@ Dx9Render::Dx9Render( LPDIRECT3DDEVICE9 pD3DDevice ) :
 }
 
 //------------------------------------------------------------------ 
+void Dx9Render::WindowResized( const d2Math::d2Vector& size )
+{
+	// [TO DO]
+}
+
+//------------------------------------------------------------------ 
 Dx9Render::~Dx9Render()
 {
-	ReleaseSystemResources();
-
 	delete _pRenderState;
 
 	__S_ASSERT( _pD3DDevice != NULL );
 	_pD3DDevice->Release();
+}
+
+//------------------------------------------------------------------ 
+Rd3::DynamicVertexBuffer* Dx9Render::CreateDynamicVertexBuffer( Rd3::VertexBufferStream::Set set ) throws_error
+{
+	Rd3::DynamicVertexBuffer* pVb = NULL;
+
+	if( _dynamicVertexBufferMap.Lookup( set, pVb ) )
+		return pVb;
+
+	pVb = new Dx9DynamicVertexBuffer( this, _S(""), set, 40000 );
+	_dynamicVertexBufferMap.Add( set, pVb );
+	return pVb;
 }
 
 //------------------------------------------------------------------ 
@@ -511,73 +530,28 @@ void Dx9Render::Initialize( Rd3::Def& def, const Rd3::StreamArchive& archive ) t
 
 	_BaseClass::Initialize( def, archive );
 
-	InitSystemResources( def, archive );
+	Rd3::ResLoadParams params( def, archive, *this );
+	_renderResources.LoadFromFile( _S("%engine%/render.res.xml"), params ); 
 }
 
-//-------------------------------------------------------------------------------------
-void Dx9Render::InitSystemResources( Rd3::Def& def, const Streams::StreamArchive& archive ) throws_error
+//------------------------------------------------------------------ 
+void Dx9Render::DeviceMonitor_AddResource( Rd3::ResourceObject* pRes )
 {
-	// std effects
-	CreateEffectFromFile( _S("system.texture.fx.1"), def, _S("%engine%/system.texture.1.fx"), archive );
-	CreateEffectFromFile( _S("system.font.fx.1"), def, _S("%engine%/system.font.1.fx"), archive );
-
-	// std fonts
-	CreateTextureFromFile(
-		_S("system.texture.font.10"), 
-		_S("%engine%/system.texture.font.10.png"), 
-		archive,
-		Rd3::TextureType::E_ALPHA,
-		Rd3::TextureParams()
-	);
-
-	CreateFontFromFile( _S("system.font.default"), _S("%engine%/system.font.10.xml"), def, archive );
+	__S_ASSERT( pRes != NULL );
+	_deviceMonitorObjects.Add( pRes );
 }
 
-//-------------------------------------------------------------------------------------
-void Dx9Render::ReleaseSystemResources()
+//------------------------------------------------------------------ 
+void Dx9Render::DeviceMonitor_RemoveResource( Rd3::ResourceObject* pRes )
 {
-	// system effects to release
-	static const sChar* releaseEffects[] = 
-	{
-		_S("system.texture.fx.1"),
-		_S("system.font.fx.1"),
-		NULL
-	};
+	__S_ASSERT( pRes != NULL );
 
-	// system effects to release
-	static const sChar* releaseTextures[] = 
+	for( sInt i = 0; i < _deviceMonitorObjects.Size(); ++i )
 	{
-		_S("system.texture.font.10"),
-		NULL
-	};
-
-	// system fonts to release
-	static const sChar* releaseFonts[] = 
-	{
-		_S("system.font.default"),
-		NULL
-	};
-
-
-	//---------------------------------------------------------------
-	for( const sChar** name = releaseFonts; *name != NULL; ++name )
-	{
-		Rd3::ResourceObject* res = GetFont( *name );
-		if( res )
-			res->UnuseResource();
-	}
-
-	for( const sChar** name = releaseEffects; *name != NULL; ++name )
-	{
-		Rd3::ResourceObject* res = GetEffect( *name );
-		if( res )
-			res->UnuseResource();
-	}
-
-	for( const sChar** name = releaseTextures; *name != NULL; ++name )
-	{
-		Rd3::ResourceObject* res = GetTexture( *name );
-		if( res )
-			res->UnuseResource();
+		if( _deviceMonitorObjects[i] == pRes )
+		{
+			_deviceMonitorObjects.RemoveAt( i );
+			break;
+		}
 	}
 }

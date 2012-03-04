@@ -366,7 +366,7 @@ void WorldRenderState::debug_RenderStats()
 		_renderFont = GetOwner()->UseFont( _S("system.font.default") );
 		_debugTextRender = _renderFont().CreateRenderString();
 	}
-	d2Vector pos( 0.0f, 0.0f );
+	d2Vector pos( 0.01f, 0.01f );
 	
 	sString fsp = _S("Fps: ") + sString::IntToString( _engineData->GetFPS() );
 	_debugTextRender->RenderText( *this , fsp, pos, RGBColor::White );

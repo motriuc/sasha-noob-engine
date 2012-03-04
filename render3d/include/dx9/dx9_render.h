@@ -146,6 +146,11 @@ public:
 	/////////////////////////////////////////////////////////
 	// Create Index buffer
 public:
+	virtual Rd3::DynamicVertexBuffer* CreateDynamicVertexBuffer( Rd3::VertexBufferStream::Set set ) throws_error;
+
+	/////////////////////////////////////////////////////////
+	// Create Index buffer
+public:
 	
 	/**
 	 *
@@ -218,19 +223,24 @@ public:
 
 
 	virtual ~Dx9Render();
+
+	void WindowResized( const d2Math::d2Vector& size );
+
 public:
 	LPDIRECT3DDEVICE9 GetHandle() const { return _pD3DDevice; }
 
 	const struct Rd3::Dx9RenderParams& Params() { return _params; }
+
+	void DeviceMonitor_AddResource( Rd3::ResourceObject* pRes );
+	void DeviceMonitor_RemoveResource( Rd3::ResourceObject* pRes );
 private:
-	LPDIRECT3DDEVICE9    _pD3DDevice;
+	LPDIRECT3DDEVICE9           _pD3DDevice;
 	struct Rd3::Dx9RenderParams _params;
+	sVector<Rd3::ResourceObject*>	_deviceMonitorObjects;
 
 	Dx9Render( LPDIRECT3DDEVICE9    pD3DDevice );
 
 	void FillDeviceDef( Rd3::Def& def );
-	void InitSystemResources( Rd3::Def& def, const Streams::StreamArchive& archive ) throws_error;
-	void ReleaseSystemResources();
 };
 
 

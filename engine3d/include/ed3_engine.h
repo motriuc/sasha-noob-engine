@@ -72,6 +72,8 @@ private:
 	Rd3::Def				_def;
 	
 	d3World*				_currentWorld;
+private:
+	void UpdateCameraAspect();
 };
 
 }

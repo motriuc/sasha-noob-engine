@@ -50,7 +50,9 @@ public:
 	/**
 	 *
 	 */
+	virtual void OnReset();
 	virtual ~Dx9Effect();
+
 
 	/**
 	 *

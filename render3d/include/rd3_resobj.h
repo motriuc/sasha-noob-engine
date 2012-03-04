@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : rd3_resobj.h
-//	Created                 : 20 1 2011   0:05
-//	File path               : SLibF\render3d\include
-//	Author                  : Alexandru Motriuc
+//  Created                 : 20 1 2011   0:05
+//  File path               : SLibF\render3d\include
+//  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
-//	Library                 : 
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -70,6 +70,11 @@ public:
 	 *
 	 */
 	void UnuseResource() const;
+
+	/**
+	 * called if device was reset
+	 */
+	 virtual void OnReset() {}
 protected:
 	/**
 	 * constructor
@@ -130,6 +135,7 @@ public:
 	 *
 	 */
 	~TypedResourcePool();
+
 private:
 	sVector< ResourceObject*>		_objArray;
 	sMap<sString, ResourceObject*>  _objMap;

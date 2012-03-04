@@ -31,6 +31,11 @@
 	#include "ed3_lua.h"
 #endif
 
+#ifdef _D3_DEBUG_RENDER
+	#include "rd3_dvertexbuffer.h"
+	#include "rd3_effect.h"
+#endif
+
 namespace Ed3 
 {
 
@@ -265,6 +270,16 @@ private:
 	void SetActionState( ObjectActionState s );
 	
 	friend class d3ObjectContiner;
+
+#ifdef _D3_DEBUG_RENDER
+	mutable Rd3::use_resource<Rd3::DynamicVertexBuffer>	_debug_vb;
+	mutable Rd3::use_resource<Rd3::Effect>				_debug_effect_solid;
+
+	void debug_InitResources( Rd3::Render& render );
+	virtual void debug_Render( const d3RenderData& renderData );
+	
+	void debug_DrawAABBox( const d3RenderData& renderData, const d3AABBox& b,  sRGBColor cl ) const;
+#endif
 };
 
 #include "ed3_object.inl"

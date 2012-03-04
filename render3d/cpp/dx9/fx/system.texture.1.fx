@@ -57,7 +57,7 @@ VS_OUT VSNormal( VS_IN v )
 {
 	VS_OUT result; 
 	result.Position			= mul( v.Position, rd_worldviewprojection );
-	result.vObjectNormal	= mul( v.vObjectNormal, rd_worldnormal ).xyz;
+	result.vObjectNormal	= normalize( mul( v.vObjectNormal, rd_worldnormal ).xyz );
 	result.vPosWorld		= mul( v.Position, rd_world ).xyz;
 	result.vTex				= v.vObjectTexture;
 	return result;

@@ -79,6 +79,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="..\..\render3d\include\rd3_cdata.inl" />
+    <None Include="..\..\render3d\include\rd3_dvertexbuffer.inl" />
     <None Include="..\..\render3d\include\rd3_edata.inl" />
     <None Include="..\..\render3d\include\rd3_effect.inl" />
     <None Include="..\..\render3d\include\rd3_light.inl" />
@@ -93,6 +94,7 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\render3d\cpp\dx9\dx9_dvertexbuffer.cpp" />
     <ClCompile Include="..\..\render3d\cpp\dx9\dx9_effect.cpp" />
     <ClCompile Include="..\..\render3d\cpp\dx9\dx9_indexbuffer.cpp" />
     <ClCompile Include="..\..\render3d\cpp\dx9\dx9_render.cpp" />
@@ -107,6 +109,7 @@
     <ClCompile Include="..\..\render3d\cpp\rd3_after_effect.cpp" />
     <ClCompile Include="..\..\render3d\cpp\rd3_create_rparam.cpp" />
     <ClCompile Include="..\..\render3d\cpp\rd3_def.cpp" />
+    <ClCompile Include="..\..\render3d\cpp\rd3_dvertexbuffer.cpp" />
     <ClCompile Include="..\..\render3d\cpp\rd3_edata.cpp" />
     <ClCompile Include="..\..\render3d\cpp\rd3_effect.cpp" />
     <ClCompile Include="..\..\render3d\cpp\rd3_font.cpp" />
@@ -124,6 +127,7 @@
     <ClCompile Include="..\..\render3d\cpp\rd3_perf_counters.cpp" />
     <ClCompile Include="..\..\render3d\cpp\rd3_register_types.cpp" />
     <ClCompile Include="..\..\render3d\cpp\rd3_render.cpp" />
+    <ClCompile Include="..\..\render3d\cpp\rd3_resloader.cpp" />
     <ClCompile Include="..\..\render3d\cpp\rd3_resobj.cpp" />
     <ClCompile Include="..\..\render3d\cpp\rd3_rstate.cpp" />
     <ClCompile Include="..\..\render3d\cpp\rd3_texture.cpp" />
@@ -139,6 +143,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\render3d\include\dx9\dx9_dvertexbuffer.h" />
     <ClInclude Include="..\..\render3d\include\dx9\dx9_conf.h" />
     <ClInclude Include="..\..\render3d\include\dx9\dx9_defs.h" />
     <ClInclude Include="..\..\render3d\include\dx9\dx9_effect.h" />
@@ -148,6 +153,7 @@
     <ClInclude Include="..\..\render3d\include\dx9\dx9_texture.h" />
     <ClInclude Include="..\..\render3d\include\dx9\dx9_types.h" />
     <ClInclude Include="..\..\render3d\include\dx9\dx9_vertexbuffer.h" />
+    <ClInclude Include="..\..\render3d\include\dx9\dx9_vutil.h" />
     <ClInclude Include="..\..\render3d\include\rd3.h" />
     <ClInclude Include="..\..\render3d\include\rd3afx.h" />
     <ClInclude Include="..\..\render3d\include\rd3_after_effect.h" />
@@ -155,6 +161,7 @@
     <ClInclude Include="..\..\render3d\include\rd3_conf.h" />
     <ClInclude Include="..\..\render3d\include\rd3_create_rparam.h" />
     <ClInclude Include="..\..\render3d\include\rd3_def.h" />
+    <ClInclude Include="..\..\render3d\include\rd3_dvertexbuffer.h" />
     <ClInclude Include="..\..\render3d\include\rd3_edata.h" />
     <ClInclude Include="..\..\render3d\include\rd3_effect.h" />
     <ClInclude Include="..\..\render3d\include\rd3_font.h" />
@@ -174,6 +181,8 @@
     <ClInclude Include="..\..\render3d\include\rd3_perf_counters.h" />
     <ClInclude Include="..\..\render3d\include\rd3_render.h" />
     <ClInclude Include="..\..\render3d\include\rd3_render_str.h" />
+    <ClInclude Include="..\..\render3d\include\rd3_resloader.h" />
+    <ClInclude Include="..\..\render3d\include\rd3_resloadparams.h" />
     <ClInclude Include="..\..\render3d\include\rd3_resobj.h" />
     <ClInclude Include="..\..\render3d\include\rd3_rstate.h" />
     <ClInclude Include="..\..\render3d\include\rd3_texture.h" />

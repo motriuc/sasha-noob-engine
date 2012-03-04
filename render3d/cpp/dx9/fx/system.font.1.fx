@@ -47,7 +47,6 @@ VS_OUT VSNormal( VS_IN v )
 {
 	VS_OUT result; 
 	result.Position			= mul( v.Position, rd_d2view );
-	result.Position.x		= -result.Position.x;
 	result.Texture			= v.Texture;
 	return result;
 }
@@ -63,11 +62,11 @@ technique Default
 	pass p0
 	{
 		AlphaBlendEnable = true;
-        BlendOp = Add;
-        SrcBlend = SRCALPHA;
-        DestBlend = INVSRCALPHA;
+		BlendOp = Add;
+		SrcBlend = SRCALPHA;
+		DestBlend = INVSRCALPHA;
 
 		VertexShader = compile _S_VS_VERSION VSNormal();
- 		PixelShader = compile _S_PS_VERSION PSNormal();
+		PixelShader = compile _S_PS_VERSION PSNormal();
 	}
 }

@@ -20,53 +20,10 @@
 #include "dx9/dx9_conf.h"
 #include "dx9/dx9_vertexbuffer.h"
 #include "dx9/dx9_render.h"
+#include "dx9/dx9_vutil.h"
 
 using namespace System::d3Math;
 using namespace System::d2Math;
-
-//-------------------------------------------------------------------
-inline void AddVector( void*& pBuffer, const d3Vector& v )
-{
-	float* pV = (float*)( pBuffer );
-
-	*pV = v.x;		++pV; 
-	*pV = v.y;		++pV; 
-	*pV = v.z;		++pV; 
-
-	pBuffer = pV;
-}
-
-//-------------------------------------------------------------------
-inline void AddVector( void*& pBuffer, const d2Vector& v )
-{
-	float* pV = (float*)( pBuffer );
-
-	*pV = v.x;		++pV; 
-	*pV = v.y;		++pV; 
-
-	pBuffer = pV;
-}
-
-//-------------------------------------------------------------------
-inline void AddTexCoord( void*& pBuffer, const d2Vector& v )
-{
-	float* pV = (float*)( pBuffer );
-
-	*pV = v.x;				++pV; 
-	*pV = 1.0f - v.y;		++pV; 
-
-	pBuffer = pV;
-}
-
-//-------------------------------------------------------------------
-inline void AddColor( void*& pBuffer, sRGBColor c )
-{
-	DWORD* pDW = (DWORD*)(pBuffer);
-
-	*pDW = c;		++pDW;
-
-	pBuffer = pDW;
-}
 
 //-------------------------------------------------------------------
 Dx9VertexBuffer::Dx9VertexBuffer( 
@@ -108,7 +65,7 @@ Dx9VertexBuffer::Dx9VertexBuffer(
 
 	for( sInt i = 0; i < p.Size(); i++ )
 	{
-		AddVector( pBuffer,  p[i] );
+		VUtil::AddVector( pBuffer,  p[i] );
 	}
 
 	_pVertexBuffer->Unlock();
@@ -159,9 +116,9 @@ Dx9VertexBuffer::Dx9VertexBuffer(
 
 	for( sInt i = 0; i < points.Size(); i++ )
 	{
-		AddVector( pBuffer, points[i] );
-		AddVector( pBuffer, normals[i] );
-		AddTexCoord( pBuffer, txCoord[i] );
+		VUtil::AddVector( pBuffer, points[i] );
+		VUtil::AddVector( pBuffer, normals[i] );
+		VUtil::AddTexCoord( pBuffer, txCoord[i] );
 	}
 
 	_pVertexBuffer->Unlock();
@@ -208,8 +165,8 @@ Dx9VertexBuffer::Dx9VertexBuffer(
 
 	for( sInt i = 0; i < p.Size(); i++ )
 	{
-		AddVector( pBuffer, p[i] );
-		AddTexCoord( pBuffer, tx[i] );
+		VUtil::AddVector( pBuffer, p[i] );
+		VUtil::AddTexCoord( pBuffer, tx[i] );
 	}
 
 	_pVertexBuffer->Unlock();
@@ -257,9 +214,9 @@ Dx9VertexBuffer::Dx9VertexBuffer(
 
 	for( sInt i = 0; i < p.Size(); i++ )
 	{
-		AddVector( pBuffer, p[i] );
-		AddTexCoord( pBuffer, tx1[i] );
-		AddTexCoord( pBuffer, tx2[i] );
+		VUtil::AddVector( pBuffer, p[i] );
+		VUtil::AddTexCoord( pBuffer, tx1[i] );
+		VUtil::AddTexCoord( pBuffer, tx2[i] );
 	}
 
 	_pVertexBuffer->Unlock();
@@ -308,10 +265,10 @@ Dx9VertexBuffer::Dx9VertexBuffer(
 
 	for( sInt i = 0; i < p.Size(); i++ )
 	{
-		AddVector( pBuffer, p[i] );
-		AddColor( pBuffer, diffuseColor[i] );
-		AddTexCoord( pBuffer, tx1[i] );
-		AddTexCoord( pBuffer, tx2[i] );
+		VUtil::AddVector( pBuffer, p[i] );
+		VUtil::AddColor( pBuffer, diffuseColor[i] );
+		VUtil::AddTexCoord( pBuffer, tx1[i] );
+		VUtil::AddTexCoord( pBuffer, tx2[i] );
 	}
 
 	_pVertexBuffer->Unlock();
@@ -362,8 +319,8 @@ Dx9VertexBuffer::Dx9VertexBuffer(
 
 	for( sInt i = 0; i < p.Size(); i++ )
 	{
-		AddVector( pBuffer, p[i] );
-		AddColor( pBuffer, diffuseColor[i] );
+		VUtil::AddVector( pBuffer, p[i] );
+		VUtil::AddColor( pBuffer, diffuseColor[i] );
 	}
 
 	_pVertexBuffer->Unlock();
@@ -416,9 +373,9 @@ Dx9VertexBuffer::Dx9VertexBuffer(
 
 	for( sInt i = 0; i < p.Size(); i++ )
 	{
-		AddVector( pBuffer, p[i] );
-		AddVector( pBuffer, n[i] );
-		AddColor( pBuffer, diffuseColor[i] );
+		VUtil::AddVector( pBuffer, p[i] );
+		VUtil::AddVector( pBuffer, n[i] );
+		VUtil::AddColor( pBuffer, diffuseColor[i] );
 	}
 
 	_pVertexBuffer->Unlock();
@@ -479,7 +436,25 @@ void Dx9VertexBuffer::GetDiffuseColor( Rd3::VertexCList& colors ) const
 //-------------------------------------------------------------------
 void Dx9VertexBuffer::ComputeBoundingBox( d3AABBox& bbox ) const
 {
-	__S_ASSERT( sFalse );
+	bbox = d3AABBox::GetEmpty();
+
+	void* pBuffer;
+
+	HRESULT hr = _pVertexBuffer->Lock( 0, _vertexBufferSize, &pBuffer, 0 );
+
+	if( FAILED( hr ) )
+		return;
+
+	SBYTE* p = ( (SBYTE*)pBuffer );
+
+	for( sUInt i = 0; i < _vertexCount; i++ )
+	{
+		bbox.Add( d3Vector( (float*)p ));
+		p+= _vertexSize;
+	}
+
+	_pVertexBuffer->Unlock();
+
 }
 	
 //-------------------------------------------------------------------

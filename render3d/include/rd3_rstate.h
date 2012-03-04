@@ -129,6 +129,8 @@ public:
 	 */
 	virtual void RenderPrimitive( const VertexBuffer* vb, PrimitiveType::PrimitiveType type ) = 0;
 	virtual void RenderPrimitive( const VertexBuffer* vb, const IndexBuffer* ib, PrimitiveType::PrimitiveType type ) = 0;
+	virtual void RenderPrimitive( const DynamicVertexBuffer* vb, PrimitiveType::PrimitiveType type ) = 0;
+
 	void RenderMesh( const Mesh* pMesh );
 		
 	/**
@@ -140,6 +142,7 @@ public:
 	 *
 	 */
 	d2Vector GetRenderTarger_SizeInPixels() const				{ return _renderTargetSizeInPixels; }
+
 protected:
 	Render* GetOwner();
 	const Effect* GetEffect();

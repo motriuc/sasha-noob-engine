@@ -57,6 +57,7 @@ class LightPoint;
 class Light;
 class RenderString;
 class ResLoadParams;
+class DynamicVertexBuffer;
 
 		
 /**
@@ -103,7 +104,8 @@ namespace ResourceType
 		E_MESSAGEQ,
 		E_MESH,
 		E_AFTEREFFECT,
-	  
+		E_DVERTEX_BUFFER,
+
 		COUNT,
 		UNKNOWN
 	};
@@ -122,10 +124,11 @@ namespace VertexBufferStream
 	{
 		E_XYZ		= 0x00000001,
 		E_NORMAL	= 0x00000002,
-		E_TX1		= 0x00000004,
-		E_TX2		= 0x00000008,
+		E_COLOR_DIF	= 0x00000004,
+		E_TX1		= 0x00000008,
+		E_TX2		= 0x00000010,
 		
-		COUNT		= 4,
+		COUNT		= 5,
 		UNKNOWN		= 0
 	};
 	
@@ -140,6 +143,7 @@ namespace VertexBufferStream
 		{
 			_S("XYZ"),
 			_S("NORMAL"),
+			_S("COLOR_DIF"),
 			_S("TX1"),
 			_S("TX2")
 		};

@@ -18,3 +18,9 @@
 // basic effects
 system.texture.1	FX		"system.texture.1.fx"
 system.font.1		FX		"system.font.1.fx"
+
+// resource list
+render.res		XML		"render.res.xml"
+
+// debug fx
+system.debug.solid.color FX		"system.debug.solid.color.fx"

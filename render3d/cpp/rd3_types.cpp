@@ -206,6 +206,7 @@ namespace VertexBufferStream
 		{
 			E_XYZ,
 			E_NORMAL,
+			E_COLOR_DIF,
 			E_TX1,
 			E_TX2
 		};
