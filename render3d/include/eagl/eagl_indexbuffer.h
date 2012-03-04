@@ -43,10 +43,10 @@ public:
 	 */
 	virtual ~EAGLIndexBuffer();
 	
-	const SBYTE* GetBuffer() const		{ return _pIndexBuffer; }
 	GLenum GetBufferType() const		{ return _type; }
+	GLuint GetBufferHandle() const		{ return _ib; }
 private:
-	SBYTE*	_pIndexBuffer;
+	GLuint	_ib;
 	GLenum	_type;
 	
 	void AddAsByte( const Rd3::IndexList& indexList );

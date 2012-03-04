@@ -65,6 +65,11 @@ public:
 		return _p;
 	}
 	
+	inline _Type* ptr()
+	{
+		return _p;
+	}
+	
 	inline ptr_array_unique()
 	{
 		delete[] _p;

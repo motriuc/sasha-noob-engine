@@ -25,7 +25,7 @@
 //-------------------------------------------------------------------
 EAGLIndexBuffer::EAGLIndexBuffer( Rd3::Render* owner, const sString& objectName, const Rd3::IndexList& indexList ):
 	_BaseClass( owner, objectName ),
-	_pIndexBuffer( NULL )
+	_ib( 0 )
 {
 	sUInt max = 0;
 	
@@ -47,7 +47,8 @@ EAGLIndexBuffer::EAGLIndexBuffer( Rd3::Render* owner, const sString& objectName,
 //-------------------------------------------------------------------
 EAGLIndexBuffer::~EAGLIndexBuffer()
 {
-	delete[] _pIndexBuffer;
+	if( _ib != 0 )
+		glDeleteBuffers( 1, &_ib );
 }
 
 //-------------------------------------------------------------------
@@ -59,15 +60,19 @@ void EAGLIndexBuffer::AddAsByte( const Rd3::IndexList& indexList )
 	
 	_type = GL_UNSIGNED_BYTE;
 	
-	_pIndexBuffer = new SBYTE[_indexBufferSize];
+	ptr_array_unique<SBYTE> pIndexBuffer( new SBYTE[_indexBufferSize] );
 	
 	for( sInt i = 0; i < _indexCount; ++i )
 	{
 		__S_ASSERT( indexList[i] >=  Limit::SBYTE::Min );
 		__S_ASSERT( indexList[i] <= Limit::SBYTE::Max );
 		
-		_pIndexBuffer[i] = (SBYTE)indexList[i];
+		pIndexBuffer[i] = (SBYTE)indexList[i];
 	}
+	
+	glGenBuffers( 1, &_ib );
+	glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, _ib );
+	glBufferData( GL_ELEMENT_ARRAY_BUFFER, _indexBufferSize, pIndexBuffer, GL_STATIC_DRAW );
 }
 
 //-------------------------------------------------------------------
@@ -79,9 +84,9 @@ void EAGLIndexBuffer::AddAsShort( const Rd3::IndexList& indexList )
 	
 	_type = GL_UNSIGNED_SHORT;
 	
-	_pIndexBuffer = new SBYTE[_indexBufferSize];
+	ptr_array_unique<SBYTE> pIndexBuffer( new SBYTE[_indexBufferSize] );
 	
-	SWORD* pWord = (SWORD*)_pIndexBuffer;
+	SWORD* pWord = (SWORD*)pIndexBuffer.ptr();
 	
 	for( sInt i = 0; i < _indexCount; ++i )
 	{
@@ -90,6 +95,10 @@ void EAGLIndexBuffer::AddAsShort( const Rd3::IndexList& indexList )
 		
 		pWord[i] = (SWORD)indexList[i];
 	}
+
+	glGenBuffers( 1, &_ib );
+	glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, _ib );
+	glBufferData( GL_ELEMENT_ARRAY_BUFFER, _indexBufferSize, pIndexBuffer, GL_STATIC_DRAW );
 }
 
 

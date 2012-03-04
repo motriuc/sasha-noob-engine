@@ -155,17 +155,22 @@ protected:
 	 */
 	virtual ~EAGLVertexBuffer();
 	
+	void CreateVb( 
+		const Rd3::VertexPList* p,
+		const Rd3::VertexNList* n = NULL,
+		const Rd3::VertexCList* diffuseColor = NULL,
+		const Rd3::VertexTxCoord* tx1 = NULL,
+		const Rd3::VertexTxCoord* tx2 = NULL 
+	);
 private:
-	GLfloat*					_listPoints;
-	GLfloat*					_listNormals;
-	GLubyte*					_listDiffuseColor;
-	GLfloat*					_listTx1;
-	GLfloat*					_listTx2;
-	
-private:	
-	GLfloat* AddVectors( const Rd3::VertexPList& points );
-	GLfloat* AddTx( const Rd3::VertexTxCoord& tx );
-	GLubyte* AddColors( const Rd3::VertexCList& colors );
+	GLuint	_vb;
+	sInt	_offPoints;
+	sInt	_offNormals;
+	sInt	_offTx1;
+	sInt	_offTx2;
+	sInt	_offDiffuzeColor;
+
+	d3AABBox _bbox;
 };
 
 #endif // _DX9_VERTEXBUFFER_H_

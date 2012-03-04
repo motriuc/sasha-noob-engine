@@ -23,14 +23,141 @@
 using namespace System;
 using namespace Rd3;
 
+//-------------------------------------------------------------------
+inline void AddVector( void*& pBuffer, const d3Vector& v )
+{
+	GLfloat* pV = (GLfloat*)( pBuffer );
+	
+	*pV = v.x;		++pV; 
+	*pV = v.y;		++pV; 
+	*pV = v.z;		++pV; 
+	
+	pBuffer = pV;
+}
+
+//-------------------------------------------------------------------
+inline void AddVector( void*& pBuffer, const d2Vector& v )
+{
+	GLfloat* pV = (GLfloat*)( pBuffer );
+	
+	*pV = v.x;		++pV; 
+	*pV = v.y;		++pV; 
+	
+	pBuffer = pV;
+}
+
+//-------------------------------------------------------------------
+inline void AddTexCoord( void*& pBuffer, const d2Vector& v )
+{
+	GLfloat* pV = (float*)( pBuffer );
+	
+	*pV = v.x;		++pV; 
+	*pV = v.y;		++pV; 
+	
+	pBuffer = pV;
+}
+
+//-------------------------------------------------------------------
+inline void AddColor( void*& pBuffer, sRGBColor c )
+{
+	GLubyte* pC = (GLubyte*)( pBuffer );
+	
+	*pC = RGBColor::GetByteR( c );  ++pC;
+	*pC = RGBColor::GetByteG( c );  ++pC;
+	*pC = RGBColor::GetByteB( c );  ++pC;
+	*pC = RGBColor::GetByteA( c );  ++pC;
+	
+	pBuffer = pC;
+}
+
+//--------------------------------------------------------------------------------------------
+void EAGLVertexBuffer::CreateVb( 
+								const Rd3::VertexPList* p,
+								const Rd3::VertexNList* n,
+								const Rd3::VertexCList* diffuseColor,
+								const Rd3::VertexTxCoord* tx1,
+								const Rd3::VertexTxCoord* tx2 
+								)
+{
+	__S_ASSERT( _offPoints ==  -1 );
+	__S_ASSERT( _offNormals == -1 ),
+	__S_ASSERT( _offTx1 == -1 );
+	__S_ASSERT( _offTx2 == -1 );
+	__S_ASSERT( _offDiffuzeColor ==  -1 );
+	
+	__S_ASSERT( p!= NULL );
+	
+	__S_ASSERT( n == NULL || ( n!= NULL && n->Size() == p->Size() ) );
+	__S_ASSERT( diffuseColor == NULL || ( diffuseColor!= NULL && diffuseColor->Size() == p->Size() ) );
+	__S_ASSERT( tx1 == NULL || ( tx1!= NULL && tx1->Size() == p->Size() ) );
+	__S_ASSERT( tx2 == NULL || ( tx2!= NULL && tx1->Size() == p->Size() ) );
+	
+	_vertexCount = p->Size();
+	_vertexSize = 0;
+	
+	_offPoints =_vertexSize;
+	_vertexSize += sizeof( GLfloat ) * 3;
+	
+	if( n != NULL )
+	{
+		_offNormals = _vertexSize;
+		_vertexSize += sizeof( GLfloat ) * 3;
+	}
+	
+	if( diffuseColor != NULL )
+	{
+		_offDiffuzeColor = _vertexSize;
+		_vertexSize += sizeof( GLubyte ) * 4;
+	}
+	
+	if( tx1 != NULL )
+	{
+		_offTx1 = _vertexSize;
+		_vertexSize += sizeof( GLfloat ) * 2;
+	}
+
+	if( tx2 != NULL )
+	{
+		_offTx2 = _vertexSize;
+		_vertexSize += sizeof( GLfloat ) * 2;
+	}
+	
+	_vertexBufferSize = _vertexSize * _vertexCount;	
+	
+	_bbox = d3AABBox::GetEmpty();
+	
+	ptr_array_unique<char> buffer( new char[_vertexBufferSize] );
+	
+	void* pBuffer = buffer;
+	
+	for( sInt i = 0; i < p->Size(); i++ )
+	{
+		AddVector( pBuffer, (*p)[i] );
+		_bbox.Add( (*p)[i] );
+		
+		if( n!= NULL )
+			AddVector( pBuffer, (*n)[i] );
+		   
+		if( diffuseColor != NULL )
+			AddColor( pBuffer, (*diffuseColor)[i] );
+		
+		if( tx1 != NULL )
+			AddTexCoord( pBuffer, (*tx1)[i] );
+
+		if( tx2 != NULL )
+			AddTexCoord( pBuffer, (*tx2)[i] );
+	}
+	
+	glGenBuffers( 1, &_vb );
+	glBindBuffer( GL_ARRAY_BUFFER, _vb );
+	glBufferData( GL_ARRAY_BUFFER, _vertexBufferSize, buffer, GL_STATIC_DRAW );
+}
+
 //--------------------------------------------------------------------------------------------
 EAGLVertexBuffer::~EAGLVertexBuffer()
 {
-	delete[] _listPoints;
-	delete[] _listDiffuseColor;
-	delete[] _listNormals;
-	delete[] _listTx1;
-	delete[] _listTx2;
+	if( _vb != 0 )
+		glDeleteBuffers( 1, &_vb );
 }
 
 //--------------------------------------------------------------------------------------------
@@ -54,149 +181,78 @@ void EAGLVertexBuffer::GetDiffuseColor( Rd3::VertexCList& colors ) const
 //--------------------------------------------------------------------------------------------
 void EAGLVertexBuffer::ComputeBoundingBox( d3AABBox& bbox ) const
 {
-	bbox = d3AABBox::GetEmpty();
-	
-	if( _listPoints != NULL )
-	{	
-		GLfloat* v = _listPoints;
-		for( sInt i = 0; i < _vertexCount; ++i )
-		{
-			bbox.Add( d3Vector( v[0], v[1], v[2] ) );
-			v += 3;
-		}
-	}
+	bbox = _bbox;
 }
 
 //--------------------------------------------------------------------------------------------
 void EAGLVertexBuffer::ComputeBoundingBox( d3AABBox& bbox, const d3Matrix& tran ) const
 {
-	bbox = d3AABBox::GetEmpty();
-	
-	if( _listPoints != NULL )
-	{	
-		GLfloat* v = _listPoints;
-		for( sInt i = 0; i < _vertexCount; ++i )
-		{
-			d3Vector pos = d3Vector( v[0], v[1], v[2] );
-			d3Vector::Mul( pos, pos, tran );
-			
-			bbox.Add( pos );
-			v += 3;
-		}
-	}	
+	__S_ASSERT( sFalse );
 }
 
 //--------------------------------------------------------------------------------------------
 void EAGLVertexBuffer::SetAttributes( const sInt* attributesId ) const
 {
-	if( _listPoints != NULL )
+	__S_ASSERT( _vb != 0 );
+	
+	glBindBuffer( GL_ARRAY_BUFFER, _vb );
+	
+	if( _offPoints >= 0 )
 	{
 		sInt p = attributesId[AttributeParameter::E_POSITION];
 		
 		if( p >= 0 )
 		{
-			glVertexAttribPointer( p, 3, GL_FLOAT, 0, 0, _listPoints);
+			glVertexAttribPointer( p, 3, GL_FLOAT, 0, _vertexSize, (void*)_offPoints );
 			glEnableVertexAttribArray( p );			
 		}
 	}
 
-	if( _listDiffuseColor != NULL ) 
-	{
-		sInt p = attributesId[AttributeParameter::E_COLOR_DIFUSE];
-		
-		if( p >= 0 ) 
-		{
-			glVertexAttribPointer( p, 4, GL_UNSIGNED_BYTE, 1, 0, _listDiffuseColor );
-			glEnableVertexAttribArray( p );
-			
-		}
-	}
-	
-	if( _listNormals != NULL )
+	if( _offNormals >= 0 )
 	{
 		sInt p = attributesId[AttributeParameter::E_NORMALS];
 		
 		if( p >= 0 )
 		{
-			glVertexAttribPointer( p, 3, GL_FLOAT, 0, 0, _listNormals);
+			glVertexAttribPointer( p, 3, GL_FLOAT, 0, _vertexSize, (void*)_offNormals );
 			glEnableVertexAttribArray( p );			
 		}
 	}
 	
-	if( _listTx1 )
+	if( _offDiffuzeColor >= 0 ) 
+	{
+		sInt p = attributesId[AttributeParameter::E_COLOR_DIFUSE];
+		
+		if( p >= 0 ) 
+		{
+			glVertexAttribPointer( p, 4, GL_UNSIGNED_BYTE, 1, _vertexSize, (void*)_offDiffuzeColor );
+			glEnableVertexAttribArray( p );
+			
+		}
+	}
+	
+	
+	if( _offTx1 >= 0 )
 	{
 		sInt p = attributesId[AttributeParameter::E_TX1];
 
 		if( p >= 0 )
 		{
-			glVertexAttribPointer( p, 2, GL_FLOAT, 0, 0, _listTx1 );
+			glVertexAttribPointer( p, 2, GL_FLOAT, 0, _vertexSize, (void*)_offTx1 );
 			glEnableVertexAttribArray( p );			
 		}
 	}
 	
-	if( _listTx2 )
+	if( _offTx2 >= 0 )
 	{
 		sInt p = attributesId[AttributeParameter::E_TX2];
 		
 		if( p >= 0 )
 		{
-			glVertexAttribPointer( p, 2, GL_FLOAT, 0, 0, _listTx2 );
+			glVertexAttribPointer( p, 2, GL_FLOAT, 0, _vertexSize, (void*)_offTx2 );
 			glEnableVertexAttribArray( p );			
 		}
-	}	
-}
-
-//--------------------------------------------------------------------------------------------
-GLfloat* EAGLVertexBuffer::AddVectors( const Rd3::VertexPList& points )
-{
-	GLfloat* pVer = new GLfloat[points.Size() * 3];
-	GLfloat* pV = pVer;
-	
-	for( sInt i = 0; i < points.Size(); ++i )
-	{
-		const d3Math::d3Vector& v = points[i];
-		*pV = v.x;		++pV; 
-		*pV = v.y;		++pV; 
-		*pV = v.z;		++pV; 
 	}
-	
-	return pVer;
-}
-
-//--------------------------------------------------------------------------------------------
-GLubyte* EAGLVertexBuffer::AddColors( const Rd3::VertexCList& colors )
-{
-	GLubyte* pColors = new GLubyte[colors.Size()*4];
-	GLubyte* pC = pColors;
-	
-	for( sInt i = 0; i < colors.Size(); ++i )
-	{
-		sRGBColor c = colors[i];
-		
-		*pC = RGBColor::GetByteR( c );	++pC;
-		*pC = RGBColor::GetByteG( c );	++pC;
-		*pC = RGBColor::GetByteB( c );	++pC;
-		*pC = RGBColor::GetByteA( c );	++pC;
-	}
-	
-	return pColors;
-}
-
-//--------------------------------------------------------------------------------------------
-GLfloat* EAGLVertexBuffer::AddTx( const Rd3::VertexTxCoord& tx )
-{
-	GLfloat* pTex = new GLfloat[ tx.Size()*2 ];
-	GLfloat* pT = pTex;
-	
-	for ( sInt i = 0; i < tx.Size(); ++i ) 
-	{
-		const d2Math::d2Vector& v = tx[i];
-		
-		*pT = v.x;		++pT;
-		*pT = v.y;		++pT;
-	}
-	
-	return pTex;
 }
 
 //--------------------------------------------------------------------------------------------
@@ -206,17 +262,15 @@ EAGLVertexBuffer::EAGLVertexBuffer(
 	const Rd3::VertexPList& p
 ) throws_error :
 	_BaseClass( owner, objectName ),
-	_listPoints( NULL ),
-	_listDiffuseColor( NULL ),
-	_listNormals( NULL ),
-	_listTx1( NULL ),
-	_listTx2( NULL )
+	_vb( 0 ),
+	_offPoints( -1 ),
+	_offNormals( -1 ),
+	_offTx1( -1 ),
+	_offTx2( -1 ),
+	_offDiffuzeColor( -1 )
 {
-	_vertexCount = p.Size();
-	_vertexSize = sizeof( GLfloat ) * 3;
-	_vertexBufferSize = _vertexSize * _vertexCount;
-	
-	_listPoints = AddVectors( p );
+	CreateVb( &p );
+	PostInit();
 }
 
 //--------------------------------------------------------------------------------------------
@@ -227,21 +281,15 @@ EAGLVertexBuffer::EAGLVertexBuffer(
 								 const Rd3::VertexCList& diffuseColor
 ) throws_error :
 	_BaseClass( owner, objectName ),
-	_listPoints( NULL ),
-	_listDiffuseColor( NULL ),
-	_listNormals( NULL ),
-	_listTx1( NULL ),
-	_listTx2( NULL )
-{
-	__S_ASSERT( p.Size() == diffuseColor.Size() );
-	
-	_vertexCount = p.Size();
-	_vertexSize = sizeof( GLfloat ) * 3 + sizeof( GLubyte ) * 4;
-	_vertexBufferSize = _vertexSize * _vertexCount;
-	
-	_listPoints = AddVectors( p );
-	_listDiffuseColor = AddColors( diffuseColor );
+	_vb( 0 ),
 
+	_offPoints( -1 ),
+	_offNormals( -1 ),
+	_offTx1( -1 ),
+	_offTx2( -1 ),
+	_offDiffuzeColor( -1 )
+{
+	CreateVb( &p, NULL, &diffuseColor );			
 	PostInit();
 }
 
@@ -253,21 +301,15 @@ EAGLVertexBuffer::EAGLVertexBuffer(
 				 const Rd3::VertexTxCoord& tx
 ) throws_error :
 	_BaseClass( owner, objectName ),
-	_listPoints( NULL ),
-	_listDiffuseColor( NULL ),
-	_listNormals( NULL ),
-	_listTx1( NULL ),
-	_listTx2( NULL )
-{
-	__S_ASSERT( p.Size() == tx.Size() );
-	
-	_vertexCount = p.Size();
-	_vertexSize = sizeof( GLfloat ) * 3 + sizeof( GLfloat ) * 2;
-	_vertexBufferSize = _vertexSize * _vertexCount;	
+	_vb( 0 ),
 
-	_listPoints = AddVectors( p );
-	_listTx1 = AddTx( tx );
-	
+	_offPoints( -1 ),
+	_offNormals( -1 ),
+	_offTx1( -1 ),
+	_offTx2( -1 ),
+	_offDiffuzeColor( -1 )
+{
+	CreateVb( &p, NULL, NULL, &tx );			
 	PostInit();
 }
 
@@ -279,23 +321,18 @@ EAGLVertexBuffer::EAGLVertexBuffer(
 				 const Rd3::VertexNList& n
 ) throws_error :
 	_BaseClass( owner, objectName ),
-	_listPoints( NULL ),
-	_listDiffuseColor( NULL ),
-	_listNormals( NULL ),
-	_listTx1( NULL ),
-	_listTx2( NULL )
+	_vb( 0 ),
+	_offPoints( -1 ),
+	_offNormals( -1 ),
+	_offTx1( -1 ),
+	_offTx2( -1 ),
+	_offDiffuzeColor( -1 )
+
 {
-	__S_ASSERT( p.Size() == n.Size() );
-	
-	_vertexCount = p.Size();
-	_vertexSize = sizeof( GLfloat ) * 3 + sizeof( GLfloat ) * 3;
-	_vertexBufferSize = _vertexSize * _vertexCount;	
-	
-	_listPoints = AddVectors( p );
-	_listNormals = AddVectors( n );
-	
+	CreateVb( &p, &n );		
 	PostInit();	
 }
+
 
 //--------------------------------------------------------------------------------------------
 EAGLVertexBuffer::EAGLVertexBuffer( 
@@ -306,23 +343,14 @@ EAGLVertexBuffer::EAGLVertexBuffer(
 				 const Rd3::VertexTxCoord& tx
 ) throws_error :
 	_BaseClass( owner, objectName ),
-	_listPoints( NULL ),
-	_listDiffuseColor( NULL ),
-	_listNormals( NULL ),
-	_listTx1( NULL ),
-	_listTx2( NULL )
+	_vb( 0 ),
+	_offPoints( -1 ),
+	_offNormals( -1 ),
+	_offTx1( -1 ),
+	_offTx2( -1 ),
+	_offDiffuzeColor( -1 )
 {
-	__S_ASSERT( p.Size() == tx.Size() );
-	__S_ASSERT( p.Size() == n.Size() );
-	
-	_vertexCount = p.Size();
-	_vertexSize = sizeof( GLfloat ) * 3 + sizeof( GLfloat ) * 3 + sizeof( GLfloat ) * 2;
-	_vertexBufferSize = _vertexSize * _vertexCount;	
-
-	_listPoints = AddVectors( p );
-	_listNormals = AddVectors( n );
-	_listTx1 = AddTx( tx );
-	
+	CreateVb( &p, &n, NULL, &tx );	
 	PostInit();
 }
 

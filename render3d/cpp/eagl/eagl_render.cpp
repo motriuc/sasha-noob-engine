@@ -60,42 +60,6 @@ Rd3::Render* EAGLRender::Create( const Rd3::EAGLRenderCreateParams& param ) thro
 }
 
 //-------------------------------------------------------------------------------------
-/*void EAGLRender::InitSystemResources( Rd3::Def& def, const Streams::StreamArchive& archive ) throws_error
-{
-	
-	
-	// create system fonst
-	CreateEffectFromFile( _S("system.font.fx.1"),  def, _S("%engine%/system.font.fx.1.xml"), archive );
-
-
-	// system.font.default
-	CreateTextureFromFile(
-		_S("system.texture.font.10"), 
-		_S("%engine%/system.texture.font.10.png"), 
-		archive,
-		Rd3::TextureType::E_ALPHA,
-		Rd3::TextureParams( Rd3::TextureFilteringType::E_NEAREST )
-	);
-	
-	CreateFontFromFile( _S("system.font.default"), _S("%engine%/system.font.10.xml"), def, archive );
-
-	CreateEffectFromFile( _S("system.solid.fx.1"), def, _S("%engine%/system.solid.fx.1.xml"), archive );
-	CreateEffectFromFile( _S("system.solid.fx.2"), def, _S("%engine%/system.solid.fx.2.xml"), archive );
-
-	
-	// default effect for the font rendering
-	CreateEffectFromFile( _S("system.flatcolor.fx.1"), def, _S("%engine%/system.flatcolor.1.xml"), archive );
-	CreateEffectFromFile( _S("system.flatcolor.fx.2"), def, _S("%engine%/system.flatcolor.2.xml"), archive );
-	CreateEffectFromFile( _S("system.texture.fx.1"), def, _S("%engine%/system.texture.ps.1.xml"), archive );
-	
-	// affter effects
-	CreateEffectFromFile( _S("system.after.effect.none"), def, _S( "%engine%/system.after.effect.none.fx.xml"), archive );
-	CreateEffectFromFile( _S("system.after.effect.blur"), def, _S( "%engine%/system.after.effect.blur.fx.xml"), archive );
-	CreateEffectFromFile( _S("system.after.effect.color"), def, _S( "%engine%/system.after.effect.color.fx.xml"), archive ); 
-
-}
-*/
-//-------------------------------------------------------------------------------------
 void EAGLRender::Initialize( Rd3::Def& def, const StreamArchive& archive ) throws_error
 {
 	InitCreateFrameBuffers( def );

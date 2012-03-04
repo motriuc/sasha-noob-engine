@@ -381,11 +381,15 @@ void EAGLRenderState::RenderPrimitive( const Rd3::VertexBuffer* vb, const Rd3::I
 	ValidateProgram( pEffect );
 #endif	
 	
+	GLuint hib = pIndexBuffer->GetBufferHandle();
+	__S_ASSERT( hib != 0 );
+	glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, hib );
+	
 	glDrawElements( 
 		PrimitiveType::GetEAGLType( type ), 
 		pIndexBuffer->GetCount(), 
 		pIndexBuffer->GetBufferType(), 
-		pIndexBuffer->GetBuffer()
+		NULL
 	);
 		
 	COUNTER_TIME_STOP( rd3_render_time_draw );
