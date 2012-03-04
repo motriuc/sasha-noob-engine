@@ -337,7 +337,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>D9DC7F4315024D03003600E7</string>
+										<string>D9DC7FB71502F9C8003600E7</string>
 										<key>history</key>
 										<array>
 											<string>D91D00A914ECBA9C00CEFA96</string>
@@ -582,7 +582,7 @@
 											<string>D9DC7F0D15024BCA003600E7</string>
 											<string>D9DC7F3915024CD0003600E7</string>
 											<string>D9DC7F3A15024CD0003600E7</string>
-											<string>D9DC7F3B15024CD0003600E7</string>
+											<string>D9DC7F4315024D03003600E7</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -640,9 +640,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>D9DC7F3D15024CD0003600E7</string>
+				<string>D9DC7FAB1502F9B1003600E7</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>D9DC7F3E15024CD0003600E7</string>
+				<string>D9DC7FAC1502F9B1003600E7</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -780,12 +780,12 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>D9DC7F4115024CD0003600E7</string>
-		<string>D9DC7F4215024CD0003600E7</string>
+		<string>D9DC7FB81502F9C8003600E7</string>
+		<string>D9DC7FB61502F9B1003600E7</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>D91DFFF014ECB32300CEFA96</string>
-		<string>/Users/sasha/Documents/REP1/ios/ex3_physics/ex3_physics.xcodeproj</string>
 		<string>1C78EAAD065D492600B07095</string>
+		<string>/Users/sasha/Documents/REP1/ios/ex3_physics/ex3_physics.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>0 55 1276 723 0 0 1280 778 </string>
@@ -809,7 +809,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>s_system_files_name.cpp</string>
+								<string></string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -826,8 +826,6 @@
 							<string>449pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -867,7 +865,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>D91DFFF014ECB32300CEFA96</string>
-				<string>D9DC7F2315024C32003600E7</string>
+				<string>D9DC7FAD1502F9B1003600E7</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -989,13 +987,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>D9DC7F2415024C32003600E7</string>
+				<string>D9DC7FAE1502F9B1003600E7</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>D9DC7F2515024C32003600E7</string>
-				<string>D9DC7F2615024C32003600E7</string>
-				<string>D9DC7F2715024C32003600E7</string>
-				<string>D9DC7F2815024C32003600E7</string>
-				<string>D9DC7F2915024C32003600E7</string>
+				<string>D9DC7FAF1502F9B1003600E7</string>
+				<string>D9DC7FB01502F9B1003600E7</string>
+				<string>D9DC7FB11502F9B1003600E7</string>
+				<string>D9DC7FB21502F9B1003600E7</string>
+				<string>D9DC7FB31502F9B1003600E7</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -1159,7 +1157,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>D9DC7F3F15024CD0003600E7</string>
+				<string>D9DC7FB41502F9B1003600E7</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>

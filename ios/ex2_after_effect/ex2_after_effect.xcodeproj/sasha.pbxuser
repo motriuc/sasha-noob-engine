@@ -86,8 +86,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 352306999;
-			PBXWorkspaceStateSaveDate = 352306999;
+			PBXPerProjectTemplateStateSaveDate = 352516567;
+			PBXWorkspaceStateSaveDate = 352516567;
 		};
 		perUserProjectItems = {
 			D91D00A914ECBA9C00CEFA96 /* PBXTextBookmark */ = D91D00A914ECBA9C00CEFA96 /* PBXTextBookmark */;
@@ -278,7 +278,7 @@
 			D99F8DDA14F3844C00DEB549 /* PBXTextBookmark */ = D99F8DDA14F3844C00DEB549 /* PBXTextBookmark */;
 			D9AD135614FFC7E4009521AD /* PBXTextBookmark */ = D9AD135614FFC7E4009521AD /* PBXTextBookmark */;
 			D9BCA51D14FCF3BE002ACED7 /* PBXTextBookmark */ = D9BCA51D14FCF3BE002ACED7 /* PBXTextBookmark */;
-			D9BCA51E14FCF3BE002ACED7 /* PBXTextBookmark */ = D9BCA51E14FCF3BE002ACED7 /* PBXTextBookmark */;
+			D9DC802E1502FCCE003600E7 /* PBXTextBookmark */ = D9DC802E1502FCCE003600E7 /* PBXTextBookmark */;
 		};
 		sourceControlManager = D91DFFDF14ECB2EA00CEFA96 /* Source Control */;
 		userBuildSettings = {
@@ -1845,13 +1845,6 @@
 			sepNavVisRange = "{0, 1065}";
 		};
 	};
-	D91D021E14ECC48C00CEFA96 /* ed3_resloader.h */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {898, 858}}";
-			sepNavSelRange = "{1623, 15}";
-			sepNavVisRange = "{432, 1290}";
-		};
-	};
 	D91D021F14ECC48C00CEFA96 /* ed3_types.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {856, 741}}";
@@ -1941,13 +1934,6 @@
 			sepNavIntBoundsRect = "{{0, 0}, {856, 620}}";
 			sepNavSelRange = "{0, 0}";
 			sepNavVisRange = "{0, 838}";
-		};
-	};
-	D91D023014ECC4A700CEFA96 /* ed3_resloader.cpp */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1215, 2301}}";
-			sepNavSelRange = "{725, 0}";
-			sepNavVisRange = "{322, 751}";
 		};
 	};
 	D91D023114ECC4A700CEFA96 /* ed3_world.cpp */ = {
@@ -2856,7 +2842,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 300;
-		modificationTime = 352307159.273203;
+		modificationTime = 352517284.9628;
 		originalNumberOfMultipleMatches = 1;
 		state = 0;
 	};
@@ -3466,7 +3452,7 @@
 	};
 	D985375714F374ED00E3AADD /* world.lua */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {858, 430}}";
+			sepNavIntBoundsRect = "{{0, 0}, {858, 423}}";
 			sepNavSelRange = "{248, 0}";
 			sepNavVisRange = "{0, 375}";
 		};
@@ -3834,7 +3820,7 @@
 		vrLen = 110;
 		vrLoc = 0;
 	};
-	D9BCA51E14FCF3BE002ACED7 /* PBXTextBookmark */ = {
+	D9DC802E1502FCCE003600E7 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = D985375714F374ED00E3AADD /* world.lua */;
 		name = "world.lua: 8";
