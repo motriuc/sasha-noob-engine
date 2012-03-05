@@ -274,7 +274,7 @@ void RenderState::EndRenderObject()
  
 WorldRenderState::WorldRenderState( Render* owner ) :
 	_BaseClass( owner )
-#ifdef _D3_DEBUG_RENDER
+#ifdef _D3_DEBUG_RENDER_ENABLE_COUNTERS
 	,_debugTextRender( NULL )
 #endif	
 {
@@ -284,7 +284,7 @@ WorldRenderState::WorldRenderState( Render* owner ) :
 //---------------------------------------------------------------------------
 WorldRenderState::~WorldRenderState()
 {
-#ifdef 	_D3_DEBUG_RENDER
+#ifdef 	_D3_DEBUG_RENDER_ENABLE_COUNTERS
 	delete _debugTextRender;
 #endif	
 }

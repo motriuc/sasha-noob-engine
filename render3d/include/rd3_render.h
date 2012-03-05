@@ -382,15 +382,16 @@ protected:
 	/**
 	 * Resource Pools
 	 */
-	TypedResourcePool		_effectResPool;
-	TypedResourcePool		_textureResPool;
-
 	TypedResourcePool		_vertexBufferPool;
 	TypedResourcePool		_indexBufferPool;
 
+	TypedResourcePool		_textureResPool;
+
+	TypedResourcePool		_effectResPool;
+
+	TypedResourcePool		_fontResPool;
 	TypedResourcePool		_meshResPool;
 	
-	TypedResourcePool		_fontResPool;
 	TypedResourcePool		_messageQResPool;
 	TypedResourcePool		_aftereffectResPool;
 	

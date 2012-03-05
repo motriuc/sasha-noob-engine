@@ -59,12 +59,12 @@ Dx9DynamicVertexBuffer::~Dx9DynamicVertexBuffer()
 //------------------------------------------------------------------
 sBool Dx9DynamicVertexBuffer::BeginAdd( sInt vertexCount )
 {
-	__S_ASSERT( _currentVertex == -2 );
+	__S_ASSERT( _cacheCurrentVertex == -2 );
 
 	if( vertexCount > (sInt)_maxVertexCount )
 		return sFalse;
 
-	_currentVertex = -1;
+	_cacheCurrentVertex = -1;
 	_vertexCount = vertexCount;
 
 	if( _vertexStart + (sInt)_vertexCount > (sInt)_maxVertexCount )
@@ -80,9 +80,9 @@ sBool Dx9DynamicVertexBuffer::BeginAdd( sInt vertexCount )
 //------------------------------------------------------------------
 void Dx9DynamicVertexBuffer::EndAdd()
 {
-	__S_ASSERT( _currentVertex >= 0 );
+	__S_ASSERT( _cacheCurrentVertex >= 0 );
 	Flush();
-	_currentVertex = - 2;
+	_cacheCurrentVertex = - 2;
 }
 
 //------------------------------------------------------------------
@@ -110,10 +110,10 @@ void Dx9DynamicVertexBuffer::SetVertexData( void* pBuf, sInt vCount )
 //------------------------------------------------------------------
 void Dx9DynamicVertexBuffer::Flush()
 {
-	if( _currentVertex < 0 )
+	if( _cacheCurrentVertex < 0 )
 		return;
 
-	sInt vertexesToAdd = _currentVertex + 1;
+	sInt vertexesToAdd = _cacheCurrentVertex + 1;
 	
 	void* pBuf;
 	HRESULT hr = _pVertexBuffer->Lock(

@@ -21,7 +21,7 @@
 #define _RD3_CONF_H_
 
 ///
-// #define _D3_DEBUG_RENDER
+//#define _D3_DEBUG_RENDER
 
 #define _D3_DEBUG_RENDER_COUNTERS
 

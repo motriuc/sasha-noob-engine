@@ -35,6 +35,8 @@ protected:
 	RenderState( Render* owner );
 
 public:
+	virtual ~RenderState() {}
+
 	/**
 	 * Set object transformation
 	 */

@@ -288,9 +288,11 @@ void Dx9RenderState::RenderPrimitive(
 				pDevice->SetRenderState( D3DRS_FILLMODE, D3DFILL_WIREFRAME );
 
 			if( GetCommonData().debug_RenderCulling() )
-				pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_CCW );
+				pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_CW );
 			else
 				pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_NONE );
+#else
+			pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_CW );
 #endif
 
 			hr = pDevice->DrawPrimitive(
@@ -383,6 +385,8 @@ void Dx9RenderState::RenderPrimitive( const Rd3::VertexBuffer* vb, const Rd3::In
 				pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_CW );
 			else
 				pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_NONE );
+#else
+			pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_CW );
 #endif
 
 			hr = pDevice->DrawIndexedPrimitive(

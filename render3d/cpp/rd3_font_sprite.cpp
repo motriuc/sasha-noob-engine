@@ -152,14 +152,14 @@ void SprireRenderString::RenderText( RenderState& rstate, const sString& text, c
 
 			vpoints.Add( 
 				d3Vector( x1, y1, 0.0f ),
-				d3Vector( x2, y2, 0.0f ),
-				d3Vector( x1, y2, 0.0f )
+				d3Vector( x1, y2, 0.0f ),
+				d3Vector( x2, y2, 0.0f )
 			);
 
 			vpoints.Add( 
 				d3Vector( x1, y1, 0.0f ),
-				d3Vector( x2, y1, 0.0f ),
-				d3Vector( x2, y2, 0.0f )
+				d3Vector( x2, y2, 0.0f ),
+				d3Vector( x2, y1, 0.0f )
 			);
 
 			d3Float tx0 = sprite.X1() / tx;
@@ -169,14 +169,14 @@ void SprireRenderString::RenderText( RenderState& rstate, const sString& text, c
 			
 			txpoints.Add( 
 				d2Vector( tx0, ty0 ),
-				d2Vector( tx1, ty1 ),
-				d2Vector( tx0, ty1 )
+				d2Vector( tx0, ty1 ),
+				d2Vector( tx1, ty1 )
 			);
 
 			txpoints.Add( 
 				d2Vector( tx0, ty0 ),
-				d2Vector( tx1, ty0 ),
-				d2Vector( tx1, ty1 )
+				d2Vector( tx1, ty1 ),
+				d2Vector( tx1, ty0 )
 			);
 
 			x1 += dx;
