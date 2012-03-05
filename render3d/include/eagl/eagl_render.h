@@ -141,7 +141,11 @@ public:
 		const Rd3::VertexCList& diffuseColor
 	) throws_error { return NULL; }
 	
-
+	/**
+	 *
+	 */
+	virtual Rd3::DynamicVertexBuffer* CreateDynamicVertexBuffer( Rd3::VertexBufferStream::Set set ) throws_error;
+	
 	/**
 	 *
 	 */

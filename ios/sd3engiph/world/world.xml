@@ -15,6 +15,7 @@
 	
 	<children>				
 		<engine.object.mesh mesh="main.mesh" lua="%gameres%/torus.lua">
+			<bbox type="auto" />
 			<!-- use static lights for this object -->
 			<lights.static.use />		
 		</engine.object.mesh>	

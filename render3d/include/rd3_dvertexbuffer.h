@@ -41,7 +41,7 @@ class DynamicVertexBuffer : public ResourceObject
 private:
 	typedef ResourceObject _BaseClass;
 protected:
-	static const sInt VertexBufferSize = 128;
+	static const sInt CacheVertexBufferSize = 128;
 
 	/**
 	 *
@@ -76,13 +76,13 @@ public:
 	void SetTx2( const d2Vector& v );
 	void SetDiffiuseColor( const sRGBColor c );
 protected:
-	d3Vector	_points[VertexBufferSize];
-	d3Vector	_normal[VertexBufferSize];
-	sRGBColor	_diffuseColor[VertexBufferSize];
-	d2Vector	_tx1[VertexBufferSize];
-	d2Vector	_tx2[VertexBufferSize];
+	d3Vector	_points[CacheVertexBufferSize];
+	d3Vector	_normal[CacheVertexBufferSize];
+	sRGBColor	_diffuseColor[CacheVertexBufferSize];
+	d2Vector	_tx1[CacheVertexBufferSize];
+	d2Vector	_tx2[CacheVertexBufferSize];
 
-	sInt	_currentVertex;
+	sInt	_cacheCurrentVertex;
 
 	sUInt	_vertexCount;
 	sUInt	_vertexSize;

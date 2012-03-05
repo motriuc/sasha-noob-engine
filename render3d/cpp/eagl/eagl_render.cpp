@@ -25,6 +25,7 @@
 #include "eagl_rstate.h"
 #include "eagl_texture.h"
 #include "eagl_font_sprite.h"
+#include "eagl_dvertexbuffer.h"
 
 #include "platform_eagl_context.h"
 
@@ -555,6 +556,20 @@ Rd3::Texture* EAGLRender::CreateTexture(
 	
 	return pTexture;	
 	
+}
+
+//-------------------------------------------------------------------------------------
+Rd3::DynamicVertexBuffer* EAGLRender::CreateDynamicVertexBuffer( Rd3::VertexBufferStream::Set set ) throws_error
+{
+	Rd3::DynamicVertexBuffer* pVb = NULL;
+	
+	if( _dynamicVertexBufferMap.Lookup( set, pVb ) )
+		return pVb;
+	
+	pVb = new EAGLDynamicVertexBuffer( this, _S(""), set, 1024 );
+	_dynamicVertexBufferMap.Add( set, pVb );
+	
+	return pVb;
 }
 
 

@@ -284,7 +284,9 @@ WorldRenderState::WorldRenderState( Render* owner ) :
 //---------------------------------------------------------------------------
 WorldRenderState::~WorldRenderState()
 {
+#ifdef 	_D3_DEBUG_RENDER
 	delete _debugTextRender;
+#endif	
 }
 
 //---------------------------------------------------------------------------
@@ -326,7 +328,7 @@ void WorldRenderState::BeginWorldRender( const EngineDataForRender& edata )
 //---------------------------------------------------------------------------
 void WorldRenderState::PostRender()
 {
-#ifdef _D3_DEBUG_RENDER
+#ifdef _D3_DEBUG_RENDER_COUNTERS
 	debug_RenderStats();
 #endif	
 }
@@ -337,7 +339,7 @@ void WorldRenderState::EndWorldRender()
 	_engineData = NULL;
 }
 
-#ifdef _D3_DEBUG_RENDER
+#ifdef _D3_DEBUG_RENDER_COUNTERS
 	
 //---------------------------------------------------------------------------
 void WorldRenderState::debug_RenderStats()

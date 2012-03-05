@@ -29,7 +29,7 @@ DynamicVertexBuffer::DynamicVertexBuffer( Render* owner, const sString& objectNa
 	_vertexSize( 0 ),
 
 	_maxVertexCount( 0 ),
-	_currentVertex( -2 ),
+	_cacheCurrentVertex( -2 ),
 	_vbset( vbset )
 {
 }

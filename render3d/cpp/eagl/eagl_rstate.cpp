@@ -25,8 +25,9 @@
 #include "eagl_effect.h"
 #include "eagl_indexbuffer.h"
 #include "eagl_texture.h"
-#include "rd3_after_effect.h"
+#include "eagl_dvertexbuffer.h"
 
+#include "rd3_after_effect.h"
 
 #include "rd3_aef_blur.h"
 
@@ -269,7 +270,7 @@ void EAGLRenderState::BeginWorldRender( const Rd3::EngineDataForRender& edata )
 	
 	COUNTER_TIME_START( rd3_render_time_draw );
 	
-	glClearColor( 0.8f, 0.8f, 0.0f, 1.0f );
+	glClearColor( 0.4f, 0.4f, 0.0f, 1.0f );
 	glClearDepthf( 1.0f );
 	glClearStencil( 0 );
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT );	
@@ -315,6 +316,41 @@ void EAGLRenderState::EndWorldRender()
 	
 	
 	_BaseClass::EndWorldRender();	
+}
+
+//-----------------------------------------------------------------------
+void EAGLRenderState::RenderPrimitive( const Rd3::DynamicVertexBuffer* vb, Rd3::PrimitiveType::PrimitiveType type )
+{
+	__S_ASSERT( vb!= NULL );
+	__S_ASSERT( GetOwner() == vb->GetOwner() );
+	__S_ASSERT( GetEffect() != NULL );
+	__S_ASSERT( GetOwner() ==  GetEffect()->GetOwner() );
+	
+	const EAGLEffect* pEffect = reinterpret_cast<const EAGLEffect*>( GetEffect() );
+	const EAGLDynamicVertexBuffer* pVertexBuffer = reinterpret_cast<const EAGLDynamicVertexBuffer*>( vb );
+	
+	__S_ASSERT( pEffect->GetHandle() != 0 );
+	
+	COUNTER_TIME_START( rd3_render_time_draw );
+	
+	glUseProgram( pEffect->GetHandle() );
+	
+	// Set effect params
+	pEffect->Apply( *this );
+	pVertexBuffer->SetAttributes( pEffect->AttributeIds() );
+	
+#ifdef _DEBUG
+	ValidateProgram( pEffect );
+#endif	
+	
+	glDrawArrays( PrimitiveType::GetEAGLType( type ), 0, pVertexBuffer->GetCount() );
+	
+	COUNTER_TIME_STOP( rd3_render_time_draw );
+	
+	COUNTER_INT_INC( rd3_render_vertex_count, pVertexBuffer->GetCount() );
+	COUNTER_INT_INC( rd3_render_primitive_count, 
+		Rd3::PrimitiveType::GetNumberOfPrimitives( pVertexBuffer->GetCount(), type ) 
+	);
 }
 
 //-----------------------------------------------------------------------

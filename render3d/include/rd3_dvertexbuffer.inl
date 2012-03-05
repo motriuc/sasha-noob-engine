@@ -33,39 +33,39 @@ inline sUInt DynamicVertexBuffer::GetVertexSize() const
 
 inline void DynamicVertexBuffer::AddVertex( const d3Vector& p )
 {
-	++_currentVertex;
+	++_cacheCurrentVertex;
 
-	__S_ASSERT( _currentVertex >= 0 );
+	__S_ASSERT( _cacheCurrentVertex >= 0 );
 
-	if( _currentVertex >= VertexBufferSize )
+	if( _cacheCurrentVertex >= CacheVertexBufferSize )
 	{
 		Flush();
-		_currentVertex = 0;
+		_cacheCurrentVertex = 0;
 	}
 
-	_points[_currentVertex] = p;
+	_points[_cacheCurrentVertex] = p;
 }
 
 inline void DynamicVertexBuffer::SetNormal( const d3Vector& n )
 {
-	__S_ASSERT( _currentVertex < VertexBufferSize );
-	_normal[_currentVertex] = n;
+	__S_ASSERT( _cacheCurrentVertex < CacheVertexBufferSize );
+	_normal[_cacheCurrentVertex] = n;
 }
 
 inline void DynamicVertexBuffer::SetTx1( const d2Vector& v )
 {
-	__S_ASSERT( _currentVertex < VertexBufferSize );
-	_tx1[_currentVertex] = v; 
+	__S_ASSERT( _cacheCurrentVertex < CacheVertexBufferSize );
+	_tx1[_cacheCurrentVertex] = v; 
 }
 
 inline void DynamicVertexBuffer::SetTx2( const d2Vector& v )
 {
-	__S_ASSERT( _currentVertex < VertexBufferSize );
-	_tx2[_currentVertex] = v; 
+	__S_ASSERT( _cacheCurrentVertex < CacheVertexBufferSize );
+	_tx2[_cacheCurrentVertex] = v; 
 }
 
 inline void DynamicVertexBuffer::SetDiffiuseColor( const sRGBColor c )
 {
-	__S_ASSERT( _currentVertex < VertexBufferSize );
-	_diffuseColor[_currentVertex] = c;
+	__S_ASSERT( _cacheCurrentVertex < CacheVertexBufferSize );
+	_diffuseColor[_cacheCurrentVertex] = c;
 }

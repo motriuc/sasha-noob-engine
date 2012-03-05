@@ -70,7 +70,7 @@ public:
 		return _p;
 	}
 	
-	inline ptr_array_unique()
+	inline ~ptr_array_unique()
 	{
 		delete[] _p;
 	}

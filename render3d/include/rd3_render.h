@@ -214,7 +214,7 @@ public:
 	) throws_error = 0;
 
 	/////////////////////////////////////////////////////////
-	// Create Index buffer
+	// Create Dynamic buffers
 public:
 	virtual DynamicVertexBuffer* CreateDynamicVertexBuffer( VertexBufferStream::Set set ) throws_error = 0;
 

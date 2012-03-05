@@ -51,6 +51,7 @@ public:
 	 */
 	virtual void RenderPrimitive( const Rd3::VertexBuffer* vb, Rd3::PrimitiveType::PrimitiveType type );
 	virtual void RenderPrimitive( const Rd3::VertexBuffer* vb, const Rd3::IndexBuffer* ib, Rd3::PrimitiveType::PrimitiveType type );
+	virtual void RenderPrimitive( const Rd3::DynamicVertexBuffer* vb, Rd3::PrimitiveType::PrimitiveType type );
 
 	virtual void Clear( System::Types::sRGBColor color );
 

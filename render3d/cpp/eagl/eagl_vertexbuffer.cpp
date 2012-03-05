@@ -19,56 +19,11 @@
 
 #include "eagl_conf.h"
 #include "eagl_vertexbuffer.h"
+#include "eagl_vutil.h"
 
 using namespace System;
 using namespace Rd3;
 
-//-------------------------------------------------------------------
-inline void AddVector( void*& pBuffer, const d3Vector& v )
-{
-	GLfloat* pV = (GLfloat*)( pBuffer );
-	
-	*pV = v.x;		++pV; 
-	*pV = v.y;		++pV; 
-	*pV = v.z;		++pV; 
-	
-	pBuffer = pV;
-}
-
-//-------------------------------------------------------------------
-inline void AddVector( void*& pBuffer, const d2Vector& v )
-{
-	GLfloat* pV = (GLfloat*)( pBuffer );
-	
-	*pV = v.x;		++pV; 
-	*pV = v.y;		++pV; 
-	
-	pBuffer = pV;
-}
-
-//-------------------------------------------------------------------
-inline void AddTexCoord( void*& pBuffer, const d2Vector& v )
-{
-	GLfloat* pV = (float*)( pBuffer );
-	
-	*pV = v.x;		++pV; 
-	*pV = v.y;		++pV; 
-	
-	pBuffer = pV;
-}
-
-//-------------------------------------------------------------------
-inline void AddColor( void*& pBuffer, sRGBColor c )
-{
-	GLubyte* pC = (GLubyte*)( pBuffer );
-	
-	*pC = RGBColor::GetByteR( c );  ++pC;
-	*pC = RGBColor::GetByteG( c );  ++pC;
-	*pC = RGBColor::GetByteB( c );  ++pC;
-	*pC = RGBColor::GetByteA( c );  ++pC;
-	
-	pBuffer = pC;
-}
 
 //--------------------------------------------------------------------------------------------
 void EAGLVertexBuffer::CreateVb( 
@@ -80,7 +35,7 @@ void EAGLVertexBuffer::CreateVb(
 								)
 {
 	__S_ASSERT( _offPoints ==  -1 );
-	__S_ASSERT( _offNormals == -1 ),
+	__S_ASSERT( _offNormals == -1 );
 	__S_ASSERT( _offTx1 == -1 );
 	__S_ASSERT( _offTx2 == -1 );
 	__S_ASSERT( _offDiffuzeColor ==  -1 );
@@ -132,20 +87,20 @@ void EAGLVertexBuffer::CreateVb(
 	
 	for( sInt i = 0; i < p->Size(); i++ )
 	{
-		AddVector( pBuffer, (*p)[i] );
+		VUtil::AddVector( pBuffer, (*p)[i] );
 		_bbox.Add( (*p)[i] );
 		
 		if( n!= NULL )
-			AddVector( pBuffer, (*n)[i] );
+			VUtil::AddVector( pBuffer, (*n)[i] );
 		   
 		if( diffuseColor != NULL )
-			AddColor( pBuffer, (*diffuseColor)[i] );
+			VUtil::AddColor( pBuffer, (*diffuseColor)[i] );
 		
 		if( tx1 != NULL )
-			AddTexCoord( pBuffer, (*tx1)[i] );
+			VUtil::AddTexCoord( pBuffer, (*tx1)[i] );
 
 		if( tx2 != NULL )
-			AddTexCoord( pBuffer, (*tx2)[i] );
+			VUtil::AddTexCoord( pBuffer, (*tx2)[i] );
 	}
 	
 	glGenBuffers( 1, &_vb );
@@ -229,8 +184,7 @@ void EAGLVertexBuffer::SetAttributes( const sInt* attributesId ) const
 			glEnableVertexAttribArray( p );
 			
 		}
-	}
-	
+	}	
 	
 	if( _offTx1 >= 0 )
 	{

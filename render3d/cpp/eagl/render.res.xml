@@ -27,4 +27,8 @@
 	<!-- after effect -->
 	<effect name="system.after.effect.blur" path="%engine%/system.after.effect.blur.fx.xml" />
 	<effect name="system.after.effect.color" path="%engine%/system.after.effect.color.fx.xml" />
+	
+	<!-- debug -->
+	<effect name="system.debug.solid.color" path="%engine%/system.debug.solid.color.fx.xml" />
+
 </resources>

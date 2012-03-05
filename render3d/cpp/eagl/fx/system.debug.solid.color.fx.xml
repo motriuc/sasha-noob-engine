@@ -1,0 +1,4 @@
+<effect name="system.debug.solid.color" >
+	<default vs="%engine%/system.debug.solid.color.vsh" ps="%engine%/system.debug.solid.color.fsh">
+	</default>
+</effect>
