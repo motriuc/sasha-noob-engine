@@ -38,7 +38,7 @@ void d3ObjectContiner::Initialize( Rd3::Render& render ) throws_error
 }
 
 //-------------------------------------------------------------------
-void d3ObjectContiner::Uninitalize( Rd3::Render& render )
+void d3ObjectContiner::Uninitialize( Rd3::Render& render )
 {
 	for( sInt i = 0; i < _objVector.Size(); i++ )
 	{

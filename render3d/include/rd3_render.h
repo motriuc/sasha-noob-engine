@@ -338,7 +338,7 @@ public:
 	MessageQueue* GetMessageQueue( const sString& name )			{ return reinterpret_cast<MessageQueue*> ( _messageQResPool[name] ); }
 	
 	template< typename _Type >
-	void MessageQueue_RegisterEvent( const sString& name, const Events::sEvent1<_Type&>& e )
+	void MessageQueue_RegisterEvent( const sString& name, const Events::sEvent2<Rd3::EngineData&, _Type&>& e )
 	{
 		typedef MessageQueueT<_Type> MsgQ;
 		
@@ -355,7 +355,7 @@ public:
 	}
 
 	template< typename _Type >
-	void MessageQueue_UnregisterEvent( const sString& name, const Events::sEvent1<_Type&>& e )
+	void MessageQueue_UnregisterEvent( const sString& name, const Events::sEvent2<Rd3::EngineData&,_Type&>& e )
 	{
 		typedef MessageQueueT< _Type > MsgQ;
 		
@@ -371,6 +371,7 @@ public:
 		pMsg->Unregister( e );
 	}
 
+	void ProcessMessages( EngineData& edata );
 public:
 	virtual void WindowResized( const d2Vector& size ) { }
 protected:

@@ -35,6 +35,7 @@ AppEnviroment::AppEnviroment() :
 	_iCmdCount( 0 ),
 #ifdef _SPL_WIN32	
 	_hInstance( 0 ),
+	_hMainWindow( 0 ),
 #endif	
 	_pCmdParams( NULL )
 {

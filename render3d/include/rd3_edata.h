@@ -76,17 +76,17 @@ public:
 	/**
 	 *
 	 */
+	CommonData& ModifyCommonData();
+protected:
+	/**
+	 *
+	 */
 	void BeginFrame();
 
 	/**
 	 *
 	 */
 	void EndFrame();
-
-	/**
-	 *
-	 */
-	CommonData& ModifyCommonData();
 };
 
 #include "rd3_edata.inl"

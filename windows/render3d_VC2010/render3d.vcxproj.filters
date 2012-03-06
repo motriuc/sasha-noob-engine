@@ -58,6 +58,9 @@
     <Filter Include="render\Header Files\resources\buffers">
       <UniqueIdentifier>{3aa21786-1404-4b03-bfc5-1f63a6925345}</UniqueIdentifier>
     </Filter>
+    <Filter Include="render\Header Files\resources\msg">
+      <UniqueIdentifier>{e6c38c12-bdba-451a-bf12-2f78870c40d7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -228,6 +231,9 @@
     <ClCompile Include="..\..\render3d\cpp\dx9\dx9_dvertexbuffer.cpp">
       <Filter>renderdx9\cpp</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\dx9\dx9_msg_keyboardq.cpp">
+      <Filter>renderdx9\cpp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\render3d\include\rd3_utils.h">
@@ -293,12 +299,6 @@
     <ClInclude Include="..\..\render3d\include\rd3_material_solid.h">
       <Filter>render\Header Files\resources</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\render3d\include\rd3_msg_gesture.h">
-      <Filter>render\Header Files\resources</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\render3d\include\rd3_msg_gestureq.h">
-      <Filter>render\Header Files\resources</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\render3d\include\rd3_material.h">
       <Filter>render\Header Files\resources</Filter>
     </ClInclude>
@@ -309,9 +309,6 @@
       <Filter>render\Header Files\resources</Filter>
     </ClInclude>
     <ClInclude Include="..\..\render3d\include\rd3_mesh.h">
-      <Filter>render\Header Files\resources</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\render3d\include\rd3_msg.h">
       <Filter>render\Header Files\resources</Filter>
     </ClInclude>
     <ClInclude Include="..\..\render3d\include\rd3_conf.h">
@@ -369,6 +366,24 @@
       <Filter>renderdx9\include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\render3d\include\dx9\dx9_vutil.h">
+      <Filter>renderdx9\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_msg.h">
+      <Filter>render\Header Files\resources\msg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_msg_gestureq.h">
+      <Filter>render\Header Files\resources\msg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_msg_gesture.h">
+      <Filter>render\Header Files\resources\msg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_msg_keyboard.h">
+      <Filter>render\Header Files\resources\msg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_msg_keyboardq.h">
+      <Filter>render\Header Files\resources\msg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\dx9\dx9_msg_keyboardq.h">
       <Filter>renderdx9\include</Filter>
     </ClInclude>
   </ItemGroup>

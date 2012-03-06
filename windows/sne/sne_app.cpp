@@ -22,6 +22,8 @@
 #include "rd3_render.h"
 #include "ed3_engine.h"
 #include "ed3_primitive_lua.h"
+#include "dx9/dx9_conf.h"
+#include "dx9/dx9_msg_keyboardq.h"
 
 //------------------------------------------------------------------
 static SNEApplication* _pWindowToCreate = NULL;
@@ -30,7 +32,8 @@ SNEApplication::SNEApplication( HINSTANCE hInstance ) :
 	_hWindow( 0 ),
 	_hBaseWinProc( &DefWindowProc ),
 	_pRender( NULL ),
-	_pEngine( NULL )
+	_pEngine( NULL ),
+	_pKeyMessageQ( NULL )
 {
 	AppEnviroment::Instance().SetAppInstance( hInstance );
 }
@@ -38,6 +41,11 @@ SNEApplication::SNEApplication( HINSTANCE hInstance ) :
 //------------------------------------------------------------------
 SNEApplication::~SNEApplication()
 {
+	if( _pKeyMessageQ )
+	{
+		_pKeyMessageQ->UnuseResource();
+	}
+
 	delete _pEngine;
 	delete _pRender;
 }
@@ -52,6 +60,9 @@ void SNEApplication::OnCreateWindow()
 	try
 	{
 		_pRender = Rd3::Render::CreateRender( createParams );
+		_pKeyMessageQ = new Dx9KeyboardMsgQueue( _pRender, _S("engine.msg.key") );
+		_pRender->AddMessageQueue( _pKeyMessageQ );
+
 		_pEngine = new Ed3::d3Engine( _pRender );
 
 		LoadWorld();
@@ -198,6 +209,7 @@ LRESULT CALLBACK SNEApplication::win_StartWinProc( HWND hWnd, UINT uMsg, WPARAM 
 	__S_ASSERT( _pWindowToCreate != NULL );
 	
 	_pWindowToCreate->_hWindow = hWnd;
+	AppEnviroment::Instance().SetMainWindowHandle( hWnd );
 
 	::SetWindowLong( hWnd, GWL_USERDATA,(LONG) _pWindowToCreate );
 	_pWindowToCreate = NULL;

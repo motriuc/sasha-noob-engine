@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : rd3_resobj.inl
-//	Created                 : 23 1 2011   22:56
-//	File path               : SLibF\render3d\include
-//	Author                  : Alexandru Motriuc
+//  Created                 : 23 1 2011   22:56
+//  File path               : SLibF\render3d\include
+//  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
-//	Library                 : 
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -42,6 +42,10 @@ inline ResourceType::ResourceType ResourceObject::GetResourceType() const
 	return _objectType;
 }
 
+inline sInt TypedResourcePool::GetObjectCount() const
+{
+	return _objArray.Size();
+}
 
 //////////////////////////////////////////////////////////////////////////////
 

@@ -50,7 +50,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_D3_DEBUG_RENDER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\render3d\include;..\..\system\include;..\..\render3d\include\primitives;..\..\render3d\include\dx9;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>rd3afx.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -97,6 +97,7 @@
     <ClCompile Include="..\..\render3d\cpp\dx9\dx9_dvertexbuffer.cpp" />
     <ClCompile Include="..\..\render3d\cpp\dx9\dx9_effect.cpp" />
     <ClCompile Include="..\..\render3d\cpp\dx9\dx9_indexbuffer.cpp" />
+    <ClCompile Include="..\..\render3d\cpp\dx9\dx9_msg_keyboardq.cpp" />
     <ClCompile Include="..\..\render3d\cpp\dx9\dx9_render.cpp" />
     <ClCompile Include="..\..\render3d\cpp\dx9\dx9_rstate.cpp" />
     <ClCompile Include="..\..\render3d\cpp\dx9\dx9_texture.cpp" />
@@ -148,6 +149,7 @@
     <ClInclude Include="..\..\render3d\include\dx9\dx9_defs.h" />
     <ClInclude Include="..\..\render3d\include\dx9\dx9_effect.h" />
     <ClInclude Include="..\..\render3d\include\dx9\dx9_indexbuffer.h" />
+    <ClInclude Include="..\..\render3d\include\dx9\dx9_msg_keyboardq.h" />
     <ClInclude Include="..\..\render3d\include\dx9\dx9_render.h" />
     <ClInclude Include="..\..\render3d\include\dx9\dx9_rstate.h" />
     <ClInclude Include="..\..\render3d\include\dx9\dx9_texture.h" />
@@ -178,6 +180,8 @@
     <ClInclude Include="..\..\render3d\include\rd3_msg.h" />
     <ClInclude Include="..\..\render3d\include\rd3_msg_gesture.h" />
     <ClInclude Include="..\..\render3d\include\rd3_msg_gestureq.h" />
+    <ClInclude Include="..\..\render3d\include\rd3_msg_keyboard.h" />
+    <ClInclude Include="..\..\render3d\include\rd3_msg_keyboardq.h" />
     <ClInclude Include="..\..\render3d\include\rd3_perf_counters.h" />
     <ClInclude Include="..\..\render3d\include\rd3_render.h" />
     <ClInclude Include="..\..\render3d\include\rd3_render_str.h" />

@@ -182,8 +182,9 @@ void Dx9RenderState::EndWorldRender()
     __S_ASSERT( pDevice != NULL );
 
 	if( GetRenderTarget() == NULL )
+	{
 		PostRender();
-
+	}
 	COUNTER_TIME_START( rd3_render_time_draw );
 
 	HRESULT hr = pDevice->EndScene();

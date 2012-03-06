@@ -1,12 +1,12 @@
 ////////////////////////////////////////////////////////////////////////
-//	File Name          : ed3_obj_cam_gest.cpp
-//	Created            : 2 2 2012   19:09
+//  File Name          : ed3_obj_cam_gest.cpp
+//  Created            : 2 2 2012   19:09
 //  Author             : Alexandru Motriuc  
-//	File Path          : SLibF\engine3d\cpp
+//  File Path          : SLibF\engine3d\cpp
 //  System independent : 0%
 //  Library            : 
 //
-//	Purpose:	
+//  Purpose:	
 //    
 //
 /////////////////////////////////////////////////////////////////////////
@@ -78,16 +78,16 @@ void d3CameraGestureObject::AI( d3EngineData& edata )
 }
 	
 //-------------------------------------------------------------------
-void d3CameraGestureObject::OnGestureEvent( const GestureEvent& event )
+void d3CameraGestureObject::OnGestureEvent( Rd3::EngineData& edata, const Rd3::GestureEvent& event )
 {
 	switch ( event.GetType() )
 	{
-		case GestureEvent::E_Begin:
+		case Rd3::GestureEvent::E_Begin:
 			if( event.Taps().Size() == 1 )
 				_lastPosition = event.Taps()[0].Position();
 			break;
 			
-		case GestureEvent::E_Move:
+		case Rd3::GestureEvent::E_Move:
 			if( event.Taps().Size() == 1 )
 			{
 				d3Vector delta = event.Taps()[0].Position() - _lastPosition;
@@ -100,7 +100,7 @@ void d3CameraGestureObject::OnGestureEvent( const GestureEvent& event )
 			}
 			break;
 		
-		case GestureEvent::E_End:
+		case Rd3::GestureEvent::E_End:
 			_move = d3Vector( 0.0f );
 			break;
 			

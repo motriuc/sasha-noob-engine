@@ -22,6 +22,8 @@ namespace Ed3
 	class d3Engine;
 }
 
+class Dx9KeyboardMsgQueue;
+
 /**
  * SNEApplication
  */
@@ -48,6 +50,7 @@ private:
 	HWND		_hWindow;
 	WNDPROC		_hBaseWinProc;
 
-	Rd3::Render*	_pRender;
-	Ed3::d3Engine*	_pEngine;
+	Rd3::Render*			_pRender;
+	Ed3::d3Engine*			_pEngine;
+	Dx9KeyboardMsgQueue*	_pKeyMessageQ;
 };

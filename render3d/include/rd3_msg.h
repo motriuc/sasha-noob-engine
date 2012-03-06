@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : rd3_msg.h
-//	Created                 : 31 1 2011   19:58
-//	File path               : SLibF\render3d\include
-//	Author                  : Alexandru Motriuc
+//  Created                 : 31 1 2011   19:58
+//  File path               : SLibF\render3d\include
+//  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
-//	Library                 : 
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -44,7 +44,9 @@ public:
 	MessageQueue( Render* owner, const sString& objectName ) :
 		_BaseClass( owner, objectName, ResourceType::E_MESSAGEQ )
 	{
-	}	
+	}
+
+	virtual void ProcessMessages( EngineData& edata ) {}
 };
 
 /**
@@ -67,7 +69,7 @@ public:
 	/**
 	 * Register the event listener
 	 */
-	void Register( const Events::sEvent1<const _Type&>& e )
+	void Register( const Events::sEvent2<EngineData&, const _Type&>& e )
 	{
 		_eventList.Add( e );
 	}
@@ -75,7 +77,7 @@ public:
 	/**
 	 * Unregister a event listener
 	 */
-	void Unregister( const Events::sEvent1<const _Type&>& e )
+	void Unregister( const Events::sEvent2<EngineData&, const _Type&>& e )
 	{
 		for( sInt i = _eventList.Size() - 1; i>=0; --i )
 		{
@@ -90,16 +92,16 @@ public:
 	/**
 	 * Send the message
 	 */
-	void SendMessage( const _Type& msg )
+	void SendMessage( EngineData& edata, const _Type& msg )
 	{
 		for( sInt i = 0; i < _eventList.Size(); ++i ) 
 		{
-			_eventList[i]( msg );
+			_eventList[i]( edata, msg );
 		}
 	}
 	
 private:
-	sVector< Events::sEvent1<const _Type&> >	_eventList;
+	sVector< Events::sEvent2< EngineData&, const _Type&> >	_eventList;
 };
 	
 	

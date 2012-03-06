@@ -52,6 +52,9 @@ public:
 #ifdef _SPL_WIN32
 	_PLATFORM HINSTANCE	GetAppInstance() const					{ __S_ASSERT( _hInstance != NULL ); return _hInstance; }
 	_PLATFORM void SetAppInstance( HINSTANCE hInst );
+
+	_PLATFORM HWND GetMainWindowHandle() const						{ return _hMainWindow; }
+	_PLATFORM void SetMainWindowHandle( HWND hWnd )					{ _hMainWindow = hWnd; }
 #endif
 
 private:
@@ -61,6 +64,7 @@ private:
 	Types::sString*		_pCmdParams;	
 #ifdef _SPL_WIN32
 	HINSTANCE			_hInstance;
+	HWND				_hMainWindow;
 #endif 	
 private:
 	AppEnviroment();

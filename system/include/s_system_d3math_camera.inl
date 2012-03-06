@@ -54,7 +54,7 @@ inline void d3Camera::MoveUp( d3Float f )
 inline void d3Camera::MoveLeft( d3Float f )
 {
 	d3Vector v;
-	d3Vector::CrossProduct( v, _vLookAt, _vWorldUp );
+	d3Vector::CrossProduct( v, _vWorldUp, _vLookAt  );
 	v = v.UnitVector();
 
 	v *= f;
@@ -66,7 +66,7 @@ inline void d3Camera::MoveLeft( d3Float f )
 inline void d3Camera::RotateLeft( d3Float f )
 {
 	d3Matrix tr;
-	tr.SetRotate( _vWorldUp, -f );
+	tr.SetRotate( _vWorldUp, f );
 	d3Vector::Mul( _vLookAt, _vLookAt, tr );
 
 	_bChanged = sTrue;

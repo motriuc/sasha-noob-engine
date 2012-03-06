@@ -513,6 +513,9 @@
     <ClCompile Include="..\..\external\bulet\BulletCollision\NarrowPhaseCollision\btVoronoiSimplexSolver.cpp">
       <Filter>external\bullet\BulletCollision\NarrowPhaseCollision</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ed3_obj_cam_key.cpp">
+      <Filter>engine\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\external\lua\lapi.h">
@@ -654,6 +657,9 @@
       <Filter>engine\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine3d\include\ed3afx.h">
+      <Filter>engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ed3_obj_cam_key.h">
       <Filter>engine\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

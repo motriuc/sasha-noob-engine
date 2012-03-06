@@ -196,6 +196,19 @@ AfterEffect* Render::UseAfterEffect( const sString& eName ) throws_error
 	}
 	return pEf;
 }
+
+//--------------------------------------------------------------------
+void Render::ProcessMessages( EngineData& edata )
+{
+	for( sInt i = 0; i < _messageQResPool.GetObjectCount(); ++i )
+	{
+		ResourceObject* obj = _messageQResPool[i];
+		if( obj )
+		{
+			reinterpret_cast<MessageQueue*>(obj)->ProcessMessages( edata );
+		}
+	}
+}
 	
 //--------------------------------------------------------------------
 void Render::NotifyFreeResource( ResourceObject* pRes )
@@ -231,6 +244,10 @@ void Render::NotifyFreeResource( ResourceObject* pRes )
 	
 	case ResourceType::E_AFTEREFFECT:
 		_aftereffectResPool.Remove( pRes->GetObjectName() );
+		break;
+
+	case ResourceType::E_MESSAGEQ:
+		_messageQResPool.Remove( pRes->GetObjectName() );
 		break;
 			
 	case ResourceType::E_MATERIAL:

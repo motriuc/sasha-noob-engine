@@ -97,7 +97,7 @@ inline void d3Object::DoUninitalize( Rd3::Render& render )
 	
 	Uninitialize( render );
 	
-	__S_ASSERT( _objectActionState == OBAS_INIT );
+	__S_ASSERT( _objectActionState == OBAS_FREE );
 	SetActionState( OBAS_IDLE );
 }
 

@@ -134,6 +134,11 @@ public:
 	/**
 	 *
 	 */
+	sInt GetObjectCount() const;
+
+	/**
+	 *
+	 */
 	~TypedResourcePool();
 
 private:

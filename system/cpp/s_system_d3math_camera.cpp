@@ -52,7 +52,7 @@ void d3Camera::GetFrustum( d3Frustum& f ) const
 {
 	d3Float t  = FMath::Tan( _fFov / 2.0f );
 	d3Float nh = _fNearPlane * t;
-	d3Float nw = nh * _fAspect;
+	d3Float nw = nh / _fAspect;
 
 	const d3Vector& P = _pPosition;
 	const d3Vector& U = _vWorldUp;

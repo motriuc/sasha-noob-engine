@@ -50,7 +50,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;ED3_ENGINE_USE_PHYSICS;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;ED3_ENGINE_USE_PHYSICS;_DEBUG;_LIB;_D3_DEBUG_RENDER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>ed3afx.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>..\..\engine3d\include;..\..\render3d\include;..\..\system\include;..\..\render3d\include\primitives;..\..\external\lua;..\..\external\bulet;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -90,6 +90,7 @@
     <ClCompile Include="..\..\engine3d\cpp\ed3_object.cpp" />
     <ClCompile Include="..\..\engine3d\cpp\ed3_object_lua.cpp" />
     <ClCompile Include="..\..\engine3d\cpp\ed3_obj_cam_gest.cpp" />
+    <ClCompile Include="..\..\engine3d\cpp\ed3_obj_cam_key.cpp" />
     <ClCompile Include="..\..\engine3d\cpp\ed3_obj_class.cpp" />
     <ClCompile Include="..\..\engine3d\cpp\ed3_obj_factory.cpp" />
     <ClCompile Include="..\..\engine3d\cpp\ed3_obj_fire.cpp" />
@@ -657,6 +658,7 @@
     <ClInclude Include="..\..\engine3d\include\ed3_lua.h" />
     <ClInclude Include="..\..\engine3d\include\ed3_object.h" />
     <ClInclude Include="..\..\engine3d\include\ed3_obj_cam_gest.h" />
+    <ClInclude Include="..\..\engine3d\include\ed3_obj_cam_key.h" />
     <ClInclude Include="..\..\engine3d\include\ed3_obj_class.h" />
     <ClInclude Include="..\..\engine3d\include\ed3_obj_factory.h" />
     <ClInclude Include="..\..\engine3d\include\ed3_obj_fire.h" />

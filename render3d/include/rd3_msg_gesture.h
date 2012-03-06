@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : rd3_msg_gesture.h
-//	Created                 : 10 2 2012   19:58
-//	File path               : SLibF\render3d\include
-//	Author                  : Alexandru Motriuc
+//  Created                 : 10 2 2012   19:58
+//  File path               : SLibF\render3d\include
+//  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
-//	Library                 : 
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -18,6 +18,9 @@
 
 #ifndef _RD3_MSG_GESTURE_INC_
 #define _RD3_MSG_GESTURE_INC_
+
+namespace Rd3
+{
 
 /**
  *
@@ -89,5 +92,7 @@ private:
 	Type			_type;
 	GestureTaps		_taps;
 };
+
+}
 
 #endif // _RD3_MSG_GESTURE_INC_

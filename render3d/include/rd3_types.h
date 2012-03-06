@@ -58,7 +58,9 @@ class Light;
 class RenderString;
 class ResLoadParams;
 class DynamicVertexBuffer;
-
+class GestureEvent;
+class KeyboardEvent;
+class EngineData;
 		
 /**
  * Vertex data list types
@@ -641,81 +643,6 @@ inline void RGBColorToVector( const sRGBColor c, System::d3Math::d3Vector& v )
 	v.w = System::RGBColor::GetFloatA( c );
 }
 
-	
-namespace KeyboardKeys
-{
-	enum KeyboardKeys
-	{
-		E_F1        = 0,
-		E_F2        ,
-		E_F3        ,
-		E_F4        ,
-		E_F5        ,
-		E_F6        ,
-		E_F7        ,
-		E_F8        ,
-		E_F9        ,
-		E_F10       ,
-		E_F11       ,
-		E_F12       ,
-  
-		E_0         ,
-		E_1         ,
-		E_2         ,
-		E_3         ,
-		E_4         ,
-		E_5         ,
-		E_6         ,
-		E_7         ,
-		E_8         ,
-		E_9         ,
-
-		E_UP        ,
-		E_DOWN      ,
-		E_LEFT      ,
-		E_RIGHT     ,
-
-		E_PAGE_UP,
-		E_PAGE_DOWN,
-
-		E_Q,
-		E_W,
-		E_E,
-		E_R,
-		E_T,
-		E_Y,
-		E_U,
-		E_I,
-		E_O,
-		E_P,
-
-		E_A,
-		E_S,
-		E_D,
-		E_F,
-		E_G,
-		E_H,
-		E_J,
-		E_K,
-		E_L,
-
-		E_Z,
-		E_X,
-		E_C,
-		E_V,
-		E_B,
-		E_N,
-		E_M,
-
-		E_LEFT_CONTROL,
-		E_RIGHT_CONTROL,
-  
-		E_LEFT_ALT,
-		E_RIGHT_ALT,
-
-		COUNT
-	};
-}
 	
 /**
  * TextureParams

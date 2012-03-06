@@ -1,6 +1,6 @@
 /////////////////////////////////////////////////////////////////////
-//  File Name               : rd3_msg_gesture.h
-//  Created                 : 10 2 2012   19:58
+//  File Name               : rd3_msg_keyboardq.h
+//  Created                 : 6 3 2012   19:58
 //  File path               : SLibF\render3d\include
 //  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
@@ -15,12 +15,11 @@
 //  Modification History:
 //      
 /////////////////////////////////////////////////////////////////////
-
-#ifndef _RD3_MSG_GESTUREQ_INC_
-#define _RD3_MSG_GESTUREQ_INC_
+#ifndef _RD3_MSG_KEYBOARDQ_INC_
+#define _RD3_MSG_KEYBOARDQ_INC_
 
 #include "rd3_msg.h"
-#include "rd3_msg_gesture.h"
+#include "rd3_msg_keyboard.h"
 
 /**
  * Check configuration file include
@@ -35,17 +34,20 @@ namespace Rd3
 /**
  *GestureMsg
  */
-class GestureMsgQueue : public MessageQueueT<GestureEvent>
+class KeyboardMsgQueue : public MessageQueueT<KeyboardEvent>
 {
 private:	
-	typedef MessageQueueT<GestureEvent> _BaseClass;	
+	typedef MessageQueueT<KeyboardEvent> _BaseClass;	
 public:
 	/**
 	 *
 	 */
-	GestureMsgQueue( Render* owner, const sString& objectName );
+	KeyboardMsgQueue( Render* owner, const sString& objectName ) :
+		_BaseClass( owner, objectName )
+	{
+	}
 };
-	
+
 }
 
-#endif // _RD3_MSG_GESTUREQ_INC_
+#endif // _RD3_MSG_KEYBOARDQ_INC_

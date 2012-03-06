@@ -22,6 +22,7 @@
 #include "ed3_primitive_lua.h"
 #include "ed3_obj_factory.h"
 #include "ed3_obj_cam_gest.h"
+#include "ed3_obj_cam_key.h"
 #include "ed3_obj_mesh.h"
 #include "ed3_obj_texture.h"
 
@@ -34,10 +35,12 @@ namespace Ed3
 //----------------------------------------------------------------------
 void RegisterEngineTypes()
 {
-	AUTO_REGISTER_PRIMITIVE_FACTORY( _S("lua"),					PrimitiveLua )
-	AUTO_REGISTER_D3OBJECT_FACTORY( _S("engine.object.gesturecamera") ,		d3CameraGestureObject )
-	AUTO_REGISTER_D3OBJECT_FACTORY( _S("engine.object.mesh") ,			d3MeshObject )	
-	AUTO_REGISTER_D3OBJECT_FACTORY( _S("engine.object.texture") ,			d3TextureObject )	
+	AUTO_REGISTER_PRIMITIVE_FACTORY( _S("lua"),	                          PrimitiveLua )
+	AUTO_REGISTER_D3OBJECT_FACTORY( _S("engine.object.gesturecamera") ,   d3CameraGestureObject )
+	AUTO_REGISTER_D3OBJECT_FACTORY( _S("engine.object.keyboardcamera") ,  d3CameraKeyboardObject )
+
+	AUTO_REGISTER_D3OBJECT_FACTORY( _S("engine.object.mesh") ,            d3MeshObject )	
+	AUTO_REGISTER_D3OBJECT_FACTORY( _S("engine.object.texture") ,         d3TextureObject )	
 }
 
 //----------------------------------------------------------------------
@@ -101,17 +104,21 @@ void d3Engine::RenderFrame()
 		return;
 
 	_engineData.BeginFrame();
-	
+	_pRender->ProcessMessages( _engineData );
 	_currentWorld->DoAI( _engineData );
 	_currentWorld->RenderWorld( *_pRender->RenderState(), _engineData );
-	
+
 	_engineData.EndFrame();	
 }
 
 //----------------------------------------------------------------------
 d3Engine::~d3Engine()
 {
-	delete _currentWorld;
+	if( _currentWorld != NULL )
+	{
+		_currentWorld->DoUninitalize( *_pRender );
+		delete _currentWorld;
+	}
 }
 
 //----------------------------------------------------------------------

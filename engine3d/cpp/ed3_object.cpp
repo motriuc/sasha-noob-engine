@@ -351,6 +351,7 @@ d3World* d3Object::GetWorld()
 
 #ifdef _D3_DEBUG_RENDER
 
+//--------------------------------------------------------------------------------------------------------
 void d3Object::debug_InitResources( Rd3::Render& render )
 {
 	if( _debug_vb == NULL )
@@ -360,12 +361,14 @@ void d3Object::debug_InitResources( Rd3::Render& render )
 		_debug_effect_solid = render.UseEffect( _S("system.debug.solid.color") );
 }
 
+//--------------------------------------------------------------------------------------------------------
 void d3Object::debug_Render( const d3RenderData& renderData )
 {
-	if( HasState( OBS_BOUNDINGBOX ) )//&& renderData.GetCommonData().debug_RenderObjectsBoundingBox() )
+	if( HasState( OBS_BOUNDINGBOX ) && renderData.rstate().GetCommonData().debug_RenderObjectsBoundingBox() )
 		debug_DrawAABBox( renderData, _boundingBox, RGBColor::Green );
 }
 
+//--------------------------------------------------------------------------------------------------------
 void d3Object::debug_DrawAABBox( const d3RenderData& renderData, const d3AABBox& b,  sRGBColor cl ) const
 {
 	d3Matrix i( 1.0f );
@@ -446,7 +449,6 @@ void d3Object::debug_DrawAABBox( const d3RenderData& renderData, const d3AABBox&
 
 	renderData.rstate().SetTransformation(  pMatrix );
 }
-
 
 #endif
 

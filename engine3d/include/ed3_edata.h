@@ -38,6 +38,8 @@ public:
 	 */
 	d3EngineData();
 	
+	using EngineData::BeginFrame;
+	using EngineData::EndFrame;
 };
 	
 }

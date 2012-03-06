@@ -1,6 +1,6 @@
 /////////////////////////////////////////////////////////////////////
-//  File Name               : rd3_msg_gesture.h
-//  Created                 : 10 2 2012   19:58
+//  File Name               : dx9_msg_keyboardq.h
+//  Created                 : 6 3 2012   19:58
 //  File path               : SLibF\render3d\include
 //  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
@@ -16,11 +16,7 @@
 //      
 /////////////////////////////////////////////////////////////////////
 
-#ifndef _RD3_MSG_GESTUREQ_INC_
-#define _RD3_MSG_GESTUREQ_INC_
-
-#include "rd3_msg.h"
-#include "rd3_msg_gesture.h"
+#include "rd3_msg_keyboardq.h"
 
 /**
  * Check configuration file include
@@ -29,23 +25,23 @@
 	#error rd3_conf.h must be included
 #endif
 
-namespace Rd3
-{
-
 /**
- *GestureMsg
+ * Dx9KeyboardMsgQueue
  */
-class GestureMsgQueue : public MessageQueueT<GestureEvent>
+class Dx9KeyboardMsgQueue : public Rd3::KeyboardMsgQueue
 {
-private:	
-	typedef MessageQueueT<GestureEvent> _BaseClass;	
+private:
+	typedef Rd3::KeyboardMsgQueue _BaseClass;
 public:
-	/**
-	 *
-	 */
-	GestureMsgQueue( Render* owner, const sString& objectName );
-};
-	
-}
 
-#endif // _RD3_MSG_GESTUREQ_INC_
+	Dx9KeyboardMsgQueue( Rd3::Render* owner, const sString& objectName );
+	~Dx9KeyboardMsgQueue();
+
+	virtual void ProcessMessages( Rd3::EngineData& edata );
+private:
+	LPDIRECTINPUTDEVICE8  _pDIDevice;
+	SBYTE*                _pKeyPressed;
+	SBYTE*				  _pKeyPressedPrev;
+	SBYTE				  _keyPressed1[Rd3::KeyboardKeys::COUNT];
+	SBYTE				  _keyPressed2[Rd3::KeyboardKeys::COUNT];
+};

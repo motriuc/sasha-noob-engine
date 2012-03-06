@@ -49,7 +49,7 @@ public:
 	virtual ~d3ObjectContiner();
 protected:
 	virtual void Initialize( Rd3::Render& render ) throws_error;
-	virtual void Uninitalize( Rd3::Render& render );
+	virtual void Uninitialize( Rd3::Render& render );
 	
 	virtual void Render( const d3RenderData& renderData );
 	virtual void AI( d3EngineData& edata );
