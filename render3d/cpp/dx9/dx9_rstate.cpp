@@ -167,10 +167,21 @@ void Dx9RenderState::BeginWorldRender( const Rd3::EngineDataForRender& edata )
 
     __S_ASSERT( SUCCEEDED(hr) );
 
+#ifdef _D3_DEBUG_RENDER
 	if( !GetCommonData().RenderWireframe() )
 		pDevice->SetRenderState( D3DRS_FILLMODE, D3DFILL_SOLID );
 	else
 		pDevice->SetRenderState( D3DRS_FILLMODE, D3DFILL_WIREFRAME );
+	
+	
+	if( GetCommonData().debug_RenderCulling() )
+		pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_CW );
+	else
+		pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_NONE );
+#else
+	pDevice->SetRenderState( D3DRS_FILLMODE, D3DFILL_SOLID );
+	pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_CW );
+#endif
 
 	COUNTER_TIME_STOP( rd3_render_time_draw );
 }
@@ -183,6 +194,8 @@ void Dx9RenderState::EndWorldRender()
 
 	if( GetRenderTarget() == NULL )
 	{
+		pDevice->SetRenderState( D3DRS_FILLMODE, D3DFILL_SOLID );
+		pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_NONE );
 		PostRender();
 	}
 	COUNTER_TIME_START( rd3_render_time_draw );
@@ -284,18 +297,6 @@ void Dx9RenderState::RenderPrimitive(
 			hr = pEffect->BeginPass( i );
 			__S_ASSERT( SUCCEEDED( hr ) );
 
-#ifdef _D3_DEBUG_RENDER
-			if( GetCommonData().RenderWireframe() )
-				pDevice->SetRenderState( D3DRS_FILLMODE, D3DFILL_WIREFRAME );
-
-			if( GetCommonData().debug_RenderCulling() )
-				pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_CW );
-			else
-				pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_NONE );
-#else
-			pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_CW );
-#endif
-
 			hr = pDevice->DrawPrimitive(
 				dxprimitiveType,
 				0,
@@ -377,18 +378,6 @@ void Dx9RenderState::RenderPrimitive( const Rd3::VertexBuffer* vb, const Rd3::In
 		{
 			hr = pEffect->BeginPass( i );
 			__S_ASSERT( SUCCEEDED( hr ) );
-
-#ifdef _D3_DEBUG_RENDER
-			if( GetCommonData().RenderWireframe() )
-				pDevice->SetRenderState( D3DRS_FILLMODE, D3DFILL_WIREFRAME );
-
-			if( GetCommonData().debug_RenderCulling() )
-				pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_CW );
-			else
-				pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_NONE );
-#else
-			pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_CW );
-#endif
 
 			hr = pDevice->DrawIndexedPrimitive(
 				dxprimitiveType,

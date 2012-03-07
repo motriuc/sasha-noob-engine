@@ -205,7 +205,7 @@ protected:
 	
 protected:
 	virtual void Initialize( Rd3::Render& render ) throws_error;
-	virtual void Uninitialize( Rd3::Render& render ) {}
+	virtual void Uninitialize( Rd3::Render& render );
 
 	virtual void Render( const d3RenderData& renderData ) {};
 	virtual void AI( d3EngineData& edata ) {}
@@ -249,6 +249,7 @@ protected:
 	LuaObject						_luaObject;
 	sBool							_luaHasAI;
 	sBool							_luaHasInit;
+	sBool							_luaHasKeyboardEvent;
 #endif // ED3_ENGINE_USE_LUA
 		
 private:
@@ -260,6 +261,7 @@ private:
 	
 	void LuaCallInit( Rd3::Render& render );
 	void LuaCallAI( d3EngineData& edata );
+	void LuaKeyboardMessage( Rd3::EngineData& edata, const Rd3::KeyboardEvent& key );
 	
 #endif // ED3_ENGINE_USE_LUA
 	

@@ -90,7 +90,16 @@ sInt LuaFunctionState::GetValue( sInt i, sInt def ) const
 		return def;
 	
 	return lua_tointeger( p, i );
-}		
+}	
+
+//------------------------------------------------------------------
+void* LuaFunctionState::GetInstance() const
+{
+	// TO DO
+	__S_ASSERT( sFalse );
+	return NULL;
+}
+
 	
 /*******************************************************************/
 /* LuaObject                                                       */
@@ -186,7 +195,6 @@ void LuaObject::RegisterMathLib()
 //------------------------------------------------------------------
 void LuaObject::LoadFromString( const char* code ) throws_error
 {
-	
 	if( _pLuaHandle != NULL )
 	{
 		lua_close(  reinterpret_cast<lua_State*>( _pLuaHandle ) );
@@ -220,9 +228,40 @@ void LuaObject::LoadFromString( const char* code ) throws_error
 }
 
 //------------------------------------------------------------------
+void LuaObject::Exec( const SBCHAR* funName, void* pObject, LuaFunctions* pObjectFun ) throws_error
+{
+	if( _pLuaHandle == NULL )
+		return;
+
+	lua_State* state = reinterpret_cast<lua_State*>( _pLuaHandle );	
+	lua_getglobal( state, funName );
+
+	lua_newtable( state );
+
+	lua_pushstring( state, "__object_instance" );
+	lua_pushinteger( state, (lua_Integer)pObject );
+    lua_settable( state, -3 );
+
+	if( pObjectFun != NULL )
+		luaL_register( state, 0, (luaL_Reg*)pObjectFun );
+
+	if( lua_pcall( state, 1, 0, 0 ) != 0 )
+	{
+		sString error = lua_tostring( state, -1 );
+		lua_close( state );
+		_pLuaHandle = NULL;
+		
+		error_throw_arg( Errors::StringError )
+			_S("Can't execute Lua function: ") + sString( funName ) + ". Error : " + error
+		);
+	}	
+}
+
+//------------------------------------------------------------------
 void LuaObject::Exec( const SBCHAR* funName, d3Float p ) throws_error
 {
-	__S_ASSERT( _pLuaHandle != NULL );
+	if( _pLuaHandle == NULL )
+		return;
 
 	lua_State* state = reinterpret_cast<lua_State*>( _pLuaHandle );
 	
@@ -244,7 +283,8 @@ void LuaObject::Exec( const SBCHAR* funName, d3Float p ) throws_error
 //------------------------------------------------------------------
 void LuaObject::Exec( const SBCHAR* funName )
 {
-	__S_ASSERT( _pLuaHandle != NULL );
+	if( _pLuaHandle == NULL )
+		return;
 	
 	lua_State* state = reinterpret_cast<lua_State*>( _pLuaHandle );
 	
@@ -257,7 +297,7 @@ void LuaObject::Exec( const SBCHAR* funName )
 		_pLuaHandle = NULL;
 		
 		error_throw_arg( Errors::StringError )
-			_S("Can't execute Lua function: ") + sString( funName ) + ". Error : " + error
+			_S("Can't execute Lua function: ") + sString( funName ) + _S(". Error : ") + error
 		);
 	}
 }

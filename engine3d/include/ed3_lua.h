@@ -49,6 +49,11 @@ public:
 	sString GetValue( sInt i, const sString& def ) const;
 
 	/**
+	 *
+	 */
+	void* GetInstance() const; 
+
+	/**
 	 *	Return float value
 	 */
 	void Return( d3Float def ) const;
@@ -64,6 +69,12 @@ private:
  * Lua function
  */
 typedef sInt (*LuaFunction) ( const LuaFunctionState *L );
+
+typedef struct
+{
+	const SBCHAR*	name;
+	LuaFunction		f;
+} LuaFunctions;
 
 /**
  *	LuaObject
@@ -99,6 +110,11 @@ public:
 	 */
 	void Exec( const SBCHAR* funName, d3Float p ) throws_error; 
 	
+	/**
+	 *
+	 */
+	void Exec( const SBCHAR* funName, void* pObject, LuaFunctions* pObjectFun ) throws_error;
+
 	/**
 	 *
 	 */

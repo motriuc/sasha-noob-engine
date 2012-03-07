@@ -45,6 +45,7 @@ d3Object::d3Object( ObjectType::ObjectType type, const sString& name ) :
 	_luaObject( this ),
 	_luaHasAI( sFalse ),
 	_luaHasInit( sFalse ),
+	_luaHasKeyboardEvent( sFalse ),
 #endif
 	
 	_objectState( OBS_VISIBLE ),
@@ -78,6 +79,30 @@ void d3Object::Initialize( Rd3::Render& render )
 #ifdef _D3_DEBUG_RENDER
 	debug_InitResources( render );
 #endif
+
+#ifdef ED3_ENGINE_USE_LUA
+	if( _luaHasKeyboardEvent )
+	{
+		render.MessageQueue_RegisterEvent(
+			_S("engine.msg.key"), 
+			Events::Event( this, &d3Object::LuaKeyboardMessage )
+		);
+	}
+#endif // ED3_ENGINE_USE_LUA
+}
+
+//--------------------------------------------------------------------------------------------------------
+void d3Object::Uninitialize( Rd3::Render& render )
+{
+#ifdef ED3_ENGINE_USE_LUA
+	if( _luaHasKeyboardEvent )
+	{
+		render.MessageQueue_UnregisterEvent(
+			_S("engine.msg.key"), 
+			Events::Event( this, &d3Object::LuaKeyboardMessage )
+		);
+	}
+#endif // ED3_ENGINE_USE_LUA
 }
 
 //--------------------------------------------------------------------------------------------------------

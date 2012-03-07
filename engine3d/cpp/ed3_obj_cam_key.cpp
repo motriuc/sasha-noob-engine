@@ -148,6 +148,10 @@ void d3CameraKeyboardObject::OnKeyboardMessage( Rd3::EngineData& edata, const Rd
 		{
 			edata.ModifyCommonData().debug_SetRenderObjectsBoundingBox( !edata.ModifyCommonData().debug_RenderObjectsBoundingBox() );
 		}
+		if(  key.IsKeyJustPressed( Rd3::KeyboardKeys::E_C ) )
+		{
+			edata.ModifyCommonData().debug_SetRenderCulling( !edata.ModifyCommonData().debug_RenderCulling() );
+		}
 #endif
 	}
 }

@@ -30,6 +30,7 @@
 
 #define LUA_FUNCTION_AI				_S("d3Object_AI")
 #define LUA_FUNCTION_INIT			_S("d3Object_Init")
+#define LUA_FUNCTION_KEYBOARD		_S("d3Object_Keyboard")
 
 //--------------------------------------------------------------------------------------------------------
 COUNTER_USE( rd3_render_time_lua )
@@ -365,7 +366,8 @@ static int d3World_Physics_Move( const LuaFunctionState* s )
 		
 	return 0;
 }
-	
+
+
 #endif
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -401,7 +403,20 @@ static int d3World_AfterEffect_SetParam( const LuaFunctionState* s )
 		
 	return 0;
 }
-	
+
+//--------------------------------------------------------------------------------------------------------
+void d3Object::LuaKeyboardMessage( Rd3::EngineData& edata, const Rd3::KeyboardEvent& key )
+{
+/*	static LuaFunctions fun[] = 
+	{
+		{ NULL, NULL }
+	};
+*/
+	COUNTER_TIME_START( rd3_render_time_lua );
+	_luaObject.Exec( LUA_FUNCTION_KEYBOARD, (void*)&key, NULL );
+	COUNTER_TIME_STOP( rd3_render_time_lua );
+}
+
 //--------------------------------------------------------------------------------------------------------
 void d3Object::InitLuaFunctions()
 {	
@@ -468,6 +483,7 @@ void d3Object::LoadLua( const sString& path, LoadDataParams& loadParams ) throws
 	
 	_luaHasAI = _luaObject.HasFunction( LUA_FUNCTION_AI );
 	_luaHasInit = _luaObject.HasFunction( LUA_FUNCTION_INIT );
+	_luaHasKeyboardEvent = _luaObject.HasFunction( LUA_FUNCTION_KEYBOARD );
 	
 	InitLuaFunctions();
 }

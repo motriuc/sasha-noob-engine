@@ -103,10 +103,18 @@ void d3Engine::RenderFrame()
 	if( _currentWorld == NULL )
 		return;
 
-	_engineData.BeginFrame();
-	_pRender->ProcessMessages( _engineData );
-	_currentWorld->DoAI( _engineData );
-	_currentWorld->RenderWorld( *_pRender->RenderState(), _engineData );
+	try
+	{
+		_engineData.BeginFrame();
+		_pRender->ProcessMessages( _engineData );
+		_currentWorld->DoAI( _engineData );
+		_currentWorld->RenderWorld( *_pRender->RenderState(), _engineData );
+	}
+	catch( Errors::Error* e )
+	{
+		Platform::DebugWarning( e->Description() );
+		delete e;
+	}
 
 	_engineData.EndFrame();	
 }
