@@ -25,8 +25,7 @@
 #include "rd3_render_c.h"
 
 using namespace System::d3Math;
-
-//#define _IOS_EMULATOR
+using namespace Rd3;
 
 //---------------------------------------------------------------------------
 -(void)awakeFromNib
@@ -62,50 +61,6 @@ using namespace System::d3Math;
     
     [super dealloc];
 }
-
-/**
-#ifdef _IOS_EMULATOR
-
-//---------------------------------------------------------------------------
--(void)loadView
-{
-	[super loadView];
-	
-	UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 360, 480)];
-	textField.borderStyle = UITextBorderStyleBezel;
-	textField.backgroundColor = [UIColor whiteColor];
-	textField.delegate = self;
-	[self.view addSubview:textField];
-	[textField becomeFirstResponder];
-	textField.userInteractionEnabled = NO;
-	textField.hidden = YES;
-	textField.userInteractionEnabled = YES;
-	[textField release];
-}
-
-
-
--(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    switch ([string characterAtIndex:0]) {
-        case 0xF700:
-            // up arrow pressed...
-            break;
-        case 0xF701:
-            // down arrow pressed...
-            break;
-        case 0xF702:
-            // left arrow pressed...
-            break;
-        case 0xF703:
-            // right arrow pressed...
-            break;
-    }
-    return NO;
-}
-
-#endif // _IOS_EMULATOR
-**/
 
 //---------------------------------------------------------------------------
 -(void)viewWillAppear:(BOOL)animated

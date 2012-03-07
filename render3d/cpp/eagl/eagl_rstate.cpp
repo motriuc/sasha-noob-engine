@@ -161,9 +161,6 @@ void EAGLRenderState::InitAfterEffectData()
 	
 	
 	_afterEffectVb = render->CreateVertexBuffer( _S(""), points, txCoord );
-	
-	
-	_effect = render->UseEffect( _S("system.after.effect.none") );
 }
 
 //-----------------------------------------------------------------------
