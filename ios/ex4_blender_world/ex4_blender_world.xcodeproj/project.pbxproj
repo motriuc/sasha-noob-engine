@@ -34,31 +34,6 @@
 		D91D002114ECB8FA00CEFA96 /* s_system_stream_rstr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91D000E14ECB8FA00CEFA96 /* s_system_stream_rstr.cpp */; };
 		D91D002214ECB8FA00CEFA96 /* s_system_xml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91D000F14ECB8FA00CEFA96 /* s_system_xml.cpp */; };
 		D91D002314ECB8FA00CEFA96 /* s_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91D001014ECB8FA00CEFA96 /* s_system.cpp */; };
-		D91D008A14ECB9D700CEFA96 /* s_system_chars_b_mac.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D002714ECB9D600CEFA96 /* s_system_chars_b_mac.inl */; };
-		D91D008B14ECB9D700CEFA96 /* s_system_chars_b_win32.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D002814ECB9D600CEFA96 /* s_system_chars_b_win32.inl */; };
-		D91D008C14ECB9D700CEFA96 /* s_system_chars_w_mac.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D002A14ECB9D600CEFA96 /* s_system_chars_w_mac.inl */; };
-		D91D008D14ECB9D700CEFA96 /* s_system_chars_w_win32.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D002B14ECB9D600CEFA96 /* s_system_chars_w_win32.inl */; };
-		D91D008E14ECB9D700CEFA96 /* s_system_d2math_vector.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D003814ECB9D600CEFA96 /* s_system_d2math_vector.inl */; };
-		D91D008F14ECB9D700CEFA96 /* s_system_d3math_aabb.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D003B14ECB9D700CEFA96 /* s_system_d3math_aabb.inl */; };
-		D91D009014ECB9D700CEFA96 /* s_system_d3math_camera.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D003D14ECB9D700CEFA96 /* s_system_d3math_camera.inl */; };
-		D91D009114ECB9D700CEFA96 /* s_system_d3math_frustum.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D003F14ECB9D700CEFA96 /* s_system_d3math_frustum.inl */; };
-		D91D009214ECB9D700CEFA96 /* s_system_d3math_matrix.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D004214ECB9D700CEFA96 /* s_system_d3math_matrix.inl */; };
-		D91D009314ECB9D700CEFA96 /* s_system_d3math_plane.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D004414ECB9D700CEFA96 /* s_system_d3math_plane.inl */; };
-		D91D009414ECB9D700CEFA96 /* s_system_d3math_sphere.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D004614ECB9D700CEFA96 /* s_system_d3math_sphere.inl */; };
-		D91D009514ECB9D700CEFA96 /* s_system_d3math_triangle.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D004814ECB9D700CEFA96 /* s_system_d3math_triangle.inl */; };
-		D91D009614ECB9D700CEFA96 /* s_system_d3math_vector.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D004A14ECB9D700CEFA96 /* s_system_d3math_vector.inl */; };
-		D91D009714ECB9D700CEFA96 /* s_system_global_mac.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D005E14ECB9D700CEFA96 /* s_system_global_mac.inl */; };
-		D91D009814ECB9D700CEFA96 /* s_system_global_win32.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D005F14ECB9D700CEFA96 /* s_system_global_win32.inl */; };
-		D91D009914ECB9D700CEFA96 /* s_system_math.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D006414ECB9D700CEFA96 /* s_system_math.inl */; };
-		D91D009A14ECB9D700CEFA96 /* s_system_mem.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D006614ECB9D700CEFA96 /* s_system_mem.inl */; };
-		D91D009B14ECB9D700CEFA96 /* s_system_mt_at_mac.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D006714ECB9D700CEFA96 /* s_system_mt_at_mac.inl */; };
-		D91D009C14ECB9D700CEFA96 /* s_system_mt_at_win32.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D006814ECB9D700CEFA96 /* s_system_mt_at_win32.inl */; };
-		D91D009D14ECB9D700CEFA96 /* s_system_mt_cs_win32.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D006A14ECB9D700CEFA96 /* s_system_mt_cs_win32.inl */; };
-		D91D009E14ECB9D700CEFA96 /* s_system_mt_cs.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D006C14ECB9D700CEFA96 /* s_system_mt_cs.inl */; };
-		D91D009F14ECB9D700CEFA96 /* s_system_mt_ev_win32.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D006D14ECB9D700CEFA96 /* s_system_mt_ev_win32.inl */; };
-		D91D00A014ECB9D700CEFA96 /* s_system_object.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D007114ECB9D700CEFA96 /* s_system_object.inl */; };
-		D91D00A114ECB9D700CEFA96 /* s_system_rgbcolor.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D007514ECB9D700CEFA96 /* s_system_rgbcolor.inl */; };
-		D91D00A214ECB9D700CEFA96 /* s_system_string.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D007F14ECB9D700CEFA96 /* s_system_string.inl */; };
 		D91D00A314ECB9D700CEFA96 /* s_system_xml.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D008814ECB9D700CEFA96 /* s_system_xml.inl */; };
 		D91D00EE14ECBB9A00CEFA96 /* xmlparse.c in Sources */ = {isa = PBXBuildFile; fileRef = D91D00E614ECBB9A00CEFA96 /* xmlparse.c */; };
 		D91D00EF14ECBB9A00CEFA96 /* xmlrole.c in Sources */ = {isa = PBXBuildFile; fileRef = D91D00E714ECBB9A00CEFA96 /* xmlrole.c */; };
@@ -91,17 +66,6 @@
 		D91D015B14ECC02F00CEFA96 /* rd3_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91D014214ECC02F00CEFA96 /* rd3_utils.cpp */; };
 		D91D015C14ECC02F00CEFA96 /* rd3_vertexbuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91D014314ECC02F00CEFA96 /* rd3_vertexbuffer.cpp */; };
 		D91D015D14ECC02F00CEFA96 /* rd3_xml_def.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91D014414ECC02F00CEFA96 /* rd3_xml_def.cpp */; };
-		D91D018814ECC05D00CEFA96 /* rd3_cdata.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D015F14ECC05D00CEFA96 /* rd3_cdata.inl */; };
-		D91D018914ECC05D00CEFA96 /* rd3_edata.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D016414ECC05D00CEFA96 /* rd3_edata.inl */; };
-		D91D018A14ECC05D00CEFA96 /* rd3_effect.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D016614ECC05D00CEFA96 /* rd3_effect.inl */; };
-		D91D018B14ECC05D00CEFA96 /* rd3_light.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D016C14ECC05D00CEFA96 /* rd3_light.inl */; };
-		D91D018C14ECC05D00CEFA96 /* rd3_lightpoint.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D016E14ECC05D00CEFA96 /* rd3_lightpoint.inl */; };
-		D91D018D14ECC05D00CEFA96 /* rd3_material.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D017214ECC05D00CEFA96 /* rd3_material.inl */; };
-		D91D018E14ECC05D00CEFA96 /* rd3_perf_counters.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D017814ECC05D00CEFA96 /* rd3_perf_counters.inl */; };
-		D91D018F14ECC05D00CEFA96 /* rd3_resobj.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D017C14ECC05D00CEFA96 /* rd3_resobj.inl */; };
-		D91D019014ECC05D00CEFA96 /* rd3_rstate.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D017E14ECC05D00CEFA96 /* rd3_rstate.inl */; };
-		D91D019114ECC05D00CEFA96 /* rd3_texture.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D018014ECC05D00CEFA96 /* rd3_texture.inl */; };
-		D91D019214ECC05D00CEFA96 /* rd3_types.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D018214ECC05D00CEFA96 /* rd3_types.inl */; };
 		D91D01E814ECC34C00CEFA96 /* eagl_context.m in Sources */ = {isa = PBXBuildFile; fileRef = D91D01DF14ECC34C00CEFA96 /* eagl_context.m */; };
 		D91D01E914ECC34C00CEFA96 /* eagl_effect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91D01E014ECC34C00CEFA96 /* eagl_effect.cpp */; };
 		D91D01EA14ECC34C00CEFA96 /* eagl_font_sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91D01E114ECC34C00CEFA96 /* eagl_font_sprite.cpp */; };
@@ -116,7 +80,6 @@
 		D91D020314ECC3B400CEFA96 /* rd3_primitive_sphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91D01FE14ECC3B400CEFA96 /* rd3_primitive_sphere.cpp */; };
 		D91D020414ECC3B400CEFA96 /* rd3_primitive_torus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91D01FF14ECC3B400CEFA96 /* rd3_primitive_torus.cpp */; };
 		D91D020514ECC3B400CEFA96 /* rd3_primitive.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91D020014ECC3B400CEFA96 /* rd3_primitive.cpp */; };
-		D91D022314ECC48C00CEFA96 /* ed3_object.inl in Resources */ = {isa = PBXBuildFile; fileRef = D91D021B14ECC48C00CEFA96 /* ed3_object.inl */; };
 		D91D023214ECC4A700CEFA96 /* ed3_cont_object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91D022414ECC4A700CEFA96 /* ed3_cont_object.cpp */; };
 		D91D023314ECC4A700CEFA96 /* ed3_edata.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91D022514ECC4A700CEFA96 /* ed3_edata.cpp */; };
 		D91D023414ECC4A700CEFA96 /* ed3_engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91D022614ECC4A700CEFA96 /* ed3_engine.cpp */; };
@@ -152,6 +115,12 @@
 		D94B58D114F2357400EDAB8B /* system.after.effect.blur.fx.xml in Resources */ = {isa = PBXBuildFile; fileRef = D94B58CF14F2357400EDAB8B /* system.after.effect.blur.fx.xml */; };
 		D94B58D214F2357400EDAB8B /* system.after.effect.blur.ps.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D94B58D014F2357400EDAB8B /* system.after.effect.blur.ps.fsh */; };
 		D94B59F314F2820500EDAB8B /* rd3_aef_acolor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D94B59F214F2820500EDAB8B /* rd3_aef_acolor.cpp */; };
+		D973739A15078D5900BC1B85 /* rd3_dvertexbuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D973739915078D5900BC1B85 /* rd3_dvertexbuffer.cpp */; };
+		D973739C15078D8100BC1B85 /* eagl_dvertexbuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D973739B15078D8100BC1B85 /* eagl_dvertexbuffer.cpp */; };
+		D97373A515078DC000BC1B85 /* ed3_obj_cam_key.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D97373A415078DC000BC1B85 /* ed3_obj_cam_key.cpp */; };
+		D97373BB15078E3A00BC1B85 /* system.debug.solid.color.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D97373B815078E3A00BC1B85 /* system.debug.solid.color.fsh */; };
+		D97373BC15078E3A00BC1B85 /* system.debug.solid.color.fx.xml in Resources */ = {isa = PBXBuildFile; fileRef = D97373B915078E3A00BC1B85 /* system.debug.solid.color.fx.xml */; };
+		D97373BD15078E3A00BC1B85 /* system.debug.solid.color.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D97373BA15078E3A00BC1B85 /* system.debug.solid.color.vsh */; };
 		D97DE81D14EF7CF300E062CF /* ed3_object_lua.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D97DE81C14EF7CF300E062CF /* ed3_object_lua.cpp */; };
 		D9803A9014EFCE32002E3CE7 /* ed3_primitive_lua.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9803A8F14EFCE32002E3CE7 /* ed3_primitive_lua.cpp */; };
 		D98536A514F36A7E00E3AADD /* system.after.effect.color.fx.xml in Resources */ = {isa = PBXBuildFile; fileRef = D98536A314F36A7E00E3AADD /* system.after.effect.color.fx.xml */; };
@@ -308,7 +277,6 @@
 		D9BCA35614FCB764002ACED7 /* world_planks.png in Resources */ = {isa = PBXBuildFile; fileRef = D9BCA34A14FCB764002ACED7 /* world_planks.png */; };
 		D9BCA35714FCB764002ACED7 /* world_sand1.png in Resources */ = {isa = PBXBuildFile; fileRef = D9BCA34B14FCB764002ACED7 /* world_sand1.png */; };
 		D9BCA41814FCE222002ACED7 /* world.lua in Resources */ = {isa = PBXBuildFile; fileRef = D9BCA41714FCE222002ACED7 /* world.lua */; };
-		D9BCA66114FDC99A002ACED7 /* ed3_physics_shape.inl in Resources */ = {isa = PBXBuildFile; fileRef = D9BCA66014FDC99A002ACED7 /* ed3_physics_shape.inl */; };
 		D9D9B08414F7A89C00087F6B /* rd3_material_solid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9D9B08314F7A89C00087F6B /* rd3_material_solid.cpp */; };
 		D9D9B09214F7AC4D00087F6B /* system.solid.vs.1.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D9D9B08F14F7AC4D00087F6B /* system.solid.vs.1.vsh */; };
 		D9D9B09314F7AC4D00087F6B /* system.solid.ps.1.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D9D9B09014F7AC4D00087F6B /* system.solid.ps.1.fsh */; };
@@ -317,7 +285,6 @@
 		D9DC7FF31502FB75003600E7 /* s_system_files_name.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9DC7FF11502FB75003600E7 /* s_system_files_name.cpp */; };
 		D9DC7FF81502FBE5003600E7 /* rd3_register_types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9DC7FF61502FBE5003600E7 /* rd3_register_types.cpp */; };
 		D9DC7FF91502FBE5003600E7 /* rd3_resloader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9DC7FF71502FBE5003600E7 /* rd3_resloader.cpp */; };
-		D9DC7FFE1502FBFB003600E7 /* rd3_render_str.inl in Resources */ = {isa = PBXBuildFile; fileRef = D9DC7FFB1502FBFB003600E7 /* rd3_render_str.inl */; };
 		D9DC80011502FC29003600E7 /* system.font.10.xml in Resources */ = {isa = PBXBuildFile; fileRef = D9DC7FFF1502FC29003600E7 /* system.font.10.xml */; };
 		D9DC80021502FC29003600E7 /* system.texture.font.10.png in Resources */ = {isa = PBXBuildFile; fileRef = D9DC80001502FC29003600E7 /* system.texture.font.10.png */; };
 		D9DC80041502FC42003600E7 /* render.res.xml in Resources */ = {isa = PBXBuildFile; fileRef = D9DC80031502FC42003600E7 /* render.res.xml */; };
@@ -630,6 +597,19 @@
 		D94B58D014F2357400EDAB8B /* system.after.effect.blur.ps.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.after.effect.blur.ps.fsh; path = ../../render3d/cpp/eagl/fx/system.after.effect.blur.ps.fsh; sourceTree = SOURCE_ROOT; };
 		D94B59F214F2820500EDAB8B /* rd3_aef_acolor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rd3_aef_acolor.cpp; path = ../../render3d/cpp/aftereffects/rd3_aef_acolor.cpp; sourceTree = SOURCE_ROOT; };
 		D94B59F414F2821E00EDAB8B /* rd3_aef_acolor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rd3_aef_acolor.h; path = ../../render3d/include/aftereffects/rd3_aef_acolor.h; sourceTree = SOURCE_ROOT; };
+		D973739415078D3700BC1B85 /* rd3_dvertexbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rd3_dvertexbuffer.h; path = ../../render3d/include/rd3_dvertexbuffer.h; sourceTree = SOURCE_ROOT; };
+		D973739515078D3700BC1B85 /* rd3_dvertexbuffer.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = rd3_dvertexbuffer.inl; path = ../../render3d/include/rd3_dvertexbuffer.inl; sourceTree = SOURCE_ROOT; };
+		D973739615078D3700BC1B85 /* rd3_msg_keyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rd3_msg_keyboard.h; path = ../../render3d/include/rd3_msg_keyboard.h; sourceTree = SOURCE_ROOT; };
+		D973739715078D3700BC1B85 /* rd3_msg_keyboardq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rd3_msg_keyboardq.h; path = ../../render3d/include/rd3_msg_keyboardq.h; sourceTree = SOURCE_ROOT; };
+		D973739915078D5900BC1B85 /* rd3_dvertexbuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rd3_dvertexbuffer.cpp; path = ../../render3d/cpp/rd3_dvertexbuffer.cpp; sourceTree = SOURCE_ROOT; };
+		D973739B15078D8100BC1B85 /* eagl_dvertexbuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = eagl_dvertexbuffer.cpp; path = ../../render3d/cpp/eagl/eagl_dvertexbuffer.cpp; sourceTree = SOURCE_ROOT; };
+		D973739D15078D9800BC1B85 /* eagl_dvertexbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eagl_dvertexbuffer.h; path = ../../render3d/include/eagl/eagl_dvertexbuffer.h; sourceTree = SOURCE_ROOT; };
+		D973739E15078D9800BC1B85 /* eagl_vutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eagl_vutil.h; path = ../../render3d/include/eagl/eagl_vutil.h; sourceTree = SOURCE_ROOT; };
+		D97373A415078DC000BC1B85 /* ed3_obj_cam_key.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_obj_cam_key.cpp; path = ../../engine3d/cpp/ed3_obj_cam_key.cpp; sourceTree = SOURCE_ROOT; };
+		D97373A615078DD000BC1B85 /* ed3_obj_cam_key.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ed3_obj_cam_key.h; path = ../../engine3d/include/ed3_obj_cam_key.h; sourceTree = SOURCE_ROOT; };
+		D97373B815078E3A00BC1B85 /* system.debug.solid.color.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.debug.solid.color.fsh; path = ../../render3d/cpp/eagl/fx/system.debug.solid.color.fsh; sourceTree = SOURCE_ROOT; };
+		D97373B915078E3A00BC1B85 /* system.debug.solid.color.fx.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = system.debug.solid.color.fx.xml; path = ../../render3d/cpp/eagl/fx/system.debug.solid.color.fx.xml; sourceTree = SOURCE_ROOT; };
+		D97373BA15078E3A00BC1B85 /* system.debug.solid.color.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.debug.solid.color.vsh; path = ../../render3d/cpp/eagl/fx/system.debug.solid.color.vsh; sourceTree = SOURCE_ROOT; };
 		D97DE81C14EF7CF300E062CF /* ed3_object_lua.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_object_lua.cpp; path = ../../engine3d/cpp/ed3_object_lua.cpp; sourceTree = SOURCE_ROOT; };
 		D9803A8F14EFCE32002E3CE7 /* ed3_primitive_lua.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_primitive_lua.cpp; path = ../../engine3d/cpp/ed3_primitive_lua.cpp; sourceTree = SOURCE_ROOT; };
 		D9803A9114EFCE4F002E3CE7 /* ed3_primitive_lua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ed3_primitive_lua.h; path = ../../engine3d/include/ed3_primitive_lua.h; sourceTree = SOURCE_ROOT; };
@@ -1291,6 +1271,9 @@
 		D91D019814ECC0C800CEFA96 /* buffers */ = {
 			isa = PBXGroup;
 			children = (
+				D973739415078D3700BC1B85 /* rd3_dvertexbuffer.h */,
+				D973739915078D5900BC1B85 /* rd3_dvertexbuffer.cpp */,
+				D973739515078D3700BC1B85 /* rd3_dvertexbuffer.inl */,
 				D91D013214ECC02F00CEFA96 /* rd3_indexbuffer.cpp */,
 				D91D014314ECC02F00CEFA96 /* rd3_vertexbuffer.cpp */,
 				D91D018414ECC05D00CEFA96 /* rd3_vertexbuffer.h */,
@@ -1342,6 +1325,8 @@
 		D91D01CB14ECC19700CEFA96 /* msg */ = {
 			isa = PBXGroup;
 			children = (
+				D973739615078D3700BC1B85 /* rd3_msg_keyboard.h */,
+				D973739715078D3700BC1B85 /* rd3_msg_keyboardq.h */,
 				D91D013A14ECC02F00CEFA96 /* rd3_msg_gesture.cpp */,
 				D91D017414ECC05D00CEFA96 /* rd3_msg_gesture.h */,
 				D91D017514ECC05D00CEFA96 /* rd3_msg_gestureq.h */,
@@ -1474,6 +1459,7 @@
 		D93D5B5F14ECCDAE003FC949 /* fx */ = {
 			isa = PBXGroup;
 			children = (
+				D97373B715078E2300BC1B85 /* debug */,
 				D9D9B08E14F7AC2200087F6B /* stdrender */,
 				D94B57A914F2219B00EDAB8B /* after effects */,
 				D93D5B6C14ECCE99003FC949 /* system.default.vs.1.vsh */,
@@ -1563,6 +1549,9 @@
 		D93D5BCA14ECD5B1003FC949 /* buffers */ = {
 			isa = PBXGroup;
 			children = (
+				D973739D15078D9800BC1B85 /* eagl_dvertexbuffer.h */,
+				D973739E15078D9800BC1B85 /* eagl_vutil.h */,
+				D973739B15078D8100BC1B85 /* eagl_dvertexbuffer.cpp */,
 				D91D01DD14ECC33000CEFA96 /* eagl_vertexbuffer.h */,
 				D91D01D814ECC33000CEFA96 /* eagl_indexbuffer.h */,
 				D91D01E314ECC34C00CEFA96 /* eagl_indexbuffer.cpp */,
@@ -1623,6 +1612,16 @@
 				D94B57AC14F221B600EDAB8B /* system.after.effect.vs.vsh */,
 			);
 			name = "after effects";
+			sourceTree = "<group>";
+		};
+		D97373B715078E2300BC1B85 /* debug */ = {
+			isa = PBXGroup;
+			children = (
+				D97373B815078E3A00BC1B85 /* system.debug.solid.color.fsh */,
+				D97373B915078E3A00BC1B85 /* system.debug.solid.color.fx.xml */,
+				D97373BA15078E3A00BC1B85 /* system.debug.solid.color.vsh */,
+			);
+			name = debug;
 			sourceTree = "<group>";
 		};
 		D9803A8E14EFCDEB002E3CE7 /* rd3ext */ = {
@@ -1723,6 +1722,8 @@
 		D99923BD14EF598A003FC6A7 /* other */ = {
 			isa = PBXGroup;
 			children = (
+				D97373A615078DD000BC1B85 /* ed3_obj_cam_key.h */,
+				D97373A415078DC000BC1B85 /* ed3_obj_cam_key.cpp */,
 				D91D021414ECC48C00CEFA96 /* ed3_obj_cam_gest.h */,
 				D91D021814ECC48C00CEFA96 /* ed3_obj_mesh.h */,
 				D91D021914ECC48C00CEFA96 /* ed3_obj_texture.h */,
@@ -1997,6 +1998,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D97373BB15078E3A00BC1B85 /* system.debug.solid.color.fsh in Resources */,
+				D97373BD15078E3A00BC1B85 /* system.debug.solid.color.vsh in Resources */,
 				D98DC06014FA1136007F9146 /* system.solid.vs.2.vsh in Resources */,
 				D98DC06114FA1136007F9146 /* system.solid.ps.2.fsh in Resources */,
 				D9D9B09214F7AC4D00087F6B /* system.solid.vs.1.vsh in Resources */,
@@ -2015,44 +2018,7 @@
 				D93D5B5E14ECCDA6003FC949 /* system.font.vs.1.vsh in Resources */,
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				28EC4C5A11D54ECE0027AA9F /* sd3engiphViewController.xib in Resources */,
-				D91D008A14ECB9D700CEFA96 /* s_system_chars_b_mac.inl in Resources */,
-				D91D008B14ECB9D700CEFA96 /* s_system_chars_b_win32.inl in Resources */,
-				D91D008C14ECB9D700CEFA96 /* s_system_chars_w_mac.inl in Resources */,
-				D91D008D14ECB9D700CEFA96 /* s_system_chars_w_win32.inl in Resources */,
-				D91D008E14ECB9D700CEFA96 /* s_system_d2math_vector.inl in Resources */,
-				D91D008F14ECB9D700CEFA96 /* s_system_d3math_aabb.inl in Resources */,
-				D91D009014ECB9D700CEFA96 /* s_system_d3math_camera.inl in Resources */,
-				D91D009114ECB9D700CEFA96 /* s_system_d3math_frustum.inl in Resources */,
-				D91D009214ECB9D700CEFA96 /* s_system_d3math_matrix.inl in Resources */,
-				D91D009314ECB9D700CEFA96 /* s_system_d3math_plane.inl in Resources */,
-				D91D009414ECB9D700CEFA96 /* s_system_d3math_sphere.inl in Resources */,
-				D91D009514ECB9D700CEFA96 /* s_system_d3math_triangle.inl in Resources */,
-				D91D009614ECB9D700CEFA96 /* s_system_d3math_vector.inl in Resources */,
-				D91D009714ECB9D700CEFA96 /* s_system_global_mac.inl in Resources */,
-				D91D009814ECB9D700CEFA96 /* s_system_global_win32.inl in Resources */,
-				D91D009914ECB9D700CEFA96 /* s_system_math.inl in Resources */,
-				D91D009A14ECB9D700CEFA96 /* s_system_mem.inl in Resources */,
-				D91D009B14ECB9D700CEFA96 /* s_system_mt_at_mac.inl in Resources */,
-				D91D009C14ECB9D700CEFA96 /* s_system_mt_at_win32.inl in Resources */,
-				D91D009D14ECB9D700CEFA96 /* s_system_mt_cs_win32.inl in Resources */,
-				D91D009E14ECB9D700CEFA96 /* s_system_mt_cs.inl in Resources */,
-				D91D009F14ECB9D700CEFA96 /* s_system_mt_ev_win32.inl in Resources */,
-				D91D00A014ECB9D700CEFA96 /* s_system_object.inl in Resources */,
-				D91D00A114ECB9D700CEFA96 /* s_system_rgbcolor.inl in Resources */,
-				D91D00A214ECB9D700CEFA96 /* s_system_string.inl in Resources */,
 				D91D00A314ECB9D700CEFA96 /* s_system_xml.inl in Resources */,
-				D91D018814ECC05D00CEFA96 /* rd3_cdata.inl in Resources */,
-				D91D018914ECC05D00CEFA96 /* rd3_edata.inl in Resources */,
-				D91D018A14ECC05D00CEFA96 /* rd3_effect.inl in Resources */,
-				D91D018B14ECC05D00CEFA96 /* rd3_light.inl in Resources */,
-				D91D018C14ECC05D00CEFA96 /* rd3_lightpoint.inl in Resources */,
-				D91D018D14ECC05D00CEFA96 /* rd3_material.inl in Resources */,
-				D91D018E14ECC05D00CEFA96 /* rd3_perf_counters.inl in Resources */,
-				D91D018F14ECC05D00CEFA96 /* rd3_resobj.inl in Resources */,
-				D91D019014ECC05D00CEFA96 /* rd3_rstate.inl in Resources */,
-				D91D019114ECC05D00CEFA96 /* rd3_texture.inl in Resources */,
-				D91D019214ECC05D00CEFA96 /* rd3_types.inl in Resources */,
-				D91D022314ECC48C00CEFA96 /* ed3_object.inl in Resources */,
 				D93D5B5C14ECCDA6003FC949 /* system.font.fx.1.xml in Resources */,
 				D93D5B7814ECCE99003FC949 /* system.flatcolor.1.xml in Resources */,
 				D93D5B7914ECCE99003FC949 /* system.flatcolor.2.xml in Resources */,
@@ -2076,11 +2042,10 @@
 				D9BCA35614FCB764002ACED7 /* world_planks.png in Resources */,
 				D9BCA35714FCB764002ACED7 /* world_sand1.png in Resources */,
 				D9BCA41814FCE222002ACED7 /* world.lua in Resources */,
-				D9BCA66114FDC99A002ACED7 /* ed3_physics_shape.inl in Resources */,
-				D9DC7FFE1502FBFB003600E7 /* rd3_render_str.inl in Resources */,
 				D9DC80011502FC29003600E7 /* system.font.10.xml in Resources */,
 				D9DC80021502FC29003600E7 /* system.texture.font.10.png in Resources */,
 				D9DC80041502FC42003600E7 /* render.res.xml in Resources */,
+				D97373BC15078E3A00BC1B85 /* system.debug.solid.color.fx.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2316,6 +2281,9 @@
 				D9DC7FF31502FB75003600E7 /* s_system_files_name.cpp in Sources */,
 				D9DC7FF81502FBE5003600E7 /* rd3_register_types.cpp in Sources */,
 				D9DC7FF91502FBE5003600E7 /* rd3_resloader.cpp in Sources */,
+				D973739A15078D5900BC1B85 /* rd3_dvertexbuffer.cpp in Sources */,
+				D973739C15078D8100BC1B85 /* eagl_dvertexbuffer.cpp in Sources */,
+				D97373A515078DC000BC1B85 /* ed3_obj_cam_key.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

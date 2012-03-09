@@ -39,8 +39,11 @@ EngineApplication::EngineApplication( MACOSView* view ) throws_error:
 //-----------------------------------------------------------------------------------
 void EngineApplication::Send( const GestureEvent& event )
 {
+	/**
+	 to do
 	if( _pGestureMsgQueue != NULL )
 		_pGestureMsgQueue->SendMessage( event );
+	 */
 }
 
 //-----------------------------------------------------------------------------------

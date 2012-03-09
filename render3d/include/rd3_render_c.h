@@ -33,7 +33,7 @@ public:
 	/**
 	 *
 	 */
-	void Send( const GestureEvent& event ); 
+	void Send( const Rd3::GestureEvent& event ); 
 	
 	~EngineApplication();
 private:
