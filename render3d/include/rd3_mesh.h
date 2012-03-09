@@ -60,16 +60,20 @@ public:
 	
 	void SetVb( const sString& name );
 	void SetIb( const sString& name );
+
+	const Animation* GetAnimation() const { return _animation; }
 public:
 	void SetPrimitiveMesh( const Primitive3D& primitive ); 
 	
 	Mesh( Render* owner, const sString& objectName );
+	virtual ~Mesh();
 private:
 	use_resource<VertexBuffer>	_vertexBuffer;
 	use_resource<IndexBuffer>	_indexBuffer;
 	use_resource<Material>		_material;
 	PrimitiveType::PrimitiveType _type;
-	
+
+	Animation*					_animation;
 };
 	
 }

@@ -23,6 +23,7 @@
 #include "rd3_material.h"
 #include "rd3_render_str.h"
 #include "rd3_texture.h"
+#include "rd3_animation.h"
 
 
 COUNTER_USE( rd3_render_vertex_count )
@@ -254,10 +255,27 @@ void RenderState::UpdateTransformation()
 void RenderState::RenderMesh( const Mesh* pMesh )
 {
 	__S_ASSERT( pMesh != NULL );
+
+	const d3Matrix* prevMatrix = NULL;
+
+	if( pMesh->GetAnimation() )
+	{
+		Animation::Result result;
+		pMesh->GetAnimation()->Animate( _engineData->GetTime(), result );
+
+		d3Matrix m = result.GetTransformation();
+		prevMatrix = AddTransformation( &m );
+	}
+
+	BeginRenderObject();
 	
 	pMesh->GetMaterial().Apply( *this );
-	
-	RenderPrimitive( &pMesh->GetVb(), &pMesh->GetIb(), pMesh->GetPrimitiveType() );	
+	RenderPrimitive( &pMesh->GetVb(), &pMesh->GetIb(), pMesh->GetPrimitiveType() );
+
+	EndRenderObject();
+
+	if( prevMatrix != NULL )
+		SetTransformation( prevMatrix );
 }	
 
 //---------------------------------------------------------------------------

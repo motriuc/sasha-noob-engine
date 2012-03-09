@@ -63,6 +63,9 @@
 #define ELEMENT_CLIP			_S("clip")
 #define ELEMENT_PROJECTION		_S("projection")
 #define ELEMENT_FONT			_S("font")
+#define ELEMENT_ANIMATIONS		_S("animations")
+#define ELEMENT_ANIMATION		_S("animation")
+#define ELEMENT_KEYFRAME		_S("keyframe")
 
 #define ELEMENT_COLOR			_S("color")
 #define ELEMENT_COLOR_DIFFUSE	_S("color.diffuse")
@@ -120,6 +123,9 @@
 #define ATTR_PARENT_ATTACH _S("parent.attach")
 #define ATTR_INTENSITY	  _S("intensity")
 #define ATTR_HARDNESS	  _S("hardness")
+#define ATTR_WHAT		  _S("what")
+#define ATTR_ID			  _S("id")
+
 
 namespace Rd3 
 {

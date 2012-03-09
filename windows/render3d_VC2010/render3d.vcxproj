@@ -108,6 +108,8 @@
     <ClCompile Include="..\..\render3d\cpp\primitives\rd3_primitive_sphere.cpp" />
     <ClCompile Include="..\..\render3d\cpp\primitives\rd3_primitive_torus.cpp" />
     <ClCompile Include="..\..\render3d\cpp\rd3_after_effect.cpp" />
+    <ClCompile Include="..\..\render3d\cpp\rd3_animation.cpp" />
+    <ClCompile Include="..\..\render3d\cpp\rd3_animation_fun.cpp" />
     <ClCompile Include="..\..\render3d\cpp\rd3_create_rparam.cpp" />
     <ClCompile Include="..\..\render3d\cpp\rd3_def.cpp" />
     <ClCompile Include="..\..\render3d\cpp\rd3_dvertexbuffer.cpp" />
@@ -159,6 +161,8 @@
     <ClInclude Include="..\..\render3d\include\rd3.h" />
     <ClInclude Include="..\..\render3d\include\rd3afx.h" />
     <ClInclude Include="..\..\render3d\include\rd3_after_effect.h" />
+    <ClInclude Include="..\..\render3d\include\rd3_animation.h" />
+    <ClInclude Include="..\..\render3d\include\rd3_animation_fun.h" />
     <ClInclude Include="..\..\render3d\include\rd3_cdata.h" />
     <ClInclude Include="..\..\render3d\include\rd3_conf.h" />
     <ClInclude Include="..\..\render3d\include\rd3_create_rparam.h" />

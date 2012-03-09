@@ -20,6 +20,7 @@
 #include "rd3_render.h"
 #include "rd3_xml_def.h"
 #include "rd3_primitive.h"
+#include "rd3_animation.h"
 
 namespace Rd3
 {
@@ -27,8 +28,15 @@ namespace Rd3
 //-------------------------------------------------------------------	
 Mesh::Mesh( Render* owner, const sString& objectName ) :
 	_BaseClass( owner, objectName, ResourceType::E_MESH ),
-	_type( PrimitiveType::E_TRIANGLE_LIST )
+	_type( PrimitiveType::E_TRIANGLE_LIST ),
+	_animation( NULL )
 {
+}
+
+//-------------------------------------------------------------------	
+Mesh::~Mesh()
+{
+	delete _animation;
 }
 
 //-------------------------------------------------------------------	
@@ -110,6 +118,11 @@ void Mesh::LoadFromXml( const Xml::BaseDomNode& node, const Def& def, const Stre
 		else if( child.GetName() == ELEMENT_IBUFFER )
 		{
 			SetIb( child.GetAttributes()[ATTR_NAME] );			
+		}
+		else if( child.GetName() == ELEMENT_ANIMATIONS )
+		{
+			_animation = new Animation();
+			_animation->LoadFromXml( child, def );
 		}
 	}
 	

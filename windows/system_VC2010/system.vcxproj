@@ -88,6 +88,7 @@
     <None Include="..\..\system\include\s_system_d3math_frustum.inl" />
     <None Include="..\..\system\include\s_system_d3math_matrix.inl" />
     <None Include="..\..\system\include\s_system_d3math_plane.inl" />
+    <None Include="..\..\system\include\s_system_d3math_quaternion.inl" />
     <None Include="..\..\system\include\s_system_d3math_sphere.inl" />
     <None Include="..\..\system\include\s_system_d3math_triangle.inl" />
     <None Include="..\..\system\include\s_system_d3math_vector.inl" />
@@ -172,6 +173,7 @@
     <ClInclude Include="..\..\system\include\s_system_d3math_int.h" />
     <ClInclude Include="..\..\system\include\s_system_d3math_matrix.h" />
     <ClInclude Include="..\..\system\include\s_system_d3math_plane.h" />
+    <ClInclude Include="..\..\system\include\s_system_d3math_quaternion.h" />
     <ClInclude Include="..\..\system\include\s_system_d3math_sphere.h" />
     <ClInclude Include="..\..\system\include\s_system_d3math_triangle.h" />
     <ClInclude Include="..\..\system\include\s_system_d3math_vector.h" />

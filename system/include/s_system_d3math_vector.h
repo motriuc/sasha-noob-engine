@@ -161,7 +161,7 @@ public:
 	d3Vector operator / ( const d3Float f ) const;
 
 	/**
-	 * return sqrt( x*x + y*y + z*z )
+	 * returns sqrt( x*x + y*y + z*z )
 	 */
 	d3Float Magnitude() const;
 

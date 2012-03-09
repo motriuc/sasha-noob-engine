@@ -30,6 +30,7 @@ namespace d3Math
 	class d3Plane;
 	class d3AABBox;
 	class d3Sphere;
+	class d3Quaternion;
 
 	typedef d3Vector d3Point;
 
@@ -41,6 +42,7 @@ namespace d3Math
 	#include "s_system_d3math_plane.h"
 	#include "s_system_d3math_frustum.h"
 	#include "s_system_d3math_camera.h"
+	#include "s_system_d3math_quaternion.h"
 
 	#include "s_system_d3math_int.h"
 
@@ -53,4 +55,5 @@ namespace d3Math
 	#include "s_system_d3math_frustum.inl"
 
 	#include "s_system_d3math_camera.inl"
+	#include "s_system_d3math_quaternion.inl"
 }

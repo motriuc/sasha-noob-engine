@@ -35,16 +35,6 @@ public:
 	/**
 	 * 
 	 */
-	d3Matrix( const d3Matrix& m );
-
-	/**
-	 * 
-	 */
-	void operator = ( const d3Matrix& m );
-
-	/**
-	 * 
-	 */
 	void operator *= ( const d3Matrix& m );
 
 	/**
@@ -121,6 +111,16 @@ public:
 	 * 
 	 */
 	void SetRotate( const d3Vector& n, d3Float a );
+
+	/**
+	 * Set rotation from Quaternion
+	 */
+	void SetRotate( const d3Quaternion& q );
+
+	/**
+	 *
+	 */
+	void SetRotateEuler( d3Float ax, d3Float ay, d3Float az );
 
 	/**
 	 * 

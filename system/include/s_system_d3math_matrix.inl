@@ -16,10 +16,12 @@
 //      
 /////////////////////////////////////////////////////////////////////
 
+//-------------------------------------------------------------------
 inline d3Matrix::d3Matrix()
 {
 }
 
+//-------------------------------------------------------------------
 inline d3Matrix::d3Matrix( d3Float v )
 {
 	_11 = _22 = _33 = _44 = v;
@@ -30,16 +32,7 @@ inline d3Matrix::d3Matrix( d3Float v )
 	_41 = _42 = _43 = 0.0f;
 }
 
-inline d3Matrix::d3Matrix( const d3Matrix& m )
-{
-	Memory::Copy( v, m.v, sizeof(d3Float) * 16 );
-}
-
-inline void d3Matrix::operator = ( const d3Matrix& m )
-{
-	Memory::Copy( v, m.v, sizeof(d3Float) * 16 );
-}
-
+//-------------------------------------------------------------------
 inline void d3Matrix::operator *= ( const d3Matrix& m )
 {
 	d3Matrix t;
@@ -47,11 +40,13 @@ inline void d3Matrix::operator *= ( const d3Matrix& m )
 	*this = t;
 }
 
+//-------------------------------------------------------------------
 inline void d3Matrix::operator *= ( d3Float k )
 {
 	Mul( *this, *this, k );
 }
 
+//-------------------------------------------------------------------
 inline d3Matrix d3Matrix::operator * ( const d3Matrix& m ) const
 {
 	d3Matrix t;
@@ -59,6 +54,7 @@ inline d3Matrix d3Matrix::operator * ( const d3Matrix& m ) const
 	return t;
 }
 
+//-------------------------------------------------------------------
 inline d3Matrix d3Matrix::operator * ( d3Float k ) const
 {
 	d3Matrix r;
@@ -66,17 +62,19 @@ inline d3Matrix d3Matrix::operator * ( d3Float k ) const
 	return r;
 }
 
+//-------------------------------------------------------------------
 inline void d3Matrix::operator += ( const d3Matrix& m )
 {
 	Add( *this, *this, m );
 }
 
+//-------------------------------------------------------------------
 inline void d3Matrix::operator -= ( const d3Matrix& m )
 {
 	Sub( *this, *this, m );
 }
 
-
+//-------------------------------------------------------------------
 inline void d3Matrix::Mul( d3Matrix& r, const d3Matrix& a, const d3Matrix& b )
 {
 	__S_ASSERT( &r != &a );
@@ -103,6 +101,7 @@ inline void d3Matrix::Mul( d3Matrix& r, const d3Matrix& a, const d3Matrix& b )
 	r._44 = a._41 * b._14 + a._42 * b._24 + a._43 * b._34 + a._44 * b._44;
 }
 
+//-------------------------------------------------------------------
 inline void d3Matrix::Mul( d3Matrix& r, const d3Matrix& a, d3Float k )
 {
 	r._11 = a._11 * k;
@@ -123,6 +122,7 @@ inline void d3Matrix::Mul( d3Matrix& r, const d3Matrix& a, d3Float k )
 	r._44 = a._44 * k;
 }
 
+//-------------------------------------------------------------------
 inline void d3Matrix::Add( d3Matrix& r, const d3Matrix& a, const d3Matrix& b )
 {
 	r._11 = a._11 + b._11;
@@ -146,6 +146,7 @@ inline void d3Matrix::Add( d3Matrix& r, const d3Matrix& a, const d3Matrix& b )
 	r._44 = a._44 + b._44;
 }
 
+//-------------------------------------------------------------------
 inline void d3Matrix::Sub( d3Matrix& r, const d3Matrix& a, const d3Matrix& b )
 {
 	r._11 = a._11 - b._11;
@@ -169,6 +170,7 @@ inline void d3Matrix::Sub( d3Matrix& r, const d3Matrix& a, const d3Matrix& b )
 	r._44 = a._44 - b._44;
 }
 
+//-------------------------------------------------------------------
 inline d3Float d3Matrix::CoFactor( sInt row, sInt col ) const
 {
 	sInt r1 = ( row + 1 ) & 3;
@@ -194,6 +196,7 @@ inline d3Float d3Matrix::CoFactor( sInt row, sInt col ) const
 	) * ((row + col) & 1 ? -1.0f : +1.0f); 
 }
 
+//-------------------------------------------------------------------
 inline d3Float d3Matrix::Determinant() const
 {
 	return
@@ -203,6 +206,7 @@ inline d3Float d3Matrix::Determinant() const
 		m[0][3] * CoFactor( 0, 3 );   
 }
 
+//-------------------------------------------------------------------
 inline sBool d3Matrix::Invert( d3Matrix& r, const d3Matrix& a )
 {
 	__S_ASSERT( &r != &a );
@@ -234,12 +238,14 @@ inline sBool d3Matrix::Invert( d3Matrix& r, const d3Matrix& a )
 	return sTrue;
 }
 
+//-------------------------------------------------------------------
 inline sBool d3Matrix::Invert()
 {
 	d3Matrix temp( *this );
 	return Invert( *this, temp );
 }
 
+//-------------------------------------------------------------------
 inline d3Matrix d3Matrix::operator !() const
 {
 	d3Matrix temp;
@@ -248,6 +254,7 @@ inline d3Matrix d3Matrix::operator !() const
 	return temp;
 }
 
+//-------------------------------------------------------------------
 inline sBool d3Matrix::InvertRT( d3Matrix& r, const d3Matrix& a )
 {
 	r._11 = a._11;
@@ -272,6 +279,7 @@ inline sBool d3Matrix::InvertRT( d3Matrix& r, const d3Matrix& a )
 	return sTrue;
 }
 
+//-------------------------------------------------------------------
 inline void d3Matrix::Transpose( d3Matrix& r )
 {
 	d3Float temp;
@@ -301,11 +309,13 @@ inline void d3Matrix::Transpose( d3Matrix& r )
 	r._43 = temp;
 }
 
+//-------------------------------------------------------------------
 inline void d3Matrix::Transpose()
 {
 	Transpose( *this );
 }
 
+//-------------------------------------------------------------------
 inline d3Matrix d3Matrix::operator ~() const
 {
 	d3Matrix r;
@@ -334,6 +344,8 @@ inline d3Matrix d3Matrix::operator ~() const
 /************************************************************************/
 /* Set functions                                                        */
 /************************************************************************/
+
+//-------------------------------------------------------------------
 inline void d3Matrix::SetRotateX( d3Float a )
 {
 	_11 = _44 = 1.0f;
@@ -348,6 +360,7 @@ inline void d3Matrix::SetRotateX( d3Float a )
 	_32 = - _23;
 }
 
+//-------------------------------------------------------------------
 inline void d3Matrix::SetRotateY( d3Float a )
 {
 	_22 = _44 = 1.0f;
@@ -362,6 +375,7 @@ inline void d3Matrix::SetRotateY( d3Float a )
 	_13 = - _31;
 }
 
+//-------------------------------------------------------------------
 inline void d3Matrix::SetRotateZ( d3Float a )
 {
 	_33 = _44 = 1.0f;
@@ -376,6 +390,7 @@ inline void d3Matrix::SetRotateZ( d3Float a )
 	_21 = - _12;
 }
 
+//-------------------------------------------------------------------
 inline void d3Matrix::SetRotate( const d3Vector& n, d3Float a )
 {
 	d3Float ca = FMath::Cos( a );
@@ -400,6 +415,45 @@ inline void d3Matrix::SetRotate( const d3Vector& n, d3Float a )
 	_44 = 1.0f;
 }
 
+//-------------------------------------------------------------------
+inline void d3Matrix::SetRotateEuler( d3Float ax, d3Float ay, d3Float az )
+{
+	SetRotate( d3Quaternion( ax, ay, az ) );
+}
+
+//-------------------------------------------------------------------
+inline void d3Matrix::SetRotate( const d3Quaternion& q )
+{	
+	d3Float xy = q.x * q.y;
+	d3Float xz = q.x * q.z;
+	d3Float xw = q.x * q.w;
+	
+	d3Float yy = q.y * q.y;
+	d3Float yz = q.y * q.z;
+	d3Float yw = q.y * q.w;
+	
+	d3Float zz = q.z * q.z;
+	d3Float zw = q.z * q.w;
+
+	d3Float ww = q.w * q.w;
+	
+	_11 = 1.0f - 2.0f * (zz + ww);
+	_21 = 2.0f * (yz - xw);
+	_31 = 2.0f * (xz + yw);
+	_12 = 2.0f * (yz + xw);
+	_22 = 1.0f - 2.0f * (yy + ww);
+	_32 = 2.0f * (zw - xy);
+	_13 = 2.0f * (yw - xz);
+	_23 = 2.0f * (xy + zw);
+	_33 = 1.0f - 2.0f * (yy + zz);
+
+	_14 = _24 = _34 = 
+	_41 = _42 = _43 = 0.0f;
+
+	_44 = 1.0f;
+}
+
+//-------------------------------------------------------------------
 inline void d3Matrix::SetScale( d3Float x, d3Float y, d3Float z )
 {
 	_11 = x;
@@ -414,6 +468,7 @@ inline void d3Matrix::SetScale( d3Float x, d3Float y, d3Float z )
 	_44 = 1.0f;
 }
 
+//-------------------------------------------------------------------
 inline void d3Matrix::SetScale( const d3Vector& n, d3Float k )
 {
 	k = 1.0f - k;
@@ -436,6 +491,7 @@ inline void d3Matrix::SetScale( const d3Vector& n, d3Float k )
 	_44 = 1.0f;
 }
 
+//-------------------------------------------------------------------
 inline void d3Matrix::SetProjectToPlane( const d3Vector& n )
 {
 	_11 = 1.0f - n.x * n.x;
@@ -456,6 +512,7 @@ inline void d3Matrix::SetProjectToPlane( const d3Vector& n )
 	_44 = 1.0f;
 }
 
+//-------------------------------------------------------------------
 inline void d3Matrix::SetTranslation( const d3Vector& v )
 {
 	_11 = _22 = _33 = _44 = 1.0f;
@@ -469,21 +526,25 @@ inline void d3Matrix::SetTranslation( const d3Vector& v )
 	_43 = v.z;
 }
 
+//-------------------------------------------------------------------
 inline void d3Matrix::SetTranslationX( d3Float x )
 {
 	SetTranslation( d3Vector( x, 0.0f, 0.0f ) );
 }
 
+//-------------------------------------------------------------------
 inline void d3Matrix::SetTranslationY( d3Float y )
 {
-  SetTranslation( d3Vector( 0.0f, y, 0.0f ) );
+	SetTranslation( d3Vector( 0.0f, y, 0.0f ) );
 }
 
+//-------------------------------------------------------------------
 inline void d3Matrix::SetTranslationZ( d3Float z )
 {
-  SetTranslation( d3Vector( 0.0f, 0.0f, z ) );
+	SetTranslation( d3Vector( 0.0f, 0.0f, z ) );
 }
 
+//-------------------------------------------------------------------
 inline void d3Matrix::SetPerspectiveProjection( d3Float d )
 {
 	_11 = _12 = _13 = 1.0f;
@@ -496,6 +557,7 @@ inline void d3Matrix::SetPerspectiveProjection( d3Float d )
 	_34 = 1.0f / d;
 }
 
+//-------------------------------------------------------------------
 inline void d3Matrix::SetLookAtRH( const d3Point& pEye, const d3Vector& vLookAt, const d3Vector& vUp )
 {
 	d3Vector zaxis = -vLookAt.UnitVector();
@@ -508,6 +570,7 @@ inline void d3Matrix::SetLookAtRH( const d3Point& pEye, const d3Vector& vLookAt,
 	_41 = - xaxis * pEye;  _42 = - yaxis * pEye;  _43 = - zaxis * pEye;   _44 = 1.0f;
 }
 
+//-------------------------------------------------------------------
 inline void d3Matrix::SetPerspectiveFovRH( d3Float fFov, d3Float fAspect, d3Float fNearPlane, d3Float fFarPlane )
 {
 	d3Float yScale = FMath::CoTan( fFov / 2.0f );
@@ -520,6 +583,7 @@ inline void d3Matrix::SetPerspectiveFovRH( d3Float fFov, d3Float fAspect, d3Floa
 	_41 = 0.0f;         _42 = 0.0f;         _43 = z * fNearPlane;     _44 = 0.0f;
 }
 
+//-------------------------------------------------------------------
 inline void d3Matrix::SetLookAtLH( const d3Point& pEye, const d3Vector& vLookAt, const d3Vector& vUp )
 {
 	d3Vector zaxis = vLookAt.UnitVector();
@@ -532,6 +596,7 @@ inline void d3Matrix::SetLookAtLH( const d3Point& pEye, const d3Vector& vLookAt,
 	_41 = - xaxis * pEye;  _42 = - yaxis * pEye;  _43 = - zaxis * pEye;   _44 = 1.0f;
 }
 
+//-------------------------------------------------------------------
 inline void d3Matrix::SetPerspectiveFovLH( d3Float fFov, d3Float fAspect, d3Float fNearPlane, d3Float fFarPlane )
 {
 	d3Float yScale = FMath::CoTan( fFov / 2.0f );
@@ -544,6 +609,7 @@ inline void d3Matrix::SetPerspectiveFovLH( d3Float fFov, d3Float fAspect, d3Floa
 	_41 = 0.0f;         _42 = 0.0f;         _43 = - z * fNearPlane;   _44 = 0.0f;
 }
 
+//-------------------------------------------------------------------
 inline void d3Matrix::GetNormalMatrix( d3Matrix& m ) const
 {	
 	m = *this;
@@ -555,11 +621,13 @@ inline void d3Matrix::GetNormalMatrix( d3Matrix& m ) const
 /* Get functions                                                        */
 /************************************************************************/
 
+//-------------------------------------------------------------------
 inline void d3Matrix::GetTranslation( d3Matrix& m ) const
 {
 	m.SetTranslation( d3Vector( _41, _42, _43 ) );
 }
 
+//-------------------------------------------------------------------
 inline void d3Matrix::GetTranslation( d3Vector& v ) const
 {
 	v.x = _41;
@@ -567,6 +635,7 @@ inline void d3Matrix::GetTranslation( d3Vector& v ) const
 	v.z = _43;
 }
 
+//-------------------------------------------------------------------
 inline void d3Matrix::GetScale( d3Vector& v ) const
 {
 	v.x = _11;
@@ -574,6 +643,7 @@ inline void d3Matrix::GetScale( d3Vector& v ) const
 	v.z = _33;
 }
 
+//-------------------------------------------------------------------
 inline void d3Matrix::GetNoTranslation( d3Matrix& m ) const
 {
 	m = *this;
@@ -583,6 +653,8 @@ inline void d3Matrix::GetNoTranslation( d3Matrix& m ) const
 /************************************************************************/
 /* Remove functions                                                     */
 /************************************************************************/
+
+//-------------------------------------------------------------------
 inline void d3Matrix::RemoveTranslation()
 {
 	_41 = _42 = _43 = 0.0f;

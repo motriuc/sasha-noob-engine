@@ -61,6 +61,7 @@ class DynamicVertexBuffer;
 class GestureEvent;
 class KeyboardEvent;
 class EngineData;
+class Animation;
 		
 /**
  * Vertex data list types

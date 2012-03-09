@@ -49,10 +49,7 @@ void d3MeshObject::LoadFromXML( const Xml::BaseDomNode& element, Ed3::LoadDataPa
 void d3MeshObject::Render( const Ed3::d3RenderData& renderData )
 {
 	Rd3::RenderState& render = renderData.rstate();
-		
-	render.BeginRenderObject();
 	render.RenderMesh( _mesh );
-	render.EndRenderObject();
 }
 
 //-------------------------------------------------------------------

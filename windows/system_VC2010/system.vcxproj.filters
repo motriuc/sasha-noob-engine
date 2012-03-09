@@ -34,6 +34,12 @@
     <Filter Include="system\Header Files\flies">
       <UniqueIdentifier>{b16cf14c-d9cb-48bf-a34c-8065812bf910}</UniqueIdentifier>
     </Filter>
+    <Filter Include="system\Header Files\math\d2math">
+      <UniqueIdentifier>{41a20bad-e113-455b-bb2d-e23f6c3a9a1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="system\Header Files\math\d3math">
+      <UniqueIdentifier>{c7d06e27-c89d-4db4-af31-c334b7f9136c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -76,33 +82,6 @@
     <None Include="..\..\system\include\s_system_xml.inl">
       <Filter>system\Header Files</Filter>
     </None>
-    <None Include="..\..\system\include\s_system_d2math_vector.inl">
-      <Filter>system\Header Files\math</Filter>
-    </None>
-    <None Include="..\..\system\include\s_system_d3math_aabb.inl">
-      <Filter>system\Header Files\math</Filter>
-    </None>
-    <None Include="..\..\system\include\s_system_d3math_camera.inl">
-      <Filter>system\Header Files\math</Filter>
-    </None>
-    <None Include="..\..\system\include\s_system_d3math_frustum.inl">
-      <Filter>system\Header Files\math</Filter>
-    </None>
-    <None Include="..\..\system\include\s_system_d3math_matrix.inl">
-      <Filter>system\Header Files\math</Filter>
-    </None>
-    <None Include="..\..\system\include\s_system_d3math_plane.inl">
-      <Filter>system\Header Files\math</Filter>
-    </None>
-    <None Include="..\..\system\include\s_system_d3math_sphere.inl">
-      <Filter>system\Header Files\math</Filter>
-    </None>
-    <None Include="..\..\system\include\s_system_d3math_triangle.inl">
-      <Filter>system\Header Files\math</Filter>
-    </None>
-    <None Include="..\..\system\include\s_system_d3math_vector.inl">
-      <Filter>system\Header Files\math</Filter>
-    </None>
     <None Include="..\..\system\include\s_system_chars_w_win32.inl">
       <Filter>system\Header Files\chars</Filter>
     </None>
@@ -114,6 +93,36 @@
     </None>
     <None Include="..\..\system\include\s_system_chars_w_mac.inl">
       <Filter>system\Header Files\chars</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_d2math_vector.inl">
+      <Filter>system\Header Files\math\d2math</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_d3math_vector.inl">
+      <Filter>system\Header Files\math\d3math</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_d3math_aabb.inl">
+      <Filter>system\Header Files\math\d3math</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_d3math_camera.inl">
+      <Filter>system\Header Files\math\d3math</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_d3math_frustum.inl">
+      <Filter>system\Header Files\math\d3math</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_d3math_matrix.inl">
+      <Filter>system\Header Files\math\d3math</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_d3math_plane.inl">
+      <Filter>system\Header Files\math\d3math</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_d3math_quaternion.inl">
+      <Filter>system\Header Files\math\d3math</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_d3math_sphere.inl">
+      <Filter>system\Header Files\math\d3math</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_d3math_triangle.inl">
+      <Filter>system\Header Files\math\d3math</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -329,42 +338,6 @@
     <ClInclude Include="..\..\system\include\s_system_xml.h">
       <Filter>system\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_d2math.h">
-      <Filter>system\Header Files\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_d3math_vector.h">
-      <Filter>system\Header Files\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_d2math_vector.h">
-      <Filter>system\Header Files\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_d3math.h">
-      <Filter>system\Header Files\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_d3math_aabb.h">
-      <Filter>system\Header Files\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_d3math_camera.h">
-      <Filter>system\Header Files\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_d3math_frustum.h">
-      <Filter>system\Header Files\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_d3math_int.h">
-      <Filter>system\Header Files\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_d3math_matrix.h">
-      <Filter>system\Header Files\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_d3math_plane.h">
-      <Filter>system\Header Files\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_d3math_sphere.h">
-      <Filter>system\Header Files\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_d3math_triangle.h">
-      <Filter>system\Header Files\math</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_chars.h">
       <Filter>system\Header Files\chars</Filter>
     </ClInclude>
@@ -463,6 +436,45 @@
     </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_files_lfile.h">
       <Filter>system\Header Files\flies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_d2math.h">
+      <Filter>system\Header Files\math\d2math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_d3math.h">
+      <Filter>system\Header Files\math\d2math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_d2math_vector.h">
+      <Filter>system\Header Files\math\d2math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_d3math_aabb.h">
+      <Filter>system\Header Files\math\d3math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_d3math_camera.h">
+      <Filter>system\Header Files\math\d3math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_d3math_frustum.h">
+      <Filter>system\Header Files\math\d3math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_d3math_int.h">
+      <Filter>system\Header Files\math\d3math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_d3math_matrix.h">
+      <Filter>system\Header Files\math\d3math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_d3math_plane.h">
+      <Filter>system\Header Files\math\d3math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_d3math_quaternion.h">
+      <Filter>system\Header Files\math\d3math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_d3math_sphere.h">
+      <Filter>system\Header Files\math\d3math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_d3math_triangle.h">
+      <Filter>system\Header Files\math\d3math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_d3math_vector.h">
+      <Filter>system\Header Files\math\d3math</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

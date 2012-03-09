@@ -109,6 +109,15 @@ def GetMaterialTexture(Material):
             return ImageFiles[0]
     return None		
 
+def GetArrayIndexString(id):
+    if id == 0:
+       return "X"
+    if id == 1:
+       return "Y"
+    if id == 2:
+       return "Z"
+    return ""
+	  
 ##------------------------------------------------------------------------------------------
 ## SashaNoobEngineExporter
 ##------------------------------------------------------------------------------------------
@@ -389,14 +398,14 @@ _41=\"{:9f}\" _42=\"{:9f}\" _43=\"{:9f}\" _44=\"{:9f}\" \
         else:
             mesh = object.to_mesh(bpy.context.scene, False, "PREVIEW")
 		
-        self.WriteMesh( mesh, object.data.name )
+        self.WriteMesh( mesh, object.data.name, object.animation_data )
 		
         if self.settings.ApplyModifiers and self.settings.ExportArmatures:
             bpy.data.objects.remove(copyObject)
         bpy.data.meshes.remove(mesh)
         self.log("Done")
 	
-    def WriteMesh(self,mesh,name):
+    def WriteMesh(self,mesh,name, animations):
         self.AddWorldResource( "<!-- object {} -->".format( name ) )
 		
         self.WriteMeshVB(mesh,name)
@@ -417,6 +426,8 @@ _41=\"{:9f}\" _42=\"{:9f}\" _43=\"{:9f}\" _44=\"{:9f}\" \
         fmesh.write( "\n{}<vbuffer name=\"{}\"/>".format( "\t" * tl, rname ) )
         fmesh.write( "\n{}<ibuffer name=\"{}\"/>".format( "\t" * tl, rname ) )
         self.WriteMeshMaterials( fmesh, tl, mesh, name )
+        if self.settings.ExportAnimation != 0:
+             self.WritAnimations(fmesh, tl, animations)
         tl-=1
         fmesh.write( "\n{}</mesh>".format( "\t" * tl ) )
 		
@@ -425,7 +436,47 @@ _41=\"{:9f}\" _42=\"{:9f}\" _43=\"{:9f}\" _44=\"{:9f}\" \
         self.log("Done")
         self.AddWorldResource( "<mesh name=\"{}\" path=\"%gameres%/{}\"/>".format( rname, fname ) )
 		
-		
+    def WritAnimations(self, fmesh, tl, animations):
+        self.log("Writing Animations...")
+        self.logtab( 1 )
+        fmesh.write( "\n{}<animations>".format( "\t" * tl ) )
+        tl +=1
+        if animations.action:
+            for FCurve in animations.action.fcurves:
+                self.log( "Animation path: {} {}".format( FCurve.data_path, FCurve.array_index ) )
+                if FCurve.data_path == "location":
+                    id = GetArrayIndexString( FCurve.array_index )
+                    if id != "":
+                        fmesh.write( "\n{}<animation type=\"move\" what=\"{}\">".format( "\t" * tl, id ) )
+                        tl +=1
+                        for Keyframe in FCurve.keyframe_points:
+                            fmesh.write( "\n{}<keyframe id=\"{}\" value=\"{:9f}\"/>".format( "\t" * tl, Keyframe.co[0], Keyframe.co[1] ) )
+                        tl -=1
+                        fmesh.write( "\n{}</animation>".format( "\t" * tl ) )
+                if FCurve.data_path == "rotation_euler":
+                    id = GetArrayIndexString( FCurve.array_index )
+                    if id != "":
+                        fmesh.write( "\n{}<animation type=\"rotate\" what=\"{}\">".format( "\t" * tl, id ) )
+                        tl +=1
+                        for Keyframe in FCurve.keyframe_points:
+                            fmesh.write( "\n{}<keyframe id=\"{}\" value=\"{:9f}\"/>".format( "\t" * tl, Keyframe.co[0], Keyframe.co[1] ) )
+                        tl -=1
+                        fmesh.write( "\n{}</animation>".format( "\t" * tl ) )
+                if FCurve.data_path == "scale":
+                    id = GetArrayIndexString( FCurve.array_index )
+                    if id != "":
+                        fmesh.write( "\n{}<animation type=\"scale\" what=\"{}\">".format( "\t" * tl, id ) )
+                        tl +=1
+                        for Keyframe in FCurve.keyframe_points:
+                            fmesh.write( "\n{}<keyframe id=\"{}\" value=\"{:9f}\"/>".format( "\t" * tl, Keyframe.co[0], Keyframe.co[1] ) )
+                        tl -=1
+                        fmesh.write( "\n{}</animation>".format( "\t" * tl ) )
+			
+        tl -=1
+        fmesh.write( "\n{}</animations>".format( "\t" * tl ) )
+        self.logtab( -1 )
+        self.log("Done")
+    
 		
     def WriteMeshIB(self,mesh,name):
         fname = "{}_mesh_{}.ib".format(self.settings.Prefix, name)
@@ -571,12 +622,16 @@ _41=\"{:9f}\" _42=\"{:9f}\" _43=\"{:9f}\" _44=\"{:9f}\" \
             if Texture:
                 self.log("TextureFilename {}".format(Texture))
 				
-                name = os.path.splitext( Texture.image.name )[0]
-                textureName = "{}.{}".format( self.settings.Prefix, name )
-                textureFileName = "{}_{}.png".format( self.settings.Prefix, name )
+                imageName = os.path.splitext( Texture.image.name )[0]
+                textureName = "{}.{}".format( self.settings.Prefix, imageName )
+                textureFileName = "{}_{}.png".format( self.settings.Prefix, imageName )
                 path = os.path.join( self.settings.Path, textureFileName )
                 
-                fmesh.write( "\n{}<material type=\"texture\" name=\"{}\"/>".format( "\t" * tl, textureName ) )
+                fmesh.write( "\n{}<material type=\"texture\" name=\"{}\">".format( "\t" * tl, name ) )
+                tl +=1
+                fmesh.write( "\n{}<texture name=\"{}\"/>".format( "\t" * tl, textureName ) )
+                tl -=1
+                fmesh.write( "\n{}</material>".format( "\t" * tl ) )
 				
                 self.log("Save texture '{}' to : {}".format( textureName, path ))
                 Texture.image.save_render( path )

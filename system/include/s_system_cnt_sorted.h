@@ -46,6 +46,11 @@ public:
 			}
 		}
 	}
+
+	sInt FindUpperBound( const _Type& v ) const
+	{
+		return FindData::BinaryUpperBound( _data, v );
+	}
 	
 	inline sInt Size() const
 	{

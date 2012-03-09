@@ -61,6 +61,12 @@
     <Filter Include="render\Header Files\resources\msg">
       <UniqueIdentifier>{e6c38c12-bdba-451a-bf12-2f78870c40d7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="render\Header Files\animation">
+      <UniqueIdentifier>{3cf20694-a0fa-4927-b87c-a56ade7a617b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="render\Source Files\animation">
+      <UniqueIdentifier>{e16c6a6a-68b6-4e35-b309-5655f77ce412}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -234,6 +240,12 @@
     <ClCompile Include="..\..\render3d\cpp\dx9\dx9_msg_keyboardq.cpp">
       <Filter>renderdx9\cpp</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\rd3_animation.cpp">
+      <Filter>render\Source Files\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\rd3_animation_fun.cpp">
+      <Filter>render\Source Files\animation</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\render3d\include\rd3_utils.h">
@@ -385,6 +397,12 @@
     </ClInclude>
     <ClInclude Include="..\..\render3d\include\dx9\dx9_msg_keyboardq.h">
       <Filter>renderdx9\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_animation.h">
+      <Filter>render\Header Files\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_animation_fun.h">
+      <Filter>render\Header Files\animation</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
