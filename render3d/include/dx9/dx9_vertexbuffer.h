@@ -46,7 +46,7 @@ public:
 	) throws_error;
 
 	/**
-	 *
+	 * points, tx1
 	 */
 	Dx9VertexBuffer( 
 		Rd3::Render* owner,  
@@ -54,6 +54,16 @@ public:
 		const Rd3::VertexPList& p,
 		const Rd3::VertexTxCoord& tx
 	) throws_error;
+
+	/**
+	 * points, normals
+	 */
+	Dx9VertexBuffer( 
+		Rd3::Render* owner,  
+		const sString& objectName, 
+		const Rd3::VertexPList& points,
+		const Rd3::VertexNList& normals
+	);
 
 	/**
 	 *

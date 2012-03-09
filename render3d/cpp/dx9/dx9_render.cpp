@@ -171,17 +171,6 @@ Rd3::DynamicVertexBuffer* Dx9Render::CreateDynamicVertexBuffer( Rd3::VertexBuffe
 }
 
 //------------------------------------------------------------------ 
-Rd3::VertexBuffer* Dx9Render::CreateVertexBufferFromFile(
-		const sString& objectName,
-		const sString& path,
-		const Rd3::StreamArchive& archive
-	) throws_error
-{
-	__S_ASSERT( sFalse );
-	return NULL;
-}
-	
-//------------------------------------------------------------------ 
 Rd3::VertexBuffer* Dx9Render::CreateVertexBuffer(
 		const sString& objectName,
 		const Rd3::VertexPList& points 
@@ -229,8 +218,28 @@ Rd3::VertexBuffer* Dx9Render::CreateVertexBuffer(
 		const Rd3::VertexNList& normals
 	) throws_error
 {
-	__S_ASSERT( sFalse );
-	return NULL;
+	if( objectName.Length() > 0 && _vertexBufferPool[objectName] != NULL )
+		error_throw_arg( System::Errors::StringError ) 
+			_S("Duplicate object resource name :") + objectName 
+		);
+	
+	Dx9VertexBuffer* vb = NULL;
+	try
+	{
+		vb = new Dx9VertexBuffer( this, objectName, points, normals );
+		
+		if( objectName.Length() > 0 )
+			_vertexBufferPool.Add( vb );
+	}
+	catch(...)
+	{
+		if (vb)
+			vb->UnuseResource();
+	
+		throw;
+	}
+	
+	return vb;
 }
 	
 //------------------------------------------------------------------ 

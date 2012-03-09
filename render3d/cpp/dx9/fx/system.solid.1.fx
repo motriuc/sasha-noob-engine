@@ -1,6 +1,6 @@
 /////////////////////////////////////////////////////////////////////
-//  File Name               : system.texture.1.fx
-//  Created                 : 8 3 2012
+//  File Name               : system.solid.1.fx
+//  Created                 : 9 3 2012
 //  File path               : SLibF\render3d\cpp\dx9\fx
 //  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
@@ -30,15 +30,9 @@ float4 rd_light1_specular;
 float4 rd_light1_diffuse;
 float4 rd_light1_ambient;
 
-texture2D rd_tx1<>;
-
-sampler LinearSampler =
-sampler_state
-{
-    Texture = <rd_tx1>;
-    MinFilter = Linear;
-    MagFilter = Linear; 
-};
+float4 rd_color_specular;
+float4 rd_color_diffuse;
+float4 rd_color_ambient;
 
 struct VS_IN
 {
@@ -76,11 +70,10 @@ float4 PSNormal( VS_OUT v ) : COLOR
 	float fPhongValue = saturate( dot( vReflection, vPointToCamera ) );
 	
 	float fSpecular =  material_coef_phong * pow( fPhongValue, material_coef_phong_exp );
-	float4 color = tex2D( LinearSampler, v.vTex );
 
-	float4 specColor = ( rd_light1_specular * color ) * fSpecular;
-	float4 difColor = ( rd_light1_diffuse * color ) * fDifColor;
-	float4 ambColor = ( rd_light1_ambient * color ) * material_coef_ambient;
+	float4 specColor = ( rd_light1_specular * rd_color_specular ) * fSpecular;
+	float4 difColor = ( rd_light1_diffuse * rd_color_diffuse ) * fDifColor;
+	float4 ambColor = ( rd_light1_ambient * rd_color_ambient ) * material_coef_ambient;
 
 	return saturate( difColor + specColor + ambColor );
 }

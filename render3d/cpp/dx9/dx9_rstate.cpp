@@ -182,6 +182,8 @@ void Dx9RenderState::BeginWorldRender( const Rd3::EngineDataForRender& edata )
 	pDevice->SetRenderState( D3DRS_FILLMODE, D3DFILL_SOLID );
 	pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_CW );
 #endif
+	
+	pDevice->SetRenderState( D3DRS_ZENABLE,  D3DZB_TRUE );
 
 	COUNTER_TIME_STOP( rd3_render_time_draw );
 }
@@ -196,6 +198,7 @@ void Dx9RenderState::EndWorldRender()
 	{
 		pDevice->SetRenderState( D3DRS_FILLMODE, D3DFILL_SOLID );
 		pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_NONE );
+		pDevice->SetRenderState( D3DRS_ZENABLE,  D3DZB_FALSE );
 		PostRender();
 	}
 	COUNTER_TIME_START( rd3_render_time_draw );

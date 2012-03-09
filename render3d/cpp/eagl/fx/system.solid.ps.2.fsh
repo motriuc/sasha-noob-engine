@@ -16,9 +16,9 @@ uniform lowp	vec4 rd_light1_ambient;
 
 uniform mediump vec4 rd_camera_position;
 
-uniform mediump vec4 rd_color_specular;
-uniform mediump vec4 rd_color_diffuse;
-uniform lowp	vec4 rd_color_ambient;
+uniform lowp vec4 rd_color_specular;
+uniform lowp vec4 rd_color_diffuse;
+uniform lowp vec4 rd_color_ambient;
 
 uniform mediump float material_coef_diffuse;
 uniform mediump float material_coef_phong;

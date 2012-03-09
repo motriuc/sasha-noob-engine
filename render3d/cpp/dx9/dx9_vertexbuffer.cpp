@@ -74,6 +74,56 @@ Dx9VertexBuffer::Dx9VertexBuffer(
 //-------------------------------------------------------------------
 Dx9VertexBuffer::Dx9VertexBuffer( 
 		Rd3::Render* owner,  
+		const sString& objectName, 
+		const Rd3::VertexPList& points,
+		const Rd3::VertexNList& normals
+	):
+	_BaseClass( owner, objectName ),
+	_pVertexBuffer( NULL ),
+	_pointOffset( 0 ),
+	_normalOffset( -1 )
+{
+	__S_ASSERT( points.Size() == normals.Size() );
+
+	_vertexCount = points.Size();
+	_dwFVF = D3DFVF_XYZ | D3DFVF_NORMAL;
+	_vertexSize = sizeof( float ) * 6;
+	_vertexBufferSize = _vertexSize * _vertexCount;
+
+	HRESULT hr = Dx9Render::GetDX9Device(GetOwner())->CreateVertexBuffer(
+		_vertexBufferSize,
+		0,
+		_dwFVF,
+		D3DPOOL_MANAGED,
+		&_pVertexBuffer,
+		NULL
+	);
+
+	if( FAILED(hr) )
+		_DX9_ERROR( hr );
+
+	void* pBuffer;
+
+	hr = _pVertexBuffer->Lock( 0, _vertexBufferSize, &pBuffer, 0 );
+
+	if( FAILED( hr ) )
+	{
+		_pVertexBuffer->Release();
+		_DX9_ERROR( hr );
+	}
+
+	for( sInt i = 0; i < points.Size(); i++ )
+	{
+		VUtil::AddVector( pBuffer, points[i] );
+		VUtil::AddVector( pBuffer, normals[i] );
+	}
+
+	_pVertexBuffer->Unlock();
+}
+
+//-------------------------------------------------------------------
+Dx9VertexBuffer::Dx9VertexBuffer( 
+		Rd3::Render* owner,  
 		const sString& objectName,
 		const Rd3::VertexPList& points,
 		const Rd3::VertexNList& normals,

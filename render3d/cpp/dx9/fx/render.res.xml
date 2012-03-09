@@ -20,6 +20,9 @@
   <!-- texture effects -->
   <effect name="system.texture.fx.1" path="%engine%/system.texture.1.fx" />
 
+  <!-- solid effects -->
+  <effect name="system.solid.fx.1" path="%engine%/system.solid.1.fx" />
+
   <!-- debug effects -->
   <effect name="system.debug.solid.color" path="%engine%/system.debug.solid.color.fx" />
 

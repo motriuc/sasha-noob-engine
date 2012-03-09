@@ -58,14 +58,6 @@ public:
 	/////////////////////////////////////////////////////////////
 	// Create Vb
 public:
-	/**
-	 *
-	 */
-	virtual Rd3::VertexBuffer* CreateVertexBufferFromFile(
-		const sString& objectName,
-		const sString& path,
-		const Rd3::StreamArchive& archive
-	) throws_error;
 	
 	/**
 	 *
