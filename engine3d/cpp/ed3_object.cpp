@@ -322,11 +322,11 @@ void d3Object::DoRender( const d3RenderData& renderData )
 			swapMatrix = render.AddTransformation( &renderMatrix );
 		}
 	}
-	
+
 	sBool bRender = sTrue;
 	if( HasState( OBS_BOUNDINGBOX ) 
 #ifdef _D3_DEBUG_RENDER
-	   && render.GetCommonData().debug_TestBoundingBox() 
+	   && render.GetData().GetCommonData().debug_TestBoundingBox() 
 #endif
 	   )
 	{
@@ -389,7 +389,7 @@ void d3Object::debug_InitResources( Rd3::Render& render )
 //--------------------------------------------------------------------------------------------------------
 void d3Object::debug_Render( const d3RenderData& renderData )
 {
-	if( HasState( OBS_BOUNDINGBOX ) && renderData.rstate().GetCommonData().debug_RenderObjectsBoundingBox() )
+	if( HasState( OBS_BOUNDINGBOX ) && renderData.rstate().GetData().GetCommonData().debug_RenderObjectsBoundingBox() )
 		debug_DrawAABBox( renderData, _boundingBox, RGBColor::Green );
 }
 

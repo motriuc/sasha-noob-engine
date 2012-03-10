@@ -33,7 +33,7 @@ d3MeshObject::d3MeshObject()
 void d3MeshObject::Initialize( Rd3::Render& render ) throws_error
 {
 	_BaseClass::Initialize( render );
-	
+	_initialTransformation = GetTransformationMatrix();
 }
 	
 //-------------------------------------------------------------------
@@ -49,7 +49,10 @@ void d3MeshObject::LoadFromXML( const Xml::BaseDomNode& element, Ed3::LoadDataPa
 void d3MeshObject::Render( const Ed3::d3RenderData& renderData )
 {
 	Rd3::RenderState& render = renderData.rstate();
+
+	render.BeginRenderObject();
 	render.RenderMesh( _mesh );
+	render.EndRenderObject();
 }
 
 //-------------------------------------------------------------------
@@ -61,6 +64,19 @@ void d3MeshObject::ComputeBoundingBox( d3AABBox& bbox )
 //-------------------------------------------------------------------
 void d3MeshObject::AI( d3EngineData& edata )
 {
+	if( _mesh )
+	{
+		if( _mesh().GetAnimation() )
+		{
+			Rd3::Animation::Result result;
+			_mesh().GetAnimation()->Animate( edata.GetTime(), _animState, result );
+
+			 d3Matrix m;
+			 d3Matrix::Mul( m, result.GetTransformation(), _initialTransformation );
+
+			 SetTransformationMatrix( m );
+		}
+	}
 }
 	
 	

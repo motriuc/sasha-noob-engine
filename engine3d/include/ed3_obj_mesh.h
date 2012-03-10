@@ -21,6 +21,7 @@
 #include "ed3_object.h"
 #include "rd3_resobj.h"
 #include "rd3_mesh.h"
+#include "rd3_animation.h"
 
 namespace Ed3
 {
@@ -62,6 +63,8 @@ protected:
 	virtual void LoadFromXML( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error;	
 private:
 	Rd3::use_resource<Rd3::Mesh>	_mesh;
+	Rd3::Animation::State			_animState;
+	d3Matrix						_initialTransformation;
 };
 	
 	

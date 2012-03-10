@@ -24,34 +24,31 @@ namespace Rd3
 
 //-------------------------------------------------------------------
 Animation::Animation():
-	_maxFrames( 0 ),
-	_startTime( 0.0 ),
-	_fps( 60 ),
-	_cFrame( 0 )
+	_maxFrames( 0 )
 {
 }
 
 //-------------------------------------------------------------------
-void Animation::Animate( sDouble time, Result& result ) const
+void Animation::Animate( sDouble time, State& state, Result& result ) const
 {
-	if( _startTime == 0.0 )
+	if( state._startTime == 0.0 )
 	{
-		_startTime = time;
-		_cFrame = 0;
-		Animate( _cFrame, _cResult );
+		state._startTime = time;
+		state._cFrame = 0;
+		Animate( state._cFrame, state._cResult );
 	}
 	else
 	{
-		sUInt frame = static_cast<sUInt>( ( time - _startTime ) * _fps );
+		sUInt frame = static_cast<sUInt>( ( time - state._startTime ) * state._fps );
 
-		if( frame != _cFrame )
+		if( frame != state._cFrame )
 		{
-			_cFrame = frame;
-			Animate( _cFrame, _cResult );
+			state._cFrame = frame;
+			Animate( state._cFrame, state._cResult );
 		}
 	}
 
-	result = _cResult;
+	result = state._cResult;
 }
 
 //-------------------------------------------------------------------

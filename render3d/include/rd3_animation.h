@@ -51,6 +51,25 @@ public:
 
 		friend class Animation;
 	};
+
+	class State
+	{
+	public:
+		State( sDouble fps = 60.0 ) :
+			_startTime( 0.0 ),
+			_fps( fps ),
+			_cFrame( 0 )
+		{
+		}
+
+	private:
+		sDouble			_fps;
+		mutable sDouble	_startTime;
+		mutable sUInt	_cFrame;
+		mutable Result	_cResult;
+
+		friend class Animation;
+	};
 public:
 	/**
 	 *
@@ -61,7 +80,7 @@ public:
 	 *
 	 */
 	void Animate( sUInt frame, Result& result ) const;
-	void Animate( sDouble time, Result& result ) const;
+	void Animate( sDouble time, State& state, Result& result ) const;
 
 	/**
 	 *
@@ -69,11 +88,6 @@ public:
 	void LoadFromXml( const Xml::BaseDomNode& node, const Def& def );
 private:
 	sInt			_maxFrames;
-	sDouble			_fps;
-
-	mutable sDouble	_startTime;
-	mutable sUInt	_cFrame;
-	mutable Result	_cResult;
 
 	AnimateValue	_moveX;
 	AnimateValue	_moveY;

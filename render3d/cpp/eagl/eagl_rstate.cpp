@@ -268,15 +268,7 @@ void EAGLRenderState::BeginWorldRender( const Rd3::EngineDataForRender& edata )
 	glEnable( GL_DEPTH_TEST );
 	glEnable( GL_CULL_FACE );
 	
-	COUNTER_TIME_STOP( rd3_render_time_draw );
-	
-	if( !GetCommonData().RenderWireframe() )
-	{
-	}
-	else
-	{
-	}
-	
+	COUNTER_TIME_STOP( rd3_render_time_draw );	
 }
 
 //-----------------------------------------------------------------------

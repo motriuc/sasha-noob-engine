@@ -85,10 +85,10 @@ inline void RenderState::SetCamera( const d3Camera& camera )
 	_changed_camera = sTrue;
 }
 
-inline const CommonDataForRender& RenderState::GetCommonData() const
+inline const EngineDataForRender& RenderState::GetData() const
 {
 	__S_ASSERT( _engineData != NULL );
-	return _engineData->GetCommonData();
+	return *_engineData;
 }
 
 inline Render* RenderState::GetOwner()

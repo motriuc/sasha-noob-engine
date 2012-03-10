@@ -114,7 +114,7 @@ public:
 	/**
 	 *
 	 */
-	const CommonDataForRender& GetCommonData() const;
+	const EngineDataForRender& GetData() const;
 
 	/**
 	 * Function called before staring rendering an object

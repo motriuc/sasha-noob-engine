@@ -127,6 +127,11 @@ public:
 	 * Get transformaton matrix
 	 */
 	const d3Matrix& GetTransformationMatrix() const;
+
+	/**
+	 * Set transformation matrix
+	 */
+	void SetTransformationMatrix( const d3Matrix& m );
 	
 	/**
 	 *

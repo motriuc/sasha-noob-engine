@@ -168,13 +168,14 @@ void Dx9RenderState::BeginWorldRender( const Rd3::EngineDataForRender& edata )
     __S_ASSERT( SUCCEEDED(hr) );
 
 #ifdef _D3_DEBUG_RENDER
-	if( !GetCommonData().RenderWireframe() )
+	const Rd3::CommonDataForRender& data = GetData().GetCommonData();
+	if( !data.RenderWireframe() )
 		pDevice->SetRenderState( D3DRS_FILLMODE, D3DFILL_SOLID );
 	else
 		pDevice->SetRenderState( D3DRS_FILLMODE, D3DFILL_WIREFRAME );
 	
 	
-	if( GetCommonData().debug_RenderCulling() )
+	if( data.debug_RenderCulling() )
 		pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_CW );
 	else
 		pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_NONE );

@@ -106,6 +106,12 @@ inline const d3Matrix& d3Object::GetTransformationMatrix() const
 	return _transformationMatrix;
 }
 
+inline void d3Object::SetTransformationMatrix( const d3Matrix& m )
+{
+	_transformationMatrix = m;
+	AddState( OBS_TRANSFORMATION_MATRIX );
+}
+
 inline void d3Object::DoLoadFromXML(
     const Xml::BaseDomNode& element,
     LoadDataParams& loadParams
