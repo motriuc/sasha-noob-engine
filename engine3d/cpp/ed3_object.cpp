@@ -380,7 +380,7 @@ d3World* d3Object::GetWorld()
 void d3Object::debug_InitResources( Rd3::Render& render )
 {
 	if( _debug_vb == NULL )
-		_debug_vb = render.CreateDynamicVertexBuffer( Rd3::VertexBufferStream::E_XYZ | Rd3::VertexBufferStream::E_COLOR_DIF );
+		_debug_vb = render.UseDynamicVertexBuffer( Rd3::VertexBufferStream::E_XYZ | Rd3::VertexBufferStream::E_COLOR_DIF );
 
 	if( _debug_effect_solid == NULL )
 		_debug_effect_solid = render.UseEffect( _S("system.debug.solid.color") );

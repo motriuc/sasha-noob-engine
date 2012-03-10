@@ -36,12 +36,19 @@ ResourceLoader::ResourceLoader()
 }
 
 //-----------------------------------------------------------------------
-ResourceLoader::~ResourceLoader()
+void ResourceLoader::FreeResources()
 {
 	for( sInt i = 0; i < _loadedResources.Size(); ++i )
 	{
 		_loadedResources[i]->UnuseResource();
 	}
+	_loadedResources.RemoveAll();
+}
+
+//-----------------------------------------------------------------------
+ResourceLoader::~ResourceLoader()
+{
+	FreeResources();
 }
 
 //-----------------------------------------------------------------------

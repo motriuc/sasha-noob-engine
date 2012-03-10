@@ -56,6 +56,10 @@ public:
 	 */
 	void LoadFromFile( const sString& path, ResLoadParams& loadParams ) throws_error;
 	
+	/**
+	 *
+	 */
+	void FreeResources();
 private:
 	sVector<ResourceObject*>	_loadedResources;
 private:

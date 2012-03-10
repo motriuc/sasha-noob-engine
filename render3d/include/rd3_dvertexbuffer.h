@@ -71,6 +71,7 @@ public:
 	virtual void Flush() = 0;
 
 	void AddVertex( const d3Vector& p );
+	void AddVertex( const d3Vector& p, const d2Vector& tx1 );
 	void SetNormal( const d3Vector& n );
 	void SetTx1( const d2Vector& v );
 	void SetTx2( const d2Vector& v );

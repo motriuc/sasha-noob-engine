@@ -68,6 +68,32 @@ struct Dx9RenderParams
 		_d3hFocusWindow     = NULL;
 		_d3BehaviorFlags    = D3DCREATE_HARDWARE_VERTEXPROCESSING;
 	}
+
+	void SetFromCommandLine()
+	{
+		AppEnviroment& env = AppEnviroment::Instance();
+	
+		// parse arg parameters
+		sInt i = 0;
+		while( i < env.GetCommandLineArgumentCount() )
+		{
+			sString param = env.GetCommandLineArgument( i );
+
+			if( param == _S("-sync") )
+			{
+				_d3Options.PresentationInterval = D3DPRESENT_INTERVAL_ONE;
+			}
+			
+
+			// 2 parameters flags
+			if( i + 1 < env.GetCommandLineArgumentCount() )
+			{
+
+			}
+
+			++i;
+		}
+	}
 };
 
 namespace VertexBufferStream

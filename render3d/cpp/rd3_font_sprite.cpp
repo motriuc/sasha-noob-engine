@@ -39,6 +39,7 @@ namespace Rd3
 FontSprite::FontSprite( Render* owner, const sString& objectName ) :
 	_BaseClass( owner, objectName )
 {
+	_effect = GetOwner()->UseEffect( _S("system.font.fx.1") );
 }
 	
 //-------------------------------------------------------------------	
@@ -97,6 +98,73 @@ RenderString* FontSprite::CreateRenderString()
 	return new SprireRenderString( this );
 }
 
+//-------------------------------------------------------------------	
+d3Float FontSprite::RenderText( RenderState& rstate, const sString& text, const d2Vector& pos, sRGBColor color )
+{
+	if( !_vb )
+		_vb = GetOwner()->UseDynamicVertexBuffer( Rd3::VertexBufferStream::E_XYZ | Rd3::VertexBufferStream::E_TX1 );
+
+	d2Vector targetSize = rstate.GetRenderTarger_SizeInPixels();
+	d3Float fontRenderHeight = 0.0f;
+	d2Vector npos;
+
+	npos.x = Utils::RoundToPixelSize( pos.x, targetSize.x );
+	npos.y = Utils::RoundToPixelSize( pos.y, targetSize.y );
+
+	d3Float tx = static_cast<d3Float>( GetTexture().GetWidth() );
+	d3Float ty = static_cast<d3Float>( GetTexture().GetHeight() ); 
+
+	d3Float x1 = npos.x;
+	d3Float y1 = npos.y;
+
+	_vb().BeginAdd( text.Length() * 6 );
+
+	for( sInt i = 0; i < (sInt)text.Length(); ++i ) 
+	{
+		sChar ch = text[i];
+		SpriteChar sprite;
+		
+		if( !GetSprite( ch, sprite ) )
+			continue;
+
+		d3Float dx = sprite.Width() / targetSize.x;
+		d3Float dy = sprite.Height() / targetSize.y;
+			
+		fontRenderHeight = FMath::Max( fontRenderHeight, dy );
+
+		d3Float x2 = x1 + dx;
+		d3Float y2 = y1 + dy;
+
+		d3Float tx0 = sprite.X1() / tx;
+		d3Float ty0 = sprite.Y1() / ty;
+		d3Float tx1 = sprite.X2() / tx;
+		d3Float ty1 = sprite.Y2() / ty;
+
+		_vb().AddVertex( d3Vector( x1, y1, 0.0f ), d2Vector( tx0, ty0 ) );
+		_vb().AddVertex( d3Vector( x1, y2, 0.0f ), d2Vector( tx0, ty1 ) );
+		_vb().AddVertex( d3Vector( x2, y2, 0.0f ), d2Vector( tx1, ty1 ) );
+
+		_vb().AddVertex( d3Vector( x1, y1, 0.0f ), d2Vector( tx0, ty0 ) );
+		_vb().AddVertex( d3Vector( x2, y2, 0.0f ), d2Vector( tx1, ty1 ) );
+		_vb().AddVertex( d3Vector( x2, y1, 0.0f ), d2Vector( tx1, ty0 ) );
+
+		x1 += dx;
+	}
+		
+	_vb().EndAdd();
+
+	rstate.BeginRenderObject();
+	
+	rstate.SetTexture( TextureParameter::E_TEX1, _texture );
+	rstate.SetEffect( _effect );
+	rstate.SetParam_Color1( color );
+
+	rstate.RenderPrimitive( _vb, PrimitiveType::E_TRIANGLE_LIST );
+		
+	rstate.EndRenderObject(); 
+	return fontRenderHeight;
+}
+
 /////////////////////////////////////////////////////////////////////
 // SprireRenderString
 /////////////////////////////////////////////////////////////////////
@@ -106,7 +174,6 @@ SprireRenderString::SprireRenderString( Font* font ):
 {
 	_effect = render().UseEffect( _S("system.font.fx.1") );
 }
-
 
 //-------------------------------------------------------------------	
 void SprireRenderString::RenderText( RenderState& rstate, const sString& text, const d2Vector& pos, sRGBColor color )

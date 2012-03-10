@@ -28,6 +28,7 @@
 
 #include "rd3_font.h"
 #include "rd3_render_str.h"
+#include "rd3_dvertexbuffer.h"
 
 namespace Rd3
 {
@@ -107,6 +108,11 @@ public:
 	 */
 	virtual RenderString* CreateRenderString();
 
+	/**
+	 *
+	 */
+	virtual d3Float RenderText( RenderState& rstate, const sString& text, const d2Vector& pos, sRGBColor color );
+
 protected:	
 	/**
 	 *
@@ -116,6 +122,8 @@ private:
 	sMap<sChar, SpriteChar>	_charMap;
 protected:
 	use_resource<Rd3::Texture> _texture;
+	use_resource<Rd3::DynamicVertexBuffer> _vb;
+	use_resource<Rd3::Effect> _effect;
 };
 
 /**

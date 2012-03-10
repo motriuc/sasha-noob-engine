@@ -262,7 +262,6 @@ private:
 	
 #ifdef _D3_DEBUG_RENDER_COUNTERS
 	use_resource<Font>	_renderFont;
-	RenderString*		_debugTextRender;
 	void debug_RenderStats();
 #endif
 	

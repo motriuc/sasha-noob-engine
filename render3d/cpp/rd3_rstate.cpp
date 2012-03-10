@@ -272,9 +272,6 @@ void RenderState::EndRenderObject()
  
 WorldRenderState::WorldRenderState( Render* owner ) :
 	_BaseClass( owner )
-#ifdef _D3_DEBUG_RENDER_ENABLE_COUNTERS
-	,_debugTextRender( NULL )
-#endif	
 {
 
 }
@@ -282,9 +279,6 @@ WorldRenderState::WorldRenderState( Render* owner ) :
 //---------------------------------------------------------------------------
 WorldRenderState::~WorldRenderState()
 {
-#ifdef 	_D3_DEBUG_RENDER_ENABLE_COUNTERS
-	delete _debugTextRender;
-#endif	
 }
 
 //---------------------------------------------------------------------------
@@ -361,57 +355,44 @@ void WorldRenderState::debug_RenderStats()
 	
 #endif
 	
-	if ( _debugTextRender == NULL ) 
-	{
+	if ( !_renderFont ) 
 		_renderFont = GetOwner()->UseFont( _S("system.font.default") );
-		_debugTextRender = _renderFont().CreateRenderString();
-	}
+
 	d2Vector pos( 0.01f, 0.01f );
 	
 	sString fsp = _S("Fps: ") + sString::IntToString( _engineData->GetFPS() );
-	_debugTextRender->RenderText( *this , fsp, pos, RGBColor::White );
+	pos.y += _renderFont().RenderText( *this , fsp, pos, RGBColor::White );
 
 #ifdef _D3_DEBUG_RENDER_ENABLE_COUNTERS
-	pos.y += _debugTextRender->RenderHeight();
 	
 	sString rnd = _S("Render %: ") + sString::DoubleToString( renderProp );
-	_debugTextRender->RenderText( *this , rnd, pos, RGBColor::White );
-
-	pos.y += _debugTextRender->RenderHeight();
+	pos.y += _renderFont().RenderText( *this , rnd, pos, RGBColor::White );
 
 	sString lnd = _S("Lua %: ") + sString::DoubleToString( luaProp );
-	_debugTextRender->RenderText( *this , lnd, pos, RGBColor::White );
+	pos.y += _renderFont().RenderText( *this , lnd, pos, RGBColor::White );
 
-	pos.y += _debugTextRender->RenderHeight();
-	
 	sString phs = _S("Physics %: ") + sString::DoubleToString( phProp );
-	_debugTextRender->RenderText( *this , phs, pos, RGBColor::White );
+	pos.y += _renderFont().RenderText( *this , phs, pos, RGBColor::White );
 
-	pos.y += _debugTextRender->RenderHeight();
-	
 	sString rns = _S("Render State %: ") + sString::DoubleToString( renProp );
-	_debugTextRender->RenderText( *this , rns, pos, RGBColor::White );
-	
-	pos.y += _debugTextRender->RenderHeight();
+	pos.y += _renderFont().RenderText( *this , rns, pos, RGBColor::White );
 	
 	sString objs = _S("Objects : ") + 
 		sString::IntToString( COUNTER_INT_VALUE( rd3_render_object_visible ) ) +
 		_S("/") +
 		sString::IntToString( COUNTER_INT_VALUE( rd3_render_object_total ) );
 	
-	_debugTextRender->RenderText( *this , objs, pos, RGBColor::White );
+	pos.y += _renderFont().RenderText( *this , objs, pos, RGBColor::White );
 	
 	sString vbPrimCount = _S("Render Primitive count: ") + sString::IntToString( ivPrimCount );
-	pos.y += _debugTextRender->RenderHeight();
 	
-	_debugTextRender->RenderText( *this , vbPrimCount, pos, RGBColor::White );
+	pos.y += _renderFont().RenderText( *this , vbPrimCount, pos, RGBColor::White );
 	
 	sString vbCount = _S("Render Vertex count: ") + sString::IntToString( ivCount );
-	pos.y += _debugTextRender->RenderHeight();
 	
-	_debugTextRender->RenderText( *this , vbCount, pos, RGBColor::White );
+	pos.y += _renderFont().RenderText( *this , vbCount, pos, RGBColor::White );
 #endif
-	
+
 }
 
 #endif // _D3_DEBUG_RENDER

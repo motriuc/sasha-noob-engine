@@ -30,7 +30,9 @@
 
 namespace Rd3
 {
-	
+
+using namespace System::d2Math;
+
 /**
  * IFontFactory
  */
@@ -49,6 +51,11 @@ public:
 	 *
 	 */
 	virtual RenderString* CreateRenderString() = 0;
+	
+	/**
+	 * 
+	 */
+	virtual d3Float RenderText( Rd3::RenderState& rstate, const sString& text, const d2Vector& pos, sRGBColor color ) = 0;
 
 	/**
 	 *

@@ -31,17 +31,23 @@ inline sUInt DynamicVertexBuffer::GetVertexSize() const
 	return _vertexSize;
 }
 
+inline void DynamicVertexBuffer::AddVertex( const d3Vector& p, const d2Vector& tx1 )
+{
+	AddVertex( p );
+	SetTx1( tx1 );
+}
+
 inline void DynamicVertexBuffer::AddVertex( const d3Vector& p )
 {
-	++_cacheCurrentVertex;
-
-	__S_ASSERT( _cacheCurrentVertex >= 0 );
-
-	if( _cacheCurrentVertex >= CacheVertexBufferSize )
+	if( _cacheCurrentVertex >= CacheVertexBufferSize - 1 )
 	{
 		Flush();
 		_cacheCurrentVertex = 0;
 	}
+	else
+		++_cacheCurrentVertex;
+
+	__S_ASSERT( _cacheCurrentVertex >= 0 );
 
 	_points[_cacheCurrentVertex] = p;
 }

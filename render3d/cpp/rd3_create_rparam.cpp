@@ -120,6 +120,12 @@ DX9RenderCreateParams::DX9RenderCreateParams( HWND hWnd ) :
 }
 
 //-------------------------------------------------------------------
+void DX9RenderCreateParams::SetFromCommandLine()
+{
+	_pRenderParams->SetFromCommandLine();
+}
+
+//-------------------------------------------------------------------
 DX9RenderCreateParams::DX9RenderCreateParams( const DX9RenderCreateParams& src ) :
   _BaseClass( src )
 {

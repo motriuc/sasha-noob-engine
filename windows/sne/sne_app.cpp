@@ -33,9 +33,38 @@ SNEApplication::SNEApplication( HINSTANCE hInstance ) :
 	_hBaseWinProc( &DefWindowProc ),
 	_pRender( NULL ),
 	_pEngine( NULL ),
-	_pKeyMessageQ( NULL )
+	_pKeyMessageQ( NULL ),
+	_viewWidth( 640 ),
+	_viewHeight( 480 )
 {
-	AppEnviroment::Instance().SetAppInstance( hInstance );
+	AppEnviroment& env = AppEnviroment::Instance();
+	env.SetAppInstance( hInstance );
+	
+	// parse arg parameters
+	sInt i = 0;
+	while( i < env.GetCommandLineArgumentCount() )
+	{
+		sString param = env.GetCommandLineArgument( i );
+
+		// 2 parameters flags
+		if( i + 1 < env.GetCommandLineArgumentCount() )
+		{
+			if( param == _S("-w") )
+			{
+				_viewWidth = env.GetCommandLineArgument( i + 1 ).ToInt();
+			}
+			else if( param == _S("-h") )
+			{
+				_viewHeight = env.GetCommandLineArgument( i + 1 ).ToInt();
+			}
+			else
+				--i;
+
+			++i;
+		}
+
+		++i;
+	}
 }
 
 //------------------------------------------------------------------
@@ -56,6 +85,7 @@ void SNEApplication::OnCreateWindow()
 	__S_ASSERT( _pRender == NULL );
 
 	Rd3::DX9RenderCreateParams createParams( _hWindow );
+	createParams.SetFromCommandLine();
 
 	try
 	{
@@ -159,15 +189,20 @@ HWND SNEApplication::win_CreateSWindow()
 
 	_pWindowToCreate = this;
 
+	RECT rc = { 0, 0, _viewWidth, _viewHeight };
+	::AdjustWindowRect( &rc, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX, FALSE );
+
+	sString caption = _S("sne-engine ") + sString::IntToString( _viewWidth ) + _S("x") + sString::IntToString( _viewHeight );
+
 	HWND hWnd = ::CreateWindowEx(
 		0,
 		className,
-		_S("sne-engine"),
-		WS_OVERLAPPEDWINDOW | WS_VISIBLE,
+		caption,
+		WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX | WS_VISIBLE, 
 		CW_USEDEFAULT,
 		CW_USEDEFAULT,
-		CW_USEDEFAULT ,
-		CW_USEDEFAULT ,
+		rc.right - rc.left,
+		rc.bottom - rc.top,
 		NULL,
 		0,
 		AppEnviroment::Instance().GetAppInstance(),

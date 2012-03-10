@@ -153,12 +153,15 @@ Dx9Render::~Dx9Render()
 {
 	delete _pRenderState;
 
+	// release them sooner
+	_renderResources.FreeResources();
+
 	__S_ASSERT( _pD3DDevice != NULL );
 	_pD3DDevice->Release();
 }
 
 //------------------------------------------------------------------ 
-Rd3::DynamicVertexBuffer* Dx9Render::CreateDynamicVertexBuffer( Rd3::VertexBufferStream::Set set ) throws_error
+Rd3::DynamicVertexBuffer* Dx9Render::UseDynamicVertexBuffer( Rd3::VertexBufferStream::Set set ) throws_error
 {
 	Rd3::DynamicVertexBuffer* pVb = NULL;
 

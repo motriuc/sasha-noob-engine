@@ -118,6 +118,11 @@ public:
 	 *
 	 */
 	DX9RenderCreateParams( HWND hWnd );
+
+	/**
+	 *
+	 */
+	void SetFromCommandLine();
 	
 	/**
 	 *

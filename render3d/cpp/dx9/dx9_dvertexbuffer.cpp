@@ -102,7 +102,7 @@ void Dx9DynamicVertexBuffer::SetVertexData( void* pBuf, sInt vCount )
 		if( _vbset & Rd3::VertexBufferStream::E_TX1 )
 			VUtil::AddTexCoord( pBuf, _tx1[i] );
 
-		if( _vbset & Rd3::VertexBufferStream::E_TX1 )
+		if( _vbset & Rd3::VertexBufferStream::E_TX2 )
 			VUtil::AddTexCoord( pBuf, _tx2[i] );
 	}
 }

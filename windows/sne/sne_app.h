@@ -49,6 +49,8 @@ private:
 private:
 	HWND		_hWindow;
 	WNDPROC		_hBaseWinProc;
+	sInt		_viewWidth;
+	sInt		_viewHeight;
 
 	Rd3::Render*			_pRender;
 	Ed3::d3Engine*			_pEngine;
