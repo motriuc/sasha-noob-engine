@@ -110,8 +110,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 352814170;
-			PBXWorkspaceStateSaveDate = 352814170;
+			PBXPerProjectTemplateStateSaveDate = 353038887;
+			PBXWorkspaceStateSaveDate = 353038887;
 		};
 		perUserProjectItems = {
 			D9176F1515044AAA00078CA6 /* PBXTextBookmark */ = D9176F1515044AAA00078CA6 /* PBXTextBookmark */;
@@ -216,8 +216,11 @@
 			D97372191507859400BC1B85 /* PBXTextBookmark */ = D97372191507859400BC1B85 /* PBXTextBookmark */;
 			D973721A1507859400BC1B85 /* PBXTextBookmark */ = D973721A1507859400BC1B85 /* PBXTextBookmark */;
 			D973721B1507859400BC1B85 /* PBXTextBookmark */ = D973721B1507859400BC1B85 /* PBXTextBookmark */;
-			D973721C1507859400BC1B85 /* PBXBookmark */ = D973721C1507859400BC1B85 /* PBXBookmark */;
-			D973721D1507859400BC1B85 /* PBXTextBookmark */ = D973721D1507859400BC1B85 /* PBXTextBookmark */;
+			D97375B4150AF2A200BC1B85 /* PBXTextBookmark */ = D97375B4150AF2A200BC1B85 /* PBXTextBookmark */;
+			D97375B5150AF2A200BC1B85 /* PBXTextBookmark */ = D97375B5150AF2A200BC1B85 /* PBXTextBookmark */;
+			D97375B6150AF2A200BC1B85 /* PBXTextBookmark */ = D97375B6150AF2A200BC1B85 /* PBXTextBookmark */;
+			D97375B7150AF2A200BC1B85 /* XCBuildMessageTextBookmark */ = D97375B7150AF2A200BC1B85 /* XCBuildMessageTextBookmark */;
+			D97375BE150AF2B600BC1B85 /* PBXTextBookmark */ = D97375BE150AF2B600BC1B85 /* PBXTextBookmark */;
 			D97DE83314EF7E8B00E062CF /* PBXTextBookmark */ = D97DE83314EF7E8B00E062CF /* PBXTextBookmark */;
 			D97DE83414EF7E8B00E062CF /* PBXTextBookmark */ = D97DE83414EF7E8B00E062CF /* PBXTextBookmark */;
 			D97DE83614EF7E8B00E062CF /* PBXTextBookmark */ = D97DE83614EF7E8B00E062CF /* PBXTextBookmark */;
@@ -1504,9 +1507,9 @@
 	};
 	D91D013914ECC02F00CEFA96 /* rd3_mesh.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {898, 1625}}";
-			sepNavSelRange = "{2028, 81}";
-			sepNavVisRange = "{1128, 1589}";
+			sepNavIntBoundsRect = "{{0, 0}, {1215, 1807}}";
+			sepNavSelRange = "{715, 0}";
+			sepNavVisRange = "{159, 1034}";
 		};
 	};
 	D91D013A14ECC02F00CEFA96 /* rd3_msg_gesture.cpp */ = {
@@ -3020,11 +3023,21 @@
 		vrLen = 770;
 		vrLoc = 965;
 	};
-	D973721C1507859400BC1B85 /* PBXBookmark */ = {
-		isa = PBXBookmark;
-		fRef = D91D013E14ECC02F00CEFA96 /* rd3_resobj.cpp */;
+	D97375AA150AF28D00BC1B85 /* rd3_animation_fun.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {769, 1183}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1327}";
+		};
 	};
-	D973721D1507859400BC1B85 /* PBXTextBookmark */ = {
+	D97375AB150AF28D00BC1B85 /* rd3_animation.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {769, 1924}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1245}";
+		};
+	};
+	D97375B4150AF2A200BC1B85 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = D91D013E14ECC02F00CEFA96 /* rd3_resobj.cpp */;
 		name = "rd3_resobj.cpp: 1";
@@ -3032,6 +3045,45 @@
 		rLoc = 0;
 		rType = 0;
 		vrLen = 1594;
+		vrLoc = 0;
+	};
+	D97375B5150AF2A200BC1B85 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D97375AA150AF28D00BC1B85 /* rd3_animation_fun.cpp */;
+		name = "rd3_animation_fun.cpp: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1327;
+		vrLoc = 0;
+	};
+	D97375B6150AF2A200BC1B85 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D97375AB150AF28D00BC1B85 /* rd3_animation.cpp */;
+		name = "rd3_animation.cpp: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1245;
+		vrLoc = 0;
+	};
+	D97375B7150AF2A200BC1B85 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Rd3_animation.h: No such file or directory";
+		fRef = D91D013914ECC02F00CEFA96 /* rd3_mesh.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 22;
+		rType = 1;
+	};
+	D97375BE150AF2B600BC1B85 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D91D013914ECC02F00CEFA96 /* rd3_mesh.cpp */;
+		name = "rd3_mesh.cpp: 23";
+		rLen = 0;
+		rLoc = 715;
+		rType = 0;
+		vrLen = 1379;
 		vrLoc = 0;
 	};
 	D97DE80F14EF7A4200E062CF /* luaconf.h:300 */ = {
@@ -3046,7 +3098,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 300;
-		modificationTime = 352814468.854996;
+		modificationTime = 353039013.483428;
 		originalNumberOfMultipleMatches = 1;
 		state = 0;
 	};
