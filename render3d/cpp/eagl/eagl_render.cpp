@@ -114,7 +114,7 @@ void EAGLRender::InitCreateFrameBuffers( Rd3::Def& def )
 
 //-------------------------------------------------------------------------------------
 void EAGLRender::EaglSetRenderTarget( EAGLTexture* pTexture )
-{
+{	
 	if( pTexture == NULL )
 	{
 		glFramebufferRenderbuffer( 
@@ -122,7 +122,8 @@ void EAGLRender::EaglSetRenderTarget( EAGLTexture* pTexture )
 			GL_COLOR_ATTACHMENT0, 
 			GL_RENDERBUFFER, 
 			_colorRenderbuffer
-		);		
+		);
+		
 	}
 	else
 	{
@@ -135,6 +136,13 @@ void EAGLRender::EaglSetRenderTarget( EAGLTexture* pTexture )
 		);
 	}
 
+	if( !_bSetFrameBuffer )
+	{
+		glBindFramebuffer( GL_FRAMEBUFFER, _defaultFramebuffer );
+		glViewport( 0, 0, _framebufferWidth, _framebufferHeight );
+		_bSetFrameBuffer = sTrue;
+	}
+	
 	if( glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE )
 	{
 		Platform::ShowError( _S("Frame buffer invalid status") );
@@ -175,7 +183,8 @@ EAGLRender::EAGLRender() :
 	_defaultFramebuffer( 0 ),
 	_colorRenderbuffer( 0 ),
 	_depthRenderbuffer( 0 ),
-	_stencilRenderbuffer( 0 )
+	_stencilRenderbuffer( 0 ),
+	_bSetFrameBuffer( sFalse )
 {
 	_pRenderState = new EAGLRenderState( this );
 }

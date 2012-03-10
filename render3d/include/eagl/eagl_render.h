@@ -226,6 +226,7 @@ private:
 	GLuint _colorRenderbuffer;
 	GLuint _depthRenderbuffer;
 	GLuint _stencilRenderbuffer;
+	sBool _bSetFrameBuffer;
 
 private:	
 	void FillDeviceDef( Rd3::Def& def );
@@ -239,10 +240,7 @@ private:
  */
 inline void EAGLRender::SetAsCurrentContext()
 {
-	//EAGLRenderContext_SetCurrent( _renderContext ); 
-
-	glBindFramebuffer( GL_FRAMEBUFFER, _defaultFramebuffer );
-	glViewport( 0, 0, _framebufferWidth, _framebufferHeight );
+	EAGLRenderContext_SetCurrent( _renderContext ); 
 }
 
 inline void EAGLRender::SetPresent()

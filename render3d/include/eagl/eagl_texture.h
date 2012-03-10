@@ -50,10 +50,6 @@ public:
 	 */
 	~EAGLTexture();
 	
-	/**
-	 *
-	 */
-	void LoadFromPngStream( const Streams::IInputStream& stream ) throws_error;
 	
 	/**
 	 *
@@ -74,6 +70,12 @@ private:
 	
 private:
 	void LoadFromImage( CGImageRef image ) throws_error;
+
+	/**
+	 *
+	 */
+	void LoadFromPngStream( const Streams::IInputStream& stream ) throws_error;
+	void LoadFromPvrStream( const Streams::IInputStream& stream, const sString& path ) throws_error;
 };
 
 

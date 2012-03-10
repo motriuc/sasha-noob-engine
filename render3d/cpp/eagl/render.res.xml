@@ -8,8 +8,7 @@
     <texture name="system.texture.font.10" type="alpha" path="%engine%/system.texture.font.10.png" >
 		<texture.params filter.min="nearest" filter.mag="nearest" />
 	</texture>
-	
-	
+			
     <!-- fonts -->
     <font name="system.font.default" path="%engine%/system.font.10.xml" />
 	
@@ -30,5 +29,6 @@
 	
 	<!-- debug -->
 	<effect name="system.debug.solid.color" path="%engine%/system.debug.solid.color.fx.xml" />
+
 
 </resources>

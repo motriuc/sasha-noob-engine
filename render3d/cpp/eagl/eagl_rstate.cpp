@@ -218,10 +218,7 @@ void EAGLRenderState::EndAfterEffect()
 		glDisable( GL_BLEND );
 		
 		if( i == aeffect.ElementCount() - 1 )
-		{
 			render.EaglSetRenderTarget( NULL );
-			render.SetAsCurrentContext();
-		}
 		else
 			render.EaglSetRenderTarget( (EAGLTexture*)_afterEffectTextures[dstTexture] );
 
@@ -245,11 +242,7 @@ void EAGLRenderState::BeginNoAfterEffect()
 	
 	__S_ASSERT( pRender != NULL );
 	
-	
-	if( GetRenderTarget() != NULL )
-		pRender->EaglSetRenderTarget( (EAGLTexture*)GetRenderTarget() );
-	else 
-		pRender->SetAsCurrentContext();
+	pRender->EaglSetRenderTarget( (EAGLTexture*)GetRenderTarget() );
 
 	COUNTER_TIME_STOP( rd3_render_time_draw );	
 }

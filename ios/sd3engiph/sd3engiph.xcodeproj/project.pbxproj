@@ -133,6 +133,7 @@
 		D98DC13714FA2076007F9146 /* system.solid.fx.2.xml in Resources */ = {isa = PBXBuildFile; fileRef = D98DC13414FA2076007F9146 /* system.solid.fx.2.xml */; };
 		D98DC13814FA2076007F9146 /* system.solid.ps.2.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D98DC13514FA2076007F9146 /* system.solid.ps.2.fsh */; };
 		D98DC13914FA2076007F9146 /* system.solid.vs.2.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D98DC13614FA2076007F9146 /* system.solid.vs.2.vsh */; };
+		D99398BC150B1B1A00AFF9DA /* red_checker.pvr in Resources */ = {isa = PBXBuildFile; fileRef = D99398BB150B1B1A00AFF9DA /* red_checker.pvr */; };
 		D99922F714EF3AFB003FC6A7 /* lapi.c in Sources */ = {isa = PBXBuildFile; fileRef = D99922BE14EF3AFB003FC6A7 /* lapi.c */; };
 		D99922F814EF3AFB003FC6A7 /* lauxlib.c in Sources */ = {isa = PBXBuildFile; fileRef = D99922C014EF3AFB003FC6A7 /* lauxlib.c */; };
 		D99922F914EF3AFB003FC6A7 /* lbaselib.c in Sources */ = {isa = PBXBuildFile; fileRef = D99922C214EF3AFB003FC6A7 /* lbaselib.c */; };
@@ -618,6 +619,7 @@
 		D98DC13414FA2076007F9146 /* system.solid.fx.2.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = system.solid.fx.2.xml; path = ../../render3d/cpp/eagl/fx/system.solid.fx.2.xml; sourceTree = SOURCE_ROOT; };
 		D98DC13514FA2076007F9146 /* system.solid.ps.2.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.solid.ps.2.fsh; path = ../../render3d/cpp/eagl/fx/system.solid.ps.2.fsh; sourceTree = SOURCE_ROOT; };
 		D98DC13614FA2076007F9146 /* system.solid.vs.2.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.solid.vs.2.vsh; path = ../../render3d/cpp/eagl/fx/system.solid.vs.2.vsh; sourceTree = SOURCE_ROOT; };
+		D99398BB150B1B1A00AFF9DA /* red_checker.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; name = red_checker.pvr; path = world/red_checker.pvr; sourceTree = "<group>"; };
 		D99922B914EF3ABB003FC6A7 /* lua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lua.h; path = ../../external/lua/lua.h; sourceTree = SOURCE_ROOT; };
 		D99922BA14EF3ABB003FC6A7 /* lua.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = lua.hpp; path = ../../external/lua/lua.hpp; sourceTree = SOURCE_ROOT; };
 		D99922BE14EF3AFB003FC6A7 /* lapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lapi.c; path = ../../external/lua/lapi.c; sourceTree = SOURCE_ROOT; };
@@ -1280,14 +1282,14 @@
 		D91D019914ECC10300CEFA96 /* ligts */ = {
 			isa = PBXGroup;
 			children = (
-				D91D013314ECC02F00CEFA96 /* rd3_light_sel.cpp */,
-				D91D013414ECC02F00CEFA96 /* rd3_light.cpp */,
-				D91D013514ECC02F00CEFA96 /* rd3_lightpoint.cpp */,
-				D91D016A14ECC05D00CEFA96 /* rd3_light_sel.h */,
 				D91D016B14ECC05D00CEFA96 /* rd3_light.h */,
 				D91D016C14ECC05D00CEFA96 /* rd3_light.inl */,
+				D91D013414ECC02F00CEFA96 /* rd3_light.cpp */,
+				D91D016A14ECC05D00CEFA96 /* rd3_light_sel.h */,
+				D91D013314ECC02F00CEFA96 /* rd3_light_sel.cpp */,
 				D91D016D14ECC05D00CEFA96 /* rd3_lightpoint.h */,
 				D91D016E14ECC05D00CEFA96 /* rd3_lightpoint.inl */,
+				D91D013514ECC02F00CEFA96 /* rd3_lightpoint.cpp */,
 			);
 			name = ligts;
 			sourceTree = "<group>";
@@ -1348,9 +1350,9 @@
 				D93D5BCA14ECD5B1003FC949 /* buffers */,
 				D93D5BC814ECD56E003FC949 /* resources */,
 				D91D01DB14ECC33000CEFA96 /* eagl_texture.h */,
+				D91D01E614ECC34C00CEFA96 /* eagl_texture.cpp */,
 				D91D01D514ECC33000CEFA96 /* eagl_effect.h */,
 				D91D01E014ECC34C00CEFA96 /* eagl_effect.cpp */,
-				D91D01E614ECC34C00CEFA96 /* eagl_texture.cpp */,
 			);
 			name = eagl;
 			sourceTree = "<group>";
@@ -1513,6 +1515,7 @@
 		D93D5BA114ECD06E003FC949 /* textures */ = {
 			isa = PBXGroup;
 			children = (
+				D99398BB150B1B1A00AFF9DA /* red_checker.pvr */,
 				D93D5BA514ECD15A003FC949 /* red_checker.png */,
 			);
 			name = textures;
@@ -1574,8 +1577,8 @@
 			children = (
 				D94B59F414F2821E00EDAB8B /* rd3_aef_acolor.h */,
 				D94B59F214F2820500EDAB8B /* rd3_aef_acolor.cpp */,
-				D94B588714F22F2E00EDAB8B /* rd3_aef_blur.cpp */,
 				D94B588614F22F1700EDAB8B /* rd3_aef_blur.h */,
+				D94B588714F22F2E00EDAB8B /* rd3_aef_blur.cpp */,
 				D94B56E614F1F9F000EDAB8B /* rd3_after_effect.h */,
 				D94B56E414F1F9CF00EDAB8B /* rd3_after_effect.cpp */,
 			);
@@ -1611,10 +1614,10 @@
 		D97375A7150AF26000BC1B85 /* animation */ = {
 			isa = PBXGroup;
 			children = (
+				D97375A9150AF27C00BC1B85 /* rd3_animation.h */,
+				D97375A8150AF27C00BC1B85 /* rd3_animation_fun.h */,
 				D97375AA150AF28D00BC1B85 /* rd3_animation_fun.cpp */,
 				D97375AB150AF28D00BC1B85 /* rd3_animation.cpp */,
-				D97375A8150AF27C00BC1B85 /* rd3_animation_fun.h */,
-				D97375A9150AF27C00BC1B85 /* rd3_animation.h */,
 			);
 			name = animation;
 			sourceTree = "<group>";
@@ -2054,6 +2057,7 @@
 				D9DC7E5A15023D54003600E7 /* render.res.xml in Resources */,
 				D9176FD01504656C00078CA6 /* system.debug.solid.color.fx.xml in Resources */,
 				D97371FA150784E000BC1B85 /* ed3_physics_shape.inl in Resources */,
+				D99398BC150B1B1A00AFF9DA /* red_checker.pvr in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -70,6 +70,11 @@ public:
 		return _p;
 	}
 	
+	inline _Type* ptr( System::Types::sInt offset )
+	{
+		return _p + offset;
+	}
+	
 	inline ~ptr_array_unique()
 	{
 		delete[] _p;
