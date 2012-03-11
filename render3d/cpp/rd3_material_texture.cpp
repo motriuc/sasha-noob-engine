@@ -33,17 +33,54 @@ TextureMaterial::TextureMaterial( Render* owner, const sString& objectName ) :
 	_co_diffuse( 0.5f ),
 	_co_phong( 0.5f ),
 	_co_phong_exp( 5.0f ),
-	_co_ambient( 0.05f )
+	_co_ambient( 0.05f ),
+	_numberOfLights( 1 )
 {
 	_effect = owner->UseEffect( _S("system.texture.fx.1") );
 }
-	
+
+//-------------------------------------------------------------------
+void TextureMaterial::SetNumberOfLights( sInt num )
+{
+	if( _numberOfLights != num )
+	{
+		_numberOfLights = num;
+
+		sString effectName = _S("system.texture.fx.0");
+
+		if( _numberOfLights > 0 )
+		{
+			switch( _numberOfLights )
+			{
+			case 1:
+				effectName = _S("system.texture.fx.1");
+				break;
+			case 2:
+				effectName = _S("system.texture.fx.2");
+				break;
+			case 3:
+				effectName = _S("system.texture.fx.3");
+				break;
+			case 4:
+			default:
+				effectName = _S("system.texture.fx.4");
+				break;
+			}
+		}
+
+		_effect = GetOwner()->UseEffect( effectName );
+	}
+}
+
 //-------------------------------------------------------------------
 void TextureMaterial::Apply( RenderState& renderState ) const
 {
-	_co_diffuse			.Apply( _effect, _S("material_coef_diffuse") );
-	_co_phong			.Apply( _effect, _S("material_coef_phong") );
-	_co_phong_exp		.Apply( _effect, _S("material_coef_phong_exp") );
+	if( _numberOfLights > 0 )
+	{
+		_co_diffuse		.Apply( _effect, _S("material_coef_diffuse") );
+		_co_phong		.Apply( _effect, _S("material_coef_phong") );
+		_co_phong_exp	.Apply( _effect, _S("material_coef_phong_exp") );
+	}
 	_co_ambient			.Apply( _effect, _S("material_coef_ambient") );
 	
 	renderState.SetTexture( TextureParameter::E_TEX1, _texture );

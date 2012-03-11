@@ -60,12 +60,23 @@ public:
 	 *
 	 */
 	void SetTexture( const sString& name );
+
+	/**
+	 *
+	 */
+	void SetDiffuze( d3Float v )			{ _co_diffuse = v; }
+	void SetSpecular( d3Float v )			{ _co_phong = v; }
+	void SetSpecularHardness( d3Float v )	{ _co_phong_exp = v; }
+	void SetAmbient( d3Float v )			{ _co_ambient = v; }
+
+	void SetNumberOfLights( sInt num );
 public:
 	/**
 	 * Applies material to render state
 	 */
 	virtual void Apply( RenderState& renderState ) const;
 private:
+	sInt					_numberOfLights;			
 	use_resource<Texture>	_texture;
 	use_resource<Effect>	_effect;
 	

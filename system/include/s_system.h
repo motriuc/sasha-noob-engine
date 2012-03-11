@@ -80,10 +80,11 @@ namespace System
 	#include "s_system_cnt.h"
 	#include "s_system_string.inl"
 
+	#include "s_system_global.h"
+
 	#include "s_system_limit.h"
 	#include "s_system_math.h"
 
-	#include "s_system_global.h"
 	#include "s_system_ptr.h"
 	#include "s_system_appenv.h"
 	

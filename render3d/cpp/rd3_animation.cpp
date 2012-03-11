@@ -62,8 +62,11 @@ void Animation::Animate( sUInt frame, Result& result ) const
 		d3Float sy = _scaleY.HasAnimation() ? _scaleY.GetValue( frame ) : 1.0f;
 		d3Float sz = _scaleZ.HasAnimation() ? _scaleZ.GetValue( frame ) : 1.0f;
 
-		tmp.SetScale( sx, sy, sz );
-		transformation *= tmp;
+		if( sx != 1.0f || sy != 1.0f || sz != 1.0f )
+		{
+			tmp.SetScale( sx, sy, sz );
+			transformation *= tmp;
+		}
 	}
 	
 	{
@@ -71,8 +74,11 @@ void Animation::Animate( sUInt frame, Result& result ) const
 		d3Float ay = _rotateY.HasAnimation() ? _rotateY.GetValue( frame ) : 0.0f;
 		d3Float az = _rotateZ.HasAnimation() ? _rotateZ.GetValue( frame ) : 0.0f;
 
-		tmp.SetRotateEuler( ax, ay, az );
-		transformation *= tmp;
+		if( ax != 0.0f || ay != 0.0f || az != 0.0f )
+		{
+			tmp.SetRotateEuler( ax, ay, az );
+			transformation *= tmp;
+		}
 	}
 	
 	{
@@ -80,8 +86,11 @@ void Animation::Animate( sUInt frame, Result& result ) const
 		d3Float dy = _moveY.HasAnimation() ? _moveY.GetValue( frame ) : 0.0f;
 		d3Float dz = _moveZ.HasAnimation() ? _moveZ.GetValue( frame ) : 0.0f;
 
-		tmp.SetTranslation( d3Vector( dx, dy, dz ) );
-		transformation *= tmp;
+		if( dx != 0.0f || dy != 0.0f || dz != 0.0f )
+		{
+			tmp.SetTranslation( d3Vector( dx, dy, dz ) );
+			transformation *= tmp;
+		}
 	}
 
 	d3Float tx;

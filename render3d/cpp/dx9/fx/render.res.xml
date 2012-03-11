@@ -18,6 +18,7 @@
   <font name="system.font.console" path="%engine%/system.texture.font.console.10.xml" />
 
   <!-- texture effects -->
+  <effect name="system.texture.fx.0" path="%engine%/system.texture.0.fx" />
   <effect name="system.texture.fx.1" path="%engine%/system.texture.1.fx" />
 
   <!-- solid effects -->

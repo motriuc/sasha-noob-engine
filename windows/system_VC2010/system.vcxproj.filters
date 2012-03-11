@@ -49,9 +49,6 @@
     <None Include="..\..\system\include\s_system_global_win32.inl">
       <Filter>system\Header Files</Filter>
     </None>
-    <None Include="..\..\system\include\s_system_math.inl">
-      <Filter>system\Header Files</Filter>
-    </None>
     <None Include="..\..\system\include\s_system_mem.inl">
       <Filter>system\Header Files</Filter>
     </None>
@@ -123,6 +120,9 @@
     </None>
     <None Include="..\..\system\include\s_system_d3math_triangle.inl">
       <Filter>system\Header Files\math\d3math</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_math.inl">
+      <Filter>system\Header Files\math</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -279,9 +279,6 @@
       <Filter>system\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_macro.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_math.h">
       <Filter>system\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_mem.h">
@@ -475,6 +472,9 @@
     </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_d3math_vector.h">
       <Filter>system\Header Files\math\d3math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_math.h">
+      <Filter>system\Header Files\math</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

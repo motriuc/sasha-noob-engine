@@ -50,6 +50,7 @@ public:
 	{
 	public:
 		const d3Matrix& GetTransformation() const { return _transformation; }
+		const d2Vector& GetTx() const { return _tx; }
 	private:
 		d3Matrix	_transformation;
 		d2Vector	_tx;

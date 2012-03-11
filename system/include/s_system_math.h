@@ -190,8 +190,55 @@ sBool IsPowOf2( sInt v );
  * returns the closest and bigest number of type 2^n
  */
 sInt UpperPowOf2Number( sInt v );
-	
-	
+
+/**
+ * Random
+ */
+class Random
+{
+public:
+	Random( sUInt seed = 0 );
+
+	/**
+	 * Set Rand seed
+	 */
+	void SetRand( sUInt seed );
+
+	/**
+	 *
+	 */
+	void SetRandomSeed();
+
+	/**
+	 * Randomize number from 0..MaxRand
+	 */
+	sInt Rand();
+
+	/**
+	 * Returns randmax
+	 */
+	sInt GetMaxRand();
+
+	/**
+	 * Randomize a number
+	 */
+	sInt Rand( sInt MaxRand, sInt MinRand = 0 );
+
+	/**
+	 * Randomize a float number
+	 */
+	sFloat Rand( sFloat MaxRand, sFloat MinRand = 0.0f );
+
+	/**
+	 * Bool Randomize
+	 */
+	sBool RandBool();
+
+private:
+	SDWORD	_seed;
+};
+
+
 #include "s_system_math.inl"
 
 }
