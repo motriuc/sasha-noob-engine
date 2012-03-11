@@ -108,6 +108,7 @@ namespace ResourceType
 		E_MESH,
 		E_AFTEREFFECT,
 		E_DVERTEX_BUFFER,
+		E_ANIMATION,
 
 		COUNT,
 		UNKNOWN

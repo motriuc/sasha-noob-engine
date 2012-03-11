@@ -36,6 +36,13 @@ using namespace System;
 class AnimateValue
 {
 public:
+	enum Type
+	{
+		Point,
+		Linear,
+		Bezier // to do
+	};
+
 	/**
 	 *
 	 */
@@ -44,7 +51,12 @@ public:
 	/**
 	 *
 	 */
-	void Add( sUInt frame, d3Float value );
+	void AddLine( sUInt frame, d3Float value );
+
+	/**
+	 *
+	 */
+	void AddPoint( sUInt frame, d3Float value );
 
 	/**
 	 *
@@ -63,8 +75,9 @@ public:
 private:
 	typedef struct
 	{
-		sUInt	frame;
-		d3Float value;
+		sUInt			frame;
+		d3Float			value;
+		Type			type;
 	} KeyFrame;
 
 	class Cmp_KeyFrame

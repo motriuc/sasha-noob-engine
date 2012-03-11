@@ -28,15 +28,13 @@ namespace Rd3
 //-------------------------------------------------------------------	
 Mesh::Mesh( Render* owner, const sString& objectName ) :
 	_BaseClass( owner, objectName, ResourceType::E_MESH ),
-	_type( PrimitiveType::E_TRIANGLE_LIST ),
-	_animation( NULL )
+	_type( PrimitiveType::E_TRIANGLE_LIST )
 {
 }
 
 //-------------------------------------------------------------------	
 Mesh::~Mesh()
 {
-	delete _animation;
 }
 
 //-------------------------------------------------------------------	
@@ -61,7 +59,13 @@ void Mesh::SetVb( const sString& name )
 {
 	_vertexBuffer = GetOwner()->UseVb( name );
 }
-	
+
+//-------------------------------------------------------------------	
+void Mesh::SetAnimation( const sString& name )
+{
+	_animation = GetOwner()->UseAnimation( name );
+}
+
 //-------------------------------------------------------------------	
 void Mesh::SetIb( const sString& name )
 {
@@ -119,10 +123,9 @@ void Mesh::LoadFromXml( const Xml::BaseDomNode& node, const Def& def, const Stre
 		{
 			SetIb( child.GetAttributes()[ATTR_NAME] );			
 		}
-		else if( child.GetName() == ELEMENT_ANIMATIONS )
+		else if( child.GetName() == ELEMENT_ANIMATION )
 		{
-			_animation = new Animation();
-			_animation->LoadFromXml( child, def );
+			SetAnimation( child.GetAttributes()[ATTR_NAME] );
 		}
 	}
 	

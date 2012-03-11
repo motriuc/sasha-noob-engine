@@ -30,9 +30,18 @@ AnimateValue::AnimateValue() :
 }
 
 //-------------------------------------------------------------------
-void AnimateValue::Add( sUInt frame, d3Float value )
+void AnimateValue::AddLine( sUInt frame, d3Float value )
 {
-	KeyFrame keyFrame = { frame, value };
+	KeyFrame keyFrame = { frame, value, Linear };
+	_keyframes.Add( keyFrame );
+
+	_maxFrame = System::FMath::Max( _maxFrame, frame );
+}
+
+//-------------------------------------------------------------------
+void AnimateValue::AddPoint( sUInt frame, d3Float value )
+{
+	KeyFrame keyFrame = { frame, value, Point };
 	_keyframes.Add( keyFrame );
 
 	_maxFrame = System::FMath::Max( _maxFrame, frame );
@@ -41,7 +50,7 @@ void AnimateValue::Add( sUInt frame, d3Float value )
 //-------------------------------------------------------------------
 d3Float AnimateValue::GetValue( sUInt frame ) const
 {
-	KeyFrame keyFrame = { frame, 0.0f };
+	KeyFrame keyFrame = { frame, 0.0f, Point };
 
 	sInt k = _keyframes.FindUpperBound( keyFrame );
 
@@ -51,22 +60,39 @@ d3Float AnimateValue::GetValue( sUInt frame ) const
 	if( k >= _keyframes.Size() )
 		return _keyframes[_keyframes.Size()-1].value;
 
+
 	sUInt f1 = _keyframes[k-1].frame;
 	d3Float v1 = _keyframes[k-1].value;
 
 	sUInt f2 = _keyframes[k].frame;
 	d3Float v2 = _keyframes[k].value;
+	Type type = _keyframes[k].type;
 
 	__S_ASSERT( f1 <= frame );
 	__S_ASSERT( frame <= f2 );
 
-	sInt df = f2 - f1;
-	if( df == 0 )
-		return v1;
+	d3Float result = v1;
 
-	d3Float dv = v2 - v1;
+	switch( type )
+	{
+	case Point:
+		break;
+	case Linear:
+		{
+			sInt df = f2 - f1;
+			if( df == 0 )
+				break;
 
-	return v1 + dv / df * ( frame - f1 ); 
+			d3Float dv = v2 - v1;
+			result = v1 + dv / df * ( frame - f1 ); 
+		}
+		break;
+	case Bezier:
+	default:
+		__S_ASSERT( sFalse );
+	}
+
+	return result;
 }
 
 //-------------------------------------------------------------------
@@ -83,10 +109,15 @@ void AnimateValue::LoadFromXml( const Xml::BaseDomNode& node, const Def& def )
 		{
 			sInt key = child.GetAttributeValue( ATTR_ID, -1 );
 			d3Float value = child.GetAttributeValue( ATTR_VALUE, 0.0f );
+			sString type = child.GetAttributes()[ATTR_TYPE];
 
-			if( key >= 0 )
+			if( type.Length() <= 0 || type == _S("line") )
 			{
-				Add( (sUInt) key, value );
+				AddLine( (sUInt) key, value );
+			}
+			else if( type == _S("point") )
+			{
+				AddPoint( (sUInt) key, value );
 			}
 		}
 	}

@@ -124,6 +124,11 @@ public:
 	AfterEffect* GetAfterEffect( const sString& eName )		{ return reinterpret_cast<AfterEffect*>( _aftereffectResPool[eName] ); }
 	AfterEffect* UseAfterEffect( const sString& eName ) throws_error;
 	
+	/**
+	 * Animation
+	 */
+	Animation* GetAnimation( const sString& eName )		{ return reinterpret_cast<Animation*>( _animationResPool[eName] ); }
+	Animation* UseAnimation( const sString& eName ) throws_error;
 	/////////////////////////////////////////////////////////////
 	// Create Vb
 public:
@@ -330,7 +335,17 @@ public:
 		const Def& def,
 		const StreamArchive& archive
 	);
-	
+
+	///////////////////////////////////////////////////////////
+	// Create animations
+public:
+	Animation* CreateAnimationFromFile( 
+		const sString& objectName,
+		const sString& fileName,
+		const Def& def,
+		const StreamArchive& archive
+	);
+
 	///////////////////////////////////////////////////////////
 	// Message Q
 public:
@@ -395,6 +410,7 @@ protected:
 	
 	TypedResourcePool		_messageQResPool;
 	TypedResourcePool		_aftereffectResPool;
+	TypedResourcePool		_animationResPool;
 	
 	ResourceLoader			_renderResources;
 

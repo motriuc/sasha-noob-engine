@@ -23,7 +23,8 @@ namespace Rd3
 {
 
 //-------------------------------------------------------------------
-Animation::Animation():
+Animation::Animation( Render* owner, const sString& objectName ):
+	_BaseClass( owner, objectName, ResourceType::E_ANIMATION ),
 	_maxFrames( 0 )
 {
 }
@@ -83,6 +84,15 @@ void Animation::Animate( sUInt frame, Result& result ) const
 		transformation *= tmp;
 	}
 
+	d3Float tx;
+	d3Float ty;
+
+	{
+		tx = _textureX.HasAnimation() ? _textureX.GetValue( frame ) : 0.0f;
+		ty = _textureY.HasAnimation() ? _textureY.GetValue( frame ) : 0.0f;
+	}
+
+	result._tx = d2Vector( tx, ty );
 	result._transformation = transformation;
 }
 
@@ -129,6 +139,13 @@ void Animation::LoadFromXml( const Xml::BaseDomNode& node, const Def& def )
 					pAnimValue = &_scaleY;
 				else if( what == _S("Z") )
 					pAnimValue = &_scaleZ;
+			}
+			else if( type == _S("texture") )
+			{
+				if( what == _S("X") )
+					pAnimValue = &_textureX;
+				else if( what == _S("Y") )
+					pAnimValue = &_textureY;
 			}
 
 			if( pAnimValue != NULL )

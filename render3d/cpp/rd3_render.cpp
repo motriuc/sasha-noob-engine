@@ -25,6 +25,7 @@
 #include "rd3_font.h"
 #include "rd3_rstate.h"
 #include "rd3_dvertexbuffer.h"
+#include "rd3_animation.h"
 
 using namespace System::Types;
 
@@ -78,7 +79,8 @@ Render::Render( const RenderType::RenderType type ) :
 	_fontResPool( ResourceType::E_FONT ),
 	_messageQResPool( ResourceType::E_MESSAGEQ ),
 	_meshResPool( ResourceType::E_MESH ),
-	_aftereffectResPool( ResourceType::E_AFTEREFFECT )
+	_aftereffectResPool( ResourceType::E_AFTEREFFECT ),
+	_animationResPool( ResourceType::E_ANIMATION )
 {
 }
 
@@ -198,6 +200,21 @@ AfterEffect* Render::UseAfterEffect( const sString& eName ) throws_error
 }
 
 //--------------------------------------------------------------------
+Animation* Render::UseAnimation( const sString& eName ) throws_error
+{
+	Animation* pAnim = GetAnimation( eName );
+	
+	if( pAnim == NULL )
+	{
+		error_throw_arg( Errors::StringError )
+			_S("Animation : ") + eName + _S(" not found.")
+		);
+		
+	}
+	return pAnim;
+}
+
+//--------------------------------------------------------------------
 void Render::ProcessMessages( EngineData& edata )
 {
 	for( sInt i = 0; i < _messageQResPool.GetObjectCount(); ++i )
@@ -248,6 +265,10 @@ void Render::NotifyFreeResource( ResourceObject* pRes )
 
 	case ResourceType::E_MESSAGEQ:
 		_messageQResPool.Remove( pRes->GetObjectName() );
+		break;
+
+	case ResourceType::E_ANIMATION:
+		_animationResPool.Remove( pRes->GetObjectName() );
 		break;
 			
 	case ResourceType::E_MATERIAL:
@@ -429,7 +450,6 @@ Mesh* Render::CreateMeshFromFile(
 			_S("Duplicate object resource name :") + objectName 
 		);
 	
-	
 	Mesh* pMesh = NULL;
 	try
 	{
@@ -480,6 +500,42 @@ AfterEffect* Render::CreateAfterEffectFromFile(
 	
 	return pAfterEffect;
 }	
+
+//--------------------------------------------------------------------
+Animation* Render::CreateAnimationFromFile( 
+		const sString& objectName,
+		const sString& fileName,
+		const Def& def,
+		const StreamArchive& archive
+	)
+{
+	if( objectName.Length() > 0 && _animationResPool[objectName] != NULL ) 
+		error_throw_arg( System::Errors::StringError ) 
+			_S("Duplicate object resource name :") + objectName 
+		);
+
+	ptr_unique<const Streams::IInputStream> pStream( archive.Open( fileName ) );
+	ptr_unique<Xml::DomDocument> pDocument( Xml::DomDocument::Read( &pStream() ) );
+	
+	const System::Xml::BaseDomNode& node = pDocument().GetRoot();
+
+	Animation* pAnimation = new Animation( this, objectName );
+
+	try
+	{
+		pAnimation->LoadFromXml( node, def );
+
+		if( objectName.Length() > 0 )
+			_animationResPool.Add( pAnimation );
+	}
+	catch(...)
+	{
+		if( pAnimation != NULL )
+			pAnimation->UnuseResource();
+	}
+	
+	return pAnimation;
+}
 
 //--------------------------------------------------------------------
 Font* Render::CreateFontFromFile(

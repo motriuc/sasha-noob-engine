@@ -26,18 +26,22 @@
 #endif
 
 #include "rd3_animation_fun.h"
+#include "rd3_resobj.h"
 
 namespace Rd3
 {
 
 using namespace System::d3Math;
+using namespace System::d2Math;
 using namespace System;
 
 /**
  * Animation
  */
-class Animation
+class Animation : public ResourceObject
 {
+private:
+	typedef ResourceObject _BaseClass;
 public:
 	/**
 	 * Result
@@ -48,6 +52,7 @@ public:
 		const d3Matrix& GetTransformation() const { return _transformation; }
 	private:
 		d3Matrix	_transformation;
+		d2Vector	_tx;
 
 		friend class Animation;
 	};
@@ -63,10 +68,10 @@ public:
 		}
 
 	private:
-		sDouble			_fps;
-		mutable sDouble	_startTime;
-		mutable sUInt	_cFrame;
-		mutable Result	_cResult;
+		sDouble	_fps;
+		sDouble	_startTime;
+		sUInt	_cFrame;
+		Result	_cResult;
 
 		friend class Animation;
 	};
@@ -74,7 +79,7 @@ public:
 	/**
 	 *
 	 */
-	Animation();
+	Animation( Render* owner, const sString& objectName );
 
 	/**
 	 *
@@ -100,6 +105,9 @@ private:
 	AnimateValue	_scaleX;
 	AnimateValue	_scaleY;
 	AnimateValue	_scaleZ;
+
+	AnimateValue	_textureX;
+	AnimateValue	_textureY;
 };
 
 }

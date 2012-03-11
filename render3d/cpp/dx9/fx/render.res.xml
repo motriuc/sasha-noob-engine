@@ -26,4 +26,7 @@
   <!-- debug effects -->
   <effect name="system.debug.solid.color" path="%engine%/system.debug.solid.color.fx" />
 
+  <!-- d2 effects -->
+  <effect name="system.d2.texture.1" path="%engine%/system.d2.texture.1.fx" />
+
 </resources>

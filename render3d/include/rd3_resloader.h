@@ -70,6 +70,7 @@ private:
 	void LoadIBuffer( const Xml::BaseDomNode& element, ResLoadParams& loadParams ) throws_error;
 	void LoadAfterEffect( const Xml::BaseDomNode& element, ResLoadParams& loadParams ) throws_error;
 	void LoadFont( const Xml::BaseDomNode& element, ResLoadParams& loadParams ) throws_error;
+	void LoadAnimation( const Xml::BaseDomNode& element, ResLoadParams& loadParams ) throws_error;
 };
 
 }

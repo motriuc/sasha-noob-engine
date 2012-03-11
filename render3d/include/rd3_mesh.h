@@ -60,6 +60,7 @@ public:
 	
 	void SetVb( const sString& name );
 	void SetIb( const sString& name );
+	void SetAnimation( const sString& name );
 
 	const Animation* GetAnimation() const { return _animation; }
 public:
@@ -71,9 +72,8 @@ private:
 	use_resource<VertexBuffer>	_vertexBuffer;
 	use_resource<IndexBuffer>	_indexBuffer;
 	use_resource<Material>		_material;
+	use_resource<Animation>		_animation;
 	PrimitiveType::PrimitiveType _type;
-
-	Animation*					_animation;
 };
 	
 }

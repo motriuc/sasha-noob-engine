@@ -61,10 +61,13 @@
     <Filter Include="render\Header Files\resources\msg">
       <UniqueIdentifier>{e6c38c12-bdba-451a-bf12-2f78870c40d7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="render\Header Files\animation">
+    <Filter Include="render\Header Files\resources\materials">
+      <UniqueIdentifier>{f8f3462b-c9be-4163-8bd2-e0aaa7b24a19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="render\Header Files\resources\animation">
       <UniqueIdentifier>{3cf20694-a0fa-4927-b87c-a56ade7a617b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="render\Source Files\animation">
+    <Filter Include="render\Source Files\resources\animation">
       <UniqueIdentifier>{e16c6a6a-68b6-4e35-b309-5655f77ce412}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -78,9 +81,6 @@
     </None>
     <None Include="..\..\render3d\include\rd3_types.inl">
       <Filter>render\Header Files\base</Filter>
-    </None>
-    <None Include="..\..\render3d\include\rd3_material.inl">
-      <Filter>render\Header Files\resources</Filter>
     </None>
     <None Include="..\..\render3d\include\rd3_texture.inl">
       <Filter>render\Header Files\resources</Filter>
@@ -108,6 +108,9 @@
     </None>
     <None Include="..\..\render3d\include\rd3_dvertexbuffer.inl">
       <Filter>render\Header Files\resources\buffers</Filter>
+    </None>
+    <None Include="..\..\render3d\include\rd3_material.inl">
+      <Filter>render\Header Files\resources\materials</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -241,10 +244,10 @@
       <Filter>renderdx9\cpp</Filter>
     </ClCompile>
     <ClCompile Include="..\..\render3d\cpp\rd3_animation.cpp">
-      <Filter>render\Source Files\animation</Filter>
+      <Filter>render\Source Files\resources\animation</Filter>
     </ClCompile>
     <ClCompile Include="..\..\render3d\cpp\rd3_animation_fun.cpp">
-      <Filter>render\Source Files\animation</Filter>
+      <Filter>render\Source Files\resources\animation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -301,18 +304,6 @@
     </ClInclude>
     <ClInclude Include="..\..\render3d\include\rd3_types.h">
       <Filter>render\Header Files\base</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\render3d\include\rd3_material_texture.h">
-      <Filter>render\Header Files\resources</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\render3d\include\rd3_material_flatcolor.h">
-      <Filter>render\Header Files\resources</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\render3d\include\rd3_material_solid.h">
-      <Filter>render\Header Files\resources</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\render3d\include\rd3_material.h">
-      <Filter>render\Header Files\resources</Filter>
     </ClInclude>
     <ClInclude Include="..\..\render3d\include\rd3_texture.h">
       <Filter>render\Header Files\resources</Filter>
@@ -399,10 +390,22 @@
       <Filter>renderdx9\include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\render3d\include\rd3_animation.h">
-      <Filter>render\Header Files\animation</Filter>
+      <Filter>render\Header Files\resources\animation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\render3d\include\rd3_animation_fun.h">
-      <Filter>render\Header Files\animation</Filter>
+      <Filter>render\Header Files\resources\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_material.h">
+      <Filter>render\Header Files\resources\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_material_texture.h">
+      <Filter>render\Header Files\resources\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_material_flatcolor.h">
+      <Filter>render\Header Files\resources\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_material_solid.h">
+      <Filter>render\Header Files\resources\materials</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

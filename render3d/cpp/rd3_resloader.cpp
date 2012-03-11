@@ -25,6 +25,7 @@
 #include "rd3_after_effect.h"
 #include "rd3_resloadparams.h"
 #include "rd3_font.h"
+#include "rd3_animation.h"
 
 namespace Rd3 
 {
@@ -70,6 +71,8 @@ void ResourceLoader::LoadFromXML( const Xml::BaseDomNode& element, ResLoadParams
 		if( !Rd3::XmlCheckDef( childElement, loadParams.def ) )
 			continue;
 		
+		sString name = childElement.GetName();
+
 		if ( childElement.GetName() == ELEMENT_TEXTURE )
 			LoadTexture( childElement, loadParams );
 		else if ( childElement.GetName() == ELEMENT_EFFECT )
@@ -84,10 +87,24 @@ void ResourceLoader::LoadFromXML( const Xml::BaseDomNode& element, ResLoadParams
 			LoadAfterEffect( childElement, loadParams );
 		else if( childElement.GetName() == ELEMENT_FONT )
 			LoadFont( childElement, loadParams );
-			
+		else if( childElement.GetName() == ELEMENT_ANIMATION )
+			LoadAnimation( childElement, loadParams );
 	}
 }	
 
+//-----------------------------------------------------------------------
+void ResourceLoader::LoadAnimation( const Xml::BaseDomNode& element, ResLoadParams& loadParams ) throws_error
+{
+	sString fName = element.GetAttributes()[ATTR_NAME];
+	sString path = element.GetAttributes()[ATTR_PATH];
+	
+	Animation* animation = loadParams.render.CreateAnimationFromFile(
+		fName, path,
+		loadParams.def,
+		loadParams.archive
+	);
+	_loadedResources.Add( animation );	
+}
 //-----------------------------------------------------------------------
 void ResourceLoader::LoadFont( const Xml::BaseDomNode& element, ResLoadParams& loadParams ) throws_error
 {
@@ -180,7 +197,6 @@ void ResourceLoader::LoadTexture( const Xml::BaseDomNode& element, ResLoadParams
 		
 		if( childElement.GetName() == ELEMENT_TEXTURE_PARAMS )
 			Rd3::XmlLoad_TextureParams( param, childElement, loadParams.def );
-		
 	}
 	
 	Rd3::Texture* pTexture = loadParams.render.CreateTextureFromFile( textureName, path, loadParams.archive, textureType, param );

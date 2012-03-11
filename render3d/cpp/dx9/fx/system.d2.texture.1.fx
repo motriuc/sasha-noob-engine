@@ -1,6 +1,6 @@
 /////////////////////////////////////////////////////////////////////
-//  File Name               : system.texture.1.fx
-//  Created                 : 3 3 2012   0:05
+//  File Name               : system.d2.texture.1.fx
+//  Created                 : 11 3 2012 
 //  File path               : SLibF\render3d\cpp\dx9\fx
 //  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
@@ -16,7 +16,7 @@
 /////////////////////////////////////////////////////////////////////
 
 float4x4 rd_d2view;
-float4 rd_color1;
+float4	 rd_color_diffuse;
 
 texture2D rd_tx1<>;
 
@@ -50,8 +50,8 @@ VS_OUT VSNormal( VS_IN v )
 
 float4 PSNormal( VS_OUT v ) : COLOR
 {
-	float alpha = tex2D( LinearSampler, v.Texture ).x;
-	return float4( rd_color1.xyz, alpha );
+	float4 txColor = tex2D( LinearSampler, v.Texture );
+	return txColor * rd_color_diffuse;
 }
 
 technique Default
