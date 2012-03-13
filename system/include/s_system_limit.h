@@ -86,6 +86,7 @@ namespace Limit
 	{
 		const Types::sFloat Max			= 3.402823466e+38F;
 		const Types::sFloat Min			= -3.402823466e+38F;
+		const Types::sFloat Precision	= 1.0e-5f;
 	}
 
 #ifdef _use_d3Math_
@@ -93,7 +94,7 @@ namespace Limit
 	{
 		const Types::d3Float Max			= sFloat::Max;
 		const Types::d3Float Min			= sFloat::Min;
-		const Types::d3Float Precision		= 1.0e-5f;
+		const Types::d3Float Precision		= sFloat::Precision;
 	}
 #endif
 
@@ -102,7 +103,7 @@ namespace Limit
 	{
 		const Types::d2Float Max			= sFloat::Max;
 		const Types::d2Float Min			= sFloat::Min;
-		const Types::d2Float Precision		= 1.0e-5f;
+		const Types::d2Float Precision		= sFloat::Precision;
 	}
 #endif
 

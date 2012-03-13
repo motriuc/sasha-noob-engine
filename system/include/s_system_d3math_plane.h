@@ -76,6 +76,18 @@ public:
 	 *		 1 -> front
 	 */
 	sInt Classify( const d3AABBox& b ) const;
+
+	/**
+	 * returns true 
+	 * if plane intersects the line 
+	 * point is the intersection point
+	 */
+	sBool Intersect( const d3Line& line, d3Point& point ) const;
+
+	/**
+	 * returns true if line intersects the plane
+	 */
+	sBool Intersect( const d3Line& line ) const;
 private:
 	d3Vector  _normal;
 	d3Float   _d;         // d of plane equation: _normal * coord + _d = 0 

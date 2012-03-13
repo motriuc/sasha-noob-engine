@@ -138,4 +138,10 @@ void EngineData::EndFrame()
 	StopFrameCounters();
 }
 
+//----------------------------------------------------------------------
+void EngineDataForRender::GetRayForScreenPoint( const d3Vector& screenPosition, d3LineSegment& ray )
+{
+	_screenViewCamera.GetRay( screenPosition, ray );
+}
+
 }

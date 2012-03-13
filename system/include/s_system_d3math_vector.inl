@@ -217,6 +217,11 @@ inline void d3Vector::Mul( d3Vector& r, const d3Vector& a, const d3Matrix& m )
 	r.z = z / w;
 }
 
+inline void d3Vector::Apply( const d3Matrix& m )
+{
+	Mul( *this, *this, m );
+}
+
 inline void d3Vector::Mul( d3Vector* r, sInt count, const d3Matrix& m )
 {
 	for( sInt i = 0; i < count; i++ )

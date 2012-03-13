@@ -86,6 +86,7 @@
     <None Include="..\..\system\include\s_system_d3math_aabb.inl" />
     <None Include="..\..\system\include\s_system_d3math_camera.inl" />
     <None Include="..\..\system\include\s_system_d3math_frustum.inl" />
+    <None Include="..\..\system\include\s_system_d3math_line.inl" />
     <None Include="..\..\system\include\s_system_d3math_sline.inl" />
     <None Include="..\..\system\include\s_system_d3math_matrix.inl" />
     <None Include="..\..\system\include\s_system_d3math_plane.inl" />
@@ -172,6 +173,7 @@
     <ClInclude Include="..\..\system\include\s_system_d3math_camera.h" />
     <ClInclude Include="..\..\system\include\s_system_d3math_frustum.h" />
     <ClInclude Include="..\..\system\include\s_system_d3math_int.h" />
+    <ClInclude Include="..\..\system\include\s_system_d3math_line.h" />
     <ClInclude Include="..\..\system\include\s_system_d3math_sline.h" />
     <ClInclude Include="..\..\system\include\s_system_d3math_matrix.h" />
     <ClInclude Include="..\..\system\include\s_system_d3math_plane.h" />

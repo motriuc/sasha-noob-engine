@@ -32,6 +32,7 @@ namespace d3Math
 	class d3Sphere;
 	class d3Quaternion;
 	class d3LineSegment;
+	class d3Line;
 
 	typedef d3Vector d3Point;
 
@@ -45,6 +46,7 @@ namespace d3Math
 	#include "s_system_d3math_camera.h"
 	#include "s_system_d3math_quaternion.h"
 	#include "s_system_d3math_sline.h"
+	#include "s_system_d3math_line.h"
 
 	#include "s_system_d3math_int.h"
 
@@ -59,4 +61,5 @@ namespace d3Math
 	#include "s_system_d3math_camera.inl"
 	#include "s_system_d3math_quaternion.inl"
 	#include "s_system_d3math_sline.inl"
+	#include "s_system_d3math_line.inl"
 }

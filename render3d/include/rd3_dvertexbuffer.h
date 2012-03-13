@@ -71,11 +71,36 @@ public:
 	virtual void Flush() = 0;
 
 	void AddVertex( const d3Vector& p );
-	void AddVertex( const d3Vector& p, const d2Vector& tx1 );
+
 	void SetNormal( const d3Vector& n );
 	void SetTx1( const d2Vector& v );
 	void SetTx2( const d2Vector& v );
 	void SetDiffiuseColor( const sRGBColor c );
+
+	// Add Utils
+	void AddVertex( const d3Vector& p, const d2Vector& tx1 );
+	void AddVertex( const d3Vector& p, const sRGBColor c );
+
+	/**
+	 * Adds:
+	 * in Z = C plane
+	 *
+	 * t1   x1           x2
+	 *  y1  |------------|
+	 *      |  \         |
+	 *      |      \     |
+	 *      |         \  |
+	 *      |------------|
+	 *  y2               t2
+	 */
+	void AddFaceZ(
+		d3Float x1, d3Float x2,
+		d3Float y1, d3Float y2,
+		d3Float tx1, d3Float tx2,
+		d3Float ty1, d3Float ty2,
+		d3Float z = 0.0f
+	);
+
 protected:
 	d3Vector	_points[CacheVertexBufferSize];
 	d3Vector	_normal[CacheVertexBufferSize];

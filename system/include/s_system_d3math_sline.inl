@@ -25,3 +25,24 @@ inline d3LineSegment::d3LineSegment( const d3Point& start, const d3Point& end ) 
 	_end( end )
 {
 }
+
+inline const d3Point& d3LineSegment::Start() const
+{
+	return _start;
+}
+
+inline const d3Point& d3LineSegment::End() const
+{
+	return _end;
+}
+
+inline d3Line d3LineSegment::GetLine() const
+{
+	return d3Line( _start, (_end-_start).UnitVector() );
+}
+
+inline void d3LineSegment::Apply( const d3Matrix& matrix )
+{
+	_start.Apply( matrix );
+	_end.Apply( matrix );
+}

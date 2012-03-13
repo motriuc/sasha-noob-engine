@@ -46,7 +46,10 @@ public:
 	const CommonDataForRender& GetCommonData() const;
 	CommonDataForRender& GetCommonData();
 
-
+	/**
+	 * Returns a ray in world space for a point on the screen
+	 */
+	void GetRayForScreenPoint( const d3Vector& screenPosition, d3LineSegment& ray );
 protected:
 	EngineDataForRender( const EngineDataForRender& src );
 	void operator = ( const EngineDataForRender& src );

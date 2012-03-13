@@ -1,6 +1,6 @@
 /////////////////////////////////////////////////////////////////////
-//  File Name               : s_system_d3math_sline.h
-//  Created                 : 12 3 2012   14:03
+//  File Name               : s_system_d3math_line.inl
+//  Created                 : 13 3 2012
 //  File path               : SLibF\system\Include
 //  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
@@ -16,42 +16,22 @@
 //      
 /////////////////////////////////////////////////////////////////////
 
-/**
- * d3LineSegment
- */
-class d3LineSegment
+inline d3Line::d3Line()
 {
-public:
-	/**
-	 *
-	 */
-	d3LineSegment();
+}
 
-	/**
-	 *
-	 */
-	d3LineSegment( const d3Point& start, const d3Point& end );
+inline d3Line::d3Line( const d3Point& point, const d3Vector& dir ):
+	_point( point ),
+	_dir( dir )
+{
+}
 
-	/**
-	 *
-	 */
-	const d3Point& Start() const;
+inline const d3Point& d3Line::GetPoint() const
+{
+	return _point;
+}
 
-	/**
-	 *
-	 */
-	const d3Point& End() const;
-
-	/**
-	 *
-	 */
-	d3Line GetLine() const;
-
-	/**
-	 *
-	 */
-	void Apply( const d3Matrix& matrix );
-private:
-	d3Point		_start;
-	d3Point		_end;
-};
+inline const d3Vector& d3Line::GetDirection() const
+{
+	return _dir;
+}

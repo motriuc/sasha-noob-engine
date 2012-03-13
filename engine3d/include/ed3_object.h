@@ -279,13 +279,15 @@ private:
 	friend class d3ObjectContiner;
 
 #ifdef _D3_DEBUG_RENDER
+protected:
 	mutable Rd3::use_resource<Rd3::DynamicVertexBuffer>	_debug_vb;
 	mutable Rd3::use_resource<Rd3::Effect>				_debug_effect_solid;
 
 	void debug_InitResources( Rd3::Render& render );
 	virtual void debug_Render( const d3RenderData& renderData );
 	
-	void debug_DrawAABBox( const d3RenderData& renderData, const d3AABBox& b,  sRGBColor cl ) const;
+	void debug_Draw( const d3RenderData& renderData, const d3AABBox& b, sRGBColor cl ) const;
+	void debug_Draw( const d3RenderData& renderData, const d3LineSegment& segment, sRGBColor cl ) const;
 #endif
 };
 

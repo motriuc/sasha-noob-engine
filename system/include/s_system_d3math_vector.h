@@ -114,6 +114,11 @@ public:
 	 * z *= v.z
 	 */
 	void operator *= ( const d3Vector& v );
+
+	/**
+	 *
+	 */
+	void Apply( const d3Matrix& m );
 	
 	/**
 	 * add to vectors

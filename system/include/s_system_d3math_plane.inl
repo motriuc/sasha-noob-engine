@@ -94,7 +94,24 @@ inline sBool d3Plane::IsInPlane( const d3Point& p ) const
 {
 	d3Float pt = d3Vector::DotProduct( _normal, p ) - _d;
 
-	return FMath::Abs( pt ) < Limit::d3Float::Precision;
+	return FMath::CloseToZero( pt );
 }
 
+inline sBool d3Plane::Intersect( const d3Line& line ) const
+{
+	return !FMath::CloseToZero( _normal * line.GetDirection() );
+}
 
+inline sBool d3Plane::Intersect( const d3Line& line, d3Point& point ) const
+{
+	d3Float dp = _normal * line.GetDirection();
+
+	if( FMath::CloseToZero( dp ) )
+		return sFalse;
+
+	d3Float t = -1.0f / dp * ( _normal * line.GetPoint() + _d );
+
+	point = line.GetPoint() + line.GetDirection() * t;
+
+	return sTrue;
+}

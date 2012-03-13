@@ -55,54 +55,20 @@ void Animation::Animate( sDouble time, State& state, Result& result ) const
 //-------------------------------------------------------------------
 void Animation::Animate( sUInt frame, Result& result ) const
 {
-	d3Matrix transformation( 1.0f );
-	d3Matrix tmp;
-	{
-		d3Float sx = _scaleX.HasAnimation() ? _scaleX.GetValue( frame ) : 1.0f;
-		d3Float sy = _scaleY.HasAnimation() ? _scaleY.GetValue( frame ) : 1.0f;
-		d3Float sz = _scaleZ.HasAnimation() ? _scaleZ.GetValue( frame ) : 1.0f;
+	result._scale.x = _scaleX.HasAnimation() ? _scaleX.GetValue( frame ) : 1.0f;
+	result._scale.y = _scaleY.HasAnimation() ? _scaleY.GetValue( frame ) : 1.0f;
+	result._scale.z = _scaleZ.HasAnimation() ? _scaleZ.GetValue( frame ) : 1.0f;
 
-		if( sx != 1.0f || sy != 1.0f || sz != 1.0f )
-		{
-			tmp.SetScale( sx, sy, sz );
-			transformation *= tmp;
-		}
-	}
-	
-	{
-		d3Float ax = _rotateX.HasAnimation() ? _rotateX.GetValue( frame ) : 0.0f;
-		d3Float ay = _rotateY.HasAnimation() ? _rotateY.GetValue( frame ) : 0.0f;
-		d3Float az = _rotateZ.HasAnimation() ? _rotateZ.GetValue( frame ) : 0.0f;
+	result._rotate.x = _rotateX.HasAnimation() ? _rotateX.GetValue( frame ) : 0.0f;
+	result._rotate.y = _rotateY.HasAnimation() ? _rotateY.GetValue( frame ) : 0.0f;
+	result._rotate.z = _rotateZ.HasAnimation() ? _rotateZ.GetValue( frame ) : 0.0f;
 
-		if( ax != 0.0f || ay != 0.0f || az != 0.0f )
-		{
-			tmp.SetRotateEuler( ax, ay, az );
-			transformation *= tmp;
-		}
-	}
-	
-	{
-		d3Float dx = _moveX.HasAnimation() ? _moveX.GetValue( frame ) : 0.0f;
-		d3Float dy = _moveY.HasAnimation() ? _moveY.GetValue( frame ) : 0.0f;
-		d3Float dz = _moveZ.HasAnimation() ? _moveZ.GetValue( frame ) : 0.0f;
+	result._move.x = _moveX.HasAnimation() ? _moveX.GetValue( frame ) : 0.0f;
+	result._move.y = _moveY.HasAnimation() ? _moveY.GetValue( frame ) : 0.0f;
+	result._move.z = _moveZ.HasAnimation() ? _moveZ.GetValue( frame ) : 0.0f;
 
-		if( dx != 0.0f || dy != 0.0f || dz != 0.0f )
-		{
-			tmp.SetTranslation( d3Vector( dx, dy, dz ) );
-			transformation *= tmp;
-		}
-	}
-
-	d3Float tx;
-	d3Float ty;
-
-	{
-		tx = _textureX.HasAnimation() ? _textureX.GetValue( frame ) : 0.0f;
-		ty = _textureY.HasAnimation() ? _textureY.GetValue( frame ) : 0.0f;
-	}
-
-	result._tx = d2Vector( tx, ty );
-	result._transformation = transformation;
+	result._tx.x = _textureX.HasAnimation() ? _textureX.GetValue( frame ) : 0.0f;
+	result._tx.y = _textureY.HasAnimation() ? _textureY.GetValue( frame ) : 0.0f;
 }
 
 //-------------------------------------------------------------------
@@ -162,6 +128,32 @@ void Animation::LoadFromXml( const Xml::BaseDomNode& node, const Def& def )
 				pAnimValue->LoadFromXml( child, def );
 			}
 		}
+	}
+}
+
+//-------------------------------------------------------------------
+void Animation::Result::GetTransformation( d3Matrix& transformation ) const
+{
+	transformation = d3Matrix( 1.0 );
+
+	d3Matrix tmp;
+	
+	if( _scale.x != 1.0f || _scale.y != 1.0f || _scale.z != 1.0f )
+	{
+		tmp.SetScale( _scale.x, _scale.y, _scale.z );
+		transformation *= tmp;
+	}
+
+	if( _rotate.x != 0.0f || _rotate.y != 0.0f || _rotate.z != 0.0f )
+	{
+		tmp.SetRotateEuler( _rotate.x, _rotate.y, _rotate.z );
+		transformation *= tmp;
+	}
+	
+	if( _move.x != 0.0f || _move.y != 0.0f || _move.z != 0.0f )
+	{
+		tmp.SetTranslation( d3Vector( _move.x, _move.y, _move.z ) );
+		transformation *= tmp;
 	}
 }
 

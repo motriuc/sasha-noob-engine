@@ -200,6 +200,11 @@ inline sBool IsPowOf2( sInt v )
 	return (v > 0) && ( (v & (v - 1) ) == 0);
 }
 
+inline bool CloseToZero( const sFloat& a )
+{
+	return Abs( a ) <= Limit::sFloat::Precision;
+}
+
 //------------------------------------------------------------------------------------
 // Random
 //------------------------------------------------------------------------------------

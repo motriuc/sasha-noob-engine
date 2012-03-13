@@ -213,7 +213,7 @@ inline d3Vector d3Camera::GetUpVector() const
 
 inline void d3Camera::GetRay( const d3Point& point, d3LineSegment& ray ) const
 {
-	d3Float mx = point.x * _fFov * _fAspect * 0.5f;
+	d3Float mx = point.x * _fFov / _fAspect * 0.5f;
 	d3Float my = point.y * _fFov * 0.5f;
 
 	d3Vector dx = GetRightVector() * mx;

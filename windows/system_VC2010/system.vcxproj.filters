@@ -40,45 +40,12 @@
     <Filter Include="system\Header Files\math\d3math">
       <UniqueIdentifier>{c7d06e27-c89d-4db4-af31-c334b7f9136c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="system\Header Files\to sort">
+      <UniqueIdentifier>{9bbcec4f-0a55-42c5-82f4-78d60dd35df9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
-    <None Include="..\..\system\include\s_system_global_mac.inl">
-      <Filter>system\Header Files</Filter>
-    </None>
-    <None Include="..\..\system\include\s_system_global_win32.inl">
-      <Filter>system\Header Files</Filter>
-    </None>
-    <None Include="..\..\system\include\s_system_mem.inl">
-      <Filter>system\Header Files</Filter>
-    </None>
-    <None Include="..\..\system\include\s_system_mt_at_mac.inl">
-      <Filter>system\Header Files</Filter>
-    </None>
-    <None Include="..\..\system\include\s_system_mt_at_win32.inl">
-      <Filter>system\Header Files</Filter>
-    </None>
-    <None Include="..\..\system\include\s_system_mt_cs.inl">
-      <Filter>system\Header Files</Filter>
-    </None>
-    <None Include="..\..\system\include\s_system_mt_cs_win32.inl">
-      <Filter>system\Header Files</Filter>
-    </None>
-    <None Include="..\..\system\include\s_system_mt_ev_win32.inl">
-      <Filter>system\Header Files</Filter>
-    </None>
-    <None Include="..\..\system\include\s_system_object.inl">
-      <Filter>system\Header Files</Filter>
-    </None>
-    <None Include="..\..\system\include\s_system_rgbcolor.inl">
-      <Filter>system\Header Files</Filter>
-    </None>
-    <None Include="..\..\system\include\s_system_string.inl">
-      <Filter>system\Header Files</Filter>
-    </None>
-    <None Include="..\..\system\include\s_system_xml.inl">
-      <Filter>system\Header Files</Filter>
-    </None>
     <None Include="..\..\system\include\s_system_chars_w_win32.inl">
       <Filter>system\Header Files\chars</Filter>
     </None>
@@ -126,6 +93,45 @@
     </None>
     <None Include="..\..\system\include\s_system_d3math_sline.inl">
       <Filter>system\Header Files\math\d3math</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_d3math_line.inl">
+      <Filter>system\Header Files\math\d3math</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_xml.inl">
+      <Filter>system\Header Files\to sort</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_global_mac.inl">
+      <Filter>system\Header Files\to sort</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_global_win32.inl">
+      <Filter>system\Header Files\to sort</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_mem.inl">
+      <Filter>system\Header Files\to sort</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_mt_at_mac.inl">
+      <Filter>system\Header Files\to sort</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_mt_at_win32.inl">
+      <Filter>system\Header Files\to sort</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_mt_cs.inl">
+      <Filter>system\Header Files\to sort</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_mt_cs_win32.inl">
+      <Filter>system\Header Files\to sort</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_mt_ev_win32.inl">
+      <Filter>system\Header Files\to sort</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_object.inl">
+      <Filter>system\Header Files\to sort</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_rgbcolor.inl">
+      <Filter>system\Header Files\to sort</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_string.inl">
+      <Filter>system\Header Files\to sort</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -200,144 +206,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\system\include\s_system.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_cnt.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_cnt_find.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_cnt_map.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_cnt_sort.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_cnt_sorted.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_cnt_vector.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_conf_def.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_conf_detect.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_conf_inc.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_debug.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_dep.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_error.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_error_error.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_error_strerr.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_error_win32err.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_error_win32hresult.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_evn.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_evn_0.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_evn_1.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_evn_2.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_evn_3.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_evn_4.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_evn_5.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_evn_b.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_global.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_limit.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_macro.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_mem.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_mt.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_mt_at.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_mt_cs.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_mt_ev.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_object.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_ptr.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_ptr_unique.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_rgbcolor.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_string.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_t.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_t_factory.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_t_typetraits.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_types.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_types_base.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_types_d2math.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_types_d3math.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_xml.h">
-      <Filter>system\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_chars.h">
       <Filter>system\Header Files\chars</Filter>
     </ClInclude>
@@ -391,9 +259,6 @@
     </ClInclude>
     <ClInclude Include="..\..\system\external\expat\xmltok_impl.h">
       <Filter>external\expat</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_appenv.h">
-      <Filter>system\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_stream.h">
       <Filter>system\Header Files\stream</Filter>
@@ -481,6 +346,150 @@
     </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_d3math.h">
       <Filter>system\Header Files\math\d3math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_d3math_line.h">
+      <Filter>system\Header Files\math\d3math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_appenv.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_cnt.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_cnt_find.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_cnt_map.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_cnt_sort.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_cnt_sorted.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_cnt_vector.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_conf_def.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_conf_detect.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_conf_inc.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_debug.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_dep.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_error.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_error_error.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_error_strerr.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_error_win32err.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_error_win32hresult.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_evn.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_evn_0.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_evn_1.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_evn_2.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_evn_3.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_evn_4.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_evn_5.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_evn_b.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_global.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_limit.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_macro.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_mem.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_mt.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_mt_at.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_mt_cs.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_mt_ev.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_object.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_ptr.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_ptr_unique.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_rgbcolor.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_string.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_t.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_t_factory.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_t_typetraits.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_types.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_types_base.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_types_d2math.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_types_d3math.h">
+      <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_xml.h">
+      <Filter>system\Header Files\to sort</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

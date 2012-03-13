@@ -88,6 +88,7 @@
     <ClCompile Include="..\..\engine3d\cpp\ed3_engine.cpp" />
     <ClCompile Include="..\..\engine3d\cpp\ed3_lua.cpp" />
     <ClCompile Include="..\..\engine3d\cpp\ed3_object.cpp" />
+    <ClCompile Include="..\..\engine3d\cpp\ed3_object_debug.cpp" />
     <ClCompile Include="..\..\engine3d\cpp\ed3_object_lua.cpp" />
     <ClCompile Include="..\..\engine3d\cpp\ed3_obj_cam_gest.cpp" />
     <ClCompile Include="..\..\engine3d\cpp\ed3_obj_cam_key.cpp" />

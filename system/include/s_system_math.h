@@ -192,6 +192,11 @@ sBool IsPowOf2( sInt v );
 sInt UpperPowOf2Number( sInt v );
 
 /**
+ * returs true if a is close to 0.0
+ */
+bool CloseToZero( const sFloat& a );
+
+/**
  * Random
  */
 class Random

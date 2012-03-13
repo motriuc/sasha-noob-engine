@@ -72,7 +72,9 @@ void d3MeshObject::AI( d3EngineData& edata )
 			_mesh().GetAnimation()->Animate( edata.GetTime(), _animState, result );
 
 			 d3Matrix m;
-			 d3Matrix::Mul( m, result.GetTransformation(), _initialTransformation );
+			 d3Matrix animTran;
+			 result.GetTransformation( animTran );
+			 d3Matrix::Mul( m, animTran, _initialTransformation );
 
 			 SetTransformationMatrix( m );
 		}

@@ -72,6 +72,7 @@ public:
 	 *
 	 */
 	void LoadFromXml( const Xml::BaseDomNode& node, const Def& def );
+
 private:
 	typedef struct
 	{

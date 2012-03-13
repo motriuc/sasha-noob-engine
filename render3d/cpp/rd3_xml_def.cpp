@@ -183,6 +183,18 @@ void XmlLoad_Camera( d3Camera& c, const Xml::BaseDomNode& node, const Def& def )
 		{
 			c.SetCamera2D();
 		}
+		else if( childNode.GetName() == _S("move.forward") )
+		{
+			c.MoveForward( childNode.GetAttributeValue( ATTR_VALUE, 0.0f ) );
+		}
+		else if( childNode.GetName() == _S("move.up") )
+		{
+			c.MoveUp( childNode.GetAttributeValue( ATTR_VALUE, 0.0f ) );
+		}
+		else if( childNode.GetName() == _S("move.left") )
+		{
+			c.MoveLeft( childNode.GetAttributeValue( ATTR_VALUE, 0.0f ) );
+		}
 		else if( childNode.GetName() == ELEMENT_POSITION )
 		{
 			d3Vector pos;

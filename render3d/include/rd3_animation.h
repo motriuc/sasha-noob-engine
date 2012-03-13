@@ -49,10 +49,23 @@ public:
 	class Result
 	{
 	public:
-		const d3Matrix& GetTransformation() const { return _transformation; }
+		/**
+		 * Get object animation transformation
+		 */
+		void GetTransformation( d3Matrix& matrix ) const;
+
+		/**
+		 * Get Texture animation positions
+		 */
 		const d2Vector& GetTx() const { return _tx; }
+
+		d3Vector GetMove() const	{ return _move; }
+		d3Vector GetRotate() const	{ return _rotate; }
+		d3Vector GetScale() const	{ return _scale; }
 	private:
-		d3Matrix	_transformation;
+		d3Vector	_move;
+		d3Vector	_rotate;
+		d3Vector	_scale;
 		d2Vector	_tx;
 
 		friend class Animation;

@@ -37,6 +37,9 @@
     <Filter Include="external\bullet\BulletCollision\NarrowPhaseCollision">
       <UniqueIdentifier>{7cb5bfdd-66b1-42a6-b6f0-3d78bc2ce6cc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="engine\Source Files\object">
+      <UniqueIdentifier>{2eab5845-c90c-423a-882d-1443fa013557}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -79,12 +82,6 @@
       <Filter>engine\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine3d\cpp\ed3_obj_texture.cpp">
-      <Filter>engine\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\engine3d\cpp\ed3_object.cpp">
-      <Filter>engine\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\engine3d\cpp\ed3_object_lua.cpp">
       <Filter>engine\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine3d\cpp\ed3_physics_shape.cpp">
@@ -515,6 +512,15 @@
     </ClCompile>
     <ClCompile Include="..\..\engine3d\cpp\ed3_obj_cam_key.cpp">
       <Filter>engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ed3_object.cpp">
+      <Filter>engine\Source Files\object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ed3_object_lua.cpp">
+      <Filter>engine\Source Files\object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ed3_object_debug.cpp">
+      <Filter>engine\Source Files\object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
