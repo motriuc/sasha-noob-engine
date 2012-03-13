@@ -32,6 +32,11 @@ public:
 	void GetFrustum( d3Frustum& f ) const;
 
 	/**
+	 * returns a ray for camera view point
+	 */
+	void GetRay( const d3Point& point, d3LineSegment& ray ) const;
+
+	/**
 	 * Move transformations
 	 */
 	void Move( const d3Vector& v );
@@ -110,6 +115,12 @@ public:
 	 *
 	 */
 	void SetCamera2D();
+
+	/**
+	 *
+	 */
+	d3Vector GetRightVector() const;
+	d3Vector GetUpVector() const;
 
 private:
 

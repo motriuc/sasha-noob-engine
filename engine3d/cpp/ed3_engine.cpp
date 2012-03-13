@@ -106,6 +106,7 @@ void d3Engine::RenderFrame()
 	try
 	{
 		_engineData.BeginFrame();
+		_engineData.SetScreenViewCamera( _currentWorld->GetCamera() );
 		_pRender->ProcessMessages( _engineData );
 		_currentWorld->DoAI( _engineData );
 		_currentWorld->RenderWorld( *_pRender->RenderState(), _engineData );

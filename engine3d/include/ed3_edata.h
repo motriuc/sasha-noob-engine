@@ -40,6 +40,8 @@ public:
 	
 	using EngineData::BeginFrame;
 	using EngineData::EndFrame;
+	using EngineData::SetScreenViewCamera;
+
 };
 	
 }

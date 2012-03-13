@@ -124,6 +124,9 @@
     <None Include="..\..\system\include\s_system_math.inl">
       <Filter>system\Header Files\math</Filter>
     </None>
+    <None Include="..\..\system\include\s_system_d3math_sline.inl">
+      <Filter>system\Header Files\math\d3math</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\system\cpp\s_system.cpp">
@@ -437,9 +440,6 @@
     <ClInclude Include="..\..\system\include\s_system_d2math.h">
       <Filter>system\Header Files\math\d2math</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_d3math.h">
-      <Filter>system\Header Files\math\d2math</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_d2math_vector.h">
       <Filter>system\Header Files\math\d2math</Filter>
     </ClInclude>
@@ -475,6 +475,12 @@
     </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_math.h">
       <Filter>system\Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_d3math_sline.h">
+      <Filter>system\Header Files\math\d3math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_d3math.h">
+      <Filter>system\Header Files\math\d3math</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

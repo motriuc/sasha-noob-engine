@@ -1,6 +1,6 @@
 //  File Name               : dx9_msg_keyboardq.cpp
 //  Created                 : 6 3 2012   19:58
-//  File path               : SLibF\render3d\include
+//  File path               : SLibF\render3d\cpp\dx9
 //  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
 //  Library                 : 
@@ -22,59 +22,7 @@
 
 using namespace Rd3::KeyboardKeys;
 
-/////////////////////////////////////////////////////////////////////
-// DirectInputDevice
-/////////////////////////////////////////////////////////////////////
-class DirectInputDevice
-{
-public:
-	DirectInputDevice() : _pDI( NULL )
-	{
-	}
-
-	~DirectInputDevice()
-	{
-		if( _pDI )
-		{
-			_pDI->Release();
-		}
-	}
-
-	LPDIRECTINPUT8 GetHandle()
-	{
-		if( _pDI == NULL ) 
-		{
-			HRESULT hr = ::DirectInput8Create(
-				AppEnviroment::Instance().GetAppInstance(),
-				DIRECTINPUT_VERSION,
-				IID_IDirectInput8,
-				(LPVOID*)&_pDI,
-				NULL
-			);
-
-			if( FAILED( hr ) )
-			{
-				System::Platform::ShowError( _S("Can't initialize Direct input") );
-			}
-		}
-		return _pDI;
-	}
-
-	LPDIRECTINPUT8 operator->()
-	{
-		return GetHandle();
-	}
-  
-	static DirectInputDevice& Instance()
-	{
-		static DirectInputDevice gl_D3D;
-		return gl_D3D;
-	}
-
-private:
-	LPDIRECTINPUT8          _pDI;
-};
-
+LPDIRECTINPUT8 GetDIDevice();
 
 /////////////////////////////////////////////////////////////////////
 // DiKeys
@@ -185,11 +133,11 @@ Dx9KeyboardMsgQueue::Dx9KeyboardMsgQueue( Rd3::Render* owner, const sString& obj
 	_pKeyPressed = _keyPressed2;
 	_pKeyPressedPrev = _keyPressed1;
 
-	HRESULT hr = DirectInputDevice::Instance().GetHandle()->CreateDevice( GUID_SysKeyboard, &_pDIDevice, NULL );
+	HRESULT hr = GetDIDevice()->CreateDevice( GUID_SysKeyboard, &_pDIDevice, NULL );
 
 	if( FAILED( hr ) )
     {
-		System::Platform::ShowWarning( _S("Can't initialize Direct Input device") );
+		System::Platform::ShowWarning( _S("Can't initialize keyboard Direct Input device") );
 	}
 
 	if( _pDIDevice )
@@ -237,3 +185,61 @@ Dx9KeyboardMsgQueue::~Dx9KeyboardMsgQueue()
 
 }
 
+/////////////////////////////////////////////////////////////////////
+// DirectInputDevice
+/////////////////////////////////////////////////////////////////////
+class DirectInputDevice
+{
+public:
+	DirectInputDevice() : _pDI( NULL )
+	{
+	}
+
+	~DirectInputDevice()
+	{
+		if( _pDI )
+		{
+			_pDI->Release();
+		}
+	}
+
+	LPDIRECTINPUT8 GetHandle()
+	{
+		if( _pDI == NULL ) 
+		{
+			HRESULT hr = ::DirectInput8Create(
+				AppEnviroment::Instance().GetAppInstance(),
+				DIRECTINPUT_VERSION,
+				IID_IDirectInput8,
+				(LPVOID*)&_pDI,
+				NULL
+			);
+
+			if( FAILED( hr ) )
+			{
+				System::Platform::ShowError( _S("Can't initialize Direct input") );
+			}
+		}
+		return _pDI;
+	}
+
+	LPDIRECTINPUT8 operator->()
+	{
+		return GetHandle();
+	}
+  
+	static DirectInputDevice& Instance()
+	{
+		static DirectInputDevice gl_D3D;
+		return gl_D3D;
+	}
+
+private:
+	LPDIRECTINPUT8          _pDI;
+};
+
+//------------------------------------------------------------------
+LPDIRECTINPUT8 GetDIDevice()
+{
+	return DirectInputDevice::Instance().GetHandle();
+}

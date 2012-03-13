@@ -24,7 +24,9 @@
 
 namespace Rd3
 {
-	
+
+using namespace System::d3Math;
+
 class EngineData;
 
 /**
@@ -44,9 +46,12 @@ public:
 	const CommonDataForRender& GetCommonData() const;
 	CommonDataForRender& GetCommonData();
 
+
 protected:
 	EngineDataForRender( const EngineDataForRender& src );
 	void operator = ( const EngineDataForRender& src );
+
+	void SetScreenViewCamera( const d3Camera& camera );
 private:
 	sDouble     _totalTimeD;
 	sDouble     _deltaTimeD;
@@ -61,6 +66,7 @@ private:
 	sUInt       _fpsFrameCount;
 	sBool       _fpsChanged;
 
+	d3Camera	_screenViewCamera;
 protected:
 	CommonData	_commonData;
 	

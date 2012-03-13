@@ -199,3 +199,27 @@ inline void d3Camera::CommitChanges() const
 	_bChanged = sFalse;
 }
 
+inline d3Vector d3Camera::GetRightVector() const
+{
+	d3Vector right;
+	d3Vector::CrossProduct( right, _vLookAt, _vWorldUp  );
+	return right.UnitVector();
+}
+
+inline d3Vector d3Camera::GetUpVector() const
+{
+	return _vWorldUp;
+}
+
+inline void d3Camera::GetRay( const d3Point& point, d3LineSegment& ray ) const
+{
+	d3Float mx = point.x * _fFov * _fAspect * 0.5f;
+	d3Float my = point.y * _fFov * 0.5f;
+
+	d3Vector dx = GetRightVector() * mx;
+	d3Vector dy = GetUpVector() * my;
+
+	d3Vector dir = (_vLookAt + dx + dy).UnitVector();
+
+	ray = d3LineSegment( _pPosition, _pPosition + dir * _fFarPlane );
+}

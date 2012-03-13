@@ -24,6 +24,7 @@
 #include "ed3_primitive_lua.h"
 #include "dx9/dx9_conf.h"
 #include "dx9/dx9_msg_keyboardq.h"
+#include "dx9/dx9_msg_gestureq.h"
 
 //------------------------------------------------------------------
 static SNEApplication* _pWindowToCreate = NULL;
@@ -34,6 +35,7 @@ SNEApplication::SNEApplication( HINSTANCE hInstance ) :
 	_pRender( NULL ),
 	_pEngine( NULL ),
 	_pKeyMessageQ( NULL ),
+	_pGestureMessageQ( NULL ),
 	_viewWidth( 640 ),
 	_viewHeight( 480 )
 {
@@ -75,6 +77,11 @@ SNEApplication::~SNEApplication()
 		_pKeyMessageQ->UnuseResource();
 	}
 
+	if( _pGestureMessageQ )
+	{
+		_pGestureMessageQ->UnuseResource();
+	}
+
 	delete _pEngine;
 	delete _pRender;
 }
@@ -92,6 +99,9 @@ void SNEApplication::OnCreateWindow()
 		_pRender = Rd3::Render::CreateRender( createParams );
 		_pKeyMessageQ = new Dx9KeyboardMsgQueue( _pRender, _S("engine.msg.key") );
 		_pRender->AddMessageQueue( _pKeyMessageQ );
+
+		_pGestureMessageQ = new Dx9GestureMsgQueue( _pRender, _S("engine.msg.gesture"), _hWindow );
+		_pRender->AddMessageQueue( _pGestureMessageQ );
 
 		_pEngine = new Ed3::d3Engine( _pRender );
 

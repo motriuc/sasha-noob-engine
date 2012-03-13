@@ -14,6 +14,11 @@
 // 
 /////////////////////////////////////////////////////////////////////////
 
+inline void EngineDataForRender::SetScreenViewCamera( const d3Camera& camera )
+{
+	_screenViewCamera = camera;
+}
+
 
 inline d3Float EngineDataForRender::GetTime() const
 {

@@ -70,6 +70,9 @@
     <Filter Include="render\Source Files\resources\animation">
       <UniqueIdentifier>{e16c6a6a-68b6-4e35-b309-5655f77ce412}</UniqueIdentifier>
     </Filter>
+    <Filter Include="render\Source Files\resources\msg">
+      <UniqueIdentifier>{15833414-0cc5-4fa0-8ea5-07a4c4d33c5f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -219,9 +222,6 @@
     <ClCompile Include="..\..\render3d\cpp\rd3_mesh.cpp">
       <Filter>render\Source Files\resources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\render3d\cpp\rd3_msg_gesture.cpp">
-      <Filter>render\Source Files\resources</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\render3d\cpp\rd3_light.cpp">
       <Filter>render\Source Files\lights</Filter>
     </ClCompile>
@@ -248,6 +248,12 @@
     </ClCompile>
     <ClCompile Include="..\..\render3d\cpp\rd3_animation_fun.cpp">
       <Filter>render\Source Files\resources\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\dx9\dx9_msg_gestureq.cpp">
+      <Filter>renderdx9\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\rd3_msg_gesture.cpp">
+      <Filter>render\Source Files\resources\msg</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -406,6 +412,9 @@
     </ClInclude>
     <ClInclude Include="..\..\render3d\include\rd3_material_solid.h">
       <Filter>render\Header Files\resources\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\dx9\dx9_msg_gestureq.h">
+      <Filter>renderdx9\include</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -63,7 +63,8 @@ public:
 	};
 
 	GestureEvent( Type type ) :
-		_type( type )
+		_type( type ),
+		_taps( 2 )
 	{
 		
 	}

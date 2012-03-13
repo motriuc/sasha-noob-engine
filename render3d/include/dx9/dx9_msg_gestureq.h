@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////////////
-//  File Name               : dx9_msg_keyboardq.h
-//  Created                 : 6 3 2012   19:58
-//  File path               : SLibF\render3d\include
+//  File Name               : dx9_msg_gestureq.h
+//  Created                 : 12 3 2012
+//  File path               : SLibF\render3d\include\dx9
 //  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
 //  Library                 : 
@@ -23,26 +23,25 @@
 	#error rd3_conf.h must be included
 #endif
 
-#include "rd3_msg_keyboardq.h"
-
+#include "rd3_msg_gestureq.h"
 
 /**
- * Dx9KeyboardMsgQueue
+ * Dx9GestureMsgQueue
  */
-class Dx9KeyboardMsgQueue : public Rd3::KeyboardMsgQueue
+class Dx9GestureMsgQueue : public Rd3::GestureMsgQueue
 {
 private:
-	typedef Rd3::KeyboardMsgQueue _BaseClass;
+	typedef Rd3::GestureMsgQueue _BaseClass;
 public:
+	Dx9GestureMsgQueue( Rd3::Render* owner, const sString& objectName, HWND hRenderWindow );
 
-	Dx9KeyboardMsgQueue( Rd3::Render* owner, const sString& objectName );
-	~Dx9KeyboardMsgQueue();
-
+	~Dx9GestureMsgQueue();
 	virtual void ProcessMessages( Rd3::EngineData& edata );
 private:
 	LPDIRECTINPUTDEVICE8  _pDIDevice;
-	SBYTE*                _pKeyPressed;
-	SBYTE*				  _pKeyPressedPrev;
-	SBYTE				  _keyPressed1[Rd3::KeyboardKeys::COUNT];
-	SBYTE				  _keyPressed2[Rd3::KeyboardKeys::COUNT];
+	DIMOUSESTATE	_prevState;
+	HWND			_hRenderWindow;
+
+	d3Vector		GetCursorPosition();
 };
+

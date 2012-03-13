@@ -158,7 +158,6 @@ protected:
 
 	const EngineDataForRender*	_engineData;
 
-
 	// Update utils
 	void UpdateCamera();
 	void UpdateTime();

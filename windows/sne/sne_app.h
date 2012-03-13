@@ -23,6 +23,7 @@ namespace Ed3
 }
 
 class Dx9KeyboardMsgQueue;
+class Dx9GestureMsgQueue;
 
 /**
  * SNEApplication
@@ -55,4 +56,5 @@ private:
 	Rd3::Render*			_pRender;
 	Ed3::d3Engine*			_pEngine;
 	Dx9KeyboardMsgQueue*	_pKeyMessageQ;
+	Dx9GestureMsgQueue*		_pGestureMessageQ;
 };
