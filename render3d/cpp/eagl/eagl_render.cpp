@@ -568,7 +568,7 @@ Rd3::Texture* EAGLRender::CreateTexture(
 }
 
 //-------------------------------------------------------------------------------------
-Rd3::DynamicVertexBuffer* EAGLRender::CreateDynamicVertexBuffer( Rd3::VertexBufferStream::Set set ) throws_error
+Rd3::DynamicVertexBuffer* EAGLRender::UseDynamicVertexBuffer( Rd3::VertexBufferStream::Set set ) throws_error
 {
 	Rd3::DynamicVertexBuffer* pVb = NULL;
 	

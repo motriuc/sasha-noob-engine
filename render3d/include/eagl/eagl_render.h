@@ -144,7 +144,7 @@ public:
 	/**
 	 *
 	 */
-	virtual Rd3::DynamicVertexBuffer* CreateDynamicVertexBuffer( Rd3::VertexBufferStream::Set set ) throws_error;
+	virtual Rd3::DynamicVertexBuffer* UseDynamicVertexBuffer( Rd3::VertexBufferStream::Set set ) throws_error;
 	
 	/**
 	 *

@@ -23,6 +23,7 @@
 #include "eagl_render.h"
 #include "rd3_resobj.h"
 #include "rd3_texture.h"
+#include "rd3_effect.h"
 
 #include <CoreGraphics/CGBitmapContext.h>
 
