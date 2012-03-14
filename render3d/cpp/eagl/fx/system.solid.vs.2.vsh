@@ -22,5 +22,5 @@ void main()
 	v_position = (rd_world*position).xyz;
 	v_normals = normalize( (rd_worldnormal*normals).xyz );
 	
-    gl_Position =   rd_worldviewprojection * position;
+	gl_Position =   rd_worldviewprojection * position;
 }

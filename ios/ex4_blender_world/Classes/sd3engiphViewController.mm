@@ -171,8 +171,14 @@ void ConvertoToGestureEvent( GestureEvent& ev, NSSet* touches, UIView* view )
 	{
 		CGPoint point = [touch locationInView: view ];
 		
+		point.x = point.x / rc.size.width;
+		point.y = point.y / rc.size.height;
+		
+		point.x = 2.0f * point.x - 1.0f;
+		point.y = 1.0f - 2.0f * point.y;
+		
 		GestureTap tap( 
-					   d3Vector( point.x / rc.size.width, point.y / rc.size.height, 0.0f )
+					   d3Vector( point.x, point.y, 0.0f )
 					   );
 		
 		ev.Add( tap );

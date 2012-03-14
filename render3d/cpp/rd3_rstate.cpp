@@ -53,6 +53,9 @@ RenderState::RenderState( Render* owner ) :
 	_changed_transformation( sTrue ),
 
 	_changed_effect( sTrue ),
+	
+	_enabledState( 0 ),
+	_changedEnabledState( 0 ),
 
 #ifdef _DEBUG
 	_bIsRenderingObject( sFalse ),

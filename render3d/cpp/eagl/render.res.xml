@@ -21,7 +21,8 @@
 	<effect name="system.flatcolor.fx.2" path="%engine%/system.flatcolor.2.xml" />
 
 	<!-- texture effects -->
-	<effect name="system.texture.fx.1" path="%engine%/system.texture.ps.1.xml" />
+	<effect name="system.texture.fx.1" path="%engine%/system.texture.fx.1.xml" />
+	<effect name="system.texture.fx.0" path="%engine%/system.texture.fx.0.xml" />
 
 	<!-- after effect -->
 	<effect name="system.after.effect.blur" path="%engine%/system.after.effect.blur.fx.xml" />

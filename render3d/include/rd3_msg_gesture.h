@@ -23,7 +23,7 @@ namespace Rd3
 {
 
 /**
- *
+ * GestureTap
  */
 class GestureTap
 {
@@ -62,6 +62,10 @@ public:
 		E_End
 	};
 
+	GestureEvent()
+	{
+	}
+	
 	GestureEvent( Type type ) :
 		_type( type ),
 		_taps( 2 )

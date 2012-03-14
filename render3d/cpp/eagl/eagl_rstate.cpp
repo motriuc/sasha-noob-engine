@@ -265,10 +265,40 @@ void EAGLRenderState::BeginWorldRender( const Rd3::EngineDataForRender& edata )
 	glClearStencil( 0 );
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT );	
 
+	// 
 	glEnable( GL_DEPTH_TEST );
 	glEnable( GL_CULL_FACE );
 	
+	SetState( RenderState::DepthTest, sTrue );
+	SetState( RenderState::Culling,	sTrue );
+	
+	ResetStateChange();
+	
 	COUNTER_TIME_STOP( rd3_render_time_draw );	
+}
+
+//-----------------------------------------------------------------------
+void EAGLRenderState::BeginRenderObject()
+{
+	_BaseClass::BeginRenderObject();
+	
+	if( StateChanged( RenderState::DepthTest ) )
+	{
+		if( GetState( RenderState::DepthTest ) )
+			glEnable( GL_DEPTH_TEST );
+		else
+			glDisable( GL_DEPTH_TEST );
+	}
+	
+	if( StateChanged( RenderState::Culling ) )
+	{
+		if( GetState( RenderState::Culling ) )
+			glEnable( GL_CULL_FACE );
+		else
+			glDisable( GL_CULL_FACE );		
+	}
+	
+	ResetStateChange();	
 }
 
 //-----------------------------------------------------------------------
@@ -279,12 +309,13 @@ void EAGLRenderState::EndWorldRender()
 	if( GetAfterEffect() != NULL && GetAfterEffect()->ElementCount() > 0 )
 		EndAfterEffect();
 	
-	glDisable( GL_DEPTH_TEST );
-	glDisable( GL_CULL_FACE );
-	
 	if( GetRenderTarget() == NULL )
+	{
+		SetState( RenderState::DepthTest, sFalse );
+		SetState( RenderState::Culling,	sFalse );
+
 		PostRender();
-	
+	}
 	
 	COUNTER_TIME_START( rd3_render_time_draw );	
 	{

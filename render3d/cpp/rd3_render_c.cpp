@@ -5,6 +5,8 @@
 #include "ed3_conf.h"
 #include "ed3_engine.h"
 #include "rd3_msg_gestureq.h"
+#include "eagl_conf.h"
+#include "eagl_msg_gestureq.h"
 
 using namespace System;
 using namespace Rd3;
@@ -20,7 +22,7 @@ EngineApplication::EngineApplication( MACOSView* view ) throws_error:
 	try
 	{
 		_pRender = Rd3::Render::CreateRender( params );
-		_pGestureMsgQueue = new GestureMsgQueue( _pRender, _S("engine.msg.gesture") );
+		_pGestureMsgQueue = new EaglGestureMsgQueue( _pRender, _S("engine.msg.gesture") );
 		_pRender->AddMessageQueue( _pGestureMsgQueue );
 		
 		_pEngine = new d3Engine( _pRender );
@@ -39,11 +41,7 @@ EngineApplication::EngineApplication( MACOSView* view ) throws_error:
 //-----------------------------------------------------------------------------------
 void EngineApplication::Send( const GestureEvent& event )
 {
-	/**
-	 to do
-	if( _pGestureMsgQueue != NULL )
-		_pGestureMsgQueue->SendMessage( event );
-	 */
+	_pGestureMsgQueue->PostMessage( event );
 }
 
 //-----------------------------------------------------------------------------------

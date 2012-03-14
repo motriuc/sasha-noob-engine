@@ -1,0 +1,5 @@
+<effect name="system.texture.0" >
+	<default vs="%engine%/system.texture.vs.0.vsh" ps="%engine%/system.texture.ps.0.fsh">
+		<blending src="GL_SRC_ALPHA" dst="GL_ONE_MINUS_SRC_ALPHA"/>	
+	</default>
+</effect>

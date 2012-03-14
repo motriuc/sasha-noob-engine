@@ -15,6 +15,12 @@
 		28FD14FE0DC6FC130079059D /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FD14FD0DC6FC130079059D /* EAGLView.m */; };
 		28FD15000DC6FC520079059D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD14FF0DC6FC520079059D /* OpenGLES.framework */; };
 		28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
+		D90A3F1E15101EBD0028B0F6 /* eagl_msg_gestureq.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D90A3F1D15101EBD0028B0F6 /* eagl_msg_gestureq.cpp */; };
+		D90A3F2515101F470028B0F6 /* system.texture.fx.0.xml in Resources */ = {isa = PBXBuildFile; fileRef = D90A3F2015101F470028B0F6 /* system.texture.fx.0.xml */; };
+		D90A3F2615101F470028B0F6 /* system.texture.fx.1.xml in Resources */ = {isa = PBXBuildFile; fileRef = D90A3F2115101F470028B0F6 /* system.texture.fx.1.xml */; };
+		D90A3F2715101F470028B0F6 /* system.texture.ps.0.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D90A3F2215101F470028B0F6 /* system.texture.ps.0.fsh */; };
+		D90A3F2815101F470028B0F6 /* system.texture.vs.0.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D90A3F2315101F470028B0F6 /* system.texture.vs.0.vsh */; };
+		D90A3F2915101F470028B0F6 /* system.texture.vs.1.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D90A3F2415101F470028B0F6 /* system.texture.vs.1.vsh */; };
 		D917707C15046DA600078CA6 /* system.debug.solid.color.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D917707915046DA600078CA6 /* system.debug.solid.color.fsh */; };
 		D917707D15046DA600078CA6 /* system.debug.solid.color.fx.xml in Resources */ = {isa = PBXBuildFile; fileRef = D917707A15046DA600078CA6 /* system.debug.solid.color.fx.xml */; };
 		D917707E15046DA600078CA6 /* system.debug.solid.color.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D917707B15046DA600078CA6 /* system.debug.solid.color.vsh */; };
@@ -111,7 +117,6 @@
 		D93D5B7A14ECCE99003FC949 /* system.flatcolor.ps.1.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D93D5B7114ECCE99003FC949 /* system.flatcolor.ps.1.fsh */; };
 		D93D5B7B14ECCE99003FC949 /* system.flatcolor.ps.2.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D93D5B7214ECCE99003FC949 /* system.flatcolor.ps.2.fsh */; };
 		D93D5B7C14ECCE99003FC949 /* system.texture.ps.1.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D93D5B7314ECCE99003FC949 /* system.texture.ps.1.fsh */; };
-		D93D5B7D14ECCE99003FC949 /* system.texture.ps.1.xml in Resources */ = {isa = PBXBuildFile; fileRef = D93D5B7414ECCE99003FC949 /* system.texture.ps.1.xml */; };
 		D93D5BA314ECD0E2003FC949 /* world.xml in Resources */ = {isa = PBXBuildFile; fileRef = D93D5BA214ECD0E2003FC949 /* world.xml */; };
 		D93D5BA614ECD15A003FC949 /* mesh_ex1.xml in Resources */ = {isa = PBXBuildFile; fileRef = D93D5BA414ECD15A003FC949 /* mesh_ex1.xml */; };
 		D93D5BA714ECD15A003FC949 /* red_checker.png in Resources */ = {isa = PBXBuildFile; fileRef = D93D5BA514ECD15A003FC949 /* red_checker.png */; };
@@ -202,6 +207,13 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* ex1_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ex1_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* ex1-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ex1-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		D90A3F1D15101EBD0028B0F6 /* eagl_msg_gestureq.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = eagl_msg_gestureq.cpp; path = ../../render3d/cpp/eagl/eagl_msg_gestureq.cpp; sourceTree = SOURCE_ROOT; };
+		D90A3F2015101F470028B0F6 /* system.texture.fx.0.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = system.texture.fx.0.xml; path = ../../render3d/cpp/eagl/fx/system.texture.fx.0.xml; sourceTree = SOURCE_ROOT; };
+		D90A3F2115101F470028B0F6 /* system.texture.fx.1.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = system.texture.fx.1.xml; path = ../../render3d/cpp/eagl/fx/system.texture.fx.1.xml; sourceTree = SOURCE_ROOT; };
+		D90A3F2215101F470028B0F6 /* system.texture.ps.0.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.texture.ps.0.fsh; path = ../../render3d/cpp/eagl/fx/system.texture.ps.0.fsh; sourceTree = SOURCE_ROOT; };
+		D90A3F2315101F470028B0F6 /* system.texture.vs.0.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.texture.vs.0.vsh; path = ../../render3d/cpp/eagl/fx/system.texture.vs.0.vsh; sourceTree = SOURCE_ROOT; };
+		D90A3F2415101F470028B0F6 /* system.texture.vs.1.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.texture.vs.1.vsh; path = ../../render3d/cpp/eagl/fx/system.texture.vs.1.vsh; sourceTree = SOURCE_ROOT; };
+		D90A3F30151020060028B0F6 /* eagl_msg_gestureq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eagl_msg_gestureq.h; path = ../../render3d/include/eagl/eagl_msg_gestureq.h; sourceTree = SOURCE_ROOT; };
 		D917707915046DA600078CA6 /* system.debug.solid.color.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.debug.solid.color.fsh; path = ../../render3d/cpp/eagl/fx/system.debug.solid.color.fsh; sourceTree = SOURCE_ROOT; };
 		D917707A15046DA600078CA6 /* system.debug.solid.color.fx.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = system.debug.solid.color.fx.xml; path = ../../render3d/cpp/eagl/fx/system.debug.solid.color.fx.xml; sourceTree = SOURCE_ROOT; };
 		D917707B15046DA600078CA6 /* system.debug.solid.color.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.debug.solid.color.vsh; path = ../../render3d/cpp/eagl/fx/system.debug.solid.color.vsh; sourceTree = SOURCE_ROOT; };
@@ -491,7 +503,6 @@
 		D93D5B7114ECCE99003FC949 /* system.flatcolor.ps.1.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.flatcolor.ps.1.fsh; path = ../../render3d/cpp/eagl/fx/system.flatcolor.ps.1.fsh; sourceTree = SOURCE_ROOT; };
 		D93D5B7214ECCE99003FC949 /* system.flatcolor.ps.2.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.flatcolor.ps.2.fsh; path = ../../render3d/cpp/eagl/fx/system.flatcolor.ps.2.fsh; sourceTree = SOURCE_ROOT; };
 		D93D5B7314ECCE99003FC949 /* system.texture.ps.1.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.texture.ps.1.fsh; path = ../../render3d/cpp/eagl/fx/system.texture.ps.1.fsh; sourceTree = SOURCE_ROOT; };
-		D93D5B7414ECCE99003FC949 /* system.texture.ps.1.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = system.texture.ps.1.xml; path = ../../render3d/cpp/eagl/fx/system.texture.ps.1.xml; sourceTree = SOURCE_ROOT; };
 		D93D5BA214ECD0E2003FC949 /* world.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = world.xml; path = world/world.xml; sourceTree = "<group>"; };
 		D93D5BA414ECD15A003FC949 /* mesh_ex1.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = mesh_ex1.xml; path = world/mesh_ex1.xml; sourceTree = "<group>"; };
 		D93D5BA514ECD15A003FC949 /* red_checker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = red_checker.png; path = world/red_checker.png; sourceTree = "<group>"; };
@@ -725,6 +736,28 @@
 			);
 			name = Frameworks;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		D90A3F1C15101E9F0028B0F6 /* texture */ = {
+			isa = PBXGroup;
+			children = (
+				D93D5B7314ECCE99003FC949 /* system.texture.ps.1.fsh */,
+				D90A3F2015101F470028B0F6 /* system.texture.fx.0.xml */,
+				D90A3F2115101F470028B0F6 /* system.texture.fx.1.xml */,
+				D90A3F2215101F470028B0F6 /* system.texture.ps.0.fsh */,
+				D90A3F2315101F470028B0F6 /* system.texture.vs.0.vsh */,
+				D90A3F2415101F470028B0F6 /* system.texture.vs.1.vsh */,
+			);
+			name = texture;
+			sourceTree = "<group>";
+		};
+		D90A3F1F15101ECA0028B0F6 /* msg */ = {
+			isa = PBXGroup;
+			children = (
+				D90A3F30151020060028B0F6 /* eagl_msg_gestureq.h */,
+				D90A3F1D15101EBD0028B0F6 /* eagl_msg_gestureq.cpp */,
+			);
+			name = msg;
 			sourceTree = "<group>";
 		};
 		D917707815046D8B00078CA6 /* debug */ = {
@@ -1193,6 +1226,7 @@
 		D91D01D314ECC2FE00CEFA96 /* eagl */ = {
 			isa = PBXGroup;
 			children = (
+				D90A3F1F15101ECA0028B0F6 /* msg */,
 				D93D5BCB14ECD5E1003FC949 /* base */,
 				D93D5BC914ECD57B003FC949 /* fonts */,
 				D93D5BCA14ECD5B1003FC949 /* buffers */,
@@ -1303,7 +1337,6 @@
 		D93D5B5F14ECCDAE003FC949 /* fx */ = {
 			isa = PBXGroup;
 			children = (
-				D98DC1AE14FA2398007F9146 /* stdrender */,
 				D98536C814F36B8100E3AADD /* aftereffects */,
 				D93D5B6C14ECCE99003FC949 /* system.default.vs.1.vsh */,
 				D93D5B6D14ECCE99003FC949 /* system.default.vs.2.vsh */,
@@ -1312,8 +1345,6 @@
 				D93D5B7014ECCE99003FC949 /* system.flatcolor.2.xml */,
 				D93D5B7114ECCE99003FC949 /* system.flatcolor.ps.1.fsh */,
 				D93D5B7214ECCE99003FC949 /* system.flatcolor.ps.2.fsh */,
-				D93D5B7314ECCE99003FC949 /* system.texture.ps.1.fsh */,
-				D93D5B7414ECCE99003FC949 /* system.texture.ps.1.xml */,
 				D93D5B5914ECCDA6003FC949 /* system.font.fx.1.xml */,
 				D93D5B5A14ECCDA6003FC949 /* system.font.ps.1.fsh */,
 				D93D5B5B14ECCDA6003FC949 /* system.font.vs.1.vsh */,
@@ -1377,6 +1408,8 @@
 		D93D5BC814ECD56E003FC949 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				D90A3F1C15101E9F0028B0F6 /* texture */,
+				D98DC1AE14FA2398007F9146 /* stdrender */,
 				D917707815046D8B00078CA6 /* debug */,
 				D9DC7F7C1502F87C003600E7 /* render.res.xml */,
 				D9DC7F5B1502F6B8003600E7 /* system.font.10.xml */,
@@ -1727,6 +1760,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D90A3F2715101F470028B0F6 /* system.texture.ps.0.fsh in Resources */,
+				D90A3F2815101F470028B0F6 /* system.texture.vs.0.vsh in Resources */,
+				D90A3F2915101F470028B0F6 /* system.texture.vs.1.vsh in Resources */,
 				D917707C15046DA600078CA6 /* system.debug.solid.color.fsh in Resources */,
 				D917707E15046DA600078CA6 /* system.debug.solid.color.vsh in Resources */,
 				D98DC1B814FA23D5007F9146 /* system.solid.ps.1.fsh in Resources */,
@@ -1750,7 +1786,6 @@
 				D93D5B5C14ECCDA6003FC949 /* system.font.fx.1.xml in Resources */,
 				D93D5B7814ECCE99003FC949 /* system.flatcolor.1.xml in Resources */,
 				D93D5B7914ECCE99003FC949 /* system.flatcolor.2.xml in Resources */,
-				D93D5B7D14ECCE99003FC949 /* system.texture.ps.1.xml in Resources */,
 				D93D5BA314ECD0E2003FC949 /* world.xml in Resources */,
 				D93D5BA614ECD15A003FC949 /* mesh_ex1.xml in Resources */,
 				D93D5BA714ECD15A003FC949 /* red_checker.png in Resources */,
@@ -1769,6 +1804,8 @@
 				D9737234150785E400BC1B85 /* ed3_physics_shape.inl in Resources */,
 				D973726F1507865C00BC1B85 /* debug_Normals_Render.inl in Resources */,
 				D97372701507865C00BC1B85 /* debug_Solid_Color.inl in Resources */,
+				D90A3F2515101F470028B0F6 /* system.texture.fx.0.xml in Resources */,
+				D90A3F2615101F470028B0F6 /* system.texture.fx.1.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1910,6 +1947,7 @@
 				D973723C150785FA00BC1B85 /* ed3_physics_world.cpp in Sources */,
 				D97375CD150AF2EC00BC1B85 /* rd3_animation_fun.cpp in Sources */,
 				D97375CE150AF2EC00BC1B85 /* rd3_animation.cpp in Sources */,
+				D90A3F1E15101EBD0028B0F6 /* eagl_msg_gestureq.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

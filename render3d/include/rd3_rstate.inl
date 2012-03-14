@@ -191,4 +191,33 @@ inline Texture* RenderState::GetRenderTarget()
 	return _pRenderTarget;
 }
 
+inline void RenderState::SetState( State state, sBool bEnabled )
+{
+	sBool changed = GetState( state ) != bEnabled;
+	
+	if( changed )
+	{
+		if( bEnabled )
+			_enabledState |= state;
+		else
+			_enabledState &= ~state;
+			
+		_changedEnabledState |= state;
+	}
+}
+
+inline sBool RenderState::GetState( State state ) const
+{
+	return ( _enabledState & state ) > 0;
+}
+
+inline sBool RenderState::StateChanged( State state ) const
+{
+	return ( _changedEnabledState & state ) > 0;
+}
+
+inline void RenderState::ResetStateChange()
+{
+	_changedEnabledState = 0;
+}
 

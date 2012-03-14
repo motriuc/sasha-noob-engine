@@ -32,9 +32,19 @@ using namespace System::d2Math;
 class RenderState
 {
 protected:
+	
+	/**
+	 *
+	 */
 	RenderState( Render* owner );
 
 public:
+	enum State
+	{
+		DepthTest		= 0x00000001,
+		Culling			= 0x00000002
+	};
+	
 	virtual ~RenderState() {}
 
 	/**
@@ -109,6 +119,16 @@ public:
 	/**
 	 *
 	 */
+	void SetState( State state, sBool bEnabled );
+	
+	/**
+	 *
+	 */
+	sBool GetState( State state ) const;
+	
+	/**
+	 *
+	 */
 	sInt MaxLightCount() const;
 	
 	/**
@@ -164,6 +184,9 @@ protected:
 
 	void UpdateTransformation();
 	void Update2dTransformation();
+	
+	sBool StateChanged( State stare ) const;
+	void ResetStateChange();
 private:
 	RenderState( const RenderState& );
 	void operator = ( const RenderState& );
@@ -210,10 +233,14 @@ private:
 	d3Frustum	_frustum;
 	d3Matrix	_defaultTransform;
 
+	//
+	sUInt		_enabledState;
+	sUInt		_changedEnabledState;
+	
 #ifdef _DEBUG
 	sBool		_bIsRenderingObject;	// true when rendering step is executed
 #endif
-
+	
 	friend class Effect;
 };
 

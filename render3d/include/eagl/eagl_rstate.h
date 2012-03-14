@@ -55,6 +55,8 @@ public:
 
 	virtual void Clear( System::Types::sRGBColor color );
 
+	virtual void BeginRenderObject();
+	
 private:
 	Rd3::Texture*		_afterEffectTextures[2];
 	Rd3::VertexBuffer*	_afterEffectVb;

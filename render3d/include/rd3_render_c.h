@@ -3,6 +3,8 @@
 #include "platform_eagl_context.h"
 #include "rd3_msg_gesture.h"
 
+class EaglGestureMsgQueue;
+
 namespace Rd3
 {
 	class Render;
@@ -39,5 +41,5 @@ public:
 private:
 	Rd3::Render*			_pRender;
 	Ed3::d3Engine*			_pEngine;
-	Rd3::GestureMsgQueue*	_pGestureMsgQueue;
+	EaglGestureMsgQueue*	_pGestureMsgQueue;
 };
