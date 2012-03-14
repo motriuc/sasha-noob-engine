@@ -29,6 +29,7 @@ namespace Rd3
 {
 
 using namespace System;
+using namespace System::Cnt;
 
 /**
  * AnimateValue

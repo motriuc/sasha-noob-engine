@@ -30,6 +30,7 @@
 // **** Continers
 // _use_sVector_		- to use sVector
 // _use_sMap_			- to use sMap
+// _use_Cont_Utils_		- continer utils
 
 // **** Math
 // _use_d3Math_			- d3 math system base library 

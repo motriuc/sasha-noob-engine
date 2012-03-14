@@ -36,6 +36,10 @@
 	#define _use_sEvent_
 #endif
 
+#ifndef _use_Cont_Utils_
+	#define _use_Cont_Utils_
+#endif
+
 #include "rd3.h"
 #include "ed3_conf.h"
 

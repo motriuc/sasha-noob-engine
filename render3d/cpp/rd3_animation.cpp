@@ -24,8 +24,7 @@ namespace Rd3
 
 //-------------------------------------------------------------------
 Animation::Animation( Render* owner, const sString& objectName ):
-	_BaseClass( owner, objectName, ResourceType::E_ANIMATION ),
-	_maxFrames( 0 )
+	_BaseClass( owner, objectName, ResourceType::E_ANIMATION )
 {
 }
 
@@ -36,7 +35,7 @@ void Animation::Animate( sDouble time, State& state, Result& result ) const
 	{
 		state._startTime = time;
 		state._cFrame = 0;
-		Animate( state._cFrame, state._cResult );
+		Animate( state._cFrame + state._beginAnimateFrame , state._cResult );
 	}
 	else
 	{
@@ -45,7 +44,14 @@ void Animation::Animate( sDouble time, State& state, Result& result ) const
 		if( frame != state._cFrame )
 		{
 			state._cFrame = frame;
-			Animate( state._cFrame, state._cResult );
+
+			frame += state._beginAnimateFrame;
+			if( frame >= state._endAnimateFrame )
+			{
+				state.onAnimationEnd( *this, state );
+			}
+			else
+				Animate( frame, state._cResult );
 		}
 	}
 
@@ -72,6 +78,31 @@ void Animation::Animate( sUInt frame, Result& result ) const
 }
 
 //-------------------------------------------------------------------
+void Animation::SetAnimationSequence( const sString& name, State& state ) const
+{
+	AnimationSequence seq;
+
+	if( _animationSequences.Lookup( name, seq ) )
+	{
+		state._beginAnimateFrame = seq.beginFrame;
+		state._endAnimateFrame = seq.endFrame;
+
+		state._currentSequence = name;
+		state._startTime = 0.0;
+		state._cFrame = 0;
+	}
+	else
+	{
+		state._beginAnimateFrame = 0;
+		state._endAnimateFrame = Limit::sUInt::Max;
+
+		state._currentSequence = _S("");
+		state._startTime = 0.0;
+		state._cFrame = 0;
+	}
+}
+
+//-------------------------------------------------------------------
 void Animation::LoadFromXml( const Xml::BaseDomNode& node, const Def& def )
 {
 	for( sInt i = 0; i < node.GetChildCount(); ++i )
@@ -81,7 +112,16 @@ void Animation::LoadFromXml( const Xml::BaseDomNode& node, const Def& def )
 		if( !XmlCheckDef( child, def ) )
 			continue;
 
-		if( child.GetName() == ELEMENT_ANIMATION )
+		if( child.GetName() == ELEMENT_SEQUENCE )
+		{
+			sString name = child.GetAttributes()[ATTR_NAME];
+			AnimationSequence seq = {
+				child.GetAttributeValue( ATTR_FRAME_START, 0 ),
+				child.GetAttributeValue( ATTR_FRAME_END, 0 )
+			};
+			_animationSequences.Add( name, seq );
+		}
+		else if( child.GetName() == ELEMENT_ANIMATION )
 		{
 			sString type = child.GetAttributes()[ATTR_TYPE];
 			sString what = child.GetAttributes()[ATTR_WHAT];

@@ -43,6 +43,12 @@ public:
 		return _function._s == NULL;
 	}
 
+	inline void SetNull()
+	{
+		_function._s = NULL;
+		_object = NULL;
+	}
+
 	inline sBool operator == ( const sBaseEvent& c )
 	{
 		return 

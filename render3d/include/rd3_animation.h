@@ -59,9 +59,9 @@ public:
 		 */
 		const d2Vector& GetTx() const { return _tx; }
 
-		d3Vector GetMove() const	{ return _move; }
-		d3Vector GetRotate() const	{ return _rotate; }
-		d3Vector GetScale() const	{ return _scale; }
+		const d3Vector& GetMove() const	{ return _move; }
+		const d3Vector& GetRotate() const	{ return _rotate; }
+		const d3Vector& GetScale() const	{ return _scale; }
 	private:
 		d3Vector	_move;
 		d3Vector	_rotate;
@@ -74,18 +74,41 @@ public:
 	class State
 	{
 	public:
-		State( sDouble fps = 60.0 ) :
+		State( void* pData = NULL, sDouble fps = 60.0 ) :
 			_startTime( 0.0 ),
 			_fps( fps ),
-			_cFrame( 0 )
+			_cFrame( 0 ),
+			_beginAnimateFrame( 0 ),
+			_endAnimateFrame( Limit::sUInt::Max ),
+			_pData( pData )
 		{
 		}
+
+		/**
+		 * Animation events
+		 */
+		Events::sEvent2< const Animation& /*animation*/, State& /*animation state*/  >	onAnimationEnd;
+
+		/**
+		 *
+		 */
+		const sString& GetCurrentSequence() const { return _currentSequence; }
+
+		/**
+		 *
+		 */
+		void* GetData() { return _pData; }
+		void SetData( void* pData )	{ _pData = pData; }
 
 	private:
 		sDouble	_fps;
 		sDouble	_startTime;
 		sUInt	_cFrame;
 		Result	_cResult;
+		sUInt	_beginAnimateFrame;
+		sUInt	_endAnimateFrame;
+		sString	_currentSequence;
+		void*	_pData;
 
 		friend class Animation;
 	};
@@ -105,9 +128,12 @@ public:
 	 *
 	 */
 	void LoadFromXml( const Xml::BaseDomNode& node, const Def& def );
-private:
-	sInt			_maxFrames;
 
+	/**
+	 *
+	 */
+	void SetAnimationSequence( const sString& name, State& state ) const;
+private:
 	AnimateValue	_moveX;
 	AnimateValue	_moveY;
 	AnimateValue	_moveZ;
@@ -122,6 +148,14 @@ private:
 
 	AnimateValue	_textureX;
 	AnimateValue	_textureY;
+
+	typedef struct
+	{
+		sInt beginFrame;
+		sInt endFrame;
+	} AnimationSequence;
+
+	sMap<sString, AnimationSequence>	_animationSequences;
 };
 
 }

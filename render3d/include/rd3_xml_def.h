@@ -66,6 +66,7 @@
 #define ELEMENT_ANIMATIONS		_S("animations")
 #define ELEMENT_ANIMATION		_S("animation")
 #define ELEMENT_KEYFRAME		_S("keyframe")
+#define ELEMENT_SEQUENCE		_S("sequence")
 
 #define ELEMENT_COLOR			_S("color")
 #define ELEMENT_COLOR_DIFFUSE	_S("color.diffuse")
@@ -125,6 +126,8 @@
 #define ATTR_HARDNESS	  _S("hardness")
 #define ATTR_WHAT		  _S("what")
 #define ATTR_ID			  _S("id")
+#define ATTR_FRAME_START  _S("frame.start")
+#define ATTR_FRAME_END    _S("frame.end")
 
 
 namespace Rd3 
