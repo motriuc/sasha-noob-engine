@@ -1,10 +1,10 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : rd3_font_sprite.cpp
-//	Created                 : 22 1 2012   19:58
-//	File path               : SLibF\render3d\include
-//	Author                  : Alexandru Motriuc
+//  Created                 : 22 1 2012   19:58
+//  File path               : SLibF\render3d\include
+//  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
-//	Library                 : 
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
 //	Purpose:
@@ -165,6 +165,83 @@ d3Float FontSprite::RenderText( RenderState& rstate, const sString& text, const 
 	return fontRenderHeight;
 }
 
+//-------------------------------------------------------------------		
+void FontSprite::LoadFromFntStream( const Streams::IInputStream& stream ) throws_error
+{
+	Streams::TextReader reader( &stream );
+
+	sString line;
+	while( reader.ReadLine( line ) )
+	{
+		sInt from = 0;
+		sString split;
+		if( !line.Split( _S('='), from, split ) )
+			continue;
+		
+		if( split == _S("Char") )
+		{
+			if( line.Split( _S('='), from, split ) )
+			{
+				AddSpriteFromFntString( split );
+			}
+		}
+		else if( split == _S("Bitmap") )
+		{
+			if( line.Split( _S('='), from, split ) )
+			{
+				SetTexture( split );
+			}
+		}
+	}
+}
+	
+//-------------------------------------------------------------------		
+void FontSprite::AddSpriteFromFntString( const sString& str )
+{
+	sChar ch;
+	sInt x1, x2, y1, y2;
+	
+	sInt from = 0;
+	sString split;
+	
+	if( !str.Split( _S(','), from, split ) )
+		return;
+	
+	if( split.Length() != 3 || split[0] != _S('"') || split[2] != _S('"') )
+		return;
+	
+	ch = split[1];
+	
+	if( !str.Split( _S(','), from, split ) )
+		return;
+	
+	x1 = split.ToInt();
+
+	if( !str.Split( _S(','), from, split ) )
+		return;
+	
+	y1 = split.ToInt();
+
+	if( !str.Split( _S(','), from, split ) )
+		return;
+	
+	x2 = x1 + split.ToInt();
+
+	if( !str.Split( _S(','), from, split ) )
+		return;
+	
+	y2 = y1 + split.ToInt();
+	
+	AddSprite( SpriteChar( ch, x1, y1, x2, y2 ) );
+}
+	
+//-------------------------------------------------------------------		
+void FontSprite::LoadFromFntFile( const sString& fileName, const Def& def, const Streams::StreamArchive& archive ) throws_error
+{
+	ptr_unique<const Streams::IInputStream> pStream( archive.Open( fileName ) );
+	LoadFromFntStream( pStream() );
+}
+	
 /////////////////////////////////////////////////////////////////////
 // SprireRenderString
 /////////////////////////////////////////////////////////////////////
@@ -267,5 +344,6 @@ void SprireRenderString::RenderText( RenderState& rstate, const sString& text, c
 SprireRenderString::~SprireRenderString()
 {
 }
+	
 	
 }

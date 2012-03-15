@@ -140,6 +140,11 @@ inline sBool BChar::IsSpace( SBCHAR ch )
 	return isspace( ch );
 }
 
+inline sBool BChar::IsNewLine( SBCHAR ch )
+{
+	return ch == '\r' || ch == '\n';
+}
+
 inline sInt BChar::FindReverse( const SBCHAR* pChars, SBCHAR ch )
 {
 	const SBCHAR* p = strrchr( pChars, ch );

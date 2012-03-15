@@ -26,6 +26,7 @@
 #include "rd3_rstate.h"
 #include "rd3_dvertexbuffer.h"
 #include "rd3_animation.h"
+#include "rd3_font_sprite.h"
 
 using namespace System::Types;
 
@@ -507,7 +508,7 @@ Animation* Render::CreateAnimationFromFile(
 		const sString& fileName,
 		const Def& def,
 		const StreamArchive& archive
-	)
+	) throws_error
 {
 	if( objectName.Length() > 0 && _animationResPool[objectName] != NULL ) 
 		error_throw_arg( System::Errors::StringError ) 
@@ -532,6 +533,7 @@ Animation* Render::CreateAnimationFromFile(
 	{
 		if( pAnimation != NULL )
 			pAnimation->UnuseResource();
+		throw;
 	}
 	
 	return pAnimation;
@@ -543,13 +545,64 @@ Font* Render::CreateFontFromFile(
 		const sString& fileName,
 		const Def& def,
 		const StreamArchive& archive
-	)
+	) throws_error
 {
 	if( objectName.Length() > 0 && _fontResPool[objectName] != NULL ) 
 		error_throw_arg( System::Errors::StringError ) 
 			_S("Duplicate object resource name :") + objectName 
 		);
+
+	Font* pFont = NULL;
 	
+	if( fileName.EndsWith( _S(".xml") ) )
+		pFont = CreateFontFromXmlFile( objectName, fileName, def, archive );
+	else if( fileName.EndsWith( _S(".fnt") ) )
+		pFont = CreateFontFromFntFile( objectName, fileName, def, archive );
+	else
+	{
+		error_throw_arg( System::Errors::StringError ) 
+			_S("Unknown font file format :") + fileName 
+		);		
+	}
+		
+	if( pFont != NULL && objectName.Length() > 0 )
+		_fontResPool.Add( pFont );
+	
+	return pFont;
+}
+
+//--------------------------------------------------------------------
+Font* Render::CreateFontFromFntFile(
+	const sString& objectName,
+	const sString& fileName,
+	const Def& def,
+	const StreamArchive& archive
+	) throws_error
+{
+	FontSprite* pFont = new FontSprite( this, objectName );
+	
+	try 
+	{
+		pFont->LoadFromFntFile( fileName, def, archive );
+	}
+	catch (...) 
+	{
+		if( pFont )
+			pFont->UnuseResource();
+		throw;
+	}
+	
+	return pFont;
+}
+	
+//--------------------------------------------------------------------
+Font* Render::CreateFontFromXmlFile(
+		const sString& objectName,
+		const sString& fileName,
+		const Def& def,
+		const StreamArchive& archive
+	) throws_error
+{	
 	ptr_unique<const Streams::IInputStream> pStream( archive.Open( fileName ) );
 	ptr_unique<Xml::DomDocument> pDocument( Xml::DomDocument::Read( &pStream() ) );
 	
@@ -569,8 +622,6 @@ Font* Render::CreateFontFromFile(
 	try
 	{
 		pFont->LoadFromXml( node, def );
-		if( objectName.Length() > 0 )
-			_fontResPool.Add( pFont );
 	}
 	catch (...)
 	{
@@ -580,7 +631,6 @@ Font* Render::CreateFontFromFile(
 	}
 	
 	return pFont;
-
 }
 
 }

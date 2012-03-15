@@ -214,6 +214,12 @@ public:
 	 * @return true if is space
 	 */
 	static sBool IsSpace( SBCHAR ch );
+	
+	/**
+	 * Returns true if char is a new line char
+	 * @param ch [in] char
+	 */
+	static sBool IsNewLine( SBCHAR ch );
 
 	/**
 	 *	Convert char to wchar

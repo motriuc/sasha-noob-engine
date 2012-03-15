@@ -32,6 +32,7 @@ public:
 	virtual sBool Read( sFloat& f );
 	virtual sBool Read( sDouble& d );
 	virtual sBool Read( sString& str );
+	virtual sBool ReadLine( sString& str );
 
 private:
 	const IInputStream*		_stream;

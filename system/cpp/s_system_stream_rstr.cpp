@@ -84,6 +84,58 @@ sBool TextReader::Read( sChar& ch )
 }
 
 //-----------------------------------------------------------------
+sBool TextReader::ReadLine( sString& str )
+{
+	str = _S("");
+	
+	while( CheckReadBuffer() )
+	{
+		sChar* pChar = _pReadBuffer + _iPosBuffer;
+		
+		for( sInt i = 0; i < _iToReadFromBuffer; i++ )
+		{
+			if( !Chars::IsNewLine( *pChar ) )
+				goto getString;
+			
+			_iPosBuffer ++;
+			_iToReadFromBuffer --;
+			
+			pChar++;
+		}
+	}
+	
+	getString:
+	
+	while( CheckReadBuffer() )
+	{
+		sChar* pChar = _pReadBuffer + _iPosBuffer;
+		
+		for( sInt i = 0; i < _iToReadFromBuffer; i++ )
+		{
+			if( Chars::IsNewLine( *pChar ) )
+			{
+				if( i > 0 )
+				{
+					str.Add( _pReadBuffer + _iPosBuffer, i );
+					_iPosBuffer += i;
+					_iToReadFromBuffer -= i;
+				}
+				
+				return sTrue;
+			}
+			
+			pChar++;
+		}
+		
+		str.Add( _pReadBuffer + _iPosBuffer, _iToReadFromBuffer );
+		
+		_iToReadFromBuffer = 0;
+	}
+	
+	return str.Length() > 0;	
+}
+	
+//-----------------------------------------------------------------
 sBool TextReader::Read( sString& str )
 {
 	str = _S("");

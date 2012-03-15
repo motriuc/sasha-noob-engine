@@ -49,6 +49,8 @@ void Animation::Animate( sDouble time, State& state, Result& result ) const
 			if( frame >= state._endAnimateFrame )
 			{
 				state.onAnimationEnd( *this, state );
+				state._startTime = 0.0;
+				state._cFrame = 0;
 			}
 			else
 				Animate( frame, state._cResult );
@@ -116,7 +118,7 @@ void Animation::LoadFromXml( const Xml::BaseDomNode& node, const Def& def )
 		{
 			sString name = child.GetAttributes()[ATTR_NAME];
 			AnimationSequence seq = {
-				child.GetAttributeValue( ATTR_FRAME_START, 0 ),
+				child.GetAttributeValue( ATTR_FRAME_BEGIN, 0 ),
 				child.GetAttributeValue( ATTR_FRAME_END, 0 )
 			};
 			_animationSequences.Add( name, seq );

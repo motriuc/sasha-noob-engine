@@ -126,7 +126,7 @@
 #define ATTR_HARDNESS	  _S("hardness")
 #define ATTR_WHAT		  _S("what")
 #define ATTR_ID			  _S("id")
-#define ATTR_FRAME_START  _S("frame.start")
+#define ATTR_FRAME_BEGIN  _S("frame.begin")
 #define ATTR_FRAME_END    _S("frame.end")
 
 

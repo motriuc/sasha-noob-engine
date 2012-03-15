@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : rd3_font_sprite.h
-//	Created                 : 22 1 2012   19:58
-//	File path               : SLibF\render3d\include
-//	Author                  : Alexandru Motriuc
+//  Created                 : 22 1 2012   19:58
+//  File path               : SLibF\render3d\include
+//  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
-//	Library                 : 
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -29,9 +29,12 @@
 #include "rd3_font.h"
 #include "rd3_render_str.h"
 #include "rd3_dvertexbuffer.h"
+#include "rd3_texture.h"
 
 namespace Rd3
 {
+
+using namespace System;
 	
 /**
  * SpriteChar
@@ -101,8 +104,15 @@ public:
 	/**
 	 *
 	 */
-	virtual void LoadFromXml( const System::Xml::BaseDomNode& node, const Def& def ) throws_error;
+	virtual void LoadFromXml( const Xml::BaseDomNode& node, const Def& def ) throws_error;
 
+	/**
+	 *
+	 */
+	void LoadFromFntFile( const sString& fileName, const Def& def, const Streams::StreamArchive& archive ) throws_error;
+	void LoadFromFntStream( const Streams::IInputStream& stream ) throws_error;
+	
+	
 	/**
 	 *
 	 */
@@ -124,6 +134,9 @@ protected:
 	use_resource<Rd3::Texture> _texture;
 	use_resource<Rd3::DynamicVertexBuffer> _vb;
 	use_resource<Rd3::Effect> _effect;
+
+private:	
+	void AddSpriteFromFntString( const sString& str );
 };
 
 /**

@@ -313,7 +313,7 @@ public:
 		const sString& fileName,
 		const Def& def,
 		const StreamArchive& archive
-	);
+	) throws_error;
 	
 	///////////////////////////////////////////////////////////
 	// Create mesh
@@ -324,7 +324,7 @@ public:
 		const sString& fileName,
 		const Def& def,
 		const StreamArchive& archive
-	);
+	) throws_error;
 	
 	///////////////////////////////////////////////////////////
 	// Create affter effect
@@ -334,7 +334,7 @@ public:
 		const sString& fileName,
 		const Def& def,
 		const StreamArchive& archive
-	);
+	) throws_error;
 
 	///////////////////////////////////////////////////////////
 	// Create animations
@@ -344,7 +344,7 @@ public:
 		const sString& fileName,
 		const Def& def,
 		const StreamArchive& archive
-	);
+	) throws_error;
 
 	///////////////////////////////////////////////////////////
 	// Message Q
@@ -432,6 +432,21 @@ private:
 		const sString& path,
 		const StreamArchive& archive
 	) throws_error;
+	
+	Font* CreateFontFromXmlFile(
+		const sString& objectName,
+		const sString& fileName,
+		const Def& def,
+		const StreamArchive& archive
+	) throws_error;
+
+	Font* CreateFontFromFntFile(
+		const sString& objectName,
+		const sString& fileName,
+		const Def& def,
+		const StreamArchive& archive
+	) throws_error;
+	
 	
 	friend class ResourceObject;
 };

@@ -123,6 +123,7 @@ public:
 	virtual sBool Read( sFloat& f ) = 0;
 	virtual sBool Read( sDouble& d ) = 0;
 	virtual sBool Read( sString& str ) = 0;
+	virtual sBool ReadLine( sString& str ) = 0;
 };
 
 
