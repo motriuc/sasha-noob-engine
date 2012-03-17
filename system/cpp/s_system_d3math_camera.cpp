@@ -106,5 +106,6 @@ void d3Camera::SetCamera2D()
 	_bChanged = sTrue;	
 }	
 
+	
 
 }}

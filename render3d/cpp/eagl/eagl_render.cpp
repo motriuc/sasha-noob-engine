@@ -98,14 +98,16 @@ void EAGLRender::InitCreateFrameBuffers( Rd3::Def& def )
 	glFramebufferRenderbuffer( GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _depthRenderbuffer );
 	
 	// stencil buffer
-	glGenRenderbuffers( 1, &_stencilRenderbuffer );
+/*	glGenRenderbuffers( 1, &_stencilRenderbuffer );
 	glBindRenderbuffer( GL_RENDERBUFFER, _stencilRenderbuffer );
 	glRenderbufferStorage( GL_RENDERBUFFER, GL_STENCIL_INDEX8, _framebufferWidth, _framebufferHeight );
 	glFramebufferRenderbuffer( GL_FRAMEBUFFER, GL_STENCIL_ATTACHMENT, GL_RENDERBUFFER, _stencilRenderbuffer );
-	
+*/	
 	if( glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE )
 	{
-		Platform::ShowError( _S("Frame buffer invalid status") );
+		error_throw_arg( System::Errors::StringError ) 
+			_S("Invalid frame buffer status :") 
+		);
 	}
 
 	_screenSizeInPixels.x = _framebufferWidth;
@@ -145,7 +147,9 @@ void EAGLRender::EaglSetRenderTarget( EAGLTexture* pTexture )
 	
 	if( glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE )
 	{
-		Platform::ShowError( _S("Frame buffer invalid status") );
+		error_throw_arg( System::Errors::StringError ) 
+			_S("Invalid frame buffer status :") 
+		);
 	}
 }
 

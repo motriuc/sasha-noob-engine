@@ -48,7 +48,7 @@ public:
 	 * Rotate on Left Up axis
 	 */
 	void RotateLeft( d3Float f );
-
+	
 	/**
 	 * 
 	 */
@@ -68,7 +68,7 @@ public:
 	 *
 	 */
 	void SetLookAt( const d3Vector& v );
-
+	
 	/**
 	 *
 	 */
