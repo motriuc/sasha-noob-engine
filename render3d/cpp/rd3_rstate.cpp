@@ -205,6 +205,14 @@ void RenderState::BeginRenderObject()
 {
 	UpdateTransformation();
 
+#ifdef _D3_DEBUG_RENDER
+	const Rd3::CommonDataForRender& data = GetData().GetCommonData();
+
+	if( !data.debug_RenderCulling() )
+		SetState( RenderState::Culling, sFalse );
+
+#endif
+
 #ifdef _DEBUG
 	_bIsRenderingObject = sTrue;
 #endif

@@ -167,26 +167,53 @@ void Dx9RenderState::BeginWorldRender( const Rd3::EngineDataForRender& edata )
 
     __S_ASSERT( SUCCEEDED(hr) );
 
+	pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_CW );
+	pDevice->SetRenderState( D3DRS_ZENABLE,  D3DZB_TRUE );
+
+	SetState( RenderState::DepthTest, sTrue );
+	SetState( RenderState::Culling,	sTrue );
+	
+	ResetStateChange();
+
 #ifdef _D3_DEBUG_RENDER
 	const Rd3::CommonDataForRender& data = GetData().GetCommonData();
 	if( !data.RenderWireframe() )
 		pDevice->SetRenderState( D3DRS_FILLMODE, D3DFILL_SOLID );
 	else
 		pDevice->SetRenderState( D3DRS_FILLMODE, D3DFILL_WIREFRAME );
-	
-	
-	if( data.debug_RenderCulling() )
-		pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_CW );
-	else
-		pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_NONE );
 #else
 	pDevice->SetRenderState( D3DRS_FILLMODE, D3DFILL_SOLID );
-	pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_CW );
 #endif
 	
-	pDevice->SetRenderState( D3DRS_ZENABLE,  D3DZB_TRUE );
 
 	COUNTER_TIME_STOP( rd3_render_time_draw );
+}
+
+//--------------------------------------------------------------------
+void Dx9RenderState::BeginRenderObject()
+{
+	_BaseClass::BeginRenderObject();
+
+	LPDIRECT3DDEVICE9 pDevice = Dx9Render::GetDX9Device( GetOwner() );
+    __S_ASSERT( pDevice != NULL );
+
+	if( StateChanged( RenderState::DepthTest ) )
+	{
+		if( GetState( RenderState::DepthTest ) )
+			pDevice->SetRenderState( D3DRS_ZENABLE,  D3DZB_TRUE );
+		else
+			pDevice->SetRenderState( D3DRS_ZENABLE,  D3DZB_FALSE );
+	}
+	
+	if( StateChanged( RenderState::Culling ) )
+	{
+		if( GetState( RenderState::Culling ) )
+			pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_CW );
+		else
+			pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_NONE );
+	}
+	
+	ResetStateChange();	
 }
 
 //--------------------------------------------------------------------
@@ -198,8 +225,9 @@ void Dx9RenderState::EndWorldRender()
 	if( GetRenderTarget() == NULL )
 	{
 		pDevice->SetRenderState( D3DRS_FILLMODE, D3DFILL_SOLID );
-		pDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_NONE );
-		pDevice->SetRenderState( D3DRS_ZENABLE,  D3DZB_FALSE );
+
+		SetState( RenderState::DepthTest, sFalse );
+		SetState( RenderState::Culling,	sFalse );
 		PostRender();
 	}
 	COUNTER_TIME_START( rd3_render_time_draw );

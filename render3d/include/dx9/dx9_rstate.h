@@ -32,6 +32,7 @@ public:
 	 *
 	 */
 	virtual void BeginWorldRender( const Rd3::EngineDataForRender& edata );
+	virtual void BeginRenderObject();
 
 	/**
 	 *
