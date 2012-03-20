@@ -1,18 +1,18 @@
 /////////////////////////////////////////////////////////////////////
-//	File Name               : ed3_lua.cpp
-//	Created                 : 18 2 2012   20:02
-//	File path               : SLibF\engine3d\cpp
-//	Author                  : Alexandru Motriuc
-//	Platform Independentsy  : 0%
-//	Library                 : 
+//  File Name               : ed3_lua.cpp
+//  Created                 : 18 2 2012   20:02
+//  File path               : SLibF\engine3d\cpp
+//  Author                  : Alexandru Motriuc
+//  Platform Independent    : 0%
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
 //
-//	Modification History:
+//  Modification History:
 //      
 /////////////////////////////////////////////////////////////////////
 

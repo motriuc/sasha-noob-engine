@@ -82,6 +82,8 @@
     <None Include="..\..\system\include\s_system_chars_b_win32.inl" />
     <None Include="..\..\system\include\s_system_chars_w_mac.inl" />
     <None Include="..\..\system\include\s_system_chars_w_win32.inl" />
+    <None Include="..\..\system\include\s_system_d2math_matrix.inl" />
+    <None Include="..\..\system\include\s_system_d2math_rect.inl" />
     <None Include="..\..\system\include\s_system_d2math_vector.inl" />
     <None Include="..\..\system\include\s_system_d3math_aabb.inl" />
     <None Include="..\..\system\include\s_system_d3math_camera.inl" />
@@ -167,6 +169,8 @@
     <ClInclude Include="..\..\system\include\s_system_conf_detect.h" />
     <ClInclude Include="..\..\system\include\s_system_conf_inc.h" />
     <ClInclude Include="..\..\system\include\s_system_d2math.h" />
+    <ClInclude Include="..\..\system\include\s_system_d2math_matrix.h" />
+    <ClInclude Include="..\..\system\include\s_system_d2math_rect.h" />
     <ClInclude Include="..\..\system\include\s_system_d2math_vector.h" />
     <ClInclude Include="..\..\system\include\s_system_d3math.h" />
     <ClInclude Include="..\..\system\include\s_system_d3math_aabb.h" />

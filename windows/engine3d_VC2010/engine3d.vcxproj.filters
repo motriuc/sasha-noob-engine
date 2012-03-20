@@ -40,14 +40,23 @@
     <Filter Include="engine\Source Files\object">
       <UniqueIdentifier>{2eab5845-c90c-423a-882d-1443fa013557}</UniqueIdentifier>
     </Filter>
+    <Filter Include="engine\Header Files\objects">
+      <UniqueIdentifier>{a0e33f26-322e-4138-9c2f-7660fbe48eaa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Header Files\objects\ui">
+      <UniqueIdentifier>{2efd91cb-faab-430f-a60f-e1ab9e42be46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Source Files\object\ui">
+      <UniqueIdentifier>{0f5bf299-5b32-4103-8999-4c23b7644b60}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
-    <None Include="..\..\engine3d\include\ed3_object.inl">
-      <Filter>engine\Header Files</Filter>
-    </None>
     <None Include="..\..\engine3d\include\ed3_physics_shape.inl">
       <Filter>engine\Header Files</Filter>
+    </None>
+    <None Include="..\..\engine3d\include\ed3_object.inl">
+      <Filter>engine\Header Files\objects</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -64,24 +73,6 @@
       <Filter>engine\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine3d\cpp\ed3_lua.cpp">
-      <Filter>engine\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\engine3d\cpp\ed3_obj_cam_gest.cpp">
-      <Filter>engine\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\engine3d\cpp\ed3_obj_class.cpp">
-      <Filter>engine\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\engine3d\cpp\ed3_obj_factory.cpp">
-      <Filter>engine\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\engine3d\cpp\ed3_obj_fire.cpp">
-      <Filter>engine\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\engine3d\cpp\ed3_obj_mesh.cpp">
-      <Filter>engine\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\engine3d\cpp\ed3_obj_texture.cpp">
       <Filter>engine\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine3d\cpp\ed3_physics_shape.cpp">
@@ -510,9 +501,6 @@
     <ClCompile Include="..\..\external\bulet\BulletCollision\NarrowPhaseCollision\btVoronoiSimplexSolver.cpp">
       <Filter>external\bullet\BulletCollision\NarrowPhaseCollision</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\engine3d\cpp\ed3_obj_cam_key.cpp">
-      <Filter>engine\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\engine3d\cpp\ed3_object.cpp">
       <Filter>engine\Source Files\object</Filter>
     </ClCompile>
@@ -520,6 +508,39 @@
       <Filter>engine\Source Files\object</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine3d\cpp\ed3_object_debug.cpp">
+      <Filter>engine\Source Files\object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ed3_obj_cam_gest.cpp">
+      <Filter>engine\Source Files\object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ed3_obj_texture.cpp">
+      <Filter>engine\Source Files\object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ed3_obj_cam_key.cpp">
+      <Filter>engine\Source Files\object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ed3_obj_class.cpp">
+      <Filter>engine\Source Files\object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ed3_obj_factory.cpp">
+      <Filter>engine\Source Files\object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ed3_obj_fire.cpp">
+      <Filter>engine\Source Files\object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ed3_obj_mesh.cpp">
+      <Filter>engine\Source Files\object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ed3_object_d2.cpp">
+      <Filter>engine\Source Files\object\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ui\ed3_ui_button.cpp">
+      <Filter>engine\Source Files\object\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ui\ed2_ui_txbutton.cpp">
+      <Filter>engine\Source Files\object\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ed3_object_register.cpp">
       <Filter>engine\Source Files\object</Filter>
     </ClCompile>
   </ItemGroup>
@@ -605,9 +626,6 @@
     <ClInclude Include="..\..\engine3d\include\ed3_conf.h">
       <Filter>engine\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine3d\include\ed3_cont_object.h">
-      <Filter>engine\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine3d\include\ed3_edata.h">
       <Filter>engine\Header Files</Filter>
     </ClInclude>
@@ -615,27 +633,6 @@
       <Filter>engine\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine3d\include\ed3_lua.h">
-      <Filter>engine\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine3d\include\ed3_obj_cam_gest.h">
-      <Filter>engine\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine3d\include\ed3_obj_class.h">
-      <Filter>engine\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine3d\include\ed3_obj_factory.h">
-      <Filter>engine\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine3d\include\ed3_obj_fire.h">
-      <Filter>engine\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine3d\include\ed3_obj_mesh.h">
-      <Filter>engine\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine3d\include\ed3_obj_texture.h">
-      <Filter>engine\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine3d\include\ed3_object.h">
       <Filter>engine\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine3d\include\ed3_physics_shape.h">
@@ -659,14 +656,53 @@
     <ClInclude Include="..\..\engine3d\include\ed3_types.h">
       <Filter>engine\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine3d\include\ed3_world.h">
-      <Filter>engine\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine3d\include\ed3afx.h">
       <Filter>engine\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ed3_cont_object.h">
+      <Filter>engine\Header Files\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ed3_object.h">
+      <Filter>engine\Header Files\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ed3_world.h">
+      <Filter>engine\Header Files\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ed3_obj_cam_gest.h">
+      <Filter>engine\Header Files\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ed3_obj_texture.h">
+      <Filter>engine\Header Files\objects</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\engine3d\include\ed3_obj_cam_key.h">
-      <Filter>engine\Header Files</Filter>
+      <Filter>engine\Header Files\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ed3_obj_class.h">
+      <Filter>engine\Header Files\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ed3_obj_factory.h">
+      <Filter>engine\Header Files\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ed3_obj_fire.h">
+      <Filter>engine\Header Files\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ed3_obj_mesh.h">
+      <Filter>engine\Header Files\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ui\ed3_ui_button.h">
+      <Filter>engine\Header Files\objects\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ui\ed3_ui_txbutton.h">
+      <Filter>engine\Header Files\objects\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ed3_object_d2.h">
+      <Filter>engine\Header Files\objects\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ui\ed3_ui_msg.h">
+      <Filter>engine\Header Files\objects\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ui\ed3_ui_msgq.h">
+      <Filter>engine\Header Files\objects\ui</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

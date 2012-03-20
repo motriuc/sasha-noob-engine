@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : ed3_conf.h
-//	Created                 : 19 1 2012   0:05
-//	File path               : SLibF\engine3d\include
-//	Author                  : Alexandru Motriuc
+//  Created                 : 19 1 2012   0:05
+//  File path               : SLibF\engine3d\include
+//  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
-//	Library                 : 
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////

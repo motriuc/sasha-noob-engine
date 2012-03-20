@@ -24,11 +24,8 @@ class d3AABBox
 public:
 	d3AABBox();
 	d3AABBox( const d3Vector vmin, const d3Vector vmax );
-	d3AABBox( const d3AABBox& b );
 
-	void operator = ( const d3AABBox& b );
-
-	void Empty();
+	void SetEmpty();
 	sBool IsEmpty() const;
 	static d3AABBox GetEmpty(); 
 
@@ -62,10 +59,10 @@ public:
 	 * -----------/              |-------- +X
 	 * 0          1
 	 */
-	void GetCorner( d3Vector& v, sInt i ) const;
-	d3Vector GetCorner( sInt i ) const;
+	void GetCorner( d3Point& v, sInt i ) const;
+	d3Point GetCorner( sInt i ) const;
 
-	void operator += ( const d3Vector& v );
+	void operator += ( const d3Point& v );
 	void operator += ( const d3AABBox& b );
 
 	/**
@@ -77,8 +74,8 @@ public:
 	/**
 	 *
 	 */
-	void Add( const d3Vector& v );
-	void Add( const d3Vector* v, sInt count );
+	void Add( const d3Point& v );
+	void Add( const d3Point* v, sInt count );
 
 	void Add( const d3AABBox& b );
 	void Add( const d3AABBox* v, sInt count );
@@ -98,7 +95,7 @@ public:
 	void ClosestTo( d3Vector& r, const d3Vector& a ) const;
 
 	sBool Intersect( const d3AABBox& b ) const;
-	sBool Intersect( const d3Vector& v ) const;
+	sBool Intersect( const d3Point& v ) const;
   
 	static void Mul( d3AABBox& r, const d3AABBox& b, const d3Matrix& m );
 
@@ -107,7 +104,7 @@ public:
 	 */
 	static sBool Intersect( const d3AABBox& a, const d3AABBox& b );
 	static sBool Intersect( d3AABBox& r, const d3AABBox& a, const d3AABBox& b );
-	static sBool Intersect( const d3AABBox& b, const d3Vector& v );
+	static sBool Intersect( const d3AABBox& b, const d3Point& v );
 	static sBool Intersect( const d3AABBox& b, const d3Sphere& s );
 public:
 	d3Vector  _min;

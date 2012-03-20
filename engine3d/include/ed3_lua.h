@@ -1,10 +1,10 @@
 /////////////////////////////////////////////////////////////////////
-//	File Name               : ed3_lua.h
-//	Created                 : 18 2 2012   20:02
-//	File path               : SLibF\engine3d\include
-//	Author                  : Alexandru Motriuc
-//	Platform Independentsy  : 0%
-//	Library                 : 
+//  File Name               : ed3_lua.h
+//  Created                 : 18 2 2012   20:02
+//  File path               : SLibF\engine3d\include
+//  Author                  : Alexandru Motriuc
+//  Platform Independent    : 0%
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
 //	Purpose:

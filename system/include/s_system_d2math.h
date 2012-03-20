@@ -28,11 +28,15 @@ namespace d2Math
 	class d2Matrix;
 	class d2Vector;
 	class d2Plane;
-	class d2AABBox;
 	class d2Sphere;
 
 	typedef d2Vector d2Point;
 
 	#include "s_system_d2math_vector.h"
+	#include "s_system_d2math_rect.h"
+	#include "s_system_d2math_matrix.h"
+
 	#include "s_system_d2math_vector.inl"
+	#include "s_system_d2math_rect.inl"
+	#include "s_system_d2math_matrix.inl"
 }

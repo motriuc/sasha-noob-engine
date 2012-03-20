@@ -32,7 +32,7 @@ inline void d3Triangle::operator = ( const d3Triangle& tr )
 
 inline void d3Triangle::GetAABB( d3AABBox& box )
 {
-	box.Empty();
+	box.SetEmpty();
 	box.Add( _a );
 	box.Add( _b );
 	box.Add( _c );

@@ -34,7 +34,7 @@ namespace Rd3
 {
 	
 /**
- * FlatColorMaterial
+ * TextureMaterial
  */
 class TextureMaterial : public Material
 {

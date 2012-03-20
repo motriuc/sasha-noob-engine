@@ -1,12 +1,12 @@
 ////////////////////////////////////////////////////////////////////////
-//	File Name          : ed3_obj_mesh.cpp
-//	Created            : 2 2 2012   19:09
+//  File Name          : ed3_obj_mesh.cpp
+//  Created            : 2 2 2012   19:09
 //  Author             : Alexandru Motriuc  
-//	File Path          : SLibF\engine3d\cpp
+//  File Path          : SLibF\engine3d\cpp
 //  System independent : 0%
 //  Library            : 
 //
-//	Purpose:	
+//  Purpose:	
 //    
 //
 /////////////////////////////////////////////////////////////////////////

@@ -1,12 +1,12 @@
 ////////////////////////////////////////////////////////////////////////
-//	File Name          : ed3_world.cpp
-//	Created            : 20 1 2012   19:09
+//  File Name          : ed3_world.cpp
+//  Created            : 20 1 2012   19:09
 //  Author             : Alexandru Motriuc  
-//	File Path          : SLibF\engine3d\include
+//  File Path          : SLibF\engine3d\include
 //  System independent : 0%
 //  Library            : 
 //
-//	Purpose:	
+//  Purpose:	
 //    
 //
 /////////////////////////////////////////////////////////////////////////

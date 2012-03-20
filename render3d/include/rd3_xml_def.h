@@ -128,6 +128,11 @@
 #define ATTR_ID			  _S("id")
 #define ATTR_FRAME_BEGIN  _S("frame.begin")
 #define ATTR_FRAME_END    _S("frame.end")
+#define ATTR_X1           _S("x1")
+#define ATTR_X2           _S("x2")
+#define ATTR_Y1           _S("y1")
+#define ATTR_Y2           _S("y2")
+#define ATTR_UI_MSGQ      _S("ui.msgq")
 
 
 namespace Rd3 

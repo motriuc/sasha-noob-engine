@@ -133,6 +133,12 @@
     <None Include="..\..\system\include\s_system_string.inl">
       <Filter>system\Header Files\to sort</Filter>
     </None>
+    <None Include="..\..\system\include\s_system_d2math_rect.inl">
+      <Filter>system\Header Files\math\d2math</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_d2math_matrix.inl">
+      <Filter>system\Header Files\math\d2math</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\system\cpp\s_system.cpp">
@@ -490,6 +496,12 @@
     </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_xml.h">
       <Filter>system\Header Files\to sort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_d2math_rect.h">
+      <Filter>system\Header Files\math\d2math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_d2math_matrix.h">
+      <Filter>system\Header Files\math\d2math</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

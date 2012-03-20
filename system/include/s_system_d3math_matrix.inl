@@ -23,7 +23,7 @@ inline d3Matrix::d3Matrix()
 
 //-------------------------------------------------------------------
 inline d3Matrix::d3Matrix( d3Float v )
-{
+{	
 	_11 = _22 = _33 = _44 = v;
   
 	_12 = _13 = _14 = 
@@ -213,7 +213,7 @@ inline sBool d3Matrix::Invert( d3Matrix& r, const d3Matrix& a )
 
 	d3Float det = a.Determinant();
 
-	if( FMath::Abs( det ) < Limit::d3Float::Precision )
+	if( FMath::CloseToZero( det ) )
 		return sFalse;
 
 	d3Float idet = 1.0f / det;

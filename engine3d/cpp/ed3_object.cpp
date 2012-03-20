@@ -68,7 +68,7 @@ void d3Object::Initialize( Rd3::Render& render )
 {
 	if( !HasState( OBS_BOUNDINGBOX ) && HasState( OBS_COMPUTE_AUTO_BBOX ) )
 	{
-		_boundingBox.Empty();
+		_boundingBox.SetEmpty();
 		
 		ComputeBoundingBox( _boundingBox );
 		

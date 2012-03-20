@@ -31,7 +31,7 @@ void d3AABBox::Mul( d3AABBox& r, const d3AABBox& b, const d3Matrix& m )
 {
 	if( b.IsEmpty() )
 	{
-		r.Empty();
+		r.SetEmpty();
 		return;
 	}
 

@@ -52,7 +52,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;ED3_ENGINE_USE_PHYSICS;_DEBUG;_LIB;_D3_DEBUG_RENDER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>ed3afx.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\..\engine3d\include;..\..\render3d\include;..\..\system\include;..\..\render3d\include\primitives;..\..\external\lua;..\..\external\bulet;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\engine3d\include;..\..\render3d\include;..\..\system\include;..\..\render3d\include\primitives;..\..\external\lua;..\..\external\bulet;..\..\engine3d\include\ui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -68,7 +68,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;ED3_ENGINE_USE_PHYSICS;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>ed3afx.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\..\engine3d\include;..\..\render3d\include;..\..\system\include;..\..\render3d\include\primitives;..\..\external\lua;..\..\external\bulet;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\engine3d\include;..\..\render3d\include;..\..\system\include;..\..\render3d\include\primitives;..\..\external\lua;..\..\external\bulet;..\..\engine3d\include\ui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -88,8 +88,10 @@
     <ClCompile Include="..\..\engine3d\cpp\ed3_engine.cpp" />
     <ClCompile Include="..\..\engine3d\cpp\ed3_lua.cpp" />
     <ClCompile Include="..\..\engine3d\cpp\ed3_object.cpp" />
+    <ClCompile Include="..\..\engine3d\cpp\ed3_object_d2.cpp" />
     <ClCompile Include="..\..\engine3d\cpp\ed3_object_debug.cpp" />
     <ClCompile Include="..\..\engine3d\cpp\ed3_object_lua.cpp" />
+    <ClCompile Include="..\..\engine3d\cpp\ed3_object_register.cpp" />
     <ClCompile Include="..\..\engine3d\cpp\ed3_obj_cam_gest.cpp" />
     <ClCompile Include="..\..\engine3d\cpp\ed3_obj_cam_key.cpp" />
     <ClCompile Include="..\..\engine3d\cpp\ed3_obj_class.cpp" />
@@ -104,6 +106,8 @@
     <ClCompile Include="..\..\engine3d\cpp\ed3_primitive_lua.cpp" />
     <ClCompile Include="..\..\engine3d\cpp\ed3_rdata.cpp" />
     <ClCompile Include="..\..\engine3d\cpp\ed3_world.cpp" />
+    <ClCompile Include="..\..\engine3d\cpp\ui\ed2_ui_txbutton.cpp" />
+    <ClCompile Include="..\..\engine3d\cpp\ui\ed3_ui_button.cpp" />
     <ClCompile Include="..\..\external\bulet\BulletCollision\BroadphaseCollision\btAxisSweep3.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
@@ -658,6 +662,7 @@
     <ClInclude Include="..\..\engine3d\include\ed3_engine.h" />
     <ClInclude Include="..\..\engine3d\include\ed3_lua.h" />
     <ClInclude Include="..\..\engine3d\include\ed3_object.h" />
+    <ClInclude Include="..\..\engine3d\include\ed3_object_d2.h" />
     <ClInclude Include="..\..\engine3d\include\ed3_obj_cam_gest.h" />
     <ClInclude Include="..\..\engine3d\include\ed3_obj_cam_key.h" />
     <ClInclude Include="..\..\engine3d\include\ed3_obj_class.h" />
@@ -673,6 +678,10 @@
     <ClInclude Include="..\..\engine3d\include\ed3_rdata.h" />
     <ClInclude Include="..\..\engine3d\include\ed3_types.h" />
     <ClInclude Include="..\..\engine3d\include\ed3_world.h" />
+    <ClInclude Include="..\..\engine3d\include\ui\ed3_ui_button.h" />
+    <ClInclude Include="..\..\engine3d\include\ui\ed3_ui_msg.h" />
+    <ClInclude Include="..\..\engine3d\include\ui\ed3_ui_msgq.h" />
+    <ClInclude Include="..\..\engine3d\include\ui\ed3_ui_txbutton.h" />
     <ClInclude Include="..\..\external\lua\lapi.h" />
     <ClInclude Include="..\..\external\lua\lauxlib.h" />
     <ClInclude Include="..\..\external\lua\lcode.h" />

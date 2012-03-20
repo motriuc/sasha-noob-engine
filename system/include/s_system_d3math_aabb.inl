@@ -25,13 +25,6 @@ inline d3AABBox::d3AABBox()
 
 }
 
-inline d3AABBox::d3AABBox( const d3AABBox& b ) :
-	_min( b._min ),
-	_max( b._max )
-{
-
-}
-
 inline d3AABBox::d3AABBox( const d3Vector vmin, const d3Vector vmax ) :
 	_min( vmin ),
 	_max( vmax )
@@ -43,13 +36,7 @@ inline d3AABBox::d3AABBox( const d3Vector vmin, const d3Vector vmax ) :
 /* operators                                                            */
 /************************************************************************/
 
-inline void d3AABBox::operator = ( const d3AABBox& b )
-{
-	_min = b._min;
-	_max = b._max;
-}
-
-inline void d3AABBox::operator += ( const d3Vector& v )
+inline void d3AABBox::operator += ( const d3Point& v )
 {
 	Add( v );
 }
@@ -81,11 +68,11 @@ inline d3AABBox d3AABBox::operator * ( const d3Matrix& m ) const
 inline d3AABBox d3AABBox::GetEmpty()
 {
 	d3AABBox empty;
-	empty.Empty();
+	empty.SetEmpty();
 	return empty;
 } 
 
-inline void d3AABBox::Empty()
+inline void d3AABBox::SetEmpty()
 {
 	_min.x = _min.y = _min.z = Limit::d3Float::Max;
 	_max.x = _max.y = _max.z = Limit::d3Float::Min;
@@ -100,7 +87,7 @@ inline sBool d3AABBox::IsEmpty() const
 }
 
 
-inline void d3AABBox::Add( const d3Vector& v )
+inline void d3AABBox::Add( const d3Point& v )
 {
 	if( v.x < _min.x ) _min.x = v.x;
 	if( v.y < _min.y ) _min.y = v.y;
@@ -111,7 +98,7 @@ inline void d3AABBox::Add( const d3Vector& v )
 	if( v.z > _max.z ) _max.z = v.z;
 }
 
-inline void d3AABBox::Add( const d3Vector* v, sInt count )
+inline void d3AABBox::Add( const d3Point* v, sInt count )
 {
 	for( sInt i = 0; i < count; i++ )
 		Add( v[i] );
@@ -174,7 +161,7 @@ inline d3Float d3AABBox::GetVolume() const
 	return GetSizeX() * GetSizeY() * GetSizeZ();
 }
 
-inline void d3AABBox::GetCorner( d3Vector& v, sInt i ) const
+inline void d3AABBox::GetCorner( d3Point& v, sInt i ) const
 {
 	__S_ASSERT( i >= 0 );
 	__S_ASSERT( i <= 7 );
@@ -184,7 +171,7 @@ inline void d3AABBox::GetCorner( d3Vector& v, sInt i ) const
 	v.z = ( i & 4 )  ? _max.z : _min.z;
 }
 
-inline d3Vector d3AABBox::GetCorner( sInt i ) const
+inline d3Point d3AABBox::GetCorner( sInt i ) const
 {
 	d3Vector v;
 	GetCorner( v, i );
@@ -226,7 +213,7 @@ inline sBool d3AABBox::Intersect( const d3AABBox& b ) const
 	return Intersect( *this, b );
 }
 
-inline sBool d3AABBox::Intersect( const d3Vector& v ) const
+inline sBool d3AABBox::Intersect( const d3Point& v ) const
 {
 	return Intersect( *this, v );
 }
@@ -263,7 +250,7 @@ inline sBool d3AABBox::Intersect( d3AABBox& r, const d3AABBox& a, const d3AABBox
 	return sFalse;
 }
 
-inline sBool d3AABBox::Intersect( const d3AABBox& b, const d3Vector& v )
+inline sBool d3AABBox::Intersect( const d3AABBox& b, const d3Point& v )
 {
 	return 
 		v.x >= b._min.x && v.x <= b._max.x &&

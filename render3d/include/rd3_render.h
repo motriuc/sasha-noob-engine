@@ -353,6 +353,26 @@ public:
 	MessageQueue* GetMessageQueue( const sString& name )			{ return reinterpret_cast<MessageQueue*> ( _messageQResPool[name] ); }
 	
 	template< typename _Type >
+	use_resource<_Type> UseTypedMessageQueue( const sString& name )
+	{
+		use_resource<_Type> res;
+
+		sString typed_name = _Type::TypePrefix() + name;
+		MessageQueue* msgQ = GetMessageQueue( typed_name );
+
+		if( msgQ != NULL )
+		{
+			res = reinterpret_cast<_Type*>( msgQ );
+		}
+		else
+		{
+			res.ResourceCreate( new _Type( this, typed_name ) );
+			AddMessageQueue( res );
+		}
+		return res;
+	}
+
+	template< typename _Type >
 	void MessageQueue_RegisterEvent( const sString& name, const Events::sEvent2<Rd3::EngineData&, _Type&>& e )
 	{
 		typedef MessageQueueT<_Type> MsgQ;
