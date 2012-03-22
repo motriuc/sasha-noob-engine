@@ -1,12 +1,14 @@
 #include "rd3afx.h"
-#include "rd3_render_c.h"
+
 #include "rd3_render.h"
 #include "rd3_create_rparam.h"
 #include "ed3_conf.h"
 #include "ed3_engine.h"
 #include "rd3_msg_gestureq.h"
+
 #include "eagl_conf.h"
 #include "eagl_msg_gestureq.h"
+#include "sne_app.h"
 
 using namespace System;
 using namespace Rd3;

@@ -22,7 +22,7 @@
 #define _use_d3Math_
 
 #include "s_system.h"
-#include "rd3_render_c.h"
+#include "sne_app.h"
 
 using namespace System::d3Math;
 using namespace Rd3;

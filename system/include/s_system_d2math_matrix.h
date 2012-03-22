@@ -51,7 +51,7 @@ public:
 	/**
 	 *
 	 */
-	static void d2Matrix::Mul( d2Matrix& r, const d2Matrix& a, const d2Matrix& b );
+	static void Mul( d2Matrix& r, const d2Matrix& a, const d2Matrix& b );
 public:
 	union {
 		struct 
