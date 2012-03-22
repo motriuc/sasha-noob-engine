@@ -335,7 +335,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>D985C6AC151B36CB00C6B687</string>
+										<string>D985C6C3151B37ED00C6B687</string>
 										<key>history</key>
 										<array>
 											<string>D91D00AB14ECBA9C00CEFA96</string>
@@ -378,9 +378,6 @@
 											<string>D91D024F14ECC4F100CEFA96</string>
 											<string>D91D025314ECC4F100CEFA96</string>
 											<string>D91D025514ECC4F100CEFA96</string>
-											<string>D91D029014ECCA6A00CEFA96</string>
-											<string>D91D029214ECCA6A00CEFA96</string>
-											<string>D93D5B8314ECCF6D003FC949</string>
 											<string>D93D5BFE14ECDBA1003FC949</string>
 											<string>D93D5C0114ECDBA1003FC949</string>
 											<string>D93D5C0314ECDBA1003FC949</string>
@@ -492,7 +489,6 @@
 											<string>D91771121504743000078CA6</string>
 											<string>D91771131504743000078CA6</string>
 											<string>D97372181507859400BC1B85</string>
-											<string>D973721A1507859400BC1B85</string>
 											<string>D97375B4150AF2A200BC1B85</string>
 											<string>D97375B5150AF2A200BC1B85</string>
 											<string>D9737665150B046600BC1B85</string>
@@ -543,7 +539,7 @@
 											<string>D985C5A7151B320A00C6B687</string>
 											<string>D985C5A8151B320A00C6B687</string>
 											<string>D985C5A9151B320A00C6B687</string>
-											<string>D985C5AB151B320A00C6B687</string>
+											<string>D985C6AC151B36CB00C6B687</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -601,9 +597,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>D985C6AD151B36CB00C6B687</string>
+				<string>D985C6C4151B37ED00C6B687</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>D985C6AE151B36CB00C6B687</string>
+				<string>D985C6C5151B37ED00C6B687</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -741,12 +737,8 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>D985C6B7151B36CB00C6B687</string>
-		<string>D985C6B8151B36CB00C6B687</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>D91DFFF014ECB32300CEFA96</string>
 		<string>/Users/sasha/Documents/REP1/ios/sd3engiph/sd3engiph.xcodeproj</string>
-		<string>1C78EAAD065D492600B07095</string>
 	</array>
 	<key>WindowString</key>
 	<string>0 55 1276 723 0 0 1280 778 </string>
@@ -826,7 +818,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>D91DFFF014ECB32300CEFA96</string>
-				<string>D985C6AF151B36CB00C6B687</string>
+				<string>D985C6C6151B37ED00C6B687</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

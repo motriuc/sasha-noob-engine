@@ -6,30 +6,6 @@
 			D91DFFD314ECB2CB00CEFA96 /* sd3engiph */,
 		);
 	};
-	28EC4C5611D54ECE0027AA9F /* sd3engiphViewController.h */ = {
-		isa = PBXFileReference;
-		fileEncoding = 4;
-		lastKnownFileType = sourcecode.c.h;
-		name = sd3engiphViewController.h;
-		path = /Users/sasha/Documents/REP1/ios/sd3engiph/Classes/sd3engiphViewController.h;
-		sourceTree = "<absolute>";
-	};
-	28FD14FC0DC6FC130079059D /* EAGLView.h */ = {
-		isa = PBXFileReference;
-		fileEncoding = 4;
-		lastKnownFileType = sourcecode.c.h;
-		name = EAGLView.h;
-		path = /Users/sasha/Documents/REP1/ios/sd3engiph/Classes/EAGLView.h;
-		sourceTree = "<absolute>";
-	};
-	28FD14FD0DC6FC130079059D /* EAGLView.m */ = {
-		isa = PBXFileReference;
-		fileEncoding = 4;
-		lastKnownFileType = sourcecode.c.objc;
-		name = EAGLView.m;
-		path = /Users/sasha/Documents/REP1/ios/sd3engiph/Classes/EAGLView.m;
-		sourceTree = "<absolute>";
-	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = D91DFFD314ECB2CB00CEFA96 /* sd3engiph */;
@@ -114,8 +90,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 354104950;
-			PBXWorkspaceStateSaveDate = 354104950;
+			PBXPerProjectTemplateStateSaveDate = 354105318;
+			PBXWorkspaceStateSaveDate = 354105318;
 		};
 		perUserProjectItems = {
 			D90A3D96150FFCFC0028B0F6 /* PBXTextBookmark */ = D90A3D96150FFCFC0028B0F6 /* PBXTextBookmark */;
@@ -203,11 +179,8 @@
 			D91D024F14ECC4F100CEFA96 /* PBXTextBookmark */ = D91D024F14ECC4F100CEFA96 /* PBXTextBookmark */;
 			D91D025314ECC4F100CEFA96 /* PBXTextBookmark */ = D91D025314ECC4F100CEFA96 /* PBXTextBookmark */;
 			D91D025514ECC4F100CEFA96 /* PBXTextBookmark */ = D91D025514ECC4F100CEFA96 /* PBXTextBookmark */;
-			D91D029014ECCA6A00CEFA96 /* PBXTextBookmark */ = D91D029014ECCA6A00CEFA96 /* PBXTextBookmark */;
-			D91D029214ECCA6A00CEFA96 /* PBXTextBookmark */ = D91D029214ECCA6A00CEFA96 /* PBXTextBookmark */;
 			D9369B9D150F23890033B1A2 /* PBXTextBookmark */ = D9369B9D150F23890033B1A2 /* PBXTextBookmark */;
 			D9369B9E150F23890033B1A2 /* PBXTextBookmark */ = D9369B9E150F23890033B1A2 /* PBXTextBookmark */;
-			D93D5B8314ECCF6D003FC949 /* PBXTextBookmark */ = D93D5B8314ECCF6D003FC949 /* PBXTextBookmark */;
 			D93D5BFE14ECDBA1003FC949 /* PBXTextBookmark */ = D93D5BFE14ECDBA1003FC949 /* PBXTextBookmark */;
 			D93D5C0114ECDBA1003FC949 /* PBXTextBookmark */ = D93D5C0114ECDBA1003FC949 /* PBXTextBookmark */;
 			D93D5C0314ECDBA1003FC949 /* PBXTextBookmark */ = D93D5C0314ECDBA1003FC949 /* PBXTextBookmark */;
@@ -216,7 +189,6 @@
 			D94B58C314F2349B00EDAB8B /* PBXTextBookmark */ = D94B58C314F2349B00EDAB8B /* PBXTextBookmark */;
 			D94B58C514F2349B00EDAB8B /* PBXTextBookmark */ = D94B58C514F2349B00EDAB8B /* PBXTextBookmark */;
 			D97372181507859400BC1B85 /* PBXTextBookmark */ = D97372181507859400BC1B85 /* PBXTextBookmark */;
-			D973721A1507859400BC1B85 /* PBXTextBookmark */ = D973721A1507859400BC1B85 /* PBXTextBookmark */;
 			D97375B4150AF2A200BC1B85 /* PBXTextBookmark */ = D97375B4150AF2A200BC1B85 /* PBXTextBookmark */;
 			D97375B5150AF2A200BC1B85 /* PBXTextBookmark */ = D97375B5150AF2A200BC1B85 /* PBXTextBookmark */;
 			D9737665150B046600BC1B85 /* PBXTextBookmark */ = D9737665150B046600BC1B85 /* PBXTextBookmark */;
@@ -263,8 +235,8 @@
 			D985C5A7151B320A00C6B687 /* PBXTextBookmark */ = D985C5A7151B320A00C6B687 /* PBXTextBookmark */;
 			D985C5A8151B320A00C6B687 /* PBXTextBookmark */ = D985C5A8151B320A00C6B687 /* PBXTextBookmark */;
 			D985C5A9151B320A00C6B687 /* PBXTextBookmark */ = D985C5A9151B320A00C6B687 /* PBXTextBookmark */;
-			D985C5AB151B320A00C6B687 /* PBXTextBookmark */ = D985C5AB151B320A00C6B687 /* PBXTextBookmark */;
 			D985C6AC151B36CB00C6B687 /* PBXTextBookmark */ = D985C6AC151B36CB00C6B687 /* PBXTextBookmark */;
+			D985C6C3151B37ED00C6B687 /* PBXTextBookmark */ = D985C6C3151B37ED00C6B687 /* PBXTextBookmark */;
 			D99398B1150B127300AFF9DA /* PBXTextBookmark */ = D99398B1150B127300AFF9DA /* PBXTextBookmark */;
 			D993997D150B3E1B00AFF9DA /* PBXTextBookmark */ = D993997D150B3E1B00AFF9DA /* PBXTextBookmark */;
 			D9939A1C150B490600AFF9DA /* PBXTextBookmark */ = D9939A1C150B490600AFF9DA /* PBXTextBookmark */;
@@ -2640,34 +2612,6 @@
 		vrLen = 1607;
 		vrLoc = 0;
 	};
-	D91D027C14ECC96D00CEFA96 /* sd3engiphViewController.mm */ = {
-		isa = PBXFileReference;
-		fileEncoding = 4;
-		lastKnownFileType = sourcecode.cpp.objcpp;
-		name = sd3engiphViewController.mm;
-		path = /Users/sasha/Documents/REP1/ios/sd3engiph/Classes/sd3engiphViewController.mm;
-		sourceTree = "<absolute>";
-	};
-	D91D029014ECCA6A00CEFA96 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 28FD14FC0DC6FC130079059D /* EAGLView.h */;
-		name = "EAGLView.h: 14";
-		rLen = 0;
-		rLoc = 189;
-		rType = 0;
-		vrLen = 195;
-		vrLoc = 0;
-	};
-	D91D029214ECCA6A00CEFA96 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 28EC4C5611D54ECE0027AA9F /* sd3engiphViewController.h */;
-		name = "sd3engiphViewController.h: 20";
-		rLen = 23;
-		rLoc = 290;
-		rType = 0;
-		vrLen = 676;
-		vrLoc = 0;
-	};
 	D91DFFD314ECB2CB00CEFA96 /* sd3engiph */ = {
 		isa = PBXExecutable;
 		activeArgIndices = (
@@ -2824,16 +2768,6 @@
 			sepNavSelRange = "{142, 0}";
 			sepNavVisRange = "{0, 142}";
 		};
-	};
-	D93D5B8314ECCF6D003FC949 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 28FD14FD0DC6FC130079059D /* EAGLView.m */;
-		name = "EAGLView.m: 17";
-		rLen = 0;
-		rLoc = 268;
-		rType = 0;
-		vrLen = 969;
-		vrLoc = 0;
 	};
 	D93D5BA214ECD0E2003FC949 /* world.xml */ = {
 		uiCtxt = {
@@ -3027,16 +2961,6 @@
 		rType = 0;
 		vrLen = 1100;
 		vrLoc = 651;
-	};
-	D973721A1507859400BC1B85 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = D91D027C14ECC96D00CEFA96 /* sd3engiphViewController.mm */;
-		name = "sd3engiphViewController.mm: 165";
-		rLen = 0;
-		rLoc = 4099;
-		rType = 0;
-		vrLen = 1263;
-		vrLoc = 4018;
 	};
 	D97375A8150AF27C00BC1B85 /* rd3_animation_fun.h */ = {
 		uiCtxt = {
@@ -3634,7 +3558,7 @@
 		vrLen = 1004;
 		vrLoc = 0;
 	};
-	D985C5AB151B320A00C6B687 /* PBXTextBookmark */ = {
+	D985C6AC151B36CB00C6B687 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = D985C56F151B307800C6B687 /* sd3engiphViewController.h */;
 		name = "sd3engiphViewController.h: 1";
@@ -3644,7 +3568,7 @@
 		vrLen = 676;
 		vrLoc = 0;
 	};
-	D985C6AC151B36CB00C6B687 /* PBXTextBookmark */ = {
+	D985C6C3151B37ED00C6B687 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = D985C56F151B307800C6B687 /* sd3engiphViewController.h */;
 		name = "sd3engiphViewController.h: 1";
