@@ -133,6 +133,7 @@
 #define ATTR_Y1           _S("y1")
 #define ATTR_Y2           _S("y2")
 #define ATTR_UI_MSGQ      _S("ui.msgq")
+#define ATTR_QUALITY	  _S("quality")
 
 
 namespace Rd3 

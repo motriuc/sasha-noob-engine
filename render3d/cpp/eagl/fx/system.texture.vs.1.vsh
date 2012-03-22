@@ -43,9 +43,7 @@ void main()
 	float fPhongValue = clamp( dot( vReflection, vPointToCamera ), 0.0, 1.0 );
 	
 	float fSpecular =  material_coef_phong * pow( fPhongValue, material_coef_phong_exp );
-		
-	float fColor = material_coef_ambient + fDifColor;
-	
+			
 	v_color.x = material_coef_ambient;
 	v_color.y = fDifColor;
 	v_color.z = fSpecular;

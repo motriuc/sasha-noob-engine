@@ -370,8 +370,12 @@ void WorldRenderState::debug_RenderStats()
 		_renderFont = GetOwner()->UseFont( _S("system.font.default") );
 
 	d2Vector pos( 0.01f, 0.01f );
+	d2Vector screenSize = GetOwner()->GetScreen_SizeInPixels();
 	
-	sString fsp = _S("Fps: ") + sString::IntToString( _engineData->GetFPS() );
+	sString fsp = _S("Fps: ") + sString::IntToString( _engineData->GetFPS() ) + _S(" [") + 
+		sString::IntToString( static_cast<sInt>( screenSize.x ) ) + _S("x") + 
+		sString::IntToString( static_cast<sInt>( screenSize.y ) ) + _S("]");
+	
 	pos.y += _renderFont().RenderText( *this , fsp, pos, RGBColor::White );
 
 #ifdef _D3_DEBUG_RENDER_ENABLE_COUNTERS

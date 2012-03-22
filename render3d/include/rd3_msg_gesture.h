@@ -22,6 +22,8 @@
 namespace Rd3
 {
 
+using namespace System::d3Math;
+	
 /**
  * GestureTap
  */
@@ -32,18 +34,18 @@ public:
 	{
 	}
 	
-	GestureTap( const System::d3Math::d3Vector& pos ) :
+	GestureTap( const d3Point& pos ) :
 		_position( pos )
 	{
 	}
 	
-	const System::d3Math::d3Vector& Position() const
+	const d3Point& Position() const
 	{
 		return _position;
 	}
 	
 private:	
-	System::d3Math::d3Vector	_position;
+	d3Point	_position;
 };
 
 typedef System::Cnt::sVector<GestureTap>  GestureTaps;
@@ -70,7 +72,6 @@ public:
 		_type( type ),
 		_taps( 2 )
 	{
-		
 	}
 	
 	/**

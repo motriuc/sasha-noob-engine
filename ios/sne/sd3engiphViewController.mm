@@ -34,6 +34,17 @@ using namespace Rd3;
 	renderView = (MACOSView*)malloc(sizeof(MACOSView));
 	renderView->_view = self.view;
 	
+#ifdef _D3_ENABLE_RETINA_DISPLAY
+	
+	float ver = [[[UIDevice currentDevice] systemVersion] floatValue];
+	
+	if( ver >= 4.0 )
+	{
+		self.view.contentScaleFactor = [[UIScreen mainScreen] scale];
+	}
+	
+#endif //
+	
 	try 
 	{
 		render = new EngineApplication( renderView );
@@ -176,10 +187,7 @@ void ConvertoToGestureEvent( GestureEvent& ev, NSSet* touches, UIView* view )
 		point.x = 2.0f * point.x - 1.0f;
 		point.y = 1.0f - 2.0f * point.y;
 		
-		GestureTap tap( 
-					   d3Vector( point.x, point.y, 0.0f )
-					   );
-		
+		GestureTap tap( d3Vector( point.x, point.y, 0.0f ) );
 		ev.Add( tap );
     }
 }
@@ -190,7 +198,7 @@ void ConvertoToGestureEvent( GestureEvent& ev, NSSet* touches, UIView* view )
 	if( render )
 	{
 		GestureEvent ev( GestureEvent::E_Begin );
-		ConvertoToGestureEvent( ev, touches, self.view );
+		ConvertoToGestureEvent( ev, [event allTouches], self.view );
 		render->Send( ev );
 	}
 }
@@ -201,7 +209,7 @@ void ConvertoToGestureEvent( GestureEvent& ev, NSSet* touches, UIView* view )
 	if( render )
 	{
 		GestureEvent ev( GestureEvent::E_End );
-		ConvertoToGestureEvent( ev, touches, self.view );
+		ConvertoToGestureEvent( ev, [event allTouches], self.view );
 		render->Send( ev );
 	}
 }
@@ -212,7 +220,7 @@ void ConvertoToGestureEvent( GestureEvent& ev, NSSet* touches, UIView* view )
 	if( render )
 	{
 		GestureEvent ev( GestureEvent::E_Move );
-		ConvertoToGestureEvent( ev, touches, self.view );
+		ConvertoToGestureEvent( ev, [event allTouches], self.view );
 		render->Send( ev );
 	}
 }

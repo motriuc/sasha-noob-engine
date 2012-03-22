@@ -34,6 +34,7 @@ ResourceObject::ResourceObject( Render* owner, const sString& objectName, Resour
 	_useCount( 1 )
 {
 	__S_ASSERT( _pOwner != NULL );
+	_quality = _pOwner->GetDefaultQuality();
 }
 
 /************************************************************************/

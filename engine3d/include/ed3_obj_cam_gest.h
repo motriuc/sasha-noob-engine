@@ -55,7 +55,16 @@ protected:
 	virtual void LoadFromXML( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error;
 private:
 	d3Vector	_move;
-	d3Vector	_lastPosition;
+	
+	d3Point		_lastPosition;
+	sBool		_bLastPosition;
+	
+	d3Point		_point1;
+	d3Point		_point2;
+	
+	sBool		_bPoint1;
+	sBool		_bPoint2;
+	
 	void OnGestureEvent( Rd3::EngineData& edata, const Rd3::GestureEvent& event );
 };
 	

@@ -78,6 +78,12 @@ public:
 	 */
 	d2Vector GetScreen_SizeInPixels() const						{ return _screenSizeInPixels; }
 	
+	/**
+	 * default resource quality
+	 */
+	Quality::Quality GetDefaultQuality() const					{ return Quality::E_Low; }
+	Quality::Quality GetDefaultMaterialQuality() const			{ return _defaultMaterialQuality; }
+	
 	////////////////////////////////////////////////////////////
 	// Resources
 public:
@@ -436,6 +442,8 @@ protected:
 
 	// dynamic vb map
 	sMap<VertexBufferStream::Set, DynamicVertexBuffer*>	 _dynamicVertexBufferMap;
+	
+	Quality::Quality		_defaultMaterialQuality;
 private:
 	RenderType::RenderType  _renderType;
 	

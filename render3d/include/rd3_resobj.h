@@ -70,6 +70,16 @@ public:
 	 *
 	 */
 	void UnuseResource() const;
+	
+	/**
+	 * returns resource quality
+	 */
+	Quality::Quality GetQuality() const;
+	
+	/**
+	 * sets resource quality
+	 */
+	virtual void SetQuality( Quality::Quality quality ) {}
 
 	/**
 	 * called if device was reset
@@ -91,6 +101,8 @@ private:
 	Render*						_pOwner;
 	sInt						_objIndex;
 	mutable sInt				_useCount;
+protected:
+	Quality::Quality			_quality;
 
 	friend class TypedResourcePool;
 };

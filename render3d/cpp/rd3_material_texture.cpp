@@ -36,24 +36,29 @@ TextureMaterial::TextureMaterial( Render* owner, const sString& objectName ) :
 	_co_ambient( 0.05f ),
 	_numberOfLights( 1 )
 {
-	_effect = owner->UseEffect( _S("system.texture.fx.1") );
+	UpdateEffect();
 }
 
 //-------------------------------------------------------------------
-void TextureMaterial::SetNumberOfLights( sInt num )
+void TextureMaterial::UpdateEffect()
 {
-	if( _numberOfLights != num )
+	sString effectName = _S("system.texture.fx.0");
+	
+	if( _numberOfLights > 0 )
 	{
-		_numberOfLights = num;
-
-		sString effectName = _S("system.texture.fx.0");
-
-		if( _numberOfLights > 0 )
+		switch( _numberOfLights )
 		{
-			switch( _numberOfLights )
-			{
 			case 1:
-				effectName = _S("system.texture.fx.1");
+				switch ( _quality )
+				{
+					case Rd3::Quality::E_Medium:
+					case Rd3::Quality::E_High:
+						effectName = _S("system.texture.fx.1.qh");						
+						break;
+					case Rd3::Quality::E_Low:
+					default:
+						effectName = _S("system.texture.fx.1");
+				}
 				break;
 			case 2:
 				effectName = _S("system.texture.fx.2");
@@ -65,10 +70,29 @@ void TextureMaterial::SetNumberOfLights( sInt num )
 			default:
 				effectName = _S("system.texture.fx.4");
 				break;
-			}
 		}
+	}
+	
+	_effect = GetOwner()->UseEffect( effectName );	
+}		
 
-		_effect = GetOwner()->UseEffect( effectName );
+//-------------------------------------------------------------------
+void TextureMaterial::SetQuality( Quality::Quality quality )
+{
+	if( _quality != quality )
+	{
+		_quality = quality;
+		UpdateEffect();
+	}
+}		
+	
+//-------------------------------------------------------------------
+void TextureMaterial::SetNumberOfLights( sInt num )
+{
+	if( _numberOfLights != num )
+	{
+		_numberOfLights = num;
+		UpdateEffect();
 	}
 }
 
@@ -96,7 +120,10 @@ void TextureMaterial::SetTexture( const sString& name )
 //-------------------------------------------------------------------
 void TextureMaterial::LoadFromXml( const Xml::BaseDomNode& node, const Def& def ) throws_error
 {
-	
+	Quality::Quality quality = Quality::GetType( node.GetAttributes()[ATTR_QUALITY] );
+	if( quality != Quality::UNKNOWN )
+		SetQuality( quality );
+	   
 	for( sInt i = 0; i < node.GetChildCount(); ++i )
 	{
 		const Xml::BaseDomNode& child = node[i];

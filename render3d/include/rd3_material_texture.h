@@ -70,6 +70,8 @@ public:
 	void SetAmbient( d3Float v )			{ _co_ambient = v; }
 
 	void SetNumberOfLights( sInt num );
+	virtual void SetQuality( Quality::Quality quality );
+	
 public:
 	/**
 	 * Applies material to render state
@@ -84,6 +86,8 @@ private:
 	Rd3::Effect::Float		_co_phong_exp;
 	Rd3::Effect::Float		_co_phong;
 	Rd3::Effect::Float		_co_ambient;
+	
+	void UpdateEffect();
 };
 
 

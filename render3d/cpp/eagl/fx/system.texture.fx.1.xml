@@ -1,4 +1,4 @@
-<effect name="system.texture.1" >
+<effect>
 	<default vs="%engine%/system.texture.vs.1.vsh" ps="%engine%/system.texture.ps.1.fsh">
 	</default>
 </effect>

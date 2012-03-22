@@ -1,7 +1,7 @@
 <mesh>
-	<primitive type="torus" radius="0.5" tube.radius="0.2" segments="30" tube.segments="20"  />
+	<primitive type="torus" radius="0.7" tube.radius="0.3" segments="30" tube.segments="20"  />
 	
-	<material type="texture" >
+	<material type="texture" quality="high">
 		<texture name="main.red.ch" />
 	</material>
 </mesh>

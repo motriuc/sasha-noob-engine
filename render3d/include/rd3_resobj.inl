@@ -42,12 +42,17 @@ inline ResourceType::ResourceType ResourceObject::GetResourceType() const
 	return _objectType;
 }
 
+inline Quality::Quality ResourceObject::GetQuality() const
+{
+	return _quality;
+}
+
+//////////////////////////////////////////////////////////////////////////////
+
 inline sInt TypedResourcePool::GetObjectCount() const
 {
 	return _objArray.Size();
 }
-
-//////////////////////////////////////////////////////////////////////////////
 
 inline ResourceObject* TypedResourcePool::operator[]( const sString& name )
 {
@@ -60,3 +65,5 @@ inline ResourceObject* TypedResourcePool::operator[]( const sInt objectId )
 {
 	return _objArray[objectId];
 }
+
+

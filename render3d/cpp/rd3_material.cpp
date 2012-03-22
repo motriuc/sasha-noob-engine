@@ -18,6 +18,7 @@
 
 #include "rd3afx.h"
 #include "rd3_material.h"
+#include "rd3_render.h"
 
 using namespace System;
 
@@ -61,6 +62,7 @@ Material* Material::Create( const sString& name, Render* owner, const sString& o
 Material::Material( Render* owner, const sString& objectName ) :
 	_BaseClass( owner, objectName, ResourceType::E_MATERIAL )
 {
+	_quality = GetOwner()->GetDefaultMaterialQuality();	
 }
 
 //------------------------------------------------------------------

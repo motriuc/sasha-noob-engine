@@ -623,6 +623,38 @@ namespace PrimitiveType
 }
 
 /**
+ * Quality
+ */
+namespace Quality
+{
+	enum Quality
+	{
+		E_Low,
+		E_Medium,
+		E_High,
+		
+		COUNT,
+		UNKNOWN
+	};
+	
+	inline const sChar* GetName( Quality p )
+	{
+		__S_ASSERT( p >= 0 );
+		__S_ASSERT( p < COUNT );
+		
+		static const sChar* pNames[] = 
+		{
+			_S("low"),
+			_S("medium"),
+			_S("high")
+		};
+		return pNames[p];
+	}
+	
+	Quality GetType( const sChar* pChars );
+}
+	
+/**
  * LightType
  */
 namespace LightType 

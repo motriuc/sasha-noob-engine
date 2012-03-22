@@ -73,6 +73,7 @@ Render* Render::CreateRender( const RenderCreateParams& params ) throws_error
 Render::Render( const RenderType::RenderType type ) :
 	_renderType( type ),
 	_pRenderState( NULL ),
+	
 	_effectResPool( ResourceType::E_EFFECT ),
 	_textureResPool( ResourceType::E_TEXTURE ),
 	_vertexBufferPool( ResourceType::E_VERTEX_BUFFER ),
@@ -81,7 +82,9 @@ Render::Render( const RenderType::RenderType type ) :
 	_messageQResPool( ResourceType::E_MESSAGEQ ),
 	_meshResPool( ResourceType::E_MESH ),
 	_aftereffectResPool( ResourceType::E_AFTEREFFECT ),
-	_animationResPool( ResourceType::E_ANIMATION )
+	_animationResPool( ResourceType::E_ANIMATION ),
+	
+	_defaultMaterialQuality( Quality::E_Low )
 {
 }
 

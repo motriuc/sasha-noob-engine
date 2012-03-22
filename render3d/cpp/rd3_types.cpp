@@ -196,7 +196,20 @@ namespace TextureAddressingType
 		return UNKNOWN;
 	}
 }
-	
+
+//-------------------------------------------------------------------
+namespace Quality
+{
+	Quality GetType( const sChar* pChars )
+	{
+		for( sInt i = 0; i < COUNT; i++ )
+		{
+			if( Chars::CompareNoCase( GetName( (Quality)i ), pChars ) == 0 )
+				return (Quality)i;
+		}
+		return UNKNOWN;		
+	}
+}
 //-------------------------------------------------------------------
 namespace VertexBufferStream
 {

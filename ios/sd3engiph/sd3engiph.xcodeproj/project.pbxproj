@@ -123,7 +123,6 @@
 		D94B58D114F2357400EDAB8B /* system.after.effect.blur.fx.xml in Resources */ = {isa = PBXBuildFile; fileRef = D94B58CF14F2357400EDAB8B /* system.after.effect.blur.fx.xml */; };
 		D94B58D214F2357400EDAB8B /* system.after.effect.blur.ps.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D94B58D014F2357400EDAB8B /* system.after.effect.blur.ps.fsh */; };
 		D94B59F314F2820500EDAB8B /* rd3_aef_acolor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D94B59F214F2820500EDAB8B /* rd3_aef_acolor.cpp */; };
-		D97371FA150784E000BC1B85 /* ed3_physics_shape.inl in Resources */ = {isa = PBXBuildFile; fileRef = D97371F9150784E000BC1B85 /* ed3_physics_shape.inl */; };
 		D97371FC150784EE00BC1B85 /* ed3_obj_cam_key.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D97371FB150784EE00BC1B85 /* ed3_obj_cam_key.cpp */; };
 		D97375AC150AF28D00BC1B85 /* rd3_animation_fun.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D97375AA150AF28D00BC1B85 /* rd3_animation_fun.cpp */; };
 		D97375AD150AF28D00BC1B85 /* rd3_animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D97375AB150AF28D00BC1B85 /* rd3_animation.cpp */; };
@@ -140,6 +139,9 @@
 		D985C57F151B30CC00C6B687 /* ed3_object_register.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D985C57C151B30CC00C6B687 /* ed3_object_register.cpp */; };
 		D985C584151B30F300C6B687 /* ed2_ui_txbutton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D985C582151B30F300C6B687 /* ed2_ui_txbutton.cpp */; };
 		D985C585151B30F300C6B687 /* ed3_ui_button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D985C583151B30F300C6B687 /* ed3_ui_button.cpp */; };
+		D985C71E151B462D00C6B687 /* system.texture.fx.1.qh.xml in Resources */ = {isa = PBXBuildFile; fileRef = D985C71B151B462D00C6B687 /* system.texture.fx.1.qh.xml */; };
+		D985C71F151B462D00C6B687 /* system.texture.ps.1.qh.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D985C71C151B462D00C6B687 /* system.texture.ps.1.qh.fsh */; };
+		D985C720151B462D00C6B687 /* system.texture.vs.1.qh.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D985C71D151B462D00C6B687 /* system.texture.vs.1.qh.vsh */; };
 		D98DC13714FA2076007F9146 /* system.solid.fx.2.xml in Resources */ = {isa = PBXBuildFile; fileRef = D98DC13414FA2076007F9146 /* system.solid.fx.2.xml */; };
 		D98DC13814FA2076007F9146 /* system.solid.ps.2.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D98DC13514FA2076007F9146 /* system.solid.ps.2.fsh */; };
 		D98DC13914FA2076007F9146 /* system.solid.vs.2.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D98DC13614FA2076007F9146 /* system.solid.vs.2.vsh */; };
@@ -641,6 +643,9 @@
 		D985C593151B315500C6B687 /* ed3_ui_msg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ed3_ui_msg.h; path = ../../engine3d/include/ui/ed3_ui_msg.h; sourceTree = SOURCE_ROOT; };
 		D985C594151B315500C6B687 /* ed3_ui_msgq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ed3_ui_msgq.h; path = ../../engine3d/include/ui/ed3_ui_msgq.h; sourceTree = SOURCE_ROOT; };
 		D985C595151B315500C6B687 /* ed3_ui_txbutton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ed3_ui_txbutton.h; path = ../../engine3d/include/ui/ed3_ui_txbutton.h; sourceTree = SOURCE_ROOT; };
+		D985C71B151B462D00C6B687 /* system.texture.fx.1.qh.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = system.texture.fx.1.qh.xml; path = ../../render3d/cpp/eagl/fx/system.texture.fx.1.qh.xml; sourceTree = SOURCE_ROOT; };
+		D985C71C151B462D00C6B687 /* system.texture.ps.1.qh.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.texture.ps.1.qh.fsh; path = ../../render3d/cpp/eagl/fx/system.texture.ps.1.qh.fsh; sourceTree = SOURCE_ROOT; };
+		D985C71D151B462D00C6B687 /* system.texture.vs.1.qh.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.texture.vs.1.qh.vsh; path = ../../render3d/cpp/eagl/fx/system.texture.vs.1.qh.vsh; sourceTree = SOURCE_ROOT; };
 		D98DC13414FA2076007F9146 /* system.solid.fx.2.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = system.solid.fx.2.xml; path = ../../render3d/cpp/eagl/fx/system.solid.fx.2.xml; sourceTree = SOURCE_ROOT; };
 		D98DC13514FA2076007F9146 /* system.solid.ps.2.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.solid.ps.2.fsh; path = ../../render3d/cpp/eagl/fx/system.solid.ps.2.fsh; sourceTree = SOURCE_ROOT; };
 		D98DC13614FA2076007F9146 /* system.solid.vs.2.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.solid.vs.2.vsh; path = ../../render3d/cpp/eagl/fx/system.solid.vs.2.vsh; sourceTree = SOURCE_ROOT; };
@@ -914,6 +919,9 @@
 		D90A3D81150FF8520028B0F6 /* texture */ = {
 			isa = PBXGroup;
 			children = (
+				D985C71B151B462D00C6B687 /* system.texture.fx.1.qh.xml */,
+				D985C71C151B462D00C6B687 /* system.texture.ps.1.qh.fsh */,
+				D985C71D151B462D00C6B687 /* system.texture.vs.1.qh.vsh */,
 				D90A3D82150FF9650028B0F6 /* system.texture.ps.0.fsh */,
 				D90A3D83150FF9650028B0F6 /* system.texture.fx.0.xml */,
 				D90A3D84150FF9650028B0F6 /* system.texture.vs.0.vsh */,
@@ -1774,13 +1782,13 @@
 		D99923BD14EF598A003FC6A7 /* other */ = {
 			isa = PBXGroup;
 			children = (
-				D97371FB150784EE00BC1B85 /* ed3_obj_cam_key.cpp */,
 				D97371F8150784E000BC1B85 /* ed3_obj_cam_key.h */,
+				D97371FB150784EE00BC1B85 /* ed3_obj_cam_key.cpp */,
 				D97371F9150784E000BC1B85 /* ed3_physics_shape.inl */,
 				D91D021414ECC48C00CEFA96 /* ed3_obj_cam_gest.h */,
+				D91D022714ECC4A700CEFA96 /* ed3_obj_cam_gest.cpp */,
 				D91D021814ECC48C00CEFA96 /* ed3_obj_mesh.h */,
 				D91D021914ECC48C00CEFA96 /* ed3_obj_texture.h */,
-				D91D022714ECC4A700CEFA96 /* ed3_obj_cam_gest.cpp */,
 				D91D022B14ECC4A700CEFA96 /* ed3_obj_mesh.cpp */,
 				D91D022C14ECC4A700CEFA96 /* ed3_obj_texture.cpp */,
 			);
@@ -2105,6 +2113,8 @@
 				D93D5BA614ECD15A003FC949 /* mesh_torus.xml in Resources */,
 				D93D5BA714ECD15A003FC949 /* red_checker.png in Resources */,
 				D99923BB14EF58C9003FC6A7 /* torus.lua in Resources */,
+				D985C71F151B462D00C6B687 /* system.texture.ps.1.qh.fsh in Resources */,
+				D985C720151B462D00C6B687 /* system.texture.vs.1.qh.vsh in Resources */,
 				D94B57AD14F221B600EDAB8B /* system.after.effect.none.fx.xml in Resources */,
 				D94B58D114F2357400EDAB8B /* system.after.effect.blur.fx.xml in Resources */,
 				D98536A514F36A7E00E3AADD /* system.after.effect.color.fx.xml in Resources */,
@@ -2114,8 +2124,8 @@
 				D9DC7D1615021741003600E7 /* system.texture.font.10.png in Resources */,
 				D9DC7E5A15023D54003600E7 /* render.res.xml in Resources */,
 				D9176FD01504656C00078CA6 /* system.debug.solid.color.fx.xml in Resources */,
-				D97371FA150784E000BC1B85 /* ed3_physics_shape.inl in Resources */,
 				D90A3D87150FF9650028B0F6 /* system.texture.fx.0.xml in Resources */,
+				D985C71E151B462D00C6B687 /* system.texture.fx.1.qh.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

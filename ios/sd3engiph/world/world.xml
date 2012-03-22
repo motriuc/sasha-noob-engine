@@ -13,7 +13,8 @@
 		</light.point>
 	</lights.static>
 	
-	<children>				
+	<children>
+		<engine.object.gesturecamera/>
 		<engine.object.mesh mesh="main.mesh" lua="%gameres%/torus.lua">
 			<bbox type="auto" />
 			<!-- use static lights for this object -->
