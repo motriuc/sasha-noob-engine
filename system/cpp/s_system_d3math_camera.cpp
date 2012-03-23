@@ -29,8 +29,8 @@ using namespace System::Types;
 //-------------------------------------------------------------------		
 d3Camera::d3Camera() :
 	// View Params
-	_pPosition ( 0.0f, 0.0f, -4.0f ),
-	_vLookAt   ( 0.0f, 0.0f, 1.0f ),
+	_pPosition ( 0.0f, 0.0f, 4.0f ),
+	_vLookAt   ( 0.0f, 0.0f, -1.0f ),
 	_vWorldUp  ( 0.0f, 1.0f, 0.0f ), 
 
 	// Proj Params

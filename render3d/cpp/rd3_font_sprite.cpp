@@ -39,7 +39,8 @@ namespace Rd3
 FontSprite::FontSprite( Render* owner, const sString& objectName ) :
 	_BaseClass( owner, objectName )
 {
-	_effect = GetOwner()->UseEffect( _S("system.font.fx.1") );
+	_effectScreen = GetOwner()->UseEffect( _S("system.font.fx.1") );
+	_effect = GetOwner()->UseEffect( _S("system.font.fx.2") );
 }
 	
 //-------------------------------------------------------------------	
@@ -99,7 +100,80 @@ RenderString* FontSprite::CreateRenderString()
 }
 
 //-------------------------------------------------------------------	
-d3Float FontSprite::RenderText( RenderState& rstate, const sString& text, const d2Vector& pos, sRGBColor color )
+d2Vector FontSprite::GetTextSize( const sString& text ) const
+{
+	d2Vector size( 0.0f, 0.0f );
+
+	for( sInt i = 0; i < (sInt)text.Length(); ++i ) 
+	{
+		sChar ch = text[i];
+		SpriteChar sprite;
+		
+		if( !GetSprite( ch, sprite ) )
+			continue;
+
+		size.x += sprite.Width();
+		size.y = FMath::Max( size.y, static_cast<d3Float>( sprite.Height() ) );
+	}
+
+	return size;
+}
+
+//-------------------------------------------------------------------	
+void FontSprite::RenderText( Rd3::RenderState& rstate, const sString& text, const d2Vector& pos, d3Float height, sRGBColor color )
+{
+	if( !_vb )
+		_vb = GetOwner()->UseDynamicVertexBuffer( Rd3::VertexBufferStream::E_XYZ | Rd3::VertexBufferStream::E_TX1 );
+
+	d3Float tx = static_cast<d3Float>( GetTexture().GetWidth() );
+	d3Float ty = static_cast<d3Float>( GetTexture().GetHeight() ); 
+
+	d3Float x1 = pos.x;
+	d3Float y1 = pos.y;
+
+	_vb().BeginAdd( text.Length() * 6 );
+
+	for( sInt i = 0; i < (sInt)text.Length(); ++i ) 
+	{
+		sChar ch = text[i];
+		SpriteChar sprite;
+		
+		if( !GetSprite( ch, sprite ) )
+			continue;
+
+		d3Float dx = height * sprite.Width() / sprite.Height();
+		d3Float dy = height;
+		
+		d3Float x2 = x1 + dx;
+		d3Float y2 = y1 - dy;
+
+		d3Float tx0 = sprite.X1() / tx;
+		d3Float ty0 = sprite.Y1() / ty;
+		d3Float tx1 = sprite.X2() / tx;
+		d3Float ty1 = sprite.Y2() / ty;
+
+		_vb().AddVertex( d3Vector( x1, y1, 0.0f ), d2Vector( tx0, ty0 ) );
+		_vb().AddVertex( d3Vector( x1, y2, 0.0f ), d2Vector( tx0, ty1 ) );
+		_vb().AddVertex( d3Vector( x2, y2, 0.0f ), d2Vector( tx1, ty1 ) );
+
+		_vb().AddVertex( d3Vector( x1, y1, 0.0f ), d2Vector( tx0, ty0 ) );
+		_vb().AddVertex( d3Vector( x2, y2, 0.0f ), d2Vector( tx1, ty1 ) );
+		_vb().AddVertex( d3Vector( x2, y1, 0.0f ), d2Vector( tx1, ty0 ) );
+
+		x1 += dx;
+	}
+		
+	_vb().EndAdd();
+
+	rstate.SetTexture( TextureParameter::E_TEX1, _texture );
+	rstate.SetEffect( _effect );
+	rstate.SetParam_Color1( color );
+
+	rstate.RenderPrimitive( _vb, PrimitiveType::E_TRIANGLE_LIST );
+}
+
+//-------------------------------------------------------------------	
+d3Float FontSprite::ScreenRenderText( RenderState& rstate, const sString& text, const d2Vector& pos, sRGBColor color )
 {
 	if( !_vb )
 		_vb = GetOwner()->UseDynamicVertexBuffer( Rd3::VertexBufferStream::E_XYZ | Rd3::VertexBufferStream::E_TX1 );
@@ -152,16 +226,13 @@ d3Float FontSprite::RenderText( RenderState& rstate, const sString& text, const 
 	}
 		
 	_vb().EndAdd();
-
-	rstate.BeginRenderObject();
 	
 	rstate.SetTexture( TextureParameter::E_TEX1, _texture );
-	rstate.SetEffect( _effect );
+	rstate.SetEffect( _effectScreen );
 	rstate.SetParam_Color1( color );
 
 	rstate.RenderPrimitive( _vb, PrimitiveType::E_TRIANGLE_LIST );
 		
-	rstate.EndRenderObject(); 
 	return fontRenderHeight;
 }
 
@@ -249,11 +320,11 @@ void FontSprite::LoadFromFntFile( const sString& fileName, const Def& def, const
 SprireRenderString::SprireRenderString( Font* font ):
 	_BaseClass( font )
 {
-	_effect = render().UseEffect( _S("system.font.fx.1") );
+	_effectScreen = render().UseEffect( _S("system.font.fx.1") );
 }
 
 //-------------------------------------------------------------------	
-void SprireRenderString::RenderText( RenderState& rstate, const sString& text, const d2Vector& pos, sRGBColor color )
+void SprireRenderString::ScreenRenderText( RenderState& rstate, const sString& text, const d2Vector& pos, sRGBColor color )
 {
 	d2Vector targetSize = rstate.GetRenderTarger_SizeInPixels();
 	
@@ -328,16 +399,12 @@ void SprireRenderString::RenderText( RenderState& rstate, const sString& text, c
 		
 		_vb.ResourceCreate( render().CreateVertexBuffer( _S(""), vpoints, txpoints ) );
 	}
-
-	rstate.BeginRenderObject();
 	
 	rstate.SetTexture( TextureParameter::E_TEX1, &fontSprite().GetTexture() );
-	rstate.SetEffect( _effect );
+	rstate.SetEffect( _effectScreen );
 	rstate.SetParam_Color1( color );
 
 	rstate.RenderPrimitive( _vb, PrimitiveType::E_TRIANGLE_LIST );
-		
-	rstate.EndRenderObject();
 }
 
 //-------------------------------------------------------------------		

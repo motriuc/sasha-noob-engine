@@ -55,13 +55,22 @@ public:
 	/**
 	 * 
 	 */
-	virtual d3Float RenderText( Rd3::RenderState& rstate, const sString& text, const d2Vector& pos, sRGBColor color ) = 0;
+	virtual d3Float ScreenRenderText( Rd3::RenderState& rstate, const sString& text, const d2Vector& pos, sRGBColor color ) = 0;
+
+	/**
+	 *
+	 */
+	virtual void RenderText( Rd3::RenderState& rstate, const sString& text, const d2Vector& pos, d3Float height, sRGBColor color ) = 0;
 
 	/**
 	 *
 	 */
 	virtual void LoadFromXml( const System::Xml::BaseDomNode& node, const Def& def ) throws_error = 0;
 
+	/**
+	 * returns text size in font units
+	 */
+	virtual d2Vector GetTextSize( const sString& text ) const = 0;
 public:	
 	/**
 	 * 

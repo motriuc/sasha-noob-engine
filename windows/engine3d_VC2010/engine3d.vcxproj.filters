@@ -543,6 +543,9 @@
     <ClCompile Include="..\..\engine3d\cpp\ed3_object_register.cpp">
       <Filter>engine\Source Files\object</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\engine3d\cpp\ui\ed2_ui_label.cpp">
+      <Filter>engine\Source Files\object\ui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\external\lua\lapi.h">
@@ -702,6 +705,9 @@
       <Filter>engine\Header Files\objects\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine3d\include\ui\ed3_ui_msgq.h">
+      <Filter>engine\Header Files\objects\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine3d\include\ui\ed3_ui_label.h">
       <Filter>engine\Header Files\objects\ui</Filter>
     </ClInclude>
   </ItemGroup>

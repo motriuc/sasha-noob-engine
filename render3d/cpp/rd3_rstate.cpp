@@ -372,41 +372,44 @@ void WorldRenderState::debug_RenderStats()
 	d2Vector pos( 0.01f, 0.01f );
 	d2Vector screenSize = GetOwner()->GetScreen_SizeInPixels();
 	
+	BeginRenderObject();
+
 	sString fsp = _S("Fps: ") + sString::IntToString( _engineData->GetFPS() ) + _S(" [") + 
 		sString::IntToString( static_cast<sInt>( screenSize.x ) ) + _S("x") + 
 		sString::IntToString( static_cast<sInt>( screenSize.y ) ) + _S("]");
 	
-	pos.y += _renderFont().RenderText( *this , fsp, pos, RGBColor::White );
+	pos.y += _renderFont().ScreenRenderText( *this , fsp, pos, RGBColor::White );
 
 #ifdef _D3_DEBUG_RENDER_ENABLE_COUNTERS
 	
 	sString rnd = _S("Render %: ") + sString::DoubleToString( renderProp );
-	pos.y += _renderFont().RenderText( *this , rnd, pos, RGBColor::White );
+	pos.y += _renderFont().ScreenRenderText( *this , rnd, pos, RGBColor::White );
 
 	sString lnd = _S("Lua %: ") + sString::DoubleToString( luaProp );
-	pos.y += _renderFont().RenderText( *this , lnd, pos, RGBColor::White );
+	pos.y += _renderFont().ScreenRenderText( *this , lnd, pos, RGBColor::White );
 
 	sString phs = _S("Physics %: ") + sString::DoubleToString( phProp );
-	pos.y += _renderFont().RenderText( *this , phs, pos, RGBColor::White );
+	pos.y += _renderFont().ScreenRenderText( *this , phs, pos, RGBColor::White );
 
 	sString rns = _S("Render State %: ") + sString::DoubleToString( renProp );
-	pos.y += _renderFont().RenderText( *this , rns, pos, RGBColor::White );
+	pos.y += _renderFont().ScreenRenderText( *this , rns, pos, RGBColor::White );
 	
 	sString objs = _S("Objects : ") + 
 		sString::IntToString( COUNTER_INT_VALUE( rd3_render_object_visible ) ) +
 		_S("/") +
 		sString::IntToString( COUNTER_INT_VALUE( rd3_render_object_total ) );
 	
-	pos.y += _renderFont().RenderText( *this , objs, pos, RGBColor::White );
+	pos.y += _renderFont().ScreenRenderText( *this , objs, pos, RGBColor::White );
 	
 	sString vbPrimCount = _S("Render Primitive count: ") + sString::IntToString( ivPrimCount );
 	
-	pos.y += _renderFont().RenderText( *this , vbPrimCount, pos, RGBColor::White );
+	pos.y += _renderFont().ScreenRenderText( *this , vbPrimCount, pos, RGBColor::White );
 	
 	sString vbCount = _S("Render Vertex count: ") + sString::IntToString( ivCount );
 	
-	pos.y += _renderFont().RenderText( *this , vbCount, pos, RGBColor::White );
+	pos.y += _renderFont().ScreenRenderText( *this , vbCount, pos, RGBColor::White );
 #endif
+	EndRenderObject();
 
 }
 

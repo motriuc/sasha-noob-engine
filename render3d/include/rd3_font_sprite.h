@@ -121,7 +121,17 @@ public:
 	/**
 	 *
 	 */
-	virtual d3Float RenderText( RenderState& rstate, const sString& text, const d2Vector& pos, sRGBColor color );
+	virtual d3Float ScreenRenderText( RenderState& rstate, const sString& text, const d2Vector& pos, sRGBColor color );
+
+	/**
+	 *
+	 */
+	virtual void RenderText( Rd3::RenderState& rstate, const sString& text, const d2Vector& pos, d3Float height, sRGBColor color );
+
+	/**
+	 *
+	 */
+	d2Vector GetTextSize( const sString& text ) const;
 
 protected:	
 	/**
@@ -133,6 +143,7 @@ private:
 protected:
 	use_resource<Rd3::Texture> _texture;
 	use_resource<Rd3::DynamicVertexBuffer> _vb;
+	use_resource<Rd3::Effect> _effectScreen;
 	use_resource<Rd3::Effect> _effect;
 
 private:	
@@ -150,7 +161,7 @@ protected:
 	SprireRenderString( Font* font );
 	
 public:	
-	virtual void RenderText( RenderState& rstate, const sString& text, const d2Vector& pos, sRGBColor color );
+	virtual void ScreenRenderText( RenderState& rstate, const sString& text, const d2Vector& pos, sRGBColor color );
 	~SprireRenderString();
 protected:
 	const FontSprite& fontSprite()	{ return reinterpret_cast<const FontSprite&> (font()) ; }
@@ -160,7 +171,7 @@ private:
 	d2Vector			_pos;
 	
 	use_resource<Rd3::VertexBuffer>	_vb;
-	use_resource<Rd3::Effect>		_effect;
+	use_resource<Rd3::Effect> _effectScreen;
 
 	friend class FontSprite;
 };

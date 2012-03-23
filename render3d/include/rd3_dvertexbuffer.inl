@@ -101,11 +101,11 @@ inline void DynamicVertexBuffer::AddFaceZ(
 	d3Float z
 )
 {
-	AddVertex( d3Vector( x1, y1, z ), d2Vector( tx1, ty1 ) );
-	AddVertex( d3Vector( x2, y2, z ), d2Vector( tx2, ty2 ) );
-	AddVertex( d3Vector( x2, y1, z ), d2Vector( tx2, ty1 ) );
+	AddVertex( d3Vector( x1, y1, z ), d2Vector( tx1, ty2 ) );
+	AddVertex( d3Vector( x2, y1, z ), d2Vector( tx2, ty2 ) );
+	AddVertex( d3Vector( x2, y2, z ), d2Vector( tx2, ty1 ) );
 
-	AddVertex( d3Vector( x1, y1, z ), d2Vector( tx1, ty1 ) );
-	AddVertex( d3Vector( x1, y2, z ), d2Vector( tx1, ty2 ) );
-	AddVertex( d3Vector( x2, y2, z ), d2Vector( tx2, ty2 ) );
+	AddVertex( d3Vector( x1, y1, z ), d2Vector( tx1, ty2 ) );
+	AddVertex( d3Vector( x2, y2, z ), d2Vector( tx2, ty1 ) );
+	AddVertex( d3Vector( x1, y2, z ), d2Vector( tx1, ty1 ) );
 }

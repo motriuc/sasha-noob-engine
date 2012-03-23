@@ -48,7 +48,7 @@ public:
 	/**
 	 * render the text
 	 */
-	virtual void RenderText( RenderState& rstate, const sString& text, const d2Vector& pos, sRGBColor color ) = 0;
+	virtual void ScreenRenderText( RenderState& rstate, const sString& text, const d2Vector& pos, sRGBColor color ) = 0;
 	
 	/**
 	 * returns font render height

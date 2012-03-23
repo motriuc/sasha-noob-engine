@@ -32,7 +32,8 @@ d2Object::d2Object( const sString& name, sBool listenGestureEvents ) :
 	_BaseClass( ObjectType::E_OBJECT, name ),
 	_listenGestureEvents( listenGestureEvents ),
 	_d2Plane( d3Vector( 0.0f, 0.0f, 1.0f ), 0.0f ),
-	_pRenderData( NULL )
+	_pRenderData( NULL ),
+	_uiFontColor( RGBColor::White )
 {
 }
 
@@ -158,12 +159,27 @@ void d2Object::RenderTexture( const d2Point& posFrom, const d2Point& posTo, Rd3:
 }
 
 //------------------------------------------------------------------
+void d2Object::RenderText( const sString& text, const d2Point& pos, d3Float height, sRGBColor color )
+{
+	__S_ASSERT( _pRenderData != NULL );
+
+	_uiFont().RenderText( _pRenderData->rstate(), text, pos, height, color );
+}
+
+//------------------------------------------------------------------
 void d2Object::LoadFromXML( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error
 {
-	sString messageQ = element.GetAttributes()[ATTR_UI_MSGQ];
+	{
+		sString messageQ = element.GetAttributes()[ATTR_UI_MSGQ];
+		if( messageQ.Length() > 0 )
+			_uiQueue = loadParams.render.UseTypedMessageQueue<UiMsgQueue>( messageQ );
+	}
 
-	if( messageQ.Length() > 0 )
-		_uiQueue = loadParams.render.UseTypedMessageQueue<UiMsgQueue>( messageQ );
+	{
+		sString fontName = element.GetAttributes()[ATTR_FONT];
+		if( fontName.Length() > 0 )
+			_uiFont = loadParams.render.UseFont( fontName );
+	}
 
 	_BaseClass::LoadFromXML( element, loadParams );
 }

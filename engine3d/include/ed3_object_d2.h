@@ -30,6 +30,7 @@
 #include "rd3_dvertexbuffer.h"
 #include "rd3_msg_gesture.h"
 #include "rd3_material_texture.h"
+#include "rd3_font.h"
 
 namespace Ed3
 {
@@ -52,6 +53,9 @@ public:
 	 */
 	~d2Object();
 
+	/**
+	 * Obhect rectangle
+	 */
 	d2Rectangle GetRectangle() const	{ return d2Rectangle( d2Vector( -1.0f, -1.0f ), d2Vector( 1.0f, 1.0f ) );  }
 
 protected:
@@ -67,6 +71,7 @@ protected:
 protected:
 	// 2d specific functions
 	void RenderTexture( const d2Point& posFrom, const d2Point& posTo, Rd3::Texture* pTexture, const d2Point& txFrom, const d2Point& txTo );
+	void RenderText( const sString& text, const d2Point& point, d3Float height, sRGBColor color );
 
 	virtual void OnGestureEvent( Rd3::EngineData& edata, const Rd3::GestureEvent& e ) {}
 	virtual void Render2D( const d3RenderData& renderData ) = 0;
@@ -80,6 +85,9 @@ private:
 	Rd3::use_resource<Rd3::DynamicVertexBuffer>	_vb;
 	Rd3::use_resource<Rd3::TextureMaterial> _textureMaterial;
 	Rd3::use_resource<UiMsgQueue>			_uiQueue;
+protected:
+	Rd3::use_resource<Rd3::Font>			_uiFont;
+	sRGBColor								_uiFontColor;
 private:
 	void internal_OnGestureEvent( Rd3::EngineData& edata, const Rd3::GestureEvent& e );
 };

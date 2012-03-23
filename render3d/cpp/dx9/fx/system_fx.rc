@@ -20,6 +20,7 @@ system.texture.0	FX		"system.texture.0.fx"
 system.texture.1	FX		"system.texture.1.fx"
 system.solid.1		FX		"system.solid.1.fx"
 system.font.1		FX		"system.font.1.fx"
+system.font.2		FX		"system.font.2.fx"
 
 // basic 2d effects	
 system.d2.texture.1	FX		"system.d2.texture.1.fx"
