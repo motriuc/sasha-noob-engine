@@ -3,6 +3,7 @@
 
     <!-- font effects -->
     <effect name="system.font.fx.1" path="%engine%/system.font.fx.1.xml" />
+    <effect name="system.font.fx.2" path="%engine%/system.font.fx.2.xml" />
     
     <!-- font textures -->]
     <texture name="system.texture.font.10" type="alpha" path="%engine%/system.texture.font.10.png" >

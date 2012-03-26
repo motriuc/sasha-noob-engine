@@ -140,7 +140,6 @@
 		D985C639151B344000C6B687 /* ed3_object_d2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D985C636151B344000C6B687 /* ed3_object_d2.cpp */; };
 		D985C63A151B344000C6B687 /* ed3_object_debug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D985C637151B344000C6B687 /* ed3_object_debug.cpp */; };
 		D985C63B151B344000C6B687 /* ed3_object_register.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D985C638151B344000C6B687 /* ed3_object_register.cpp */; };
-		D985C63E151B345200C6B687 /* ed2_ui_txbutton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D985C63C151B345200C6B687 /* ed2_ui_txbutton.cpp */; };
 		D985C63F151B345200C6B687 /* ed3_ui_button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D985C63D151B345200C6B687 /* ed3_ui_button.cpp */; };
 		D98DC17214FA21D1007F9146 /* system.solid.fx.2.xml in Resources */ = {isa = PBXBuildFile; fileRef = D98DC16F14FA21D1007F9146 /* system.solid.fx.2.xml */; };
 		D98DC17314FA21D1007F9146 /* system.solid.ps.2.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D98DC17014FA21D1007F9146 /* system.solid.ps.2.fsh */; };
@@ -281,6 +280,14 @@
 		D99F8F2B14F3987100DEB549 /* btGjkEpa2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D99F8F2A14F3987100DEB549 /* btGjkEpa2.cpp */; };
 		D99F8FC314F4641A00DEB549 /* ed3_physics_shape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D99F8FC214F4641A00DEB549 /* ed3_physics_shape.cpp */; };
 		D99F8FD214F4DCE800DEB549 /* ed3_physics_shapes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D99F8FD114F4DCE800DEB549 /* ed3_physics_shapes.cpp */; };
+		D9A305C315207A90005077C9 /* ed3_ui_label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9A305C115207A90005077C9 /* ed3_ui_label.cpp */; };
+		D9A305C415207A90005077C9 /* ed3_ui_txbutton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9A305C215207A90005077C9 /* ed3_ui_txbutton.cpp */; };
+		D9A305CC15207ADC005077C9 /* system.font.fx.2.xml in Resources */ = {isa = PBXBuildFile; fileRef = D9A305C615207ADC005077C9 /* system.font.fx.2.xml */; };
+		D9A305CD15207ADC005077C9 /* system.font.ps.2.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D9A305C715207ADC005077C9 /* system.font.ps.2.fsh */; };
+		D9A305CE15207ADC005077C9 /* system.font.vs.2.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D9A305C815207ADC005077C9 /* system.font.vs.2.vsh */; };
+		D9A305CF15207ADC005077C9 /* system.texture.fx.1.qh.xml in Resources */ = {isa = PBXBuildFile; fileRef = D9A305C915207ADC005077C9 /* system.texture.fx.1.qh.xml */; };
+		D9A305D015207ADC005077C9 /* system.texture.ps.1.qh.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D9A305CA15207ADC005077C9 /* system.texture.ps.1.qh.fsh */; };
+		D9A305D115207ADC005077C9 /* system.texture.vs.1.qh.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D9A305CB15207ADC005077C9 /* system.texture.vs.1.qh.vsh */; };
 		D9DC7EE515024AF0003600E7 /* rd3_material_solid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9DC7EE215024AF0003600E7 /* rd3_material_solid.cpp */; };
 		D9DC7EE615024AF0003600E7 /* rd3_register_types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9DC7EE315024AF0003600E7 /* rd3_register_types.cpp */; };
 		D9DC7EE715024AF0003600E7 /* rd3_resloader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9DC7EE415024AF0003600E7 /* rd3_resloader.cpp */; };
@@ -670,7 +677,6 @@
 		D985C636151B344000C6B687 /* ed3_object_d2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_object_d2.cpp; path = ../../engine3d/cpp/ed3_object_d2.cpp; sourceTree = SOURCE_ROOT; };
 		D985C637151B344000C6B687 /* ed3_object_debug.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_object_debug.cpp; path = ../../engine3d/cpp/ed3_object_debug.cpp; sourceTree = SOURCE_ROOT; };
 		D985C638151B344000C6B687 /* ed3_object_register.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_object_register.cpp; path = ../../engine3d/cpp/ed3_object_register.cpp; sourceTree = SOURCE_ROOT; };
-		D985C63C151B345200C6B687 /* ed2_ui_txbutton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed2_ui_txbutton.cpp; path = ../../engine3d/cpp/ui/ed2_ui_txbutton.cpp; sourceTree = SOURCE_ROOT; };
 		D985C63D151B345200C6B687 /* ed3_ui_button.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_ui_button.cpp; path = ../../engine3d/cpp/ui/ed3_ui_button.cpp; sourceTree = SOURCE_ROOT; };
 		D985C640151B346200C6B687 /* ed3_object_d2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ed3_object_d2.h; path = ../../engine3d/include/ed3_object_d2.h; sourceTree = SOURCE_ROOT; };
 		D985C641151B347500C6B687 /* ed3_ui_button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ed3_ui_button.h; path = ../../engine3d/include/ui/ed3_ui_button.h; sourceTree = SOURCE_ROOT; };
@@ -845,6 +851,15 @@
 		D99F8FC214F4641A00DEB549 /* ed3_physics_shape.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_physics_shape.cpp; path = ../../engine3d/cpp/ed3_physics_shape.cpp; sourceTree = SOURCE_ROOT; };
 		D99F8FD014F4DC6C00DEB549 /* ed3_physics_shapes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ed3_physics_shapes.h; path = ../../engine3d/include/ed3_physics_shapes.h; sourceTree = SOURCE_ROOT; };
 		D99F8FD114F4DCE800DEB549 /* ed3_physics_shapes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_physics_shapes.cpp; path = ../../engine3d/cpp/ed3_physics_shapes.cpp; sourceTree = SOURCE_ROOT; };
+		D9A305C115207A90005077C9 /* ed3_ui_label.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_ui_label.cpp; path = ../../engine3d/cpp/ui/ed3_ui_label.cpp; sourceTree = SOURCE_ROOT; };
+		D9A305C215207A90005077C9 /* ed3_ui_txbutton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_ui_txbutton.cpp; path = ../../engine3d/cpp/ui/ed3_ui_txbutton.cpp; sourceTree = SOURCE_ROOT; };
+		D9A305C515207AA3005077C9 /* ed3_ui_label.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ed3_ui_label.h; path = ../../engine3d/include/ui/ed3_ui_label.h; sourceTree = SOURCE_ROOT; };
+		D9A305C615207ADC005077C9 /* system.font.fx.2.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = system.font.fx.2.xml; path = ../../render3d/cpp/eagl/fx/system.font.fx.2.xml; sourceTree = SOURCE_ROOT; };
+		D9A305C715207ADC005077C9 /* system.font.ps.2.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.font.ps.2.fsh; path = ../../render3d/cpp/eagl/fx/system.font.ps.2.fsh; sourceTree = SOURCE_ROOT; };
+		D9A305C815207ADC005077C9 /* system.font.vs.2.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.font.vs.2.vsh; path = ../../render3d/cpp/eagl/fx/system.font.vs.2.vsh; sourceTree = SOURCE_ROOT; };
+		D9A305C915207ADC005077C9 /* system.texture.fx.1.qh.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = system.texture.fx.1.qh.xml; path = ../../render3d/cpp/eagl/fx/system.texture.fx.1.qh.xml; sourceTree = SOURCE_ROOT; };
+		D9A305CA15207ADC005077C9 /* system.texture.ps.1.qh.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.texture.ps.1.qh.fsh; path = ../../render3d/cpp/eagl/fx/system.texture.ps.1.qh.fsh; sourceTree = SOURCE_ROOT; };
+		D9A305CB15207ADC005077C9 /* system.texture.vs.1.qh.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = system.texture.vs.1.qh.vsh; path = ../../render3d/cpp/eagl/fx/system.texture.vs.1.qh.vsh; sourceTree = SOURCE_ROOT; };
 		D9AD132D14FFC7A8009521AD /* int_stream_mac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = int_stream_mac.h; path = ../../system/include/internal/int_stream_mac.h; sourceTree = SOURCE_ROOT; };
 		D9AD132E14FFC7A8009521AD /* int_stream_win32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = int_stream_win32.h; path = ../../system/include/internal/int_stream_win32.h; sourceTree = SOURCE_ROOT; };
 		D9DC7EE215024AF0003600E7 /* rd3_material_solid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rd3_material_solid.cpp; path = ../../render3d/cpp/rd3_material_solid.cpp; sourceTree = SOURCE_ROOT; };
@@ -1451,12 +1466,14 @@
 		D91D020F14ECC47400CEFA96 /* base */ = {
 			isa = PBXGroup;
 			children = (
+				D9A305C515207AA3005077C9 /* ed3_ui_label.h */,
+				D9A305C115207A90005077C9 /* ed3_ui_label.cpp */,
+				D9A305C215207A90005077C9 /* ed3_ui_txbutton.cpp */,
 				D985C641151B347500C6B687 /* ed3_ui_button.h */,
 				D985C642151B347500C6B687 /* ed3_ui_msg.h */,
 				D985C643151B347500C6B687 /* ed3_ui_msgq.h */,
 				D985C644151B347500C6B687 /* ed3_ui_txbutton.h */,
 				D985C640151B346200C6B687 /* ed3_object_d2.h */,
-				D985C63C151B345200C6B687 /* ed2_ui_txbutton.cpp */,
 				D985C63D151B345200C6B687 /* ed3_ui_button.cpp */,
 				D985C636151B344000C6B687 /* ed3_object_d2.cpp */,
 				D985C637151B344000C6B687 /* ed3_object_debug.cpp */,
@@ -1601,6 +1618,12 @@
 		D93D5BC814ECD56E003FC949 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				D9A305C615207ADC005077C9 /* system.font.fx.2.xml */,
+				D9A305C715207ADC005077C9 /* system.font.ps.2.fsh */,
+				D9A305C815207ADC005077C9 /* system.font.vs.2.vsh */,
+				D9A305C915207ADC005077C9 /* system.texture.fx.1.qh.xml */,
+				D9A305CA15207ADC005077C9 /* system.texture.ps.1.qh.fsh */,
+				D9A305CB15207ADC005077C9 /* system.texture.vs.1.qh.vsh */,
 				D90A3F86151023630028B0F6 /* system.texture.fx.0.xml */,
 				D90A3F87151023630028B0F6 /* system.texture.fx.1.xml */,
 				D90A3F88151023630028B0F6 /* system.texture.ps.0.fsh */,
@@ -2147,6 +2170,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9A305CD15207ADC005077C9 /* system.font.ps.2.fsh in Resources */,
+				D9A305CE15207ADC005077C9 /* system.font.vs.2.vsh in Resources */,
+				D9A305D015207ADC005077C9 /* system.texture.ps.1.qh.fsh in Resources */,
+				D9A305D115207ADC005077C9 /* system.texture.vs.1.qh.vsh in Resources */,
 				D90A3F8D151023630028B0F6 /* system.texture.ps.0.fsh in Resources */,
 				D90A3F8E151023630028B0F6 /* system.texture.vs.0.vsh in Resources */,
 				D90A3F8F151023630028B0F6 /* system.texture.vs.1.vsh in Resources */,
@@ -2188,6 +2215,8 @@
 				D917702C15046B3B00078CA6 /* system.debug.solid.color.fx.xml in Resources */,
 				D90A3F8B151023630028B0F6 /* system.texture.fx.0.xml in Resources */,
 				D90A3F8C151023630028B0F6 /* system.texture.fx.1.xml in Resources */,
+				D9A305CC15207ADC005077C9 /* system.font.fx.2.xml in Resources */,
+				D9A305CF15207ADC005077C9 /* system.texture.fx.1.qh.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2432,8 +2461,9 @@
 				D985C639151B344000C6B687 /* ed3_object_d2.cpp in Sources */,
 				D985C63A151B344000C6B687 /* ed3_object_debug.cpp in Sources */,
 				D985C63B151B344000C6B687 /* ed3_object_register.cpp in Sources */,
-				D985C63E151B345200C6B687 /* ed2_ui_txbutton.cpp in Sources */,
 				D985C63F151B345200C6B687 /* ed3_ui_button.cpp in Sources */,
+				D9A305C315207A90005077C9 /* ed3_ui_label.cpp in Sources */,
+				D9A305C415207A90005077C9 /* ed3_ui_txbutton.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

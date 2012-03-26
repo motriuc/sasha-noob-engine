@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////
-//  File Name           : ed2_ui_label.cpp
+//  File Name           : ed3_ui_label.cpp
 //  Created             : 23 3 2012
 //  Author              : Motriuc Alexandru
 //  File Path           : SLibF\engine3d\cpp\ui
