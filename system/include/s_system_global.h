@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : s_system_global.h
-//	Created                 : 28 6 2007   17:01
-//	File path               : SLibF\system\Include
-//	Author                  : Alexandru Motriuc
+//  Created                 : 28 6 2007   17:01
+//  File path               : SLibF\system\Include
+//  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
-//	Library                 : 
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////

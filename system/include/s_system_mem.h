@@ -1,10 +1,10 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : s_system_mem.h
-//	Created                 : 15 6 2007   21:54
-//	File path               : SLibF\system\include
-//	Author                  : Alexandru Motriuc
-//  Platform Independentsy  : 0%
-//	Library                 : 
+//  Created                 : 15 6 2007   21:54
+//  File path               : SLibF\system\include
+//  Author                  : Alexandru Motriuc
+//  Platform Independent    : 0%
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
 //	Purpose:

@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : s_system_conf_def.h
-//	Created                 : 14 6 2007   0:05
-//	File path               : SLibF\system\include
-//	Author                  : Alexandru Motriuc
+//  Created                 : 14 6 2007   0:05
+//  File path               : SLibF\system\include
+//  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
-//	Library                 : 
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////

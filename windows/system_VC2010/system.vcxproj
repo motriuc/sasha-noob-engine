@@ -105,6 +105,7 @@
     <None Include="..\..\system\include\s_system_mt_cs.inl" />
     <None Include="..\..\system\include\s_system_mt_cs_win32.inl" />
     <None Include="..\..\system\include\s_system_mt_ev_win32.inl" />
+    <None Include="..\..\system\include\s_system_mt_thread_win32.inl" />
     <None Include="..\..\system\include\s_system_object.inl" />
     <None Include="..\..\system\include\s_system_rgbcolor.inl" />
     <None Include="..\..\system\include\s_system_string.inl" />
@@ -126,6 +127,7 @@
     <ClCompile Include="..\..\system\cpp\s_system_files_lfile_win32.cpp" />
     <ClCompile Include="..\..\system\cpp\s_system_files_name.cpp" />
     <ClCompile Include="..\..\system\cpp\s_system_mem.cpp" />
+    <ClCompile Include="..\..\system\cpp\s_system_mt_thread.cpp" />
     <ClCompile Include="..\..\system\cpp\s_system_stream_archive.cpp" />
     <ClCompile Include="..\..\system\cpp\s_system_stream_archive_provider_res.cpp" />
     <ClCompile Include="..\..\system\cpp\s_system_stream_rstr.cpp" />
@@ -214,6 +216,7 @@
     <ClInclude Include="..\..\system\include\s_system_mt_at.h" />
     <ClInclude Include="..\..\system\include\s_system_mt_cs.h" />
     <ClInclude Include="..\..\system\include\s_system_mt_ev.h" />
+    <ClInclude Include="..\..\system\include\s_system_mt_thread.h" />
     <ClInclude Include="..\..\system\include\s_system_object.h" />
     <ClInclude Include="..\..\system\include\s_system_ptr.h" />
     <ClInclude Include="..\..\system\include\s_system_ptr_unique.h" />

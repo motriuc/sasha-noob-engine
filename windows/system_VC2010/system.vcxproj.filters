@@ -46,6 +46,9 @@
     <Filter Include="system\Header Files\cont">
       <UniqueIdentifier>{1cb15b98-dce2-4921-8beb-4ec56f8d585f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="system\Header Files\mt">
+      <UniqueIdentifier>{96a63ad9-b692-431a-9026-e06516937c28}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -112,21 +115,6 @@
     <None Include="..\..\system\include\s_system_mem.inl">
       <Filter>system\Header Files\to sort</Filter>
     </None>
-    <None Include="..\..\system\include\s_system_mt_at_mac.inl">
-      <Filter>system\Header Files\to sort</Filter>
-    </None>
-    <None Include="..\..\system\include\s_system_mt_at_win32.inl">
-      <Filter>system\Header Files\to sort</Filter>
-    </None>
-    <None Include="..\..\system\include\s_system_mt_cs.inl">
-      <Filter>system\Header Files\to sort</Filter>
-    </None>
-    <None Include="..\..\system\include\s_system_mt_cs_win32.inl">
-      <Filter>system\Header Files\to sort</Filter>
-    </None>
-    <None Include="..\..\system\include\s_system_mt_ev_win32.inl">
-      <Filter>system\Header Files\to sort</Filter>
-    </None>
     <None Include="..\..\system\include\s_system_object.inl">
       <Filter>system\Header Files\to sort</Filter>
     </None>
@@ -141,6 +129,24 @@
     </None>
     <None Include="..\..\system\include\s_system_d2math_matrix.inl">
       <Filter>system\Header Files\math\d2math</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_mt_at_mac.inl">
+      <Filter>system\Header Files\mt</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_mt_at_win32.inl">
+      <Filter>system\Header Files\mt</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_mt_cs.inl">
+      <Filter>system\Header Files\mt</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_mt_cs_win32.inl">
+      <Filter>system\Header Files\mt</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_mt_ev_win32.inl">
+      <Filter>system\Header Files\mt</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_mt_thread_win32.inl">
+      <Filter>system\Header Files\mt</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -211,6 +217,9 @@
       <Filter>system\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\system\cpp\s_system_files_name.cpp">
+      <Filter>system\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\cpp\s_system_mt_thread.cpp">
       <Filter>system\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -431,18 +440,6 @@
     <ClInclude Include="..\..\system\include\s_system_mem.h">
       <Filter>system\Header Files\to sort</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_mt.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_mt_at.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_mt_cs.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_mt_ev.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_object.h">
       <Filter>system\Header Files\to sort</Filter>
     </ClInclude>
@@ -508,6 +505,21 @@
     </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_cnt_unique.h">
       <Filter>system\Header Files\cont</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_mt.h">
+      <Filter>system\Header Files\mt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_mt_thread.h">
+      <Filter>system\Header Files\mt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_mt_at.h">
+      <Filter>system\Header Files\mt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_mt_cs.h">
+      <Filter>system\Header Files\mt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_mt_ev.h">
+      <Filter>system\Header Files\mt</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

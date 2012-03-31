@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : s_system_macro.h
-//	Created                 : 23 6 2007   22:33
-//	File path               : SLibF\system\Include
-//	Author                  : Alexandru Motriuc
-//  Platform Independentsy  : 0%
-//	Library                 : 
+//  Created                 : 23 6 2007   22:33
+//  File path               : SLibF\system\Include
+//  Author                  : Alexandru Motriuc
+//  Platform Independent    : 0%
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      SLib wide used macros
 //
 /////////////////////////////////////////////////////////////////////
@@ -17,7 +17,6 @@
 /////////////////////////////////////////////////////////////////////
 #ifndef _SYSTEM_MACRO_INC_
 #define _SYSTEM_MACRO_INC_
-
 
 /**
  *	SLIB Name

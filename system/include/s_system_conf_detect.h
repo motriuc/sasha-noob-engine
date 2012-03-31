@@ -1,10 +1,10 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : s_system_conf_detect.h
-//	Created                 : 14 6 2007   0:36
-//	File path               : SLibF\system\include
-//	Author                  : Alexandru Motriuc
-//  Platform Independentsy  : 0%
-//	Library                 : 
+//  Created                 : 14 6 2007   0:36
+//  File path               : SLibF\system\include
+//  Author                  : Alexandru Motriuc
+//  Platform Independent    : 0%
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
 //	Purpose:
@@ -15,6 +15,7 @@
 //  Modification History:
 //      
 /////////////////////////////////////////////////////////////////////
+
 #ifndef _S_SYSTEM_CONF_DETECT_INC_
 #define _S_SYSTEM_CONF_DETECT_INC_
 

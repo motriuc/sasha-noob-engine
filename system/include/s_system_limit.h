@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : s_system_limit.h
-//	Created                 : 24 6 2007   23:47
-//	File path               : SLibF\system\Include
-//	Author                  : Alexandru Motriuc
+//  Created                 : 24 6 2007   23:47
+//  File path               : SLibF\system\Include
+//  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
-//	Library                 : 
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
