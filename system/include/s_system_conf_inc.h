@@ -41,6 +41,10 @@
 
 	#include <mach/mach.h>
 	#include <mach/mach_time.h>
-#endif
+
+	#include <pthread.h>
+	#include <libkern/OSAtomic.h>
+
+#endif // _SPL_MAC
 
 #endif // _S_SYSTEM_CONF_INC_INC_

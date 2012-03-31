@@ -21,7 +21,7 @@
 /**
  *	Event
  */
-class sEvent
+class sEvent : public class_nocopy
 {
 public:
 	/**
@@ -50,10 +50,6 @@ public:
 	 */
 	sBool Wait( sInt time = -1 ) const;
 
-private:
-	sEvent( const sEvent& );
-	void operator = ( const sEvent& );
-
 // WIN32 platform
 #ifdef _SPL_WIN32
 private:
@@ -61,11 +57,23 @@ private:
 public:
 	_PLATFORM HANDLE GetHandle() const;
 #endif // _SPL_WIN32
+	
+#ifdef 	_SPL_MAC
+private:	
+	mutable pthread_cond_t		_cond;
+	mutable pthread_mutex_t		_mutex;
+	mutable sBool				_state;
+	sBool						_manual;
+#endif	
 };
 
 
 #ifdef _SPL_WIN32
 	#include "s_system_mt_ev_win32.inl"
+#endif
+
+#ifdef _SPL_MAC
+	#include "s_system_mt_ev_mac.inl"
 #endif
 
 #endif

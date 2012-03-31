@@ -51,6 +51,13 @@
 
 #endif 
 
+// Thread - > Events
+#ifdef _use_Thread_
+	#ifndef _use_sEvent_
+		#define _use_sEvent_
+	#endif
+#endif 
+
 // Files - > sError
 #ifdef _use_Files_
 	#ifndef _use_sError_
@@ -80,3 +87,4 @@
 		#define _use_sVector_
 	#endif
 #endif
+

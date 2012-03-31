@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
-//  File Name               : s_system_mt_cs.inl
-//  Created                 : 30 11 2007   9:46
+//  File Name               : s_system_mt_cs_mac.inl
+//  Created                 : 31 3 2012 
 //  File path               : SLibF\system\include
 //  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
 //  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -16,14 +16,22 @@
 //      
 /////////////////////////////////////////////////////////////////////
 
-inline sAutoCs::sAutoCs( const sCs& cs ) :
-	 _cs( cs )
+inline sCriticalSection::sCriticalSection()
 {
-	_cs.Enter();
+	pthread_mutex_init( &_mutex, NULL );
 }
 
-inline sAutoCs::~sAutoCs()
+inline sCriticalSection::~sCriticalSection()
 {
-	_cs.Leave();
+	pthread_mutex_destroy( &_mutex );
 }
 
+inline void sCriticalSection::Enter() const
+{
+	pthread_mutex_lock( &_mutex );
+}
+
+inline void sCriticalSection::Leave() const
+{
+	pthread_mutex_unlock( &_mutex );
+}

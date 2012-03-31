@@ -17,7 +17,11 @@
 /////////////////////////////////////////////////////////////////////
 
 #define _use_sError_
+#define _use_Thread_
+
 #include "s_system.h"
+
+#ifdef _SLIB_MT
 
 namespace System
 {
@@ -34,14 +38,19 @@ namespace Mt
 	/**
 	 * Thread
 	 */
-	Thread::Thread( bool bAutoDelete ) :
+	Thread::Thread( const Events::sEvent& run, bool bAutoDelete ) :
 		_bAutoDelete( bAutoDelete ),
 		_threadId( 0 ),
 		_priority( ThreadPriority::eNormal ),
+		_run( run ),
 #ifdef _SPL_WIN32
 		_hThread( NULL ),
 		_hTerminate( NULL )
 #endif // _SPL_WIN32
+	
+#ifdef _SPL_MAC
+		_pthread( NULL )
+#endif // _SPL_MAC
 	{
 	}
 
@@ -61,6 +70,12 @@ namespace Mt
 			delete this;
 		}
 	}
+	
+	void Thread::OnExec()
+	{
+		_run();
+	}
+	
 
 	/**
 	 * SetPriority
@@ -94,7 +109,53 @@ namespace Mt
 		}
 	#endif // _SPL_WIN32
 	}
+	
+#ifdef _SPL_MAC	
+	void Thread::pthread_CreateThread()
+	{
+		__S_ASSERT( _pthread == NULL );
+		
+		OnCreate();
 
+		int ret = pthread_create( &_pthread, NULL, &Thread::pthread_ThreadFunc, this );
+		
+		if( ret != 0 )
+		{
+			error_throw_arg( Errors::StringError )
+				_S("can't create thread")
+			);
+			
+		}
+	}
+
+	void* Thread::pthread_ThreadFunc( void* param )
+	{
+		__S_ASSERT( param != NULL );
+		
+		Thread* pTh = (Thread*)param;
+		
+		try
+		{
+			pTh->OnExec();
+		}
+		catch(...)
+		{
+			// do nothing here for now
+		}
+		
+		try
+		{
+			pTh->DoStop();
+		}
+		catch(...)
+		{
+		}
+		
+		return NULL;
+	}
+	
+#endif
+	
 #ifdef _SPL_WIN32
 
 	DWORD WINAPI Thread::ThreadFunc( LPVOID lpParam )
@@ -188,3 +249,5 @@ namespace Mt
 }
 
 }
+
+#endif // _SLIB_MT

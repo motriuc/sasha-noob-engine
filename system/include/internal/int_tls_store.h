@@ -51,6 +51,12 @@ private:
 };
 
 #else // _SPL_WIN32
+
+template< typename _TYPE >
+class TlsValueStorage
+{
+};
+	
 #endif // _SPL_WIN32
 
 template< typename _TYPE >

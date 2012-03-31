@@ -26,6 +26,7 @@
 //  _use_sObject_		- use Objects
 //  _use_sError_        - use Errors
 //	_use_sEvent_		- use sEvent
+//  _use_Thread_        - use Thread
 
 // **** Continers
 // _use_sVector_		- to use sVector
@@ -72,6 +73,11 @@ namespace System
 
 	// requared headers
 	#include "s_system_types.h"
+
+#ifdef _use_sEvent_
+	#include "s_system_evn.h"
+#endif
+	
 	#include "s_system_mt.h"
 	#include "s_system_mem.h"
 	#include "s_system_chars.h"
@@ -89,9 +95,6 @@ namespace System
 	#include "s_system_ptr.h"
 	#include "s_system_appenv.h"
 	
-#ifdef _use_sEvent_
-	#include "s_system_evn.h"
-#endif
 
 #ifdef _use_sObject_
 	#include "s_system_object.h"

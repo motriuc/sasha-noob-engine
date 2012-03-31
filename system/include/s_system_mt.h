@@ -25,14 +25,24 @@
 namespace Mt
 {
 	using namespace Types;
+	
+#ifdef 	_SLIB_MT
+	typedef volatile sInt	Atomic;
+#else
+	typedef sInt Atomic;	
+#endif
 
 	#include "s_system_mt_at.h"
 	#include "s_system_mt_cs.h"
 	#include "s_system_mt_ev.h"
 
 #ifdef _SLIB_MT
+	
+#ifdef _use_Thread_ 	
 	#include "s_system_mt_thread.h"
-#endif 	
+#endif // _use_Thread_
+	
+#endif // _SLIB_MT
 }
 
 #include "internal/int_tls_store.h"

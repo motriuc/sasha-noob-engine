@@ -57,12 +57,12 @@ public:
 	 *	Creates a thread
 	 *  if bAutoDelete == true thread deletes itself when it finishes
 	 */
-	explicit Thread( bool bAutoDelete = false ) throws_error;
+	explicit Thread( const Events::sEvent &run = Events::sEvent(), bool bAutoDelete = false );
 
 	/**
 	 *	Starts the thread
 	 */
-	void Start();
+	void Start() throws_error;
 
 	/**
 	 *	 Destructor
@@ -119,7 +119,7 @@ public:
 protected:
 	virtual void OnCreate()		{}
 	virtual void OnTerminate()	{}
-	virtual void OnExec() = 0;
+	virtual void OnExec();
 
 private:
 	void DoStop();
@@ -127,6 +127,7 @@ private:
 	ThreadId						_threadId;
 	bool							_bAutoDelete;
 	ThreadPriority::ThreadPriority	_priority;
+	Events::sEvent					_run;
 
 #ifdef _SPL_WIN32
 private:
@@ -139,8 +140,20 @@ private:
 	void win32_CloseThreadHandle();
 
 #endif // _SPL_WIN32
+	
+#ifdef _SPL_MAC	
+	pthread_t						_pthread;
+	
+	void pthread_CreateThread();
+	
+	static void* pthread_ThreadFunc( void* param );
+#endif // _SPL_MAC	
 };
 
 #ifdef _SPL_WIN32
 	#include "s_system_mt_thread_win32.inl"
+#endif // _SPL_WIN32
+
+#ifdef _SPL_MAC
+	#include "s_system_mt_thread_mac.inl"
 #endif

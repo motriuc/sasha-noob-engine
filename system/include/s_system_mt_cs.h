@@ -15,13 +15,11 @@
 //  Modification History:
 //      
 /////////////////////////////////////////////////////////////////////
-#ifndef _SYSTEM_MT_CS_INC_
-#define _SYSTEM_MT_CS_INC_
 
 /**
  *	An empty critical section
  */
-_PLATFORM class sNoCriticalSection
+_PLATFORM class sNoCriticalSection : private class_nocopy
 {
 public:
 	/**
@@ -38,16 +36,13 @@ public:
 	 * Leave Critical Section
 	 */
 	inline void Leave() const {}
-private:
-	sNoCriticalSection( const sNoCriticalSection& );
-	sNoCriticalSection& operator=( const sNoCriticalSection& );
 };
 
 
 /**
  *	A critical section
  */
-_PLATFORM class sCriticalSection
+_PLATFORM class sCriticalSection : private class_nocopy
 {
 public:
 	/**
@@ -65,13 +60,14 @@ public:
 	 * Leave Critical Section
 	 */
 	void Leave() const;
-private:
-	sCriticalSection( const sCriticalSection& );
-	sCriticalSection& operator=( const sCriticalSection& );
 	
 #ifdef _SPL_WIN32
 	_PLATFORM mutable CRITICAL_SECTION	_cs;
 #endif
+	
+#ifdef _SPL_MAC
+	_PLATFORM mutable pthread_mutex_t	_mutex;
+#endif	
 };
 
 
@@ -87,14 +83,11 @@ private:
 /**
  *	Auto critical section
  */
-class sAutoCs
+class sAutoCs : private class_nocopy
 {
 public:
 	sAutoCs( const sCs& cs );
 	~sAutoCs();
-private:
-	sAutoCs( const sAutoCs& );
-	void operator = ( const sAutoCs& );
 private:
 	const sCs& _cs;
 };
@@ -112,4 +105,7 @@ private:
 	#include "s_system_mt_cs_win32.inl"
 #endif
 
-#endif // _SYSTEM_MT_CS_INC_
+#ifdef _SPL_MAC
+	#include "s_system_mt_cs_mac.inl"
+#endif // _SPL_MAC
+

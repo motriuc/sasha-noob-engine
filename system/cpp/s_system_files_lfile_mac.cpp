@@ -170,7 +170,7 @@ void LFile::Open(
 	if( _hFile == NULL )
 	{
 		error_throw_arg( FileOpenError )
-		pFileName
+			pFileName
 		);
 	}
 }

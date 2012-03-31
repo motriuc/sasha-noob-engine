@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////
-//  File Name               : s_system_mt_thread_win32.inl
+//  File Name               : s_system_mt_thread_mac.inl
 //  Created                 : 31 3 2012
 //  File path               : SLibF\system\include
 //  Author                  : Alexandru Motriuc
@@ -24,46 +24,41 @@ inline ThreadPriority::ThreadPriority Thread::GetPriority() const
 
 inline void Thread::Start()
 {
-	win32_CreateThread( false );
+	pthread_CreateThread();
 }
 
 inline bool Thread::Terminating() const
 {
-	return ::WaitForSingleObject( _hTerminate, 0 ) == WAIT_OBJECT_0;
+	__S_ASSERT( sFalse );
+	return sFalse;
 }
 
 inline ThreadId Thread::CurrentThreadId()
 {
-	return ::GetCurrentThreadId();
+	__S_ASSERT( sFalse );
+	return 0;
 }
 
-inline void Thread::win32_CloseThreadHandle()
-{
-	if( _hThread != NULL )
-	{
-		::CloseHandle( _hThread );
-		_hThread = NULL;
-	}
-}
 
 inline bool Thread::Finished() const
 {
-	return _hThread == NULL || ::WaitForSingleObject( _hThread, 0 ) == WAIT_OBJECT_0;
+	__S_ASSERT( sFalse );
+	return _pthread == NULL ;
 }
 
 inline void Thread::Sleep( unsigned int ms )
 {
-	::Sleep( ms );
+	__S_ASSERT( sFalse );
 }
 
 inline bool Thread::IsMainThread()
 {
-	extern DWORD system_mt_gmThreadId;
-	return system_mt_gmThreadId == ::GetCurrentThreadId();
+	__S_ASSERT( sFalse );
+	return sTrue;
 }
 
 inline ThreadId Thread::GetMainThreadId()
 {
-	extern DWORD system_mt_gmThreadId;
-	return system_mt_gmThreadId;
+	__S_ASSERT( sFalse );
+	return 0;
 }
