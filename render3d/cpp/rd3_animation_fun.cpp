@@ -48,6 +48,30 @@ void AnimateValue::AddPoint( sUInt frame, d3Float value )
 }
 
 //-------------------------------------------------------------------
+void AnimateValue::RemoveFrames( sUInt from, sUInt to )
+{
+	if( _keyframes.Size() <= 0 )
+		return;
+
+	KeyFrame keyFrame = { from, 0.0f, Point };
+
+	sInt ifrom = _keyframes.FindUpperBound( keyFrame );
+
+	if( ifrom <= 0 )
+		ifrom = 0;
+
+	if( ifrom >= _keyframes.Size() )
+		return;
+
+	sInt ito = ifrom;
+
+	while( ito < _keyframes.Size() && _keyframes[ito].frame <= to )
+		++ito;
+
+	_keyframes.Remove( ifrom, ito );
+}
+
+//-------------------------------------------------------------------
 d3Float AnimateValue::GetValue( sUInt frame ) const
 {
 	KeyFrame keyFrame = { frame, 0.0f, Point };

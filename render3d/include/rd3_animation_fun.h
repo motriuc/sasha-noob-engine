@@ -74,6 +74,11 @@ public:
 	 */
 	void LoadFromXml( const Xml::BaseDomNode& node, const Def& def );
 
+	/**
+	 *
+	 */
+	void RemoveFrames( sUInt from, sUInt to );
+
 private:
 	typedef struct
 	{
@@ -101,7 +106,7 @@ private:
 		}
 	};
 
-	sSorted<KeyFrame,Cmp_KeyFrame>	_keyframes;
+	sUnique<KeyFrame,Cmp_KeyFrame>	_keyframes;
 	sUInt							_maxFrame;
 };
 

@@ -34,6 +34,7 @@ namespace Cnt
 	#include "s_system_cnt_sort.h"
 	#include "s_system_cnt_find.h"
 	#include "s_system_cnt_sorted.h"
+	#include "s_system_cnt_unique.h"
 #endif
 	
 }

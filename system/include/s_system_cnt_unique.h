@@ -1,9 +1,9 @@
 /////////////////////////////////////////////////////////////////////
-//  File Name               : s_system_cnt_sorted.h
-//  Created                 : 6 2 2012   21:40
+//  File Name               : s_system_cnt_unique.h
+//  Created                 : 28 3 2012
 //  File path               : SLibF\system\Include
 //  Author                  : Alexandru Motriuc
-//  Platform Independent    : 0%
+//  Platform Independentsy  : 0%
 //  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
@@ -20,14 +20,14 @@
  * Sorted vector
  */
 template< typename _Type, typename _CMP >
-class sSorted
+class sUnique
 {
 private:
 	typedef Find< sVector<_Type>, _CMP > FindData;
 	
 public:
 	
-	sSorted( sInt maxElementCount = 0 ) :
+	sUnique( sInt maxElementCount = 0 ) :
 		_maxElementCount( maxElementCount )
 	{
 	}
@@ -36,13 +36,20 @@ public:
 	{
 		sInt i = FindData::BinaryUpperBound( _data, v );
 		
-		_data.AddAt( i, v );
-		
-		if( _maxElementCount != 0 )
+		if( i < Size() && _CMP::Equal( v, _data[i] ) )
 		{
-			if( _maxElementCount < _data.Size() )
+			_data[i] = v;
+		}
+		else
+		{
+			_data.AddAt( i, v );
+		
+			if( _maxElementCount != 0 )
 			{
-				_data.RemoveAt( _data.Size() - 1 );
+				if( _maxElementCount < _data.Size() )
+				{
+					_data.RemoveAt( _data.Size() - 1 );
+				}
 			}
 		}
 	}

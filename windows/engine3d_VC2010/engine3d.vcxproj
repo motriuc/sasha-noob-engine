@@ -106,9 +106,9 @@
     <ClCompile Include="..\..\engine3d\cpp\ed3_primitive_lua.cpp" />
     <ClCompile Include="..\..\engine3d\cpp\ed3_rdata.cpp" />
     <ClCompile Include="..\..\engine3d\cpp\ed3_world.cpp" />
-    <ClCompile Include="..\..\engine3d\cpp\ui\ed2_ui_label.cpp" />
-    <ClCompile Include="..\..\engine3d\cpp\ui\ed2_ui_txbutton.cpp" />
     <ClCompile Include="..\..\engine3d\cpp\ui\ed3_ui_button.cpp" />
+    <ClCompile Include="..\..\engine3d\cpp\ui\ed3_ui_label.cpp" />
+    <ClCompile Include="..\..\engine3d\cpp\ui\ed3_ui_txbutton.cpp" />
     <ClCompile Include="..\..\external\bulet\BulletCollision\BroadphaseCollision\btAxisSweep3.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>

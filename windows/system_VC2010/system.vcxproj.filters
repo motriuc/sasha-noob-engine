@@ -43,6 +43,9 @@
     <Filter Include="system\Header Files\to sort">
       <UniqueIdentifier>{9bbcec4f-0a55-42c5-82f4-78d60dd35df9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="system\Header Files\cont">
+      <UniqueIdentifier>{1cb15b98-dce2-4921-8beb-4ec56f8d585f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -362,24 +365,6 @@
     <ClInclude Include="..\..\system\include\s_system_appenv.h">
       <Filter>system\Header Files\to sort</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_cnt.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_cnt_find.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_cnt_map.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_cnt_sort.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_cnt_sorted.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_cnt_vector.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_conf_def.h">
       <Filter>system\Header Files\to sort</Filter>
     </ClInclude>
@@ -502,6 +487,27 @@
     </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_d2math_matrix.h">
       <Filter>system\Header Files\math\d2math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_cnt.h">
+      <Filter>system\Header Files\cont</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_cnt_vector.h">
+      <Filter>system\Header Files\cont</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_cnt_find.h">
+      <Filter>system\Header Files\cont</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_cnt_map.h">
+      <Filter>system\Header Files\cont</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_cnt_sort.h">
+      <Filter>system\Header Files\cont</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_cnt_sorted.h">
+      <Filter>system\Header Files\cont</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_cnt_unique.h">
+      <Filter>system\Header Files\cont</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

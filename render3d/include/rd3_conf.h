@@ -25,8 +25,9 @@
 
 // only for iOs
 // #define _D3_ENABLE_RETINA_DISPLAY
-#define _D3_DEBUG_RENDER_COUNTERS
-
+#ifdef _DEBUG
+	#define _D3_DEBUG_RENDER_COUNTERS
+#endif
 ///
 #define _D3_DEBUG_RENDER_ENABLE_COUNTERS
 

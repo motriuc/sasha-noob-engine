@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : s_system_cnt_vector.h
-//	Created                 : 25 6 2007   1:01
-//	File path               : SLibF\system\include
-//	Author                  : Alexandru Motriuc
+//  Created                 : 25 6 2007   1:01
+//  File path               : SLibF\system\include
+//  Author                  : Alexandru Motriuc
 //  Platform Independent    : 100%
-//	Library                 : 
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -43,7 +43,7 @@ public:
 	/**
 	 *	Create vector with initial size
 	 */
-	explicit sVector( System::Types::sInt size )
+	explicit sVector( sInt size )
 	{
 		__S_ASSERT( size > 0 );
 
@@ -55,7 +55,7 @@ public:
 	/**
 	 *	Create vector with size and fill it with val
 	 */
-	sVector( System::Types::sInt size, _TYPE val )
+	sVector( sInt size, _TYPE val )
 	{
 		__S_ASSERT( size > 0 );
 
@@ -63,7 +63,7 @@ public:
 		_iElementCount = size;
 		_iElementCapasity = size;
 
-		for( System::Types::sInt i = 0; i < size; i++ )
+		for( sInt i = 0; i < size; i++ )
 			_pElementData[i] = val;
 	}
 
@@ -72,14 +72,14 @@ public:
 	 */
 	sVector( const sVector< _TYPE, _CAPACITY_INCREMENT >& v )
 	{
-		System::Types::sInt size = v.Size();
+		sInt size = v.Size();
 		if( size > 0 )
 		{
 			_pElementData = new _TYPE[size];
 			_iElementCount = size;
 			_iElementCapasity = size;
 
-			for( System::Types::sInt i = 0; i < size; i++ )
+			for( sInt i = 0; i < size; i++ )
 				_pElementData[i] = v._pElementData[i];
 		}
 		else
@@ -105,10 +105,10 @@ public:
 	{
 		EnsureCapacityNoCopy( v.Size() );
 
-		for( System::Types::sInt i = 0; i < v.Size(); i++ )
+		for( sInt i = 0; i < v.Size(); i++ )
 			_pElementData[i] = v._pElementData[i];
 		
-		for( System::Types::sInt i = v.Size();  i < _iElementCount; i++)
+		for( sInt i = v.Size();  i < _iElementCount; i++)
 			_pElementData[i] = _TYPE();
 	
 		_iElementCount = v.Size();
@@ -117,7 +117,7 @@ public:
 	/**
 	 * get Vector Size
 	 */
-	inline System::Types::sInt Size() const
+	inline sInt Size() const
 	{
 		return _iElementCount;
 	}
@@ -125,7 +125,7 @@ public:
 	/**
 	 * get set element at 0<= index < Size
 	 */
-	inline _TYPE& operator[] ( System::Types::sInt index )
+	inline _TYPE& operator[] ( sInt index )
 	{
 		__S_ASSERT( index >=0 && index < _iElementCount );
 		return _pElementData[index];
@@ -134,7 +134,7 @@ public:
 	/**
 	 * get set element at 0<= index < Size
 	 */
-	inline const _TYPE& operator[] ( System::Types::sInt index ) const
+	inline const _TYPE& operator[] ( sInt index ) const
 	{
 		__S_ASSERT( index >=0 && index < _iElementCount );
 		return _pElementData[index];
@@ -143,7 +143,7 @@ public:
 	/**
 	 *	Add element to the end
 	 */
-	inline System::Types::sInt Add( const _TYPE& item )
+	inline sInt Add( const _TYPE& item )
 	{
 		EnsureCapacity( _iElementCount + 1 );
 		_pElementData[ _iElementCount ++ ] = item;
@@ -208,7 +208,7 @@ public:
 	/**
 	 *	Add element at index
 	 */
-	System::Types::sInt AddAt( System::Types::sInt index, const _TYPE& item )
+	System::Types::sInt AddAt( sInt index, const _TYPE& item )
 	{
 		if( index >= _iElementCount )
 			return Add( item );
@@ -220,7 +220,7 @@ public:
 
 		EnsureCapacity( _iElementCount + 1 );
 
-		for( System::Types::sInt i = _iElementCount; i > index; i-- )
+		for( sInt i = _iElementCount; i > index; i-- )
 			_pElementData[i] = _pElementData[i - 1];
 		
 		_iElementCount++;
@@ -232,7 +232,7 @@ public:
 	/**
 	 *	Add element at index
 	 */
-	inline System::Types::sInt AddAtC( System::Types::sInt index, const _TYPE item )
+	inline System::Types::sInt AddAtC( sInt index, const _TYPE item )
 	{
 		return AddAt( index, item );
 	}
@@ -240,7 +240,7 @@ public:
 	/**
 	 *	remove all elements
 	 */
-	inline void RemoveAll( System::Types::sBool bClean = System::Types::sTrue )
+	inline void RemoveAll( sBool bClean = sTrue )
 	{
 		if( bClean )
 		{
@@ -275,13 +275,13 @@ public:
 	/**
 	 *	
 	 */
-	_TYPE RemoveAt( System::Types::sInt index )
+	_TYPE RemoveAt( sInt index )
 	{
 		__S_ASSERT( index >= 0 && index < _iElementCount );
 		
 		_TYPE ret = _pElementData[index];
 
-		for( System::Types::sInt i = index; i < _iElementCount - 1; i++ )
+		for( sInt i = index; i < _iElementCount - 1; i++ )
 			_pElementData[i] = _pElementData[i+1];
 
 		_pElementData[--_iElementCount] = _TYPE();
@@ -290,16 +290,37 @@ public:
 	}
 
 	/**
+	 * Remove elements from to to from the vector
+	 */
+	void Remove( sInt from, sInt to )
+	{
+		__S_ASSERT( from >= 0 && from < _iElementCount );
+
+		if( to >= _iElementCount )
+			to = _iElementCount - 1;
+
+		if( to > from )
+			to = from;
+
+		for( sInt i = from, k = to + 1; k < _iElementCount; ++i, ++k )
+		{
+			_pElementData[i] = _pElementData[k];
+		}
+
+		SetSize( _iElementCount -  to + from - 1 );
+	}
+
+	/**
 	 *	Set vector size >= 0
 	 *	if bClean = false does not clear unused elements
 	 */
-	inline void SetSize( System::Types::sInt size, System::Types::sBool bClean = System::Types::sTrue )
+	inline void SetSize( sInt size, sBool bClean = sTrue )
 	{
 		__S_ASSERT( size >= 0 );
 
 		if( bClean )
 		{
-			for( System::Types::sInt i = size;  i < _iElementCount; i++)
+			for( sInt i = size;  i < _iElementCount; i++)
 				_pElementData[i] = _TYPE();
 		}
 
@@ -310,7 +331,7 @@ public:
 	/**
 	 *	return TRUE if is empty
 	 */
-	inline System::Types::sBool IsEmpty() const
+	inline sBool IsEmpty() const
 	{
 		return _iElementCount <= 0;
 	}
@@ -318,7 +339,7 @@ public:
 	/**
 	 * Reserve 
 	 */
-	inline void Reserve( System::Types::sInt minCapacity )
+	inline void Reserve( sInt minCapacity )
 	{
 		EnsureCapacity( minCapacity );
 	}
@@ -330,13 +351,13 @@ public:
 	inline _PLATFORM _TYPE* GetBuffer() { return _pElementData; }
 
 private:
-	void EnsureCapacity( System::Types::sInt minCapacity ) 
+	void EnsureCapacity( sInt minCapacity ) 
 	{
 		if( minCapacity <= _iElementCapasity ) return;
 
 		_TYPE* pOldElement = _pElementData;
 
-		System::Types::sInt newCapacity = ( _CAPACITY_INCREMENT > 0 ) ? 
+		sInt newCapacity = ( _CAPACITY_INCREMENT > 0 ) ? 
 			( _iElementCapasity + _CAPACITY_INCREMENT ) : ( _iElementCapasity * 2 );
 
     	if( newCapacity < minCapacity ) newCapacity = minCapacity;
@@ -351,7 +372,7 @@ private:
 			delete[] pOldElement;		
     }
 
-	void EnsureCapacityNoCopy( System::Types::sInt minCapacity )
+	void EnsureCapacityNoCopy( sInt minCapacity )
 	{
 		if( minCapacity <= _iElementCapasity ) return;
 

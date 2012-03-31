@@ -133,6 +133,22 @@ public:
 	 *
 	 */
 	void SetAnimationSequence( const sString& name, State& state ) const;
+	void SetAnimationSequence( const sString& name, sUInt beginFrame, sUInt endFrame, State& state ) const;
+	
+	/**
+	 *
+	 */
+	void AddAnimationSequence( const sString& name, sInt beginFrame, sInt endFrame );
+
+	/**
+	 *
+	 */
+	void RemoveFrames( sInt from, sInt to );
+
+	/**
+	 *
+	 */
+	void Move( sInt frame, const d3Point& pos ); 
 private:
 	AnimateValue	_moveX;
 	AnimateValue	_moveY;

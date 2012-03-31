@@ -80,6 +80,51 @@ void Animation::Animate( sUInt frame, Result& result ) const
 }
 
 //-------------------------------------------------------------------
+void Animation::Move( sInt frame, const d3Point& pos )
+{
+	_moveX.AddLine( frame, pos.x );
+	_moveY.AddLine( frame, pos.y );
+	_moveZ.AddLine( frame, pos.z );
+}
+
+//-------------------------------------------------------------------
+void Animation::RemoveFrames( sInt from, sInt to )
+{
+	_moveX.RemoveFrames( from, to );
+	_moveY.RemoveFrames( from, to );
+	_moveZ.RemoveFrames( from, to );
+
+	_rotateX.RemoveFrames( from, to );
+	_rotateY.RemoveFrames( from, to );
+	_rotateZ.RemoveFrames( from, to );
+
+	_scaleX.RemoveFrames( from, to );
+	_scaleY.RemoveFrames( from, to );
+	_scaleZ.RemoveFrames( from, to );
+
+	_textureX.RemoveFrames( from, to );
+	_textureY.RemoveFrames( from, to );
+}
+
+//-------------------------------------------------------------------
+void Animation::AddAnimationSequence( const sString& name, sInt beginFrame, sInt endFrame )
+{
+	AnimationSequence seq = { beginFrame, endFrame };
+	_animationSequences.Add( name, seq );
+}
+
+//-------------------------------------------------------------------
+void Animation::SetAnimationSequence( const sString& name, sUInt beginFrame, sUInt endFrame, State& state ) const
+{
+	state._beginAnimateFrame = beginFrame;
+	state._endAnimateFrame = endFrame;
+
+	state._currentSequence = name;
+	state._startTime = 0.0;
+	state._cFrame = 0;
+}
+
+//-------------------------------------------------------------------
 void Animation::SetAnimationSequence( const sString& name, State& state ) const
 {
 	AnimationSequence seq;

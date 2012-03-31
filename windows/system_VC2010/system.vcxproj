@@ -164,6 +164,7 @@
     <ClInclude Include="..\..\system\include\s_system_cnt_map.h" />
     <ClInclude Include="..\..\system\include\s_system_cnt_sort.h" />
     <ClInclude Include="..\..\system\include\s_system_cnt_sorted.h" />
+    <ClInclude Include="..\..\system\include\s_system_cnt_unique.h" />
     <ClInclude Include="..\..\system\include\s_system_cnt_vector.h" />
     <ClInclude Include="..\..\system\include\s_system_conf_def.h" />
     <ClInclude Include="..\..\system\include\s_system_conf_detect.h" />
