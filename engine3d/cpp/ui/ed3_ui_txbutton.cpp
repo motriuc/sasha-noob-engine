@@ -68,15 +68,13 @@ sBool uiTxButton::LoadFromXMLSubnode( const Xml::BaseDomNode& element, LoadDataP
 //-------------------------------------------------------------------
 void uiTxButton::Render2D( const d3RenderData& renderData )
 {	
-	d2Vector from( -1.0f, -1.0f );
-	d2Vector to( 1.0f, 1.0f );
 	if( IsUp() )
 	{
-		RenderTexture( from, to, _txUp, _txUp1, _txUp2 );
+		RenderTexture( GetRectangle().Min(), GetRectangle().Max(), _txUp, _txUp1, _txUp2 );
 	}
 	else
 	{
-		RenderTexture( from, to, _txDown, _txDown1, _txDown2 );
+		RenderTexture( GetRectangle().Min(), GetRectangle().Max(), _txDown, _txDown1, _txDown2 );
 	}
 }
 

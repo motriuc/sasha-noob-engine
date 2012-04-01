@@ -100,3 +100,14 @@ inline void d2Rectangle::Add( const d2Rectangle* v, sInt count )
 		Add( v[i] );
 }
 
+//-------------------------------------------------------------------
+inline const d2Point& d2Rectangle::Min() const
+{
+	return _min;
+}
+
+//-------------------------------------------------------------------
+inline const d2Point& d2Rectangle::Max() const
+{
+	return _max;
+}

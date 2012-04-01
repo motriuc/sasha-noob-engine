@@ -55,6 +55,9 @@ public:
 	static sBool Intersect( const d2Rectangle& b, const d2Point& p );
 	static sBool Intersect( const d2Rectangle& a, const d2Rectangle& b );
 
+	const d2Point& Min() const;
+	const d2Point& Max() const;
+
 private:
 	d2Point	_min;
 	d2Point	_max;

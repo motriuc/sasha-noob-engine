@@ -24,6 +24,7 @@
 #include "ed3_obj_texture.h"
 #include "ed3_ui_txbutton.h"
 #include "ed3_ui_label.h"
+#include "ed3_ui_image.h"
 
 namespace Ed3
 {
@@ -41,6 +42,7 @@ void RegisterEngineTypes()
 	// UI
 	AUTO_REGISTER_D3OBJECT_FACTORY( _S("engine.ui.txbutton"),             uiTxButton );
 	AUTO_REGISTER_D3OBJECT_FACTORY( _S("engine.ui.label"),                uiLabel );
+	AUTO_REGISTER_D3OBJECT_FACTORY( _S("engine.ui.image"),                uiImage );
 }
 
 }
