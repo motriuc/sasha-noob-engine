@@ -68,6 +68,22 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXSymbolsDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXSymbolsDataSource_SymbolNameID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					16,
+					200,
+					50,
+					660.20849609375,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXSymbolsDataSource_SymbolTypeIconID,
+					PBXSymbolsDataSource_SymbolNameID,
+					PBXSymbolsDataSource_SymbolTypeID,
+					PBXSymbolsDataSource_ReferenceNameID,
+				);
+			};
 			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
 				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
@@ -90,8 +106,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 354450222;
-			PBXWorkspaceStateSaveDate = 354450222;
+			PBXPerProjectTemplateStateSaveDate = 354954352;
+			PBXWorkspaceStateSaveDate = 354954352;
 		};
 		perUserProjectItems = {
 			D90A3FD3151024FF0028B0F6 /* PBXTextBookmark */ = D90A3FD3151024FF0028B0F6 /* PBXTextBookmark */;
@@ -218,6 +234,7 @@
 			D99923A714EF580F003FC6A7 /* PBXTextBookmark */ = D99923A714EF580F003FC6A7 /* PBXTextBookmark */;
 			D99923AD14EF580F003FC6A7 /* PBXTextBookmark */ = D99923AD14EF580F003FC6A7 /* PBXTextBookmark */;
 			D99923E514EF5B99003FC6A7 /* PBXTextBookmark */ = D99923E514EF5B99003FC6A7 /* PBXTextBookmark */;
+			D99C2E8C15282CD100822496 /* PBXTextBookmark */ = D99C2E8C15282CD100822496 /* PBXTextBookmark */;
 			D99F8F4D14F3999000DEB549 /* PBXTextBookmark */ = D99F8F4D14F3999000DEB549 /* PBXTextBookmark */;
 			D99F8F4F14F3999000DEB549 /* PBXTextBookmark */ = D99F8F4F14F3999000DEB549 /* PBXTextBookmark */;
 			D99F8F5014F3999000DEB549 /* PBXTextBookmark */ = D99F8F5014F3999000DEB549 /* PBXTextBookmark */;
@@ -245,7 +262,6 @@
 			D9A3060D15207BF9005077C9 /* PBXTextBookmark */ = D9A3060D15207BF9005077C9 /* PBXTextBookmark */;
 			D9A3060E15207BF9005077C9 /* PBXTextBookmark */ = D9A3060E15207BF9005077C9 /* PBXTextBookmark */;
 			D9A3060F15207BF9005077C9 /* PBXTextBookmark */ = D9A3060F15207BF9005077C9 /* PBXTextBookmark */;
-			D9A3061015207BF9005077C9 /* PBXBookmark */ = D9A3061015207BF9005077C9 /* PBXBookmark */;
 			D9A3061115207BF9005077C9 /* PBXTextBookmark */ = D9A3061115207BF9005077C9 /* PBXTextBookmark */;
 			D9BCA37914FCB844002ACED7 /* PBXTextBookmark */ = D9BCA37914FCB844002ACED7 /* PBXTextBookmark */;
 			D9BCA3A514FCBFDD002ACED7 /* PBXTextBookmark */ = D9BCA3A514FCBFDD002ACED7 /* PBXTextBookmark */;
@@ -2668,7 +2684,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 300;
-		modificationTime = 354450414.127522;
+		modificationTime = 354954433.165067;
 		originalNumberOfMultipleMatches = 1;
 		state = 0;
 	};
@@ -3377,6 +3393,16 @@
 		vrLen = 1371;
 		vrLoc = 18922;
 	};
+	D99C2E8C15282CD100822496 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D9A305F815207BAE005077C9 /* system.font.ps.2.fsh */;
+		name = "system.font.ps.2.fsh: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 318;
+		vrLoc = 0;
+	};
 	D99F8DE714F38E4200DEB549 /* ed3_physics_world.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {898, 2067}}";
@@ -3813,7 +3839,7 @@
 	};
 	D9A305F815207BAE005077C9 /* system.font.ps.2.fsh */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {898, 416}}";
+			sepNavIntBoundsRect = "{{0, 0}, {898, 409}}";
 			sepNavSelRange = "{0, 0}";
 			sepNavVisRange = "{0, 318}";
 		};
@@ -3877,10 +3903,6 @@
 		rType = 0;
 		vrLen = 764;
 		vrLoc = 9773;
-	};
-	D9A3061015207BF9005077C9 /* PBXBookmark */ = {
-		isa = PBXBookmark;
-		fRef = D9A305F815207BAE005077C9 /* system.font.ps.2.fsh */;
 	};
 	D9A3061115207BF9005077C9 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -4510,7 +4532,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		isThrow = 1;
-		modificationTime = 354450414.129588;
+		modificationTime = 354954433.167025;
 		originalNumberOfMultipleMatches = 0;
 		state = 1;
 	};

@@ -178,6 +178,7 @@
 		D999231814EF3AFB003FC6A7 /* lzio.c in Sources */ = {isa = PBXBuildFile; fileRef = D99922F514EF3AFB003FC6A7 /* lzio.c */; };
 		D999232014EF3C56003FC6A7 /* ed3_lua.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D999231F14EF3C56003FC6A7 /* ed3_lua.cpp */; };
 		D99923BB14EF58C9003FC6A7 /* torus.lua in Resources */ = {isa = PBXBuildFile; fileRef = D99923BA14EF58C9003FC6A7 /* torus.lua */; };
+		D99C2E6A15282C2800822496 /* ed3_ui_image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D99C2E6915282C2800822496 /* ed3_ui_image.cpp */; };
 		D99F8DE814F38E4200DEB549 /* ed3_physics_world.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D99F8DE714F38E4200DEB549 /* ed3_physics_world.cpp */; };
 		D99F8E3C14F392C600DEB549 /* btAlignedAllocator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D99F8E3B14F392C600DEB549 /* btAlignedAllocator.cpp */; };
 		D99F8E4414F393BD00DEB549 /* btTypedConstraint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D99F8E4314F393BD00DEB549 /* btTypedConstraint.cpp */; };
@@ -746,6 +747,8 @@
 		D999231F14EF3C56003FC6A7 /* ed3_lua.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_lua.cpp; path = ../../engine3d/cpp/ed3_lua.cpp; sourceTree = SOURCE_ROOT; };
 		D999232114EF3C6F003FC6A7 /* ed3_lua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ed3_lua.h; path = ../../engine3d/include/ed3_lua.h; sourceTree = SOURCE_ROOT; };
 		D99923BA14EF58C9003FC6A7 /* torus.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = torus.lua; path = world/torus.lua; sourceTree = "<group>"; };
+		D99C2E6815282C1800822496 /* ed3_ui_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ed3_ui_image.h; path = ../../engine3d/include/ui/ed3_ui_image.h; sourceTree = SOURCE_ROOT; };
+		D99C2E6915282C2800822496 /* ed3_ui_image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_ui_image.cpp; path = ../../engine3d/cpp/ui/ed3_ui_image.cpp; sourceTree = SOURCE_ROOT; };
 		D99F8DE714F38E4200DEB549 /* ed3_physics_world.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_physics_world.cpp; path = ../../engine3d/cpp/ed3_physics_world.cpp; sourceTree = SOURCE_ROOT; };
 		D99F8DE914F38E5100DEB549 /* ed3_physics_world.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ed3_physics_world.h; path = ../../engine3d/include/ed3_physics_world.h; sourceTree = SOURCE_ROOT; };
 		D99F8E3B14F392C600DEB549 /* btAlignedAllocator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = btAlignedAllocator.cpp; path = ../../external/bulet/LinearMath/btAlignedAllocator.cpp; sourceTree = SOURCE_ROOT; };
@@ -1466,6 +1469,8 @@
 		D91D020F14ECC47400CEFA96 /* base */ = {
 			isa = PBXGroup;
 			children = (
+				D99C2E6915282C2800822496 /* ed3_ui_image.cpp */,
+				D99C2E6815282C1800822496 /* ed3_ui_image.h */,
 				D9A305C515207AA3005077C9 /* ed3_ui_label.h */,
 				D9A305C115207A90005077C9 /* ed3_ui_label.cpp */,
 				D9A305C215207A90005077C9 /* ed3_ui_txbutton.cpp */,
@@ -2464,6 +2469,7 @@
 				D985C63F151B345200C6B687 /* ed3_ui_button.cpp in Sources */,
 				D9A305C315207A90005077C9 /* ed3_ui_label.cpp in Sources */,
 				D9A305C415207A90005077C9 /* ed3_ui_txbutton.cpp in Sources */,
+				D99C2E6A15282C2800822496 /* ed3_ui_image.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

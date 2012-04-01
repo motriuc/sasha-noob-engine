@@ -183,6 +183,7 @@
 		D999231814EF3AFB003FC6A7 /* lzio.c in Sources */ = {isa = PBXBuildFile; fileRef = D99922F514EF3AFB003FC6A7 /* lzio.c */; };
 		D999232014EF3C56003FC6A7 /* ed3_lua.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D999231F14EF3C56003FC6A7 /* ed3_lua.cpp */; };
 		D99923BB14EF58C9003FC6A7 /* torus.lua in Resources */ = {isa = PBXBuildFile; fileRef = D99923BA14EF58C9003FC6A7 /* torus.lua */; };
+		D99C2E5815282BC200822496 /* ed3_ui_image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D99C2E5715282BC200822496 /* ed3_ui_image.cpp */; };
 		D9A30582152078C5005077C9 /* ed3_ui_label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9A30580152078C5005077C9 /* ed3_ui_label.cpp */; };
 		D9A30583152078C5005077C9 /* ed3_ui_txbutton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9A30581152078C5005077C9 /* ed3_ui_txbutton.cpp */; };
 		D9A3058F15207928005077C9 /* system.font.fx.2.xml in Resources */ = {isa = PBXBuildFile; fileRef = D9A3058915207928005077C9 /* system.font.fx.2.xml */; };
@@ -624,6 +625,8 @@
 		D999231F14EF3C56003FC6A7 /* ed3_lua.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_lua.cpp; path = ../../engine3d/cpp/ed3_lua.cpp; sourceTree = SOURCE_ROOT; };
 		D999232114EF3C6F003FC6A7 /* ed3_lua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ed3_lua.h; path = ../../engine3d/include/ed3_lua.h; sourceTree = SOURCE_ROOT; };
 		D99923BA14EF58C9003FC6A7 /* torus.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = torus.lua; path = world/torus.lua; sourceTree = "<group>"; };
+		D99C2E5615282BAD00822496 /* ed3_ui_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ed3_ui_image.h; path = ../../engine3d/include/ui/ed3_ui_image.h; sourceTree = SOURCE_ROOT; };
+		D99C2E5715282BC200822496 /* ed3_ui_image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_ui_image.cpp; path = ../../engine3d/cpp/ui/ed3_ui_image.cpp; sourceTree = SOURCE_ROOT; };
 		D9A30580152078C5005077C9 /* ed3_ui_label.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_ui_label.cpp; path = ../../engine3d/cpp/ui/ed3_ui_label.cpp; sourceTree = SOURCE_ROOT; };
 		D9A30581152078C5005077C9 /* ed3_ui_txbutton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_ui_txbutton.cpp; path = ../../engine3d/cpp/ui/ed3_ui_txbutton.cpp; sourceTree = SOURCE_ROOT; };
 		D9A30584152078DA005077C9 /* ed3_ui_label.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ed3_ui_label.h; path = ../../engine3d/include/ui/ed3_ui_label.h; sourceTree = SOURCE_ROOT; };
@@ -1233,6 +1236,8 @@
 		D91D020F14ECC47400CEFA96 /* base */ = {
 			isa = PBXGroup;
 			children = (
+				D99C2E5715282BC200822496 /* ed3_ui_image.cpp */,
+				D99C2E5615282BAD00822496 /* ed3_ui_image.h */,
 				D9A30584152078DA005077C9 /* ed3_ui_label.h */,
 				D9A30580152078C5005077C9 /* ed3_ui_label.cpp */,
 				D9A30581152078C5005077C9 /* ed3_ui_txbutton.cpp */,
@@ -1886,6 +1891,7 @@
 				D985C5FD151B336700C6B687 /* ed3_ui_button.cpp in Sources */,
 				D9A30582152078C5005077C9 /* ed3_ui_label.cpp in Sources */,
 				D9A30583152078C5005077C9 /* ed3_ui_txbutton.cpp in Sources */,
+				D99C2E5815282BC200822496 /* ed3_ui_image.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
