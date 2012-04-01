@@ -543,6 +543,23 @@ Animation* Render::CreateAnimationFromFile(
 }
 
 //--------------------------------------------------------------------
+Animation* Render::CreateAnimation( const sString& objectName )
+{
+	if( objectName.Length() > 0 && _animationResPool[objectName] != NULL ) 
+		error_throw_arg( System::Errors::StringError ) 
+			_S("Duplicate object resource name :") + objectName 
+		);
+
+	Animation* pAnimation = new Animation( this, objectName );
+	
+	if( objectName.Length() > 0 )
+		_animationResPool.Add( pAnimation );
+	
+	return pAnimation;
+
+}
+
+//--------------------------------------------------------------------
 Font* Render::CreateFontFromFile(
 		const sString& objectName,
 		const sString& fileName,

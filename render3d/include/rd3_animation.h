@@ -57,11 +57,12 @@ public:
 		/**
 		 * Get Texture animation positions
 		 */
-		const d2Vector& GetTx() const { return _tx; }
+		const d2Vector& GetTx() const		{ return _tx; }
 
-		const d3Vector& GetMove() const	{ return _move; }
+		const d3Vector& GetMove() const		{ return _move; }
 		const d3Vector& GetRotate() const	{ return _rotate; }
 		const d3Vector& GetScale() const	{ return _scale; }
+
 	private:
 		d3Vector	_move;
 		d3Vector	_rotate;

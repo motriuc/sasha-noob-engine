@@ -352,6 +352,8 @@ public:
 		const StreamArchive& archive
 	) throws_error;
 
+	Animation* CreateAnimation( const sString& objectName );
+
 	///////////////////////////////////////////////////////////
 	// Message Q
 public:
