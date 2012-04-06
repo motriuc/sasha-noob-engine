@@ -229,7 +229,7 @@ public:
 	{
 		return _res;
 	}
-
+	
 	operator const _ResType*() const
 	{
 		return _res;

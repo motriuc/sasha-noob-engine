@@ -17,7 +17,7 @@
 class EngineApplication;
 
 
-@interface sd3engiphViewController : UIViewController
+@interface sd3engiphViewController : UIViewController<UIKeyInput>
 {
 @private	
 	EngineApplication*	render;

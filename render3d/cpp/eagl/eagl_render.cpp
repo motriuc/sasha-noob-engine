@@ -227,6 +227,18 @@ Rd3::Effect* EAGLRender::CreateEffectFromString(
 }
 
 //-------------------------------------------------------------------------------------
+void EAGLRender::SoftwareKeyboard_Show()
+{
+	MACOSView_ShowKeyboard( _params._view );
+}
+
+//-------------------------------------------------------------------------------------
+void EAGLRender::SoftwareKeyboard_Hide()
+{
+	MACOSView_HideKeyboard( _params._view );	
+}
+
+//-------------------------------------------------------------------------------------
 Rd3::Effect* EAGLRender::CreateEffectFromFile(
 										  const sString& objectName,
 										  const Rd3::Def& def,

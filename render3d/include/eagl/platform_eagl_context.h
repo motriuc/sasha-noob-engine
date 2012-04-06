@@ -63,13 +63,17 @@ typedef struct
 extern "C" {
 #endif
 
+void MACOSView_ShowKeyboard( MACOSView* view );
+void MACOSView_HideKeyboard( MACOSView* view );
+	
 EAGLRenderContext* EAGLRenderContext_Create();
 void EAGLRenderContext_Free( EAGLRenderContext* context );
 	
 void EAGLRenderContext_SetCurrent( EAGLRenderContext* context );
 void EAGLRenderContext_RenderbufferStorage( EAGLRenderContext* context, GLenum idBuf, const MACOSView* view );
 GLboolean EAGLRenderContext_PresentRenderbuffer( EAGLRenderContext* context, GLenum idBuf );
-
+	
+	
 #ifdef __cplusplus
 }
 #endif

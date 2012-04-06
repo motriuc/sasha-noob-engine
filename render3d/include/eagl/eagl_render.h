@@ -215,6 +215,10 @@ public:
 	_PLATFORM void SetAsCurrentContext();
 	_PLATFORM void SetPresent();
 	_PLATFORM void EaglSetRenderTarget( EAGLTexture* pTexture );
+	
+	_PLATFORM void SoftwareKeyboard_Show();
+	_PLATFORM void SoftwareKeyboard_Hide();
+	
 private:
 	struct Rd3::EAGLRenderParams _params;
 	EAGLRenderContext*			 _renderContext;

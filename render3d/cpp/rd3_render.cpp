@@ -83,6 +83,7 @@ Render::Render( const RenderType::RenderType type ) :
 	_meshResPool( ResourceType::E_MESH ),
 	_aftereffectResPool( ResourceType::E_AFTEREFFECT ),
 	_animationResPool( ResourceType::E_ANIMATION ),
+	_serviceResPool( ResourceType::E_SERVICE ),
 	
 	_defaultMaterialQuality( Quality::E_Low )
 {
@@ -106,6 +107,19 @@ void Render::AddMessageQueue( MessageQueue* pMsgQ )
 		);		
 	}
 	_messageQResPool.Add( pMsgQ );
+}
+	
+//--------------------------------------------------------------------
+void Render::AddService( Service* pService )
+{
+	__S_ASSERT( pService != NULL );
+	if( _serviceResPool[pService->GetObjectName()] )
+	{
+		error_throw_arg( Errors::StringError )
+			_S("Service : ") + pService->GetObjectName() + _S(" is already registred.")
+		);		
+	}
+	_serviceResPool.Add( pService );	
 }
 	
 //--------------------------------------------------------------------
@@ -218,6 +232,19 @@ Animation* Render::UseAnimation( const sString& eName ) throws_error
 	return pAnim;
 }
 
+//--------------------------------------------------------------------
+void Render::ProcessServces( EngineData& edata )
+{
+	for( sInt i = 0; i < _serviceResPool.GetObjectCount(); ++i )
+	{
+		ResourceObject* obj = _serviceResPool[i];
+		if( obj )
+		{
+			reinterpret_cast<Service*>(obj)->Process( edata );
+		}
+	}
+}
+	
 //--------------------------------------------------------------------
 void Render::ProcessMessages( EngineData& edata )
 {

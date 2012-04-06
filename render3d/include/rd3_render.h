@@ -28,6 +28,7 @@
 #include "rd3_resobj.h"
 #include "rd3_msg.h"
 #include "rd3_resloader.h"
+#include "rd3_service.h"
 
 namespace Rd3
 {
@@ -83,7 +84,7 @@ public:
 	 */
 	Quality::Quality GetDefaultQuality() const					{ return Quality::E_Low; }
 	Quality::Quality GetDefaultMaterialQuality() const			{ return _defaultMaterialQuality; }
-	
+		
 	////////////////////////////////////////////////////////////
 	// Resources
 public:
@@ -355,7 +356,69 @@ public:
 	Animation* CreateAnimation( const sString& objectName );
 
 	///////////////////////////////////////////////////////////
+	// Services
+private:
+	void AddService( Service* pService );
+	Service* GetService( const sString& name );
+		
+public:
+	template< typename _Type>
+	inline _Type* GetService( const sString& name )
+	{
+		return reinterpret_cast<_Type*>( GetService( _Type::ServiceType() + name ) );
+	}
+	
+	template< typename _Type>
+	_Type* CreateService( const sString& name )
+	{
+		sString typed_name = _Type::ServiceType() + name;
+		_Type* pService = new _Type( this, typed_name );
+		AddService( pService );
+		
+		return pService;
+	}
+/*	
+	template< typename _Type>
+	use_resource<_Type> UseOrCreateService( const sString& name )
+	{
+		use_resource<_Type> res;
+		
+		sString typed_name = _Type::ServiceType() + name;
+		Service* pService = GetService( typed_name );
+		
+		if( pService != NULL )
+		{
+			res = reinterpret_cast<ServiceT<_Type>*>( pService );
+		}
+		else
+		{
+			res.ResourceCreate( new _Type( this, typed_name ) );
+			AddService( res );
+		}
+		return res;		
+	}
+*/
+	template< typename _Type>
+	_Type* UseService( const sString& name )
+	{
+		sString typed_name = _Type::ServiceType() + name;
+		Service* pService = GetService( typed_name );
+		
+		if( pService == NULL )
+		{
+			error_throw_arg( Errors::StringError )
+				_S("Service : " ) + typed_name + _S(" not found.")
+			);
+		}
+		
+		return reinterpret_cast<_Type*>( pService );
+	}
+	
+	_PLATFORM void ProcessServces( EngineData& edata );
+	
+	///////////////////////////////////////////////////////////
 	// Message Q
+
 public:
 	void AddMessageQueue( MessageQueue* pMsgQ );
 	MessageQueue* GetMessageQueue( const sString& name )			{ return reinterpret_cast<MessageQueue*> ( _messageQResPool[name] ); }
@@ -437,6 +500,7 @@ protected:
 	TypedResourcePool		_meshResPool;
 	
 	TypedResourcePool		_messageQResPool;
+	TypedResourcePool		_serviceResPool;
 	TypedResourcePool		_aftereffectResPool;
 	TypedResourcePool		_animationResPool;
 	
@@ -481,6 +545,7 @@ private:
 	friend class ResourceObject;
 };
 
+#include "rd3_render.inl"
 
 }
 

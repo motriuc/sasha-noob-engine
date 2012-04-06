@@ -109,6 +109,7 @@ namespace ResourceType
 		E_AFTEREFFECT,
 		E_DVERTEX_BUFFER,
 		E_ANIMATION,
+		E_SERVICE,
 
 		COUNT,
 		UNKNOWN

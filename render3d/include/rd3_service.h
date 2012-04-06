@@ -1,6 +1,6 @@
 /////////////////////////////////////////////////////////////////////
-//  File Name               : rd3_msg_gesture.h
-//  Created                 : 10 2 2012   19:58
+//  File Name               : rd3_service.h
+//  Created                 : 6 4 2012
 //  File path               : SLibF\render3d\include
 //  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
@@ -16,11 +16,8 @@
 //      
 /////////////////////////////////////////////////////////////////////
 
-#ifndef _RD3_MSG_GESTUREQ_INC_
-#define _RD3_MSG_GESTUREQ_INC_
-
-#include "rd3_msg.h"
-#include "rd3_msg_gesture.h"
+#ifndef _RD3_SERVICE_INC_
+#define _RD3_SERVICE_INC_
 
 /**
  * Check configuration file include
@@ -29,23 +26,30 @@
 	#error rd3_conf.h must be included
 #endif
 
+#include "rd3_resobj.h"
+
 namespace Rd3
 {
-
+	
+using namespace System;
+	
 /**
- * GestureMsgQueue
+ * Service
  */
-class GestureMsgQueue : public MessageQueueT<GestureEvent>
+class Service : public ResourceObject
 {
 private:	
-	typedef MessageQueueT<GestureEvent> _BaseClass;	
-protected:
-	/**
-	 *
-	 */
-	GestureMsgQueue( Render* owner, const sString& objectName );
+	typedef ResourceObject _BaseClass;
+public:
+	Service( Render* owner, const sString& objectName ) :
+		_BaseClass( owner, objectName, ResourceType::E_SERVICE )
+	{
+	}
+
+	virtual void Process( EngineData& edata ) {}
 };
+
 	
 }
 
-#endif // _RD3_MSG_GESTUREQ_INC_
+#endif // _RD3_SERVICE_INC_

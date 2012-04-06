@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EAGLView : UIView
+@interface EAGLView : UIView<UIKeyInput>
 {
+	id <UIKeyInput> delegate;	
 }
+
+@property (nonatomic, assign) id <UIKeyInput> delegate;
 
 @end

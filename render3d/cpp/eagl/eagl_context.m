@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : eagl_context.cpp
-//	Created                 : 20 1 2011   0:05
-//	File path               : SLibF\render3d\cpp\eagl
-//	Author                  : Alexandru Motriuc
+//  Created                 : 20 1 2011   0:05
+//  File path               : SLibF\render3d\cpp\eagl
+//  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
-//	Library                 : 
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -21,7 +21,21 @@
 #import "platform_eagl_context.h"
 #import <QuartzCore/QuartzCore.h>
 
+//-------------------------------------------------------------------
+void MACOSView_ShowKeyboard( MACOSView* view )
+{
+	if( view != NULL )
+		[view->_view becomeFirstResponder];
+}
 
+//-------------------------------------------------------------------
+void MACOSView_HideKeyboard( MACOSView* view )
+{
+	if( view != NULL )
+		[view->_view resignFirstResponder];
+}
+
+//-------------------------------------------------------------------
 EAGLRenderContext* EAGLRenderContext_Create()
 {	
     EAGLContext *aContext = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
@@ -43,6 +57,7 @@ EAGLRenderContext* EAGLRenderContext_Create()
 	return context;
 }
 
+//-------------------------------------------------------------------
 void EAGLRenderContext_Free( EAGLRenderContext* context )
 {
 	EAGLContext *aContext = context->_eaglContext;
@@ -56,6 +71,7 @@ void EAGLRenderContext_Free( EAGLRenderContext* context )
 	free(context);
 }
 
+//-------------------------------------------------------------------
 void EAGLRenderContext_SetCurrent( EAGLRenderContext* context )
 {
 	EAGLContext *aContext = context->_eaglContext;
@@ -63,6 +79,7 @@ void EAGLRenderContext_SetCurrent( EAGLRenderContext* context )
 	[EAGLContext setCurrentContext:aContext];
 }
 
+//-------------------------------------------------------------------
 void EAGLRenderContext_RenderbufferStorage( EAGLRenderContext* context, GLenum idBuf, const MACOSView* view )
 {
 	EAGLContext *aContext = context->_eaglContext;
@@ -71,6 +88,7 @@ void EAGLRenderContext_RenderbufferStorage( EAGLRenderContext* context, GLenum i
 	[aContext renderbufferStorage:idBuf fromDrawable:(CAEAGLLayer *)aView.layer];
 }
  
+//-------------------------------------------------------------------
 GLboolean EAGLRenderContext_PresentRenderbuffer( EAGLRenderContext* context, GLenum idBuf )
 {
 	EAGLContext *aContext = context->_eaglContext;

@@ -45,16 +45,19 @@ void uiButton::OnGestureEvent( Rd3::EngineData& edata, const Rd3::GestureEvent& 
 	}
 	else if( e.GetType() == Rd3::GestureEvent::E_End )
 	{
-		d2Rectangle rect = GetRectangle();
-		if( rect.Intersect( d2Vector( pos.x, pos.y ) ) )
+		if( _pressed )
 		{
-			if( GetUIQueue() )
+			d2Rectangle rect = GetRectangle();
+			if( rect.Intersect( d2Vector( pos.x, pos.y ) ) )
 			{
-				UiMessage msg( UiMessage::eButton, UiMessage::eClick, this );
-				GetUIQueue()->SendMessage( edata, msg );
+				if( GetUIQueue() )
+				{
+					UiMessage msg( UiMessage::eButton, UiMessage::eClick, this );
+					GetUIQueue()->SendMessage( edata, msg );
+				}
 			}
+			_pressed = sFalse;
 		}
-		_pressed = sFalse;
 	}
 }
 

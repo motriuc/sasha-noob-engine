@@ -8,6 +8,8 @@
 
 #include "eagl_conf.h"
 #include "eagl_msg_gestureq.h"
+#include "eagl_serv_textedit.h"
+
 #include "sne_app.h"
 
 using namespace System;
@@ -17,7 +19,8 @@ using namespace Ed3;
 //-----------------------------------------------------------------------------------
 EngineApplication::EngineApplication( MACOSView* view ) throws_error:
 	_pRender( NULL ),
-	_pEngine( NULL )
+	_pEngine( NULL ),
+	_pTextEditService( NULL )
 {
 	Rd3::EAGLRenderCreateParams params( view );
 		
@@ -26,6 +29,8 @@ EngineApplication::EngineApplication( MACOSView* view ) throws_error:
 		_pRender = Rd3::Render::CreateRender( params );
 		_pGestureMsgQueue = new EaglGestureMsgQueue( _pRender, _S("engine.msg.gesture") );
 		_pRender->AddMessageQueue( _pGestureMsgQueue );
+		
+		_pTextEditService = _pRender->CreateService<EAGLTextEditService>( _S("engine.service.textedit") );
 		
 		_pEngine = new d3Engine( _pRender );
 		
@@ -38,6 +43,20 @@ EngineApplication::EngineApplication( MACOSView* view ) throws_error:
 		delete _pRender;
 		throw;
 	}		
+}
+
+//-----------------------------------------------------------------------------------
+void EngineApplication::Edit_AddText( const sString& text )
+{
+	if( _pTextEditService )
+		_pTextEditService->AddText( text );
+}
+
+//-----------------------------------------------------------------------------------
+void EngineApplication::Edit_DeleteBack()
+{
+	if( _pTextEditService )
+		_pTextEditService->DeleteBack();
 }
 
 //-----------------------------------------------------------------------------------
@@ -60,6 +79,9 @@ EngineApplication::~EngineApplication()
 {
 	if( _pGestureMsgQueue )
 		_pGestureMsgQueue->UnuseResource();
+	
+	if( _pTextEditService )
+		_pTextEditService->UnuseResource();
 	
 	delete _pEngine;
 	delete _pRender;

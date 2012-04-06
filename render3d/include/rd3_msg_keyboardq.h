@@ -32,13 +32,13 @@ namespace Rd3
 {
 
 /**
- *GestureMsg
+ * KeyboardMsgQueue
  */
 class KeyboardMsgQueue : public MessageQueueT<KeyboardEvent>
 {
 private:	
 	typedef MessageQueueT<KeyboardEvent> _BaseClass;	
-public:
+protected:
 	/**
 	 *
 	 */

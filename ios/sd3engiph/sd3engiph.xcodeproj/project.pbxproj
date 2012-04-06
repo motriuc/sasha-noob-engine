@@ -179,6 +179,9 @@
 		D999232014EF3C56003FC6A7 /* ed3_lua.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D999231F14EF3C56003FC6A7 /* ed3_lua.cpp */; };
 		D99923BB14EF58C9003FC6A7 /* torus.lua in Resources */ = {isa = PBXBuildFile; fileRef = D99923BA14EF58C9003FC6A7 /* torus.lua */; };
 		D99C2E3515282AF800822496 /* ed3_ui_image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D99C2E3415282AF800822496 /* ed3_ui_image.cpp */; };
+		D99C2F3615283EBD00822496 /* ed3_ui_edit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D99C2F3515283EBD00822496 /* ed3_ui_edit.cpp */; };
+		D99C2F8A152E992F00822496 /* rd3_render.inl in Resources */ = {isa = PBXBuildFile; fileRef = D99C2F89152E992F00822496 /* rd3_render.inl */; };
+		D99C2FB5152EA78200822496 /* eagl_serv_textedit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D99C2FB4152EA78200822496 /* eagl_serv_textedit.cpp */; };
 		D99F8DE814F38E4200DEB549 /* ed3_physics_world.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D99F8DE714F38E4200DEB549 /* ed3_physics_world.cpp */; };
 		D99F8E3C14F392C600DEB549 /* btAlignedAllocator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D99F8E3B14F392C600DEB549 /* btAlignedAllocator.cpp */; };
 		D99F8E4414F393BD00DEB549 /* btTypedConstraint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D99F8E4314F393BD00DEB549 /* btTypedConstraint.cpp */; };
@@ -715,6 +718,13 @@
 		D99923BA14EF58C9003FC6A7 /* torus.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = torus.lua; path = world/torus.lua; sourceTree = "<group>"; };
 		D99C2E3315282ADC00822496 /* ed3_ui_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ed3_ui_image.h; path = ../../engine3d/include/ui/ed3_ui_image.h; sourceTree = SOURCE_ROOT; };
 		D99C2E3415282AF800822496 /* ed3_ui_image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_ui_image.cpp; path = ../../engine3d/cpp/ui/ed3_ui_image.cpp; sourceTree = SOURCE_ROOT; };
+		D99C2F3415283E5800822496 /* ed3_ui_edit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ed3_ui_edit.h; path = ../../engine3d/include/ui/ed3_ui_edit.h; sourceTree = SOURCE_ROOT; };
+		D99C2F3515283EBD00822496 /* ed3_ui_edit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_ui_edit.cpp; path = ../../engine3d/cpp/ui/ed3_ui_edit.cpp; sourceTree = SOURCE_ROOT; };
+		D99C2F441528456B00822496 /* rd3_serv_textedit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rd3_serv_textedit.h; path = ../../render3d/include/rd3_serv_textedit.h; sourceTree = SOURCE_ROOT; };
+		D99C2F5D152E957200822496 /* rd3_service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rd3_service.h; path = ../../render3d/include/rd3_service.h; sourceTree = SOURCE_ROOT; };
+		D99C2F89152E992F00822496 /* rd3_render.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = rd3_render.inl; path = ../../render3d/include/rd3_render.inl; sourceTree = SOURCE_ROOT; };
+		D99C2FAF152EA4B400822496 /* eagl_serv_textedit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eagl_serv_textedit.h; path = ../../render3d/include/eagl/eagl_serv_textedit.h; sourceTree = SOURCE_ROOT; };
+		D99C2FB4152EA78200822496 /* eagl_serv_textedit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = eagl_serv_textedit.cpp; path = ../../render3d/cpp/eagl/eagl_serv_textedit.cpp; sourceTree = SOURCE_ROOT; };
 		D99F8DE714F38E4200DEB549 /* ed3_physics_world.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_physics_world.cpp; path = ../../engine3d/cpp/ed3_physics_world.cpp; sourceTree = SOURCE_ROOT; };
 		D99F8DE914F38E5100DEB549 /* ed3_physics_world.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ed3_physics_world.h; path = ../../engine3d/include/ed3_physics_world.h; sourceTree = SOURCE_ROOT; };
 		D99F8E3B14F392C600DEB549 /* btAlignedAllocator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = btAlignedAllocator.cpp; path = ../../external/bulet/LinearMath/btAlignedAllocator.cpp; sourceTree = SOURCE_ROOT; };
@@ -1294,9 +1304,11 @@
 		D91D019514ECC08300CEFA96 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				D99C2F5D152E957200822496 /* rd3_service.h */,
 				D91D017B14ECC05D00CEFA96 /* rd3_resobj.h */,
 				D91D017C14ECC05D00CEFA96 /* rd3_resobj.inl */,
 				D91D013E14ECC02F00CEFA96 /* rd3_resobj.cpp */,
+				D99C2FA9152E9FA300822496 /* services */,
 				D91D01CB14ECC19700CEFA96 /* msg */,
 				D91D01CA14ECC18600CEFA96 /* mesh */,
 				D91D019A14ECC11B00CEFA96 /* materials */,
@@ -1390,9 +1402,9 @@
 			children = (
 				D973720F1507855E00BC1B85 /* rd3_msg_keyboard.h */,
 				D97372101507855E00BC1B85 /* rd3_msg_keyboardq.h */,
-				D91D013A14ECC02F00CEFA96 /* rd3_msg_gesture.cpp */,
 				D91D017414ECC05D00CEFA96 /* rd3_msg_gesture.h */,
 				D91D017514ECC05D00CEFA96 /* rd3_msg_gestureq.h */,
+				D91D013A14ECC02F00CEFA96 /* rd3_msg_gesture.cpp */,
 				D91D017614ECC05D00CEFA96 /* rd3_msg.h */,
 			);
 			name = msg;
@@ -1411,6 +1423,7 @@
 		D91D01D314ECC2FE00CEFA96 /* eagl */ = {
 			isa = PBXGroup;
 			children = (
+				D99C2FAE152EA48400822496 /* serv */,
 				D90A3EF015101DB40028B0F6 /* msg */,
 				D93D5BCB14ECD5E1003FC949 /* base */,
 				D93D5BC914ECD57B003FC949 /* fonts */,
@@ -1465,10 +1478,10 @@
 				D999231F14EF3C56003FC6A7 /* ed3_lua.cpp */,
 				D91D022814ECC4A700CEFA96 /* ed3_obj_class.cpp */,
 				D91D022914ECC4A700CEFA96 /* ed3_obj_factory.cpp */,
-				D91D022614ECC4A700CEFA96 /* ed3_engine.cpp */,
 				D91D022E14ECC4A700CEFA96 /* ed3_prerender.cpp */,
 				D91D021014ECC48C00CEFA96 /* ed3_conf.h */,
 				D91D021314ECC48C00CEFA96 /* ed3_engine.h */,
+				D91D022614ECC4A700CEFA96 /* ed3_engine.cpp */,
 				D91D021514ECC48C00CEFA96 /* ed3_obj_class.h */,
 				D91D021614ECC48C00CEFA96 /* ed3_obj_factory.h */,
 				D91D021C14ECC48C00CEFA96 /* ed3_prerender.h */,
@@ -1622,11 +1635,11 @@
 			isa = PBXGroup;
 			children = (
 				D91D01DE14ECC33000CEFA96 /* platform_eagl_context.h */,
+				D91D01DF14ECC34C00CEFA96 /* eagl_context.m */,
 				D91D01D414ECC33000CEFA96 /* eagl_conf.h */,
 				D91D01DA14ECC33000CEFA96 /* eagl_rstate.h */,
 				D91D01D914ECC33000CEFA96 /* eagl_render.h */,
 				D91D01DC14ECC33000CEFA96 /* eagl_types.h */,
-				D91D01DF14ECC34C00CEFA96 /* eagl_context.m */,
 				D91D01E414ECC34C00CEFA96 /* eagl_render.cpp */,
 				D91D01E514ECC34C00CEFA96 /* eagl_rstate.cpp */,
 			);
@@ -1650,6 +1663,7 @@
 			isa = PBXGroup;
 			children = (
 				D91D017A14ECC05D00CEFA96 /* rd3_render.h */,
+				D99C2F89152E992F00822496 /* rd3_render.inl */,
 				D91D017D14ECC05D00CEFA96 /* rd3_rstate.h */,
 				D91D017E14ECC05D00CEFA96 /* rd3_rstate.inl */,
 				D91D013F14ECC02F00CEFA96 /* rd3_rstate.cpp */,
@@ -1695,11 +1709,13 @@
 		D985C581151B30E000C6B687 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				D99C2F3415283E5800822496 /* ed3_ui_edit.h */,
+				D99C2F3515283EBD00822496 /* ed3_ui_edit.cpp */,
 				D99C2E3415282AF800822496 /* ed3_ui_image.cpp */,
 				D99C2E3315282ADC00822496 /* ed3_ui_image.h */,
+				D9A304881520723F005077C9 /* ed3_ui_label.h */,
 				D9A3053915207794005077C9 /* ed3_ui_label.cpp */,
 				D9A3053A15207794005077C9 /* ed3_ui_txbutton.cpp */,
-				D9A304881520723F005077C9 /* ed3_ui_label.h */,
 				D985C592151B315500C6B687 /* ed3_ui_button.h */,
 				D985C583151B30F300C6B687 /* ed3_ui_button.cpp */,
 				D985C593151B315500C6B687 /* ed3_ui_msg.h */,
@@ -1824,6 +1840,23 @@
 				D91D021B14ECC48C00CEFA96 /* ed3_object.inl */,
 			);
 			name = base;
+			sourceTree = "<group>";
+		};
+		D99C2FA9152E9FA300822496 /* services */ = {
+			isa = PBXGroup;
+			children = (
+				D99C2F441528456B00822496 /* rd3_serv_textedit.h */,
+			);
+			name = services;
+			sourceTree = "<group>";
+		};
+		D99C2FAE152EA48400822496 /* serv */ = {
+			isa = PBXGroup;
+			children = (
+				D99C2FAF152EA4B400822496 /* eagl_serv_textedit.h */,
+				D99C2FB4152EA78200822496 /* eagl_serv_textedit.cpp */,
+			);
+			name = serv;
 			sourceTree = "<group>";
 		};
 		D99F8DE614F38E2200DEB549 /* physics */ = {
@@ -2148,6 +2181,7 @@
 				D90A3D87150FF9650028B0F6 /* system.texture.fx.0.xml in Resources */,
 				D985C71E151B462D00C6B687 /* system.texture.fx.1.qh.xml in Resources */,
 				D9A304AE152073E7005077C9 /* system.font.fx.2.xml in Resources */,
+				D99C2F8A152E992F00822496 /* rd3_render.inl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2396,6 +2430,8 @@
 				D9A3053B15207794005077C9 /* ed3_ui_label.cpp in Sources */,
 				D9A3053C15207794005077C9 /* ed3_ui_txbutton.cpp in Sources */,
 				D99C2E3515282AF800822496 /* ed3_ui_image.cpp in Sources */,
+				D99C2F3615283EBD00822496 /* ed3_ui_edit.cpp in Sources */,
+				D99C2FB5152EA78200822496 /* eagl_serv_textedit.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

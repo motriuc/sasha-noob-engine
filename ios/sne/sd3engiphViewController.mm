@@ -5,27 +5,32 @@
 //  Created by Alexandru Motriuc on 16/02/12.
 //  Copyright 2012 Home. All rights reserved.
 //
+#define _use_sError_
+#define _use_d3Math_
 
 #import <QuartzCore/QuartzCore.h>
 
+#include "s_system.h"
+
+using namespace System::d3Math;
+using namespace System::Types;
+
 #import "sd3engiphViewController.h"
 #import "EAGLView.h"
+
 @interface sd3engiphViewController ()
-@property (nonatomic, assign) CADisplayLink *displayLink;
+	@property (nonatomic, assign) CADisplayLink *displayLink;
 @end
 
 @implementation sd3engiphViewController
 
 @synthesize animating, displayLink;
 
-#define _use_sError_
-#define _use_d3Math_
 
-#include "s_system.h"
 #include "sne_app.h"
 
-using namespace System::d3Math;
 using namespace Rd3;
+
 
 //---------------------------------------------------------------------------
 -(void)awakeFromNib
@@ -33,7 +38,7 @@ using namespace Rd3;
 	//new
 	renderView = (MACOSView*)malloc(sizeof(MACOSView));
 	renderView->_view = self.view;
-	
+		
 #ifdef _D3_ENABLE_RETINA_DISPLAY
 	
 	float ver = [[[UIDevice currentDevice] systemVersion] floatValue];
@@ -61,7 +66,7 @@ using namespace Rd3;
 	
     animating = FALSE;
     animationFrameInterval = 1;
-    self.displayLink = nil;
+    self.displayLink = nil;	
 }
 
 //---------------------------------------------------------------------------
@@ -224,5 +229,31 @@ void ConvertoToGestureEvent( GestureEvent& ev, NSSet* touches, UIView* view )
 		render->Send( ev );
 	}
 }
+
+//----------------------------------------------------------------
+- (void)insertText:(NSString *)text
+{
+	if( render )
+	{
+		render->Edit_AddText( sString( (CFStringRef)text ) );
+	}
+}
+
+//----------------------------------------------------------------
+- (void)deleteBackward 
+{
+	if( render )
+	{
+		render->Edit_DeleteBack();
+	}
+}
+
+//----------------------------------------------------------------
+- (BOOL)hasText 
+{
+    // Return whether there's any text present
+    return YES;
+}
+
 
 @end

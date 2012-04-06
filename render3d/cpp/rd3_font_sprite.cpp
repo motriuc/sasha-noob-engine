@@ -122,6 +122,9 @@ d2Vector FontSprite::GetTextSize( const sString& text ) const
 //-------------------------------------------------------------------	
 void FontSprite::RenderText( Rd3::RenderState& rstate, const sString& text, const d2Vector& pos, d3Float height, sRGBColor color )
 {
+	if( text.Length() == 0 )
+		return;
+	
 	if( !_vb )
 		_vb = GetOwner()->UseDynamicVertexBuffer( Rd3::VertexBufferStream::E_XYZ | Rd3::VertexBufferStream::E_TX1 );
 
@@ -175,6 +178,9 @@ void FontSprite::RenderText( Rd3::RenderState& rstate, const sString& text, cons
 //-------------------------------------------------------------------	
 d3Float FontSprite::ScreenRenderText( RenderState& rstate, const sString& text, const d2Vector& pos, sRGBColor color )
 {
+	if( text.Length() == 0 )
+		return 0.0f;
+	
 	if( !_vb )
 		_vb = GetOwner()->UseDynamicVertexBuffer( Rd3::VertexBufferStream::E_XYZ | Rd3::VertexBufferStream::E_TX1 );
 
@@ -326,6 +332,9 @@ SprireRenderString::SprireRenderString( Font* font ):
 //-------------------------------------------------------------------	
 void SprireRenderString::ScreenRenderText( RenderState& rstate, const sString& text, const d2Vector& pos, sRGBColor color )
 {
+	if( text.Length() == 0 )
+		return;
+	
 	d2Vector targetSize = rstate.GetRenderTarger_SizeInPixels();
 	
 	d2Vector npos;
