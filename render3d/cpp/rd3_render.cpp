@@ -301,6 +301,10 @@ void Render::NotifyFreeResource( ResourceObject* pRes )
 	case ResourceType::E_ANIMATION:
 		_animationResPool.Remove( pRes->GetObjectName() );
 		break;
+
+	case ResourceType::E_SERVICE:
+		_serviceResPool.Remove( pRes->GetObjectName() );
+		break;
 			
 	case ResourceType::E_MATERIAL:
 	default:

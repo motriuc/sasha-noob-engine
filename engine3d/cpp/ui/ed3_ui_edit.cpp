@@ -103,7 +103,8 @@ void uiEdit::OnGestureEvent( Rd3::EngineData& edata, const Rd3::GestureEvent& e 
 			d2Rectangle rect = GetRectangle();
 			if( rect.Intersect( d2Vector( pos.x, pos.y ) ) )
 			{
-				_editService().BeginEdit( this );
+				if( _editService )
+					_editService().BeginEdit( this );
 			}
 			_pressed = sFalse;
 		}
