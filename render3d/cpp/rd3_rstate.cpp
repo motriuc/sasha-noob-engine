@@ -140,6 +140,8 @@ void RenderState::UpdateCamera()
 			
 		_frustum.ClearPlanes();
 		_camera.GetFrustum( _frustum );
+		
+		_changed_camera = sFalse;
 	}
 	
 	COUNTER_TIME_STOP( rd3_render_time_rstate );
@@ -234,6 +236,8 @@ void RenderState::UpdateTransformation()
 		_matrix_params[MatrixParameter::E_WORLD].GetNormalMatrix(
 			_matrix_params[MatrixParameter::E_WORLD_NORMAL]
 		);
+		
+		_changed_matrix_params[MatrixParameter::E_WORLD_NORMAL] = sTrue;
 	}
 		
 	if( _changed_matrix_params[MatrixParameter::E_WORLD] || _changed_matrix_params[MatrixParameter::E_VIEW] )
@@ -275,6 +279,14 @@ void RenderState::EndRenderObject()
 #ifdef _DEBUG
 	_bIsRenderingObject = sFalse;
 #endif
+	
+	_changed_matrix_params[MatrixParameter::E_WORLD_NORMAL] = sFalse;	
+	_changed_matrix_params[MatrixParameter::E_WORLD_VIEW] = sFalse;	
+	_changed_matrix_params[MatrixParameter::E_WORLD_VIEW_PROJ] = sFalse;
+	_changed_matrix_params[MatrixParameter::E_WORLD] = sFalse;
+	_changed_matrix_params[MatrixParameter::E_D2_VIEW] = sFalse;
+	
+	_changed_transformation = sFalse;
 
 }
 ///////////////////////////////////////////////////////////////////////////////

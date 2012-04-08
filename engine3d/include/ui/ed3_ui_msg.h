@@ -29,12 +29,14 @@ class UiMessage
 public:
 	enum Type
 	{
-		eButton		= 0
+		eButton		= 0,
+		eEdit
 	};
 
 	enum Action
 	{
-		eClick		= 0
+		eClick			= 0,
+		eTextChanged
 	};
 
 	UiMessage() {}

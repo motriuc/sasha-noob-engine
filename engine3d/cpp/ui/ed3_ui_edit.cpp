@@ -16,6 +16,7 @@
 
 #include "ed3afx.h"
 #include "ed3_ui_edit.h"
+#include "ed3_edata.h"
 
 #include "rd3_render.h"
 
@@ -25,7 +26,8 @@ namespace Ed3
 uiEdit::uiEdit( const sString& name ) :
 	_BaseClass( name, sTrue ),
 	_text( _S("<Text>") ),
-	_pressed( sFalse )
+	_pressed( sFalse ),
+	_textChanged( sFalse )
 {
 }
 
@@ -51,6 +53,7 @@ void uiEdit::DeleteBack()
 	if( _text.Length() > 0 )
 	{
 		_text = _text.SubString( 0, _text.Length() - 1 );
+		_textChanged = sTrue;
 	}
 }
 	
@@ -58,6 +61,21 @@ void uiEdit::DeleteBack()
 void uiEdit::AddText( const sString& text )
 {
 	_text += text;
+	_textChanged = sTrue;
+}
+
+//-------------------------------------------------------------------
+void uiEdit::AI( d3EngineData& edata )
+{
+	if( GetUIQueue() )
+	{
+		if( _textChanged )
+		{
+			UiMessage msg( UiMessage::eEdit, UiMessage::eTextChanged, this );
+			GetUIQueue()->SendMessage( edata, msg );
+			_textChanged = sFalse;
+		}
+	}
 }
 	
 //-------------------------------------------------------------------
@@ -103,6 +121,12 @@ void uiEdit::OnGestureEvent( Rd3::EngineData& edata, const Rd3::GestureEvent& e 
 			d2Rectangle rect = GetRectangle();
 			if( rect.Intersect( d2Vector( pos.x, pos.y ) ) )
 			{
+				if( GetUIQueue() )
+				{
+					UiMessage msg( UiMessage::eEdit, UiMessage::eClick, this );
+					GetUIQueue()->SendMessage( edata, msg );
+				}
+				
 				if( _editService )
 					_editService().BeginEdit( this );
 			}

@@ -44,6 +44,7 @@ public:
 
 protected:
 	virtual void Initialize( Rd3::Render& render ) throws_error;
+	virtual void AI( d3EngineData& edata );
 	
 	virtual void Render2D( const d3RenderData& renderData );
 	virtual sBool LoadFromXMLSubnode( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error;
@@ -58,6 +59,7 @@ private:
 private:
 	sString	_text;
 	sBool	_pressed;
+	sBool	_textChanged;
 	
 	Rd3::use_resource<Rd3::TextEditService>	_editService;
 };

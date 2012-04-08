@@ -124,6 +124,10 @@
 		D97375CD150AF2EC00BC1B85 /* rd3_animation_fun.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D97375CB150AF2EC00BC1B85 /* rd3_animation_fun.cpp */; };
 		D97375CE150AF2EC00BC1B85 /* rd3_animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D97375CC150AF2EC00BC1B85 /* rd3_animation.cpp */; };
 		D97DE81D14EF7CF300E062CF /* ed3_object_lua.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D97DE81C14EF7CF300E062CF /* ed3_object_lua.cpp */; };
+		D97DEAA515307BA600003014 /* eagl_serv_textedit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D97DEAA415307BA600003014 /* eagl_serv_textedit.cpp */; };
+		D97DEAAE15307BD300003014 /* rd3_render.inl in Resources */ = {isa = PBXBuildFile; fileRef = D97DEAAB15307BD300003014 /* rd3_render.inl */; };
+		D97DEAB815307C5A00003014 /* ed3_ui_edit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D97DEAB615307C5A00003014 /* ed3_ui_edit.cpp */; };
+		D97DEAB915307C5A00003014 /* ed3_ui_image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D97DEAB715307C5A00003014 /* ed3_ui_image.cpp */; };
 		D97ECB1214F089FC00E01EF1 /* mesh_gen.lua in Resources */ = {isa = PBXBuildFile; fileRef = D97ECB1114F089FC00E01EF1 /* mesh_gen.lua */; };
 		D9803A9014EFCE32002E3CE7 /* ed3_primitive_lua.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9803A8F14EFCE32002E3CE7 /* ed3_primitive_lua.cpp */; };
 		D98536C014F36B2200E3AADD /* rd3_after_effect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D98536BF14F36B2200E3AADD /* rd3_after_effect.cpp */; };
@@ -544,6 +548,15 @@
 		D97375CB150AF2EC00BC1B85 /* rd3_animation_fun.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rd3_animation_fun.cpp; path = ../../render3d/cpp/rd3_animation_fun.cpp; sourceTree = SOURCE_ROOT; };
 		D97375CC150AF2EC00BC1B85 /* rd3_animation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rd3_animation.cpp; path = ../../render3d/cpp/rd3_animation.cpp; sourceTree = SOURCE_ROOT; };
 		D97DE81C14EF7CF300E062CF /* ed3_object_lua.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_object_lua.cpp; path = ../../engine3d/cpp/ed3_object_lua.cpp; sourceTree = SOURCE_ROOT; };
+		D97DEAA315307B9700003014 /* eagl_serv_textedit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eagl_serv_textedit.h; path = ../../render3d/include/eagl/eagl_serv_textedit.h; sourceTree = SOURCE_ROOT; };
+		D97DEAA415307BA600003014 /* eagl_serv_textedit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = eagl_serv_textedit.cpp; path = ../../render3d/cpp/eagl/eagl_serv_textedit.cpp; sourceTree = SOURCE_ROOT; };
+		D97DEAAB15307BD300003014 /* rd3_render.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = rd3_render.inl; path = ../../render3d/include/rd3_render.inl; sourceTree = SOURCE_ROOT; };
+		D97DEAAC15307BD300003014 /* rd3_serv_textedit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rd3_serv_textedit.h; path = ../../render3d/include/rd3_serv_textedit.h; sourceTree = SOURCE_ROOT; };
+		D97DEAAD15307BD300003014 /* rd3_service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rd3_service.h; path = ../../render3d/include/rd3_service.h; sourceTree = SOURCE_ROOT; };
+		D97DEAB415307C2600003014 /* ed3_ui_edit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ed3_ui_edit.h; path = ../../engine3d/include/ui/ed3_ui_edit.h; sourceTree = SOURCE_ROOT; };
+		D97DEAB515307C2600003014 /* ed3_ui_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ed3_ui_image.h; path = ../../engine3d/include/ui/ed3_ui_image.h; sourceTree = SOURCE_ROOT; };
+		D97DEAB615307C5A00003014 /* ed3_ui_edit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_ui_edit.cpp; path = ../../engine3d/cpp/ui/ed3_ui_edit.cpp; sourceTree = SOURCE_ROOT; };
+		D97DEAB715307C5A00003014 /* ed3_ui_image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_ui_image.cpp; path = ../../engine3d/cpp/ui/ed3_ui_image.cpp; sourceTree = SOURCE_ROOT; };
 		D97ECB1114F089FC00E01EF1 /* mesh_gen.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mesh_gen.lua; path = world/mesh_gen.lua; sourceTree = "<group>"; };
 		D9803A8F14EFCE32002E3CE7 /* ed3_primitive_lua.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_primitive_lua.cpp; path = ../../engine3d/cpp/ed3_primitive_lua.cpp; sourceTree = SOURCE_ROOT; };
 		D9803A9114EFCE4F002E3CE7 /* ed3_primitive_lua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ed3_primitive_lua.h; path = ../../engine3d/include/ed3_primitive_lua.h; sourceTree = SOURCE_ROOT; };
@@ -1080,6 +1093,7 @@
 		D91D019414ECC07000CEFA96 /* base */ = {
 			isa = PBXGroup;
 			children = (
+				D97DEAAB15307BD300003014 /* rd3_render.inl */,
 				D9DC7F741502F7AF003600E7 /* rd3_material_solid.cpp */,
 				D9DC7F751502F7AF003600E7 /* rd3_register_types.cpp */,
 				D9DC7F581502F693003600E7 /* rd3_resloader.cpp */,
@@ -1122,6 +1136,8 @@
 		D91D019514ECC08300CEFA96 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				D97DEAAC15307BD300003014 /* rd3_serv_textedit.h */,
+				D97DEAAD15307BD300003014 /* rd3_service.h */,
 				D97375C8150AF2C500BC1B85 /* animation */,
 				D91D017B14ECC05D00CEFA96 /* rd3_resobj.h */,
 				D91D017C14ECC05D00CEFA96 /* rd3_resobj.inl */,
@@ -1239,6 +1255,8 @@
 		D91D01D314ECC2FE00CEFA96 /* eagl */ = {
 			isa = PBXGroup;
 			children = (
+				D97DEAA415307BA600003014 /* eagl_serv_textedit.cpp */,
+				D97DEAA315307B9700003014 /* eagl_serv_textedit.h */,
 				D90A3F1F15101ECA0028B0F6 /* msg */,
 				D93D5BCB14ECD5E1003FC949 /* base */,
 				D93D5BC914ECD57B003FC949 /* fonts */,
@@ -1282,6 +1300,10 @@
 		D91D020F14ECC47400CEFA96 /* base */ = {
 			isa = PBXGroup;
 			children = (
+				D97DEAB615307C5A00003014 /* ed3_ui_edit.cpp */,
+				D97DEAB715307C5A00003014 /* ed3_ui_image.cpp */,
+				D97DEAB415307C2600003014 /* ed3_ui_edit.h */,
+				D97DEAB515307C2600003014 /* ed3_ui_image.h */,
 				D9A304F1152076F3005077C9 /* ed3_ui_label.cpp */,
 				D9A304F0152076A4005077C9 /* ed3_ui_label.h */,
 				D985C5D5151B32D700C6B687 /* ed3_ui_txbutton.cpp */,
@@ -1803,6 +1825,7 @@
 				D90A3F2615101F470028B0F6 /* system.texture.fx.1.xml in Resources */,
 				D9A304DB152075E9005077C9 /* system.font.fx.2.xml in Resources */,
 				D9A3055A152077E4005077C9 /* system.texture.fx.1.qh.xml in Resources */,
+				D97DEAAE15307BD300003014 /* rd3_render.inl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1951,6 +1974,9 @@
 				D985C5D7151B32D700C6B687 /* ed3_ui_txbutton.cpp in Sources */,
 				D985C5D8151B32D700C6B687 /* ed3_ui_button.cpp in Sources */,
 				D9A304F2152076F3005077C9 /* ed3_ui_label.cpp in Sources */,
+				D97DEAA515307BA600003014 /* eagl_serv_textedit.cpp in Sources */,
+				D97DEAB815307C5A00003014 /* ed3_ui_edit.cpp in Sources */,
+				D97DEAB915307C5A00003014 /* ed3_ui_image.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
