@@ -26,6 +26,7 @@
 #include "ed3_ui_label.h"
 #include "ed3_ui_image.h"
 #include "ed3_ui_edit.h"
+#include "ed3_ui_list.h"
 
 namespace Ed3
 {
@@ -45,6 +46,7 @@ void RegisterEngineTypes()
 	AUTO_REGISTER_D3OBJECT_FACTORY( _S("engine.ui.label"),                uiLabel );
 	AUTO_REGISTER_D3OBJECT_FACTORY( _S("engine.ui.image"),                uiImage );
 	AUTO_REGISTER_D3OBJECT_FACTORY( _S("engine.ui.edit"),                 uiEdit );
+	AUTO_REGISTER_D3OBJECT_FACTORY( _S("engine.ui.list"),                 uiList );
 }
 
 }

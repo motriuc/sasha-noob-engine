@@ -33,7 +33,8 @@ d2Object::d2Object( const sString& name, sBool listenGestureEvents ) :
 	_listenGestureEvents( listenGestureEvents ),
 	_d2Plane( d3Vector( 0.0f, 0.0f, 1.0f ), 0.0f ),
 	_pRenderData( NULL ),
-	_uiFontColor( RGBColor::White )
+	_uiFontColor( RGBColor::White ),
+	_uiRenderProportion( 1.0f )
 {
 }
 
@@ -180,6 +181,8 @@ void d2Object::LoadFromXML( const Xml::BaseDomNode& element, LoadDataParams& loa
 		if( fontName.Length() > 0 )
 			_uiFont = loadParams.render.UseFont( fontName );
 	}
+
+	_uiRenderProportion = element.GetAttributeValue( ATTR_UI_PROPORTION, 1.0f );
 
 	_BaseClass::LoadFromXML( element, loadParams );
 }

@@ -56,7 +56,6 @@
 #include "s_system_debug.h"
 #include "s_system_dep.h"
 
-
 namespace System
 {
 	// forward declarations

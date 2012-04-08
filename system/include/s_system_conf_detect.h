@@ -64,6 +64,10 @@
 // Detect WIN32 platform
 #if defined( _WIN32 ) || defined( WIN32 )
 
+	#ifdef _DEBUG
+		#define _SLIB_DEBUG_ALLOCATION
+	#endif
+
 	// disable Security Enhancements warnings
 	#pragma warning(disable : 4996)
 

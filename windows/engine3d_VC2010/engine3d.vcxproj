@@ -110,6 +110,7 @@
     <ClCompile Include="..\..\engine3d\cpp\ui\ed3_ui_edit.cpp" />
     <ClCompile Include="..\..\engine3d\cpp\ui\ed3_ui_image.cpp" />
     <ClCompile Include="..\..\engine3d\cpp\ui\ed3_ui_label.cpp" />
+    <ClCompile Include="..\..\engine3d\cpp\ui\ed3_ui_list.cpp" />
     <ClCompile Include="..\..\engine3d\cpp\ui\ed3_ui_txbutton.cpp" />
     <ClCompile Include="..\..\external\bulet\BulletCollision\BroadphaseCollision\btAxisSweep3.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
@@ -685,6 +686,7 @@
     <ClInclude Include="..\..\engine3d\include\ui\ed3_ui_edit.h" />
     <ClInclude Include="..\..\engine3d\include\ui\ed3_ui_image.h" />
     <ClInclude Include="..\..\engine3d\include\ui\ed3_ui_label.h" />
+    <ClInclude Include="..\..\engine3d\include\ui\ed3_ui_list.h" />
     <ClInclude Include="..\..\engine3d\include\ui\ed3_ui_msg.h" />
     <ClInclude Include="..\..\engine3d\include\ui\ed3_ui_msgq.h" />
     <ClInclude Include="..\..\engine3d\include\ui\ed3_ui_txbutton.h" />

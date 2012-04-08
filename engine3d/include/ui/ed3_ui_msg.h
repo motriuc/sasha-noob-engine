@@ -19,7 +19,7 @@
 namespace Ed3
 {
 
-class d2Object;
+class d3Object;
 
 /**
  * UiMessage
@@ -30,31 +30,45 @@ public:
 	enum Type
 	{
 		eButton		= 0,
-		eEdit
+		eEdit,
+
+		eCustom
 	};
 
 	enum Action
 	{
 		eClick			= 0,
-		eTextChanged
+		eTextChanged,
+		eAction
 	};
 
 	UiMessage() {}
 
-	UiMessage( Type type, Action action, d2Object* from ) :
+	UiMessage( Type type, Action action, d3Object* from ) :
 		_type( type ),
 		_action( action ),
 		_from( from )
 	{
 	}
 
+	UiMessage( const sString& actionName, d3Object* from ) :
+		_type( eCustom ),
+		_action( eAction ),
+		_actionName( actionName ),
+		_from( from )
+	{
+	}
+
 	Type GetType() const		{ return _type; }
 	Action GetAction() const	{ return _action; }
-	d2Object* Sender() const	{ return _from; }
+	d3Object* Sender() const	{ return _from; }
+
+	const sString& ActionName() const		{ return _actionName; }
 private:
 	Type		_type;
 	Action		_action;
-	d2Object*	_from;
+	d3Object*	_from;
+	sString		_actionName;
 };
 
 }

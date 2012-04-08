@@ -49,6 +49,12 @@
     <Filter Include="system\Header Files\mt">
       <UniqueIdentifier>{96a63ad9-b692-431a-9026-e06516937c28}</UniqueIdentifier>
     </Filter>
+    <Filter Include="system\Header Files\debug">
+      <UniqueIdentifier>{93a68c80-db75-4b0c-af26-0e9114192dfb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="system\Source Files\debug">
+      <UniqueIdentifier>{b98f424b-9935-4c8c-b6a6-ef43e992389d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -171,9 +177,6 @@
     <ClCompile Include="..\..\system\cpp\s_system_d3math_plane.cpp">
       <Filter>system\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\system\cpp\s_system_debug.cpp">
-      <Filter>system\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\system\cpp\s_system_error.cpp">
       <Filter>system\Source Files</Filter>
     </ClCompile>
@@ -221,6 +224,9 @@
     </ClCompile>
     <ClCompile Include="..\..\system\cpp\s_system_mt_thread.cpp">
       <Filter>system\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\cpp\s_system_debug.cpp">
+      <Filter>system\Source Files\debug</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -383,9 +389,6 @@
     <ClInclude Include="..\..\system\include\s_system_conf_inc.h">
       <Filter>system\Header Files\to sort</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_debug.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_dep.h">
       <Filter>system\Header Files\to sort</Filter>
     </ClInclude>
@@ -520,6 +523,9 @@
     </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_mt_ev.h">
       <Filter>system\Header Files\mt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_debug.h">
+      <Filter>system\Header Files\debug</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

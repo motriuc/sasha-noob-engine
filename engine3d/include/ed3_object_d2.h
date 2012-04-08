@@ -88,6 +88,7 @@ private:
 protected:
 	Rd3::use_resource<Rd3::Font>			_uiFont;
 	sRGBColor								_uiFontColor;
+	d3Float									_uiRenderProportion;
 private:
 	void internal_OnGestureEvent( Rd3::EngineData& edata, const Rd3::GestureEvent& e );
 };

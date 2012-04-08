@@ -67,6 +67,7 @@
 #define ELEMENT_ANIMATION		_S("animation")
 #define ELEMENT_KEYFRAME		_S("keyframe")
 #define ELEMENT_SEQUENCE		_S("sequence")
+#define ELEMENT_ITEM			_S("item")
 
 #define ELEMENT_COLOR			_S("color")
 #define ELEMENT_COLOR_DIFFUSE	_S("color.diffuse")
@@ -133,8 +134,10 @@
 #define ATTR_Y1           _S("y1")
 #define ATTR_Y2           _S("y2")
 #define ATTR_UI_MSGQ      _S("ui.msgq")
+#define ATTR_UI_PROPORTION _S("ui.proportion")
 #define ATTR_QUALITY	  _S("quality")
 #define ATTR_FONT         _S("font")
+#define ATTR_ANIMATION    _S("animation")
 
 
 namespace Rd3 

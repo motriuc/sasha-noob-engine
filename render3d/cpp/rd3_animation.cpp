@@ -75,8 +75,11 @@ void Animation::Animate( sUInt frame, Result& result ) const
 	result._move.y = _moveY.HasAnimation() ? _moveY.GetValue( frame ) : 0.0f;
 	result._move.z = _moveZ.HasAnimation() ? _moveZ.GetValue( frame ) : 0.0f;
 
-	result._tx.x = _textureX.HasAnimation() ? _textureX.GetValue( frame ) : 0.0f;
-	result._tx.y = _textureY.HasAnimation() ? _textureY.GetValue( frame ) : 0.0f;
+	result._tx1.x = _textureX.HasAnimation() ? _textureX.GetValue( frame ) : 0.0f;
+	result._tx1.y = _textureY.HasAnimation() ? _textureY.GetValue( frame ) : 0.0f;
+
+	result._tx2.x = result._tx1.x + ( _textureDX.HasAnimation() ? _textureDX.GetValue( frame ) : 0.0f );
+	result._tx2.y = result._tx1.y + ( _textureDY.HasAnimation() ? _textureDY.GetValue( frame ) : 0.0f );
 }
 
 //-------------------------------------------------------------------
@@ -104,6 +107,9 @@ void Animation::RemoveFrames( sInt from, sInt to )
 
 	_textureX.RemoveFrames( from, to );
 	_textureY.RemoveFrames( from, to );
+
+	_textureDX.RemoveFrames( from, to );
+	_textureDY.RemoveFrames( from, to );
 }
 
 //-------------------------------------------------------------------
@@ -208,6 +214,10 @@ void Animation::LoadFromXml( const Xml::BaseDomNode& node, const Def& def )
 					pAnimValue = &_textureX;
 				else if( what == _S("Y") )
 					pAnimValue = &_textureY;
+				else if( what == _S("DX") )
+					pAnimValue = &_textureDX;
+				else if( what == _S("DY") )
+					pAnimValue = &_textureDY;
 			}
 
 			if( pAnimValue != NULL )

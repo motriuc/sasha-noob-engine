@@ -3,7 +3,7 @@
 #define _ED3_H_
 
 #ifdef _S_SYS_INC_
-#error don't include s_system.h befor this header
+	#error don't include s_system.h befor this header
 #endif
 
 /////////////////////////////////////////////

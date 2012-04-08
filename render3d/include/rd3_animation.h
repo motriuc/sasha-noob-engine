@@ -57,17 +57,18 @@ public:
 		/**
 		 * Get Texture animation positions
 		 */
-		const d2Vector& GetTx() const		{ return _tx; }
+		const d2Vector& GetTx1() const		{ return _tx1; }
+		const d2Vector& GetTx2() const		{ return _tx2; }
 
 		const d3Vector& GetMove() const		{ return _move; }
 		const d3Vector& GetRotate() const	{ return _rotate; }
 		const d3Vector& GetScale() const	{ return _scale; }
-
 	private:
 		d3Vector	_move;
 		d3Vector	_rotate;
 		d3Vector	_scale;
-		d2Vector	_tx;
+		d2Vector	_tx1;
+		d2Vector	_tx2;
 
 		friend class Animation;
 	};
@@ -165,6 +166,9 @@ private:
 
 	AnimateValue	_textureX;
 	AnimateValue	_textureY;
+
+	AnimateValue	_textureDX;
+	AnimateValue	_textureDY;
 
 	typedef struct
 	{
