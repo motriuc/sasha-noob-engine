@@ -23,6 +23,7 @@ namespace Rd3
 {
 
 using namespace System::d3Math;
+using namespace System::d2Math;
 	
 /**
  * GestureTap
@@ -34,8 +35,9 @@ public:
 	{
 	}
 	
-	GestureTap( const d3Point& pos ) :
-		_position( pos )
+	GestureTap( const d3Point& pos, d3Float acc = 0.0f ) :
+		_position( pos ),
+		_acceleration( acc )
 	{
 	}
 	
@@ -44,8 +46,14 @@ public:
 		return _position;
 	}
 	
+	d3Float Acceleration() const
+	{
+		return _acceleration; 
+	}
+
 private:	
 	d3Point	_position;
+	d3Float	_acceleration;
 };
 
 typedef System::Cnt::sVector<GestureTap>  GestureTaps;
@@ -97,6 +105,44 @@ public:
 private:	
 	Type			_type;
 	GestureTaps		_taps;
+};
+
+/**
+ * GestureDetect2D
+ */
+class GestureDetect
+{
+public:
+	enum Gestures
+	{
+		eTap				= 1,
+		eSwipe				= 2,
+		eSwipeAcceleration	= 4,
+		eZoom				= 8,
+		eRotate				= 16
+	};
+public:
+	GestureDetect( sUInt gestures );
+
+	/**
+	 *
+	 */
+	void Process( EngineData& edata, const GestureEvent& gestureEvent );
+
+	void Idle( EngineData& edata );
+
+	Events::sEvent2<EngineData&, const d3Point& /*tap position*/>		onTap;
+	Events::sEvent2<EngineData&, const d3Vector& /*delta swipe*/ > onSwipe;
+
+private:
+	sUInt		_enabledGestures;
+	sUInt		_inProgressGestures;
+
+	sVector<d3Vector>	_positions;
+private:
+	void ProcessBegin( EngineData& edata, const GestureEvent& gestureEvent );
+	void ProcessMove( EngineData& edata, const GestureEvent& gestureEvent );
+	void ProcessEnd( EngineData& edata, const GestureEvent& gestureEvent );
 };
 
 }

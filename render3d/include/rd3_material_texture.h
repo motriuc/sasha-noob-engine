@@ -55,6 +55,7 @@ public:
 	 *
 	 */
 	void SetTexture( Texture* pTexture )	{ _texture = pTexture; }
+	Texture* GetTexture()					{ return _texture; }
 	
 	/**
 	 *

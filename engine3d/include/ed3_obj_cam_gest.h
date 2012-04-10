@@ -18,6 +18,7 @@
 #define _ED3_OBJ_CAM_GEST_INC_
 
 #include "ed3_object.h"
+#include "rd3_msg_gesture.h"
 
 namespace Ed3
 {
@@ -55,17 +56,13 @@ protected:
 	virtual void LoadFromXML( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error;
 private:
 	d3Vector	_move;
-	
-	d3Point		_lastPosition;
-	sBool		_bLastPosition;
-	
-	d3Point		_point1;
-	d3Point		_point2;
-	
-	sBool		_bPoint1;
-	sBool		_bPoint2;
-	
+
+	Rd3::GestureDetect	_gestureDetect;
+
 	void OnGestureEvent( Rd3::EngineData& edata, const Rd3::GestureEvent& event );
+
+	void OnGestureTap( Rd3::EngineData& edata, const d3Point& position );
+	void OnGestureSwipe( Rd3::EngineData& edata, const d3Vector& delta );
 };
 	
 	

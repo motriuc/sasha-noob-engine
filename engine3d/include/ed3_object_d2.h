@@ -71,6 +71,12 @@ protected:
 protected:
 	// 2d specific functions
 	void RenderTexture( const d2Point& posFrom, const d2Point& posTo, Rd3::Texture* pTexture, const d2Point& txFrom, const d2Point& txTo );
+
+	// render textures
+	void BeginRenderTexture( Rd3::Texture* pTexture, sInt count );
+	void RenderTexture( const d2Point& posFrom, const d2Point& posTo, const d2Point& txFrom, const d2Point& txTo );
+	void EndRenderTexture();
+
 	void RenderText( const sString& text, const d2Point& point, d3Float height, sRGBColor color );
 
 	virtual void OnGestureEvent( Rd3::EngineData& edata, const Rd3::GestureEvent& e ) {}
@@ -88,7 +94,6 @@ private:
 protected:
 	Rd3::use_resource<Rd3::Font>			_uiFont;
 	sRGBColor								_uiFontColor;
-	d3Float									_uiRenderProportion;
 private:
 	void internal_OnGestureEvent( Rd3::EngineData& edata, const Rd3::GestureEvent& e );
 };

@@ -162,6 +162,7 @@
     <ClInclude Include="..\..\system\include\s_system_chars_b.h" />
     <ClInclude Include="..\..\system\include\s_system_chars_w.h" />
     <ClInclude Include="..\..\system\include\s_system_cnt.h" />
+    <ClInclude Include="..\..\system\include\s_system_cnt_array.h" />
     <ClInclude Include="..\..\system\include\s_system_cnt_find.h" />
     <ClInclude Include="..\..\system\include\s_system_cnt_map.h" />
     <ClInclude Include="..\..\system\include\s_system_cnt_sort.h" />

@@ -25,7 +25,9 @@ namespace Ed3
 
 //------------------------------------------------------------------
 uiList::uiList( const sString& name ) :
-	_BaseClass( name )
+	_BaseClass( name ),
+	_selectedItem( -1 ),
+	_itemSize( 1.0f )
 {
 }
 
@@ -52,6 +54,25 @@ void uiList::LoadFromXML_Items( const Xml::BaseDomNode& element, LoadDataParams&
 			_items.Add( item );
 		}
 	}
+
+	if( _items.Size() > 0 )
+	{
+		_selectedItem = 0;
+		_items[0].SetAnimation( _S("selected") );
+
+		for( sInt i = 1; i < _items.Size(); ++i )
+			_items[i].SetAnimation( _S("default") );
+	}
+}
+
+//------------------------------------------------------------------
+void uiList::LoadFromXML( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error
+{
+	_texture = loadParams.render.UseTexture( element.GetAttributes()[ATTR_TEXTURE] );
+	_itemSize.x = element.GetAttributeValue( _S("item.width"), 1.0f );
+	_itemSize.y = element.GetAttributeValue( _S("item.height"), 1.0f );
+
+	_BaseClass::LoadFromXML( element, loadParams );
 }
 
 //------------------------------------------------------------------
@@ -72,6 +93,52 @@ sBool uiList::LoadFromXMLSubnode( const Xml::BaseDomNode& element, LoadDataParam
 //------------------------------------------------------------------
 void uiList::Render2D( const d3RenderData& renderData )
 {
+	d3Float height = _itemSize.y;
+	d3Float width = _itemSize.x;
+
+	Item& item = _items[_selectedItem];
+
+	RenderTexture( 
+		d2Point( -width, -height ),
+		d2Point( width, height ),
+		_texture,
+		item._animationResult.GetTx1(),
+		item._animationResult.GetTx2()
+	);
+
+	d3Float x1 = width;
+	d3Float y1 = -height;
+	d3Float x2 = 3.0f * width;
+	d3Float y2 = height;
+
+	for( sInt i = _selectedItem + 1; i < _items.Size(); ++i )
+	{
+		if( x1 > 1.0f )
+			break;
+
+		Item& item = _items[i];
+
+		RenderTexture( 
+			d2Point( x1, y1 ),
+			d2Point( x2, y2 ),
+			_texture,
+			item._animationResult.GetTx1(),
+			item._animationResult.GetTx2()
+		);
+
+		x1 += 2.0f * width;
+		x2 += 2.0f * width;
+	}
+
+	x1 = -3.0f * width;
+	y1 = -height;
+	x2 = -width;
+	y2 = height;
+
+	for( sInt i = _selectedItem - 1; i >= 0; --i )
+	{
+
+	}
 }
 
 //------------------------------------------------------------------

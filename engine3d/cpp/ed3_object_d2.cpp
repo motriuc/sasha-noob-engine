@@ -33,8 +33,7 @@ d2Object::d2Object( const sString& name, sBool listenGestureEvents ) :
 	_listenGestureEvents( listenGestureEvents ),
 	_d2Plane( d3Vector( 0.0f, 0.0f, 1.0f ), 0.0f ),
 	_pRenderData( NULL ),
-	_uiFontColor( RGBColor::White ),
-	_uiRenderProportion( 1.0f )
+	_uiFontColor( RGBColor::White )
 {
 }
 
@@ -134,7 +133,40 @@ void d2Object::internal_OnGestureEvent( Rd3::EngineData& edata, const Rd3::Gestu
 
 	OnGestureEvent( edata, d2Event );
 }
-	
+
+//------------------------------------------------------------------
+void d2Object::BeginRenderTexture( Rd3::Texture* pTexture, sInt count )
+{
+	__S_ASSERT( pTexture != NULL );
+	__S_ASSERT( _pRenderData != NULL );
+
+	_textureMaterial().SetTexture( pTexture );
+
+	_vb().BeginAdd( count * 6 );
+}
+
+//------------------------------------------------------------------
+void d2Object::RenderTexture( const d2Point& posFrom, const d2Point& posTo, const d2Point& txFrom, const d2Point& txTo )
+{
+	d3Float width = static_cast<d3Float>( _textureMaterial().GetTexture()->GetWidth() );
+	d3Float height = static_cast<d3Float>( _textureMaterial().GetTexture()->GetHeight() );
+
+	_vb().AddFaceZ(
+		posFrom.x, posTo.x, posFrom.y, posTo.y, 
+		txFrom.x / width, txTo.x / width,
+		txFrom.y / height, txTo.y / height,
+		0.0f
+	);
+}
+
+//------------------------------------------------------------------
+void d2Object::EndRenderTexture()
+{
+	_vb().EndAdd();
+	_textureMaterial().Apply( _pRenderData->rstate() );
+	_pRenderData->rstate().RenderPrimitive( _vb, Rd3::PrimitiveType::E_TRIANGLE_LIST );
+}
+
 //------------------------------------------------------------------
 void d2Object::RenderTexture( const d2Point& posFrom, const d2Point& posTo, Rd3::Texture* pTexture, const d2Point& txFrom, const d2Point& txTo )
 {
@@ -181,8 +213,6 @@ void d2Object::LoadFromXML( const Xml::BaseDomNode& element, LoadDataParams& loa
 		if( fontName.Length() > 0 )
 			_uiFont = loadParams.render.UseFont( fontName );
 	}
-
-	_uiRenderProportion = element.GetAttributeValue( ATTR_UI_PROPORTION, 1.0f );
 
 	_BaseClass::LoadFromXML( element, loadParams );
 }

@@ -527,5 +527,8 @@
     <ClInclude Include="..\..\system\include\s_system_debug.h">
       <Filter>system\Header Files\debug</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_cnt_array.h">
+      <Filter>system\Header Files\cont</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

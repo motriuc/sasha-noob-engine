@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : s_system_cnt.h
-//	Created                 : 25 6 2007   0:59
-//	File path               : SLibF\system\include
-//	Author                  : Alexandru Motriuc
+//  Created                 : 25 6 2007   0:59
+//  File path               : SLibF\system\include
+//  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
-//	Library                 : 
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -22,6 +22,8 @@ namespace Cnt
 {
 	using namespace System::Types;
 	
+	#include "s_system_cnt_array.h"
+
 #ifdef _use_sVector_	
 	#include "s_system_cnt_vector.h"
 #endif

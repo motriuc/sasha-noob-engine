@@ -16,9 +16,11 @@
 #include "ed3afx.h"
 #include "ed3_obj_cam_gest.h"
 #include "ed3_obj_factory.h"
+#include "ed3_world.h"
+#include "ed3_edata.h"
+
 #include "rd3_msg_gesture.h"
 #include "rd3_render.h"
-#include "ed3_world.h"
 
 namespace Ed3
 {
@@ -26,12 +28,13 @@ namespace Ed3
 //-----------------------------------------------------------------------	
 d3CameraGestureObject::d3CameraGestureObject() :
 	_move( 0.0f ),
-	_lastPosition( 0.0f ),
-	_bPoint1( sFalse ),
-	_bPoint2( sFalse ),
-	_bLastPosition( sFalse )
+	_gestureDetect( Rd3::GestureDetect::eTap | Rd3::GestureDetect::eSwipe )
 {
 	RemoveState( OBS_VISIBLE );
+
+	_gestureDetect.onTap = Events::Event( this, &d3CameraGestureObject::OnGestureTap );
+	_gestureDetect.onSwipe = Events::Event( this, &d3CameraGestureObject::OnGestureSwipe ); 
+
 }
 
 //-------------------------------------------------------------------
@@ -69,6 +72,8 @@ void d3CameraGestureObject::Render( const Ed3::d3RenderData& renderData )
 //-------------------------------------------------------------------
 void d3CameraGestureObject::AI( d3EngineData& edata )
 {
+	_gestureDetect.Idle( edata );
+
 	if( _move != d3Vector( 0.0f ) )
 	{
 		d3World* world = GetWorld();
@@ -92,83 +97,21 @@ d3Float GestureDistance( const d3Point& p1, const d3Point& p2, const d3Point& np
 }
 
 //-------------------------------------------------------------------
+void d3CameraGestureObject::OnGestureTap( Rd3::EngineData& edata, const d3Point& position )
+{
+}
+
+//-------------------------------------------------------------------
+void d3CameraGestureObject::OnGestureSwipe( Rd3::EngineData& edata, const d3Vector& delta )
+{
+	_move = delta;
+	_move.y = -_move.y;
+}
+
+//-------------------------------------------------------------------
 void d3CameraGestureObject::OnGestureEvent( Rd3::EngineData& edata, const Rd3::GestureEvent& event )
 {
-	switch ( event.GetType() )
-	{
-		case Rd3::GestureEvent::E_Begin:
-			if( event.Taps().Size() == 1 )
-			{
-				_lastPosition = event.Taps()[0].Position();
-				_bLastPosition = sTrue;
-				_bPoint1 = sFalse;
-				_bPoint2 = sFalse;
-			}
-			else if( event.Taps().Size() == 2 )
-			{
-				_point1 = event.Taps()[0].Position();
-				_point2 = event.Taps()[1].Position();
-				
-				_bPoint1 = sTrue;
-				_bPoint2 = sTrue;
-				_bLastPosition = sFalse;
-			}
-			break;
-			
-		case Rd3::GestureEvent::E_Move:
-			if( event.Taps().Size() == 1 )
-			{
-				if( _bLastPosition )
-				{
-					d3Vector delta = _lastPosition - event.Taps()[0].Position();
-					_move += delta;
-				}
-				
-				_lastPosition = event.Taps()[0].Position();
-				_bLastPosition = sTrue;
-				
-				_bPoint1 = sFalse;
-				_bPoint2 = sFalse;
-			}
-			else if( event.Taps().Size() == 2  )
-			{
-				d3Point np1 = event.Taps()[0].Position();				
-				d3Point np2 = event.Taps()[1].Position();
-				
-				if( !_bPoint1 )
-					_point1 = np1;
-				if( !_bPoint2 )
-					_point2 = np2;
-				
-				d3Float dist = GestureDistance( _point1, _point2, np1, np2 );
-				
-				_point1 = np1;
-				_point2 = np2;
-				_move = d3Vector( 0.0f, 0.0f, dist );
-				
-				_bPoint1 = sTrue;
-				_bPoint2 = sTrue;
-				_bLastPosition = sFalse;
-			}
-			else 
-			{
-				_move = d3Vector( 0.0f );
-				_bPoint1 = sFalse;
-				_bPoint2 = sFalse;
-				_bLastPosition = sFalse;
-			}
-			break;
-			
-		case Rd3::GestureEvent::E_End:
-			_move = d3Vector( 0.0f );
-			_bPoint1 = sFalse;
-			_bPoint2 = sFalse;
-			_bLastPosition = sFalse;
-			break;
-			
-		default:
-			break;
-	}
+	_gestureDetect.Process( edata, event );
 }
 	
 }

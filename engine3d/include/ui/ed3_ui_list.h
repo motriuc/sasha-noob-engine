@@ -51,7 +51,11 @@ public:
 		}
 
 		void LoadFromXml( const Xml::BaseDomNode& element, LoadDataParams& loadParams );
-
+	protected:
+		void SetAnimation( const sString& name )
+		{
+			_animation().SetAnimationSequence( name, _animationState );
+		}
 	private:
 		sInt								_id;
 		sString								_name;
@@ -63,6 +67,7 @@ public:
 	};
 
 protected:
+	virtual void LoadFromXML( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error;
 	virtual sBool LoadFromXMLSubnode( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error;
 	virtual void LoadFromXML_Items( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error;
 
@@ -72,6 +77,10 @@ protected:
 
 private:
 	sVector<Item>	_items;
+	sInt			_selectedItem;
+	d2Vector		_itemSize;
+
+	Rd3::use_resource<Rd3::Texture>	_texture;
 };
 
 }
