@@ -41,12 +41,6 @@ public:
 	virtual const sChar* GetClassName() const = 0;
 
 	/**
-	 * Create a instance of Object with type IType
-	 * @return a instance of Object
-	 */
-	virtual Object* CreateObject() = 0;
-
-	/**
 	 * Get Namespace name
 	 * @return namespace name
 	 */

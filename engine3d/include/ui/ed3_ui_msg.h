@@ -31,6 +31,7 @@ public:
 	{
 		eButton		= 0,
 		eEdit,
+		eList,
 
 		eCustom
 	};
@@ -39,6 +40,7 @@ public:
 	{
 		eClick			= 0,
 		eTextChanged,
+		eSelectionChanged,
 		eAction
 	};
 
@@ -59,9 +61,9 @@ public:
 	{
 	}
 
-	Type GetType() const		{ return _type; }
-	Action GetAction() const	{ return _action; }
-	d3Object* Sender() const	{ return _from; }
+	Type GetType() const					{ return _type; }
+	Action GetAction() const				{ return _action; }
+	d3Object* Sender() const				{ return _from; }
 
 	const sString& ActionName() const		{ return _actionName; }
 private:

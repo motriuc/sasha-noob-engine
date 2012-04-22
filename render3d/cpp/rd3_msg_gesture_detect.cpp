@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : rd3_msg_gesture_detect.cpp
-//	Created                 : 10 2 2012   19:58
-//	File path               : SLibF\render3d\cpp
-//	Author                  : Alexandru Motriuc
+//  Created                 : 10 2 2012   19:58
+//  File path               : SLibF\render3d\cpp
+//  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
-//	Library                 : 
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -51,6 +51,19 @@ void GestureDetect::Idle( EngineData& edata )
 }
 
 /////////////////////////////////////////////////////////////////////
+// GestureDetect_Base
+/////////////////////////////////////////////////////////////////////
+
+//-------------------------------------------------------------------	
+void GestureDetect_Base::SetBBox( const d2Rectangle& rc )
+{
+	_bbox = d3AABBox(
+		d3Vector( rc.Min().x, rc.Min().y, -1.0f ),
+		d3Vector( rc.Max().x, rc.Max().y, 1.0f )
+	);
+}
+
+/////////////////////////////////////////////////////////////////////
 // GestureDetect_Tap
 /////////////////////////////////////////////////////////////////////
 	
@@ -70,7 +83,7 @@ void GestureDetect_Tap::Process( EngineData& edata, const GestureEvent& gestureE
 	else switch ( gestureEvent.GetType() )
 	{
 		case GestureEvent::E_Begin:
-			_bTap = sTrue;
+			_bTap = GetBBox().IsEmpty() || GetBBox().Intersect( gestureEvent.Taps()[0].Position() );
 			break;
 		case GestureEvent::E_Move:
 			_bTap = sFalse;
@@ -78,7 +91,8 @@ void GestureDetect_Tap::Process( EngineData& edata, const GestureEvent& gestureE
 		case GestureEvent::E_End:
 			if( _bTap )
 			{
-				onTap( edata, gestureEvent.Taps()[0].Position() );
+				if( GetBBox().IsEmpty() || GetBBox().Intersect( gestureEvent.Taps()[0].Position() ) )
+					onTap( edata, gestureEvent.Taps()[0].Position() );
 				_bTap = sFalse;
 			}
 			break;
@@ -90,35 +104,57 @@ void GestureDetect_Tap::Process( EngineData& edata, const GestureEvent& gestureE
 /////////////////////////////////////////////////////////////////////
 
 //-------------------------------------------------------------------	
-GestureDetect_Swipe::GestureDetect_Swipe()
+GestureDetect_Swipe::GestureDetect_Swipe() :
+	_bSwipe( sFalse )
 {
 }
 
 //-------------------------------------------------------------------	
 void GestureDetect_Swipe::Process( EngineData& edata, const GestureEvent& gestureEvent, const GestureEvent& prevGestureEvent )
 {
-	if( gestureEvent.GetType() == GestureEvent::E_Move )
+	switch( gestureEvent.GetType() )
 	{
-		if( gestureEvent.Taps().Size() == prevGestureEvent.Taps().Size() )
+	case GestureEvent::E_Move:
 		{
-			d3Vector move( 0.0f );
+			if( _bSwipe && gestureEvent.Taps().Size() == prevGestureEvent.Taps().Size() )
+			{
+				d3Vector move( 0.0f );
 		
-			for( sInt i = 0; i < gestureEvent.Taps().Size(); ++i )
-			{
-				d3Vector v =  gestureEvent.Taps()[i].Position() - prevGestureEvent.Taps()[i].Position();
+				for( sInt i = 0; i < gestureEvent.Taps().Size(); ++i )
+				{
+					d3Vector v =  gestureEvent.Taps()[i].Position() - prevGestureEvent.Taps()[i].Position();
 			
-				move.x = FMath::AbsMax( v.x, move.x );
-				move.y = FMath::AbsMax( v.y, move.y );
-				move.z = FMath::AbsMax( v.z, move.z );
-			}
+					move.x = FMath::AbsMax( v.x, move.x );
+					move.y = FMath::AbsMax( v.y, move.y );
+					move.z = FMath::AbsMax( v.z, move.z );
+				}
 
-			if( !FMath::CloseToZero( move.Magnitude2() ) )
-			{
-				onSwipe( edata, move );
+				if( !FMath::CloseToZero( move.Magnitude2() ) )
+				{
+					onSwipe( edata, move );
+				}
 			}
 		}
+		break;
+	case GestureEvent::E_Begin:
+		{
+			if( GetBBox().IsEmpty() )
+				_bSwipe = sTrue;
+			else
+			{
+				_bSwipe = sFalse;
+				for( sInt i = 0; i < gestureEvent.Taps().Size(); ++i )
+				{
+					_bSwipe = GetBBox().Intersect( gestureEvent.Taps()[i].Position() );
+					if( _bSwipe )
+						break;
+				}
+			}
+		}
+		break;
 	}
 }
+
 //-------------------------------------------------------------------	
 
 }

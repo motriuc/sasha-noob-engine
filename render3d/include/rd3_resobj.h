@@ -253,7 +253,10 @@ private:
 	inline void Release()
 	{
 		if( _res != NULL )
+		{
 			_res->UnuseResource();
+			_res = NULL;
+		}
 	}
 	
 	inline void AddUse()

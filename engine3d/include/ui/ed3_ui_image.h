@@ -27,8 +27,7 @@ namespace Ed3
  */
 class uiImage : public d2Object
 {
-private:
-	typedef d2Object _BaseClass;
+	_SLIB_RUNTIME( Ed3, uiImage, d2Object )
 public:
 	/**
 	 * uiImage

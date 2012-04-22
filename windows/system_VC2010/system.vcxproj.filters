@@ -55,6 +55,9 @@
     <Filter Include="system\Source Files\debug">
       <UniqueIdentifier>{b98f424b-9935-4c8c-b6a6-ef43e992389d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="system\Header Files\t">
+      <UniqueIdentifier>{c1fd53f1-fdfc-4b3c-a7c1-be867e389f12}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -458,15 +461,6 @@
     <ClInclude Include="..\..\system\include\s_system_string.h">
       <Filter>system\Header Files\to sort</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_t.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_t_factory.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_t_typetraits.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_types.h">
       <Filter>system\Header Files\to sort</Filter>
     </ClInclude>
@@ -529,6 +523,15 @@
     </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_cnt_array.h">
       <Filter>system\Header Files\cont</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_t.h">
+      <Filter>system\Header Files\t</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_t_typetraits.h">
+      <Filter>system\Header Files\t</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_t_factory.h">
+      <Filter>system\Header Files\t</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

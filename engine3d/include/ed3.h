@@ -8,6 +8,10 @@
 
 /////////////////////////////////////////////
 
+#ifndef _use_sObject_
+	#define _use_sObject_
+#endif
+
 #ifndef _use_Streams_
 	#define _use_Streams_
 #endif

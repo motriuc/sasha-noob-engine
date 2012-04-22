@@ -71,8 +71,9 @@ namespace ObjectType
 /**
  * Render Object
  */
-class d3Object
+class d3Object : public Obj::Object
 {
+	_SLIB_RUNTIME( Ed3, d3Object, Obj::Object )
 public:
 	d3Object( ObjectType::ObjectType type = ObjectType::E_OBJECT, const sString& name = _S("") );
 

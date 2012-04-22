@@ -50,7 +50,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;ED3_ENGINE_USE_PHYSICS;_DEBUG;_LIB;_D3_DEBUG_RENDER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>ed3afx.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>..\..\engine3d\include;..\..\render3d\include;..\..\system\include;..\..\render3d\include\primitives;..\..\external\lua;..\..\external\bulet;..\..\engine3d\include\ui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -66,7 +66,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;ED3_ENGINE_USE_PHYSICS;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>ed3afx.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>..\..\engine3d\include;..\..\render3d\include;..\..\system\include;..\..\render3d\include\primitives;..\..\external\lua;..\..\external\bulet;..\..\engine3d\include\ui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>

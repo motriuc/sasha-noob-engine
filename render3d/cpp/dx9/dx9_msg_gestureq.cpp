@@ -69,18 +69,20 @@ void Dx9GestureMsgQueue::ProcessMessages( Rd3::EngineData& edata )
 	{
 		if( Memory::Compare( &mouseState, &_prevState, sizeof( DIMOUSESTATE ) ) != 0  )
 		{
+			sDouble time = Platform::GetTickD();
+
 			if( mouseState.rgbButtons[0] != _prevState.rgbButtons[0] )
 			{
 				if( mouseState.rgbButtons[0] > 0 )
 				{
 					Rd3::GestureEvent gvevent( Rd3::GestureEvent::E_Begin );
-					gvevent.Add( Rd3::GestureTap( GetCursorPosition() ) );
+					gvevent.Add( Rd3::GestureTap( GetCursorPosition(), time ) );
 					SendMessage( edata, gvevent );
 				}
 				else
 				{
 					Rd3::GestureEvent gvevent( Rd3::GestureEvent::E_End );
-					gvevent.Add( Rd3::GestureTap( GetCursorPosition() ) );
+					gvevent.Add( Rd3::GestureTap( GetCursorPosition(), time ) );
 					SendMessage( edata, gvevent );
 				}
 			}
@@ -89,7 +91,7 @@ void Dx9GestureMsgQueue::ProcessMessages( Rd3::EngineData& edata )
 				if( mouseState.rgbButtons[0] > 0 )
 				{
 					Rd3::GestureEvent gvevent( Rd3::GestureEvent::E_Move );
-					gvevent.Add( Rd3::GestureTap( GetCursorPosition() ) );
+					gvevent.Add( Rd3::GestureTap( GetCursorPosition(), time ) );
 					SendMessage( edata, gvevent );
 				}
 			}

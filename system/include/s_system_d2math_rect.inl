@@ -48,6 +48,12 @@ inline sBool d2Rectangle::Intersect( const d2Point& p ) const
 }
 
 //-------------------------------------------------------------------
+inline sBool d2Rectangle::Contains( const d2Rectangle& r ) const
+{
+	return Intersect( r.Min() ) && Intersect( r.Max() );
+}
+
+//-------------------------------------------------------------------
 inline sBool d2Rectangle::Intersect( const d2Rectangle& b, const d2Point& p )
 {
 	return

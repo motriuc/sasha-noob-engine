@@ -76,7 +76,14 @@ void d3ObjectContiner::Add( d3Object* pObj )
 	
 	_objVector.Add( pObj );
 	pObj->_parent = this;
+	
+	if( pObj->GetName().Length() > 0 )
+	{
+		if( !_objMap.Add( pObj->GetName(), pObj ) )
+			Platform::ShowWarning( _S("Object :") + pObj->GetName() + _S(" is already used") );
+	}
 }
+
 
 //-------------------------------------------------------------------
 void d3ObjectContiner::AI( d3EngineData& edata )

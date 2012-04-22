@@ -30,8 +30,6 @@ namespace T
 		a = b;
 		b = tmp;
 	}
-
-
 	
 	#include "s_system_t_typetraits.h"
 	#include "s_system_t_factory.h"

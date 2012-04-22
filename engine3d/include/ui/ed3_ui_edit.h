@@ -29,8 +29,7 @@ namespace Ed3
  */
 class uiEdit : public d2Object, private Rd3::ITextEdit
 {
-private:
-	typedef d2Object _BaseClass; 
+	_SLIB_RUNTIME( Ed3, uiEdit, d2Object )
 public:
 	/**
 	 *

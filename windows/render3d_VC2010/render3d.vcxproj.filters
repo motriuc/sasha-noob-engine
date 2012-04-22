@@ -255,6 +255,9 @@
     <ClCompile Include="..\..\render3d\cpp\rd3_msg_gesture.cpp">
       <Filter>render\Source Files\resources\msg</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\render3d\cpp\rd3_msg_gesture_detect.cpp">
+      <Filter>render\Source Files\resources\msg</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\render3d\include\rd3_utils.h">
@@ -415,6 +418,9 @@
     </ClInclude>
     <ClInclude Include="..\..\render3d\include\dx9\dx9_msg_gestureq.h">
       <Filter>renderdx9\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render3d\include\rd3_msg_gesture_detect.h">
+      <Filter>render\Header Files\resources\msg</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

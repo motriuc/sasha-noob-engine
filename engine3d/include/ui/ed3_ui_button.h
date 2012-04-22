@@ -27,13 +27,12 @@ namespace Ed3
  */
 class uiButton : public d2Object
 {
-private:
-	typedef d2Object _BaseClass;
+	_SLIB_RUNTIME( Ed3, uiButton, d2Object )
 public:
 	/**
 	 *
 	 */
-	uiButton( const sString& name );
+	uiButton( const sString& name  );
 
 	/**
 	 *

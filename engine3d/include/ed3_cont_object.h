@@ -44,8 +44,29 @@ private:
 public:
 	d3ObjectContiner( ObjectType::ObjectType type = ObjectType::E_CONTINER );
 	
+	/**
+	 * Add object
+	 */
 	void Add( d3Object* pObj );
-	
+
+	/**
+	 *
+	 */
+	d3Object* FindByName( const sString& name );
+
+	template< typename _Type >
+	_Type* FindByName( const sString& name )
+	{
+		d3Object* pObject = FindByName( name );
+		if( pObject == NULL )
+			return NULL;
+
+		if( !pObject->Is( TYPE( _Type ) ) )
+			return NULL;
+
+		return static_cast<_Type*>( pObject );
+	}
+
 	virtual ~d3ObjectContiner();
 protected:
 	virtual void Initialize( Rd3::Render& render ) throws_error;
@@ -58,8 +79,17 @@ protected:
 	virtual sBool LoadFromXMLSubnode( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error;
   
 private:
-	sVector<d3Object*>  _objVector;
+	sVector<d3Object*>			_objVector;
+	sMap<sString,d3Object*>		_objMap;
 };
+
+//-------------------------------------------------------------------
+inline d3Object* d3ObjectContiner::FindByName( const sString& name )
+{
+	d3Object* obj = NULL;
+	_objMap.Lookup( name, obj );
+	return obj;
+}
 
 }
 

@@ -11,6 +11,7 @@
 #define _use_Streams_
 #define _use_Xml_
 #define _use_sEvent_
+#define _use_sObject_
 
 #include "rd3.h"
 #include "rd3_xml_def.h"

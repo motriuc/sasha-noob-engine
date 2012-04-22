@@ -91,6 +91,7 @@
 	_SLIB_RUNTIME_CLASS_IMP( __NAMESPACE, __CLASS, __BASE_CLASS::ClassType()	) \
 	_SLIB_BASE_CLASS( __BASE_CLASS )
 
+
 #define _SLIB_RUNTIME_BASE( __NAMESPACE, __CLASS ) \
 	_SLIB_RUNTIME_CLASS_IMP( __NAMESPACE, __CLASS, NULL )
 
@@ -121,10 +122,6 @@
 		virtual const System::Types::sChar* GetClassName() const \
 		{ \
 			return _SLIB_RUNTIME_STRING( #__CLASS ); \
-		} \
-		virtual System::Obj::Object* CreateObject() \
-		{ \
-			return new __CLASS; \
 		} \
 		virtual const System::Types::sChar* GetNamespace() const \
 		{ \

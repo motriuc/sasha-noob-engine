@@ -48,12 +48,14 @@ public:
 	 *
 	 */
 	sBool Intersect( const d2Point& p ) const;
+	sBool Contains( const d2Rectangle& r ) const;
 
 	/**
 	 * Intersect functions
 	 */
 	static sBool Intersect( const d2Rectangle& b, const d2Point& p );
 	static sBool Intersect( const d2Rectangle& a, const d2Rectangle& b );
+
 
 	const d2Point& Min() const;
 	const d2Point& Max() const;

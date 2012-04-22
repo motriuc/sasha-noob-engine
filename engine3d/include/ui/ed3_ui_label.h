@@ -27,8 +27,7 @@ namespace Ed3
  */
 class uiLabel : public d2Object
 {
-private:
-	typedef d2Object _BaseClass; 
+	_SLIB_RUNTIME( Ed3, uiLabel, d2Object )
 public:
 	/**
 	 *

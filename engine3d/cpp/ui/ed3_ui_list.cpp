@@ -25,15 +25,151 @@ namespace Ed3
 
 //------------------------------------------------------------------
 uiList::uiList( const sString& name ) :
-	_BaseClass( name ),
+	_BaseClass( name, sTrue ),
 	_selectedItem( -1 ),
-	_itemSize( 1.0f )
+	_selectedId( -1 ),
+	_itemSize( 1.0f ),
+	_deltaView( 0.0f )
 {
+	_gestureDetect.Swipe.Enable();
+	_gestureDetect.Swipe.SetBBox( GetRectangle() );
+	_gestureDetect.Swipe.onSwipe = Events::Event( this, &uiList::OnSwipe );
+
+	_gestureDetect.Tap.Enable();
+	_gestureDetect.Tap.SetBBox( GetRectangle() );
+	_gestureDetect.Tap.onTap = Events::Event( this, &uiList::OnTap );
 }
 
 //------------------------------------------------------------------
 uiList::~uiList()
 {
+}
+
+//------------------------------------------------------------------
+void  uiList::OnSwipe( Rd3::EngineData&, const d3Vector& delta )
+{
+	_deltaView += delta.x;
+
+	_deltaView = FMath::Clamp(
+		_deltaView,
+		-_items.Size() * _itemSize.x,
+		0.0f
+	);
+}
+
+//------------------------------------------------------------------
+void uiList::OnAnimationEnd( const Rd3::Animation& animation, Rd3::Animation::State& state )
+{
+	animation.SetAnimationSequence( _S(""), 0, 0, state );
+}
+
+//------------------------------------------------------------------
+void uiList::UpdatePositions()
+{
+	d3Float height = _itemSize.y * 0.5f;
+	d3Float width = _itemSize.x;
+
+	d3Float x1 = _deltaView + _animationResult.GetMove().x;
+	d3Float y1 = -height;
+	d3Float x2 = x1 + width;
+	d3Float y2 = height;
+
+	for( sInt i = 0; i < _items.Size(); ++i )
+	{
+		Item& item = _items[i];
+		item._rect.SetEmpty();
+		item._rect.Add( d2Point( x1, y1 ) );
+		item._rect.Add( d2Point( x2, y2 ) );
+
+		x1 += width;
+		x2 += width;
+	}
+}
+
+//------------------------------------------------------------------
+void uiList::AnimateSelection()
+{
+	if( _selectedItem != -1 )
+	{
+		Item& item = _items[_selectedItem];
+
+		d3Float delta = -_itemSize.x * 0.5f - item._rect.Min().x ;
+		_deltaView += delta;
+		UpdatePositions();
+
+		_animation().RemoveFrames( 1, 30 );
+		_animation().Move( 1, d3Point( -delta, 0.0f, 0.0f ) );
+		_animation().Move( 30, d3Point( 0.0f, 0.0f, 0.0f ) );
+		_animation().SetAnimationSequence( _S(""), 1, 30, _animationState );
+		_animationState.onAnimationEnd = Events::Event( this, &uiList::OnAnimationEnd );
+	}
+}
+
+//------------------------------------------------------------------
+void uiList::SelectItem( sInt id )
+{
+	if( _selectedId == id )
+		return;
+
+	for( sInt i = 0; i < _items.Size(); ++i )
+	{
+		if( _items[i]._id == id )
+		{
+			SelectItemInternal( i );
+			AnimateSelection();
+			break;
+		}
+	}
+}
+
+//------------------------------------------------------------------
+void uiList::SelectItemInternal( sInt id )
+{
+	if( id >= 0 && id < _items.Size() && id != _selectedItem )
+	{
+		_items[_selectedItem].SetAnimation( _S("default") );
+		_selectedItem = id;
+		_selectedId = _items[_selectedItem]._id;
+
+		_items[_selectedItem].SetAnimation( _S("selected") );
+	}
+}
+
+//------------------------------------------------------------------
+void uiList::OnTap( Rd3::EngineData& edata, const d3Point& point )
+{
+	for( sInt i = 0; i < _items.Size(); ++i )
+	{
+		const Item& item = _items[i];
+
+		if( item._rect.Intersect( d2Point( point.x, point.y ) ) )
+		{
+			SelectItemInternal( i );
+
+			if( GetUIQueue() )
+			{
+				UiMessage msg( UiMessage::eList, UiMessage::eSelectionChanged, this );
+				GetUIQueue()->SendMessage( edata, msg );
+			}
+
+			break;
+		}
+	}
+}
+
+//------------------------------------------------------------------
+void uiList::OnGestureEvent( Rd3::EngineData& edata, const Rd3::GestureEvent& e )
+{
+	_gestureDetect.Process( edata, e );
+}
+
+//------------------------------------------------------------------
+void uiList::Initialize( Rd3::Render& render ) throws_error
+{
+	_BaseClass::Initialize( render );
+	_animation.ResourceCreate( render.CreateAnimation( _S("") ) );
+	_animation().Move( 0, d3Point( 0.0f, 0.0f, 0.0f ) );
+	_animation().SetAnimationSequence( _S(""), 0, 0, _animationState );
 }
 
 //------------------------------------------------------------------
@@ -93,51 +229,20 @@ sBool uiList::LoadFromXMLSubnode( const Xml::BaseDomNode& element, LoadDataParam
 //------------------------------------------------------------------
 void uiList::Render2D( const d3RenderData& renderData )
 {
-	d3Float height = _itemSize.y;
-	d3Float width = _itemSize.x;
-
-	Item& item = _items[_selectedItem];
-
-	RenderTexture( 
-		d2Point( -width, -height ),
-		d2Point( width, height ),
-		_texture,
-		item._animationResult.GetTx1(),
-		item._animationResult.GetTx2()
-	);
-
-	d3Float x1 = width;
-	d3Float y1 = -height;
-	d3Float x2 = 3.0f * width;
-	d3Float y2 = height;
-
-	for( sInt i = _selectedItem + 1; i < _items.Size(); ++i )
+	for( sInt i = 0; i < _items.Size(); ++i )
 	{
-		if( x1 > 1.0f )
-			break;
-
 		Item& item = _items[i];
-
-		RenderTexture( 
-			d2Point( x1, y1 ),
-			d2Point( x2, y2 ),
-			_texture,
-			item._animationResult.GetTx1(),
-			item._animationResult.GetTx2()
-		);
-
-		x1 += 2.0f * width;
-		x2 += 2.0f * width;
-	}
-
-	x1 = -3.0f * width;
-	y1 = -height;
-	x2 = -width;
-	y2 = height;
-
-	for( sInt i = _selectedItem - 1; i >= 0; --i )
-	{
-
+	
+		if( GetRectangle().Contains( item._rect ) )
+		{
+			RenderTexture( 
+				item._rect.Min(),
+				item._rect.Max(),
+				_texture,
+				item._animationResult.GetTx1(),
+				item._animationResult.GetTx2()
+			);
+		}
 	}
 }
 
@@ -149,6 +254,10 @@ void uiList::AI( d3EngineData& edata )
 		Item& item = _items[i];
 		item._animation().Animate( edata.GetTime() ,item._animationState, item._animationResult );
 	}
+
+	_animation().Animate( edata.GetTime(), _animationState, _animationResult );
+
+	UpdatePositions();
 }
 
 //------------------------------------------------------------------

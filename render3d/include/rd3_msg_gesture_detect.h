@@ -36,11 +36,16 @@ class GestureDetect_Base
 {
 public:	
 	void Enable()									{ _bEnabled = sTrue; }
+	void SetBBox( const d3AABBox& box )				{ _bbox = box; }
+	void SetBBox( const d2Rectangle& rc );
 protected:
-	GestureDetect_Base()							: _bEnabled( sFalse )	{}
+	GestureDetect_Base()							: _bEnabled( sFalse ), _bbox( d3AABBox::GetEmpty() ) {}
 	sBool IsEnabled() const							{ return _bEnabled; }
+
+	const d3AABBox& GetBBox() const					{ return _bbox; }
 private:
-	sBool	_bEnabled;	
+	sBool				_bEnabled;
+	d3AABBox			_bbox;
 	friend class GestureDetect;
 };
 	
@@ -70,7 +75,7 @@ public:
 	GestureDetect_Swipe();
 	Events::sEvent2<EngineData&, const d3Vector& /*delta*/>  onSwipe;	
 private:
-		
+	sBool	_bSwipe;	
 	void Process( EngineData& edata, const GestureEvent& gestureEvent, const GestureEvent& prevGestureEvent );	
 	friend class GestureDetect;	
 };
