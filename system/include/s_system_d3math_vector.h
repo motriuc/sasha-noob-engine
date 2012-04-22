@@ -174,6 +174,11 @@ public:
 	 * return x*x + y*y + z*z
 	 */
 	d3Float Magnitude2() const;
+	
+	/**
+	 * returns true if vector is close to 0
+	 */
+	sBool IsCloseToZero() const;
 
 	/**
 	 * 

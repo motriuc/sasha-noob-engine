@@ -88,6 +88,13 @@ namespace Limit
 		const Types::sFloat Min			= -3.402823466e+38F;
 		const Types::sFloat Precision	= 1.0e-5f;
 	}
+	
+	namespace sDouble 
+	{
+		const Types::sDouble Max		= 1.7976931348623157E+308;
+		const Types::sDouble Min		= -1.7976931348623157E+308;
+		const Types::sDouble Precision	= 1.0e-14;
+	}
 
 #ifdef _use_d3Math_
 	namespace d3Float

@@ -7,6 +7,7 @@
 //
 #define _use_sError_
 #define _use_d3Math_
+#define _use_d2Math_
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -30,6 +31,8 @@ using namespace System::Types;
 #include "sne_app.h"
 
 using namespace Rd3;
+
+#define DEBUG_GESTURE
 
 
 //---------------------------------------------------------------------------
@@ -180,6 +183,8 @@ using namespace Rd3;
 //---------------------------------------------------------------------------
 void ConvertoToGestureEvent( GestureEvent& ev, NSSet* touches, UIView* view )
 {
+	sDouble time = System::Platform::GetTickD();
+	
 	CGRect rc = view.bounds;
 	
 	for( UITouch* touch in touches )
@@ -192,9 +197,16 @@ void ConvertoToGestureEvent( GestureEvent& ev, NSSet* touches, UIView* view )
 		point.x = 2.0f * point.x - 1.0f;
 		point.y = 1.0f - 2.0f * point.y;
 		
-		GestureTap tap( d3Vector( point.x, point.y, 0.0f ) );
+		GestureTap tap( d3Vector( point.x, point.y, 0.0f ), time );
+		
+#ifdef DEBUG_GESTURE
+		printf( "(%f,%f, %d) ", point.x, point.y, touch.tapCount );
+#endif		
 		ev.Add( tap );
     }
+#ifdef DEBUG_GESTURE
+	printf( "\n" );	
+#endif	
 }
 
 //---------------------------------------------------------------------------
@@ -202,6 +214,9 @@ void ConvertoToGestureEvent( GestureEvent& ev, NSSet* touches, UIView* view )
 {	
 	if( render )
 	{
+#ifdef DEBUG_GESTURE
+		printf("begin - ");
+#endif
 		GestureEvent ev( GestureEvent::E_Begin );
 		ConvertoToGestureEvent( ev, [event allTouches], self.view );
 		render->Send( ev );
@@ -213,6 +228,9 @@ void ConvertoToGestureEvent( GestureEvent& ev, NSSet* touches, UIView* view )
 {
 	if( render )
 	{
+#ifdef DEBUG_GESTURE
+		printf("end   - ");
+#endif
 		GestureEvent ev( GestureEvent::E_End );
 		ConvertoToGestureEvent( ev, [event allTouches], self.view );
 		render->Send( ev );
@@ -224,6 +242,10 @@ void ConvertoToGestureEvent( GestureEvent& ev, NSSet* touches, UIView* view )
 {
 	if( render )
 	{
+#ifdef DEBUG_GESTURE
+		printf("move  - ");
+#endif
+		
 		GestureEvent ev( GestureEvent::E_Move );
 		ConvertoToGestureEvent( ev, [event allTouches], self.view );
 		render->Send( ev );

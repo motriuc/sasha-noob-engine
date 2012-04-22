@@ -279,6 +279,13 @@ inline void d3Vector::Negate( d3Vector* r, sInt count )
 		Negate( r[i] );
 }
 
+inline sBool d3Vector::IsCloseToZero() const
+{
+	return 
+		FMath::CloseToZero( x ) &&
+		FMath::CloseToZero( y ) &&
+		FMath::CloseToZero( z );
+}
 
 inline d3Vector d3Vector::operator - () const
 {

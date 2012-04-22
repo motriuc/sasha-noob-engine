@@ -18,7 +18,7 @@
 #define _ED3_OBJ_CAM_GEST_INC_
 
 #include "ed3_object.h"
-#include "rd3_msg_gesture.h"
+#include "rd3_msg_gesture_detect.h"
 
 namespace Ed3
 {

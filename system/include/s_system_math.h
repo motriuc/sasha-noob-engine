@@ -51,6 +51,14 @@ sDouble Min( sDouble a, sDouble b );
 	
 sInt Min( sInt a, sInt b, sInt c );
 
+/**
+ * AbsMax
+ */
+sFloat AbsMax( sFloat a, sFloat b );
+	
+/**
+ * Clamp 
+ */
 sInt Clamp( sInt v, sInt min, sInt max );
 sFloat Clamp( sFloat v, sFloat min, sFloat max );
 sDouble Clamp( sDouble v, sDouble min, sDouble max );
@@ -195,6 +203,7 @@ sInt UpperPowOf2Number( sInt v );
  * returs true if a is close to 0.0
  */
 bool CloseToZero( const sFloat& a );
+bool CloseToZero( const sDouble& a );
 
 /**
  * Random

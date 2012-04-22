@@ -27,13 +27,12 @@ namespace Ed3
 	
 //-----------------------------------------------------------------------	
 d3CameraGestureObject::d3CameraGestureObject() :
-	_move( 0.0f ),
-	_gestureDetect( Rd3::GestureDetect::eTap | Rd3::GestureDetect::eSwipe )
+	_move( 0.0f )
 {
 	RemoveState( OBS_VISIBLE );
 
-	_gestureDetect.onTap = Events::Event( this, &d3CameraGestureObject::OnGestureTap );
-	_gestureDetect.onSwipe = Events::Event( this, &d3CameraGestureObject::OnGestureSwipe ); 
+	_gestureDetect.Swipe.Enable();
+	_gestureDetect.Swipe.onSwipe = Events::Event( this, &d3CameraGestureObject::OnGestureSwipe ); 
 
 }
 

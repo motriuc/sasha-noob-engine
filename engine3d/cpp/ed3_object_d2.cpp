@@ -127,7 +127,7 @@ void d2Object::internal_OnGestureEvent( Rd3::EngineData& edata, const Rd3::Gestu
 		d3Vector intPoint;
 		if( _d2Plane.Intersect( ray.GetLine(), intPoint ) )
 		{
-			d2Event.Add( GestureTap( intPoint ) );
+			d2Event.Add( GestureTap( intPoint, tap.Time() ) );
 		}
 	}
 

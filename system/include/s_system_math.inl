@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : s_system_math.inl
-//	Created                 : 25 6 2007   0:15
-//	File path               : C:\Sasha\C++\SLibF\system\Include
-//	Author                  : Alexandru Motriuc
-//  Platform Independentsy  : 0%
-//	Library                 : 
+//  Created                 : 25 6 2007   0:15
+//  File path               : SLibF\system\Include
+//  Author                  : Alexandru Motriuc
+//  Platform Independent    : 0%
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -31,6 +31,13 @@ inline sInt Min( sInt a, sInt b, sInt c )
 {
 	a = a < b ? a : b;
 	return a < c ? a : c; 
+}
+
+inline sFloat AbsMax( sFloat a, sFloat b )
+{
+	if( Abs( a ) > Abs( b ) )
+		return a;
+	return b;
 }
 
 inline sInt Clamp( sInt v, sInt min, sInt max )
@@ -128,6 +135,11 @@ inline sFloat Abs( sFloat a )
 	return fabsf( a );
 }
 
+inline sDouble Abs( sDouble v )
+{
+	return fabs( v );
+}
+
 inline sFloat Tan( sFloat a )
 {
 	return tanf( a );
@@ -203,6 +215,11 @@ inline sBool IsPowOf2( sInt v )
 inline bool CloseToZero( const sFloat& a )
 {
 	return Abs( a ) <= Limit::sFloat::Precision;
+}
+
+inline bool CloseToZero( const sDouble& a )
+{
+	return Abs( a ) <= Limit::sDouble::Precision;
 }
 
 //------------------------------------------------------------------------------------
