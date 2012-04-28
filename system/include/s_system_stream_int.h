@@ -102,13 +102,14 @@ class IIOStream : public IInputStream, public IOutputStream
 class ITextWriter
 {
 public:
-	virtual sBool Print( sInt i ) = 0;
-	virtual sBool Print( sUInt i ) = 0;
-	virtual sBool Print( sChar ch ) = 0;
-	virtual sBool Print( sFloat f ) = 0;
-	virtual sBool Print( sDouble d ) = 0;
-	virtual sBool Print( const sString& str ) = 0;
-	virtual sBool PrintNl() = 0;
+	virtual void Print( sInt i ) = 0;
+	virtual void Print( sUInt i ) = 0;
+	virtual void Print( sChar ch ) = 0;
+	virtual void Print( sFloat f ) = 0;
+	virtual void Print( sDouble d ) = 0;
+	virtual void Print( const sString& str ) = 0;
+	virtual void PrintNl() = 0;
+	virtual void Flush() = 0;
 };
 
 /**

@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "system", "system.vcxproj", "{66ACF11D-0CD8-412D-8FDC-86A91AC2C074}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "system_test_VC2010", "..\system_test_VC2010\system_test_VC2010.vcxproj", "{DAD3C973-35F7-49D2-A979-FBAF6E342DEF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -13,6 +15,10 @@ Global
 		{66ACF11D-0CD8-412D-8FDC-86A91AC2C074}.Debug|Win32.Build.0 = Debug|Win32
 		{66ACF11D-0CD8-412D-8FDC-86A91AC2C074}.Release|Win32.ActiveCfg = Release|Win32
 		{66ACF11D-0CD8-412D-8FDC-86A91AC2C074}.Release|Win32.Build.0 = Release|Win32
+		{DAD3C973-35F7-49D2-A979-FBAF6E342DEF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DAD3C973-35F7-49D2-A979-FBAF6E342DEF}.Debug|Win32.Build.0 = Debug|Win32
+		{DAD3C973-35F7-49D2-A979-FBAF6E342DEF}.Release|Win32.ActiveCfg = Release|Win32
+		{DAD3C973-35F7-49D2-A979-FBAF6E342DEF}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

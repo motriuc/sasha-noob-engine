@@ -116,6 +116,7 @@
     <ClCompile Include="..\..\system\cpp\s_system.cpp" />
     <ClCompile Include="..\..\system\cpp\s_system_appenv.cpp" />
     <ClCompile Include="..\..\system\cpp\s_system_chars_b.cpp" />
+    <ClCompile Include="..\..\system\cpp\s_system_chars_uft8.cpp" />
     <ClCompile Include="..\..\system\cpp\s_system_chars_w.cpp" />
     <ClCompile Include="..\..\system\cpp\s_system_d3math_aabb.cpp" />
     <ClCompile Include="..\..\system\cpp\s_system_d3math_camera.cpp" />
@@ -131,6 +132,7 @@
     <ClCompile Include="..\..\system\cpp\s_system_stream_archive.cpp" />
     <ClCompile Include="..\..\system\cpp\s_system_stream_archive_provider_res.cpp" />
     <ClCompile Include="..\..\system\cpp\s_system_stream_rstr.cpp" />
+    <ClCompile Include="..\..\system\cpp\s_system_stream_wstr.cpp" />
     <ClCompile Include="..\..\system\cpp\s_system_xml.cpp" />
     <ClCompile Include="..\..\system\external\expat\xmlparse.c" />
     <ClCompile Include="..\..\system\external\expat\xmlrole.c" />
@@ -230,6 +232,7 @@
     <ClInclude Include="..\..\system\include\s_system_stream_int.h" />
     <ClInclude Include="..\..\system\include\s_system_stream_mac.h" />
     <ClInclude Include="..\..\system\include\s_system_stream_rstr.h" />
+    <ClInclude Include="..\..\system\include\s_system_stream_wstr.h" />
     <ClInclude Include="..\..\system\include\s_system_string.h" />
     <ClInclude Include="..\..\system\include\s_system_t.h" />
     <ClInclude Include="..\..\system\include\s_system_types.h" />

@@ -51,42 +51,5 @@ sInt WChar::FindReverse( const SWCHAR* pChars, const SWCHAR* chSet, sUInt from )
 	return -1;
 }
 
-//------------------------------------------------------------------
-const SBYTE* WChar::ConvertFrom_UTF8( SWCHAR* pChars, sInt charBufferCount, const SBYTE* pBuffer, sInt bufferLength, sInt& charAdded )
-{
-	sInt origCharBufferCount = charBufferCount;
-
-	while( charBufferCount > 0 && bufferLength > 0 ) 
-	{
-		SBYTE v = *pBuffer;
-
-		if( v <= 0x7f )
-		{
-			*pChars = v;
-
-			++pBuffer;
-			++pChars;
-			--charBufferCount;
-			--bufferLength;
-		}
-		else
-		{
-			*pChars = L'?'; // To do
-			++pChars;
-			pBuffer += 2;
-			--charBufferCount;
-			bufferLength -=2;
-		}
-	}
-
-	charAdded = origCharBufferCount - charBufferCount;
-
-	if( bufferLength <= 0 )
-		return NULL;
-
-	return pBuffer;
-}
-
-
 }
 }

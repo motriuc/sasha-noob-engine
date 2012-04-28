@@ -90,6 +90,13 @@ public:
 	static void FromInt( SBCHAR* pChars, sInt uInt );
 
 	/**
+	 * Convert int to char, the string must be big enough
+	 * @param pChars [out] result string
+	 * @param uInt [In] number to convert
+	 */
+	static void FromUInt( SBCHAR* pChars, sUInt uInt );
+
+	/**
 	 * Convert double to char, the string must be big enough
 	 * @param pChars [out] result string
 	 * @param number [In] number to convert
@@ -230,18 +237,27 @@ public:
 	 * @param srcLen [in]
 	 */
 	static sInt Convert( SWCHAR* pDestination, sInt destLen, const SBCHAR* pSource, sInt srcLen );
+	
+	/**
+	 * Converts a byte UTF8 stream to a char
+	 *
+	 * @param bytes [in] bytes
+	 * @param length [in] buffer length
+	 * @param bytesReaded [out] return 0 if input is invalid return < 0 when more data are needed
+	 * @return char 
+	 */
+	static SBCHAR From_UTF8( const SBYTE* bytes, sInt length, sInt& bytesReaded );
 
 	/**
-	 * Convert from UTF8 bytes to chars
+	 * convert char to UTF8 bytes
 	 *
-	 * @param pChars [out] the converted chars
-	 * @param charBufferCount [in] the char buffer count
-	 * @param pBuffer [in] 
-	 * @param bufferLength [in]
-	 * @param charAdded [out]
+	 * @param ch [in] char to convert
+	 * @param bytes [in] buffer to convert
+	 * @param length [in] buffer length
+	 * @return bytes written if > length 0 bytes were written, 0 means invalid input stream
 	 */
-	static const SBYTE* ConvertFrom_UTF8( SBCHAR* pChars, sInt charBufferCount, const SBYTE* pBuffer, sInt bufferLength, sInt& charAdded );
-	
+	static sInt To_UTF8( SBCHAR ch, SBYTE* bytes, sInt length );
+
 #ifdef _SPL_MAC
 	/**
 	 * Converts a string to CFStringRef

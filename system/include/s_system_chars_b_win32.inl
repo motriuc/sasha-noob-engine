@@ -60,6 +60,11 @@ inline void BChar::FromInt( SBCHAR* pChars, sInt uInt )
 	itoa( uInt, pChars, 10 );
 }
 
+inline void BChar::FromUInt( SBCHAR* pChars, sUInt uInt )
+{
+	ultoa( uInt, pChars, 10 );
+}
+
 inline void BChar::FromDouble( SBCHAR* pChars, sDouble number )
 {
 	_gcvt( number, 12, pChars );

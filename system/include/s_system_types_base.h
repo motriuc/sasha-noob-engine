@@ -140,6 +140,20 @@ namespace Encoding
 
 		_PLATFORM COUNT
 	};
+
+	inline sInt MaxCharSize( Encoding encoding )
+	{
+		__S_ASSERT( encoding >= 0 );
+		__S_ASSERT( encoding < COUNT );
+
+		static sInt size[COUNT] = 
+		{
+			4,		// UTF_8
+			4		// UTF_16
+		};
+
+		return size[encoding];
+	}
 }
 
 #endif // _S_SYSTEM_BASETYPES_INC_

@@ -226,15 +226,24 @@ public:
 	static sInt Convert( SBCHAR* pDestination, sInt destLen, const SWCHAR* pSource, sInt srcLen );
 	
 	/**
-	 * Convert from UTF8 bytes to chars
+	 * Converts a byte UTF8 stream to a char
 	 *
-	 * @param pChars [out] the converted chars
-	 * @param charBufferCount [in] the char buffer count
-	 * @param pBuffer [in] 
-	 * @param bufferLength [in]
-	 * @param charAdded [out]
+	 * @param bytes [in] bytes
+	 * @param length [in] buffer length
+	 * @param bytesReaded [out] return 0 if input is invalid return < 0 when more data are needed
+	 * @return char 
 	 */
-	static const SBYTE* ConvertFrom_UTF8( SWCHAR* pChars, sInt charBufferCount, const SBYTE* pBuffer, sInt bufferLength, sInt& charAdded );
+	static SWCHAR From_UTF8( const SBYTE* bytes, sInt length, sInt& bytesReaded );
+
+	/**
+	 * convert char to UTF8 bytes
+	 *
+	 * @param ch [in] char to convert
+	 * @param bytes [in] buffer to convert
+	 * @param length [in] buffer length
+	 * @return bytes written if > length 0 bytes were written, 0 means invalid input stream
+	 */
+	static sInt To_UTF8( SWCHAR ch, SBYTE* bytes, sInt length );
 };
 
 ///////////////////////////////////////////////////////////////////

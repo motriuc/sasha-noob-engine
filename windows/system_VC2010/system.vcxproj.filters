@@ -58,6 +58,12 @@
     <Filter Include="system\Header Files\t">
       <UniqueIdentifier>{c1fd53f1-fdfc-4b3c-a7c1-be867e389f12}</UniqueIdentifier>
     </Filter>
+    <Filter Include="system\Source Files\chars">
+      <UniqueIdentifier>{ffc8378d-0ed9-4bf5-b27d-6cd029b00c7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="system\Source Files\streams">
+      <UniqueIdentifier>{62fa0b4b-bc1d-42ea-a44d-f6f11432822b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -162,12 +168,6 @@
     <ClCompile Include="..\..\system\cpp\s_system.cpp">
       <Filter>system\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\system\cpp\s_system_chars_b.cpp">
-      <Filter>system\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\system\cpp\s_system_chars_w.cpp">
-      <Filter>system\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\system\cpp\s_system_d3math_aabb.cpp">
       <Filter>system\Source Files</Filter>
     </ClCompile>
@@ -190,15 +190,6 @@
       <Filter>system\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\system\cpp\s_system_mem.cpp">
-      <Filter>system\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\system\cpp\s_system_stream_archive.cpp">
-      <Filter>system\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\system\cpp\s_system_stream_archive_provider_res.cpp">
-      <Filter>system\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\system\cpp\s_system_stream_rstr.cpp">
       <Filter>system\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\system\cpp\s_system_xml.cpp">
@@ -230,6 +221,27 @@
     </ClCompile>
     <ClCompile Include="..\..\system\cpp\s_system_debug.cpp">
       <Filter>system\Source Files\debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\cpp\s_system_chars_b.cpp">
+      <Filter>system\Source Files\chars</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\cpp\s_system_chars_w.cpp">
+      <Filter>system\Source Files\chars</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\cpp\s_system_chars_uft8.cpp">
+      <Filter>system\Source Files\chars</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\cpp\s_system_stream_archive.cpp">
+      <Filter>system\Source Files\streams</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\cpp\s_system_stream_wstr.cpp">
+      <Filter>system\Source Files\streams</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\cpp\s_system_stream_archive_provider_res.cpp">
+      <Filter>system\Source Files\streams</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\cpp\s_system_stream_rstr.cpp">
+      <Filter>system\Source Files\streams</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -532,6 +544,9 @@
     </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_t_factory.h">
       <Filter>system\Header Files\t</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_stream_wstr.h">
+      <Filter>system\Header Files\stream</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -38,15 +38,19 @@ private:
 	const IInputStream*		_stream;
 	Encoding::Encoding		_encoding;
 
-	sChar*					_pReadBuffer;
-	SBYTE*					_pTmpBuffer;
+	SBYTE*					_bytesBuffer;
+
+	sChar*					_charsBuffer;
+
 	sInt					_bufferSize;
 
-	sInt                    _iPosBuffer;
-	sInt                    _iToReadFromBuffer;
+	sInt                    _charsBufferPos;
+	sInt                    _charsBufferCount;
 
+	sInt					_bytesBufferOffset;
 private:
 	void FillBuffer( sChar* pBuffer );
+	void Utf8Decode( sInt countBytes );
 	sBool CheckReadBuffer();
 };
 
@@ -55,9 +59,9 @@ private:
 /************************************************************************/
 inline sBool TextReader::CheckReadBuffer()
 {
-	if( _iToReadFromBuffer > 0 )
+	if( _charsBufferCount > 0 )
 		return sTrue;
 
-	FillBuffer( _pReadBuffer );
-	return _iToReadFromBuffer > 0;
+	FillBuffer( _charsBuffer );
+	return _charsBufferCount > 0;
 }

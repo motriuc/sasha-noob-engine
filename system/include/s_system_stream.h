@@ -32,4 +32,5 @@ namespace Streams
 	#include "s_system_stream_archive_provider_res.h"
 	#include "s_system_stream_mac.h"
 	#include "s_system_stream_rstr.h"
+	#include "s_system_stream_wstr.h"
 }
