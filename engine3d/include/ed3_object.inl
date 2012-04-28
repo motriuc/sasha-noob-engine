@@ -106,7 +106,7 @@ inline void d3Object::DoAI( d3EngineData& edata )
 //-------------------------------------------------------------------
 inline void d3Object::DoInitialize( Rd3::Render& render ) throws_error
 {
-	__S_ASSERT( _objectActionState == OBAS_IDLE );
+	__S_ASSERT( _objectActionState == OBAS_CREATED || _objectActionState == OBAS_LOADED );
 	SetActionState( OBAS_INIT );
 	
 	Initialize( render );
@@ -150,13 +150,19 @@ inline void d3Object::DoLoadFromXML(
     LoadDataParams& loadParams
   )
 {
-	__S_ASSERT( _objectActionState == OBAS_IDLE );
+	__S_ASSERT( _objectActionState == OBAS_CREATED );
 	SetActionState( OBAS_LOADING );
 	
 	LoadFromXML( element, loadParams );
 
 	__S_ASSERT( _objectActionState == OBAS_LOADING );
-	SetActionState( OBAS_IDLE );
+	SetActionState( OBAS_LOADED );
+}
+
+//-------------------------------------------------------------------
+inline sBool d3Object::IsActive() const
+{
+	return _objectActionState == OBAS_RENDER || _objectActionState == OBAS_AI || _objectActionState == OBAS_IDLE;
 }
 
 //-------------------------------------------------------------------

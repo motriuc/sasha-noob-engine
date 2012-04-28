@@ -41,7 +41,7 @@ public:
 	/**
 	 *
 	 */
-	void SelectItem( sInt id );
+	void SelectItem( sInt id )									{ _tmpSelectedId = id; }
 
 	/**
 	 *
@@ -96,12 +96,15 @@ private:
 	 * Select item
 	 */
 	void SelectItemInternal( sInt id );
+	void UpdateSelectItem();
+
 	void AnimateSelection();
 	void OnAnimationEnd( const Rd3::Animation& animation, Rd3::Animation::State& state );
 private:
 	sVector<Item>					_items;
 	sInt							_selectedItem;
 	sInt							_selectedId;
+	sInt							_tmpSelectedId;
 	d2Vector						_itemSize;
 	d3Float							_deltaView;
 

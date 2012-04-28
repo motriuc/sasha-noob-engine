@@ -49,6 +49,15 @@ public:
 	class Result
 	{
 	public:
+		Result() :
+			_move( 0.0f ),
+			_rotate( 0.0f ),
+			_scale( 1.0f ),
+			_tx1( 0.0f ),
+			_tx2( 0.0f )
+		{
+		}
+
 		/**
 		 * Get object animation transformation
 		 */

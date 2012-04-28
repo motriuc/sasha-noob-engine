@@ -25,6 +25,7 @@ namespace CharsTrait
 using namespace Types;
 
 const SBCHAR* BChar::NewLine = "\r\n";
+const sInt BChar::NewLine_CharCount = 2;
 
 //------------------------------------------------------------------
 sInt BChar::FindReverse( const SBCHAR* pChars, const SBCHAR* chSet, sUInt from )

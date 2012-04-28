@@ -49,7 +49,7 @@ d3Object::d3Object( ObjectType::ObjectType type, const sString& name ) :
 #endif
 	
 	_objectState( OBS_VISIBLE ),
-	_objectActionState( OBAS_IDLE ),
+	_objectActionState( OBAS_CREATED ),
 	_transformationMatrix( 1.0f ),
 	_parent( NULL ),
 	_boundingBox( d3AABBox::GetEmpty() ),

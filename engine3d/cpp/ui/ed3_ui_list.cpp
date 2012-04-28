@@ -28,6 +28,7 @@ uiList::uiList( const sString& name ) :
 	_BaseClass( name, sTrue ),
 	_selectedItem( -1 ),
 	_selectedId( -1 ),
+	_tmpSelectedId( -1 ),
 	_itemSize( 1.0f ),
 	_deltaView( 0.0f )
 {
@@ -106,14 +107,14 @@ void uiList::AnimateSelection()
 }
 
 //------------------------------------------------------------------
-void uiList::SelectItem( sInt id )
+void uiList::UpdateSelectItem( )
 {
-	if( _selectedId == id )
+	if( _selectedId == _tmpSelectedId )
 		return;
 
 	for( sInt i = 0; i < _items.Size(); ++i )
 	{
-		if( _items[i]._id == id )
+		if( _items[i]._id == _tmpSelectedId )
 		{
 			SelectItemInternal( i );
 			AnimateSelection();
@@ -125,11 +126,14 @@ void uiList::SelectItem( sInt id )
 //------------------------------------------------------------------
 void uiList::SelectItemInternal( sInt id )
 {
-	if( id >= 0 && id < _items.Size() && id != _selectedItem )
+	if( id != _selectedItem && id >= 0 && id < _items.Size() )
 	{
-		_items[_selectedItem].SetAnimation( _S("default") );
+		if( _selectedItem >= 0 )
+			_items[_selectedItem].SetAnimation( _S("default") );
+
 		_selectedItem = id;
 		_selectedId = _items[_selectedItem]._id;
+		_tmpSelectedId = _selectedId;
 
 		_items[_selectedItem].SetAnimation( _S("selected") );
 	}
@@ -170,6 +174,9 @@ void uiList::Initialize( Rd3::Render& render ) throws_error
 	_animation.ResourceCreate( render.CreateAnimation( _S("") ) );
 	_animation().Move( 0, d3Point( 0.0f, 0.0f, 0.0f ) );
 	_animation().SetAnimationSequence( _S(""), 0, 0, _animationState );
+
+	_deltaView = -_items.Size() * _itemSize.x / 2.0f;
+	UpdatePositions();
 }
 
 //------------------------------------------------------------------
@@ -193,10 +200,7 @@ void uiList::LoadFromXML_Items( const Xml::BaseDomNode& element, LoadDataParams&
 
 	if( _items.Size() > 0 )
 	{
-		_selectedItem = 0;
-		_items[0].SetAnimation( _S("selected") );
-
-		for( sInt i = 1; i < _items.Size(); ++i )
+		for( sInt i = 0; i < _items.Size(); ++i )
 			_items[i].SetAnimation( _S("default") );
 	}
 }
@@ -249,6 +253,8 @@ void uiList::Render2D( const d3RenderData& renderData )
 //------------------------------------------------------------------
 void uiList::AI( d3EngineData& edata )
 {
+	UpdateSelectItem();
+
 	for( sInt i = 0; i < _items.Size(); ++i )
 	{
 		Item& item = _items[i];

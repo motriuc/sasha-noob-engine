@@ -29,6 +29,7 @@ public:
 	 *	New line string
 	 */
 	static const SBCHAR* NewLine;
+	static const sInt NewLine_CharCount;
 	
 	/**
 	 * Length of string

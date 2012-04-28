@@ -220,6 +220,8 @@ protected:
 	virtual void LoadFromXML( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error;
 	virtual sBool LoadFromXMLSubnode( const Xml::BaseDomNode& element, LoadDataParams& loadParams ) throws_error;
 
+	sBool IsActive() const;
+
 #ifdef ED3_ENGINE_USE_LUA
 	virtual void InitLuaFunctions();
 #endif
@@ -227,13 +229,15 @@ protected:
 private:
 	enum ObjectActionState
 	{
-		OBAS_INIT       = 0,
+		OBAS_CREATED	= 0,
 		OBAS_LOADING    = 1,
-		OBAS_SAVING     = 2,
-		OBAS_IDLE       = 3,
-		OBAS_RENDER     = 4,
-		OBAS_AI         = 5,
-		OBAS_FREE		= 6
+		OBAS_LOADED		= 2,
+		OBAS_INIT       = 3,
+		OBAS_SAVING     = 4,
+		OBAS_IDLE       = 5,
+		OBAS_RENDER     = 6,
+		OBAS_AI         = 7,
+		OBAS_FREE		= 8
 	};
 	
 	ObjectActionState				_objectActionState;	

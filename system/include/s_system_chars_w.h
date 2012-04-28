@@ -29,6 +29,7 @@ public:
 	 *	New line string
 	 */
 	static const SWCHAR* NewLine;
+	static const sInt NewLine_CharCount;
 
 	/**
 	 * Length of string

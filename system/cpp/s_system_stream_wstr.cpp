@@ -100,6 +100,12 @@ void TextWriter::Print( const sString& str )
 }
 
 //-----------------------------------------------------------------
+void TextWriter::PrintNl()
+{
+	Print( Chars::NewLine, Chars::NewLine_CharCount );
+}
+
+//-----------------------------------------------------------------
 void TextWriter::Print( sInt i )
 {
 	sChar tmp[12];
