@@ -64,6 +64,9 @@
     <Filter Include="system\Source Files\streams">
       <UniqueIdentifier>{62fa0b4b-bc1d-42ea-a44d-f6f11432822b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="system\Header Files\types">
+      <UniqueIdentifier>{c77aca52-28e1-4b50-92e5-962768ab4ff8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -136,9 +139,6 @@
     <None Include="..\..\system\include\s_system_rgbcolor.inl">
       <Filter>system\Header Files\to sort</Filter>
     </None>
-    <None Include="..\..\system\include\s_system_string.inl">
-      <Filter>system\Header Files\to sort</Filter>
-    </None>
     <None Include="..\..\system\include\s_system_d2math_rect.inl">
       <Filter>system\Header Files\math\d2math</Filter>
     </None>
@@ -162,6 +162,12 @@
     </None>
     <None Include="..\..\system\include\s_system_mt_thread_win32.inl">
       <Filter>system\Header Files\mt</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_string.inl">
+      <Filter>system\Header Files\types</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_string_format.inl">
+      <Filter>system\Header Files\types</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -242,6 +248,9 @@
     </ClCompile>
     <ClCompile Include="..\..\system\cpp\s_system_stream_rstr.cpp">
       <Filter>system\Source Files\streams</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\cpp\s_system_string_format.cpp">
+      <Filter>system\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -449,9 +458,6 @@
     <ClInclude Include="..\..\system\include\s_system_global.h">
       <Filter>system\Header Files\to sort</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_limit.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_macro.h">
       <Filter>system\Header Files\to sort</Filter>
     </ClInclude>
@@ -468,21 +474,6 @@
       <Filter>system\Header Files\to sort</Filter>
     </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_rgbcolor.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_string.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_types.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_types_base.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_types_d2math.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_types_d3math.h">
       <Filter>system\Header Files\to sort</Filter>
     </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_xml.h">
@@ -547,6 +538,30 @@
     </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_stream_wstr.h">
       <Filter>system\Header Files\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_string.h">
+      <Filter>system\Header Files\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_string_format.h">
+      <Filter>system\Header Files\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_formaters.h">
+      <Filter>system\Header Files\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_types.h">
+      <Filter>system\Header Files\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_types_d3math.h">
+      <Filter>system\Header Files\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_types_base.h">
+      <Filter>system\Header Files\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_types_d2math.h">
+      <Filter>system\Header Files\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_limit.h">
+      <Filter>system\Header Files\types</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

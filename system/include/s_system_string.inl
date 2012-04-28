@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : s_system_string.inl
-//	Created                 : 24 6 2007   0:39
-//	File path               : C:\Sasha\C++\SLibF\system\Include
-//	Author                  : Alexandru Motriuc
-//  Platform Independentsy  : 0%
-//	Library                 : 
+//  Created                 : 24 6 2007   0:39
+//  File path               : C:\Sasha\C++\SLibF\system\Include
+//  Author                  : Alexandru Motriuc
+//  Platform Independent    : 0%
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -211,10 +211,20 @@ inline sString sString::FloatToString( sFloat nr )
 	return nrStr;
 }
 
-inline void sString::UpdateLength()
+inline void sString::UpdateLength( sUInt length )
 {
 	if( _data && _data->nRefs == 1 )
-		_data->nDataLength = Chars::Length( _data->data() );
+	{
+		if( length == 0 )
+			_data->nDataLength = Chars::Length( _data->data() );
+		else
+		{
+			__S_ASSERT( _data->nAllocLength >= length );
+
+			_data->nDataLength = length;
+			_data->data()[length] = 0;
+		}
+	}
 }
 
 inline sBool sString::operator > ( const sString& str ) const

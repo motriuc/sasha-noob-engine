@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : s_system_string.h
-//	Created                 : 24 6 2007   0:38
-//	File path               : SLibF\system\include
-//	Author                  : Alexandru Motriuc
-//  Platform Independentsy  : 0%
-//	Library                 : 
+//  Created                 : 24 6 2007   0:38
+//  File path               : SLibF\system\include
+//  Author                  : Alexandru Motriuc
+//  Platform Independent    : 0%
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -232,7 +232,7 @@ public:
 	 *	Update string length after content modifications
 	 *	works only for 1 string reference
 	 */
-	_PLATFORM void UpdateLength();
+	_PLATFORM void UpdateLength( sUInt length = 0 );
 
 	/**
 	 *	return char buffer 

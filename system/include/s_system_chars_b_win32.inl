@@ -65,9 +65,14 @@ inline void BChar::FromUInt( SBCHAR* pChars, sUInt uInt )
 	ultoa( uInt, pChars, 10 );
 }
 
+inline void BChar::FromFloat( SBCHAR* pChars, sFloat number )
+{
+	sprintf( pChars, "%f", number ); 	
+}
+
 inline void BChar::FromDouble( SBCHAR* pChars, sDouble number )
 {
-	_gcvt( number, 12, pChars );
+	_gcvt( number, 17, pChars );
 }
 
 inline sDouble BChar::ToDouble( const SBCHAR* pChars )

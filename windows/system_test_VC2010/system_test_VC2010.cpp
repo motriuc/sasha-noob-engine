@@ -2,6 +2,12 @@
 //
 
 #include "stdafx.h"
+#include "s_system.h"
+
+using namespace System::Types;
+using namespace System;
+
+
 
 
 int _tmain(int argc, _TCHAR* argv[])
