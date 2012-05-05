@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : s_system_xml.cpp
-//	Created                 : 29 6 2007   21:59
-//	File path               : C:\Sasha\C++\SLibF\base\Cpp
-//	Author                  : Alexandru Motriuc
-//  Platform Independentsy  : 0%
-//	Library                 : 
+//  Created                 : 29 6 2007   21:59
+//  File path               : C:\Sasha\C++\SLibF\base\Cpp
+//  Author                  : Alexandru Motriuc
+//  Platform Independent    : 0%
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -56,12 +56,9 @@ XMLParseError::XMLParseError( const sChar* file, sInt line, Error* pPrevError, c
 sString XMLParseError::Description() const
 {
 	if( _line < 0 )
-		return _message + Chars::NewLine + _BaseClass::Description();
+		return Format( _S("{1}\n{2}") ) % _message % _BaseClass::Description();
 
-	return 
-		sString( _S("Parse error line (") ) + 
-		sString::IntToString( _line ) + _S(")") +
-		_message + Chars::NewLine + _BaseClass::Description();
+	return Format( _S("Parse error line ({1}) {2}\n{3}") ) % _line % _message % _BaseClass::Description();		
 }
 
 /************************************************************************/
