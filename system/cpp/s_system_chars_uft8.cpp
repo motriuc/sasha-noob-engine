@@ -203,7 +203,7 @@ SBCHAR BChar::From_UTF8( const SBYTE* bytes, sInt length, sInt& bytesReaded )
 //------------------------------------------------------------------
 sInt BChar::To_UTF8( SBCHAR ch, SBYTE* bytes, sInt length )
 {
-	if( ch > 0x7f )
+	if( (SBYTE)ch > 0x7f )
 		ch = '?';
 
 	return _To_UTF8( ch, bytes, length );
@@ -212,7 +212,7 @@ sInt BChar::To_UTF8( SBCHAR ch, SBYTE* bytes, sInt length )
 //------------------------------------------------------------------
 sInt WChar::To_UTF8( SWCHAR ch, SBYTE* bytes, sInt length )
 {
-	if( ch > 0x7f )
+	if( (SBYTE)ch > 0x7f )
 		ch = '?';
 
 	return _To_UTF8( ch, bytes, length );

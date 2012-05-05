@@ -60,6 +60,11 @@ inline void BChar::FromInt( SBCHAR* pChars, sInt uInt )
 	sprintf( pChars, "%d", uInt ); 
 }
 
+inline void BChar::FromUInt( SBCHAR* pChars, sUInt uInt )
+{
+	sprintf( pChars, "%d", uInt ); 
+}
+
 inline void BChar::FromDouble( SBCHAR* pChars, sDouble number )
 {
 	sprintf( pChars, "%f", number ); 	

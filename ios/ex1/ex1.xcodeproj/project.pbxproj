@@ -204,6 +204,11 @@
 		D9DC7F761502F7AF003600E7 /* rd3_material_solid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9DC7F741502F7AF003600E7 /* rd3_material_solid.cpp */; };
 		D9DC7F771502F7AF003600E7 /* rd3_register_types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9DC7F751502F7AF003600E7 /* rd3_register_types.cpp */; };
 		D9DC7F7D1502F87C003600E7 /* render.res.xml in Resources */ = {isa = PBXBuildFile; fileRef = D9DC7F7C1502F87C003600E7 /* render.res.xml */; };
+		D9DE299B1555422D0007AFC0 /* ed3_ui_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9DE299A1555422D0007AFC0 /* ed3_ui_list.cpp */; };
+		D9DE299D155542570007AFC0 /* rd3_msg_gesture_detect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9DE299C155542570007AFC0 /* rd3_msg_gesture_detect.cpp */; };
+		D9DE29A4155542850007AFC0 /* s_system_chars_uft8.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9DE29A1155542850007AFC0 /* s_system_chars_uft8.cpp */; };
+		D9DE29A5155542850007AFC0 /* s_system_stream_wstr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9DE29A2155542850007AFC0 /* s_system_stream_wstr.cpp */; };
+		D9DE29A6155542850007AFC0 /* s_system_string_format.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9DE29A3155542850007AFC0 /* s_system_string_format.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -682,6 +687,13 @@
 		D9DC7F741502F7AF003600E7 /* rd3_material_solid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rd3_material_solid.cpp; path = ../../render3d/cpp/rd3_material_solid.cpp; sourceTree = SOURCE_ROOT; };
 		D9DC7F751502F7AF003600E7 /* rd3_register_types.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rd3_register_types.cpp; path = ../../render3d/cpp/rd3_register_types.cpp; sourceTree = SOURCE_ROOT; };
 		D9DC7F7C1502F87C003600E7 /* render.res.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = render.res.xml; path = ../../render3d/cpp/eagl/render.res.xml; sourceTree = SOURCE_ROOT; };
+		D9DE2990155541DE0007AFC0 /* rd3_msg_gesture_detect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rd3_msg_gesture_detect.h; path = ../../render3d/include/rd3_msg_gesture_detect.h; sourceTree = SOURCE_ROOT; };
+		D9DE2996155542090007AFC0 /* ed3_ui_list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ed3_ui_list.h; path = ../../engine3d/include/ui/ed3_ui_list.h; sourceTree = SOURCE_ROOT; };
+		D9DE299A1555422D0007AFC0 /* ed3_ui_list.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_ui_list.cpp; path = ../../engine3d/cpp/ui/ed3_ui_list.cpp; sourceTree = SOURCE_ROOT; };
+		D9DE299C155542570007AFC0 /* rd3_msg_gesture_detect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rd3_msg_gesture_detect.cpp; path = ../../render3d/cpp/rd3_msg_gesture_detect.cpp; sourceTree = SOURCE_ROOT; };
+		D9DE29A1155542850007AFC0 /* s_system_chars_uft8.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = s_system_chars_uft8.cpp; path = ../../system/cpp/s_system_chars_uft8.cpp; sourceTree = SOURCE_ROOT; };
+		D9DE29A2155542850007AFC0 /* s_system_stream_wstr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = s_system_stream_wstr.cpp; path = ../../system/cpp/s_system_stream_wstr.cpp; sourceTree = SOURCE_ROOT; };
+		D9DE29A3155542850007AFC0 /* s_system_string_format.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = s_system_string_format.cpp; path = ../../system/cpp/s_system_string_format.cpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1047,6 +1059,9 @@
 		D91D012714ECBEBA00CEFA96 /* types */ = {
 			isa = PBXGroup;
 			children = (
+				D9DE29A1155542850007AFC0 /* s_system_chars_uft8.cpp */,
+				D9DE29A2155542850007AFC0 /* s_system_stream_wstr.cpp */,
+				D9DE29A3155542850007AFC0 /* s_system_string_format.cpp */,
 				D91D008314ECB9D700CEFA96 /* s_system_types_base.h */,
 				D91D008614ECB9D700CEFA96 /* s_system_types.h */,
 				D91D008414ECB9D700CEFA96 /* s_system_types_d2math.h */,
@@ -1093,6 +1108,8 @@
 		D91D019414ECC07000CEFA96 /* base */ = {
 			isa = PBXGroup;
 			children = (
+				D9DE299C155542570007AFC0 /* rd3_msg_gesture_detect.cpp */,
+				D9DE2990155541DE0007AFC0 /* rd3_msg_gesture_detect.h */,
 				D97DEAAB15307BD300003014 /* rd3_render.inl */,
 				D9DC7F741502F7AF003600E7 /* rd3_material_solid.cpp */,
 				D9DC7F751502F7AF003600E7 /* rd3_register_types.cpp */,
@@ -1300,6 +1317,8 @@
 		D91D020F14ECC47400CEFA96 /* base */ = {
 			isa = PBXGroup;
 			children = (
+				D9DE299A1555422D0007AFC0 /* ed3_ui_list.cpp */,
+				D9DE2996155542090007AFC0 /* ed3_ui_list.h */,
 				D97DEAB615307C5A00003014 /* ed3_ui_edit.cpp */,
 				D97DEAB715307C5A00003014 /* ed3_ui_image.cpp */,
 				D97DEAB415307C2600003014 /* ed3_ui_edit.h */,
@@ -1977,6 +1996,11 @@
 				D97DEAA515307BA600003014 /* eagl_serv_textedit.cpp in Sources */,
 				D97DEAB815307C5A00003014 /* ed3_ui_edit.cpp in Sources */,
 				D97DEAB915307C5A00003014 /* ed3_ui_image.cpp in Sources */,
+				D9DE299B1555422D0007AFC0 /* ed3_ui_list.cpp in Sources */,
+				D9DE299D155542570007AFC0 /* rd3_msg_gesture_detect.cpp in Sources */,
+				D9DE29A4155542850007AFC0 /* s_system_chars_uft8.cpp in Sources */,
+				D9DE29A5155542850007AFC0 /* s_system_stream_wstr.cpp in Sources */,
+				D9DE29A6155542850007AFC0 /* s_system_string_format.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

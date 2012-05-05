@@ -86,8 +86,8 @@ namespace System
 	#include "s_system_cnt.h"
 
 	#include "s_system_string.inl"
-	#include "s_system_string_format.h"
 	#include "s_system_formaters.h"
+	#include "s_system_string_format.h"
 
 	#include "s_system_global.h"
 

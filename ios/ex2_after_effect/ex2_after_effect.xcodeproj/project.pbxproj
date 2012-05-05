@@ -201,6 +201,13 @@
 		D9DC7FD81502FAB8003600E7 /* system.font.10.xml in Resources */ = {isa = PBXBuildFile; fileRef = D9DC7FD61502FAB8003600E7 /* system.font.10.xml */; };
 		D9DC7FD91502FAB8003600E7 /* system.texture.font.10.png in Resources */ = {isa = PBXBuildFile; fileRef = D9DC7FD71502FAB8003600E7 /* system.texture.font.10.png */; };
 		D9DC7FDB1502FAE6003600E7 /* render.res.xml in Resources */ = {isa = PBXBuildFile; fileRef = D9DC7FDA1502FAE6003600E7 /* render.res.xml */; };
+		D9DE29E0155544190007AFC0 /* rd3_msg_gesture_detect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9DE29DF155544190007AFC0 /* rd3_msg_gesture_detect.cpp */; };
+		D9DE29E61555443A0007AFC0 /* s_system_stream_wstr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9DE29E41555443A0007AFC0 /* s_system_stream_wstr.cpp */; };
+		D9DE29E71555443A0007AFC0 /* s_system_string_format.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9DE29E51555443A0007AFC0 /* s_system_string_format.cpp */; };
+		D9DE29E9155544520007AFC0 /* s_system_chars_uft8.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9DE29E8155544520007AFC0 /* s_system_chars_uft8.cpp */; };
+		D9DE29EF155544740007AFC0 /* ed3_ui_edit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9DE29ED155544740007AFC0 /* ed3_ui_edit.cpp */; };
+		D9DE29F0155544740007AFC0 /* ed3_ui_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9DE29EE155544740007AFC0 /* ed3_ui_list.cpp */; };
+		D9DE29F5155544960007AFC0 /* eagl_serv_textedit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9DE29F4155544960007AFC0 /* eagl_serv_textedit.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -653,6 +660,19 @@
 		D9DC7FD61502FAB8003600E7 /* system.font.10.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = system.font.10.xml; path = ../../render3d/cpp/res/fonts/system.font.10.xml; sourceTree = SOURCE_ROOT; };
 		D9DC7FD71502FAB8003600E7 /* system.texture.font.10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = system.texture.font.10.png; path = ../../render3d/cpp/res/fonts/system.texture.font.10.png; sourceTree = SOURCE_ROOT; };
 		D9DC7FDA1502FAE6003600E7 /* render.res.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = render.res.xml; path = ../../render3d/cpp/eagl/render.res.xml; sourceTree = SOURCE_ROOT; };
+		D9DE29CA155543400007AFC0 /* rd3_msg_gesture_detect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rd3_msg_gesture_detect.h; path = ../../render3d/include/rd3_msg_gesture_detect.h; sourceTree = SOURCE_ROOT; };
+		D9DE29CC155543400007AFC0 /* rd3_serv_textedit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rd3_serv_textedit.h; path = ../../render3d/include/rd3_serv_textedit.h; sourceTree = SOURCE_ROOT; };
+		D9DE29CD155543400007AFC0 /* rd3_service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rd3_service.h; path = ../../render3d/include/rd3_service.h; sourceTree = SOURCE_ROOT; };
+		D9DE29D4155543930007AFC0 /* eagl_serv_textedit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eagl_serv_textedit.h; path = ../../render3d/include/eagl/eagl_serv_textedit.h; sourceTree = SOURCE_ROOT; };
+		D9DE29DA155543BB0007AFC0 /* ed3_ui_edit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ed3_ui_edit.h; path = ../../engine3d/include/ui/ed3_ui_edit.h; sourceTree = SOURCE_ROOT; };
+		D9DE29DB155543BB0007AFC0 /* ed3_ui_list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ed3_ui_list.h; path = ../../engine3d/include/ui/ed3_ui_list.h; sourceTree = SOURCE_ROOT; };
+		D9DE29DF155544190007AFC0 /* rd3_msg_gesture_detect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rd3_msg_gesture_detect.cpp; path = ../../render3d/cpp/rd3_msg_gesture_detect.cpp; sourceTree = SOURCE_ROOT; };
+		D9DE29E41555443A0007AFC0 /* s_system_stream_wstr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = s_system_stream_wstr.cpp; path = ../../system/cpp/s_system_stream_wstr.cpp; sourceTree = SOURCE_ROOT; };
+		D9DE29E51555443A0007AFC0 /* s_system_string_format.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = s_system_string_format.cpp; path = ../../system/cpp/s_system_string_format.cpp; sourceTree = SOURCE_ROOT; };
+		D9DE29E8155544520007AFC0 /* s_system_chars_uft8.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = s_system_chars_uft8.cpp; path = ../../system/cpp/s_system_chars_uft8.cpp; sourceTree = SOURCE_ROOT; };
+		D9DE29ED155544740007AFC0 /* ed3_ui_edit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_ui_edit.cpp; path = ../../engine3d/cpp/ui/ed3_ui_edit.cpp; sourceTree = SOURCE_ROOT; };
+		D9DE29EE155544740007AFC0 /* ed3_ui_list.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_ui_list.cpp; path = ../../engine3d/cpp/ui/ed3_ui_list.cpp; sourceTree = SOURCE_ROOT; };
+		D9DE29F4155544960007AFC0 /* eagl_serv_textedit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = eagl_serv_textedit.cpp; path = ../../render3d/cpp/eagl/eagl_serv_textedit.cpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1020,6 +1040,8 @@
 		D91D012B14ECC01300CEFA96 /* render3d */ = {
 			isa = PBXGroup;
 			children = (
+				D9DE29F4155544960007AFC0 /* eagl_serv_textedit.cpp */,
+				D9DE29DF155544190007AFC0 /* rd3_msg_gesture_detect.cpp */,
 				D91D019314ECC06500CEFA96 /* rd3 */,
 				D91D01D314ECC2FE00CEFA96 /* eagl */,
 			);
@@ -1029,6 +1051,8 @@
 		D91D019314ECC06500CEFA96 /* rd3 */ = {
 			isa = PBXGroup;
 			children = (
+				D9DE29CA155543400007AFC0 /* rd3_msg_gesture_detect.h */,
+				D9DE29CC155543400007AFC0 /* rd3_serv_textedit.h */,
 				D97375EA150AF33700BC1B85 /* animation */,
 				D973729C150786DF00BC1B85 /* rd3_dvertexbuffer.h */,
 				D973729D150786DF00BC1B85 /* rd3_dvertexbuffer.inl */,
@@ -1084,6 +1108,7 @@
 		D91D019514ECC08300CEFA96 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				D9DE29CD155543400007AFC0 /* rd3_service.h */,
 				D91D017B14ECC05D00CEFA96 /* rd3_resobj.h */,
 				D91D017C14ECC05D00CEFA96 /* rd3_resobj.inl */,
 				D91D013E14ECC02F00CEFA96 /* rd3_resobj.cpp */,
@@ -1193,6 +1218,7 @@
 		D91D01D314ECC2FE00CEFA96 /* eagl */ = {
 			isa = PBXGroup;
 			children = (
+				D9DE29D4155543930007AFC0 /* eagl_serv_textedit.h */,
 				D90A3F55151021CA0028B0F6 /* msg */,
 				D93D5BCB14ECD5E1003FC949 /* base */,
 				D93D5BC914ECD57B003FC949 /* fonts */,
@@ -1226,6 +1252,10 @@
 		D91D020B14ECC42E00CEFA96 /* engine3d */ = {
 			isa = PBXGroup;
 			children = (
+				D9DE29ED155544740007AFC0 /* ed3_ui_edit.cpp */,
+				D9DE29EE155544740007AFC0 /* ed3_ui_list.cpp */,
+				D9DE29DA155543BB0007AFC0 /* ed3_ui_edit.h */,
+				D9DE29DB155543BB0007AFC0 /* ed3_ui_list.h */,
 				D91D020F14ECC47400CEFA96 /* base */,
 				D91D024014ECC4B600CEFA96 /* objects */,
 				D9803A8E14EFCDEB002E3CE7 /* rd3ext */,
@@ -1285,6 +1315,9 @@
 		D91DFFFB14ECB8B200CEFA96 /* system */ = {
 			isa = PBXGroup;
 			children = (
+				D9DE29E8155544520007AFC0 /* s_system_chars_uft8.cpp */,
+				D9DE29E41555443A0007AFC0 /* s_system_stream_wstr.cpp */,
+				D9DE29E51555443A0007AFC0 /* s_system_string_format.cpp */,
 				D91D008914ECB9D700CEFA96 /* s_system.h */,
 				D91D001014ECB8FA00CEFA96 /* s_system.cpp */,
 				D91D012814ECBEF300CEFA96 /* xml */,
@@ -1892,6 +1925,13 @@
 				D9A30582152078C5005077C9 /* ed3_ui_label.cpp in Sources */,
 				D9A30583152078C5005077C9 /* ed3_ui_txbutton.cpp in Sources */,
 				D99C2E5815282BC200822496 /* ed3_ui_image.cpp in Sources */,
+				D9DE29E0155544190007AFC0 /* rd3_msg_gesture_detect.cpp in Sources */,
+				D9DE29E61555443A0007AFC0 /* s_system_stream_wstr.cpp in Sources */,
+				D9DE29E71555443A0007AFC0 /* s_system_string_format.cpp in Sources */,
+				D9DE29E9155544520007AFC0 /* s_system_chars_uft8.cpp in Sources */,
+				D9DE29EF155544740007AFC0 /* ed3_ui_edit.cpp in Sources */,
+				D9DE29F0155544740007AFC0 /* ed3_ui_list.cpp in Sources */,
+				D9DE29F5155544960007AFC0 /* eagl_serv_textedit.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -302,6 +302,10 @@
 		D9DC7D1615021741003600E7 /* system.texture.font.10.png in Resources */ = {isa = PBXBuildFile; fileRef = D9DC7D1415021741003600E7 /* system.texture.font.10.png */; };
 		D9DC7D77150222C8003600E7 /* rd3_resloader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9DC7D76150222C8003600E7 /* rd3_resloader.cpp */; };
 		D9DC7E5A15023D54003600E7 /* render.res.xml in Resources */ = {isa = PBXBuildFile; fileRef = D9DC7E5915023D54003600E7 /* render.res.xml */; };
+		D9DE294015553EF30007AFC0 /* s_system_string_format.inl in Resources */ = {isa = PBXBuildFile; fileRef = D9DE293F15553EF30007AFC0 /* s_system_string_format.inl */; };
+		D9DE294215553F100007AFC0 /* s_system_string_format.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9DE294115553F100007AFC0 /* s_system_string_format.cpp */; };
+		D9DE294815553F4C0007AFC0 /* s_system_chars_uft8.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9DE294615553F4C0007AFC0 /* s_system_chars_uft8.cpp */; };
+		D9DE294915553F4C0007AFC0 /* s_system_stream_wstr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9DE294715553F4C0007AFC0 /* s_system_stream_wstr.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -348,10 +352,8 @@
 		D91D000F14ECB8FA00CEFA96 /* s_system_xml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = s_system_xml.cpp; path = ../../system/cpp/s_system_xml.cpp; sourceTree = SOURCE_ROOT; };
 		D91D001014ECB8FA00CEFA96 /* s_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = s_system.cpp; path = ../../system/cpp/s_system.cpp; sourceTree = SOURCE_ROOT; };
 		D91D002714ECB9D600CEFA96 /* s_system_chars_b_mac.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = s_system_chars_b_mac.inl; path = ../../system/include/s_system_chars_b_mac.inl; sourceTree = SOURCE_ROOT; };
-		D91D002814ECB9D600CEFA96 /* s_system_chars_b_win32.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = s_system_chars_b_win32.inl; path = ../../system/include/s_system_chars_b_win32.inl; sourceTree = SOURCE_ROOT; };
 		D91D002914ECB9D600CEFA96 /* s_system_chars_b.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = s_system_chars_b.h; path = ../../system/include/s_system_chars_b.h; sourceTree = SOURCE_ROOT; };
 		D91D002A14ECB9D600CEFA96 /* s_system_chars_w_mac.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = s_system_chars_w_mac.inl; path = ../../system/include/s_system_chars_w_mac.inl; sourceTree = SOURCE_ROOT; };
-		D91D002B14ECB9D600CEFA96 /* s_system_chars_w_win32.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = s_system_chars_w_win32.inl; path = ../../system/include/s_system_chars_w_win32.inl; sourceTree = SOURCE_ROOT; };
 		D91D002C14ECB9D600CEFA96 /* s_system_chars_w.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = s_system_chars_w.h; path = ../../system/include/s_system_chars_w.h; sourceTree = SOURCE_ROOT; };
 		D91D002D14ECB9D600CEFA96 /* s_system_chars.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = s_system_chars.h; path = ../../system/include/s_system_chars.h; sourceTree = SOURCE_ROOT; };
 		D91D002E14ECB9D600CEFA96 /* s_system_cnt_find.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = s_system_cnt_find.h; path = ../../system/include/s_system_cnt_find.h; sourceTree = SOURCE_ROOT; };
@@ -861,6 +863,11 @@
 		D9DC7D76150222C8003600E7 /* rd3_resloader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rd3_resloader.cpp; path = ../../render3d/cpp/rd3_resloader.cpp; sourceTree = SOURCE_ROOT; };
 		D9DC7D8C15022510003600E7 /* rd3_resloadparams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rd3_resloadparams.h; path = ../../render3d/include/rd3_resloadparams.h; sourceTree = SOURCE_ROOT; };
 		D9DC7E5915023D54003600E7 /* render.res.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = render.res.xml; path = ../../render3d/cpp/eagl/render.res.xml; sourceTree = SOURCE_ROOT; };
+		D9DE293E15553EF30007AFC0 /* s_system_formaters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = s_system_formaters.h; path = ../../system/include/s_system_formaters.h; sourceTree = SOURCE_ROOT; };
+		D9DE293F15553EF30007AFC0 /* s_system_string_format.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = s_system_string_format.inl; path = ../../system/include/s_system_string_format.inl; sourceTree = SOURCE_ROOT; };
+		D9DE294115553F100007AFC0 /* s_system_string_format.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = s_system_string_format.cpp; path = ../../system/cpp/s_system_string_format.cpp; sourceTree = SOURCE_ROOT; };
+		D9DE294615553F4C0007AFC0 /* s_system_chars_uft8.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = s_system_chars_uft8.cpp; path = ../../system/cpp/s_system_chars_uft8.cpp; sourceTree = SOURCE_ROOT; };
+		D9DE294715553F4C0007AFC0 /* s_system_stream_wstr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = s_system_stream_wstr.cpp; path = ../../system/cpp/s_system_stream_wstr.cpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -982,13 +989,12 @@
 		D91D002414ECB95000CEFA96 /* chars */ = {
 			isa = PBXGroup;
 			children = (
+				D9DE294615553F4C0007AFC0 /* s_system_chars_uft8.cpp */,
 				D91D002C14ECB9D600CEFA96 /* s_system_chars_w.h */,
 				D91D002D14ECB9D600CEFA96 /* s_system_chars.h */,
 				D91D002714ECB9D600CEFA96 /* s_system_chars_b_mac.inl */,
-				D91D002814ECB9D600CEFA96 /* s_system_chars_b_win32.inl */,
 				D91D002914ECB9D600CEFA96 /* s_system_chars_b.h */,
 				D91D002A14ECB9D600CEFA96 /* s_system_chars_w_mac.inl */,
-				D91D002B14ECB9D600CEFA96 /* s_system_chars_w_win32.inl */,
 				D91DFFFE14ECB8FA00CEFA96 /* s_system_chars_b.cpp */,
 				D91DFFFF14ECB8FA00CEFA96 /* s_system_chars_w.cpp */,
 			);
@@ -1188,6 +1194,7 @@
 		D91D012514ECBE7900CEFA96 /* streams */ = {
 			isa = PBXGroup;
 			children = (
+				D9DE294715553F4C0007AFC0 /* s_system_stream_wstr.cpp */,
 				D9AD12F414FFC3DA009521AD /* int_stream_mac.h */,
 				D9AD12F514FFC3DA009521AD /* int_stream_win32.h */,
 				D91D000A14ECB8FA00CEFA96 /* s_system_stream_archive_provider_res.cpp */,
@@ -1235,8 +1242,6 @@
 				D91D008514ECB9D700CEFA96 /* s_system_types_d3math.h */,
 				D91D007414ECB9D700CEFA96 /* s_system_rgbcolor.h */,
 				D91D007514ECB9D700CEFA96 /* s_system_rgbcolor.inl */,
-				D91D007E14ECB9D700CEFA96 /* s_system_string.h */,
-				D91D007F14ECB9D700CEFA96 /* s_system_string.inl */,
 			);
 			name = types;
 			sourceTree = "<group>";
@@ -1515,6 +1520,7 @@
 			children = (
 				D91D008914ECB9D700CEFA96 /* s_system.h */,
 				D91D001014ECB8FA00CEFA96 /* s_system.cpp */,
+				D9DE293D15553EBD0007AFC0 /* string */,
 				D91D012814ECBEF300CEFA96 /* xml */,
 				D91D012714ECBEBA00CEFA96 /* types */,
 				D91D012614ECBE9700CEFA96 /* utils */,
@@ -2095,6 +2101,18 @@
 			name = fonts;
 			sourceTree = "<group>";
 		};
+		D9DE293D15553EBD0007AFC0 /* string */ = {
+			isa = PBXGroup;
+			children = (
+				D9DE294115553F100007AFC0 /* s_system_string_format.cpp */,
+				D9DE293E15553EF30007AFC0 /* s_system_formaters.h */,
+				D9DE293F15553EF30007AFC0 /* s_system_string_format.inl */,
+				D91D007E14ECB9D700CEFA96 /* s_system_string.h */,
+				D91D007F14ECB9D700CEFA96 /* s_system_string.inl */,
+			);
+			name = string;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2192,6 +2210,7 @@
 				D985C71E151B462D00C6B687 /* system.texture.fx.1.qh.xml in Resources */,
 				D9A304AE152073E7005077C9 /* system.font.fx.2.xml in Resources */,
 				D99C2F8A152E992F00822496 /* rd3_render.inl in Resources */,
+				D9DE294015553EF30007AFC0 /* s_system_string_format.inl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2444,6 +2463,9 @@
 				D99C2FB5152EA78200822496 /* eagl_serv_textedit.cpp in Sources */,
 				D97DEAF315359C7100003014 /* rd3_msg_gesture_detect.cpp in Sources */,
 				D97DEB0C15359DDC00003014 /* ed3_ui_list.cpp in Sources */,
+				D9DE294215553F100007AFC0 /* s_system_string_format.cpp in Sources */,
+				D9DE294815553F4C0007AFC0 /* s_system_chars_uft8.cpp in Sources */,
+				D9DE294915553F4C0007AFC0 /* s_system_stream_wstr.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
