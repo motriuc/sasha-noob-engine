@@ -1,10 +1,10 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : s_system_xml.h
-//	Created                 : 29 6 2007   21:55
-//	File path               : SLibF\system\Include
-//	Author                  : Alexandru Motriuc
-//  Platform Independentsy  : 0%
-//	Library                 : 
+//  Created                 : 29 6 2007   21:55
+//  File path               : SLibF\system\Include
+//  Author                  : Alexandru Motriuc
+//  Platform Independent    : 0%
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
 //	Purpose:

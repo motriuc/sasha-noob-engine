@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : s_system_files_error.h
-//	Created                 : 28 6 2007   19:13
-//	File path               : SLibF\system\Include
-//	Author                  : Alexandru Motriuc
-//  Platform Independentsy  : 0%
-//	Library                 : 
+//  Created                 : 28 6 2007   19:13
+//  File path               : SLibF\system\Include
+//  Author                  : Alexandru Motriuc
+//  Platform Independent    : 0%
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -59,11 +59,7 @@ public:
 
 	virtual sString Description() const
 	{
-		return 
-			sString( _S("Can't open file: ") ) + 
-			_fileName + 
-			Chars::NewLine + 
-			_BaseClass::Description();
+		return Format( _S("Can't open file: {1}\n{2}") ) % _fileName % _BaseClass::Description();
 	}
 
 private:
@@ -86,10 +82,7 @@ public:
 
 	virtual sString Description() const
 	{
-		return 
-			sString( _S("Can't read from file") ) + 
-			Chars::NewLine + 
-			_BaseClass::Description();
+		return Format( _S("Can't read from file\n{1}" ) ) % _BaseClass::Description();
 	}
 
 };
@@ -110,9 +103,6 @@ public:
 
 	virtual sString Description() const
 	{
-		return 
-			sString( _S("Can't write to file") ) + 
-			Chars::NewLine + 
-			_BaseClass::Description();
+		return Format( _S("Can't write to file\n{1}") ) % _BaseClass::Description();
 	}
 };

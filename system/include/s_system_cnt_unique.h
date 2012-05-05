@@ -3,7 +3,7 @@
 //  Created                 : 28 3 2012
 //  File path               : SLibF\system\Include
 //  Author                  : Alexandru Motriuc
-//  Platform Independentsy  : 0%
+//  Platform Independent    : 0%
 //  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////

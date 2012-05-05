@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : s_system_error_strerr.h
-//	Created                 : 27 6 2007   20:15
-//	File path               : SLibF\system\include
-//	Author                  : Alexandru Motriuc
-//  Platform Independentsy  : 0%
-//	Library                 : 
+//  Created                 : 27 6 2007   20:15
+//  File path               : SLibF\system\include
+//  Author                  : Alexandru Motriuc
+//  Platform Independent    : 0%
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////

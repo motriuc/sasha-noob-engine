@@ -1,10 +1,10 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : s_system_rgbcolor.inl
-//	Created                 : 27 1 2011   20:16
-//	File path               : SLibF\system\include
-//	Author                  : Alexandru Motriuc
-//  Platform Independentsy  : 0%
-//	Library                 : 
+//  Created                 : 27 1 2011   20:16
+//  File path               : SLibF\system\include
+//  Author                  : Alexandru Motriuc
+//  Platform Independent    : 0%
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
 //	Purpose:

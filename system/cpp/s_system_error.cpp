@@ -47,7 +47,7 @@ StringError::StringError( const sChar* file, sInt line, Error* pPrevError, const
 /************************************************************************/
 sString StringError::Description() const
 {
-	return _S("'") + _desc + _S("' ") + Error::Description();
+	return Format( _S("'{1}' {2}") ) % _desc % Error::Description();
 }
 
 /************************************************************************/
@@ -114,11 +114,7 @@ HRESULTError::HRESULTError( Error* pPrevError, HRESULT hr ) :
 /************************************************************************/
 sString HRESULTError::Description() const
 {
-	sString info;
-	
-	info = _S("hr:") + sString::IntToString( _hr );
-
-	return info + _BaseClass::Description();
+	return Format( _S("hr:{1} {2}") ) % (sUInt)_hr % _BaseClass::Description();
 }
 
 /************************************************************************/

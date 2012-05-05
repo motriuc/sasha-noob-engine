@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : s_system_chars_b_win32.inl
-//	Created                 : 11 1 2012   23:27
-//	File path               : SLibF\system\include
-//	Author                  : Alexandru Motriuc
-//  Platform Independentsy  : 0%
-//	Library                 : 
+//  Created                 : 11 1 2012   23:27
+//  File path               : SLibF\system\include
+//  Author                  : Alexandru Motriuc
+//  Platform Independent    : 0%
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -77,6 +77,8 @@ inline sDouble BChar::ToDouble( const SBCHAR* pChars )
 
 inline void BChar::LowerCase( SBCHAR* pChars, sInt len )
 {
+	__S_ASSERT( pChars != NULL );
+
 	if( len < 0 )
 	{
 		while( *pChars )
@@ -96,6 +98,8 @@ inline void BChar::LowerCase( SBCHAR* pChars, sInt len )
 
 inline void BChar::UpperCase( SBCHAR* pChars, sInt len )
 {
+	__S_ASSERT( pChars != NULL );
+
 	if( len < 0 )
 	{
 		while( *pChars )

@@ -67,6 +67,18 @@
     <Filter Include="system\Header Files\types">
       <UniqueIdentifier>{c77aca52-28e1-4b50-92e5-962768ab4ff8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="system\Header Files\event">
+      <UniqueIdentifier>{ff2bfd83-4743-4291-a200-29cb56f4f93f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="system\Header Files\conf">
+      <UniqueIdentifier>{bc473b5b-d6f4-4bf9-a7f0-6ceacf87b148}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="system\Source Files\d3Math">
+      <UniqueIdentifier>{dc0a9dd4-13ea-454e-808c-da7aa2a579f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="system\Source Files\files">
+      <UniqueIdentifier>{1feeb60d-c666-47a0-ac32-f9735a86b0dd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -174,25 +186,10 @@
     <ClCompile Include="..\..\system\cpp\s_system.cpp">
       <Filter>system\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\system\cpp\s_system_d3math_aabb.cpp">
-      <Filter>system\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\system\cpp\s_system_d3math_camera.cpp">
-      <Filter>system\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\system\cpp\s_system_d3math_frustum.cpp">
-      <Filter>system\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\system\cpp\s_system_d3math_plane.cpp">
-      <Filter>system\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\system\cpp\s_system_error.cpp">
       <Filter>system\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\system\cpp\s_system_error_error.cpp">
-      <Filter>system\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\system\cpp\s_system_files_lfile_win32.cpp">
       <Filter>system\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\system\cpp\s_system_mem.cpp">
@@ -217,9 +214,6 @@
       <Filter>external\expat</Filter>
     </ClCompile>
     <ClCompile Include="..\..\system\cpp\s_system_appenv.cpp">
-      <Filter>system\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\system\cpp\s_system_files_name.cpp">
       <Filter>system\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\system\cpp\s_system_mt_thread.cpp">
@@ -251,6 +245,24 @@
     </ClCompile>
     <ClCompile Include="..\..\system\cpp\s_system_string_format.cpp">
       <Filter>system\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\cpp\s_system_d3math_aabb.cpp">
+      <Filter>system\Source Files\d3Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\cpp\s_system_d3math_plane.cpp">
+      <Filter>system\Source Files\d3Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\cpp\s_system_d3math_camera.cpp">
+      <Filter>system\Source Files\d3Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\cpp\s_system_d3math_frustum.cpp">
+      <Filter>system\Source Files\d3Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\cpp\s_system_files_lfile_win32.cpp">
+      <Filter>system\Source Files\files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\system\cpp\s_system_files_name.cpp">
+      <Filter>system\Source Files\files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -404,15 +416,6 @@
     <ClInclude Include="..\..\system\include\s_system_appenv.h">
       <Filter>system\Header Files\to sort</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_conf_def.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_conf_detect.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_conf_inc.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_dep.h">
       <Filter>system\Header Files\to sort</Filter>
     </ClInclude>
@@ -429,30 +432,6 @@
       <Filter>system\Header Files\to sort</Filter>
     </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_error_win32hresult.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_evn.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_evn_0.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_evn_1.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_evn_2.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_evn_3.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_evn_4.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_evn_5.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_evn_b.h">
       <Filter>system\Header Files\to sort</Filter>
     </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_global.h">
@@ -562,6 +541,39 @@
     </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_limit.h">
       <Filter>system\Header Files\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_evn.h">
+      <Filter>system\Header Files\event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_evn_b.h">
+      <Filter>system\Header Files\event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_evn_0.h">
+      <Filter>system\Header Files\event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_evn_1.h">
+      <Filter>system\Header Files\event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_evn_2.h">
+      <Filter>system\Header Files\event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_evn_3.h">
+      <Filter>system\Header Files\event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_evn_4.h">
+      <Filter>system\Header Files\event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_evn_5.h">
+      <Filter>system\Header Files\event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_conf_def.h">
+      <Filter>system\Header Files\conf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_conf_inc.h">
+      <Filter>system\Header Files\conf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_conf_detect.h">
+      <Filter>system\Header Files\conf</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

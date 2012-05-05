@@ -56,7 +56,7 @@ sString Error::ToString()	const
 	if( _pPrevError == NULL )
 		return Description();
 
-	return Description() + _S("[") + _pPrevError->ToString() + _S("]");
+	return Format( _S("{1}[{2}]") ) % Description() % _pPrevError->ToString();
 }
 /************************************************************************/
 sString Error::Description() const
@@ -65,7 +65,7 @@ sString Error::Description() const
 	if( _file == NULL )
 		return _S("");
 	
-	return sString( _S("@: ") ) + _file + _S(" (") + sString::IntToString( _line ) + _S(")"); 
+	return Format( _S("@: {1}({2})") ) % _file % _line;
 #else
 	return _S("");
 #endif

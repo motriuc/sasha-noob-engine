@@ -24,6 +24,7 @@ using namespace System;
 
 /**
  * StringItemWriter
+ * Internal class must not be used directly
  */
 class StringItemWriter
 {
