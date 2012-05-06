@@ -3,11 +3,11 @@
 //  Created                 : 22 1 2011   22:28
 //  File path               : SLibF\system\Include
 //  Author                  : Alexandru Motriuc
-//  Platform Independents   : 0%
+//  Platform Independent    : 0%
 //  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -20,10 +20,8 @@
 
 #include "s_system.h"
 
-namespace System
-{
-namespace d3Math
-{
+namespace System { namespace d3Math {
+	
 using namespace System::Types;
 
 sBool d3Frustum::Intersect( const d3AABBox& b ) const

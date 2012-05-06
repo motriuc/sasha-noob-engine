@@ -19,35 +19,35 @@
 #ifndef _S_SYS_INC_
 #define _S_SYS_INC_
 //////////////////////////////////////////////////////////
-// define to use
+// Use library modules defines
 
 // **** RTTI
 //
-//  _use_sObject_		- use Objects
+//  _use_sObject_       - use Objects
 //  _use_sError_        - use Errors
-//	_use_sEvent_		- use sEvent
+//  _use_sEvent_        - use sEvent
 //  _use_Thread_        - use Thread
 
 // **** Continers
-// _use_sVector_		- to use sVector
-// _use_sMap_			- to use sMap
-// _use_Cont_Utils_		- continer utils
+// _use_sVector_        - to use sVector
+// _use_sMap_           - to use sMap
+// _use_Cont_Utils_     - continer utils
 
 // **** Math
-// _use_d3Math_			- d3 math system base library 
-// _use_d2Math_			- d2 math system base library 
+// _use_d3Math_         - d3 math system base library 
+// _use_d2Math_         - d2 math system base library 
 
 // Files 
-// _use_Files_			- file utils
+// _use_Files_          - file utils
 
 // Streams 
-// _use_Streams_		- stream utils
+// _use_Streams_        - stream utils
 
 // Xml
-// _use_Xml_			- xml utils
+// _use_Xml_            - xml utils
 
 /**
- *	Conf and detect include files
+ *	Configuration and platform detect headers
  */
 #include "s_system_conf_def.h"
 #include "s_system_conf_detect.h"

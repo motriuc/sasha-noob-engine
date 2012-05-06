@@ -1,10 +1,10 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : s_system_types.h
-//	Created                 : 23 6 2007   22:40
-//	File path               : SLibF\system\Include
-//	Author                  : Alexandru Motriuc
+//  Created                 : 23 6 2007   22:40
+//  File path               : SLibF\system\Include
+//  Author                  : Alexandru Motriuc
 //  System Independent      : 0%
-//	Library                 : 
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
 //	Purpose:

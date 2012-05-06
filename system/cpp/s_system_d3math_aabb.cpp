@@ -4,11 +4,11 @@
 //  Created                 : 1 12 2007   15:23
 //  File path               : SLibF\system\Include
 //  Author                  : Alexandru Motriuc
-//  Platform Independentsy  : 0%
+//  Platform Independent    : 0%
 //  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -20,10 +20,8 @@
 
 #include "s_system.h"
 
-namespace System
-{
-namespace d3Math
-{
+namespace System { namespace d3Math {
+	
 using namespace System::Types;
 
 //--------------------------------------------------------------------		
@@ -147,5 +145,4 @@ void d3AABBox::Mul( d3AABBox& r, const d3AABBox& b, const d3Matrix& m )
 	}
 }
 	
-}
-}
+}}

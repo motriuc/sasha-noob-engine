@@ -25,19 +25,19 @@ public:
 	static AppEnviroment& Instance();
 
 	/**
-	 * Get Run FileName
+	 * Get the Runing FileName
 	 */
-	const Types::sString& GetRunFileName() const                  { return _fileName; }
+	const Types::sString& GetRunFileName() const				{ return _fileName; }
 
 	/**
-	 * Path to run
+	 * Returns Run path
 	 */
-	const Types::sString& GetRunPath() const                      { return _runPath; }
+	const Types::sString& GetRunPath() const					{ return _runPath; }
 
 	/**
 	 * CMD line argument count
 	 */
-	Types::sInt GetCommandLineArgumentCount() const              { return _iCmdCount; }
+	Types::sInt GetCommandLineArgumentCount() const				{ return _iCmdCount; }
 
 	/**
 	 * Get cmd argument
@@ -53,15 +53,16 @@ public:
 	_PLATFORM HINSTANCE	GetAppInstance() const					{ __S_ASSERT( _hInstance != NULL ); return _hInstance; }
 	_PLATFORM void SetAppInstance( HINSTANCE hInst );
 
-	_PLATFORM HWND GetMainWindowHandle() const						{ return _hMainWindow; }
-	_PLATFORM void SetMainWindowHandle( HWND hWnd )					{ _hMainWindow = hWnd; }
+	_PLATFORM HWND GetMainWindowHandle() const					{ return _hMainWindow; }
+	_PLATFORM void SetMainWindowHandle( HWND hWnd )				{ _hMainWindow = hWnd; }
 #endif
 
 private:
 	Types::sString		_fileName;
 	Types::sString		_runPath;
 	Types::sInt			_iCmdCount;
-	Types::sString*		_pCmdParams;	
+	Types::sString*		_pCmdParams;
+	
 #ifdef _SPL_WIN32
 	HINSTANCE			_hInstance;
 	HWND				_hMainWindow;

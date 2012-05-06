@@ -98,7 +98,9 @@ inline BaseDomNode* BaseDomNode::RemoveChild( sInt i )
 	if( ReadOnlyProperty( E_CHILD ) ) 
 		return NULL;
 
-	return _children.RemoveAt( i );
+	BaseDomNode* node;
+	_children.RemoveAt( i, node );
+	return node;
 }
 
 inline BaseDomNode* BaseDomNode::GetParent()

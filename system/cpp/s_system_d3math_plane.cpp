@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : s_system_d3math_plane.cpp
 //  Created                 : 3 12 2007   20:17
-//  File path               : E:\Sasha\C++\SLibF\system\Cpp
+//  File path               : SLibF\system\Cpp
 //  Author                  : Alexandru Motriuc
-//  Platform Independentsy  : 0%
+//  Platform Independent    : 0%
 //  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////

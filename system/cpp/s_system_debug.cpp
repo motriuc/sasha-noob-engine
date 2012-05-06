@@ -1,10 +1,10 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : s_system_debug.cpp
-//	Created                 : 15 6 2007   1:41
-//	File path               : C:\Sasha\C++\SLibF\system\Cpp
-//	Author                  : Alexandru Motriuc
-//  Platform Independentsy  : 0%
-//	Library                 : 
+//  Created                 : 15 6 2007   1:41
+//  File path               : SLibF\system\Cpp
+//  Author                  : Alexandru Motriuc
+//  Platform Independent    : 0%
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
 //	Purpose:

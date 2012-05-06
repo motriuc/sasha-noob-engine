@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : s_system_mem.cpp
-//	Created                 : 15 6 2007   22:18
-//	File path               : SLibF\system\cpp
-//	Author                  : Alexandru Motriuc
-//  Platform Independentsy  : 0%
-//	Library                 : 
+//  Created                 : 15 6 2007   22:18
+//  File path               : SLibF\system\cpp
+//  Author                  : Alexandru Motriuc
+//  Platform Independent    : 0%
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -17,10 +17,8 @@
 /////////////////////////////////////////////////////////////////////
 #include "s_system.h"
 
-namespace System
-{
-namespace Memory
-{
+namespace System { namespace Memory {
+	
 using namespace Types;
 
 //-------------------------------------------------------------------
@@ -85,5 +83,4 @@ void XorW( void* pBuf, SWORD val, sUInt uCount )
 }
 
 
-}
-}
+}}

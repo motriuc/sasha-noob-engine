@@ -7,7 +7,7 @@
 //  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -20,10 +20,8 @@
 
 #include "s_system.h"
 
-namespace System
-{
-namespace d3Math
-{
+namespace System { namespace d3Math {
+	
 using namespace System::Types;
 
 //-------------------------------------------------------------------		

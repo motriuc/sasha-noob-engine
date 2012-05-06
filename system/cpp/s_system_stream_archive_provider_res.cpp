@@ -3,7 +3,7 @@
 //  Created                 : 16 1 2012   13:01
 //  File path               : SLibF\system\Cpp
 //  Author                  : Alexandru Motriuc
-//  Platform Independentsy  : 0%
+//  Platform Independent    : 0%
 //  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
@@ -31,10 +31,7 @@ using namespace System::Types;
 	#include "int_stream_win32.h"
 #endif
 
-namespace System
-{
-namespace Streams
-{
+namespace System { namespace Streams {
 
 //---------------------------------------------------------------------------------------	
 IInputStream* ResourceArchiveProvider::Open( const sString& path ) throws_error
@@ -110,5 +107,4 @@ sBool FolderArchiveProvider::IsAvailable( const sString& path ) const
 	return FileArchiveStream::IsAvailable( Files::Name::GetPath( _path, path ) );
 }
 
-}
-}
+}}

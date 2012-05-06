@@ -3,11 +3,11 @@
 //  Created                 : 16 1 2012   13:01
 //  File path               : SLibF\system\Cpp
 //  Author                  : Alexandru Motriuc
-//  Platform Independentsy  : 0%
+//  Platform Independent    : 0%
 //  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -20,10 +20,7 @@
 
 #include "s_system.h"
 
-namespace System
-{
-namespace Streams
-{
+namespace System { namespace Streams {
 
 const sChar* rootPrefix = _S("//");
 const sChar AliasChar	= _S('%');
@@ -167,5 +164,4 @@ StreamArchive::~StreamArchive()
 		delete _providers[i];
 }
 
-}
-}
+}}

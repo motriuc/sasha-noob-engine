@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : s_system_error.cpp
-//	Created                 : 27 6 2007   11:27
-//	File path               : C:\Sasha\C++\SLibF\system\Cpp
-//	Author                  : Alexandru Motriuc
-//  Platform Independentsy  : 0%
+//  Created                 : 27 6 2007   11:27
+//  File path               : SLibF\system\Cpp
+//  Author                  : Alexandru Motriuc
+//  Platform Independent    : 0%
 //	Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -19,15 +19,15 @@
 #define _use_sError_
 #include "s_system.h"
 
-namespace System
-{
-namespace Errors
-{
+namespace System { namespace Errors {
+
 using namespace Types;
 
-/************************************************************************/
-/* StringError                                                          */
-/************************************************************************/
+/*******************************************************************/
+/* StringError                                                     */
+/*******************************************************************/
+	
+//-------------------------------------------------------------------
 StringError::StringError( Error* pPrevError, const sString& desc ) : 
 	_BaseClass( pPrevError ),
 	_desc( desc )
@@ -35,7 +35,7 @@ StringError::StringError( Error* pPrevError, const sString& desc ) :
 
 }
 
-/************************************************************************/
+//-------------------------------------------------------------------
 #ifdef _DEBUG
 StringError::StringError( const sChar* file, sInt line, Error* pPrevError, const sString& desc ) :
 	_BaseClass( file, line, pPrevError ),
@@ -44,29 +44,30 @@ StringError::StringError( const sChar* file, sInt line, Error* pPrevError, const
 }
 #endif // _DEBUG
 
-/************************************************************************/
+//-------------------------------------------------------------------
 sString StringError::Description() const
 {
 	return Format( _S("'{1}' {2}") ) % _desc % Error::Description();
 }
 
-/************************************************************************/
-/* _SPL_WIN32                                                           */
-/************************************************************************/
+/********************************************************************/
+/* _SPL_WIN32                                                       */
+/********************************************************************/
 
 #ifdef _SPL_WIN32 
 
-/************************************************************************/
-/* Win32Error                                                           */
-/************************************************************************/
+/********************************************************************/
+/* Win32Error                                                       */
+/********************************************************************/
 
+//-------------------------------------------------------------------
 Win32Error::Win32Error( Error* pPrevError ) :
 	_BaseClass( pPrevError )
 {
 	_le = GetLastError();
 }
 
-/************************************************************************/
+//-------------------------------------------------------------------
 #ifdef _DEBUG
 Win32Error::Win32Error( const sChar* file, sInt line, Error* pPrevError ) : 
 	_BaseClass( file, line, pPrevError )
@@ -76,7 +77,7 @@ Win32Error::Win32Error( const sChar* file, sInt line, Error* pPrevError ) :
 
 #endif // _DEBUG
 
-/************************************************************************/
+//-------------------------------------------------------------------
 sString Win32Error::Description() const
 {
 	sString ret( _S("Unknown error") );
@@ -102,22 +103,24 @@ sString Win32Error::Description() const
 	return ret + Error::Description();
 }
 
-/************************************************************************/
-/* HRESULTError                                                         */
-/************************************************************************/
+/*******************************************************************/
+/* HRESULTError                                                    */
+/*******************************************************************/
+
+//-------------------------------------------------------------------	
 HRESULTError::HRESULTError( Error* pPrevError, HRESULT hr ) :
 	_BaseClass( pPrevError ),
 	_hr( hr )
 {
 }
 
-/************************************************************************/
+//-------------------------------------------------------------------
 sString HRESULTError::Description() const
 {
 	return Format( _S("hr:{1} {2}") ) % (sUInt)_hr % _BaseClass::Description();
 }
-
-/************************************************************************/
+	
+//-------------------------------------------------------------------
 #ifdef _DEBUG
 HRESULTError::HRESULTError( const sChar* file, sInt line, Error* pPrevError, HRESULT hr ) :
 	_BaseClass( file, line, pPrevError ),
@@ -126,8 +129,6 @@ HRESULTError::HRESULTError( const sChar* file, sInt line, Error* pPrevError, HRE
 }
 #endif // _DEBUG
 
-/************************************************************************/
 #endif // _SPL_WIN32
 
-}
-}
+}}

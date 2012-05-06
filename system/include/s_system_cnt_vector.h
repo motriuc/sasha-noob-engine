@@ -108,8 +108,11 @@ public:
 		for( sInt i = 0; i < v.Size(); i++ )
 			_pElementData[i] = v._pElementData[i];
 		
-		for( sInt i = v.Size();  i < _iElementCount; i++)
-			_pElementData[i] = _TYPE();
+		if( !T::Traits<_TYPE>::BasicType )
+		{
+			for( sInt i = v.Size();  i < _iElementCount; i++)
+				_pElementData[i] = _TYPE();
+		}
 	
 		_iElementCount = v.Size();
 	}
@@ -200,7 +203,7 @@ public:
 	/**
 	 *	Add element to the end
 	 */
-	inline System::Types::sInt AddC( const _TYPE item )
+	inline sInt AddC( const _TYPE item )
 	{
 		return Add( item );
 	}
@@ -208,7 +211,7 @@ public:
 	/**
 	 *	Add element at index
 	 */
-	System::Types::sInt AddAt( sInt index, const _TYPE& item )
+	sInt AddAt( sInt index, const _TYPE& item )
 	{
 		if( index >= _iElementCount )
 			return Add( item );
@@ -232,7 +235,7 @@ public:
 	/**
 	 *	Add element at index
 	 */
-	inline System::Types::sInt AddAtC( sInt index, const _TYPE item )
+	inline sInt AddAtC( sInt index, const _TYPE item )
 	{
 		return AddAt( index, item );
 	}
@@ -240,11 +243,11 @@ public:
 	/**
 	 *	remove all elements
 	 */
-	inline void RemoveAll( sBool bClean = sTrue )
+	inline void RemoveAll()
 	{
-		if( bClean )
+		if( !T::Traits<_TYPE>::BasicType )
 		{
-			for( System::Types::sInt i = 0; i < _iElementCount; i++ )
+			for( sInt i = 0; i < _iElementCount; i++ )
 				_pElementData[i] = _TYPE();
 		}
 
@@ -252,7 +255,7 @@ public:
 	}
 
 	/**
-	 *	Remove last element
+	 *	Removes last element and returs it
 	 */
 	inline void RemoveLast( _TYPE& t )
 	{
@@ -263,7 +266,7 @@ public:
 	}
 
 	/**
-	 *	Remove last element
+	 *	Removes last element
 	 */
 	inline void RemoveLast()
 	{
@@ -273,22 +276,31 @@ public:
 	}
 
 	/**
-	 *	
+	 * Removes element at index	
 	 */
-	_TYPE RemoveAt( sInt index )
+	void RemoveAt( sInt index, _TYPE& ret )
 	{
 		__S_ASSERT( index >= 0 && index < _iElementCount );
 		
-		_TYPE ret = _pElementData[index];
-
-		for( sInt i = index; i < _iElementCount - 1; i++ )
-			_pElementData[i] = _pElementData[i+1];
-
-		_pElementData[--_iElementCount] = _TYPE();
-
-		return ret;
+		ret = _pElementData[index];
+		
+		RemoveAt( index );
 	}
 
+	/**
+	 * Removes element at index	
+	 */
+	inline void RemoveAt( sInt index )
+	{
+		__S_ASSERT( index >= 0 && index < _iElementCount );
+				
+		for( sInt i = index; i < _iElementCount - 1; i++ )
+			_pElementData[i] = _pElementData[i+1];
+		
+		_pElementData[--_iElementCount] = _TYPE();
+	}
+	
+	
 	/**
 	 * Remove elements from to to from the vector
 	 */
@@ -311,14 +323,13 @@ public:
 	}
 
 	/**
-	 *	Set vector size >= 0
-	 *	if bClean = false does not clear unused elements
+	 *	Set vector size
 	 */
-	inline void SetSize( sInt size, sBool bClean = sTrue )
+	inline void SetSize( sInt size )
 	{
 		__S_ASSERT( size >= 0 );
 
-		if( bClean )
+		if( !T::Traits<_TYPE>::BasicType )
 		{
 			for( sInt i = size;  i < _iElementCount; i++)
 				_pElementData[i] = _TYPE();
@@ -390,9 +401,9 @@ private:
 	}
 
 private:
-	_TYPE*						_pElementData;
-	System::Types::sInt			_iElementCount;
-	System::Types::sInt			_iElementCapasity;
+	_TYPE*	_pElementData;
+	sInt	_iElementCount;
+	sInt	_iElementCapasity;
 };
 
 /**
