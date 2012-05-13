@@ -114,7 +114,7 @@ void GestureDetect_Swipe::Process( EngineData& edata, const GestureEvent& gestur
 {
 	switch( gestureEvent.GetType() )
 	{
-	case GestureEvent::E_Move:
+        case GestureEvent::E_Move:
 		{
 			if( _bSwipe && gestureEvent.Taps().Size() == prevGestureEvent.Taps().Size() )
 			{
@@ -136,7 +136,11 @@ void GestureDetect_Swipe::Process( EngineData& edata, const GestureEvent& gestur
 			}
 		}
 		break;
-	case GestureEvent::E_Begin:
+            
+        case GestureEvent::E_End:
+        break;
+            
+        case GestureEvent::E_Begin:
 		{
 			if( GetBBox().IsEmpty() )
 				_bSwipe = sTrue;

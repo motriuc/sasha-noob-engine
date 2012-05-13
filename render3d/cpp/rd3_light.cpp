@@ -48,6 +48,10 @@ d3Float Light::GetVisibilityFactor( const d3Vector& p ) const
 	{
 		case LightType::E_POINT:
 			return lightPoint().GetVisibilityFactor( p );
+            
+        default:
+            __S_ASSERT( sFalse );
+            break;
 	}
 	
 	return Limit::d3Float::Max;

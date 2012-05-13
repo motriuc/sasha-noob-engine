@@ -62,6 +62,8 @@ public:
 	 *
 	 */
 	virtual void LoadFromXml( const Xml::BaseDomNode& node, const Def& def, const Streams::StreamArchive& archive ) throws_error = 0;
+    
+    virtual ~Primitive3D() {}
 	
 public:	
 	/**

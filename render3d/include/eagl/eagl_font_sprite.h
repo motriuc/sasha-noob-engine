@@ -23,7 +23,7 @@
 	#error eagl_conf.h must be included
 #endif
 
-#include <CoreGraphics/CGContext.h>s
+#include <CoreGraphics/CGContext.h>
 #include "rd3_font_sprite.h"
 
 namespace Rd3

@@ -59,7 +59,12 @@ public:
 	/**
 	 *
 	 */
-	virtual sBool SetParam( const sString& name, d3Float value ) { return sFalse; } 
+	virtual sBool SetParam( const sString& name, d3Float value ) { return sFalse; }
+    
+    /**
+     * destructor
+     */
+    virtual ~AfterEffectElement() {}
 };
 
 /**

@@ -16,6 +16,8 @@
 //      
 /////////////////////////////////////////////////////////////////////
 
+#define _INC_OBJ_C_
+
 #include "rd3afx.h"
 #include "eagl_conf.h"
 #include "eagl_font_utils.h"

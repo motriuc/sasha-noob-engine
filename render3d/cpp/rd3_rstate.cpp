@@ -321,13 +321,13 @@ void RenderState::SetRenderTarget( Texture* pTexture )
 	if( _float_params[FloatParameter::E_RENDER_WIDTH] != _renderTargetSizeInPixels.x )
 	{
 		_float_params[FloatParameter::E_RENDER_WIDTH] = _renderTargetSizeInPixels.x;
-		_bool_params[FloatParameter::E_RENDER_WIDTH] = sTrue;
+		_changed_float_params[FloatParameter::E_RENDER_WIDTH] = sTrue;
 	}
 
 	if( _float_params[FloatParameter::E_RENDER_HEIGHT] != _renderTargetSizeInPixels.y )
 	{
 		_float_params[FloatParameter::E_RENDER_HEIGHT] = _renderTargetSizeInPixels.y;
-		_bool_params[FloatParameter::E_RENDER_HEIGHT] = sTrue;
+		_changed_float_params[FloatParameter::E_RENDER_HEIGHT] = sTrue;
 	}
 }
 
