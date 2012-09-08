@@ -434,7 +434,7 @@ Dx9VertexBuffer::Dx9VertexBuffer(
 //-------------------------------------------------------------------
 void Dx9VertexBuffer::GetVectorList( sInt offset, System::d3Math::d3VectorList& v ) const
 {
-	v.RemoveAll( sFalse );
+	v.RemoveAll();
 
 	if( offset < 0 )
 		return;

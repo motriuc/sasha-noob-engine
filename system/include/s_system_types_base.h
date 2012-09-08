@@ -129,7 +129,7 @@ namespace SeekType
 }
 
 /**
- *
+ * Char encoding type
  */
 namespace Encoding
 {

@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : s_system_mt_cs.h
-//	Created                 : 23 6 2007   22:54
-//	File path               : SLibF\system\include
-//	Author                  : Alexandru Motriuc
-//  Platform Independentsy  : 0%
-//	Library                 : 
+//  Created                 : 23 6 2007   22:54
+//  File path               : SLibF\system\include
+//  Author                  : Alexandru Motriuc
+//  Platform Independent    : 0%
+//  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
-//	Purpose:
+//  Purpose:
 //      
 //
 /////////////////////////////////////////////////////////////////////
@@ -98,7 +98,7 @@ private:
 #include "s_system_mt_cs.inl"
 
 /************************************************************************/
-/* Platform include                                                     */
+/* Platform inline include                                              */
 /************************************************************************/
 
 #ifdef _SPL_WIN32

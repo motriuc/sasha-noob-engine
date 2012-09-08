@@ -26,30 +26,30 @@ public:
 	// some type information options
 	enum 
 	{
-		DefaultTraits = true,   // means that default this is default traits true must be only here
-		BasicType = false		//  true means it is part of basic system types and dosn't need consturctos to operate 
+		DefaultTraits = true,   // ture means this is default type traits provided by the library.
+		BasicType = false		//  true means that the type is a basic type and it's copy constructor and operator are compiler default 
 	};
 
 	// Compare operators
 	class Cmp
 	{
 	public:
-		inline static System::Types::sBool Big( const _TYPE& a, const _TYPE& b )
+		inline static sBool Big( const _TYPE& a, const _TYPE& b )
 		{
 			return a > b;
 		}
 
-		inline static System::Types::sBool Equal( const _TYPE& a, const _TYPE& b )
+		inline static sBool Equal( const _TYPE& a, const _TYPE& b )
 		{
 			return a == b;
 		}
 
-		inline static System::Types::sBool Small( const _TYPE& a, const _TYPE& b )
+		inline static sBool Small( const _TYPE& a, const _TYPE& b )
 		{
 			return a < b;
 		}
 
-		inline static System::Types::sInt Compare( const _TYPE& a, const _TYPE& b )
+		inline static sInt Compare( const _TYPE& a, const _TYPE& b )
 		{
 			if( a > b )
 				return 1;
@@ -70,30 +70,30 @@ public:
 	// some type information options
 	enum 
 	{
-		DefaultTraits = false,   // means that default this is default traits true must be only here
-		BasicType = true		//  true means it is part of basic system types and dosn't need consturctos to operate 
+		DefaultTraits = false,
+		BasicType = true 
 	};
 
 	// Compare operators
 	class Cmp
 	{
 	public:
-		inline static System::Types::sBool Big( const System::Types::sInt& a, const System::Types::sInt& b )
+		inline static sBool Big( const sInt& a, const sInt& b )
 		{
 			return a > b;
 		}
 
-		inline static System::Types::sBool Equal( const System::Types::sInt& a, const System::Types::sInt& b )
+		inline static sBool Equal( const sInt& a, const sInt& b )
 		{
 			return a == b;
 		}
 
-		inline static System::Types::sBool Small( const System::Types::sInt& a, const System::Types::sInt& b )
+		inline static sBool Small( const sInt& a, const sInt& b )
 		{
 			return a < b;
 		}
 
-		inline static System::Types::sInt Compare( const System::Types::sInt& a, const System::Types::sInt& b )
+		inline static sInt Compare( const sInt& a, const sInt& b )
 		{
 			return a - b;
 		}
@@ -110,32 +110,125 @@ public:
 	// some type information options
 	enum 
 	{
-		DefaultTraits = false,   // means that default this is default traits true must be only here
-		BasicType = true		//  true means it is part of basic system types and dosn't need consturctos to operate 
+		DefaultTraits = false,
+		BasicType = true 
 	};
 
 	// Compare operators
 	class Cmp
 	{
 	public:
-		inline static System::Types::sBool Big( const System::Types::sUInt& a, const System::Types::sUInt& b )
+		inline static sBool Big( const sUInt& a, const sUInt& b )
 		{
 			return a > b;
 		}
 
-		inline static System::Types::sBool Equal( const System::Types::sUInt& a, const System::Types::sUInt& b )
+		inline static sBool Equal( const sUInt& a, const sUInt& b )
 		{
 			return a == b;
 		}
 
-		inline static System::Types::sBool Small( const System::Types::sUInt& a, const System::Types::sUInt& b )
+		inline static sBool Small( const sUInt& a, const sUInt& b )
 		{
 			return a < b;
 		}
 
-		inline static System::Types::sInt Compare( const System::Types::sUInt& a, const System::Types::sUInt& b )
+		inline static sInt Compare( const sUInt& a, const sUInt& b )
 		{
-			return (System::Types::sInt)( a - b );
+			return static_cast<sInt>( a - b );
+		}
+	};
+};
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+// sFloat type traits
+
+template<>
+class Traits<System::Types::sFloat>
+{
+public:
+
+	// some type information options
+	enum 
+	{
+		DefaultTraits = true,   // ture means this is default type traits provided by the library.
+		BasicType = true		//  true means that the type is a basic type and it's copy constructor and operator are compiler default 
+	};
+
+	// Compare operators
+	class Cmp
+	{
+	public:
+		inline static sBool Big( const sFloat& a, const sFloat& b )
+		{
+			return a > b;
+		}
+
+		inline static sBool Equal( const sFloat& a, const sFloat& b )
+		{
+			return a == b;
+		}
+
+		inline static sBool Small( const sFloat& a, const sFloat& b )
+		{
+			return a < b;
+		}
+
+		inline static sInt Compare( const sFloat& a, const sFloat& b )
+		{
+			if( a > b )
+				return 1;
+			if( a == b )
+				return 0;
+			
+			return -1;
+		}
+	};
+};
+
+///////////////////////////////////////////////////////////////////////////////////////
+// sFloat type traits
+
+template<>
+class Traits<System::Types::sDouble>
+{
+public:
+
+	// some type information options
+	enum 
+	{
+		DefaultTraits = true,   // ture means this is default type traits provided by the library.
+		BasicType = true		//  true means that the type is a basic type and it's copy constructor and operator are compiler default 
+	};
+
+	// Compare operators
+	class Cmp
+	{
+	public:
+		inline static sBool Big( const sDouble& a, const sDouble& b )
+		{
+			return a > b;
+		}
+
+		inline static sBool Equal( const sDouble& a, const sDouble& b )
+		{
+			return a == b;
+		}
+
+		inline static sBool Small( const sDouble& a, const sDouble& b )
+		{
+			return a < b;
+		}
+
+		inline static sInt Compare( const sDouble& a, const sDouble& b )
+		{
+			if( a > b )
+				return 1;
+			if( a == b )
+				return 0;
+			
+			return -1;
 		}
 	};
 };

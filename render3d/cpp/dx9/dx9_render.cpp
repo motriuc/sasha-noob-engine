@@ -192,7 +192,7 @@ Rd3::VertexBuffer* Dx9Render::CreateVertexBuffer(
 {
 	if( objectName.Length() > 0 && _vertexBufferPool[objectName] != NULL )
 		error_throw_arg( System::Errors::StringError ) 
-			_S("Duplicate object resource name :") + objectName 
+			Format( _S("Duplicate object resource name : {1}") ) % objectName 
 		);
 	
 	Dx9VertexBuffer* vb = NULL;
@@ -223,7 +223,7 @@ Rd3::VertexBuffer* Dx9Render::CreateVertexBuffer(
 {
 	if( objectName.Length() > 0 && _vertexBufferPool[objectName] != NULL )
 		error_throw_arg( System::Errors::StringError ) 
-			_S("Duplicate object resource name :") + objectName 
+			Format( _S("Duplicate object resource name : {1}") ) % objectName 
 		);
 	
 	Dx9VertexBuffer* vb = NULL;
@@ -255,7 +255,7 @@ Rd3::VertexBuffer* Dx9Render::CreateVertexBuffer(
 {
 	if( objectName.Length() > 0 && _vertexBufferPool[objectName] != NULL )
 		error_throw_arg( System::Errors::StringError ) 
-			_S("Duplicate object resource name :") + objectName 
+			Format( _S("Duplicate object resource name : {1}") ) % objectName 
 		);
 	
 	Dx9VertexBuffer* vb = NULL;
@@ -333,7 +333,7 @@ Rd3::IndexBuffer* Dx9Render::CreateIndexBuffer(
 {
 	if( objectName.Length() > 0 && _indexBufferPool[objectName] != NULL )
 		error_throw_arg( System::Errors::StringError ) 
-			_S("Duplicate object resource name :") + objectName 
+			Format( _S("Duplicate object resource name : {1}") ) % objectName 
 		);
 	
 	Dx9IndexBuffer* pIndexBuffer = NULL;
@@ -379,7 +379,7 @@ Rd3::Texture* Dx9Render::CreateTextureFromFile(
 
 	if( objectName.Length() > 0 && _textureResPool[objectName] != NULL )
 		error_throw_arg( System::Errors::StringError ) 
-			_S("Duplicate object resource name :") + objectName 
+			Format( _S("Duplicate object resource name : {1}") ) % objectName 
 		);
 
 	
@@ -424,7 +424,7 @@ Rd3::Effect* Dx9Render::CreateEffectFromFile(
 {
 	if( objectName.Length() > 0 && _effectResPool[objectName] != NULL )
 		error_throw_arg( System::Errors::StringError ) 
-			_S("Duplicate object resource name :") + objectName 
+			Format( _S("Duplicate object resource name : {1}") ) % objectName 
 		);
 	
 	Dx9Effect* effect = NULL;

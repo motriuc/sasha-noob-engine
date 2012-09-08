@@ -260,8 +260,10 @@ void Dx9Effect::InitParamsLinks() throws_error
 
 	if( unknownParams.Length() > 0 )
 	{
-		System::Platform::ShowWarning( _S("Warning the folowing paramas <") + unknownParams + 
-			_S("> from fx: ") + GetObjectName() + _S(" are not supported by engine") ); 
+		System::Platform::ShowWarning(
+			Format( _S("Warning the folowing paramas <{1}> from fx: {2} are not supported by the engine") ) 
+				% unknownParams % GetObjectName()
+		);
 	}
 }
 

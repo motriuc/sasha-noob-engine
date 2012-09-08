@@ -79,6 +79,9 @@
     <Filter Include="system\Source Files\files">
       <UniqueIdentifier>{1feeb60d-c666-47a0-ac32-f9735a86b0dd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="system\Header Files\ptr">
+      <UniqueIdentifier>{acefac1f-27e0-486c-9a75-86dedc9cfc91}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -416,9 +419,6 @@
     <ClInclude Include="..\..\system\include\s_system_appenv.h">
       <Filter>system\Header Files\to sort</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_dep.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_error.h">
       <Filter>system\Header Files\to sort</Filter>
     </ClInclude>
@@ -444,12 +444,6 @@
       <Filter>system\Header Files\to sort</Filter>
     </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_object.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_ptr.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_ptr_unique.h">
       <Filter>system\Header Files\to sort</Filter>
     </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_rgbcolor.h">
@@ -574,6 +568,15 @@
     </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_conf_detect.h">
       <Filter>system\Header Files\conf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_dep.h">
+      <Filter>system\Header Files\conf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_ptr.h">
+      <Filter>system\Header Files\ptr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_ptr_unique.h">
+      <Filter>system\Header Files\ptr</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

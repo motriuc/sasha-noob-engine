@@ -49,6 +49,7 @@ public:
 
 	sString ToString() const;
 	operator sString() const;
+
 private:
 	sInt ConvertTo( sChar* chars, sInt itemPos ) const;
 	sInt ConvertTo( sChar* chars ) const;

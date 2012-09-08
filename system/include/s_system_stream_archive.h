@@ -108,11 +108,7 @@ public:
 
 	virtual sString Description() const
 	{
-		return 
-			sString( _S("Can't find the stream: ") ) + 
-			_path + 
-			Chars::NewLine + 
-			_BaseClass::Description();
+		return Format( _S("Can't find the stream: {1}\n{2}") ) % _path % _BaseClass::Description();
 	}
 
 private:

@@ -252,7 +252,7 @@ void LuaObject::Exec( const SBCHAR* funName, void* pObject, LuaFunctions* pObjec
 		_pLuaHandle = NULL;
 		
 		error_throw_arg( Errors::StringError )
-			_S("Can't execute Lua function: ") + sString( funName ) + ". Error : " + error
+			Format( _S("Can't execute Lua function: {1}. Error : {2}") ) % funName % error 
 		);
 	}	
 }
@@ -275,7 +275,7 @@ void LuaObject::Exec( const SBCHAR* funName, d3Float p ) throws_error
 		_pLuaHandle = NULL;
 		
 		error_throw_arg( Errors::StringError )
-			_S("Can't execute Lua function: ") + sString( funName ) + ". Error : " + error
+			Format( _S("Can't execute Lua function: {1}. Error : {2}") ) % funName % error 
 		);
 	}	
 }
@@ -297,7 +297,7 @@ void LuaObject::Exec( const SBCHAR* funName )
 		_pLuaHandle = NULL;
 		
 		error_throw_arg( Errors::StringError )
-			_S("Can't execute Lua function: ") + sString( funName ) + _S(". Error : ") + error
+			Format( _S("Can't execute Lua function: {1}. Error : {2}") ) % funName % error 
 		);
 	}
 }

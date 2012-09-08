@@ -35,6 +35,9 @@ namespace T
 	#include "s_system_t_factory.h"
 }
 
+/**
+ * Default Compare class
+ */
 template< typename _Type >
 class DefaultCmp : public T::Traits< _Type >::Cmp
 {	

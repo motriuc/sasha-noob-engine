@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////////////
 //  File Name               : s_system_global_win32.inl
 //  Created                 : 28 6 2007   17:07
-//  File path               : C:\Sasha\C++\SLibF\system\Include
+//  File path               : SLibF\system\Include
 //  Author                  : Alexandru Motriuc
 //  Platform Independent    : 0%
 //  Library                 : 
@@ -15,6 +15,26 @@
 //  Modification History:
 //      
 /////////////////////////////////////////////////////////////////////
+
+inline void ShowWarning( const sString& message )
+{
+	ShowWarning( message.c_str() );
+}
+
+inline void DebugWarning( const sString& message )
+{
+	DebugWarning( message.c_str() );
+}
+
+inline void ShowError( const sString& message )
+{
+	ShowError( message.c_str() );
+}
+
+inline void ShowMessage( const sString& message )
+{
+	ShowMessage(  message.c_str() );
+}
 
 inline void ShowWarning( const sChar* pMessage )
 {

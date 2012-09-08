@@ -10,8 +10,8 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
                      LPTSTR    lpCmdLine,
                      int       nCmdShow)
 {
-	UNREFERENCED_PARAMETER(hPrevInstance);
-	UNREFERENCED_PARAMETER(lpCmdLine);
+	UNREFERENCED_PARAMETER( hPrevInstance );
+	UNREFERENCED_PARAMETER( lpCmdLine );
 
 	SNEApplication app( hInstance );
 	return app.Run();

@@ -127,7 +127,7 @@ void Dx9Texture::LoadFromFile( const sString& path, const Streams::StreamArchive
 	else 
 	{
 		error_throw_arg( Errors::StringError )
-			_S("Unknown texture type: " ) + path
+			Format( _S("Unknown texture type: {1}" ) ) % path
 		);
 	}
 }

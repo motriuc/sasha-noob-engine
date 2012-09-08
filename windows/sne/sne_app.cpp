@@ -3,7 +3,7 @@
 //  Created                 : 1 3 2012   
 //  File path               : SLibF\windows\sne
 //  Author                  : Alexandru Motriuc
-//  Platform Independentsy  : 0%
+//  Platform Independent    : 0%
 //  Library                 : 
 //
 /////////////////////////////////////////////////////////////////////
@@ -116,7 +116,7 @@ void SNEApplication::OnCreateWindow()
 
 //------------------------------------------------------------------
 void SNEApplication::LoadWorld() throws_error
-{
+ {
 	if( AppEnviroment::Instance().GetCommandLineArgumentCount() < 1 )
 	{
 		error_throw_arg( Errors::StringError )

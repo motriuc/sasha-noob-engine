@@ -20,30 +20,30 @@
  * Thread safe increment
  * @param nNumber to increment
  */
-sInt Inc( Atomic& nNumber );
+sInt Inc( sAtomic& nNumber );
 
 /**
  * Thread safe decrement
  * @param nNumber number to decrement
  */
-sInt Dec( Atomic& nNumber );
+sInt Dec( sAtomic& nNumber );
 
 /**
  * If nNumber == i set nNumber = v returns true if swap did occured
  */
-sBool SetIf( Atomic& nNumber, sInt i, sInt v );
+sBool SetIf( sAtomic& nNumber, sInt i, sInt v );
 
 /**
  * Thread safe increment
  * @param nNumber number to increment
  */
-sUInt Inc( volatile sUInt& nNumber );
+sUInt Inc( sUAtomic& nNumber );
 
 /**
  * Thread safe decrement
  * @param nNumber number to decrement
  */
-sUInt Dec( volatile sUInt& nNumber );
+sUInt Dec( sUAtomic& nNumber );
 
 
 // Platfom code

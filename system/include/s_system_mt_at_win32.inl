@@ -16,7 +16,7 @@
 //      
 /////////////////////////////////////////////////////////////////////
 
-inline sInt Inc( Atomic& nNumber )
+inline sInt Inc( sAtomic& nNumber )
 {
 #ifdef _SLIB_MT
 	return ::InterlockedIncrement( (long*)&nNumber );
@@ -25,7 +25,7 @@ inline sInt Inc( Atomic& nNumber )
 #endif
 }
 
-inline sInt Dec( Atomic& nNumber )
+inline sInt Dec( sAtomic& nNumber )
 {
 #ifdef _SLIB_MT
 	return ::InterlockedDecrement( (long*)&nNumber );
@@ -34,7 +34,7 @@ inline sInt Dec( Atomic& nNumber )
 #endif
 }
 
-inline sUInt Inc( volatile sUInt& nNumber )
+inline sUInt Inc( sUAtomic& nNumber )
 {
 #ifdef _SLIB_MT
 	return ::InterlockedIncrement( (long*)&nNumber );
@@ -43,7 +43,7 @@ inline sUInt Inc( volatile sUInt& nNumber )
 #endif
 }
 
-inline sUInt Dec( volatile sUInt& nNumber )
+inline sUInt Dec( sUAtomic& nNumber )
 {
 #ifdef _SLIB_MT
 	return ::InterlockedDecrement( (long*)&nNumber );
@@ -51,4 +51,19 @@ inline sUInt Dec( volatile sUInt& nNumber )
 	return --nNumber;
 #endif
 }
+
+inline sBool SetIf( sAtomic& nNumber, sInt i, sInt v )
+{
+#ifdef _SLIB_MT
+	return ::InterlockedCompareExchange( (long*)&nNumber, v, i ) == i;
+#else
+	if( nNumber == i )
+	{
+		nNumber = v;
+		return true;
+	}
+	return false;
+#endif
+}
+
 

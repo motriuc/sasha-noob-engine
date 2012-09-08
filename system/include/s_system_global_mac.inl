@@ -16,6 +16,26 @@
 //      
 /////////////////////////////////////////////////////////////////////
 
+inline void ShowWarning( const sString& message )
+{
+	ShowWarning( message.c_str() );
+}
+
+inline void DebugWarning( const sString& message )
+{
+	DebugWarning( message.c_str() );
+}
+
+inline void ShowError( const sString& message )
+{
+	ShowError( message.c_str() );
+}
+
+inline void ShowMessage( const sString& message )
+{
+	ShowMessage(  message.c_str() );
+}
+
 void DebugWarning( const sChar* pMessage )
 {
 #ifdef _SLIB_WCHAR

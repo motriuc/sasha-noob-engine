@@ -27,7 +27,8 @@ namespace Mt
 	using namespace Types;
 	
 #ifdef 	_SLIB_MT
-	typedef volatile sInt	Atomic;
+	typedef volatile sInt	sAtomic;
+	typedef volatile sUInt	sUAtomic;
 #else
 	typedef sInt Atomic;	
 #endif

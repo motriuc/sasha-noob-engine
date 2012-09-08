@@ -28,27 +28,30 @@ namespace Platform
 	/**
 	 * logs debug level warning
 	 */
-	static void DebugWarning( const sChar* pMessage );
+	void DebugWarning( const sChar* pMessage );
+	void DebugWarning( const sString& message );
 
 	/**
 	 * Shows a Warning message
 	 */
-	static void ShowWarning( const sChar* pMessage );
+	void ShowWarning( const sChar* pMessage );
+	void ShowWarning( const sString& message );
    
 	/**
 	 * Shows the Error message
 	 */
-	static void ShowError( const sChar* pMessage );
+	void ShowError( const sChar* pMessage );
+	void ShowError( const sString& message );
 
 	/**
 	 *	Shows a message Message
 	 */
-	static void ShowMessage( const sChar* pMessage );
-	
+	void ShowMessage( const sChar* pMessage );
+	void ShowMessage( const sString& message );
 	/**
 	 *	Exit from process
 	 */
-	static void Exit( sInt returnCode );
+	void Exit( sInt returnCode );
 
 	/**
 	 *	Tic count in msec
