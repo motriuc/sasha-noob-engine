@@ -16,6 +16,11 @@
 //      
 /////////////////////////////////////////////////////////////////////
 
+/**
+ * A static size Array
+ * Ex:
+ *    Array<int,7> array of 7;
+ */
 template< typename _Type, sInt _Size >
 class Array
 {

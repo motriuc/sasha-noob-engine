@@ -18,33 +18,26 @@
 
 /**
  * ptr_unique
+ *
+ * Implements a uniques ptr witch is used only in local context
+ * Ex:
+ *   ptr_unique<MyObject> obj( new MyObject( ... ) ); 
  */
 template< typename _Type >
-class ptr_unique : private class_nocopy
+class ptr_unique : public ptr_base<_Type>, private class_nocopy
 {
-public:
-	inline ptr_unique( _Type* p ) :
-		_p( p )
-	{
-	}
-	
-	inline _Type& operator()()
-	{
-		__S_ASSERT( _p != NULL );
-		return *_p;
-	}
-	
-	inline System::Types::sBool IsNull() const 
-	{
-		return _p == NULL;
-	}
-	
-	inline ~ptr_unique()
-	{
-		delete _p;
-	}
 private:
-	_Type*	_p;
+	typedef ptr_base<_Type> _BaseClass;
+public:
+	ptr_unique( _Type* p ) :
+		_BaseClass( p )
+	{
+	}
+	
+	~ptr_unique()
+	{
+		_BaseClass::Release();
+	}
 };
 
 /**
@@ -54,23 +47,23 @@ template< typename _Type >
 class ptr_array_unique : private class_nocopy
 {
 public:
-	inline ptr_array_unique( _Type* p ) :
+	ptr_array_unique( _Type* p ) :
 		_p( p )
 	{
 		__S_ASSERT( _p != NULL );
 	}
 	
-	inline operator _Type*()
+	operator _Type*()
 	{
 		return _p;
 	}
 	
-	inline _Type* ptr()
+	_Type* ptr()
 	{
 		return _p;
 	}
 	
-	inline _Type* ptr( System::Types::sInt offset )
+	_Type* ptr( System::Types::sInt offset )
 	{
 		return _p + offset;
 	}

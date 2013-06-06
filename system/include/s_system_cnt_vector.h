@@ -33,7 +33,7 @@ public:
 	/**
 	 *	default constructor
 	 */
-	inline sVector() :
+	sVector() :
 		_pElementData( NULL ),
 		_iElementCount( 0 ),
 		_iElementCapasity( 0 )
@@ -93,7 +93,7 @@ public:
 	/**
 	 *	destructor
 	 */
-	inline ~sVector()
+	~sVector()
 	{
 		delete[] _pElementData;
 	}
@@ -120,7 +120,7 @@ public:
 	/**
 	 * get Vector Size
 	 */
-	inline sInt Size() const
+	sInt Size() const
 	{
 		return _iElementCount;
 	}
@@ -128,7 +128,7 @@ public:
 	/**
 	 * get set element at 0<= index < Size
 	 */
-	inline _TYPE& operator[] ( sInt index )
+	_TYPE& operator[] ( sInt index )
 	{
 		__S_ASSERT( index >=0 && index < _iElementCount );
 		return _pElementData[index];
@@ -137,7 +137,7 @@ public:
 	/**
 	 * get set element at 0<= index < Size
 	 */
-	inline const _TYPE& operator[] ( sInt index ) const
+	const _TYPE& operator[] ( sInt index ) const
 	{
 		__S_ASSERT( index >=0 && index < _iElementCount );
 		return _pElementData[index];
@@ -146,7 +146,7 @@ public:
 	/**
 	 *	Add element to the end
 	 */
-	inline sInt Add( const _TYPE& item )
+	sInt Add( const _TYPE& item )
 	{
 		EnsureCapacity( _iElementCount + 1 );
 		_pElementData[ _iElementCount ++ ] = item;
@@ -156,7 +156,7 @@ public:
 	/**
 	 *	Add elements to the end
 	 */
-	inline void Add( const _TYPE& item1, const _TYPE& item2 )
+	void Add( const _TYPE& item1, const _TYPE& item2 )
 	{
 		EnsureCapacity( _iElementCount + 2 );
 		_pElementData[ _iElementCount ++ ] = item1;
@@ -166,7 +166,7 @@ public:
 	/**
 	 *	Add elements to the end
 	 */
-	inline void Add( const _TYPE& item1, const _TYPE& item2, const _TYPE& item3 )
+	void Add( const _TYPE& item1, const _TYPE& item2, const _TYPE& item3 )
 	{
 		EnsureCapacity( _iElementCount + 3 );
 		_pElementData[ _iElementCount ++ ] = item1;
@@ -177,7 +177,7 @@ public:
 	/**
 	 *	Add elements to the end
 	 */
-	inline void Add( const _TYPE& item1, const _TYPE& item2, const _TYPE& item3, const _TYPE& item4 )
+	void Add( const _TYPE& item1, const _TYPE& item2, const _TYPE& item3, const _TYPE& item4 )
 	{
 		EnsureCapacity( _iElementCount + 4 );
 		_pElementData[ _iElementCount ++ ] = item1;
@@ -187,9 +187,9 @@ public:
 	}
 	
 	/**
-	 *
+	 * Adds one element count times at the end
 	 */
-	inline void AddCount( const _TYPE& item, sInt count )
+	void AddCount( const _TYPE& item, sInt count )
 	{
 		EnsureCapacity( _iElementCount + count );
 		
@@ -203,7 +203,7 @@ public:
 	/**
 	 *	Add element to the end
 	 */
-	inline sInt AddC( const _TYPE item )
+	sInt AddC( const _TYPE item )
 	{
 		return Add( item );
 	}
@@ -235,7 +235,7 @@ public:
 	/**
 	 *	Add element at index
 	 */
-	inline sInt AddAtC( sInt index, const _TYPE item )
+	sInt AddAtC( sInt index, const _TYPE item )
 	{
 		return AddAt( index, item );
 	}
@@ -243,7 +243,7 @@ public:
 	/**
 	 *	remove all elements
 	 */
-	inline void RemoveAll()
+	void RemoveAll()
 	{
 		if( !T::Traits<_TYPE>::BasicType )
 		{
@@ -257,7 +257,7 @@ public:
 	/**
 	 *	Removes last element and returs it
 	 */
-	inline void RemoveLast( _TYPE& t )
+	void RemoveLast( _TYPE& t )
 	{
 		__S_ASSERT( _iElementCount > 0 );
 
@@ -268,7 +268,7 @@ public:
 	/**
 	 *	Removes last element
 	 */
-	inline void RemoveLast()
+	void RemoveLast()
 	{
 		__S_ASSERT( _iElementCount > 0 );
 
@@ -290,7 +290,7 @@ public:
 	/**
 	 * Removes element at index	
 	 */
-	inline void RemoveAt( sInt index )
+	void RemoveAt( sInt index )
 	{
 		__S_ASSERT( index >= 0 && index < _iElementCount );
 				
@@ -325,7 +325,7 @@ public:
 	/**
 	 *	Set vector size
 	 */
-	inline void SetSize( sInt size )
+	void SetSize( sInt size )
 	{
 		__S_ASSERT( size >= 0 );
 
@@ -342,7 +342,7 @@ public:
 	/**
 	 *	return TRUE if is empty
 	 */
-	inline sBool IsEmpty() const
+	sBool IsEmpty() const
 	{
 		return _iElementCount <= 0;
 	}
@@ -350,7 +350,7 @@ public:
 	/**
 	 * Reserve 
 	 */
-	inline void Reserve( sInt minCapacity )
+	void Reserve( sInt minCapacity )
 	{
 		EnsureCapacity( minCapacity );
 	}
@@ -358,8 +358,8 @@ public:
 	/**
 	 * must not be used in normal cases
 	 */
-	inline _PLATFORM const _TYPE* GetBuffer() const { return _pElementData; }
-	inline _PLATFORM _TYPE* GetBuffer() { return _pElementData; }
+	_PLATFORM const _TYPE* GetBuffer() const { return _pElementData; }
+	_PLATFORM _TYPE* GetBuffer() { return _pElementData; }
 
 private:
 	void EnsureCapacity( sInt minCapacity ) 
@@ -407,7 +407,7 @@ private:
 };
 
 /**
- *	Some vectors
+ *	Basic type vector definitions
  */
 typedef sVector<System::Types::sInt>	sIntVector;
 typedef sVector<System::Types::sBool>	sBoolVector;

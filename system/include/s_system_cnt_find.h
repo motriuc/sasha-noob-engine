@@ -23,7 +23,12 @@ private:
 	typedef typename _COLLECTION::ElementType Type;
 public:
 	/**
-	 *
+	 * finds the index of the lower bound of the element in a sorted collection
+	 * 
+	 * Ex:
+	 *   Array         : 1,4,6,7
+	 *   Element       : 5
+	 *   returns index : 1
 	 */
 	static sInt BinaryLowerBound( const _COLLECTION& collection, const Type& elem, sInt L, sInt R )
 	{
@@ -34,17 +39,22 @@ public:
 	}
 
 	/**
-	 *
+	 * finds the index of the lower bound of the element in a sorted collection
 	 */
-	static inline sInt BinaryLowerBound( const _COLLECTION& collection, const Type& elem )
+	static sInt BinaryLowerBound( const _COLLECTION& collection, const Type& elem )
 	{
 		return BinaryLowerBound( collection, elem, 0, collection.Size() - 1 );
 	}
 
 	/**
-	 *
+	 * finds a index of the upper bound of the element in a sorted collection
+	 * 
+	 * Ex:
+	 *   Array         : 1,4,6,7
+	 *   Element       : 5
+	 *   returns index : 2
 	 */
-	static inline sInt BinaryUpperBound( const _COLLECTION& collection, const Type& elem, sInt L, sInt R )
+	static sInt BinaryUpperBound( const _COLLECTION& collection, const Type& elem, sInt L, sInt R )
 	{
 		if( collection.Size() <= 0 )
 			return 0;
@@ -53,9 +63,9 @@ public:
 	}
 
 	/**
-	 *
+	 * finds a index of the upper bound of the element in a sorted collection
 	 */
-	static inline sInt BinaryUpperBound( const _COLLECTION& collection, const Type& elem )
+	static sInt BinaryUpperBound( const _COLLECTION& collection, const Type& elem )
 	{
 		return BinaryUpperBound( collection, elem, 0, collection.Size() - 1 );
 	}

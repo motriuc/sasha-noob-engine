@@ -31,7 +31,7 @@ using namespace Types;
 /**
  *	file open mode conversion table
  */
-DWORD g_fopenMode[FileOpenMode::COUNT] = 
+DWORD g_fopenMode[] = 
 {
 	CREATE_ALWAYS,		// eCreate
 	CREATE_NEW,			// eCreateNew
@@ -42,14 +42,14 @@ DWORD g_fopenMode[FileOpenMode::COUNT] =
 };
 
 //------------------------------------------------------------------------------------------	
-DWORD g_accessMode[FileAccessMode::COUNT] = 
+DWORD g_accessMode[] = 
 {
 	GENERIC_READ,					// eRead
 	GENERIC_WRITE,					// eWrite
 	GENERIC_READ | GENERIC_WRITE	// eReadWrite
 };
 //------------------------------------------------------------------------------------------	
-DWORD g_shareMode[FileShareMode::COUNT] = 
+DWORD g_shareMode[] = 
 {
 	0,									// eNone
 	FILE_SHARE_READ,					// eRead
