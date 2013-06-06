@@ -68,6 +68,10 @@ public:
 			case SeekType::eFromCurrent:
 				_pos += uPos;
 			break;
+                
+            case SeekType::COUNT:
+                __S_ASSERT( sFalse );
+            break;
 		}
 		
 		if (_pos < 0 )

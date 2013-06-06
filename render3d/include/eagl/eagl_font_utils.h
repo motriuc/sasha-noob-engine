@@ -20,13 +20,16 @@
 #define _EAGL_FONT_UTILS_H_
 
 #ifndef _EAGL_CONF_H_
-#error eagl_conf.h must be included
+    #error eagl_conf.h must be included
 #endif
 
+#ifndef _INC_OBJ_C_
 /**
  * forward declarations
  */
 struct UIFont;
+
+#endif
 
 /**
  * MeasureTextWithFont

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -125,6 +125,7 @@
 		D97371FC150784EE00BC1B85 /* ed3_obj_cam_key.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D97371FB150784EE00BC1B85 /* ed3_obj_cam_key.cpp */; };
 		D97375AC150AF28D00BC1B85 /* rd3_animation_fun.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D97375AA150AF28D00BC1B85 /* rd3_animation_fun.cpp */; };
 		D97375AD150AF28D00BC1B85 /* rd3_animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D97375AB150AF28D00BC1B85 /* rd3_animation.cpp */; };
+		D97D59D7155FE6A300A28B5C /* s_system_d3math_quaternion.inl in Resources */ = {isa = PBXBuildFile; fileRef = D97D59D6155FE6A300A28B5C /* s_system_d3math_quaternion.inl */; };
 		D97DE81D14EF7CF300E062CF /* ed3_object_lua.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D97DE81C14EF7CF300E062CF /* ed3_object_lua.cpp */; };
 		D97DEAF315359C7100003014 /* rd3_msg_gesture_detect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D97DEAF215359C7100003014 /* rd3_msg_gesture_detect.cpp */; };
 		D97DEB0C15359DDC00003014 /* ed3_ui_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D97DEB0B15359DDC00003014 /* ed3_ui_list.cpp */; };
@@ -624,6 +625,8 @@
 		D97375A9150AF27C00BC1B85 /* rd3_animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rd3_animation.h; path = ../../render3d/include/rd3_animation.h; sourceTree = SOURCE_ROOT; };
 		D97375AA150AF28D00BC1B85 /* rd3_animation_fun.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rd3_animation_fun.cpp; path = ../../render3d/cpp/rd3_animation_fun.cpp; sourceTree = SOURCE_ROOT; };
 		D97375AB150AF28D00BC1B85 /* rd3_animation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rd3_animation.cpp; path = ../../render3d/cpp/rd3_animation.cpp; sourceTree = SOURCE_ROOT; };
+		D97D59D5155FE6A300A28B5C /* s_system_d3math_quaternion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = s_system_d3math_quaternion.h; path = ../../system/include/s_system_d3math_quaternion.h; sourceTree = "<group>"; };
+		D97D59D6155FE6A300A28B5C /* s_system_d3math_quaternion.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = s_system_d3math_quaternion.inl; path = ../../system/include/s_system_d3math_quaternion.inl; sourceTree = "<group>"; };
 		D97DE81C14EF7CF300E062CF /* ed3_object_lua.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ed3_object_lua.cpp; path = ../../engine3d/cpp/ed3_object_lua.cpp; sourceTree = SOURCE_ROOT; };
 		D97DEAF115359BB700003014 /* rd3_msg_gesture_detect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rd3_msg_gesture_detect.h; path = ../../render3d/include/rd3_msg_gesture_detect.h; sourceTree = SOURCE_ROOT; };
 		D97DEAF215359C7100003014 /* rd3_msg_gesture_detect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rd3_msg_gesture_detect.cpp; path = ../../render3d/cpp/rd3_msg_gesture_detect.cpp; sourceTree = SOURCE_ROOT; };
@@ -1010,6 +1013,8 @@
 		D91D002614ECB99B00CEFA96 /* d3math */ = {
 			isa = PBXGroup;
 			children = (
+				D97D59D5155FE6A300A28B5C /* s_system_d3math_quaternion.h */,
+				D97D59D6155FE6A300A28B5C /* s_system_d3math_quaternion.inl */,
 				D91D003A14ECB9D600CEFA96 /* s_system_d3math_aabb.h */,
 				D91D003B14ECB9D700CEFA96 /* s_system_d3math_aabb.inl */,
 				D91D003C14ECB9D700CEFA96 /* s_system_d3math_camera.h */,
@@ -2147,8 +2152,11 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "sd3engiph" */;
-			compatibilityVersion = "Xcode 3.1";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -2218,6 +2226,7 @@
 				D90A3D87150FF9650028B0F6 /* system.texture.fx.0.xml in Resources */,
 				D985C71E151B462D00C6B687 /* system.texture.fx.1.qh.xml in Resources */,
 				D9A304AE152073E7005077C9 /* system.font.fx.2.xml in Resources */,
+				D97D59D7155FE6A300A28B5C /* s_system_d3math_quaternion.inl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2520,7 +2529,6 @@
 				);
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				PREBINDING = NO;
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = $EXTERN_PATH/bulet;
 			};
@@ -2537,7 +2545,6 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PREBINDING = NO;
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = $EXTERN_PATH/bulet;
 			};

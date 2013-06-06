@@ -78,26 +78,23 @@ class StringFormater< Types::sUInt >
 public:
 	static Types::sInt EstimateSize( const Types::sUInt& v )
 	{
-		if( v >= 0 )
-		{
-			if( v < 10 )
-				return 1;
+        if( v < 10 )
+            return 1;
 
-			if( v < 100 )
-				return 2;
+        if( v < 100 )
+            return 2;
 
-			if( v < 1000 )
-				return 3;
+        if( v < 1000 )
+            return 3;
 
-			if( v < 10000 )
-				return 4;
+        if( v < 10000 )
+            return 4;
+        
+        if( v < 100000 )
+            return 5;
 
-			if( v < 100000 )
-				return 5;
-
-			if( v < 1000000 )
-				return 6;
-		}
+        if( v < 1000000 )
+            return 6;
 
 		return 11;
 	}

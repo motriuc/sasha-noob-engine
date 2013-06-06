@@ -1492,6 +1492,7 @@ XML_Parse(XML_Parser parser, const char *s, int len, int isFinal)
       case XML_SUSPENDED:
         result = XML_STATUS_SUSPENDED;
         break;
+      case XML_FINISHED:
       case XML_INITIALIZED:
       case XML_PARSING:
         result = XML_STATUS_OK;

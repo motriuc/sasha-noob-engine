@@ -41,6 +41,11 @@ public:
 	 *
 	 */
 	virtual sBool IsAvailable( const sString& path ) const = 0;
+    
+    /**
+     * destructor
+     */
+    virtual ~IStreamArchiveProvider() {}
 };
 
 /**

@@ -61,10 +61,7 @@ namespace FileOpenMode
 		 *	Specifies that the operating system should open an existing file. 
 		 *	Once opened, the file should be truncated so that its size is zero bytes.
 		 */
-		eTruncate,
-
-		// 
-		_PLATFORM COUNT
+		eTruncate
 	};
 }
 
@@ -80,10 +77,8 @@ namespace FileAccessMode
 	{
 		eRead		= 0,
 		eWrite		,
-		eReadWrite	,
+		eReadWrite
 
-		//
-		_PLATFORM COUNT
 	};
 }
 
@@ -100,9 +95,7 @@ namespace FileShareMode
 		eNone		= 0,
 		eRead		,
 		eWrite		,
-		eReadWrite	,
-
-		_PLATFORM COUNT
+		eReadWrite
 	};
 }
 

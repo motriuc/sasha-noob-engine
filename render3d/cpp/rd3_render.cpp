@@ -64,6 +64,9 @@ Render* Render::CreateRender( const RenderCreateParams& params ) throws_error
 	case RenderType::E_EAGL:
 		return EAGLRender::Create( static_cast<const EAGLRenderCreateParams&>( params ) );
 #endif
+            
+        default:
+            return NULL;
 	}
 
 	return NULL;

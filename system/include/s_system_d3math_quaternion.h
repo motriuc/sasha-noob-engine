@@ -55,7 +55,7 @@ public:
 	 * Multiplies two quaternions
 	 */
 	static void Mul( d3Quaternion& r, const d3Quaternion& a, const d3Quaternion& b );
-private:
+public:
 	union
 	{
 		struct 
