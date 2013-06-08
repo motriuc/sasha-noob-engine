@@ -22,7 +22,7 @@
 template< typename _Type >
 class ptr_base
 {
-public:
+protected:
 	/**
 	 * returns True is pointer is NULL
 	 */
@@ -49,7 +49,6 @@ public:
 		return _p;
 	}
 
-protected:
 	ptr_base() :
 		_p( NULL )
 	{
@@ -75,6 +74,11 @@ protected:
 		_p = src._p;
 	}
 
+	System::Types::sBool operator == ( const ptr_base<_Type>& src )
+	{
+		return _p == src._p;
+	}
+
 	/**
 	 * Release the pointer data
 	 */
@@ -83,13 +87,13 @@ protected:
 		delete _p;
 	}
 
-	void Reset()
+	void Reset() const
 	{
 		_p = NULL;
 	}
 
 private:
-	_Type* _p;
+	mutable _Type* _p;
 };
 
 /**
@@ -101,6 +105,27 @@ class ptr_base_ref : public ptr_base< _Type >
 private:
 	typedef  ptr_base< _Type > _BaseClass;
 public:
+	/**
+	 * returns reference count
+	 */
+	System::Types::sUInt RefCount() const
+	{
+		if( _refInfo == NULL )
+			return 1;
+
+		return _refInfo->RefCount();
+	}
+
+	/**
+	 * returns weak reference count
+	 */
+	System::Types::sUInt WeakRefCount() const
+	{
+		if( _refInfo == NULL )
+			return 0;
+
+		return _refInfo->WeakRefCount();
+	}
 
 protected:
 	ptr_base_ref() :
@@ -115,7 +140,7 @@ protected:
 	{
 	}
 
-	void Reset()
+	void Reset() const
 	{
 		_BaseClass::Reset();
 		_refInfo = NULL;
@@ -129,8 +154,6 @@ protected:
 		if( src.IsNull() )
 			return;
 
-		_BaseClass::operator=( src );
-
 		if( src._refInfo == NULL )
 			src._refInfo = new RefInfo( 2, 0 );
 		else
@@ -138,7 +161,31 @@ protected:
 
 		_refInfo = src._refInfo;
 	
+		_BaseClass::operator=( src );
 	}
+
+
+	void AssignFromWeak( const ptr_base_ref<_Type>& src )
+	{
+		if( src.IsNull() )
+			return;
+
+		__S_ASSERT( src._refInfo != NULL );
+
+		for(;;)
+		{
+			if( src._refInfo->HasNoStrongRef() )
+				return;
+
+			if( src._refInfo->AddSafeStrongRef() )
+				break;
+		}
+
+		_refInfo = src._refInfo;
+
+		_BaseClass::operator=( src );
+	}
+
 
 	/**
 	 *
@@ -148,14 +195,14 @@ protected:
 		if( src.IsNull() )
 			return;
 
-		_BaseClass::operator=( src );
-
 		if( src._refInfo == NULL )
 			src._refInfo = new RefInfo( 1, 1 );
 		else
 			src._refInfo->AddWeakRef();
 
 		_refInfo = src._refInfo;
+
+		_BaseClass::operator=( src );
 	}
 
 	/**
@@ -179,6 +226,9 @@ protected:
 		return System::Types::sTrue;
 	}
 
+	/**
+	 *
+	 */
 	System::Types::sBool ReleaseWeak()
 	{
 		if( IsNull() )
@@ -192,7 +242,10 @@ protected:
 		return System::Types::sTrue;
 	}
 
-	void CheckWeakRef()
+	/**
+	 *
+	 */
+	void CheckWeakRef() const
 	{
 		if( IsNull() )
 			return;
@@ -215,39 +268,55 @@ protected:
 		{
 		}
 
-		void AddStrongRef()
+		void AddStrongRef() const
 		{
 			System::Mt::Inc( _refCount );
 		}
 
-		System::Types::sBool ReleaseStrongRef( )
+		System::Types::sBool AddSafeStrongRef() const
+		{
+			sUInt incResult = _refCount + 1;
+			return System::Mt::SetIf( _refCount, incResult - 1, incResult ); 
+		}
+
+		System::Types::sBool ReleaseStrongRef() const
 		{
 			return System::Mt::Dec( _refCount ) == 0;
 		}
-
-		void AddWeakRef()
+		
+		void AddWeakRef() const
 		{
 			System::Mt::Inc( _weakRefCount );
 		}
 
-		System::Types::sBool ReleaseWeakRef( )
+		System::Types::sBool ReleaseWeakRef() const
 		{
-			return System::Mt::Dec( _weakRefCount ) == 0;
+			return System::Mt::Dec( _weakRefCount ) == 0 && _refCount == 0;
 		}
 
-		System::Types::sBool HasNoStrongRef()
+		System::Types::sBool HasNoStrongRef() const
 		{
 			return _refCount == 0;
 		}
 
-		System::Types::sBool HasNoRef()
+		System::Types::sBool HasNoRef() const
 		{
 			return _refCount == 0 && _weakRefCount == 0;
 		}
 
+		System::Types::sUInt RefCount() const
+		{
+			return _refCount;
+		}
+
+		System::Types::sUInt WeakRefCount() const
+		{
+			return _weakRefCount;
+		}
+
 	private:
-		System::Mt::sUAtomic	_refCount;
-		System::Mt::sUAtomic	_weakRefCount;
+		mutable System::Mt::sUAtomic	_refCount;
+		mutable System::Mt::sUAtomic	_weakRefCount;
 	};
 
 private:

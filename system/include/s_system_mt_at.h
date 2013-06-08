@@ -32,6 +32,7 @@ sInt Dec( sAtomic& nNumber );
  * If nNumber == i set nNumber = v returns true if swap did occured
  */
 sBool SetIf( sAtomic& nNumber, sInt i, sInt v );
+sBool SetIf( sUAtomic& nNumber, sUInt i, sUInt v );
 
 /**
  * Thread safe increment

@@ -44,28 +44,17 @@ public:
 		_BaseClass::AssignWeak( src );
 	}
 
+	void operator = ( const ptr_weak< _Type >& src )
+	{
+		if( _BaseClass::ReleaseWeak() )
+			_BaseClass::Reset();
+		_BaseClass::AssignWeak( src );
+	}
+
 	System::Types::sBool IsNull() const
 	{
 		_BaseClass::CheckWeakRef();
 		return _BaseClass::IsNull();
-	}
-
-	_Type& operator()() const
-	{
-		_BaseClass::CheckWeakRef();
-		return _BaseClass::operator()();
-	}
-
-	_Type& operator*() const
-	{
-		_BaseClass::CheckWeakRef();
-		return _BaseClass::operator()();
-	}
-
-	_Type* operator->() const
-	{
-		_BaseClass::CheckWeakRef();
-		return _BaseClass::operator()();
 	}
 
 	~ptr_weak()

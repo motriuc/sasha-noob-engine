@@ -60,10 +60,23 @@ inline sBool SetIf( sAtomic& nNumber, sInt i, sInt v )
 	if( nNumber == i )
 	{
 		nNumber = v;
-		return true;
+		return sTrue;
 	}
-	return false;
+	return sFalse;
 #endif
 }
 
+inline sBool SetIf( sUAtomic& nNumber, sUInt i, sUInt v )
+{
+#ifdef _SLIB_MT
+	return ::InterlockedCompareExchange( (long*)&nNumber, v, i ) == i;
+#else
+	if( nNumber == i )
+	{
+		nNumber = v;
+		return sTrue;
+	}
+	return sFalse;
+#endif
+}
 

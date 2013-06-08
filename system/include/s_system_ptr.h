@@ -19,3 +19,4 @@
 #include "s_system_ptr_base.h"
 #include "s_system_ptr_unique.h"
 #include "s_system_ptr_shared.h"
+#include "s_system_ptr_weak.h"
