@@ -20,6 +20,7 @@ template< typename _Type> class ptr_weak;
 
 /**
  * Shared pointer
+ * RATING( %%- )
  */
 template< typename _Type >
 class ptr_shared : public ptr_base_ref< _Type >
@@ -29,6 +30,8 @@ private:
 public:
 	/**
 	 * Default constructor
+	 *
+	 * RATING( +-- )
 	 */
 	ptr_shared() :
 		_BaseClass()
@@ -37,6 +40,8 @@ public:
 
 	/**
 	 * Constructor
+	 *
+	 * RATING( +-- )
 	 */
 	explicit ptr_shared( _Type* p ) :
 		_BaseClass( p )
@@ -46,6 +51,8 @@ public:
 
 	/**
 	 * copy constructor from shared ptr
+	 *
+	 * RATING( +-- )
 	 */
 	ptr_shared( const ptr_shared< _Type >& src )
 	{
@@ -54,6 +61,8 @@ public:
 
 	/**
 	 * copy constructor from waek ptr
+	 *
+	 * RATING( +-- )
 	 */
 	ptr_shared( const ptr_weak< _Type >& src )
 	{
@@ -62,18 +71,22 @@ public:
 
 	/**
 	 * compare the shared ptr with another shared pointer
+	 *
+	 * RATING( +-- )
 	 */
-	System::Types::sBool operator == ( const ptr_shared<_Type>& src )
+	System::Types::sBool operator == ( const ptr_shared<_Type>& src ) const
 	{
 		return _BaseClass::operator == ( src );
 	}
 
 	/**
 	 * compare the shared ptr with another weak pointer
+	 *
+	 * RATING( +-- )
 	 */
-	System::Types::sBool operator == ( const ptr_weak<_Type>& src )
+	System::Types::sBool operator == ( const ptr_weak<_Type>& src ) const
 	{
-		src.CheckWeakRef();
+		src.IsNull(); // will update the null value for weak ref
 		return _BaseClass::operator == ( src );
 	}
 
@@ -99,6 +112,11 @@ public:
 		_BaseClass::AssignFromWeak( src );
 	}
 
+	/**
+	 * destructor
+	 *
+	 * RATING( +-- )
+	 */
 	~ptr_shared()
 	{
 		_BaseClass::ReleaseStrong();
@@ -107,7 +125,11 @@ public:
 	using _BaseClass::operator->;
 	using _BaseClass::operator*;
 	using _BaseClass::operator();
+
+	/**
+	 * returns sTrue of pointrt is a null pointer
+	 *
+	 * Rating: +--
+	 */
 	using _BaseClass::IsNull;
 };
-
-

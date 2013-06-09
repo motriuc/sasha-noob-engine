@@ -38,6 +38,11 @@ public:
 	{
 		_BaseClass::Release();
 	}
+
+	using _BaseClass::operator->;
+	using _BaseClass::operator*;
+	using _BaseClass::operator();
+	using _BaseClass::IsNull;
 };
 
 /**

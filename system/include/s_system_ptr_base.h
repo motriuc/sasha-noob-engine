@@ -74,7 +74,7 @@ protected:
 		_p = src._p;
 	}
 
-	System::Types::sBool operator == ( const ptr_base<_Type>& src )
+	System::Types::sBool operator == ( const ptr_base<_Type>& src ) const
 	{
 		return _p == src._p;
 	}

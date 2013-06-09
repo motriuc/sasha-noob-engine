@@ -82,6 +82,9 @@
     <Filter Include="system\Header Files\ptr">
       <UniqueIdentifier>{acefac1f-27e0-486c-9a75-86dedc9cfc91}</UniqueIdentifier>
     </Filter>
+    <Filter Include="system\Header Files\utest">
+      <UniqueIdentifier>{c2e33ec5-cc8e-4937-ab51-537155829565}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -577,6 +580,18 @@
     </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_ptr_unique.h">
       <Filter>system\Header Files\ptr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_ptr_shared.h">
+      <Filter>system\Header Files\ptr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_ptr_base.h">
+      <Filter>system\Header Files\ptr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_ptr_weak.h">
+      <Filter>system\Header Files\ptr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\utest\s_utest.h">
+      <Filter>system\Header Files\utest</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

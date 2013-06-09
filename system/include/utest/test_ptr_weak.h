@@ -25,9 +25,30 @@ BEGIN_TEST( ptr_weak, "Weak Pointer test : s_system_ptr_weak.h" )
 		CONDITION( p.WeakRefCount() == 1 )
 		CONDITION( pw.RefCount() == 1 )
 		CONDITION( pw.WeakRefCount() == 1 )
+		CONDITION( pw == p );
 	}
 	END
 	//-------------------------------------------------------------------
+
+	//-------------------------------------------------------------------
+	CHECK( "ptr_weak( const ptr_shared& )" )
+	{
+		ptr_shared<sInt> p( new sInt() );
+		ptr_weak<sInt> pw1( p );
+		ptr_weak<sInt> pw2( pw1 );
+		
+		CONDITION( p.RefCount() == 1 )
+		CONDITION( p.WeakRefCount() == 2 )
+		CONDITION( pw1.RefCount() == 1 )
+		CONDITION( pw1.WeakRefCount() == 2 )
+		CONDITION( pw2.RefCount() == 1 )
+		CONDITION( pw2.WeakRefCount() == 2 )
+		CONDITION( pw2 == pw1 )
+	}
+	END
+	//-------------------------------------------------------------------
+
+
 
 	//-------------------------------------------------------------------
 	CHECK( "~ptr_weak()" )

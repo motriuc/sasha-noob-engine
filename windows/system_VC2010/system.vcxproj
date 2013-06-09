@@ -225,7 +225,10 @@
     <ClInclude Include="..\..\system\include\s_system_mt_thread.h" />
     <ClInclude Include="..\..\system\include\s_system_object.h" />
     <ClInclude Include="..\..\system\include\s_system_ptr.h" />
+    <ClInclude Include="..\..\system\include\s_system_ptr_base.h" />
+    <ClInclude Include="..\..\system\include\s_system_ptr_shared.h" />
     <ClInclude Include="..\..\system\include\s_system_ptr_unique.h" />
+    <ClInclude Include="..\..\system\include\s_system_ptr_weak.h" />
     <ClInclude Include="..\..\system\include\s_system_rgbcolor.h" />
     <ClInclude Include="..\..\system\include\s_system_stream.h" />
     <ClInclude Include="..\..\system\include\s_system_stream_archive.h" />
@@ -246,6 +249,7 @@
     <ClInclude Include="..\..\system\include\s_system_t_factory.h" />
     <ClInclude Include="..\..\system\include\s_system_t_typetraits.h" />
     <ClInclude Include="..\..\system\include\s_system_xml.h" />
+    <ClInclude Include="..\..\system\include\utest\s_utest.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

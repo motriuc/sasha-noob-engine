@@ -87,6 +87,9 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\system\include\utest\test_ptr_weak.h" />
+    <ClInclude Include="..\..\system\include\utest\test_ptr_shared.h" />
+    <ClInclude Include="..\..\system\include\utest\test_util_allocate_object.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>

@@ -46,6 +46,13 @@
 // Xml
 // _use_Xml_            - xml utils
 
+
+// Object entity rating description
+// RATING( ++- )
+// 1. Single thread Unit tested
+// 2. Multi thread Unit tested
+// 3. Teste in production
+
 /**
  *	Configuration and platform detect headers
  */
