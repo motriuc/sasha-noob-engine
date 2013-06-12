@@ -593,5 +593,38 @@
     <ClInclude Include="..\..\system\include\utest\s_utest.h">
       <Filter>system\Header Files\utest</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_t_typetraits_default.h">
+      <Filter>system\Header Files\t</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_t_typetraits_ref.h">
+      <Filter>system\Header Files\t</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_t_typetraits_int.h">
+      <Filter>system\Header Files\t</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_t_typetraits_uint.h">
+      <Filter>system\Header Files\t</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_t_typetraits_double.h">
+      <Filter>system\Header Files\t</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_t_typetraits_float.h">
+      <Filter>system\Header Files\t</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_t_typetraits_char.h">
+      <Filter>system\Header Files\t</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_t_typetraits_const.h">
+      <Filter>system\Header Files\t</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_t_typetraits_const_ref.h">
+      <Filter>system\Header Files\t</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_t_move.h">
+      <Filter>system\Header Files\t</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_t_swap.h">
+      <Filter>system\Header Files\t</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

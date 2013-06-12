@@ -140,6 +140,12 @@ protected:
 	{
 	}
 
+	void operator = ( const ptr_base_ref<_Type>& src )
+	{
+		_BaseClass::operator = ( src );
+		_refInfo = src._refInfo;
+	}
+
 	void Reset() const
 	{
 		_BaseClass::Reset();
@@ -322,6 +328,5 @@ protected:
 private:
 	mutable RefInfo*	_refInfo;
 
-	void operator = ( const ptr_base_ref<_Type>& );
 	ptr_base_ref( const ptr_base_ref<_Type>& );
 };

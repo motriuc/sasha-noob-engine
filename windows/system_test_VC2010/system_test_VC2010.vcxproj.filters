@@ -36,6 +36,9 @@
     <ClInclude Include="..\..\system\include\utest\test_ptr_shared.h">
       <Filter>Header Files\tests</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\system\include\utest\test_t_typetraits.h">
+      <Filter>Header Files\tests</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

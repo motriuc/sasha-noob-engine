@@ -19,19 +19,11 @@
 namespace T
 {
 	using namespace System::Types;
-	/**
-	 * Swaps 2 values
-	 */
-
-	template<typename _TYPE>
-	inline void SwapValues( _TYPE& a, _TYPE& b )
-	{
-		_TYPE tmp = a;
-		a = b;
-		b = tmp;
-	}
 	
 	#include "s_system_t_typetraits.h"
+	#include "s_system_t_move.h"
+	#include "s_system_t_swap.h"
+
 	#include "s_system_t_factory.h"
 }
 
@@ -40,5 +32,5 @@ namespace T
  */
 template< typename _Type >
 class DefaultCmp : public T::Traits< _Type >::Cmp
-{	
+{
 };

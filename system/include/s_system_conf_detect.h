@@ -25,6 +25,13 @@
 	#error SLIB requires C++ compilation (use a .cpp suffix)
 #endif
 
+///////////////////////////////////////////////
+// Compiler version
+#if defined( _MSC_VER )
+	#if _MSC_VER >= 1600
+		#define _SLIB_CPP11
+	#endif
+#endif
 
 ///////////////////////////////////////////////
 // detect debug option

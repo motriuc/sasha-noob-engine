@@ -108,7 +108,7 @@ public:
 		for( sInt i = 0; i < v.Size(); i++ )
 			_pElementData[i] = v._pElementData[i];
 		
-		if( !T::Traits<_TYPE>::BasicType )
+		if( !T::Traits<_TYPE>::IsBasicType )
 		{
 			for( sInt i = v.Size();  i < _iElementCount; i++)
 				_pElementData[i] = _TYPE();
@@ -245,7 +245,7 @@ public:
 	 */
 	void RemoveAll()
 	{
-		if( !T::Traits<_TYPE>::BasicType )
+		if( !T::Traits<_TYPE>::IsBasicType )
 		{
 			for( sInt i = 0; i < _iElementCount; i++ )
 				_pElementData[i] = _TYPE();

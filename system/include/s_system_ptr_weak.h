@@ -57,6 +57,18 @@ public:
 		_BaseClass::AssignWeak( src );
 	}
 
+#ifdef _SLIB_CPP11
+	/**
+	 * move constructor
+	 */
+	ptr_weak( const ptr_weak< _Type >&& src )
+	{
+		_BaseClass::operator = ( src );
+		src.Reset();
+	}
+
+#endif
+
 	void operator = ( const ptr_shared< _Type >& src )
 	{
 		if( _BaseClass::ReleaseWeak() )

@@ -69,6 +69,18 @@ public:
 		_BaseClass::AssignFromWeak( src );
 	}
 
+#ifdef _SLIB_CPP11
+	/**
+	 * move constructor
+	 */
+	ptr_shared( const ptr_shared< _Type >&& src )
+	{
+		_BaseClass::operator = ( src );
+		src.Reset();
+	}
+
+#endif
+
 	/**
 	 * compare the shared ptr with another shared pointer
 	 *

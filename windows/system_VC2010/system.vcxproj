@@ -247,7 +247,18 @@
     <ClInclude Include="..\..\system\include\s_system_types_d2math.h" />
     <ClInclude Include="..\..\system\include\s_system_types_d3math.h" />
     <ClInclude Include="..\..\system\include\s_system_t_factory.h" />
+    <ClInclude Include="..\..\system\include\s_system_t_move.h" />
+    <ClInclude Include="..\..\system\include\s_system_t_swap.h" />
     <ClInclude Include="..\..\system\include\s_system_t_typetraits.h" />
+    <ClInclude Include="..\..\system\include\s_system_t_typetraits_char.h" />
+    <ClInclude Include="..\..\system\include\s_system_t_typetraits_const.h" />
+    <ClInclude Include="..\..\system\include\s_system_t_typetraits_const_ref.h" />
+    <ClInclude Include="..\..\system\include\s_system_t_typetraits_default.h" />
+    <ClInclude Include="..\..\system\include\s_system_t_typetraits_double.h" />
+    <ClInclude Include="..\..\system\include\s_system_t_typetraits_float.h" />
+    <ClInclude Include="..\..\system\include\s_system_t_typetraits_int.h" />
+    <ClInclude Include="..\..\system\include\s_system_t_typetraits_ref.h" />
+    <ClInclude Include="..\..\system\include\s_system_t_typetraits_uint.h" />
     <ClInclude Include="..\..\system\include\s_system_xml.h" />
     <ClInclude Include="..\..\system\include\utest\s_utest.h" />
   </ItemGroup>

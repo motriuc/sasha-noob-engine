@@ -11,15 +11,21 @@ using namespace System;
 #include "utest\test_util_allocate_object.h"
 #include "utest\test_ptr_shared.h"
 #include "utest\test_ptr_weak.h"
-
+#include "utest\test_t_typetraits.h"
 
 int _tmain(int argc, _TCHAR* argv[])
 {
+
 	BEGIN_RUN_TESTS()
 		RUN_TEST( ptr_shared )
 		RUN_TEST( ptr_weak )
+		RUN_TEST( type_traits )
 	END_RUN_TESTS
 
+	int a = 6;
+	int b = 8;
+
+	b = T::Move( a );
 	return 0;
 }
 
