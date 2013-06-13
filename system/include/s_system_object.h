@@ -25,8 +25,6 @@ namespace Obj
 {
 using namespace Types;
 
-class Object;
-class Message;
 
 /**
  * Interface that describe the class information of an Object

@@ -336,7 +336,7 @@ public:
 	{
 		__S_ASSERT( size >= 0 );
 
-		if( !T::Traits<_Type>::BasicType )
+		if( !T::Traits<_Type>::IsBasicType )
 		{
 			for( sInt i = size;  i < _iElementCount; i++)
 				_pElementData[i] = _Type();

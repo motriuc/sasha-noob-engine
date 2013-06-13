@@ -168,7 +168,7 @@ void Dx9KeyboardMsgQueue::ProcessMessages( Rd3::EngineData& edata )
 	}
 	else
 	{
-		T::SwapValues( _pKeyPressed, _pKeyPressedPrev );
+		T::Swap( _pKeyPressed, _pKeyPressedPrev );
 
 		DIKeyCodes.TranslateFromDI( _pKeyPressed, buffer );
 

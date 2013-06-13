@@ -32,6 +32,8 @@ private:
 	typedef Types::sInt( *ConvertCall ) ( const void*, sChar* );
 	typedef sInt( *EstimateSizeCall )( const void* );
 public:
+	StringItemWriter( const Obj::Object& obj );
+	StringItemWriter( const Obj::Object* obj );
 	StringItemWriter( const sChar* chars );
 	StringItemWriter( const sString& chars );
 
@@ -59,8 +61,10 @@ private:
 	mutable const StringItemWriter*		_firstItem;
 	mutable const StringItemWriter*		_nextItem;
 	const void*							_data;
+
 	ConvertCall							_convert;
 	EstimateSizeCall					_estimateSize;
+	sString								_string;
 };
 
 #include "s_system_string_format.inl"

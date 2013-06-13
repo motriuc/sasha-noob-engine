@@ -50,12 +50,12 @@ Error::Error( const sChar* file, sInt line,  Error* pPrevError ) :
 #endif
 	
 //------------------------------------------------------------------
-sString Error::ToString()	const
+sString Error::ToString() const
 {
 	if( _pPrevError == NULL )
 		return Description();
 
-	return Format( _S("{1}[{2}]") ) % Description() % _pPrevError->ToString();
+	return Format( _S("{1}[{2}]") ) % Description() % (const Obj::Object*)_pPrevError;
 }
 	
 //------------------------------------------------------------------
@@ -64,8 +64,8 @@ sString Error::Description() const
 #ifdef _DEBUG
 	if( _file == NULL )
 		return _S("");
-	
-	return Format( _S("@: {1}({2})") ) % _file % _line;
+
+	return Format( _S("@: {1}({2})") ) % _file % _line ;
 #else
 	return _S("");
 #endif

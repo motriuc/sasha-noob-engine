@@ -22,10 +22,5 @@ int _tmain(int argc, _TCHAR* argv[])
 		RUN_TEST( type_traits )
 	END_RUN_TESTS
 
-	int a = 6;
-	int b = 8;
-
-	b = T::Move( a );
-	return 0;
 }
 

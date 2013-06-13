@@ -25,7 +25,7 @@
 template<
 	typename _Key,
 	typename _Type,
-	typename _Compare = System::DefaultCmp<_Type>
+	typename _Compare = System::DefaultCmp<_Key>
 >
 class sMap
 {

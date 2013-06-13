@@ -73,8 +73,16 @@ namespace System
 		class IIOStream;
 	}
 	
-	namespace Xml {
+	namespace Xml 
+	{
 		class BaseDomNode;
+	}
+
+	namespace Obj 
+	{
+		class Object;
+		class Message;
+		class IType;
 	}
 
 	// requared headers

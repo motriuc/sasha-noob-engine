@@ -15,9 +15,32 @@
 //  Modification History:
 //      
 /////////////////////////////////////////////////////////////////////
+#define _use_sObject_
 #include "s_system.h"
 
 namespace System { namespace StringFormat {
+
+//-------------------------------------------------------------------
+StringItemWriter::StringItemWriter( const Obj::Object& obj ) :
+	_nextItem( NULL ),
+	_convert( NULL ),
+	_estimateSize( NULL ),
+	_string( obj.ToString() )
+{
+	_data = _string.c_str();
+	_firstItem = this;
+}
+
+//-------------------------------------------------------------------
+StringItemWriter::StringItemWriter( const Obj::Object* obj ) :
+	_nextItem( NULL ),
+	_convert( NULL ),
+	_estimateSize( NULL ),
+	_string( obj->ToString() )
+{
+	_data = _string.c_str();
+	_firstItem = this;
+}
 
 //-------------------------------------------------------------------
 sInt StringItemWriter::EstimateTotalSize() const
