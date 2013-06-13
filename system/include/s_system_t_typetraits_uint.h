@@ -52,6 +52,10 @@ public:
 	 */
 	typedef sUInt RemoveConst;
 
+	/**
+	 * Type as function parameter
+	 */
+	typedef const sUInt AsInput;
 
 	// Compare operators
 	class Cmp

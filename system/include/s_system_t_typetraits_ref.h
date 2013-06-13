@@ -52,6 +52,11 @@ public:
 	 */
 	typedef _Type& RemoveConst;
 
+	/**
+	 * Type as function parameter
+	 */
+	typedef const _Type& AsInput;
+
 	// Compare operators
 	class Cmp
 	{

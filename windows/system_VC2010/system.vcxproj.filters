@@ -85,6 +85,12 @@
     <Filter Include="system\Header Files\utest">
       <UniqueIdentifier>{c2e33ec5-cc8e-4937-ab51-537155829565}</UniqueIdentifier>
     </Filter>
+    <Filter Include="system\Header Files\error">
+      <UniqueIdentifier>{151997c8-115a-482d-b0fb-0115ed3839de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="system\Header Files\base">
+      <UniqueIdentifier>{bf2e60de-fbfa-4ea4-9b6a-b50cf5dd3561}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -416,25 +422,7 @@
     <ClInclude Include="..\..\system\include\s_system_d3math_line.h">
       <Filter>system\Header Files\math\d3math</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_appenv.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_error.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_error_error.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_error_strerr.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_error_win32err.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_error_win32hresult.h">
       <Filter>system\Header Files\to sort</Filter>
     </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_global.h">
@@ -625,6 +613,24 @@
     </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_t_swap.h">
       <Filter>system\Header Files\t</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_error.h">
+      <Filter>system\Header Files\error</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_error_win32hresult.h">
+      <Filter>system\Header Files\error</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_error_error.h">
+      <Filter>system\Header Files\error</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_error_strerr.h">
+      <Filter>system\Header Files\error</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_error_win32err.h">
+      <Filter>system\Header Files\error</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system.h">
+      <Filter>system\Header Files\base</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

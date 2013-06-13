@@ -226,17 +226,17 @@ private:
 
 	inline static System::Types::sBool _key_compare( _Nodeptr _X, _Nodeptr _Y )
 	{
-		return _COMPARE::Cmp::Small( _Key( _X ), _Key( _Y ) );
+		return _COMPARE::Small( _Key( _X ), _Key( _Y ) );
 	}
 
 	inline static System::Types::sBool _key_compare( const _KEY& _X, _Nodeptr _Y )
 	{
-		return _COMPARE::Cmp::Small( _X, _Key( _Y ) );
+		return _COMPARE::Small( _X, _Key( _Y ) );
 	}
 
 	inline static System::Types::sBool _key_compare( _Nodeptr _X, const _KEY& _Y )
 	{
-		return _COMPARE::Cmp::Small( _Key( _X ), _Y );
+		return _COMPARE::Small( _Key( _X ), _Y );
 	}
 
 	inline _Nodeptr _begin() const
@@ -618,6 +618,29 @@ public:
 		_Init();
 		_Copy( v );
 	}
+
+#ifdef _SLIB_CPP11
+	BTree( BTree<_KEY, _TYPE, _COMPARE >&& v )
+	{
+		_Head = v._Head;
+		_Size = v._Size;
+		_Multi = v._Multi;
+
+		v.Init();
+	}
+
+	void operator = ( BTree<_KEY, _TYPE, _COMPARE >&& v )
+	{
+		Clear();
+		_Freenode(_Head);
+
+		_Head = v._Head;
+		_Size = v._Size;
+		_Multi = v._Multi;
+
+		v.Init();
+	}
+#endif
 
 	~BTree()
 	{

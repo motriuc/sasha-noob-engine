@@ -20,7 +20,7 @@ namespace Types
 {
 
 inline sString::sString() :
-	_data( __str::AssignEmptyString() )
+	_data( __str::GetEmptyString() )
 {
 }
 
@@ -66,14 +66,17 @@ inline sString::sString( CFStringRef src )
 }
 #endif	
 
-
 inline sString::sString( const sString& src )
 {
-	if( this != &src )
-	{
-		Mt::Inc( src._data->nRefs );
-		_data = src._data;
-	}
+	Assign( src );
+}
+
+inline sString::sString( sString&& src )
+{
+	__S_ASSERT( this != &src );
+
+	_data = src._data;
+	src._data = __str::GetEmptyString();
 }
 
 inline void sString::operator = ( const sString& src )
@@ -81,8 +84,7 @@ inline void sString::operator = ( const sString& src )
 	if( &src != this )
 	{
 		FreeString();
-		Mt::Inc( src._data->nRefs );
-		_data = src._data;
+		Assign( src );
 	}
 }
 
@@ -102,7 +104,6 @@ inline const sChar* sString::c_str() const
 	__S_ASSERT( _data != NULL );
 	return _data->data();
 }
-
 
 inline void sString::operator+= ( const sString& str )
 {
@@ -489,7 +490,7 @@ inline CFStringRef sString::ToCfString() const
 
 inline void sString::FreeString()
 {
-	if( Mt::Dec( _data->nRefs ) <= 0 )
+	if( _data != __str::GetEmptyString() && Mt::Dec( _data->nRefs ) <= 0 )
 		__str::FreeString( _data );
 }
 
@@ -500,13 +501,25 @@ inline void sString::BeforeChange( sUInt n )
 	if( n <= 0 )
 	{
 		FreeString();
-		_data = __str::AssignEmptyString();
+		_data = __str::GetEmptyString();
 	}
 	else if( _data->nRefs != 1 || _data->nAllocLength < n )
 	{
 		FreeString();
 		_data = __str::AllocNewString( n );
 	}
+}
+
+inline void sString::Assign( const sString& src )
+{
+	__S_ASSERT( &src != this );
+
+	if( src._data != __str::GetEmptyString() )
+	{
+		Mt::Inc( src._data->nRefs );
+	}
+
+	_data = src._data;
 }
 
 inline void sString::GrowReAlloc( sUInt n )
@@ -518,11 +531,8 @@ inline void sString::GrowReAlloc( sUInt n )
 
 	struct __str*  newStr = __str::AllocNewString( n );
 
-	if( _data )
-	{
-		Memory::Copy( newStr->data(), _data->data(), sizeof(sChar) * ( Length() + 1 ) );
-		newStr->nDataLength = Length();
-	}
+	Memory::Copy( newStr->data(), _data->data(), sizeof(sChar) * ( Length() + 1 ) );
+	newStr->nDataLength = Length();
 
 	FreeString();
 	_data = newStr;
@@ -545,7 +555,7 @@ inline struct sString::__str* sString::__str::GetEmptyString()
 
 inline struct sString::__str* sString::__str::AllocNewString( sUInt n )
 {
-	const sUInt _SLIB_MIN_STEP_STRING_ALLOC = 2;
+	const sUInt _SLIB_MIN_STEP_STRING_ALLOC = 4 / sizeof(sChar);
 
 	n = ( ( n / _SLIB_MIN_STEP_STRING_ALLOC ) + 1 ) * _SLIB_MIN_STEP_STRING_ALLOC;
 
@@ -557,12 +567,6 @@ inline struct sString::__str* sString::__str::AllocNewString( sUInt n )
 	str->nDataLength = 0;
 	str->nRefs = 1;
 	return str;
-}
-
-inline struct sString::__str* sString::__str::AssignEmptyString()
-{
-	Mt::Inc( GetEmptyString()->nRefs );
-	return GetEmptyString();
 }
 
 inline void sString::__str::FreeString( struct __str*& pStr )
@@ -579,7 +583,7 @@ inline struct sString::__str* sString::__str::CreateString( const sChar* pChars,
 	__S_ASSERT( pChars != NULL );
 
 	if( n <= 0 )
-		return __str::AssignEmptyString();
+		return __str::GetEmptyString();
 
 	struct __str* pStr = __str::AllocNewString( n );
 
@@ -602,7 +606,7 @@ inline struct sString::__str* sString::__str::CreateString( const sCharO* pChar,
 {
 	__S_ASSERT( pChar != NULL );
 	if( n <= 0 )
-		return __str::AssignEmptyString();
+		return __str::GetEmptyString();
 
 	struct __str* pStr = __str::AllocNewString( n );
 	
@@ -619,6 +623,5 @@ inline struct sString::__str* sString::__str::CreateString( const sCharO* pChar 
 
 	return CreateString( pChar, CharsO::Length( pChar ) );
 }
-
 
 }

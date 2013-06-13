@@ -52,6 +52,11 @@ public:
 	 */
 	typedef sChar RemoveConst;
 
+	/**
+	 * Type as function parameter
+	 */
+	typedef const sChar AsInput;
+
 	// Compare operators
 	class Cmp
 	{

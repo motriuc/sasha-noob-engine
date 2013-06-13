@@ -61,8 +61,18 @@ public:
 	/**
 	 * move constructor
 	 */
-	ptr_weak( const ptr_weak< _Type >&& src )
+	ptr_weak( ptr_weak< _Type >&& src )
 	{
+		_BaseClass::operator = ( src );
+		src.Reset();
+	}
+
+	/**
+	 * Move operator
+	 */
+	void operator = ( ptr_weak< _Type >&& src )
+	{
+		_BaseClass::ReleaseWeak();
 		_BaseClass::operator = ( src );
 		src.Reset();
 	}

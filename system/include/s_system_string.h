@@ -35,106 +35,113 @@ public:
 	~sString();
 
 	/**
-	 *	
+	 *	creates a string from an char array
 	 */
 	sString( const sChar* pChars );
 
 	/**
-	 *
+	 * creates a string from an char array
 	 */
 	sString( const sCharO* pChars );
 
 	/**
-	 *
+	 * creates a string from an char array
 	 */
 	sString( const sCharO* pChars, sUInt nCount );
 
 	/**
-	 *	
+	 * creates a string from ans char array
 	 */
 	sString( const sChar* pChars, sUInt nCount );
 
 	/**
-	 *	
+	 * creates a string from another string
 	 */
 	sString( const sString& src );
+
+#ifdef _SLIB_CPP11
+	/**
+	 * Move constructor
+	 */
+	sString( sString&& src );
+#endif
 	
 #ifdef _SPL_MAC
 	sString( CFStringRef src );
 #endif	
 
 	/**
-	 *	Create a string with len memory length
+	 *	Create a string of length len, the string content is undefined
 	 */
 	explicit sString( sInt len );
 
 	/**
-	 *	
+	 * Assign operator from a sString
 	 */
 	void operator = ( const sString& src );
 
 	/**
-	 *	
+	 * Assign operator from a sChar
 	 */
 	void operator = ( const sChar ch );
 	
 	/**
-	 *	
+	 * returns a const array of the string content 
 	 */
 	operator const sChar*() const;
 
 	/**
-	 *
+	 * returns a const array of the string content
 	 */
 	const sChar* c_str() const;
 
 	/**
-	 *	
+	 * adds an array of chars to the string
 	 */
 	void operator += ( const sChar* str );
 
 	/**
-	 *	
+	 * adds a string to a string
 	 */
 	void operator += ( const sString& str );
 
 	/**
-	 *	
+	 * adds a char to a string
 	 */
 	void operator += ( sChar ch );
 
 	/**
-	 *	string length
+	 *	returns string length
 	 */
 	sUInt Length() const;
 
 	/**
-	 *	
+	 * adds String and  a char array
 	 */
 	sString operator + ( const sChar* str ) const;
 
 	/**
-	 *	
+	 * adds a String and String
 	 */
 	sString operator + ( const sString& str ) const;
 
 	/**
-	 *	
+	 * adds a String and a char
 	 */
 	sString operator + ( sChar ch ) const;
 
 	/**
-	 *	Convert Int to String
+	 *	converts Int to String using default converter
 	 */
 	static sString IntToString( sInt nr );
 
 	/**
-	 *	Convert Double to string
+	 *	convert Double to string using default converter
 	 */
 	static sString DoubleToString( sDouble nr );
 	
 	/**
-	 * Converst float to string
+	 * converst float to string
 	 */
 	static sString FloatToString( sFloat nr );
 
@@ -158,32 +165,32 @@ public:
 	sBool operator == ( const sChar* str ) const;
 
 	/**
-	 *	Return string char
+	 * return string char at i position
 	 */
 	sChar GetChar( sInt i ) const;
 
 	/**
-	 *
+	 * adds a char array to the string
 	 */
 	void Add( const sChar* pChars, sInt count );
 
 	/**
-	 *	
+	 * converts string to an integer
 	 */
 	sInt ToInt() const;
 
 	/**
-	 *
+	 * converts a string to an float number
 	 */
 	sFloat ToFloat() const;
 
 	/**
-	 *	
+	 * converts a string to an double number
 	 */
 	sDouble ToDouble() const;
 
 	/**
-	 *	
+	 * returns a substring of the string
 	 */
 	sString SubString( sInt from, sInt length ) const;
 	sString SubString( sInt from ) const;
@@ -199,22 +206,22 @@ public:
 	sBool EndsWith( const sString& sufix ) const;
 	
 	/**
-	 * 
+	 * finds the position of the char in the string
 	 */
 	sInt Find( const sChar ch ) const;
 	
 	/**
-	 * 
+	 * finds the position of the char in the string
 	 */
 	sInt Find( sInt from, const sChar ch ) const;
 	
 	/**
-	 *
+	 * finds the position of the char in the string from end
 	 */
 	sInt FindReverse( const sChar ch ) const;
 
 	/**
-	 *
+	 * finds the position of the chars in the string from end
 	 */
 	sInt FindReverse( const sChar* chSet, sInt from ) const;
 	
@@ -224,7 +231,12 @@ public:
 	sInt FindReverse( const sChar* chSet ) const;
 	
 	/**
-	 *
+	 * splits the string in parts by char
+	 * Ex:
+	 *  "sasha heloo"
+	 *   1. Split( ' ', from, v ) => from = 6, v = "sasha", false
+	 *   2. Split( ' ', from, v ) => from = 11, v = "heloo", false
+	 *   3. Split( ' ', from, v ) => from = 12, v ="", true
 	 */
 	sBool Split( sChar ch, sInt& from, sString& v ) const;
 
@@ -252,7 +264,8 @@ protected:
 	void FreeString();
 	void BeforeChange( sUInt n );
 	void GrowReAlloc( sUInt n );
-	
+	void Assign( const sString& src );	
+
 private:
 	struct __str
 	{
@@ -266,7 +279,6 @@ private:
 		static void FreeString( struct __str*& pStr );
 		static struct __str* AllocNewString( sUInt n );
 		static struct __str* GetEmptyString();
-		static struct __str* AssignEmptyString();
 		static struct __str* CreateString( const sChar* pChars );
 		static struct __str* CreateString( const sChar* pChars, sUInt n );
 		static struct __str* CreateString( const sCharO* pChar, sUInt n );
@@ -274,6 +286,5 @@ private:
 
 	}* _data;
 };
-
 
 #endif // _SYSTEM_STRING_INC_

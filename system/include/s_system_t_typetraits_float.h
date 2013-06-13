@@ -52,6 +52,11 @@ public:
 	 */
 	typedef sFloat RemoveConst;
 
+	/**
+	 * Type as function parameter
+	 */
+	typedef const sFloat AsInput;
+
 	// Compare operators
 	class Cmp
 	{

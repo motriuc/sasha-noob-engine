@@ -23,22 +23,26 @@
  *	SLib map
  */
 template<
-	typename _KEY,
-	typename _TYPE,
-	typename _COMPARE = System::T::Traits<_KEY>
+	typename _Key,
+	typename _Type,
+	typename _Compare = System::DefaultCmp<_Type>
 >
 class sMap
 {
 private:
-	typedef Internal::BTree<_KEY, _TYPE, _COMPARE>		_Tree;
+	typename typedef Internal::BTree<_Key, _Type, _Compare>		_Tree;
 public:
-	typedef typename _Tree::Iterator Iterator;
-	typedef typename _Tree::ConstIterator ConstIterator;
+	typename typedef _Tree::Iterator Iterator;
+	typename typedef _Tree::ConstIterator ConstIterator;
 
+	typename typedef _Type ElementType;
+	typename typedef T::Traits<_Type>::AsInput InputType;
+	typename typedef T::Traits<_Key>::AsInput InputKey;
+public:
 	/**
 	 *	constructor
 	 */
-	inline sMap() :
+	sMap() :
 		_content( System::Types::sFalse )
 	{
 	}
@@ -46,7 +50,7 @@ public:
 	/**
 	 *	Copy constructor
 	 */
-	inline sMap( const sMap<_KEY, _TYPE, _COMPARE>& v ) :
+	sMap( const sMap<_Key, _Type, _Compare>& v ) :
 		_content( v._content )
 	{
 	}
@@ -54,14 +58,14 @@ public:
 	/**
 	 *	Destructor
 	 */
-	inline ~sMap()
+	~sMap()
 	{
 	}
 
 	/**
 	 *	Copy operator
 	 */
-	inline void operator = ( const sMap<_KEY, _TYPE, _COMPARE>& v )
+	void operator = ( const sMap<_Key, _Type, _Compare>& v )
 	{
 		_content = v._content;
 	}
@@ -69,25 +73,17 @@ public:
 	/**
 	 *	Add value to map
 	 */
-	inline System::Types::sBool Add( const _KEY& key, const _TYPE& val )
+	sBool Add( InputKey key, InputType val )
 	{
 		return _content.AddR( key, val );
 	}
 
 	/**
-	 *	Add value to map
-	 */
-	inline System::Types::sBool AddC( const _KEY key, const _TYPE val )
-	{
-		return Add( key, val );
-	}
-
-	/**
 	 *	
 	 */
-	inline System::Types::sBool Lookup( const _KEY& key, _TYPE& val ) const
+	sBool Lookup( InputKey key, _Type& val ) const
 	{
-		const _TYPE* c = _content.Find( key );
+		const _Type* c = _content.Find( key );
 		if( c != NULL )
 			val = *c;
 
@@ -97,76 +93,68 @@ public:
 	/**
 	 *	
 	 */
-	inline System::Types::sBool LookupC( const _KEY key, _TYPE& val ) const
+	_Type& operator[] ( InputKey key )
 	{
-		return LookupR( key, val );
+		return _content.AddR( key );
 	}
 
 	/**
 	 *	
 	 */
-	inline _TYPE& operator[] ( const _KEY& key )
+	const _Type& operator[] ( InputKey key ) const
 	{
 		return _content.AddR( key );
 	}
-	
+
 	/**
-	 *	
+	 * returns map size	
 	 */
-	inline System::Types::sInt Size()  const
+	sInt Size()  const
 	{
 		return _content.Size();
 	}
 
 	/**
-	 *	
+	 * remove element from the map by key
 	 */
-	inline System::Types::sBool Remove( const _KEY& key )
+	sBool Remove( InputKey key )
 	{
 		return _content.Erase( key );
 	}
 
 	/**
-	 *
+	 * removes element from the map by key
 	 */
-	inline System::Types::sBool Remove( const _KEY& key, _TYPE& val )
+	sBool Remove( InputKey key, _Type& val )
 	{
 		return _content.Erase( key, val );
 	}
 
 	/**
-	 *	
-	 */
-	inline System::Types::sBool RemoveC( const _KEY key )
-	{
-		return _content.Erase( key );
-	}
-
-	/**
 	 *	Remove All 
 	 */
-	inline void RemoveAll()
+	void RemoveAll()
 	{
 		_content.Clear();
 	}
 
 	// iterators
-	inline Iterator Begin()
+	Iterator Begin()
 	{
 		return _content.Begin();
 	}
 
-	inline ConstIterator ConstBegin() const
+	ConstIterator ConstBegin() const
 	{
 		return _content.ConstBegin();
 	}
 
-	inline Iterator End()
+	Iterator End()
 	{
 		return _content.End();
 	}
 
-	inline ConstIterator ConstEnd() const
+	ConstIterator ConstEnd() const
 	{
 		return _content.ConstEnd();
 	}
@@ -174,4 +162,3 @@ public:
 private:
 	_Tree		_content;
 };
-

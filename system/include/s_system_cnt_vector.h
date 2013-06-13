@@ -21,23 +21,25 @@
 /**
  *	 sVector
  */
-template< typename _TYPE, System::Types::sInt _CAPACITY_INCREMENT = 0 >
+template< typename _Type >
 class sVector
 {
+private:
+	enum 
+	{
+		_CAPACITY_INCREMENT = 0
+	};
+
 public:
-	/**
-	 *	Element type
-	 */
-	typedef _TYPE ElementType;
+	typename typedef _Type ElementType;
+	typename typedef T::Traits<_Type>::AsInput InputType;
 public:
 	/**
 	 *	default constructor
 	 */
-	sVector() :
-		_pElementData( NULL ),
-		_iElementCount( 0 ),
-		_iElementCapasity( 0 )
+	sVector()
 	{
+		Reset();
 	}
 
 	/**
@@ -47,7 +49,7 @@ public:
 	{
 		__S_ASSERT( size > 0 );
 
-		_pElementData = new _TYPE[size];
+		_pElementData = new _Type[size];
 		_iElementCount = 0;
 		_iElementCapasity = size;
 	}
@@ -55,11 +57,11 @@ public:
 	/**
 	 *	Create vector with size and fill it with val
 	 */
-	sVector( sInt size, _TYPE val )
+	sVector( sInt size, InputType val )
 	{
 		__S_ASSERT( size > 0 );
 
-		_pElementData = new _TYPE[size];
+		_pElementData = new _Type[size];
 		_iElementCount = size;
 		_iElementCapasity = size;
 
@@ -70,12 +72,12 @@ public:
 	/**
 	 *	Copy constructor
 	 */
-	sVector( const sVector< _TYPE, _CAPACITY_INCREMENT >& v )
+	sVector( const sVector< _Type >& v )
 	{
 		sInt size = v.Size();
 		if( size > 0 )
 		{
-			_pElementData = new _TYPE[size];
+			_pElementData = new _Type[size];
 			_iElementCount = size;
 			_iElementCapasity = size;
 
@@ -84,34 +86,56 @@ public:
 		}
 		else
 		{
-			_pElementData = NULL;
-			_iElementCount = 0;
-			_iElementCapasity = 0;
+			Reset();
 		}
 	}
+
+#ifdef _SLIB_CPP11
+	/**
+	 * Move constructor
+	 */
+	sVector( sVector< _Type >&& v )
+	{
+		Move( v );
+		v.Reset();
+	}
+
+	/**
+	 * Move operator
+	 */
+	void operator = ( sVector< _Type >&& v )
+	{
+		if( this != &v )
+		{
+			Free();
+			Move( v );
+			v.Reset();
+		}
+	}
+#endif
 
 	/**
 	 *	destructor
 	 */
 	~sVector()
 	{
-		delete[] _pElementData;
+		Free();
 	}
 
 	/**
 	 *	copy operator
 	 */
-	void operator = ( const sVector< _TYPE, _CAPACITY_INCREMENT>& v )
+	void operator = ( const sVector< _Type >& v )
 	{
 		EnsureCapacityNoCopy( v.Size() );
 
 		for( sInt i = 0; i < v.Size(); i++ )
 			_pElementData[i] = v._pElementData[i];
 		
-		if( !T::Traits<_TYPE>::IsBasicType )
+		if( !T::Traits<_Type>::IsBasicType )
 		{
 			for( sInt i = v.Size();  i < _iElementCount; i++)
-				_pElementData[i] = _TYPE();
+				_pElementData[i] = _Type();
 		}
 	
 		_iElementCount = v.Size();
@@ -128,7 +152,7 @@ public:
 	/**
 	 * get set element at 0<= index < Size
 	 */
-	_TYPE& operator[] ( sInt index )
+	_Type& operator[] ( sInt index )
 	{
 		__S_ASSERT( index >=0 && index < _iElementCount );
 		return _pElementData[index];
@@ -137,7 +161,7 @@ public:
 	/**
 	 * get set element at 0<= index < Size
 	 */
-	const _TYPE& operator[] ( sInt index ) const
+	const _Type& operator[] ( sInt index ) const
 	{
 		__S_ASSERT( index >=0 && index < _iElementCount );
 		return _pElementData[index];
@@ -146,7 +170,7 @@ public:
 	/**
 	 *	Add element to the end
 	 */
-	sInt Add( const _TYPE& item )
+	sInt Add( InputType item )
 	{
 		EnsureCapacity( _iElementCount + 1 );
 		_pElementData[ _iElementCount ++ ] = item;
@@ -156,7 +180,7 @@ public:
 	/**
 	 *	Add elements to the end
 	 */
-	void Add( const _TYPE& item1, const _TYPE& item2 )
+	void Add( InputType item1, InputType item2 )
 	{
 		EnsureCapacity( _iElementCount + 2 );
 		_pElementData[ _iElementCount ++ ] = item1;
@@ -166,7 +190,7 @@ public:
 	/**
 	 *	Add elements to the end
 	 */
-	void Add( const _TYPE& item1, const _TYPE& item2, const _TYPE& item3 )
+	void Add( InputType item1, InputType item2, InputType item3 )
 	{
 		EnsureCapacity( _iElementCount + 3 );
 		_pElementData[ _iElementCount ++ ] = item1;
@@ -177,7 +201,7 @@ public:
 	/**
 	 *	Add elements to the end
 	 */
-	void Add( const _TYPE& item1, const _TYPE& item2, const _TYPE& item3, const _TYPE& item4 )
+	void Add( InputType item1, InputType item2, InputType item3, InputType item4 )
 	{
 		EnsureCapacity( _iElementCount + 4 );
 		_pElementData[ _iElementCount ++ ] = item1;
@@ -189,7 +213,7 @@ public:
 	/**
 	 * Adds one element count times at the end
 	 */
-	void AddCount( const _TYPE& item, sInt count )
+	void AddCount( InputType item, sInt count )
 	{
 		EnsureCapacity( _iElementCount + count );
 		
@@ -201,17 +225,9 @@ public:
 	}
 
 	/**
-	 *	Add element to the end
-	 */
-	sInt AddC( const _TYPE item )
-	{
-		return Add( item );
-	}
-
-	/**
 	 *	Add element at index
 	 */
-	sInt AddAt( sInt index, const _TYPE& item )
+	sInt AddAt( sInt index, InputType item )
 	{
 		if( index >= _iElementCount )
 			return Add( item );
@@ -224,7 +240,7 @@ public:
 		EnsureCapacity( _iElementCount + 1 );
 
 		for( sInt i = _iElementCount; i > index; i-- )
-			_pElementData[i] = _pElementData[i - 1];
+			_pElementData[i] = T::Move( _pElementData[i - 1] );
 		
 		_iElementCount++;
 		_pElementData[index] = item;
@@ -233,22 +249,14 @@ public:
 	}
 
 	/**
-	 *	Add element at index
-	 */
-	sInt AddAtC( sInt index, const _TYPE item )
-	{
-		return AddAt( index, item );
-	}
-
-	/**
 	 *	remove all elements
 	 */
 	void RemoveAll()
 	{
-		if( !T::Traits<_TYPE>::IsBasicType )
+		if( !T::Traits<_Type>::IsBasicType )
 		{
 			for( sInt i = 0; i < _iElementCount; i++ )
-				_pElementData[i] = _TYPE();
+				_pElementData[i] = _Type();
 		}
 
 		_iElementCount = 0;
@@ -257,12 +265,12 @@ public:
 	/**
 	 *	Removes last element and returs it
 	 */
-	void RemoveLast( _TYPE& t )
+	void RemoveLast( _Type& t )
 	{
 		__S_ASSERT( _iElementCount > 0 );
 
 		t = _pElementData[--_iElementCount];
-		_pElementData[_iElementCount] = _TYPE();
+		_pElementData[_iElementCount] = _Type();
 	}
 
 	/**
@@ -272,13 +280,13 @@ public:
 	{
 		__S_ASSERT( _iElementCount > 0 );
 
-		_pElementData[--_iElementCount] = _TYPE();
+		_pElementData[--_iElementCount] = _Type();
 	}
 
 	/**
 	 * Removes element at index	
 	 */
-	void RemoveAt( sInt index, _TYPE& ret )
+	void RemoveAt( sInt index, _Type& ret )
 	{
 		__S_ASSERT( index >= 0 && index < _iElementCount );
 		
@@ -293,13 +301,12 @@ public:
 	void RemoveAt( sInt index )
 	{
 		__S_ASSERT( index >= 0 && index < _iElementCount );
-				
+
 		for( sInt i = index; i < _iElementCount - 1; i++ )
-			_pElementData[i] = _pElementData[i+1];
-		
-		_pElementData[--_iElementCount] = _TYPE();
+			_pElementData[i] = T::Move( _pElementData[i+1] );
+
+		_pElementData[--_iElementCount] = _Type();
 	}
-	
 	
 	/**
 	 * Remove elements from to to from the vector
@@ -316,7 +323,7 @@ public:
 
 		for( sInt i = from, k = to + 1; k < _iElementCount; ++i, ++k )
 		{
-			_pElementData[i] = _pElementData[k];
+			_pElementData[i] = T::Move( _pElementData[k] );
 		}
 
 		SetSize( _iElementCount -  to + from - 1 );
@@ -329,10 +336,10 @@ public:
 	{
 		__S_ASSERT( size >= 0 );
 
-		if( !T::Traits<_TYPE>::BasicType )
+		if( !T::Traits<_Type>::BasicType )
 		{
 			for( sInt i = size;  i < _iElementCount; i++)
-				_pElementData[i] = _TYPE();
+				_pElementData[i] = _Type();
 		}
 
 		EnsureCapacity( size );
@@ -358,26 +365,26 @@ public:
 	/**
 	 * must not be used in normal cases
 	 */
-	_PLATFORM const _TYPE* GetBuffer() const { return _pElementData; }
-	_PLATFORM _TYPE* GetBuffer() { return _pElementData; }
+	_PLATFORM const _Type* GetBuffer() const { return _pElementData; }
+	_PLATFORM _Type* GetBuffer() { return _pElementData; }
 
 private:
 	void EnsureCapacity( sInt minCapacity ) 
 	{
 		if( minCapacity <= _iElementCapasity ) return;
 
-		_TYPE* pOldElement = _pElementData;
+		_Type* pOldElement = _pElementData;
 
 		sInt newCapacity = ( _CAPACITY_INCREMENT > 0 ) ? 
 			( _iElementCapasity + _CAPACITY_INCREMENT ) : ( _iElementCapasity * 2 );
 
     	if( newCapacity < minCapacity ) newCapacity = minCapacity;
 
-		_pElementData = new _TYPE[newCapacity];
+		_pElementData = new _Type[newCapacity];
 		_iElementCapasity = newCapacity;
 
  		for( System::Types::sInt i = 0; i < _iElementCount; i++ ) 
-			_pElementData[i] = pOldElement[i];
+			_pElementData[i] = T::Move( pOldElement[i] );
 
 		if( pOldElement )
 			delete[] pOldElement;		
@@ -396,12 +403,31 @@ private:
 		if( newCapacity < minCapacity )
 			newCapacity = minCapacity;
 
-		_pElementData = new _TYPE[newCapacity];
+		_pElementData = new _Type[newCapacity];
 		_iElementCapasity = newCapacity;
 	}
 
+	void Reset()
+	{
+		_pElementData = NULL;
+		_iElementCount = 0;
+		_iElementCapasity = 0;
+	}
+
+	void Move( const sVector< _Type >& v )
+	{
+		_pElementData = v._pElementData;
+		_iElementCount = v._iElementCount;
+		_iElementCapasity = v._iElementCapasity;
+	}
+
+	void Free()
+	{
+		delete[] _pElementData;
+	}
+
 private:
-	_TYPE*	_pElementData;
+	_Type*	_pElementData;
 	sInt	_iElementCount;
 	sInt	_iElementCapasity;
 };
@@ -409,8 +435,8 @@ private:
 /**
  *	Basic type vector definitions
  */
-typedef sVector<System::Types::sInt>	sIntVector;
-typedef sVector<System::Types::sBool>	sBoolVector;
-typedef sVector<System::Types::sString>	sStrings;
+typedef sVector<sInt> sIntVector;
+typedef sVector<sBool> sBoolVector;
+typedef sVector<sString> sStrings;
 
 #endif // _SYSTEM_CNT_VECTOR_INC_

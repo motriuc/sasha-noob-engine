@@ -73,8 +73,18 @@ public:
 	/**
 	 * move constructor
 	 */
-	ptr_shared( const ptr_shared< _Type >&& src )
+	ptr_shared( ptr_shared< _Type >&& src )
 	{
+		_BaseClass::operator = ( src );
+		src.Reset();
+	}
+
+	/**
+	 * move operator
+	 */
+	void operator = ( ptr_shared< _Type >&& src )
+	{
+		_BaseClass::ReleaseStrong();
 		_BaseClass::operator = ( src );
 		src.Reset();
 	}

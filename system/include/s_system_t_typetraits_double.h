@@ -52,6 +52,11 @@ public:
 	 */
 	typedef sDouble RemoveConst;
 
+	/**
+	 * Type as function parameter
+	 */
+	typedef const sDouble& AsInput;
+
 	// Compare operators
 	class Cmp
 	{
