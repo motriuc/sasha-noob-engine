@@ -16,6 +16,9 @@
 //      
 /////////////////////////////////////////////////////////////////////
 
+/**
+ * Standard sort algorithms
+ */
 template< typename _COLLECTION, typename _CMP >
 class Sort
 {
@@ -45,9 +48,7 @@ public:
 				
 				if( I <= J )
 				{
-					Type S = collection[I];
-					collection[I] = collection[J];
-					collection[J] = S;
+					T::Swap( collection[I], collection[J] ); 
 					I++;
 					J--;
 				}

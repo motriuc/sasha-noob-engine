@@ -91,6 +91,15 @@
     <Filter Include="system\Header Files\base">
       <UniqueIdentifier>{bf2e60de-fbfa-4ea4-9b6a-b50cf5dd3561}</UniqueIdentifier>
     </Filter>
+    <Filter Include="system\Header Files\macro">
+      <UniqueIdentifier>{203d6c3e-e1a2-43e9-8727-c4258d61c382}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="system\Header Files\memory">
+      <UniqueIdentifier>{d7a67de7-6487-4130-91d2-cade7bdac4df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="system\Header Files\random">
+      <UniqueIdentifier>{b04d5026-35e4-4e1d-97a3-dd41836a2e7c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -154,15 +163,6 @@
     <None Include="..\..\system\include\s_system_global_win32.inl">
       <Filter>system\Header Files\to sort</Filter>
     </None>
-    <None Include="..\..\system\include\s_system_mem.inl">
-      <Filter>system\Header Files\to sort</Filter>
-    </None>
-    <None Include="..\..\system\include\s_system_object.inl">
-      <Filter>system\Header Files\to sort</Filter>
-    </None>
-    <None Include="..\..\system\include\s_system_rgbcolor.inl">
-      <Filter>system\Header Files\to sort</Filter>
-    </None>
     <None Include="..\..\system\include\s_system_d2math_rect.inl">
       <Filter>system\Header Files\math\d2math</Filter>
     </None>
@@ -192,6 +192,18 @@
     </None>
     <None Include="..\..\system\include\s_system_string_format.inl">
       <Filter>system\Header Files\types</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_mem.inl">
+      <Filter>system\Header Files\memory</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_rgbcolor.inl">
+      <Filter>system\Header Files\types</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_object.inl">
+      <Filter>system\Header Files\types</Filter>
+    </None>
+    <None Include="..\..\system\include\s_system_random.inl">
+      <Filter>system\Header Files\random</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -428,18 +440,6 @@
     <ClInclude Include="..\..\system\include\s_system_global.h">
       <Filter>system\Header Files\to sort</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_macro.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_mem.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_object.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\system\include\s_system_rgbcolor.h">
-      <Filter>system\Header Files\to sort</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_xml.h">
       <Filter>system\Header Files\to sort</Filter>
     </ClInclude>
@@ -631,6 +631,21 @@
     </ClInclude>
     <ClInclude Include="..\..\system\include\s_system.h">
       <Filter>system\Header Files\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_macro.h">
+      <Filter>system\Header Files\macro</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_mem.h">
+      <Filter>system\Header Files\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_object.h">
+      <Filter>system\Header Files\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_rgbcolor.h">
+      <Filter>system\Header Files\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_random.h">
+      <Filter>system\Header Files\random</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

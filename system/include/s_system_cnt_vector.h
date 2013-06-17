@@ -19,7 +19,7 @@
 #define _SYSTEM_CNT_VECTOR_INC_
 
 /**
- *	 sVector
+ * A vector structure 
  */
 template< typename _Type >
 class sVector
@@ -35,7 +35,8 @@ public:
 	typename typedef T::Traits<_Type>::AsInput InputType;
 public:
 	/**
-	 *	default constructor
+	 * default constructor
+	 * RATING( +-+ )
 	 */
 	sVector()
 	{
@@ -43,7 +44,9 @@ public:
 	}
 
 	/**
-	 *	Create vector with initial size
+	 * creates a vector with and preallocated size
+	 * RATING( +-+ )
+	 * @param size allocated size of the vector
 	 */
 	explicit sVector( sInt size )
 	{
@@ -55,7 +58,10 @@ public:
 	}
 
 	/**
-	 *	Create vector with size and fill it with val
+	 * creates a vector with an initial size and filled with one value
+	 * RATING( +-+ )
+	 * @param size size of the vector
+	 * @param val value to be filled
 	 */
 	sVector( sInt size, InputType val )
 	{
@@ -70,7 +76,9 @@ public:
 	}
 
 	/**
-	 *	Copy constructor
+	 * copy constructor
+	 * RATING( +-+ )
+	 * @param v the vector source
 	 */
 	sVector( const sVector< _Type >& v )
 	{
@@ -92,7 +100,9 @@ public:
 
 #ifdef _SLIB_CPP11
 	/**
-	 * Move constructor
+	 * move constructor
+	 * RATING( +-- )
+	 * @param v the vector source
 	 */
 	sVector( sVector< _Type >&& v )
 	{
@@ -101,7 +111,9 @@ public:
 	}
 
 	/**
-	 * Move operator
+	 * move operator
+	 * RATING( +-- )
+	 * @param v the source vector
 	 */
 	void operator = ( sVector< _Type >&& v )
 	{
@@ -123,7 +135,9 @@ public:
 	}
 
 	/**
-	 *	copy operator
+	 * copy operator
+	 * RATING( +-- )
+	 * @param v the source vector
 	 */
 	void operator = ( const sVector< _Type >& v )
 	{
@@ -132,21 +146,26 @@ public:
 		for( sInt i = 0; i < v.Size(); i++ )
 			_pElementData[i] = v._pElementData[i];
 		
-		if( !T::Traits<_Type>::IsBasicType )
-		{
-			for( sInt i = v.Size();  i < _iElementCount; i++)
-				_pElementData[i] = _Type();
-		}
-	
+		Reset( v.Size() );
 		_iElementCount = v.Size();
 	}
 
 	/**
-	 * get Vector Size
+	 * returns vector size
+	 * @return vector size
 	 */
 	sInt Size() const
 	{
 		return _iElementCount;
+	}
+
+	/**
+	 * returns vector current capacity
+	 * @return vector capacity
+	 */
+	sInt Capacity() const
+	{
+		return _iElementCapasity;
 	}
 
 	/**
@@ -168,7 +187,10 @@ public:
 	}
 
 	/**
-	 *	Add element to the end
+	 * adds and element to the end of the vector
+	 * RATING( +-+ )
+	 * @param item the elemet
+	 * @return index of the new added element
 	 */
 	sInt Add( InputType item )
 	{
@@ -225,7 +247,11 @@ public:
 	}
 
 	/**
-	 *	Add element at index
+	 * adds an element at index position in the vector
+	 * RATING( +-+ )
+	 * @patam index new element position
+	 * @param item the element
+	 * @return returns the index of added element
 	 */
 	sInt AddAt( sInt index, InputType item )
 	{
@@ -253,12 +279,7 @@ public:
 	 */
 	void RemoveAll()
 	{
-		if( !T::Traits<_Type>::IsBasicType )
-		{
-			for( sInt i = 0; i < _iElementCount; i++ )
-				_pElementData[i] = _Type();
-		}
-
+		Reset( 0 );
 		_iElementCount = 0;
 	}
 
@@ -336,12 +357,7 @@ public:
 	{
 		__S_ASSERT( size >= 0 );
 
-		if( !T::Traits<_Type>::IsBasicType )
-		{
-			for( sInt i = size;  i < _iElementCount; i++)
-				_pElementData[i] = _Type();
-		}
-
+		Reset( size );
 		EnsureCapacity( size );
 		_iElementCount = size;
 	}
@@ -405,6 +421,18 @@ private:
 
 		_pElementData = new _Type[newCapacity];
 		_iElementCapasity = newCapacity;
+	}
+
+	/**
+	 * Resets the elements from size to element count
+	 */
+	void Reset( sInt size )
+	{
+		if( !T::Traits<_Type>::IsBasicType )
+		{
+			for( sInt i = size;  i < _iElementCount; i++ )
+				_pElementData[i] = _Type();
+		}
 	}
 
 	void Reset()

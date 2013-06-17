@@ -111,7 +111,7 @@ namespace System
 
 	#include "s_system_ptr.h"
 	#include "s_system_appenv.h"
-	
+	#include "s_system_random.h"
 
 #ifdef _use_sObject_
 	#include "s_system_object.h"

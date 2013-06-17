@@ -39,6 +39,12 @@
     <ClInclude Include="..\..\system\include\utest\test_t_typetraits.h">
       <Filter>Header Files\tests</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\system\include\utest\test_map.h">
+      <Filter>Header Files\tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\utest\test_vector.h">
+      <Filter>Header Files\tests</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

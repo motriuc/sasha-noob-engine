@@ -40,7 +40,8 @@ public:
 	typename typedef T::Traits<_Key>::AsInput InputKey;
 public:
 	/**
-	 *	constructor
+	 * creates an empty map
+	 * RATING( +-+ )
 	 */
 	sMap() :
 		_content( System::Types::sFalse )
@@ -70,6 +71,24 @@ public:
 		_content = v._content;
 	}
 
+#ifdef _SLIB_CPP11
+	/**
+	 * Move copy constructor
+	 */
+	sMap( sMap<_Key, _Type, _Compare>&& v ) :
+		_content( T::Move( v._content ) )
+	{
+	}
+
+	/**
+	 * Assign move operator
+	 */
+	void operator = ( sMap<_Key, _Type, _Compare>&& v )
+	{
+		_content = T::Move( v._content );
+	}
+#endif
+
 	/**
 	 *	Add value to map
 	 */
@@ -79,7 +98,7 @@ public:
 	}
 
 	/**
-	 *	
+	 * Look up the value by the key
 	 */
 	sBool Lookup( InputKey key, _Type& val ) const
 	{

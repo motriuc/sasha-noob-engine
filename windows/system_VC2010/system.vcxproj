@@ -107,6 +107,7 @@
     <None Include="..\..\system\include\s_system_mt_ev_win32.inl" />
     <None Include="..\..\system\include\s_system_mt_thread_win32.inl" />
     <None Include="..\..\system\include\s_system_object.inl" />
+    <None Include="..\..\system\include\s_system_random.inl" />
     <None Include="..\..\system\include\s_system_rgbcolor.inl" />
     <None Include="..\..\system\include\s_system_string.inl" />
     <None Include="..\..\system\include\s_system_string_format.inl" />
@@ -229,6 +230,7 @@
     <ClInclude Include="..\..\system\include\s_system_ptr_shared.h" />
     <ClInclude Include="..\..\system\include\s_system_ptr_unique.h" />
     <ClInclude Include="..\..\system\include\s_system_ptr_weak.h" />
+    <ClInclude Include="..\..\system\include\s_system_random.h" />
     <ClInclude Include="..\..\system\include\s_system_rgbcolor.h" />
     <ClInclude Include="..\..\system\include\s_system_stream.h" />
     <ClInclude Include="..\..\system\include\s_system_stream_archive.h" />
