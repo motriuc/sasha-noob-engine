@@ -45,6 +45,9 @@
     <ClInclude Include="..\..\system\include\utest\test_vector.h">
       <Filter>Header Files\tests</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\system\include\utest\test_sort.h">
+      <Filter>Header Files\tests</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

@@ -5,6 +5,7 @@
 
 #define _use_sVector_
 #define _use_sMap_
+#define _use_Cont_Utils_
 
 #include "s_system.h"
 
@@ -18,7 +19,8 @@ using namespace System::Cnt;
 #include "utest\test_ptr_weak.h"
 #include "utest\test_t_typetraits.h"
 #include "utest\test_vector.h"
-#include "utest\test_map.h"s
+#include "utest\test_map.h"
+#include "utest\test_sort.h"
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -29,6 +31,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		RUN_TEST( type_traits )
 		RUN_TEST( vector )
 		RUN_TEST( map )
+		RUN_TEST( sort )
 	END_RUN_TESTS
 }
 

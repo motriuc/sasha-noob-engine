@@ -49,7 +49,7 @@ public:
 	}
 
 	/**
-	 *	Copy constructor
+	 * copy constructor
 	 */
 	sMap( const sMap<_Key, _Type, _Compare>& v ) :
 		_content( v._content )
@@ -57,14 +57,14 @@ public:
 	}
 
 	/**
-	 *	Destructor
+	 * destructor
 	 */
 	~sMap()
 	{
 	}
 
 	/**
-	 *	Copy operator
+	 * copy operator
 	 */
 	void operator = ( const sMap<_Key, _Type, _Compare>& v )
 	{
@@ -90,7 +90,11 @@ public:
 #endif
 
 	/**
-	 *	Add value to map
+	 * adds key value to the map
+	 * RATING( +-+ )
+	 * @param key key value
+	 * @param value value to add
+	 * @return  sTrue if value was added sFalse if key exists
 	 */
 	sBool Add( InputKey key, InputType val )
 	{
@@ -98,7 +102,11 @@ public:
 	}
 
 	/**
-	 * Look up the value by the key
+	 * looks up the value by the key
+	 * RATING( +-+ )
+	 * @param key key value
+	 * @param val value
+	 * @return sTrue if value exists sFalse if key exists
 	 */
 	sBool Lookup( InputKey key, _Type& val ) const
 	{

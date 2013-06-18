@@ -1,6 +1,7 @@
 
 BEGIN_TEST( map, "map test : s_system_cnt_maps.h" )
 
+	//-------------------------------------------------------------------
 	CHECK( "sMap()" )
 	{
 		sMap<sInt,sInt> v;
@@ -9,8 +10,10 @@ BEGIN_TEST( map, "map test : s_system_cnt_maps.h" )
 		CONDITION( v.ConstBegin() == v.ConstEnd() )
 	}
 	END
+	//-------------------------------------------------------------------
 
-	CHECK( "Add( key, val ), sBool Lookup( key, &val )" )
+	//-------------------------------------------------------------------
+	CHECK( "Add( key, val ), sBool Lookup( key, &val ) simple" )
 	{
 		// simple test
 		sMap<sInt,sInt> v;
@@ -47,8 +50,32 @@ BEGIN_TEST( map, "map test : s_system_cnt_maps.h" )
 		CONDITION( v.Lookup( 201, ret ) == sFalse )
 		CONDITION( v.Lookup( 11, ret ) == sFalse )
 		CONDITION( v.Lookup( 51, ret ) == sFalse )
-
 	}
 	END
+	//-------------------------------------------------------------------
+
+	//-------------------------------------------------------------------
+	CHECK( "Add( key, val ), sBool Lookup( key, &val ) random" )
+	{
+		sMap<sInt,sInt> v;
+		RMath::Random rnd1;
+
+		for( sInt i = 0; i <= 1000; i++ )
+		{
+			sInt p = rnd1.Rand( 1000000 );
+
+			v.Add( p, p ); 
+		}
+
+		RMath::Random rnd2;
+		for( sInt i = 0; i <= 1000; i++ )
+		{
+			sInt p = rnd2.Rand( 1000000 );
+			sInt rv;
+			CONDITION( v.Lookup( p, rv ) == sTrue && rv == p ) 
+		}
+	}
+	END
+	//-------------------------------------------------------------------
 
 END_TEST

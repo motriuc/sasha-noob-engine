@@ -25,6 +25,9 @@ template< typename _Type, sInt _Size >
 class Array
 {
 public:
+	typename typedef _Type ElementType;
+	typename typedef T::Traits<_Type>::AsInput InputType;
+public:
 	Array()
 	{
 	}
@@ -48,6 +51,11 @@ public:
 		return _array[index];
 	}
 
+	/**
+	 * must not be used in normal cases
+	 */
+	_PLATFORM const _Type* GetBuffer() const { return _array; }
+	_PLATFORM _Type* GetBuffer() { return _array; }
 private:
 	_Type	_array[_Size];
 };

@@ -24,7 +24,6 @@ class sSorted
 {
 private:
 	typedef Find< sVector<_Type>, _CMP > FindData;
-	
 public:
 	
 	sSorted( sInt maxElementCount = 0 ) :
@@ -52,32 +51,32 @@ public:
 		return FindData::BinaryUpperBound( _data, v );
 	}
 	
-	inline sInt Size() const
+	sInt Size() const
 	{
 		return _data.Size();
 	}
 	
-	inline _Type& operator[] ( sInt index )
+	_Type& operator[] ( sInt index )
 	{
 		return _data[index];
 	}
 	
-	inline const _Type& operator[] ( sInt index ) const
+	const _Type& operator[] ( sInt index ) const
 	{
 		return _data[index];
 	}
 	
-	inline void RemoveAll()
+	void RemoveAll()
 	{
 		_data.RemoveAll();
 	}
 	
-	inline void Reserve( sInt minCapacity )
+	void Reserve( sInt minCapacity )
 	{
 		_data.Reserve( minCapacity );
 	}
 
-	inline void Remove( sInt from, sInt to )
+	void Remove( sInt from, sInt to )
 	{
 		_data.Remove( from, to );
 	}

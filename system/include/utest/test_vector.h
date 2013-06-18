@@ -1,6 +1,7 @@
 
 BEGIN_TEST( vector, "vector test : s_system_cnt_vector.h" )
 
+	//-------------------------------------------------------------------
 	CHECK( "sVector()" )
 	{
 		sVector<sInt> v;
@@ -8,7 +9,9 @@ BEGIN_TEST( vector, "vector test : s_system_cnt_vector.h" )
 		CONDITION( v.Capacity() >= 0 ) 
 	}
 	END
+	//-------------------------------------------------------------------
 
+	//-------------------------------------------------------------------
 	CHECK( "sVector( sInt size )" )
 	{
 		sVector<sInt> v( 10 );
@@ -18,7 +21,9 @@ BEGIN_TEST( vector, "vector test : s_system_cnt_vector.h" )
 		CONDITION( v.GetBuffer() != NULL )
 	}
 	END
+	//-------------------------------------------------------------------
 
+	//-------------------------------------------------------------------
 	CHECK( "sVector( sInt size, InputType val )" )
 	{
 		sVector<sInt> v( 10, 666 );
@@ -33,7 +38,9 @@ BEGIN_TEST( vector, "vector test : s_system_cnt_vector.h" )
 		}
 	}
 	END
+	//-------------------------------------------------------------------
 
+	//-------------------------------------------------------------------
 	CHECK( "sVector( const sVector< _Type >& v )" )
 	{
 		{
@@ -66,8 +73,10 @@ BEGIN_TEST( vector, "vector test : s_system_cnt_vector.h" )
 		}
 	}
 	END
+	//-------------------------------------------------------------------
 	
 #ifdef _SLIB_CPP11
+	//-------------------------------------------------------------------
 	CHECK( "sVector( sVector< _Type >&& v )" )
 	{
 		{
@@ -98,7 +107,9 @@ BEGIN_TEST( vector, "vector test : s_system_cnt_vector.h" )
 		}
 	}
 	END
+	//-------------------------------------------------------------------
 
+	//-------------------------------------------------------------------
 	CHECK( "void operator = ( sVector< _Type >&& v )" )
 	{
 		{
@@ -131,9 +142,11 @@ BEGIN_TEST( vector, "vector test : s_system_cnt_vector.h" )
 		}
 	}
 	END
+	//-------------------------------------------------------------------
 
 #endif // _SLIB_CPP11
 
+	//-------------------------------------------------------------------
 	CHECK( "void operator = ( const sVector< _Type >& v )" )
 	{
 		{
@@ -168,7 +181,9 @@ BEGIN_TEST( vector, "vector test : s_system_cnt_vector.h" )
 		}
 	}
 	END
+	//-------------------------------------------------------------------
 
+	//-------------------------------------------------------------------
 	CHECK( "sInt Add( InputType item )" )
 	{
 		sVector<sInt> v;
@@ -189,7 +204,9 @@ BEGIN_TEST( vector, "vector test : s_system_cnt_vector.h" )
 		}
 	}
 	END
+	//-------------------------------------------------------------------
 
+	//-------------------------------------------------------------------
 	CHECK( "sInt AddAt( sInt index, InputType item )" )
 	{
 		sVector<sInt> v;
@@ -221,5 +238,6 @@ BEGIN_TEST( vector, "vector test : s_system_cnt_vector.h" )
 		}
 	}
 	END
+	//-------------------------------------------------------------------
 
 END_TEST
