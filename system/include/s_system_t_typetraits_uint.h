@@ -81,6 +81,5 @@ public:
 			return a - b;
 		}
 	};
-
 };
 

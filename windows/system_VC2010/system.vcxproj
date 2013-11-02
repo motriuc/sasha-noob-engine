@@ -162,6 +162,8 @@
     <ClInclude Include="..\..\system\include\internal\int_stream_mac.h" />
     <ClInclude Include="..\..\system\include\internal\int_stream_win32.h" />
     <ClInclude Include="..\..\system\include\s_system.h" />
+    <ClInclude Include="..\..\system\include\s_system_alloc.h" />
+    <ClInclude Include="..\..\system\include\s_system_alloc_fixed.h" />
     <ClInclude Include="..\..\system\include\s_system_appenv.h" />
     <ClInclude Include="..\..\system\include\s_system_chars.h" />
     <ClInclude Include="..\..\system\include\s_system_chars_b.h" />
@@ -196,6 +198,7 @@
     <ClInclude Include="..\..\system\include\s_system_d3math_vector.h" />
     <ClInclude Include="..\..\system\include\s_system_debug.h" />
     <ClInclude Include="..\..\system\include\s_system_dep.h" />
+    <ClInclude Include="..\..\system\include\s_system_document_item.h" />
     <ClInclude Include="..\..\system\include\s_system_error.h" />
     <ClInclude Include="..\..\system\include\s_system_error_error.h" />
     <ClInclude Include="..\..\system\include\s_system_error_strerr.h" />

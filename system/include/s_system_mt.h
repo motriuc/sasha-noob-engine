@@ -31,6 +31,7 @@ namespace Mt
 	typedef volatile sUInt	sUAtomic;
 #else
 	typedef sInt Atomic;	
+	typedef sUInt sUAtomic;
 #endif
 
 	#include "s_system_mt_at.h"

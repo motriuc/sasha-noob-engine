@@ -100,6 +100,12 @@
     <Filter Include="system\Header Files\random">
       <UniqueIdentifier>{b04d5026-35e4-4e1d-97a3-dd41836a2e7c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="system\Header Files\document">
+      <UniqueIdentifier>{7712dc28-ecf5-491b-949e-80c0127f2596}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="system\Header Files\alloc">
+      <UniqueIdentifier>{0448b012-58a2-48c5-bf4a-f8d0b721d168}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -646,6 +652,15 @@
     </ClInclude>
     <ClInclude Include="..\..\system\include\s_system_random.h">
       <Filter>system\Header Files\random</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_document_item.h">
+      <Filter>system\Header Files\document</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_alloc.h">
+      <Filter>system\Header Files\alloc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\system\include\s_system_alloc_fixed.h">
+      <Filter>system\Header Files\alloc</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
