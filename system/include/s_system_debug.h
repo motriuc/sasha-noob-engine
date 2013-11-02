@@ -44,8 +44,10 @@
 				} \
 			} while( false )
 
-	#ifdef _X86_
+		#if defined( _X86_ ) 
 			#define _ASSERT_BREAK()		_asm { int 3 }
+		#elif defined( _M_X64 )
+			#define _ASSERT_BREAK()		__debugbreak()
 		#else
 			#error not implemented _ASSERT_BREAK
 		#endif

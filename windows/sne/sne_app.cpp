@@ -256,10 +256,10 @@ LRESULT CALLBACK SNEApplication::win_StartWinProc( HWND hWnd, UINT uMsg, WPARAM 
 	_pWindowToCreate->_hWindow = hWnd;
 	AppEnviroment::Instance().SetMainWindowHandle( hWnd );
 
-	::SetWindowLong( hWnd, GWL_USERDATA,(LONG) _pWindowToCreate );
+	::SetWindowLongPtr( hWnd, GWLP_USERDATA,(LONG_PTR) _pWindowToCreate );
 	_pWindowToCreate = NULL;
 
-	::SetWindowLong( hWnd, GWL_WNDPROC, (LONG) win_MainWinProc );
+	::SetWindowLongPtr( hWnd, GWLP_WNDPROC, (LONG_PTR) win_MainWinProc );
 
 	return win_MainWinProc( hWnd, uMsg, wParam, lParam );
 }
@@ -267,7 +267,7 @@ LRESULT CALLBACK SNEApplication::win_StartWinProc( HWND hWnd, UINT uMsg, WPARAM 
 //------------------------------------------------------------------
 LRESULT CALLBACK SNEApplication::win_MainWinProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam )
 {
-	SNEApplication* app = (SNEApplication*) GetWindowLong( hWnd, GWL_USERDATA );
+	SNEApplication* app = (SNEApplication*) GetWindowLongPtr( hWnd, GWLP_USERDATA );
 
 	LRESULT result = 0;
 	if( app->MainProc( uMsg, wParam, lParam, result ) )

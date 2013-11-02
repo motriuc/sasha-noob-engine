@@ -23,7 +23,7 @@
 
 bool __slib_AssertMessage( const char* message, const char* file, int line )
 {
-	int len = strlen( message ) + strlen( file ) + 128;
+	size_t len = strlen( message ) + strlen( file ) + 128;
 	char* pBuf = new char[len];
 
 	sprintf( pBuf, "%s(%d) : Assertion : %s\n", file, line, message );
